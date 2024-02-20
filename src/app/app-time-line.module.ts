@@ -16,7 +16,6 @@ import { AppTimeLineRoutingModule } from './app-time-line.routing';
   providers: [],
   bootstrap: [AppTimeLineComponent]
 })
-
 export class AppTimeLineModule {
   // constructor(private injector: Injector) { }
   // dessa forma tenho que ficar comentando   bootstrap: [AppTimeLineComponent], - produção é melhor sem
