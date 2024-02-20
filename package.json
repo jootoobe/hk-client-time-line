@@ -3,16 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4201",
-    "start-loc": "ng serve --port 4201",
-    "start-dev": "ng serve --configuration development --port 4201",
+    "start": "ng serve --port 4202",
+    "start-loc": "ng serve --port 4202",
+    "start-dev": "ng serve --configuration development --port 4202",
     "build-dev": "ng build --configuration development",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "bundle-dev": "ng build --configuration development --output-hashing none && node concat-dev.js",
     "bundle-prod": "ng build --output-hashing none && node concat.js",
-    "bundle-loc": "ng build  --configuration local --output-path=client/Hk-client-time-line --output-hashing none && node concat-loc.js"
+    "bundle-loc": "ng build  --configuration local --output-path=dist/Hk-client-time-line --output-hashing none && node concat-loc.js"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,7 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+    "concat": "^1.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
