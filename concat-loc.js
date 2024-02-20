@@ -6,6 +6,7 @@ const fs = require('fs-extra');
   const files = [
     "./dist/Hk-client-time-line/browser/polyfills.js",
     "./dist/Hk-client-time-line/browser/main.js",
+    // "./dist/Hk-client-time-line/browser/time-line.module-4YVEO6RZ.js",
   ];
   var htmlContent = await buildIndexHtml();
 
@@ -13,7 +14,8 @@ const fs = require('fs-extra');
   await fs.remove('./dist/Hk-client-time-line/browser/index.html')
   await fs.remove('./dist/Hk-client-time-line/browser/polyfills.js')
   await fs.remove('./dist/Hk-client-time-line/browser/main.js')
-  await fs.writeFile('./dist/Hk-client-time-line/index.html', htmlContent)
+  // await fs.remove('./dist/Hk-client-time-line/browser/time-line.module-4YVEO6RZ.js')
+  await fs.writeFile('./dist/Hk-client-time-line/browser/index.html', htmlContent)
 })();
 
 
@@ -22,6 +24,7 @@ async function buildIndexHtml() {
   let fileHtmlIndex = `
   <!doctype html>
   <html lang="en" data-critters-container>
+
     <head>
       <meta charset="utf-8">
       <title>HkClientTimeLine</title>
@@ -29,13 +32,13 @@ async function buildIndexHtml() {
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" type="image/x-icon" href="favicon.ico">
       <link rel="stylesheet" href="styles.css">
-      <link rel="modulepreload" href="chunk-TT2A2SUP.js">
+
+      <link rel="modulepreload" href="chunk-5ZNR5XVQ.js">
     </head>
+
     <body>
       <app-time-line></app-time-line>
-
-      <script src="polyfills-RT5I6R6G.js" type="module"></script>
-      <script src="main-WE25ATLQ.js" type="module"></script>
+      script src="app-time-line.js" type="module"></script>
     </body>
   </html>
 
