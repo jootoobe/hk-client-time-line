@@ -55,7 +55,7 @@
                   "maximumError": "40kb"
                 }
               ],
-              "outputHashing": "all",
+              "outputHashing": "none",
               "aot": true,
               "optimization": {
                 "scripts": true,
