@@ -4,9 +4,16 @@ import { TimeLineComponent } from './time-line.component';
 // import { CanvasTimeLineComponent } from './canvas-time-line/canvas-time-line.component';
 
 const routes: Routes = [
-  { path: '', component: TimeLineComponent},
+  {
+    path: 'time-line', component: TimeLineComponent,
+    children: [
+      // { path: '**', component: TimeLineComponent }
+    ]
+  },
   // { path: 'vamo-que-vamo', component: VamoQueVamoComponent},
   // { path: 'vamo-que-vamo/:id', component: VamoQueVamoComponent},
+  // { path: '**', redirectTo: '' }
+
 ];
 
 @NgModule({

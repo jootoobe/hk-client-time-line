@@ -4,14 +4,20 @@ import { BrowserModule, createApplication } from '@angular/platform-browser';
 import { AppTimeLineComponent } from './app-time-line.component';
 import { createCustomElement } from '@angular/elements';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
+import { CommonModule } from '@angular/common';
+import { TimeLineModule } from './pages/containers/time-line/time-line.module';
+import { TimeLineComponent } from './pages/containers/time-line/time-line.component';
 
 @NgModule({
   declarations: [
-    AppTimeLineComponent
+    AppTimeLineComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppTimeLineRoutingModule
+    AppTimeLineRoutingModule,
+    TimeLineModule
+
   ],
   providers: [],
   bootstrap: [AppTimeLineComponent]
