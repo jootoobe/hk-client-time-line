@@ -1,11 +1,12 @@
 {
-  "name": "Hk-client-time-line",
+  "name": "hk-client-time-line",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4201",
     "start-loc": "ng serve --port 4201",
     "start-dev": "ng serve --configuration development --port 4201",
+    "build-loc": "ng build --configuration local --output-path=client/Hk-client-time-line --output-hashing none",
     "build-dev": "ng build --configuration development",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

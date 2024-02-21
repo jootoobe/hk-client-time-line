@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Hk-client-time-line": {
+    "hk-client-time-line": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/Hk-client-time-line",
+            "outputPath": "../../back/hk-back-time-line/client/hk-client-time-line",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -55,7 +55,7 @@
                   "maximumError": "40kb"
                 }
               ],
-              "outputHashing": "none",
+              "outputHashing": "all",
               "aot": true,
               "optimization": {
                 "scripts": true,
@@ -141,13 +141,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Hk-client-time-line:build:production"
+              "buildTarget": "hk-client-time-line:build:production"
             },
             "development": {
-              "buildTarget": "Hk-client-time-line:build:development"
+              "buildTarget": "hk-client-time-line:build:development"
             },
             "local": {
-              "buildTarget": "Hk-client-time-line:build:local"
+              "buildTarget": "hk-client-time-line:build:local"
             }
           },
           "defaultConfiguration": "local"
@@ -155,7 +155,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Hk-client-time-line:build"
+            "buildTarget": "hk-client-time-line:build"
           }
         },
         "test": {

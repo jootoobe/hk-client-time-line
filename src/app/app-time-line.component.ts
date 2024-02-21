@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app-time-line.component.scss']
 })
 export class AppTimeLineComponent {
-  title = 'Hk-client-time-line';
+  title = 'hk-client-time-line';
 }
