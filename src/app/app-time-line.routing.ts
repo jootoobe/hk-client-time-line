@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: AppTimeLineComponent },
 
   {
-    path: 'time-line',
+    path: '',
     // canActivate: [AuthGuard],
     // Se usar o loadChildren da forma padrão eu recebo o erro abaixo
     // angular minfolder Uncaught SyntaxError: Cannot use import statement outside a module (at main.js:1:1)
