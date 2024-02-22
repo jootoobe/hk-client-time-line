@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TimeLineRoutingModule } from './time-line.routing';
+import { NgModule } from '@angular/core';
+
 import { TimeLineComponent } from './time-line.component';
-import { BrowserModule } from '@angular/platform-browser';
+import { TimeLineRoutingModule } from './time-line.routing';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
   ],
   imports: [
+    CommonModule,
     TimeLineRoutingModule,
+
  ],
 
   exports: [
