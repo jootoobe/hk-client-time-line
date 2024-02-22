@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TimeLineComponent } from './time-line.component';
+import { FlagsSpiderComponent } from './flags-spider.component';
+import { TopDivComponent } from './top-div/top-div.component';
 
 // import { CanvasTimeLineComponent } from './canvas-time-line/canvas-time-line.component';
 
 const routes: Routes = [
-  // { path: '', pathMatch: 'full', redirectTo: '' },
-  {
-    path: 'time-line', component: TimeLineComponent,
-  },
-  { path: '**', redirectTo: '' }
 
+  { path: ':id', component: FlagsSpiderComponent },
+  { path: ':id/top-div', component: TopDivComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TimeLineRoutingModule { }
+export class FlagsSpiderRoutingModule { }

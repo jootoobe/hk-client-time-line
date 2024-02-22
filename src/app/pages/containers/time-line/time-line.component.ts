@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TimeLineComponent implements OnInit {
 
   ngOnInit(): void {
-    console.log('ssssss')
+    console.log('TimeLineComponent 🃏')
   }
 
 }
