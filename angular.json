@@ -55,7 +55,7 @@
                   "maximumError": "40kb"
                 }
               ],
-              "outputHashing": "none",
+              "outputHashing": "all",
               "aot": true,
               "optimization": {
                 "scripts": true,
@@ -88,7 +88,7 @@
                   "maximumError": "40kb"
                 }
               ],
-              "outputHashing": "none",
+              "outputHashing": "all",
               "aot": true,
               "optimization": false,
               "extractLicenses": false,
@@ -114,7 +114,7 @@
                   "maximumError": "40kb"
                 }
               ],
-              "outputHashing": "none",
+              "outputHashing": "all",
               "aot": true,
               "optimization": {
                 "scripts": true,
