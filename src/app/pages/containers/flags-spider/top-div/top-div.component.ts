@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-top-div',
+  selector: 'top-div',
   templateUrl: './top-div.component.html',
   styleUrl: './top-div.component.scss'
 })

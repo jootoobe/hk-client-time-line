@@ -16,7 +16,7 @@ import { TimeLineRoutingModule } from './time-line.routing';
  ],
 
   exports: [
-    TimeLineComponent
+
   ]
 
 })

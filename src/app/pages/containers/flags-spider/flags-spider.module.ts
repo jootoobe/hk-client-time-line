@@ -17,7 +17,7 @@ import { TopDivComponent } from './top-div/top-div.component';
   ],
   providers: [],
   bootstrap: [],
-  exports:[FlagsSpiderComponent]
+  exports:[]
 })
 export class FlagsSpiderModule {
 

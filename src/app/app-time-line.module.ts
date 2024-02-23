@@ -3,7 +3,6 @@ import { BrowserModule, createApplication } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppTimeLineComponent } from './app-time-line.component';
 import { createCustomElement } from '@angular/elements';
-import { CommonModule } from '@angular/common';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
 import { TimeLineModule } from './pages/containers/time-line/time-line.module';
 

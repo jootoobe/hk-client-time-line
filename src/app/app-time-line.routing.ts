@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { AppTimeLineComponent } from './app-time-line.component';
 import { FlagsSpiderModule } from './pages/containers/flags-spider/flags-spider.module';
+import { AppTimeLineComponent } from './app-time-line.component';
 
 const routes: Routes = [
 
