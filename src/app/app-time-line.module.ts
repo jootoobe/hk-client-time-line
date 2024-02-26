@@ -5,6 +5,7 @@ import { AppTimeLineComponent } from './app-time-line.component';
 import { createCustomElement } from '@angular/elements';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
 import { TimeLineModule } from './pages/containers/time-line/time-line.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { TimeLineModule } from './pages/containers/time-line/time-line.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppTimeLineRoutingModule,
     TimeLineModule
 
