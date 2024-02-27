@@ -7,15 +7,15 @@ const routes: Routes = [
 
   { path: '', component: AppTimeLineComponent },
 
-  {
-    path: '',
-    // canActivate: [AuthGuard],
-    // Se usar o loadChildren da forma padrão eu recebo o erro abaixo
-    // angular minfolder Uncaught SyntaxError: Cannot use import statement outside a module (at main.js:1:1)
-    // loadChildren: () => import('./pages/containers/flags-spider/flags-spider.module').then(m => m.FlagsSpiderModule)
-    // loadChildren: async () => (await import('./pages/containers/flags-spider/flags-spider.module')).FlagsSpiderModule,
-    loadChildren: async () => (await FlagsSpiderModule),
-  },
+  // {
+  //   path: '',
+  //   // canActivate: [AuthGuard],
+  //   // Se usar o loadChildren da forma padrão eu recebo o erro abaixo
+  //   // angular minfolder Uncaught SyntaxError: Cannot use import statement outside a module (at main.js:1:1)
+  //   // loadChildren: () => import('./pages/containers/flags-spider/flags-spider.module').then(m => m.FlagsSpiderModule)
+  //   // loadChildren: async () => (await import('./pages/containers/flags-spider/flags-spider.module')).FlagsSpiderModule,
+  //   loadChildren: async () => (await FlagsSpiderModule),
+  // },
 ]
 
 @NgModule({
