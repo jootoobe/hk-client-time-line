@@ -6,7 +6,6 @@ import { createCustomElement } from '@angular/elements';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
 import { TimeLineModule } from './pages/containers/time-line/time-line.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FlagsSpiderRoutingModule } from './pages/containers/flags-spider/flags-spider.routing';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,7 @@ import { FlagsSpiderRoutingModule } from './pages/containers/flags-spider/flags-
     HttpClientModule,
     AppTimeLineRoutingModule,
     TimeLineModule,
-    FlagsSpiderRoutingModule
+
 
   ],
   providers: [],
