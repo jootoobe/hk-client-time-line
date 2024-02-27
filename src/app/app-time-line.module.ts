@@ -1,11 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { BrowserModule, createApplication } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppTimeLineComponent } from './app-time-line.component';
-import { createCustomElement } from '@angular/elements';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
-import { TimeLineModule } from './pages/containers/time-line/time-line.module';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     AppTimeLineRoutingModule,
-    TimeLineModule,
-
 
   ],
   providers: [],
