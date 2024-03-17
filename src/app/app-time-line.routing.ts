@@ -6,7 +6,7 @@ import { TimeLineModule } from './pages/containers/time-line/time-line.module';
 const routes: Routes = [
 
   {
-    path: 'time-line',
+    path: ':id', // time-line
     // canActivate: [AuthGuard],
     // Se usar o loadChildren da forma padrão eu recebo o erro abaixo
     // angular minfolder Uncaught SyntaxError: Cannot use import statement outside a module (at main.js:1:1)
