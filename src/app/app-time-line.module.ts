@@ -36,7 +36,7 @@ export class AppTimeLineModule {
       const app = await createApplication({
         providers: []
       })
-      const inputElement = createCustomElement(AppTimeLineModule, {
+      const inputElement = createCustomElement(AppTimeLineComponent, {
         injector: app.injector,
       });
       customElements.define('app-time-line', inputElement);
