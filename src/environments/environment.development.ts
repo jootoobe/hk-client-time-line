@@ -8,6 +8,7 @@ export const environment = {
   ApiTimeLine: 'https://time-line.spider-share.com/api-time-line',
 
 
+  styleSpiderShare: 'https://www.spider-share.com/styles.css',
 
 
 };

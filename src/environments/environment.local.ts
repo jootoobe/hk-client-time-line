@@ -13,5 +13,10 @@ export const environment = {
   ApiTimeLine: 'http://localhost:3001/api-time-line',
 
 
+  // A Aplicação principal está gerando número aleatório no build - 31d50b1623a24feb
+  // Solução definitiva tem que fazer a mesma coisa com o build das aplicações filhas
+  // ATENÇÃO isso pode impactar da aplicação nova não carregar as atualizações sem um ctrl + Shift + R
+  // styleSpiderShare: 'http://localhost:4200/styles.css', https://www.spider-share.com/styles.31d50b1623a24feb.css
 
+  styleSpiderShare: 'http://localhost:4200/styles.css',
 };
