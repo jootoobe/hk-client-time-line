@@ -18,5 +18,5 @@ export const environment = {
   // ATENÇÃO isso pode impactar da aplicação nova não carregar as atualizações sem um ctrl + Shift + R
   // styleSpiderShare: 'http://localhost:4200/styles.css', https://www.spider-share.com/styles.31d50b1623a24feb.css
 
-  styleSpiderShare: 'http://localhost:4200/styles.css',
+  styleSpiderShare: 'http://localhost:4200',
 };

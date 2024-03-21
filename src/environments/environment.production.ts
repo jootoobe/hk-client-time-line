@@ -8,5 +8,5 @@ export const environment = {
   ApiTimeLine: 'https://time-line.spider-share.com/api-time-line', // http://hk-back-time-line.us-east-1.elasticbeanstalk.com/
 
 
-  styleSpiderShare: 'https://www.spider-share.com/styles.css',
+  styleSpiderShare: 'https://www.spider-share.com',
 };

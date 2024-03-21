@@ -11,7 +11,7 @@ export const environment = {
   // API
   ApiTimeLine: 'http://localhost:3001/api-time-line',
 
-  styleSpiderShare: 'http://localhost:4200/styles.css',
+  styleSpiderShare: 'http://localhost:4200',
 
 
 };
