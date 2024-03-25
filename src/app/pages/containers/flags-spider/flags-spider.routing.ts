@@ -8,8 +8,8 @@ import { TopDivComponent } from './top-div/top-div.component';
 
 const routes: Routes = [
 
-  { path: ':id', component: FlagsSpiderComponent }, //:id/:id
-  // { path: ':id/top-div', component: TopDivComponent},//:id/:id/top-div
+  { path: '', component: FlagsSpiderComponent }, //:id
+  // { path: ':id/top-div', component: TopDivComponent},//:id/top-div
 ];
 
 @NgModule({

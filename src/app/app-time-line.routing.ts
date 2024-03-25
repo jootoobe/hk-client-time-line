@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'dev-sign-in', component: DevSignInComponent},
   // { path: ':id', redirectTo: ':id/:id', pathMatch: 'full'},
   {
-    path: ':id', // time-line
+    path: '', // time-line
     // canActivate: [AuthGuard],
     // Se usar o loadChildren da forma padrão eu recebo o erro abaixo
     // angular minfolder Uncaught SyntaxError: Cannot use import statement outside a module (at main.js:1:1)
