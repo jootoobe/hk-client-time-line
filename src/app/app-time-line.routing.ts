@@ -2,12 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TimeLineModule } from './pages/containers/time-line/time-line.module';
-import { DevSignInComponent } from './spider-share/components/iam/auth/dev-sign-in/dev-sign-in.component';
 
 const routes: Routes = [
-  // { path: ':id', redirectTo: ':id/:id', pathMatch: 'full'},
 
-  // { path: 'dev-sign-in', component: DevSignInComponent },
   {
     path: ':id', // time-line
     // canActivate: [AuthGuard],
@@ -17,8 +14,6 @@ const routes: Routes = [
     // loadChildren: async () => (await import('./pages/containers/flags-spider/flags-spider.module')).FlagsSpiderModule,
     loadChildren: async () => (await TimeLineModule),
   },
-
-
 ]
 
 @NgModule({

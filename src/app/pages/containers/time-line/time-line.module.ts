@@ -15,7 +15,9 @@ import { TimeLineRoutingModule } from './time-line.routing';
 
  ],
 
-  exports: []
+  exports: [
+
+  ]
 
 })
 export class TimeLineModule { }
