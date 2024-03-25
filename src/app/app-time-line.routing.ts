@@ -5,6 +5,7 @@ import { TimeLineModule } from './pages/containers/time-line/time-line.module';
 
 const routes: Routes = [
 
+  { path: ':id', redirectTo: ':id/:id', pathMatch: 'full'},
   {
     path: ':id', // time-line
     // canActivate: [AuthGuard],
@@ -14,6 +15,8 @@ const routes: Routes = [
     // loadChildren: async () => (await import('./pages/containers/flags-spider/flags-spider.module')).FlagsSpiderModule,
     loadChildren: async () => (await TimeLineModule),
   },
+
+
 ]
 
 @NgModule({
