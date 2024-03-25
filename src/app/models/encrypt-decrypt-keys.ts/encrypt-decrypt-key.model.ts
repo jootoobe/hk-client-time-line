@@ -5,9 +5,9 @@ class KeysModel {
   resetPasswordCryptoKey = 'It[0]81@e🐞UsoRyv{Alb=-0uer{159}qued_GVA[5847TRFRs;ç}'
 
   localStorage = {
-    cryptoKey: '123', // Apenas essa é a verdadeira
-    cryptoKey1: '133', // cryptoKeyFake1
-    cryptoKey2: '123' // cryptoKeyFake2
+    cryptoKey: 'c675-5d72-78f4-7844-cf0a-df17[159357]', // Apenas essa é a verdadeira
+    cryptoKey1: '1051-0f0d-8710-{7412}-6e21-a74e-6342', // cryptoKeyFake1
+    cryptoKey2: 'b5f1-f4ab-3d35-(1597)-4bb9-bd2f-3db0' // cryptoKeyFake2
   }
 }
 
