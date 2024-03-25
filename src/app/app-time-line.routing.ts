@@ -7,8 +7,9 @@ import { DevSignInComponent } from './spider-share/components/iam/auth/dev-sign-
 const routes: Routes = [
   // { path: ':id', redirectTo: ':id/:id', pathMatch: 'full'},
 
+  { path: 'dev-sign-in', component: DevSignInComponent },
   {
-    path: ':id', // time-line
+    path: '', // time-line
     // canActivate: [AuthGuard],
     // Se usar o loadChildren da forma padrão eu recebo o erro abaixo
     // angular minfolder Uncaught SyntaxError: Cannot use import statement outside a module (at main.js:1:1)
@@ -17,7 +18,6 @@ const routes: Routes = [
     loadChildren: async () => (await TimeLineModule),
   },
 
-  { path: 'dev-sign-in', component: DevSignInComponent },
 
 ]
 

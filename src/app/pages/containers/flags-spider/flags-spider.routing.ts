@@ -8,7 +8,7 @@ import { TopDivComponent } from './top-div/top-div.component';
 
 const routes: Routes = [
 
-  { path: ':id', component: FlagsSpiderComponent }, //:id
+  { path: '', component: FlagsSpiderComponent }, //:id
   // { path: ':id/top-div', component: TopDivComponent},//:id/top-div
 ];
 
