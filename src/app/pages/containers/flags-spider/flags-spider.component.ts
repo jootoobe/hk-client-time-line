@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
-import { ConnectingExternalRoutesService } from '../../../../shared/connecting-external-routes/connecting-external-routes.service';
+import { ConnectingExternalRoutesService } from '../../../shared/connecting-external-routes/connecting-external-routes.service';
 
 @Component({
   selector: 'flags-spider',
