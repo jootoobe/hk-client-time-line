@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TimeLineModule } from './pages/containers/time-line/time-line.module';
-import { DevSignInComponent } from './spider-share/spider-share/components/iam/auth/dev-sign-in/dev-sign-in.component';
+import { DevSignInComponent } from './spider-share/components/iam/auth/dev-sign-in/dev-sign-in.component';
 
 const routes: Routes = [
 

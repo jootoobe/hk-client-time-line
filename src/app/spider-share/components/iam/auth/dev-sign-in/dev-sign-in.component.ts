@@ -1,6 +1,6 @@
+import { environment } from '../../../../../../environments/environment';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../../../../environments/environment';
 
 @Component({
   selector: 'dev-sign-in',
