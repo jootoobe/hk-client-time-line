@@ -6,10 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppTimeLineComponent } from './app-time-line.component';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
+import { DevSignInComponent } from './spider-share/spider-share/components/iam/auth/dev-sign-in/dev-sign-in.component';
 
 @NgModule({
   declarations: [
     AppTimeLineComponent,
+    DevSignInComponent
   ],
   imports: [
     BrowserModule,
