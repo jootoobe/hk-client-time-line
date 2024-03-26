@@ -1,17 +1,17 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
-import { ConnectingExternalRoutesService } from '../../../shared/connecting-external-routes/connecting-external-routes.service';
+import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'flags-spider',
-  templateUrl: './flags-spider.component.html',
-  styleUrls: ['./flags-spider.component.scss']
+  selector: 'top-div',
+  templateUrl: './top-div.component.html',
+  styleUrl: './top-div.component.scss'
 })
-export class FlagsSpiderComponent implements OnInit {
+export class TopDivComponent implements OnInit {
+
   constructor(private connectingExternalRoutesService: ConnectingExternalRoutesService) { }
   ngOnInit(): void {
-    console.log('FlagsSpiderComponent 🃏')
+    console.log('TopDivComponent 🃏')
   }
-
 
   navigateHomeSpider(data: string) {
 
