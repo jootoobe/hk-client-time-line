@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppTimeLineComponent } from './app-time-line.component';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
 
+// import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 @NgModule({
   declarations: [
     AppTimeLineComponent,
@@ -18,7 +20,9 @@ import { AppTimeLineRoutingModule } from './app-time-line.routing';
     AppTimeLineRoutingModule,
 
   ],
-  providers: [],
+  providers: [
+    // provideAnimationsAsync() // esse cara gera chunks que quebram a aplicação principal.
+  ],
   bootstrap: [AppTimeLineComponent]
 })
 export class AppTimeLineModule {
