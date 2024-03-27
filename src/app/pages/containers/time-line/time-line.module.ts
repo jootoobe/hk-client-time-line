@@ -19,11 +19,7 @@ import { TimeLineRoutingModule } from './time-line.routing';
     ComponentsModule,
  ],
 
-  exports: [
-    TimeLineComponent,
-    FlagsSpiderComponent,
-    TopDivComponent
-  ]
+  exports: []
 
 })
 export class TimeLineModule { }
