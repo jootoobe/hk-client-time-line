@@ -11,7 +11,7 @@ import { StateService } from './shared/services/state.service';
 export class AppTimeLineComponent implements OnInit {
   title = 'hk-client-time-line';
   styleSpiderShare = environment.styleSpiderShare
-  TOAST:any
+  TESTE:any
 
   constructor(private renderer: Renderer2, private stateService: StateService) {
     let styleCss = localStorage.getItem('st') !== null ? localStorage.getItem('st') : undefined
@@ -25,8 +25,8 @@ export class AppTimeLineComponent implements OnInit {
 
 
     effect(() => {
-      this.TOAST = this.stateService.languageSignalComputed()
-      console.log('TOAST TIME-LINE', this.TOAST)
+      this.TESTE = this.stateService.languageSignalComputed()
+      console.log('TIME-LINE', this.TESTE)
     })
   }
   ngOnInit(): void {
