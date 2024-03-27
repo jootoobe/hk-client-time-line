@@ -29,7 +29,7 @@ export class TopDivComponent implements OnInit {
       router: data,
       message: undefined
     }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerKanban)
+    this.connectingExternalRoutesService.navigateKanban(routerKanban)
   }
 
   navigateSpiderTube(data: string) {
@@ -38,6 +38,6 @@ export class TopDivComponent implements OnInit {
       router: data,
       message: undefined
     }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerSpiderTube)
+    this.connectingExternalRoutesService.navigateSpiderTube(routerSpiderTube)
   }
 }
