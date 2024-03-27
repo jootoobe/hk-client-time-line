@@ -19,4 +19,8 @@ export const environment = {
   // styleSpiderShare: 'http://localhost:4200/styles.css', https://www.spider-share.com/styles.31d50b1623a24feb.css
 
   styleSpiderShare: 'http://localhost:4200',
+
+
+    // urlTranslate: 'http://localhost:4200', // running in client folder only -- translator points to Pro SpiderShare assets in function of PWA { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/top-div/`, suffix: ".json" },
+    urlTranslate: '.', //dev local,
 };

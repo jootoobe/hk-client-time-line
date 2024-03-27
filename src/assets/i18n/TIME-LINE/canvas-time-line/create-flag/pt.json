@@ -1,0 +1,73 @@
+{
+  "TIME-LINE": {
+    "CreateFlagComponent": {
+      "CREATE-FLAG": {
+        "START_COMMENTARY--CREATE-FLAG": "============== HTML START CREATE-FLAG COMPONENT FOLDER =============================",
+        "modal": {
+          "title-h1": "Vamos falar sobre a sua bandeira"
+        }
+      },
+
+      "CREATE-FLAG_MATERIAL": {
+        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL CreateFlagComponent=============================================",
+        "input": {
+          "title": {
+            "mat-label": "Nome da bandeira",
+            "placeholder": "Como vai chamar a sua bandeira?",
+            "mat-error-required": "Titulo é obrigatório",
+            "mat-error-maxlength": "Máximo 50 caracteres",
+            "mat-error-minlength": "Mínimo 3 caracteres"
+          },
+          "date": {
+            "mat-label": "Data bandeira",
+            "placeholder": "Qual o dia da sua bandeira?",
+            "mat-error-required": "Data é obrigatório",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": "Data inválida"
+          },
+          "description": {
+            "mat-label": "Descrição",
+            "placeholder": "Descrição da bandeira",
+            "mat-error-required": "Descrição é obrigatório",
+            "mat-error-maxlength": "Máximo 500 caracteres",
+            "mat-error-minlength": "Mínimo 3 caracteres",
+            "mat-error": ""
+          },
+          "chip": {
+            "mat-label": "Selecione as redes",
+            "placeholder": "Redes sociais",
+            "mat-label2": "Outras redes para adicionar",
+            "placeholder2": "Adicione mais redes",
+            "mat-error-required": "Rede social é obrigatório",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": ""
+          },
+          "tags": {
+            "mat-label": "Tags favoritas",
+            "placeholder": "Nova tag...",
+            "mat-error-required": "Tag é obrigatório",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": ""
+          },
+          "color": {
+            "mat-label": "Qual cor representa a bandeira?",
+            "placeholder": "",
+            "mat-error-required": "",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": ""
+          }
+        },
+        "mat-stroked-button": {
+          "button": {
+            "create": "Criar bandeira",
+            "back": "Voltar"
+          }
+        }
+      }
+    }
+  }
+}

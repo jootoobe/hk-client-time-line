@@ -1,0 +1,12 @@
+{
+  "TIME-LINE": {
+    "TOLLTIP-HELPER": {
+      "GLOBAL": {
+        "START_COMMENTARY--TOLLTIP-HELPER-GLOBAL": "============== HTML START TOLLTIP-HELPER GLOBAL FOLDER ========================================",
+        "help-input": {
+          "help-input-01": "<div style='margin-left: .5rem;'> <p>📢 Adicione imagens com <mark>até 500 kb.</mark></p> <p style='margin-top: 1rem;'> A dica abaixo ajuda a encontrar imagens com menos de 500 kb. </p> <p style='margin-top: 1rem;'>Passo 1: <span style='margin-left: .2rem;'>Clique em tools</span> </p> <p style='margin-top: 1rem;'>Passo 2: <span style='margin-left: .2rem;'>Selecione</span> <strong>Medium</strong> </p> <p style='margin-top: 1rem;'>Passo 3: <span style='margin-left: .2rem;'>Procure a imagem</span></p> <p style='margin-top: 1rem;'> <a style='border-bottom:1px solid #fff;' href='https://www.google.com/search?q=car&tbm=isch&ved=2ahUKEwiSj8SQgp6BAxXcO7kGHQO0D1cQ2-cCegQIABAA&oq=car&gs_lcp=CgNpbWcQAzIECCMQJzIECCMQJzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEUKgHWLMLYOcMaABwAHgAgAFriAGmA5IBAzAuNJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=Zqb8ZJLEHNz35OUPg-i-uAU&bih=715&biw=1519&rlz=1C1CHBF_pt-BRBR913BR913&hl=en | safeDomSanitizer : 'url' ' target='_blank' >Google Img</a > </p> </div> <p style='margin: 1rem; '> <img style='width: 29rem' src='http://localhost:4202/assets/tolltips/img-google.png' alt='SpiderShare' /> </p>"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "TIME-LINE": {
+    "FilterFlagComponent": {
+      "FILTER-FLAG": {
+        "START_COMMENTARY--FILTER-FLAG": "============== HTML START FILTER-FLAG COMPONENT FOLDER =============================",
+        "modal": {
+          "grid1": "Filtrar Bandeiras",
+          "grid2": "X",
+          "grid3": "Título",
+          "grid4": "",
+          "grid5": "",
+          "grid6": "",
+          "grid7": "",
+          "grid8": "Cores"
+        }
+      },
+      "FILTER-FLAG_MATERIAL": {
+        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL FilterFlagComponent =============================================",
+        "input": {
+          "title": {
+            "mat-label": "Filtro título da bandeira",
+            "placeholder": "Busque a bandeira pelo títilo",
+            "mat-error-required": "",
+            "mat-error-maxlength": ""
+          },
+          "color": {
+            "mat-label": "Filtro cores",
+            "placeholder": "Cores bandeiras ano",
+            "mat-error-required": "",
+            "mat-error-maxlength": ""
+          }
+        },
+        "mat-stroked-button": {
+          "button": {
+            "apply-filter": "Aplicar filtro"
+          }
+        }
+      }
+    }
+  }
+}

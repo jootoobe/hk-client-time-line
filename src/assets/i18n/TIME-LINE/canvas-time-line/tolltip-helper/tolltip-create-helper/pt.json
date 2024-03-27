@@ -1,0 +1,21 @@
+{
+  "TIME-LINE": {
+    "TOLLTIP-HTML-MSN": {
+
+      "CreateFlagComponent": {
+        "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
+        "help1-a": "A bandeira serve para identificar um grupo de redes sociais que possuem links ou vídeos guardados, facilitando na hora da busca.",
+        "help1-b": "A criação da bandeira permite posteriormente um fácil acesso aos documentos salvos dentro do kanban.",
+        "help2-a": "A data e o horário, representam o posicionamento da flag na timeline.",
+        "help2-b": "É possível ter até 02 flags com a mesma data e hora.",
+        "help3-a": "Ver o que fazer ainda",
+        "help3-b": "Sem texto aidna",
+        "help7": "",
+        "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help1-img1-a.png",
+        "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help2-img2-a.png",
+        "help3-img3-a": ""
+      }
+
+    }
+  }
+}

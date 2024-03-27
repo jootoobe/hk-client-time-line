@@ -1,0 +1,17 @@
+{
+  "TIME-LINE": {
+    "TOLLTIP-HTML-MSN": {
+      "ModalDoubleCheckerComponent": {
+        "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
+        "help1-a": "Se o botão de deletar estiver desabilitado, significa que a flag possui pelo menos uma coluna do kanban ativa.",
+        "help1-b": "Para remover as 'Redes' da flag, é necessário entrar em 'Abrir Kanban' e deletar as redes sociais ou colunas do kanban.",
+        "help1-c": "Após fazer isso, o botão de deletar estará habilitado.",
+        "help2-b": "",
+        "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/components/modal-doublechecker/pt/flag-delete.png",
+        "help2-img2-a": "",
+        "help3-img3-a": ""
+      }
+
+    }
+  }
+}

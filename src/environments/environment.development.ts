@@ -10,5 +10,5 @@ export const environment = {
 
   styleSpiderShare: 'https://www.spider-share.com',
 
-
+  urlTranslate: 'https://www.spider-share.com',
 };

@@ -1,0 +1,24 @@
+{
+  "TIME-LINE": {
+    "TopDivComponent": {
+      "TOP-DIV": {
+        "START_COMMENTARY--TOP-DIV": "============== HTML START TOP-DIV COMPONENT FOLDER =============================",
+        "grid": {
+          "item-01": "",
+          "item-02": "Time Line",
+          "item-03": "Feed",
+          "item-04": "Descubra",
+          "item-05": "Filtrando...",
+          "item-06": "X",
+          "item-07": "Criar"
+        },
+        "input-filter": {
+          "item-01": "Filtro Aplicado"
+        },
+        "img": {
+          "spider-share-01": ""
+        }
+      }
+    }
+  }
+}

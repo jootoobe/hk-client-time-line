@@ -1,0 +1,73 @@
+{
+  "TIME-LINE": {
+    "CreateFlagComponent": {
+      "START_COMMENTARY--CREATE-FLAG": "============== HTML START CREATE-FLAG COMPONENT FOLDER =============================",
+      "CREATE-FLAG": {
+        "modal": {
+          "title-h1": "Let's talk about your flag",
+          "grid1": ""
+        }
+      },
+      "CREATE-FLAG_MATERIAL": {
+        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL CreateFlagComponent=============================================",
+        "input": {
+          "title": {
+            "mat-label": "Flag name",
+            "placeholder": "As will call your flag?",
+            "mat-error-required": "Title is required",
+            "mat-error-maxlength": "Maximum 50 characters",
+            "mat-error-minlength": "Minimum 3 characters"
+          },
+          "date": {
+            "mat-label": "Flag date",
+            "placeholder": "What is your flag day?",
+            "mat-error-required": "Date is required",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": "Invalid date"
+          },
+          "description": {
+            "mat-label": "Description",
+            "placeholder": "Flag description",
+            "mat-error-required": "Description is required",
+            "mat-error-maxlength": "Maximum 500 characters",
+            "mat-error-minlength": "Minimum 3 characters",
+            "mat-error": ""
+          },
+          "chip": {
+            "mat-label": "Select the networks",
+            "placeholder": "Social medias",
+            "mat-label2": "Other social medias to add",
+            "placeholder2": "Add more networks",
+            "mat-error-required": "Social media is required",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": ""
+          },
+          "tags": {
+            "mat-label": "Favorite tags",
+            "placeholder": "New tag..",
+            "mat-error-required": "Tag is required",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": ""
+          },
+          "color": {
+            "mat-label": "Which color represents the flag?",
+            "placeholder": "",
+            "mat-error-required": "",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": ""
+          }
+        },
+        "mat-stroked-button": {
+          "button": {
+            "create": "Create flag",
+            "back": "Go back"
+          }
+        }
+      }
+    }
+  }
+}

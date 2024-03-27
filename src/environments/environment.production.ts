@@ -9,4 +9,9 @@ export const environment = {
 
 
   styleSpiderShare: 'https://www.spider-share.com',
+
+  urlTranslate: 'https://www.spider-share.com', // http://hk-pro-back-spidershare.us-east-1.elasticbeanstalk.com/
+
+
+
 };

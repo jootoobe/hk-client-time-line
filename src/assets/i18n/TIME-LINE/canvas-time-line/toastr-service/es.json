@@ -1,0 +1,97 @@
+{
+  "TOAST": {
+    "TIME-LINE": {
+      "CreateFlagComponent": {
+        "START_TOAST_COMMENTARY--CREATE-FLAG": "============== TS CreateFlagComponent >> START  COMPONENT FOLDER =============================",
+        "success": {
+          "msn-0": {}
+        },
+        "error": {
+          "msn-0": {}
+        },
+        "info": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Mais à frente poderá adicionar outras, no ambiente kanban",
+            "message-1": "Adicione 04 redes por vez",
+            "status": ""
+          },
+          "msn-1": {
+            "code": "",
+            "message": "",
+            "message-0": "A opção já existe",
+            "message-1": "Rede Social",
+            "status": ""
+          },
+          "msn-2": {
+            "code": "",
+            "message": "",
+            "message-0": "Ao alterar o horário no calendário, a bandeira irá se deslocar na linha do tempo",
+            "message-1": "02 bandeiras por horário!",
+            "status": ""
+          },
+          "msn-3": {
+            "code": "",
+            "message": "",
+            "message-0": "Tags que melhor representam a sua bandeira",
+            "message-1": "Adicione até 04 tags!",
+            "status": ""
+          }
+        },
+        "warning": {
+          "msn-0": {}
+        }
+      },
+      "CanvasTimeLineComponent": {
+        "START_TOAST_COMMENTARY--CANVAS": "============== TS CanvasTimeLineComponent >> START COMPONENT FOLDER =============================",
+        "success": {
+          "msn-0": {}
+        },
+        "error": {
+          "msn-0": {}
+        },
+        "info": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Remova o atual",
+            "message-1": "Filtro já aplicado",
+            "status": ""
+          }
+        },
+        "warning": {
+          "msn-0": {}
+        }
+      },
+      "FilterFlagComponent": {
+        "START_TOAST_COMMENTARY--FILTER": "============== TS FilterFlagComponent >> START COMPONENT FOLDER =============================",
+        "success": {
+          "msn-0": {}
+        },
+        "error": {
+          "msn-0": {}
+        },
+        "info": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Já foi adicionada",
+            "message-1": "Cor Bandeira",
+            "status": ""
+          },
+          "msn-1": {
+            "code": "",
+            "message": "",
+            "message-0": "O filtro fica mais eficaz",
+            "message-1": "Adicione 05 cores por vez",
+            "status": ""
+          }
+        },
+        "warning": {
+          "msn-0": {}
+        }
+      }
+    }
+  }
+}
