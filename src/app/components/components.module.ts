@@ -1,4 +1,4 @@
-import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,35 +13,36 @@ import { MaterialModule } from './material.module';
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
     SharedModule,
     TranslateModule,
+
     ToastrModule.forRoot({
       timeOut: 7000,
       positionClass: 'toast-bottom-center',
       preventDuplicates: true,
     }),
+
+
   ],
 
   exports: [
     CommonModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
     SharedModule,
 
 
   ],
   providers: [
     DatePipe,
-    ToastrService,
-],
+    ToastrService
+  ],
 })
-export class ComponentsModule {
-
-}
+export class ComponentsModule { }
 
 
 
