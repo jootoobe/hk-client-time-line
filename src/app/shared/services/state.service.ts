@@ -2,6 +2,7 @@ import { computed, Inject, signal, WritableSignal } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
+import { RedisAuthModel } from '../../spider-share/models/auth/redis-auth.model';
 import { WINDOW } from './window.service';
 
 @Injectable({
@@ -21,6 +22,10 @@ export class StateService {
   //   return this.toastSignal()
   // });
 
+  // Vai no header da aplicação
+  private redisAuthSubject = new BehaviorSubject<RedisAuthModel>(RedisAuthModel as any);
+  redisAuthSubject$ = this.redisAuthSubject.asObservable();
+
   constructor(@Inject(WINDOW) private window: Window) { }
 
   updateLanguageSignal(val: string) {
@@ -31,6 +36,9 @@ export class StateService {
   //   return this.toastSignal.set(val)
   // }
 
+  updateRedisAuth(val: RedisAuthModel) {
+    return this.redisAuthSubject.next(val)
+  }
 
   /**
   * generate groups of 4 random characters
