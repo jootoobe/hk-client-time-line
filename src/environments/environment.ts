@@ -6,7 +6,7 @@ export const environment = {
   helloEnvironment: 'local environment',
 
   // ApiIam: 'http://localhost:3200/api-iam',
-  ApiIam: 'http://hk-api-iam-spidershare.us-east-1.elasticbeanstalk.com/api-iam',
+  ApiIam: 'https://iam.spider-share.com/api-iam', //http://hk-iam-back-spidershare.us-east-1.elasticbeanstalk.com
 
   // API
   ApiTimeLine: 'http://localhost:3001/api-time-line',
