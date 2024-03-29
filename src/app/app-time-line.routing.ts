@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TimeLineModule } from './pages/containers/time-line/time-line.module';
 import { AppTimeLineComponent } from './app-time-line.component';
+import { TimeLineModule } from './pages/containers/time-line/time-line.module';
+import { DevSignInComponent } from './spider-share/components/iam/auth/dev-sign-in/dev-sign-in.component';
 
 const routes: Routes = [
   { path: '', component: AppTimeLineComponent},
@@ -16,6 +17,9 @@ const routes: Routes = [
     // loadChildren: async () => (await import('./pages/containers/flags-spider/flags-spider.module')).FlagsSpiderModule,
     loadChildren: async () => (await TimeLineModule),
   },
+
+  { path: 'auth/dev-sign-in', component: DevSignInComponent},
+
 ]
 
 @NgModule({
