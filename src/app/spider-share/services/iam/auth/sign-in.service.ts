@@ -144,7 +144,7 @@ export class SignInService {
     // Teste autenticação apis
   // Após autenticar é chamado o GET para testar o AuthGruard da api
   getHelloWorld(): Observable<any> {
-    return this.http.get(this.API_TIME_LINE)
+    return this.http.get(this.API_TIME_LINE+'/get-hello')
   }
 
 }
