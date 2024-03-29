@@ -40,15 +40,4 @@ export class DevSignInComponent {
 
 
 
-  getHelloWorld() {
-    this.signInService.getHelloWorld()
-      .subscribe({
-        next: (res: any) => {
-          console.log('OK',res)
-        },
-        error: (err) => {
-        },
-        complete: () => { }
-      })
-  }
 }

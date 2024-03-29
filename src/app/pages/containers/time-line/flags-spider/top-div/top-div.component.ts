@@ -1,14 +1,20 @@
 import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
 import { Component, OnInit } from '@angular/core';
+import { SignInService } from '../../../../../spider-share/services/iam/auth/sign-in.service';
 
 @Component({
   selector: 'top-div',
   templateUrl: './top-div.component.html',
-  styleUrl: './top-div.component.scss'
+  styleUrl: './top-div.component.scss',
+  providers:[SignInService]
+
 })
 export class TopDivComponent implements OnInit {
 
-  constructor(private connectingExternalRoutesService: ConnectingExternalRoutesService) { }
+  constructor(
+    private connectingExternalRoutesService: ConnectingExternalRoutesService,
+    private signInService: SignInService
+    ) { }
   ngOnInit(): void {
     console.log('TopDivComponent 🃏')
   }
@@ -42,4 +48,16 @@ export class TopDivComponent implements OnInit {
   }
 
 
+
+  getHelloWorld() {
+    this.signInService.getHelloWorld()
+      .subscribe({
+        next: (res: any) => {
+          console.log('OK',res)
+        },
+        error: (err) => {
+        },
+        complete: () => { }
+      })
+  }
 }
