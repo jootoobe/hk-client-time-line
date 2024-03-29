@@ -2,5 +2,6 @@
 <div *ngIf="loginDev">
   <input #val1 type="text" name="" id="" value="joot2be@gmail.com"> <br>
   <input #val2 type="text" name="" id="" value="A123456!"> <br>
-  <button >Login Dev</button>
+  <button (click)="devSgnIn(val1.value, val2.value)">Login Dev</button><br><br><br>
+  <button (click)="getHelloWorld()">getHelloWorld</button>
 </div>

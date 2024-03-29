@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule, createApplication } from '@angular/platform-browser';
@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppTimeLineComponent } from './app-time-line.component';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
 import { DevSignInComponent } from './spider-share/components/iam/auth/dev-sign-in/dev-sign-in.component';
+import { HttpInterceptorService } from './spider-share/services/interceptor/http-interceptor.service';
 
 // import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -26,6 +27,8 @@ import { DevSignInComponent } from './spider-share/components/iam/auth/dev-sign-
   ],
   providers: [
     // provideAnimationsAsync() // esse cara gera chunks que quebram a aplicação principal.
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService,  multi: true  },
+
   ],
   bootstrap: [AppTimeLineComponent]
 })

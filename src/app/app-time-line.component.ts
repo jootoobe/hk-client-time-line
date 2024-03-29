@@ -2,6 +2,9 @@ import { Component, effect, OnInit, Renderer2 } from '@angular/core';
 
 import { environment } from '../environments/environment';
 import { StateService } from './shared/services/state.service';
+import { LocalStorageService } from './shared/services/storage/local-storage.service';
+import { RedisAuthModel } from './spider-share/models/auth/redis-auth.model';
+import { EncryptDecryptKeyModel } from './spider-share/models/encrypt-decrypt-keys.ts/encrypt-decrypt-key.model';
 
 @Component({
   selector: 'app-time-line', // Os seletores dos projetos devem esta identicos a seus microserviços
@@ -13,9 +16,16 @@ export class AppTimeLineComponent implements OnInit {
   styleSpiderShare = environment.styleSpiderShare
   TESTE: any
   envProd = environment.production
+  letter: any
+  itemStorageToken!: RedisAuthModel
+  encryptDecryptKey!: EncryptDecryptKeyModel
 
-  constructor(private renderer: Renderer2, private stateService: StateService) {
-
+  constructor(
+    private renderer: Renderer2,
+    private stateService: StateService,
+    private localStorageService: LocalStorageService
+  ) {
+    this.encryptDecryptKey = new EncryptDecryptKeyModel()
     if (!this.envProd) {
       let styleCss = localStorage.getItem('ss') !== null ? localStorage.getItem('ss') : undefined
 
@@ -34,6 +44,20 @@ export class AppTimeLineComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log('AppTimeLineComponent')
+    this.letter = localStorage.getItem('al') !== null ? localStorage.getItem('al') : undefined
 
+    if (this.letter) {
+      this.letter = this.letter.charAt(0);
+      this.localStorageControlSession()
+    }
+  }
+
+  localStorageControlSession() {
+    this.itemStorageToken = this.localStorageService.getLocalStorag(this.letter, this.encryptDecryptKey.spiderShareCryptoKeys.localStorage.cryptoKey)
+    console.log('TIME-LINE 🌜', this.itemStorageToken)
+
+    if (this.itemStorageToken && this.itemStorageToken.email) {
+      this.stateService.updateRedisAuth(this.itemStorageToken)
+    }
   }
 }

@@ -14,6 +14,7 @@ import { EncryptDecryptKeyModel } from '../../../models/encrypt-decrypt-keys.ts/
 export class SignInService {
   redisAuth: any
   API_IAM: string = environment.ApiIam;
+  API_TIME_LINE: string = environment.ApiTimeLine;
 
   encryptDecryptKey!: EncryptDecryptKeyModel
 
@@ -138,6 +139,12 @@ export class SignInService {
     }
 
 
+  }
+
+    // Teste autenticação apis
+  // Após autenticar é chamado o GET para testar o AuthGruard da api
+  getHelloWorld(): Observable<any> {
+    return this.http.get(this.API_TIME_LINE)
   }
 
 }
