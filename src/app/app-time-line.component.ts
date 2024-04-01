@@ -41,6 +41,7 @@ export class AppTimeLineComponent implements OnInit {
       this.TESTE = this.stateService.languageSignalComputed()
       console.log('TIME-LINE', this.TESTE)
     })
+
   }
   ngOnInit(): void {
     console.log('AppTimeLineComponent')
