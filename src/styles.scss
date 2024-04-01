@@ -105,10 +105,11 @@
 
 
 
-// // =========== TIME-LINE STYLE ======================
+// // =========== TIME-LINE STYLE NÃO COMENTAR ======================
 @import './sass/global-time-line/tl-global.scss';
 
 
+// =========== START TIME-LINE STYLE COMENTAR ======================
 *,
 *:before,
 *:after {
@@ -125,7 +126,7 @@ html {
   font-family: var(--fonts-open-sans-serif);
   font-weight: var(--fonts-font-weight-400);
 }
-
+// =========== END TIME-LINE STYLE COMENTAR ======================
 
 // .sidenav-example {
 //   background: red;
