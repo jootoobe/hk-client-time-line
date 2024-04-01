@@ -26,16 +26,17 @@ export class AppTimeLineComponent implements OnInit {
     private localStorageService: LocalStorageService
   ) {
     this.encryptDecryptKey = new EncryptDecryptKeyModel()
-    // if (!this.envProd) {
-      let styleCss = localStorage.getItem('ss') !== null ? localStorage.getItem('ss') : undefined
-
-      const link = this.renderer.createElement('link');
-      this.renderer.setAttribute(link, 'rel', 'stylesheet');
+    let styleCss = localStorage.getItem('ss') !== null ? localStorage.getItem('ss') : undefined
+    const link = this.renderer.createElement('link');
+    this.renderer.setAttribute(link, 'rel', 'stylesheet');
+    if (this.envProd) {
       this.renderer.setAttribute(link, 'href', `${this.styleSpiderShare}/styles-${styleCss}.css`);
       this.renderer.appendChild(document.head, link);
-      console.log(`${this.styleSpiderShare}/styles-${styleCss}.css`)
-      // http://localhost:4200/styles-CUIQ32FR.css
-    // }
+      // http://localhost:4200/styles.css
+    } else if(!this.envProd) {
+      this.renderer.setAttribute(link, 'href', `${this.styleSpiderShare}/styles.css`);
+      this.renderer.appendChild(document.head, link);
+    }
 
     effect(() => {
       this.TESTE = this.stateService.languageSignalComputed()
