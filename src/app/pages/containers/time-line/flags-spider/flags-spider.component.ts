@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { ConnectingExternalRoutesService } from '../../../../shared/connecting-external-routes/connecting-external-routes.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'flags-spider',
@@ -7,6 +8,9 @@ import { ConnectingExternalRoutesService } from '../../../../shared/connecting-e
   styleUrls: ['./flags-spider.component.scss']
 })
 export class FlagsSpiderComponent implements OnInit {
+  assetsProd = environment.assetsProd // assetsProd: 'http://localhost:4201',
+
+
   constructor(private connectingExternalRoutesService: ConnectingExternalRoutesService) { }
   ngOnInit(): void {
     console.log('FlagsSpiderComponent 🃏')

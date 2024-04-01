@@ -20,6 +20,9 @@ export const environment = {
   styleSpiderShare:'http://localhost:4200', //'https://www.spider-share.com/styles-6TFC6SEM.css', //'https://www.spider-share.com/styles-6TFC6SEM.css', //'http://localhost:4200',
 
 
-    // urlTranslate: 'http://localhost:4200', // running in client folder only -- translator points to Pro SpiderShare assets in function of PWA { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/top-div/`, suffix: ".json" },
-    urlTranslate: '.', //dev local,
+  // urlTranslate: 'http://localhost:4200', // running in client folder only -- translator points to Pro SpiderShare assets in function of PWA { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/top-div/`, suffix: ".json" },
+  urlTranslate: '.', //dev local,
+
+  assetsProd: 'http://localhost:4201',
+
 };

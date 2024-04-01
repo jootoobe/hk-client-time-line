@@ -11,4 +11,7 @@ export const environment = {
   styleSpiderShare: 'https://www.spider-share.com',
 
   urlTranslate: 'https://www.spider-share.com',
+
+  assetsProd: 'https://time-line.spider-share.com', //'http://hk-api-iam-spidershare.us-east-1.elasticbeanstalk.com
+
 };
