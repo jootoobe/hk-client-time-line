@@ -1,0 +1,228 @@
+// ===== GLOBAL COLORS ==========
+//======= TIME-LINE ==============
+
+$colorT-year-line: red;
+$colorT-time-line-board: #F2F2F2;
+
+$colorT-scrollH-1: #cfd8dc;
+$colorT-scrollH-2: #eceff1;
+// $colorT-scrollH-3: #F2F2F2;
+
+$social-media-chips: #4a4a4a;
+
+
+
+//=============== INSIDE FLAG ==========
+// =====================================
+
+//title had to be split into grids
+// that's why got out of the sass parent element ... to make a box
+#title-content {
+  display: grid;
+  grid-template-columns: 89% 10%;
+  grid-gap: .25em;
+  margin-left: 4rem;
+}
+
+.box-inside-flag-title {
+  height: 5rem;
+  // background: lightblue;
+  // border: 1px solid grey;
+  &_menu {
+    margin-left: .5rem;
+    &--edit,
+    &--delete {
+      height: 3rem;
+      margin-left: .5rem;
+      font-size: 2rem;
+      font-weight: var(--fonts-font-weight-500);
+      position: absolute;
+    }
+    &--edit {
+      padding-top: .5rem;
+      color: rgba(var(--color-green), 1);
+    }
+
+    &--delete {
+      padding-top: .6rem;
+      // font-size: 1.9rem;
+      color: rgba(var(--color-red), 1);
+    }
+    &--t1 {
+      margin: -1.6rem 0rem -1.5rem 3.5rem;
+    }
+    &--t2{
+      margin: -1.6rem 0 .5rem 3.5rem;
+    }
+  }
+}
+
+
+.inside-flag {
+  &_title {
+    position: absolute;
+    padding: 0.2rem 0 0 0rem;
+    font-size: 2rem;
+    font-weight: var(--fonts-font-weight-700);
+    // color: rgba(var(--color-black), 0.8); spidershare project default color
+    line-height: 2.6rem;
+    word-wrap: break-word;
+    width: 24rem;
+    // background: red;
+  }
+
+  mat-icon {
+    // position: absolute;
+    margin: 0.7rem 0 0 0rem;
+    font-size: 2.7rem;
+    color: rgba(var(--color-black), 0.6);
+    // background: red;
+  }
+
+
+  i {
+    // position: absolute;
+    margin: 0.7rem 0 0 0rem;
+    font-size: 2.7rem;
+    color: rgba(var(--color-black), 0.6);
+    // background: red;
+  }
+
+
+  &_date {
+    margin-top: -5rem;
+    padding: .2rem 0rem .2rem .5rem;
+    width: 3rem;
+
+    // background: red;
+    &_day {
+      font-size: 1.8rem;
+      margin-bottom: .1rem;
+      font-weight: var(--fonts-font-weight-700);
+      // color: rgba(var(--color-black), .8); spidershare project default color
+      margin: 0 0 0 .1rem;
+    }
+
+    &_month {
+      margin: -.4rem 0 -.3rem -.7rem;
+      // font-size: 1.4rem;
+      font-weight: var(--fonts-font-weight-600);
+      color: rgba(var(--color-black), .6);
+      font-size: 1.2rem;
+      letter-spacing: -.07rem;
+      text-align: center;
+    }
+
+    &_year {
+      // font-size: 1.8rem;
+      font-size: 1.2rem;
+      margin: 0 0 0 -.3rem;
+      font-weight: var(--fonts-font-weight-600);
+      color: rgba(var(--color-black), .4);
+      letter-spacing: -.05rem;
+      padding-left: .2rem;
+    }
+  }
+
+  &_description {
+    font-size: 1rem;
+    margin: 1.5rem 0 0 .5rem;
+    // padding: .2rem;
+    height: 6rem;
+    width: 97.5%;
+    // background: red;
+    font-weight: var(--fonts-font-weight-600);
+    color: rgba(var(--color-black), .6);
+    word-wrap: break-word;
+
+    // background: rgb(204, 137, 137);
+    p {
+      margin: 0;
+      text-indent: .5rem;
+      line-height: 120%;
+      // content: "¶";
+    }
+
+    p::before {
+      content: "¶ ";
+    }
+
+
+  }
+
+  &_no-net{
+    font-size: 1rem;
+    font-weight: var(--fonts-font-weight-600);
+    color: rgba(var(--color-black), .6);
+    word-wrap: break-word;
+    margin: .5rem;
+  }
+
+  &_nets {
+    font-size: 1.2rem;
+    margin: .7rem 0 0.5rem .5rem;
+    font-weight: var(--fonts-font-weight-600);
+    color: rgba(var(--color-black), .6);
+  }
+
+  mat-grid-list {
+    // background: red;
+    width: 99%;
+  }
+
+  mat-chip-listbox {
+    left: 1.2rem;
+    // margin: 0;
+    position: absolute;
+    // transform: translateX(0, 0);
+  }
+
+  mat-chip {
+    font-size: 1.4rem;
+    margin-left: 0rem;
+    // padding: .1rem 0 .2rem 0;
+    max-width: 9rem;
+    overflow-x: hidden;
+
+  }
+
+  &_open-kanban {
+    // position: fixed;
+    // z-index: 2;
+    // height: 12rem;
+    // background: rgb(7, 201, 7);
+    margin: -2rem 0 .5rem 20rem;
+    font-size: 1.2rem;
+    position: absolute;
+
+    // color: rgba(var(--color-black), .7);
+    // border-bottom: .1rem solid  rgba(var(--color-black), .2);
+    mat-icon {
+      // color: rgba(var(--color-black), 1);
+      margin: .1rem 0 0 .3rem;
+      // font-weight: var(--fonts-font-weight-600);
+      font-size: 1.6rem;
+      position: absolute;
+    }
+  }
+
+
+  &_open-detail {
+    // position: fixed;
+    // z-index: 2;
+    // height: 12rem;
+    // background: rgb(7, 201, 7);
+    margin: 0rem 0 0 20rem;
+    font-size: 1.2rem;
+
+    // color: rgba(var(--color-black), .7);
+    // border-bottom: .1rem solid  rgba(var(--color-black), .2);
+    mat-icon {
+      // color: rgba(var(--color-black), 1);
+      margin: .1rem 0 0 .3rem;
+      // font-weight: var(--fonts-font-weight-600);
+      font-size: 1.6rem;
+      position: absolute;
+    }
+  }
+}

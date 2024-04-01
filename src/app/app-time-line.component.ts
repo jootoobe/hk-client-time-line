@@ -26,7 +26,7 @@ export class AppTimeLineComponent implements OnInit {
     private localStorageService: LocalStorageService
   ) {
     this.encryptDecryptKey = new EncryptDecryptKeyModel()
-    if (!this.envProd) {
+    // if (!this.envProd) {
       let styleCss = localStorage.getItem('ss') !== null ? localStorage.getItem('ss') : undefined
 
       const link = this.renderer.createElement('link');
@@ -35,7 +35,7 @@ export class AppTimeLineComponent implements OnInit {
       this.renderer.appendChild(document.head, link);
       console.log(`${this.styleSpiderShare}/styles-${styleCss}.css`)
       // http://localhost:4200/styles-CUIQ32FR.css
-    }
+    // }
 
     effect(() => {
       this.TESTE = this.stateService.languageSignalComputed()

@@ -1,1 +1,61 @@
-<top-div></top-div>
+
+
+
+<!-- Button to open modal and create flag -->
+<!-- <div class="btn-div" *ngIf="flagLength === 0">
+  <div class="btn-div_create">
+    <button *ngIf="getAllFlagsStorage.length === 0"
+            mat-stroked-button
+            class="btn_red-spider"
+            (click)="openCreateTimeLineDialog()">
+            Criar
+    </button>
+  </div>
+</div> -->
+
+<!-- Top div 20%  -->
+<div class="main-div">
+  <div class="first-div">
+
+  </div>
+
+  <!-- Bottom div 80% -->
+  <div class="second-div" appDragScroll id="moveWheelId"
+    >
+
+    <!-- Altura Time line -->
+    <div class="time" >
+
+      <!-- Linha cinza do tempo -->
+      <div  class="time_line time_container">
+
+        <!-- [ngStyle]="{'margin-left': flag0.year === flag0.year ? '10rem': '0rem'}"  space between year -->
+        <div>
+
+          <!-- 🅰️ FLAG 1 -->
+          <flag-1>
+          </flag-1>
+
+        </div>
+
+        <!-- [ngStyle]="{'margin': flagLength < 6 ? '0vh 15rem 0 15rem': '0vh 15rem 0 15rem' }" -->
+        <!-- <div class="end" *ngIf="flagLength > 0">
+          <span *ngIf="flagLength > 5">
+            FIM
+          </span>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+
+  <!-- [ngStyle]="{'margin': openColse ? '-1.5rem': '2rem' }" -->
+  <div class="play-video cursor_pointer">
+    <!-- <img  class="play-video_img" src="{{assetsProd}}/assets/youtube.png" alt="Spider Share"> -->
+  </div>
+
+  <!-- <div class="open-clos-scroll cursor_pointer" #openClose >
+    <span id="open" >open</span>
+    <span id="close" >close</span>
+  </div> -->
+</div>
