@@ -3,8 +3,8 @@ import { Component, effect, OnInit, Renderer2 } from '@angular/core';
 import { environment } from '../environments/environment';
 import { StateService } from './shared/services/state.service';
 import { LocalStorageService } from './shared/services/storage/local-storage.service';
-import { RedisAuthModel } from './spider-share/models/auth/redis-auth.model';
-import { EncryptDecryptKeyModel } from './spider-share/models/encrypt-decrypt-keys.ts/encrypt-decrypt-key.model';
+import { RedisAuthModel } from './spider-share/iam/models/auth/redis-auth.model';
+import { EncryptDecryptKeyModel } from './spider-share/iam/models/encrypt-decrypt-keys.ts/encrypt-decrypt-key.model';
 
 @Component({
   selector: 'app-time-line', // Os seletores dos projetos devem esta identicos a seus microserviços

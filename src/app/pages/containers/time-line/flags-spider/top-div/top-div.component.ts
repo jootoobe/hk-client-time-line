@@ -1,6 +1,7 @@
-import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
 import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../../../../../spider-share/services/iam/auth/sign-in.service';
+
+import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
+import { SignInService } from '../../../../../spider-share/iam/services/auth/sign-in.service';
 
 @Component({
   selector: 'top-div',

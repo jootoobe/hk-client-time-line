@@ -2,7 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { effect, Injectable } from '@angular/core';
 import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
 
-import { StateService } from '../../../shared/services/state.service';
+import { StateService } from '../../../../shared/services/state.service';
 import { RedisAuthModel } from '../../models/auth/redis-auth.model';
 
 // https://itnext.io/migrate-angular-interceptors-to-function-based-interceptors-90bd433e0c2a

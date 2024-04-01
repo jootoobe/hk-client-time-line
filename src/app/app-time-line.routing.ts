@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppTimeLineComponent } from './app-time-line.component';
 import { TimeLineModule } from './pages/containers/time-line/time-line.module';
-import { DevSignInComponent } from './spider-share/components/iam/auth/dev-sign-in/dev-sign-in.component';
+import { DevSignInComponent } from './spider-share/iam/components/auth/dev-sign-in/dev-sign-in.component';
 
 const routes: Routes = [
   { path: '', component: AppTimeLineComponent},

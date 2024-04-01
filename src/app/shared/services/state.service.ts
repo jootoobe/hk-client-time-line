@@ -2,7 +2,7 @@ import { computed, Inject, signal, WritableSignal } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
-import { RedisAuthModel } from '../../spider-share/models/auth/redis-auth.model';
+import { RedisAuthModel } from '../../spider-share/iam/models/auth/redis-auth.model';
 import { WINDOW } from './window.service';
 
 @Injectable({

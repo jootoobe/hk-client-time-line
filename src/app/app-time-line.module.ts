@@ -6,8 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppTimeLineComponent } from './app-time-line.component';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
-import { DevSignInComponent } from './spider-share/components/iam/auth/dev-sign-in/dev-sign-in.component';
-import { HttpInterceptorService } from './spider-share/services/interceptor/http-interceptor.service';
+import { DevSignInComponent } from './spider-share/iam/components/auth/dev-sign-in/dev-sign-in.component';
+import { HttpInterceptorService } from './spider-share/iam/services/interceptor/http-interceptor.service';
 
 // import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 

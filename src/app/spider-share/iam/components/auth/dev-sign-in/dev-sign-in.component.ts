@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { environment } from '../../../../../../environments/environment';
-import { SignInService } from '../../../../services/iam/auth/sign-in.service';
+import { SignInService } from '../../../services/auth/sign-in.service';
 
 @Component({
   selector: 'dev-sign-in',
