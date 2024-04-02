@@ -4,19 +4,21 @@
 <!-- <div class="year Roboto_700" *ngIf="flag0.time_line">{{time_line[0].year}}</div> -->
 
 <!-- | unique is removing month_code-->
-<div *ngFor="let flag1 of time_line[0].flags; let first1 = first; let last1 = last; let i1 = index">
+<div *ngFor="let flag1 of time_line.flags; let first1 = first; let last1 = last; let i1 = index">
+
+  <!-- <div class="year Roboto_700">{{flag1.date_obj.year}}</div> -->
 
   <!-- Main Block Flags-->
   <!-- Responsible for the margins between the flags-->
-  <div class="main-block" [ngStyle]="{'margin-left': first1 ? '0rem': !first1 && flag1?.flag_style === 2 ? '5rem':
-                                                                      !first1 && flag1?.flag_style === 1 ? '6rem': ''}">
+  <div class="main-block">
 
     <div class="flag-1 inside-flag">
 
       <div  class="flag-1_card"
-            id="color-{{flag1.color_hex.substring(1)}}"
-            [ngStyle]="{  'border-left': '.5rem solid rgba('+flag1.color_rgb+',1)',
-                          'background-color': 'hsl('+flag1.color_hsl+')'}">
+      [ngStyle]="{  'border-left': '.5rem solid rgba('+flag1.color_rgb+',1)',
+                          'background-color': 'rgba('+flag1.color_rgb+',.3)'}">
+
+      <div class="flag-1_white--background"></div>
 
         <!-- title -->
         <div id="title-content">
@@ -108,32 +110,7 @@
       </div> -->
     </div>
 
-    <div *ngIf="flag1.flag_style === 1">
-      <!-- Flagpole -->
-      <div class="flag-1_line" id="color-{{flag1.color_hex.substring(1)}}"
-        [ngStyle]="{'border-left' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
-      </div>
 
-      <!-- Flag base -->
-      <div class="flag-1_base" id="color-{{flag1.color_hex.substring(1)}}"
-        [ngStyle]="{'border-top' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
-      </div>
-
-
-      <!-- Month - or - flag1.month.split('/').pop() -->
-      <div class="flag-1_month Roboto_700">
-        <span class="flag-1_month--others" *ngIf="flag1.date_obj.month_code">
-          <!-- {{flag1.date_obj.month.split('/').shift() +'/'+ flag1.year.substring(2)}} -->
-          {{flag1.date_obj.month_s +'/'+ flag1.date_obj.year}}
-        </span>
-      </div>
-
-      <!-- Filter 1 -->
-      <div  class="flag-1_filter cursor_pointer"
-            id="color-{{flag1.color_hex.substring(1)}}"
-            [ngStyle]="{'background' : 'rgba('+flag1.color_rgb+', 1)'}">
-      </div>
-    </div>
   </div>
 
 

@@ -2,9 +2,11 @@
 // == flag 01 and flag 02 are correlated ====
 
 .year{
-  margin-top: .1rem;
-  margin-left: 2rem;
-  width: 8rem;
+  // margin-top: .1rem;;
+  // margin-left: 2rem;
+  // width: 8rem;
+  // margin-bottom: 2rem;
+  // height: 2rem;
 }
 
 .main-block {
@@ -23,8 +25,12 @@
   position: relative;
   z-index: 1;
 
-  &_index {
+  &_white--background {
+    width: 30rem;
     z-index: -1;
+    position: absolute;
+    background: rgba(var(--color-white), 1);
+    height: 28rem;
   }
 
   &_card {
