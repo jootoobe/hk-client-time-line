@@ -38,17 +38,13 @@
     width: 30rem;
     height: 28rem;
     box-shadow: .1rem 0rem .5rem rgba(var(--color-black), .1);
-
   }
-
-
 
 
   &_line {
     // padding-top: 6.5rem;
     height: 10rem;
   }
-
 
   &_base {
     width: 2rem;
@@ -80,10 +76,13 @@
     position: absolute;
     margin-top: 0.2rem;
   }
-
-
 }
 
+.flag-2 {
+  &_line {
+    height: 17rem;
+  }
+}
 
 // =========== MATERIAL ===========
 // ==============================
