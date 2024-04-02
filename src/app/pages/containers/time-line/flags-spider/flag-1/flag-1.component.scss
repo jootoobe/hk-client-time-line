@@ -12,7 +12,8 @@
 
 
 .main {
-  color: lighten(yellow, 30%);
+  // color: lighten(yellow, 30%);
+  color: black;
   grid-area: main;
   padding: 0;
   // overflow-x: scroll;
@@ -30,8 +31,9 @@
 .item {
   height: 76vh;
   display: inline-block;
-  background: skyblue;
+  // background: skyblue;
   // min-height: 250px;
   min-width: 1000px;
   // margin: 1rem;
+  border-bottom: solid .5rem rgba(var(--colorT-time-line-board, 1));
 }
