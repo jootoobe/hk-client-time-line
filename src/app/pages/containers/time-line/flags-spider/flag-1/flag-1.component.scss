@@ -4,9 +4,9 @@
   // display: flex;
   white-space: nowrap;
   // flex-wrap: nowrap;
-  justify-content: end;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  // justify-content: end;
+  // overflow-x: scroll;
+  // overflow-y: hidden;
 
 }
 
@@ -28,6 +28,7 @@
 }
 
 .item {
+  height: 76vh;
   display: inline-block;
   background: skyblue;
   // min-height: 250px;

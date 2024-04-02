@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { UniquePipe } from './pipes/unique.pipe';
+import { DragScrollDirective } from './directives/drag-scroll.directive';
 
 @NgModule({
   declarations: [
     TruncatePipe,
-    UniquePipe
+    UniquePipe,
+    DragScrollDirective
   ],
   imports: [
     CommonModule,
   ],
   exports: [
     TruncatePipe,
-    UniquePipe
+    UniquePipe,
+    DragScrollDirective
   ],
   providers: [],
 })
