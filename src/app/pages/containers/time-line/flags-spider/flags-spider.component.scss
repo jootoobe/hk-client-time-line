@@ -13,7 +13,7 @@
   display: grid;
   width: auto;
   min-width: 100vh;
-  background: rgb(102, 255, 0);
+  // background: rgb(102, 255, 0);
 }
 
 
@@ -30,7 +30,7 @@
   overflow-x: overlay;
   position: relative;
 
-  background: blue;
+  // background: blue;
 }
 
 
@@ -41,7 +41,7 @@
     margin: 0;
     list-style: none;
     display: flex;
-    height: 0;
+    height: 3rem; // altura time-line
   }
 
   &_line {

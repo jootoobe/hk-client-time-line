@@ -12,8 +12,11 @@
 .main-block {
   margin-top: -38.5rem;
   width: auto; // usado para o scroll de baixo ficar mais fiel ao tamanho
-  background: red;
+  // background: red;
   float: left; // alinha as flags
+  &--flags{
+    padding-left: 10rem;
+  }
 }
 
 .div-lower-flag {
@@ -45,39 +48,37 @@
 
 
 
-  // &_line {
-  //   // padding-top: 6.5rem;
-  //   height: 10rem;
-  // }
+  &_line {
+    // padding-top: 6.5rem;
+    height: 10rem;
+  }
 
 
-  // &_base {
-  //   width: 2rem;
-  //   padding: 0;
-  //   margin: 0 0 .2rem -.7rem;
-  //   border-top-left-radius: 50%;
-  //   border-top-right-radius: 50%;
-  // }
+  &_base {
+    width: 2rem;
+    padding: 0;
+    margin-left: -.7rem;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
 
-  // &_month {
-  //   font-size: 1rem;
-  //   // margin-top: .1rem;
-  //   width: 5rem;
-  //   margin-left: -4.5rem;
-  //   float: left;
-  //   text-align: right;
-  //   &--others {
-  //     margin-right: .2rem;
-  //   }
-  // }
+  &_month {
+    font-size: 1rem;
+    // margin-top: .1rem;
+    width: 5rem;
+    position: absolute;
+    margin-left: -4.5rem;
+    // float: left;
+    // text-align: right;
+  }
 
-  // &_filter {
-  //   width: 30rem;
-  //   height: 1rem;
-  //   margin-left: .5rem;
-  //   position: absolute;
-  //   margin-top: 0.2rem;
-  // }
+  &_filter {
+    width: 30rem;
+    height: 1rem;
+    margin-left: .5rem;
+    position: absolute;
+    margin-top: 0.2rem;
+  }
 
 
 }

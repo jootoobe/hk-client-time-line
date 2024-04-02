@@ -60,7 +60,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
       },
       {
         flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
-        flag_title: "SSSSSSSSSSSSSSSSSSSSS",
+        flag_title: "uuuuuuuuuuuuuu",
         flag_description: "BBBBBBB",
         flag_style: 1,
         color_hex: "#90ab3d",
