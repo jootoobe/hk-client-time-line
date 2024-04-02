@@ -1,66 +1,36 @@
 // https://codepen.io/thenutz/pen/VwYeYEE
 
 .grid-container {
-  display: flex;
-  flex-wrap: nowrap;
+  // display: flex;
+  white-space: nowrap;
+  // flex-wrap: nowrap;
   justify-content: end;
-
+  overflow-x: scroll;
+  overflow-y: hidden;
 
 }
 
-//ENABLE CSS GRID FOR LIFT OFF  🚀
-// @supports(display: grid) {
 
-  // .grid-container {
-  //   display: grid;
-  //   grid-template-columns: 1fr 1fr 1fr;
-  //   grid-template-rows: auto 1fr auto;
-
-  //   //Let the craziness begin!!!
-  //   grid-template-areas: "main main main";
-
-  //   @media screen and (max-width: 100%) {
-  //     grid-template-columns: 1fr;
-  //     grid-template-rows: 0.3fr 1fr auto 1fr;
-  //     grid-template-areas: "main"
-  //   }
-  // }
+.main {
+  color: lighten(yellow, 30%);
+  grid-area: main;
+  padding: 0;
+  // overflow-x: scroll;
+  // background-color: lighten(black, 80%);
+  // background: rgb(204, 170, 170);
+}
 
 
+.items {
+  width: 100%;
+  position: relative;
 
+}
 
-
-  .main {
-    color: lighten(yellow, 30%);
-    grid-area: main;
-    padding: 0;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    // background-color: lighten(black, 80%);
-    // background: rgb(204, 170, 170);
-  }
-
-
-  .items {
-
-    width: 100%;
-    position: relative;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-
-  }
-
-  .item {
-    display: inline-block;
-    background: skyblue;
-    // min-height: 250px;
-    min-width: 1000px;
-    // margin: 1rem;
-
-
-
-  }
-
-// }
-
+.item {
+  display: inline-block;
+  background: skyblue;
+  // min-height: 250px;
+  min-width: 1000px;
+  // margin: 1rem;
+}
