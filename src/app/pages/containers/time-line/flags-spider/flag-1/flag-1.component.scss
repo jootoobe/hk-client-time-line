@@ -1,14 +1,6 @@
 // =========== FLAGS ========================
 // == flag 01 and flag 02 are correlated ====
 
-.year{
-  // margin-top: .1rem;;
-  // margin-left: 2rem;
-  // width: 8rem;
-  // margin-bottom: 2rem;
-  // height: 2rem;
-}
-
 .main-block {
   margin-top: -38.5rem;
   width: auto; // usado para o scroll de baixo ficar mais fiel ao tamanho
@@ -62,9 +54,14 @@
     border-top-right-radius: 50%;
   }
 
+  &_year{
+    position: absolute;
+    margin-left: -8rem;
+  }
+
   &_month {
     font-size: 1rem;
-    // margin-top: .1rem;
+    margin-top: .1rem;
     width: 5rem;
     position: absolute;
     margin-left: -4.5rem;

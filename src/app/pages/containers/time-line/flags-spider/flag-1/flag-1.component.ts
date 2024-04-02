@@ -9,6 +9,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
   time_line = {
     flags: [
       {
+        year: "2024",
         flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
         flag_title: "wwwwwwww",
         flag_description: "wwwwwww",
@@ -34,6 +35,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         subject_tags: []
       },
       {
+        year: "2024",
         flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
         flag_title: "SSSSSSSSSSSSSSSSSSSSS",
         flag_description: "BBBBBBB",
@@ -59,6 +61,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         subject_tags: []
       },
       {
+        year: "2024",
         flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
         flag_title: "uuuuuuuuuuuuuu",
         flag_description: "BBBBBBB",
