@@ -1,9 +1,10 @@
 <!-- https://blog.angular-university.io/angular-for/ -->
 @for (flag1 of time_line.flags1 | unique; track trackFlagsDataJson; let idx = $index) {
 
-  @for (flag2 of time_line.flags2 | unique; track trackFlagsDataJson; let idx2 = $index) {
+  @for (flag2 of time_line.flags2 | unique; track trackFlagsDataJson2; let idx2 = $index) {
 
   <div *ngIf="flag1.date_obj.timestamp === flag2.date_obj.timestamp">
+      <!-- 🅰️ FLAG 2 -->
     <div class="main-block">
       <div class="main-block--flags2">
         <div class="flag-2 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx2 +' * 38rem)'}">
@@ -85,7 +86,7 @@
               } @else {
               <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'0rem'">
 
-                @for (chip of flag2.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
+                @for (chip of flag2.social_medias_chips; track trackFlagsDataJson2; let ichip = $index) {
                 <mat-grid-tile [rowspan]="'3'">
 
                   <mat-chip-listbox *ngIf="ichip < 6 && chip.name.length > 9">
@@ -149,7 +150,7 @@
     </div>
   </div>
   }
-
+  <!-- 🅰️ FLAG 1 -->
 <div class="main-block">
   <div class="main-block--flags">
     <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}">

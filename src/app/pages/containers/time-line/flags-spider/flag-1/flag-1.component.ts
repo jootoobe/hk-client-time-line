@@ -103,8 +103,12 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit(): void { }
 
 
-  trackFlagsDataJson(index: number, flags: any) {
-    return flags
+  trackFlagsDataJson(index: number, flags1: any) {
+    return flags1
+  }
+
+  trackFlagsDataJson2(index: number, flags2: any) {
+    return flags2
   }
 
 
