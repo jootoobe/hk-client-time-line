@@ -83,7 +83,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
           timestamp: 1708171200000,
           time: "12:00:00"
         },
-        social_medias_chips: [],
+        social_medias_chips: [{name: 'Facebook'}],
         subject_tags: []
       },
     ]
@@ -97,6 +97,11 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
 
 
   ngAfterViewInit(): void { }
+
+
+  trackFlagsDataJson(index: number, flags: any) {
+    return flags
+  }
 
 
 }

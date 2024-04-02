@@ -1,15 +1,12 @@
+<!-- https://blog.angular-university.io/angular-for/ -->
+@for (flag1 of time_line.flags | unique; track trackFlagsDataJson; let idx = $index) {
+<div class="main-block">
 
-<div
-  *ngFor="let flag1 of time_line.flags | unique; let first1 = first; let last1 = last; let i1 = index"
-  class="main-block">
+  <div class="main-block--flags">
 
-  <div  class="main-block--flags">
+    <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}">
 
-    <div class="flag-1 inside-flag"
-      [ngStyle]="{'margin-left': 'calc('+ i1 +' * 38rem)'}">
-
-      <div class="flag-1_card"
-        [ngStyle]="{  'border-left': '.5rem solid rgba('+flag1.color_rgb+',1)',
+      <div class="flag-1_card" [ngStyle]="{  'border-left': '.5rem solid rgba('+flag1.color_rgb+',1)',
                           'background-color': 'rgba('+flag1.color_rgb+',.3)'}">
 
         <div class="flag-1_white--background"></div>
@@ -25,10 +22,8 @@
 
           <!-- Menu Edit Delete -->
           <div class="box-inside-flag-title ">
-            <i matSuffix
-              class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
-              id="menu-{{flag1.color_hex.substring(1)}}"
-              [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+            <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
+              id="menu-{{flag1.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
             <!-- Start Filter Sort-->
             <mat-menu #menuEditRemove="matMenu">
               <span class="cursor_pointer noSelect box-inside-flag-title_menu">
@@ -48,8 +43,7 @@
         </div>
 
         <!-- Date -->
-        <div class="inside-flag_date"
-          [ngStyle]="{'background-color' : 'rgba('+flag1.color_rgb+',.2)'}">
+        <div class="inside-flag_date" [ngStyle]="{'background-color' : 'rgba('+flag1.color_rgb+',.2)'}">
           <div class="inside-flag_date_day">
             <!-- {{flag1.date_obj.day_month_year.substring(8).split('T').shift()}} -->
             {{flag1.date_obj.day}}
@@ -76,10 +70,8 @@
 
         <!-- Chips -->
         <div style="height: 12rem; width: 100%;">
-
-          <mat-chip-listbox
-            *ngIf="flag1.social_medias_chips.length === 0"
-            class="inside-flag_no-net">
+          @if(flag1.social_medias_chips.length === 0) {
+          <mat-chip-listbox class="inside-flag_no-net">
             <!-- Não existe rede criada. -->
             <p>
               <mark> {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}</mark>
@@ -88,6 +80,35 @@
               {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
             </p>
           </mat-chip-listbox>
+          } @else {
+          <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'0rem'">
+
+            @for (chip of flag1.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
+            <mat-grid-tile [rowspan]="'3'">
+
+              <mat-chip-listbox *ngIf="ichip < 6 && chip.name.length > 9">
+                <mat-chip>
+                  <!-- {{chip.name | truncate:8}} -->
+                  {{chip.name | titlecase | truncate:6}}
+                </mat-chip>
+              </mat-chip-listbox>
+
+              <mat-chip-listbox *ngIf="ichip < 6  && chip.name.length <= 9">
+                <mat-chip>
+                  <!-- {{chip.name | truncate:8}} -->
+                  {{chip.name | titlecase }}
+                </mat-chip>
+              </mat-chip-listbox>
+
+              <mat-chip-listbox *ngIf="ichip===6">
+                <mat-chip>
+                  +{{flag1.social_medias_chips.length - 6}}
+                </mat-chip>
+              </mat-chip-listbox>
+            </mat-grid-tile>
+            }
+          </mat-grid-list>
+          }
 
         </div>
       </div> <!-- Card End -->
@@ -108,7 +129,7 @@
       </div> -->
     </div>
 
-    <div [ngStyle]="{'margin-left': 'calc('+ i1 +' * 38rem)'}">
+    <div [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}">
       <!-- Flagpole -->
       <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
       </div>
@@ -134,4 +155,4 @@
 
   </div>
 </div>
-
+}
