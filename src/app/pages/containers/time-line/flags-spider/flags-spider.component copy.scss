@@ -36,12 +36,20 @@
 
 //=============== TIME_LINE ========================================================
 .time {
-  // &_line {
-  //   border-top: .5rem solid rgba(var(--colorT-time-line-board, 1));
-  //   // border-bottom: .5rem solid rgba(#c21b1b, 1);
-  //   width: auto;
-  //   min-width: 100%;
-  // }
+  &_container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    height: 3rem; // altura time-line
+  }
+
+  &_line {
+    border-top: .5rem solid rgba(var(--colorT-time-line-board, 1));
+    // border-bottom: .5rem solid rgba(#c21b1b, 1);
+    width: auto;
+    min-width: 100%;
+  }
 }
 
 
