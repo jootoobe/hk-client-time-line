@@ -6,7 +6,7 @@
   <div *ngIf="flag1.date_obj.timestamp === flag2.date_obj.timestamp">
     <div class="main-block">
       <div class="main-block--flags2">
-        <div class="flag-2 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}">
+        <div class="flag-2 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx2 +' * 38rem)'}">
 
           <div class="flag-1_card" [ngStyle]="{  'border-left': '.5rem solid rgba('+flag2.color_rgb+',1)',
                             'background-color': 'rgba('+flag2.color_rgb+',.3)'}">
@@ -131,7 +131,7 @@
         </div> -->
         </div>
 
-        <div [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}">
+        <div [ngStyle]="{'margin-left': 'calc('+ idx2 +' * 38rem)'}">
           <!-- Flagpole -->
           <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}">
           </div>
