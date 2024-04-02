@@ -6,10 +6,12 @@
   width: auto; // usado para o scroll de baixo ficar mais fiel ao tamanho
   // background: red;
   float: left; // alinha as flags
-  &--flags{
+
+  &--flags {
     margin-left: 10rem;
   }
-  &--flags2{
+
+  &--flags2 {
     margin: -7rem 0rem 0rem 14rem;
   }
 }
@@ -24,9 +26,10 @@
   height: 28rem;
   width: 30rem;
   position: relative;
-  z-index: 1;
 
-  &_white--background { // todo retangulo tem um quadrado branco atrás por conta do RGBA
+
+  &_white--background {
+    // todo retangulo tem um quadrado branco atrás por conta do RGBA
     width: 30rem;
     z-index: -1;
     position: absolute;
@@ -54,7 +57,7 @@
     border-top-right-radius: 50%;
   }
 
-  &_year{
+  &_year {
     position: absolute;
     margin-left: -8rem;
   }
@@ -78,7 +81,13 @@
   }
 }
 
+.flag-1 {
+  z-index: 2;
+}
+
 .flag-2 {
+  z-index: 1;
+
   &_line {
     height: 17rem;
   }
@@ -93,5 +102,5 @@
   font-weight: var(--fonts-font-weight-600);
   background-color: rgba(var(--color-social-media-chips), 1) !important;
   font-size: 1.2rem !important;
-  height: 2.5rem!important;
+  height: 2.5rem !important;
 }
