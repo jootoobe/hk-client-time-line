@@ -3,17 +3,17 @@
 
   @for (flag2 of time_line.flags2 | unique; track trackFlagsDataJson2; let idx2 = $index) {
 
-  <div *ngIf="flag1.date_obj.timestamp === flag2.date_obj.timestamp">
-      <!-- 🅰️ FLAG 2 -->
+    <!-- 🅰️ FLAG 2 -->
+    @if(flag1.date_obj.timestamp === flag2.date_obj.timestamp) {
     <div class="main-block">
       <div class="main-block--flags2">
         <div class="flag-2 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx2 +' * 38rem)'}">
 
-          <div class="flag-1_card" [ngStyle]="{  'border-left': '.5rem solid rgba('+flag2.color_rgb+',1)',
-                            'background-color': 'rgba('+flag2.color_rgb+',.3)'}">
+          <div class="flag-2_card" [ngStyle]="{  'border-left': '.5rem solid rgba('+flag2.color_rgb+',1)',
+                                'background-color': 'rgba('+flag2.color_rgb+',.3)'}">
 
             <!-- RETANGULO BRANCO DE FUNDO -->
-            <div class="flag-1_white--background"></div>
+            <div class="flag-2_white--background"></div>
 
             <!-- title -->
             <div id="title-content">
@@ -125,32 +125,33 @@
           </div>
           <!-- Open Details -->
           <!-- <div class="inside-flag_open-detail cursor_pointer">
-            Abrir Detalhe
-          <mat-icon matSuffix class="material-icons ">
-              open_in_new
-          </mat-icon>
-        </div> -->
+                Abrir Detalhe
+              <mat-icon matSuffix class="material-icons ">
+                  open_in_new
+              </mat-icon>
+            </div> -->
         </div>
 
         <div [ngStyle]="{'margin-left': 'calc('+ idx2 +' * 38rem)'}">
           <!-- Flagpole -->
-          <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}">
+          <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}">
           </div>
 
           <!-- Flag base -->
-          <div class="flag-1_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}"> </div>
+          <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}"> </div>
 
 
           <!-- Filter 1 -->
-          <!-- <div *ngIf="flag2.flag_style === 2" class="flag-1_filter cursor_pointer"
-            [ngStyle]="{'background' : 'rgba('+flag2.color_rgb+', 1)'}">
-          </div> -->
+          <!-- <div *ngIf="flag2.flag_style === 2" class="flag-2_filter cursor_pointer"
+                [ngStyle]="{'background' : 'rgba('+flag2.color_rgb+', 1)'}">
+              </div> -->
         </div>
       </div>
     </div>
-  </div>
+    }
   }
-  <!-- 🅰️ FLAG 1 -->
+
+<!-- 🅰️ FLAG 1 -->
 <div class="main-block">
   <div class="main-block--flags">
     <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}">
@@ -290,14 +291,14 @@
       <div class="flag-1_year Roboto_700">{{flag1.year}}</div>
 
       <!-- Month - or - flag1.month.split('/').pop() -->
-      <div *ngIf="flag1.flag_style === 1" class="flag-1_month Roboto_700">
-        <span class="" *ngIf="flag1.date_obj.month_code">
+      <div class="flag-1_month Roboto_700">
+        <span>
           {{flag1.date_obj.month_s +'/'+ flag1.date_obj.year}}
         </span>
       </div>
 
       <!-- Filter 1 -->
-      <div *ngIf="flag1.flag_style === 1" class="flag-1_filter cursor_pointer"
+      <div class="flag-1_filter cursor_pointer"
         [ngStyle]="{'background' : 'rgba('+flag1.color_rgb+', 1)'}">
       </div>
     </div>
