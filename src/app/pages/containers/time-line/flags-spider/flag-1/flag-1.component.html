@@ -1,0 +1,9 @@
+<div class="grid-container">
+  <main class="grid-item main">
+    <div class="items">
+      @for (flag1 of time_line.flags | unique; track trackFlagsDataJson; let idx = $index) {
+      <div class="item item1">{{flag1.flag_description}}</div>
+      }
+    </div>
+  </main>
+</div>

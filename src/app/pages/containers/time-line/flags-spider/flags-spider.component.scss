@@ -1,7 +1,7 @@
 .main-div {
   display: grid;
   grid-template-rows: 20vh 80vh;
-  width: auto;
+  width: 100%;;
   min-width: 100vh;
   height: 100%;
   min-height: 100vh;
@@ -11,7 +11,7 @@
 // Component <top-div></top-div>
 .first-div {
   display: grid;
-  width: auto;
+  width: 100%;
   min-width: 100vh;
   // background: rgb(102, 255, 0);
 }
@@ -19,18 +19,18 @@
 
 .second-div {
   display: grid;
-  width: auto;
+  width: 100%;
   min-width: 100vh;
   height: auto;
   margin-top: 2px;
   margin-bottom: 0.5rem; // margem do scrol
-  align-items: end;
+  // align-items: end;
 
   overflow-y: hidden;
   overflow-x: overlay;
   position: relative;
 
-  // background: blue;
+  background: blue;
 }
 
 
