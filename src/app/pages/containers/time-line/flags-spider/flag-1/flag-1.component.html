@@ -4,15 +4,16 @@
 <!-- <div class="year Roboto_700" *ngIf="flag0.time_line">{{time_line[0].year}}</div> -->
 
 <!-- | unique is removing month_code-->
-<div *ngFor="let flag1 of time_line.flags; let first1 = first; let last1 = last; let i1 = index">
+<div *ngFor="let flag1 of time_line.flags; let first1 = first; let last1 = last; let i1 = index"
+      class="main-block" >
 
   <!-- <div class="year Roboto_700">{{flag1.date_obj.year}}</div> -->
 
   <!-- Main Block Flags-->
   <!-- Responsible for the margins between the flags-->
-  <div class="main-block">
+  <!-- <div > -->
 
-    <div class="flag-1 inside-flag">
+    <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': 'calc('+ i1 +' * 30rem)'}">
 
       <div  class="flag-1_card"
       [ngStyle]="{  'border-left': '.5rem solid rgba('+flag1.color_rgb+',1)',
@@ -114,4 +115,4 @@
   </div>
 
 
-</div>
+<!-- </div> -->

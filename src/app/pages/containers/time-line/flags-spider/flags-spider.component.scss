@@ -1,21 +1,27 @@
 .main-div {
   display: grid;
   grid-template-rows: 20vh 80vh;
-  width: 100%;
-  min-width: 100%;
+  width: auto;
+  min-width: 100vh;
   height: 100%;
   min-height: 100vh;
+  // background: blanchedalmond;
 }
 
 // Component <top-div></top-div>
 .first-div {
   display: grid;
+  width: auto;
+  min-width: 100vh;
+  background: rgb(102, 255, 0);
 }
 
 
 .second-div {
-  height: auto;
   display: grid;
+  width: auto;
+  min-width: 100vh;
+  height: auto;
   margin-top: 2px;
   margin-bottom: 0.5rem; // margem do scrol
   align-items: end;
@@ -24,6 +30,7 @@
   overflow-x: overlay;
   position: relative;
 
+  background: blue;
 }
 
 
