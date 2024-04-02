@@ -3,8 +3,7 @@
 <div class="main-block">
 
   <div class="main-block--flags">
-    <!-- [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}" -->
-    <div class="flag-1 inside-flag" >
+    <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}">
 
       <div class="flag-1_card" [ngStyle]="{  'border-left': '.5rem solid rgba('+flag1.color_rgb+',1)',
                           'background-color': 'rgba('+flag1.color_rgb+',.3)'}">
@@ -129,8 +128,7 @@
       </div> -->
     </div>
 
-    <!-- [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}" -->
-    <div >
+    <div [ngStyle]="{'margin-left': 'calc('+ idx +' * 38rem)'}">
       <!-- Flagpole -->
       <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
       </div>
