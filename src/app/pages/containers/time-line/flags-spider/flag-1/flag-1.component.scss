@@ -51,14 +51,14 @@
   position: relative;
 
 
-  // &_white--background {
-  //   // todo retangulo tem um quadrado branco atrás por conta do RGBA
-  //   width: 30rem;
-  //   z-index: -1;
-  //   position: absolute;
-  //   background: rgba(var(--color-white), 1);
-  //   height: 28rem;
-  // }
+  &_white--background {
+    // todo retangulo tem um quadrado branco atrás por conta do RGBA
+    width: 30rem;
+    z-index: -1;
+    position: absolute;
+    background: rgba(var(--color-white), 1);
+    height: 28rem;
+  }
 
   &_card {
     width: 30rem;
@@ -113,7 +113,7 @@
   z-index: 1;
 
   &_line {
-    // height: 17rem;
+    padding-top: 6.5rem;
   }
 }
 
