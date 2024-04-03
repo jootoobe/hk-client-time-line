@@ -22,6 +22,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         flag_local_zone: "America/Sao_Paulo",
         flag_created_at: "Feb 16, 2024, 9:09:03 PM",
         flag_update_at: "0",
+        flag_margin_right: '3',
         date_obj: {
           day_month_year: "2024-02-17T12:00:00.000Z",
           date_origin: "2024-02-17T03:00:00.000Z",
@@ -50,6 +51,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         flag_local_zone: "America/Sao_Paulo",
         flag_created_at: "Feb 16, 2024, 9:09:03 PM",
         flag_update_at: "0",
+        flag_margin_right: '0',
         date_obj: {
           day_month_year: "2024-02-17T12:00:00.000Z",
           date_origin: "2024-02-17T03:00:00.000Z",
@@ -77,6 +79,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         flag_local_zone: "America/Sao_Paulo",
         flag_created_at: "Feb 16, 2024, 9:09:03 PM",
         flag_update_at: "0",
+        flag_margin_right: '0',
         date_obj: {
           day_month_year: "2024-02-17T12:00:00.000Z",
           date_origin: "2024-02-17T03:00:00.000Z",
@@ -103,6 +106,7 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         flag_local_zone: "America/Sao_Paulo",
         flag_created_at: "Feb 16, 2024, 9:09:03 PM",
         flag_update_at: "0",
+        flag_margin_right: '0',
         date_obj: {
           day_month_year: "2024-02-17T12:00:00.000Z",
           date_origin: "2024-02-17T03:00:00.000Z",

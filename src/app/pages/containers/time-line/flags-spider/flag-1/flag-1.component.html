@@ -6,9 +6,8 @@
 
   <!-- 🅰️ FLAG 1 -->
   <div class="main-block">
-    <div class="main-block--flags">
-      <div class="flag-1 inside-flag"
-       >
+    <div class="main-block--flags" >
+      <div class="flag-1 inside-flag" [ngStyle]="{'margin-right': flag1.flag_margin_right+'rem', 'margin-left': flag1.year && !firstx ? '5rem': '0'}"  >
 
         <div class="flag-1_card" [ngStyle]="setStyles(flag1)">
 
@@ -132,7 +131,7 @@
                   </div> -->
       </div>
 
-      <div>
+      <div [ngStyle]="{'margin-left': flag1.year && !firstx ? '5rem': '0'}">
         <!-- Flagpole -->
         <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
         </div>
