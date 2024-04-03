@@ -1,9 +1,9 @@
 <main class="main">
   @for (flag of time_line.flags | unique; track trackFlagsDataJson; let idx = $index; let firstx = $first) {
 
-
-  <!-- 🅰️ FLAG 1 -->
   <div class="main-block">
+
+    <!-- 🅰️ FLAG 2 -->
     @for (flags2 of flag.flags2; track trackFlagsDataJson2; let idx = $index; let firstx = $first) {
     <div class="main-block--flags2">
       <div class="flag-2 inside-flag">
@@ -144,6 +144,8 @@
 
     </div>
     }
+
+    <!-- 🅰️ FLAG 1 -->
     <div class="main-block--flags">
 
       <div class="flag-1 inside-flag"
