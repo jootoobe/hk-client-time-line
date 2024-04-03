@@ -146,11 +146,13 @@
     </div>
   </div>
   }
+  @else if(flag1.flag_style === 1){
 
   <!-- 🅰️ FLAG 1 -->
   <div class="main-block">
     <div class="main-block--flags">
-      <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': flag1.year && !firstx ? '5rem': flag1.flag_margin+'rem'}">
+      <div class="flag-1 inside-flag"
+        [ngStyle]="{'margin-left': flag1.year && !firstx ? '5rem': flag1.flag_margin+'rem'}">
 
         <div class="flag-1_card" [ngStyle]="setStyles(flag1)">
 
@@ -299,5 +301,6 @@
 
     </div>
   </div>
+  }
   }
 </main>
