@@ -3,11 +3,20 @@
   grid-template-rows: 20vh 80vh;
 }
 
-.first-div {}
+.first-div {
+  display: grid;
+}
 
 
 .second-div {
+  height: auto;
+  display: grid;
+  margin-top: 2px;
+  margin-bottom: 0.5rem; // margem do scrol
+  align-items: end;
   overflow-y: hidden;
+  overflow-x: overlay;
+  position: relative;
 }
 
 

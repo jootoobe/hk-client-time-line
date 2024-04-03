@@ -137,5 +137,12 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
     return flags2
   }
 
+  setStyles(flag1: any): any {
+    let styles = {
+      'border-left': '.5rem solid rgba(' + flag1.color_rgb + ',1)',
+      'background-color': 'rgba('+flag1.color_rgb+',.3)'
+    };
+    return styles;
+  }
 
 }

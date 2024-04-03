@@ -1,11 +1,157 @@
-<div class="grid-container" >
-  <main class="main">
-    <div class="items">
-      @for (flag1 of time_line.flags | unique; track trackFlagsDataJson; let idx = $index) {
-      <div class="item">
-        {{flag1.flag_description}}
+<main class="main">
+  @for (flag1 of time_line.flags | unique; track trackFlagsDataJson; let idx = $index) {
+
+  <!-- 🅰️ FLAG 1 -->
+  <div class="main-block">
+    <div class="main-block--flags">
+      <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx +' * 0rem)'}">
+
+        <div class="flag-1_card" [ngStyle]="setStyles(flag1)">
+
+          <!-- RETANGULO BRANCO DE FUNDO -->
+          <!-- <div class="flag-1_white--background"></div> -->
+
+          <!-- title -->
+          <div id="title-content">
+            <div class="box-inside-flag-title">
+              <span class="inside-flag_title">
+                {{flag1.flag_title | truncate:20}}
+              </span>
+            </div>
+
+            <!-- Menu Edit Delete -->
+            <div class="box-inside-flag-title ">
+              <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
+                id="menu-{{flag1.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+              <!-- Start Filter Sort-->
+              <mat-menu #menuEditRemove="matMenu">
+                <span class="cursor_pointer noSelect box-inside-flag-title_menu">
+                  <i class="material-icons box-inside-flag-title_menu--edit">
+                    edit
+                  </i>
+                  <div class="box-inside-flag-title_menu--t1">Editar</div>
+                </span> <br>
+                <span class="cursor_pointer noSelect box-inside-flag-title_menu">
+                  <i class="material-icons box-inside-flag-title_menu--delete">
+                    delete_forever
+                  </i>
+                  <div class="box-inside-flag-title_menu--t2">Deletar</div>
+                </span>
+              </mat-menu>
+            </div>
+          </div>
+
+          <!-- Date -->
+          <div class="inside-flag_date" [ngStyle]="{'background-color' : 'rgba('+flag1.color_rgb+',.2)'}">
+            <div class="inside-flag_date_day">
+              <!-- {{flag1.date_obj.day_month_year.substring(8).split('T').shift()}} -->
+              {{flag1.date_obj.day}}
+            </div>
+            <div class="inside-flag_date_month">
+              <span>
+                <!-- {{flag1.date_obj.month.split('/').shift() | titlecase}} -->
+                {{flag1.date_obj.month_s}}
+              </span>
+            </div>
+            <div class="inside-flag_date_year">
+              <!-- {{flag1.date_obj.day_month_year.substring(0).split('-').shift()}} -->
+              {{flag1.date_obj.year}}
+            </div>
+          </div>
+          <!-- Description -->
+          <div class="inside-flag_description">
+            <p>{{flag1.flag_description | truncate:250}}</p>
+          </div>
+          <!-- Nets -->
+          <div class="inside-flag_nets">
+            {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-02' | translate}}
+          </div>
+
+          <!-- Chips -->
+          <div style="height: 12rem; width: 100%;">
+            @if(flag1.social_medias_chips.length === 0) {
+            <mat-chip-listbox class="inside-flag_no-net">
+              <!-- Não existe rede criada. -->
+              <p>
+                <mark> {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}</mark>
+              </p>
+              <p>
+                {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
+              </p>
+            </mat-chip-listbox>
+            } @else {
+            <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'0rem'">
+
+              @for (chip of flag1.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
+              <mat-grid-tile [rowspan]="'3'">
+
+                <mat-chip-listbox *ngIf="ichip < 6 && chip.name.length > 9">
+                  <mat-chip>
+                    <!-- {{chip.name | truncate:8}} -->
+                    {{chip.name | titlecase | truncate:6}}
+                  </mat-chip>
+                </mat-chip-listbox>
+
+                <mat-chip-listbox *ngIf="ichip < 6  && chip.name.length <= 9">
+                  <mat-chip>
+                    <!-- {{chip.name | truncate:8}} -->
+                    {{chip.name | titlecase }}
+                  </mat-chip>
+                </mat-chip-listbox>
+
+                <mat-chip-listbox *ngIf="ichip===6">
+                  <mat-chip>
+                    +{{flag1.social_medias_chips.length - 6}}
+                  </mat-chip>
+                </mat-chip-listbox>
+              </mat-grid-tile>
+              }
+            </mat-grid-list>
+            }
+
+          </div>
+        </div> <!-- Card End -->
+        <!-- Open Kanban -->
+        <div class="inside-flag_open-kanban cursor_pointer">
+          <!-- Abrir Kanban -->
+          {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-04' | translate}}
+          <mat-icon matSuffix class="material-icons ">
+            view_kanban
+          </mat-icon>
+        </div>
+        <!-- Open Details -->
+        <!-- <div class="inside-flag_open-detail cursor_pointer">
+                  Abrir Detalhe
+                  <mat-icon matSuffix class="material-icons ">
+                  open_in_new
+                  </mat-icon>
+                  </div> -->
       </div>
-      }
+
+      <div [ngStyle]="{'margin-left': 'calc('+ idx +' * 0rem)'}">
+        <!-- Flagpole -->
+        <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
+        </div>
+
+        <!-- Flag base -->
+        <div class="flag-1_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}"> </div>
+
+        <!-- Year -->
+        <div class="flag-1_year Roboto_700">{{flag1.year}}</div>
+
+        <!-- Month - or - flag1.month.split('/').pop() -->
+        <div class="flag-1_month Roboto_700">
+          <span>
+            {{flag1.date_obj.month_s +'/'+ flag1.date_obj.year}}
+          </span>
+        </div>
+
+        <!-- Filter 1 -->
+        <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag1.color_rgb+', 1)'}">
+        </div>
+      </div>
+
     </div>
-  </main>
-</div>
+  </div>
+  }
+</main>
