@@ -11,7 +11,7 @@ import { FlagsSpiderComponent } from './flags-spider/flags-spider.component';
 import { TopDivComponent } from './flags-spider/top-div/top-div.component';
 import { TimeLineComponent } from './time-line.component';
 import { TimeLineRoutingModule } from './time-line.routing';
-import { FlagComponent } from './flags-spider/flag-1/flag.component';
+import { FlagComponent } from './flags-spider/flag/flag.component';
 
 let urlTranslate = environment.urlTranslate
 
