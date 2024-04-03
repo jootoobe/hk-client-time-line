@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges } from "@angular/core";
 
 @Component({
-  selector: 'flag-1',
-  templateUrl: './flag-1.component.html',
-  styleUrls: ['./flag-1.component.scss'],
+  selector: 'flag',
+  templateUrl: './flag.component.html',
+  styleUrls: ['./flag.component.scss'],
 })
-export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
+export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   time_line = {
     iam_id: '65ff5d9c8e66b41b0e36825d',
     flags: [
@@ -36,7 +36,8 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         social_medias_chips: [],
         subject_tags: [],
 
-        flags2:  [{
+        flags2:  [
+          {
           year: "2024",
           flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
           flag_title: "FLAG2",
@@ -62,7 +63,8 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
           },
           social_medias_chips: [],
           subject_tags: [],
-        }],
+        }
+      ],
       },
 
 

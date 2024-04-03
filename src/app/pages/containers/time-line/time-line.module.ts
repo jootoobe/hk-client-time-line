@@ -7,11 +7,11 @@ import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 import { environment } from '../../../../environments/environment';
 import { ComponentsModule } from '../../../components/components.module';
 import { LanguagesTimeLineComponent } from '../../../settings/languages/languages.component';
-import { Flag1Component } from './flags-spider/flag-1/flag-1.component';
 import { FlagsSpiderComponent } from './flags-spider/flags-spider.component';
 import { TopDivComponent } from './flags-spider/top-div/top-div.component';
 import { TimeLineComponent } from './time-line.component';
 import { TimeLineRoutingModule } from './time-line.routing';
+import { FlagComponent } from './flags-spider/flag-1/flag.component';
 
 let urlTranslate = environment.urlTranslate
 
@@ -44,7 +44,7 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
     FlagsSpiderComponent,
     TopDivComponent,
     LanguagesTimeLineComponent,
-    Flag1Component
+    FlagComponent
   ],
   imports: [
     CommonModule,
