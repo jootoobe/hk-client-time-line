@@ -35,11 +35,12 @@
   // float: left; // alinha as flags
 
   &--flags {
-    padding-left: 8rem;
+    margin-left: 8rem;
   }
 
   &--flags2 {
-    // margin: -7rem 0rem 0rem 14rem;
+    position: absolute;
+    margin: -22rem 0rem 0rem 12rem;
   }
 }
 
@@ -82,11 +83,12 @@
   &_year {
     position: absolute;
     margin-left: -8rem;
+    margin-top: .3rem;
   }
 
   &_month {
     font-size: 1rem;
-    margin-top: .1rem;
+    margin-top: .5rem;
     width: 5rem;
     position: absolute;
     margin-left: -4.5rem;
@@ -99,7 +101,7 @@
     height: 1rem;
     margin-left: .5rem;
     position: absolute;
-    margin-top: 0.2rem;
+    margin-top: 0.6rem;
   }
 }
 
@@ -111,7 +113,7 @@
   z-index: 1;
 
   &_line {
-    height: 17rem;
+    // height: 17rem;
   }
 }
 
