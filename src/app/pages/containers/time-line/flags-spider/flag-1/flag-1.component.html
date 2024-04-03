@@ -1,5 +1,5 @@
 <main class="main">
-  @for (flag1 of time_line.flags | unique; track trackFlagsDataJson; let idx = $index) {
+  @for (flag1 of time_line.flags | unique; track trackFlagsDataJson; let idx = $index; let firstx = $first) {
 
   @if(flag1.flag_style === 2) {
   <!-- 🅰️ FLAG 2 -->
@@ -150,7 +150,7 @@
   <!-- 🅰️ FLAG 1 -->
   <div class="main-block">
     <div class="main-block--flags">
-      <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': 'calc('+ idx +' * 0rem)'}">
+      <div class="flag-1 inside-flag" [ngStyle]="{'margin-left': flag1.year && !firstx ? '5rem': flag1.flag_margin+'rem'}">
 
         <div class="flag-1_card" [ngStyle]="setStyles(flag1)">
 
@@ -274,7 +274,7 @@
                   </div> -->
       </div>
 
-      <div [ngStyle]="{'margin-left': 'calc('+ idx +' * 0rem)'}">
+      <div [ngStyle]="{'margin-left': flag1.year && !firstx ? '5rem': flag1.flag_margin+'rem'}">
         <!-- Flagpole -->
         <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
         </div>
