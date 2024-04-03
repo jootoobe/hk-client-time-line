@@ -1,15 +1,5 @@
 // https://codepen.io/thenutz/pen/VwYeYEE
 
-// .grid-container {
-//   white-space: nowrap; // não deixa os textos dentro da caixa ---- https://css-tricks.com/almanac/properties/w/whitespace/
-//   // display: flex;
-//   // flex-wrap: nowrap;
-//   // justify-content: end;
-//   // overflow-x: scroll;
-//   // overflow-y: hidden;
-
-// }
-
 
 .main {
   white-space: nowrap; // não deixa os textos dentro da caixa ---- https://css-tricks.com/almanac/properties/w/whitespace/
@@ -28,11 +18,7 @@
 .main-block {
   display: inline-block;
   white-space: normal; // deixa os textos dentor da caixa
-
-  // margin-top: 15.5rem;
   width: auto; // usado para o scroll de baixo ficar mais fiel ao tamanho
-  // background: red;
-  // float: left; // alinha as flags
 
   &--flags {
     margin-left: 8rem;

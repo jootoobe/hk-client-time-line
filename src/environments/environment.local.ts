@@ -17,7 +17,7 @@ export const environment = {
   // ATENÇÃO isso pode impactar da aplicação nova não carregar as atualizações sem um ctrl + Shift + R
   // styleSpiderShare: 'http://localhost:4200/styles.css', https://www.spider-share.com/styles.31d50b1623a24feb.css
 
-  styleSpiderShare: 'https://www.spider-share.com',//'http://localhost:4200', //'https://www.spider-share.com',
+  styleSpiderShare: 'http://localhost:4200', //'https://www.spider-share.com',
 
 
   // urlTranslate: 'http://localhost:4200', // running in client folder only -- translator points to Pro SpiderShare assets in function of PWA { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/top-div/`, suffix: ".json" },
