@@ -13,35 +13,6 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
       {
         year: "2024",
         flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
-        flag_title: "FLAG1",
-        flag_description: "wwwwwww",
-        flag_style: 1,
-        color_hex: "#90ab3d",
-        color_rgb: "144, 171, 64",
-        color_hsl: "75, 46%, 92%",
-        flag_local_zone: "America/Sao_Paulo",
-        flag_created_at: "Feb 16, 2024, 9:09:03 PM",
-        flag_update_at: "0",
-        flag_margin_right: '3',
-        date_obj: {
-          day_month_year: "2024-02-17T12:00:00.000Z",
-          date_origin: "2024-02-17T03:00:00.000Z",
-          day: "17",
-          month: "02",
-          month_s: "FEV",
-          year: "2024",
-          month_code: 2,
-          timestamp: 1708171200000,
-          time: "12:00:00"
-        },
-        social_medias_chips: [],
-        subject_tags: [],
-
-      },
-
-      {
-        year: "2024",
-        flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
         flag_title: "FLAG2",
         flag_description: "wwwwwww",
         flag_style: 2,
@@ -66,6 +37,34 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         social_medias_chips: [],
         subject_tags: [],
       },
+      {
+        year: "2024",
+        flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
+        flag_title: "FLAG1",
+        flag_description: "wwwwwww",
+        flag_style: 1,
+        color_hex: "#90ab3d",
+        color_rgb: "144, 171, 64",
+        color_hsl: "75, 46%, 92%",
+        flag_local_zone: "America/Sao_Paulo",
+        flag_created_at: "Feb 16, 2024, 9:09:03 PM",
+        flag_update_at: "0",
+        flag_margin_right: '3',
+        date_obj: {
+          day_month_year: "2024-02-17T12:00:00.000Z",
+          date_origin: "2024-02-17T03:00:00.000Z",
+          day: "17",
+          month: "02",
+          month_s: "FEV",
+          year: "2024",
+          month_code: 2,
+          timestamp: 1708171200000,
+          time: "12:00:00"
+        },
+        social_medias_chips: [],
+        subject_tags: [],
+      },
+
 
       {
         year: "2024",
@@ -94,6 +93,12 @@ export class Flag1Component implements OnInit, OnChanges, AfterViewInit {
         social_medias_chips: [{ name: 'Facebook' }],
         subject_tags: []
       },
+
+
+
+
+
+
       {
         year: "2030",
         flag_id: "flag_id_21ba-bc46-cacd-1156-822d",
