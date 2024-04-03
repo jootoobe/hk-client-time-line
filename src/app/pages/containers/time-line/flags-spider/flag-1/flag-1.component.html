@@ -1,15 +1,15 @@
 <main class="main">
-  @for (flag1 of time_line.flags | unique; track trackFlagsDataJson; let idx = $index; let firstx = $first) {
+  @for (flag of time_line.flags | unique; track trackFlagsDataJson; let idx = $index; let firstx = $first) {
 
 
-  @if(flag1.flag_style === 1){
+  @if(flag.flag_style === 1){
 
   <!-- 🅰️ FLAG 1 -->
   <div class="main-block">
     <div class="main-block--flags" >
-      <div class="flag-1 inside-flag" [ngStyle]="{'margin-right': flag1.flag_margin_right+'rem', 'margin-left': flag1.year && !firstx ? '5rem': '0'}"  >
+      <div class="flag-1 inside-flag" [ngStyle]="{'margin-right': flag.flag_margin_right+'rem', 'margin-left': flag.year && !firstx ? '5rem': '0'}"  >
 
-        <div class="flag-1_card" [ngStyle]="setStyles(flag1)">
+        <div class="flag-1_card" [ngStyle]="setStyles(flag)">
 
           <!-- RETANGULO BRANCO DE FUNDO -->
           <div class="flag-1_white--background"></div>
@@ -18,14 +18,14 @@
           <div id="title-content">
             <div class="box-inside-flag-title">
               <span class="inside-flag_title">
-                {{flag1.flag_title | truncate:20}}
+                {{flag.flag_title | truncate:20}}
               </span>
             </div>
 
             <!-- Menu Edit Delete -->
             <div class="box-inside-flag-title ">
               <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
-                id="menu-{{flag1.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+                id="menu-{{flag.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
               <!-- Start Filter Sort-->
               <mat-menu #menuEditRemove="matMenu">
                 <span class="cursor_pointer noSelect box-inside-flag-title_menu">
@@ -45,34 +45,34 @@
           </div>
 
           <!-- Date -->
-          <div class="inside-flag_date" [ngStyle]="{'background-color' : 'rgba('+flag1.color_rgb+',.2)'}">
+          <div class="inside-flag_date" [ngStyle]="{'background-color' : 'rgba('+flag.color_rgb+',.2)'}">
             <div class="inside-flag_date_day">
-              <!-- {{flag1.date_obj.day_month_year.substring(8).split('T').shift()}} -->
-              {{flag1.date_obj.day}}
+              <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
+              {{flag.date_obj.day}}
             </div>
             <div class="inside-flag_date_month">
               <span>
-                <!-- {{flag1.date_obj.month.split('/').shift() | titlecase}} -->
-                {{flag1.date_obj.month_s}}
+                <!-- {{flag.date_obj.month.split('/').shift() | titlecase}} -->
+                {{flag.date_obj.month_s}}
               </span>
             </div>
             <div class="inside-flag_date_year">
-              <!-- {{flag1.date_obj.day_month_year.substring(0).split('-').shift()}} -->
-              {{flag1.date_obj.year}}
+              <!-- {{flag.date_obj.day_month_year.substring(0).split('-').shift()}} -->
+              {{flag.date_obj.year}}
             </div>
           </div>
           <!-- Description -->
           <div class="inside-flag_description">
-            <p>{{flag1.flag_description | truncate:250}}</p>
+            <p>{{flag.flag_description | truncate:250}}</p>
           </div>
           <!-- Nets -->
           <div class="inside-flag_nets">
-            {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-02' | translate}}
+            {{'TIME-LINE.flag-Flag2-Component.FLAGS-1-2.modal.item-02' | translate}}
           </div>
 
           <!-- Chips -->
           <div style="height: 12rem; width: 100%;">
-            @if(flag1.social_medias_chips.length === 0) {
+            @if(flag.social_medias_chips.length === 0) {
             <mat-chip-listbox class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
               <p>
@@ -85,7 +85,7 @@
             } @else {
             <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'0rem'">
 
-              @for (chip of flag1.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
+              @for (chip of flag.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
               <mat-grid-tile [rowspan]="'3'">
 
                 <mat-chip-listbox *ngIf="ichip < 6 && chip.name.length > 9">
@@ -104,7 +104,7 @@
 
                 <mat-chip-listbox *ngIf="ichip===6">
                   <mat-chip>
-                    +{{flag1.social_medias_chips.length - 6}}
+                    +{{flag.social_medias_chips.length - 6}}
                   </mat-chip>
                 </mat-chip-listbox>
               </mat-grid-tile>
@@ -131,38 +131,38 @@
                   </div> -->
       </div>
 
-      <div [ngStyle]="{'margin-left': flag1.year && !firstx ? '5rem': '0'}">
+      <div [ngStyle]="{'margin-left': flag.year && !firstx ? '5rem': '0'}">
         <!-- Flagpole -->
-        <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
+        <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.color_rgb+',.3)'}">
         </div>
 
         <!-- Flag base -->
-        <div class="flag-1_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}"> </div>
+        <div class="flag-1_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag.color_rgb+',.3)'}"> </div>
 
         <!-- Year -->
-        <div class="flag-1_year Roboto_700">{{flag1.year}}</div>
+        <div class="flag-1_year Roboto_700">{{flag.year}}</div>
 
-        <!-- Month - or - flag1.month.split('/').pop() -->
+        <!-- Month - or - flag.month.split('/').pop() -->
         <div class="flag-1_month Roboto_700">
           <span>
-            {{flag1.date_obj.month_s +'/'+ flag1.date_obj.year}}
+            {{flag.date_obj.month_s +'/'+ flag.date_obj.year}}
           </span>
         </div>
 
         <!-- Filter 1 -->
-        <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag1.color_rgb+', 1)'}">
+        <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.color_rgb+', 1)'}">
         </div>
       </div>
 
     </div>
   </div>
-  } @else if(flag1.flag_style === 2) {
+  } @else if(flag.flag_style === 2) {
   <!-- 🅰️ FLAG 2 -->
   <div class="main-block">
     <div class="main-block--flags2">
       <div class="flag-2 inside-flag">
 
-        <div class="flag-2_card" [ngStyle]="setStyles(flag1)">
+        <div class="flag-2_card" [ngStyle]="setStyles(flag)">
 
           <!-- RETANGULO BRANCO DE FUNDO -->
           <div class="flag-1_white--background"></div>
@@ -171,14 +171,14 @@
           <div id="title-content">
             <div class="box-inside-flag-title">
               <span class="inside-flag_title">
-                {{flag1.flag_title | truncate:20}}
+                {{flag.flag_title | truncate:20}}
               </span>
             </div>
 
             <!-- Menu Edit Delete -->
             <div class="box-inside-flag-title ">
               <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
-                id="menu-{{flag1.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+                id="menu-{{flag.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
               <!-- Start Filter Sort-->
               <mat-menu #menuEditRemove="matMenu">
                 <span class="cursor_pointer noSelect box-inside-flag-title_menu">
@@ -198,25 +198,25 @@
           </div>
 
           <!-- Date -->
-          <div class="inside-flag_date" [ngStyle]="{'background-color' : 'rgba('+flag1.color_rgb+',.2)'}">
+          <div class="inside-flag_date" [ngStyle]="{'background-color' : 'rgba('+flag.color_rgb+',.2)'}">
             <div class="inside-flag_date_day">
-              <!-- {{flag1.date_obj.day_month_year.substring(8).split('T').shift()}} -->
-              {{flag1.date_obj.day}}
+              <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
+              {{flag.date_obj.day}}
             </div>
             <div class="inside-flag_date_month">
               <span>
-                <!-- {{flag1.date_obj.month.split('/').shift() | titlecase}} -->
-                {{flag1.date_obj.month_s}}
+                <!-- {{flag.date_obj.month.split('/').shift() | titlecase}} -->
+                {{flag.date_obj.month_s}}
               </span>
             </div>
             <div class="inside-flag_date_year">
-              <!-- {{flag1.date_obj.day_month_year.substring(0).split('-').shift()}} -->
-              {{flag1.date_obj.year}}
+              <!-- {{flag.date_obj.day_month_year.substring(0).split('-').shift()}} -->
+              {{flag.date_obj.year}}
             </div>
           </div>
           <!-- Description -->
           <div class="inside-flag_description">
-            <p>{{flag1.flag_description | truncate:250}}</p>
+            <p>{{flag.flag_description | truncate:250}}</p>
           </div>
           <!-- Nets -->
           <div class="inside-flag_nets">
@@ -225,7 +225,7 @@
 
           <!-- Chips -->
           <div style="height: 12rem; width: 100%;">
-            @if(flag1.social_medias_chips.length === 0) {
+            @if(flag.social_medias_chips.length === 0) {
             <mat-chip-listbox class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
               <p>
@@ -238,7 +238,7 @@
             } @else {
             <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'0rem'">
 
-              @for (chip of flag1.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
+              @for (chip of flag.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
               <mat-grid-tile [rowspan]="'3'">
 
                 <mat-chip-listbox *ngIf="ichip < 6 && chip.name.length > 9">
@@ -257,7 +257,7 @@
 
                 <mat-chip-listbox *ngIf="ichip===6">
                   <mat-chip>
-                    +{{flag1.social_medias_chips.length - 6}}
+                    +{{flag.social_medias_chips.length - 6}}
                   </mat-chip>
                 </mat-chip-listbox>
               </mat-grid-tile>
@@ -286,16 +286,19 @@
 
       <div>
         <!-- Flagpole -->
-        <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}">
+        <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.color_rgb+',.3)'}">
         </div>
 
         <!-- Flag base -->
-        <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag1.color_rgb+',.3)'}"> </div>
+        <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag.color_rgb+',.3)'}"> </div>
 
-
+        <!-- Year -->
+        @if(firstx){
+          <div class="flag-2_year Roboto_700">{{flag.year}}</div>
+        }
 
         <!-- Filter 1 -->
-        <!-- <div class="flag-2_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag1.color_rgb+', 1)'}">  </div> -->
+        <!-- <div class="flag-2_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.color_rgb+', 1)'}">  </div> -->
       </div>
 
     </div>
