@@ -120,7 +120,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     convertColor() {
       // this.createTimeLineForm.value.flags[0]['color_hex']
       let colorFormats = this.convertColorService.convertColor(this.createTimeLineForm.value.flags[0]['color_hex'])
-      let flags = this.createTimeLineForm.get('flags') as FormArray
+      let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
       // flags.at(0).get('color_hex')?.setValue(this.createTimeLineForm.value.flags[0]['color_hex'])
       flags.at(0).get('color_hex')?.setValue(colorFormats.hex)
       flags.at(0).get('color_rgb')?.setValue(colorFormats.rgb)
