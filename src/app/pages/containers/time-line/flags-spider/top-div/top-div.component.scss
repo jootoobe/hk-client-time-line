@@ -1,0 +1,198 @@
+// https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_layout_named
+
+// =========== FILTER  ===========
+// =========== Opacity ===========
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'left      main      center    menu      right'
+    'left      main      center    menu      right'
+    'left      main      center    menu      right'
+    'filtering filtering filtering filtering filtering'
+    'filter    filter    filter    filter    filter';
+  gap: .5rem;
+  // background-color: #2196F3;
+  padding: 3rem 1rem;
+}
+
+.item-left {
+  grid-area: left;
+}
+
+.item-main {
+  grid-area: main;
+}
+
+.item-center {
+  grid-area: center;
+}
+
+.item-menu {
+  grid-area: menu;
+}
+
+.item-right {
+  grid-area: right;
+}
+
+.item-filtering {
+  grid-area: filtering;
+}
+
+.item-filter {
+  grid-area: filter;
+}
+
+.item-main,
+.item-center,
+.item-menu,
+.item-filtering,
+.item-filter,
+.input-filter-text,
+.filter-input,
+.filter-input-text,
+.filter-text-close {
+  font-weight: var(--fonts-font-weight-700);
+}
+
+
+.grid-container>.item-left,
+.item-menu {
+  // background-color: rgba(255, 255, 255, 0.8);
+  text-align: start;
+}
+
+.grid-container>.item-main {
+  // background-color: rgba(235, 166, 166, 0.8);
+  text-align: end;
+}
+
+.grid-container>.item-center {
+  // background-color: rgba(247, 0, 255, 0.8);
+  text-align: center;
+}
+
+// .grid-container>.item-menu {
+//   // background-color: rgba(165, 223, 30, 0.8);
+//   text-align: start;
+// }
+
+
+.grid-container>.item-right {
+  // background-color: rgba(46, 179, 13, 0.8);
+  text-align: end;
+}
+
+.grid-container>.item-filtering {
+  // background-color: rgba(46, 179, 13, 0.8);
+  text-align: center;
+  padding-right: 3.5rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+}
+
+.grid-container>.item-filter {
+  // background-color: rgba(46, 179, 13, 0.8);
+  text-align: center;
+  padding-right: 3.5rem;
+}
+
+.item-right {
+  .material-icons {
+    position: absolute;
+    z-index: 1;
+    margin: 0 0 0 -3rem;
+  }
+}
+
+.item-filter {
+  &_close {
+    width: 2rem;
+    height: 2rem;
+    // background: red;
+    margin: 0 auto;
+    padding-top: .2rem;
+    font-size: 1.2rem;
+    // color: white;
+  }
+}
+
+
+.btn_setting {
+  font-size: 1.2rem;
+  height: 2.2rem;
+  width: auto;
+  min-width: 4rem;
+  padding: .5rem;
+}
+
+
+
+// =========== FILTER ===========
+// =========== Input ============
+.input-filter-text {
+  // background-color: rgba(46, 179, 13, 0.8);
+  text-align: center;
+  padding-right: 3.5rem;
+  font-size: 1.6rem;
+  margin-top: -2.5rem;
+}
+
+
+.flex-container {
+  display: flex;
+  // flex-wrap: nowrap;
+  justify-content: center;
+  margin-left: -2rem;
+  margin-top: 1rem;
+}
+
+// Input Color
+.filter-input {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  padding-top: .2rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+// Input Text
+.filter-input-text {
+  width: auto;
+  height: auto;
+  font-size: 1.2rem;
+  background: rgba(var(--color-secondary), 1);
+  color: rgba(var(--color-white), 1);
+  border-radius: 10%;
+  text-align: center;
+  letter-spacing: .2rem;
+  padding: .5rem;
+  margin-top: -0.4rem;
+
+}
+
+.filter-text-close {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+
+.btn-div {
+  width: 17%;
+  position: absolute;
+
+  &_create {
+    margin-top: 40vh;
+    margin-left: 45%;
+    width: 7rem;
+    text-align: center;
+
+    // background: blue;
+    button {
+      z-index: 1;
+    }
+  }
+}
