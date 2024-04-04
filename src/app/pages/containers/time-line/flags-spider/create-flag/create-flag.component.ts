@@ -4,6 +4,7 @@ import { StateService } from "../../../../../shared/services/state.service";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 import { MatDatepickerTimeHeaderComponent } from "../../../../../components/datepicker-time/mat-datepicker-time-header.component";
+import { ConvertColorService } from "../../../../../shared/services/convert-color.service";
 
 
 @Component({
@@ -16,6 +17,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   createTimeLineForm!: FormGroup
   matcher!: MyErrorStateMatcher // form validator errors
 
+  disableColor = false
+
   // Datepicker timer
   timeHeader = MatDatepickerTimeHeaderComponent
   minDate = new Date('-100/01/01'); // lowest date accepted for creating the flag
@@ -24,7 +27,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   help1: string = ''
   help2: string = ''
   help3: string = ''
-  constructor(private fb: FormBuilder, private stateService: StateService,) {
+  constructor(
+    private fb: FormBuilder,
+     private stateService: StateService,
+     private convertColorService: ConvertColorService,
+     ) {
 
 
     this.buildForm()
@@ -107,5 +114,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     //   this.geToTimestamp()
     // }
   }
+
+
+    //⬇️ Convert Color
+    convertColor() {
+      // this.createTimeLineForm.value.flags[0]['color_hex']
+      let colorFormats = this.convertColorService.convertColor(this.createTimeLineForm.value.flags[0]['color_hex'])
+      let flags = this.createTimeLineForm.get('flags') as FormArray
+      // flags.at(0).get('color_hex')?.setValue(this.createTimeLineForm.value.flags[0]['color_hex'])
+      flags.at(0).get('color_hex')?.setValue(colorFormats.hex)
+      flags.at(0).get('color_rgb')?.setValue(colorFormats.rgb)
+      flags.controls[0].get('color_hsl')?.setValue(colorFormats.hsl)
+
+    }
 
 }

@@ -39,9 +39,10 @@
   &_title,
   &_date,
   &_description,
-  &_btn  {
+  &_color-picker,
+  &_btn {
     width: 100%;
-    margin: 2rem 0 1rem -0.5rem;
+    margin: 1rem 0 1rem -0.5rem;
     text-align: center;
     line-height: auto;
     font-size: 1.6rem;
@@ -103,4 +104,29 @@
   .mat-mdc-icon-button.mat-mdc-button-base {
     margin-right: 1rem !important;
   }
+}
+
+::ng-deep .mat-options .mat-pseudo-checkbox {
+  display: none !important;
+}
+
+input[type=color]::-moz-color-swatch {
+  border: none;
+}
+
+input[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 0;
+}
+
+input[type=color]::-webkit-color-swatch {
+  border: none;
+}
+
+
+.mat-mdc-standard-chip {
+  --mdc-chip-label-text-color: rgba(var(--color-white), 1);
+  // color: rgba(var(--color-white), 1);
+  font-weight: var(--fonts-font-weight-500);
+  background-color: rgba(var(--color-social-media-chips, 1)) !important
 }

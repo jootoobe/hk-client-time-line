@@ -171,6 +171,38 @@
       </div>
 
 
+      <!-- color-picker -->
+      <div class="flag-modal_color-picker" [formGroupName]="0">
+        <mat-form-field class="input-color" floatPlaceholder="never" floatLabel="always">
+          <!-- Which color represents the flag? -->
+          <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.color.mat-label' | translate}} </mat-label>
+          <!-- [disableControl]="disableColor" -->
+          <input *ngIf="!disableColor"
+                  matInput
+                  placeholder=""
+                  readonly
+                  style="outline: none !important"
+                  type="color"
+                  formControlName="color_hex"
+                  (input)="convertColor()"
+                  class="">
+          <input *ngIf="disableColor"
+                  matInput
+                  placeholder=""
+                  [value]="flagsForm.controls[0].get('color_hex')?.value"
+                  readonly
+                  style="outline: none !important"
+                  type="color"
+                  disabled="true"
+                  class="">
+          <mat-error>
+            error
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+
 
 
       <div class="flag-modal_btn">
