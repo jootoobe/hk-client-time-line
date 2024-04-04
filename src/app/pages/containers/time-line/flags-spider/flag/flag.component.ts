@@ -30,7 +30,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
           flag_margin_right: '3',
 
           flag_design: {
-            color_text: 'black',
+            color_text: '255,0,0',
             color_nets: {
               background: 'black',
               text: 'white'
@@ -142,6 +142,13 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   setStylesDate(flag1: FlagModel): any {
     let styles = {
       'background-color': `rgba(${flag1.flag_design?.color_date.background}, ${flag1.flag_design?.color_date.transparency})`
+    };
+    return styles;
+  }
+
+  setStylesText(flag1: FlagModel): any {
+    let styles = {
+      'color': `rgba(${flag1.flag_design?.color_text}, 1)`
     };
     return styles;
   }

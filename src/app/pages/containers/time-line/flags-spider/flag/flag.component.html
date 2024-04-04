@@ -157,9 +157,9 @@
           <div class="flag-1_white--background"></div>
 
           <!-- title -->
-          <div id="title-content">
+          <div id="title-content" >
             <div class="box-inside-flag-title">
-              <span class="inside-flag_title">
+              <span class="inside-flag_title" [ngStyle]="setStylesText(flag)">
                 {{flag.flag_title | truncate:20}}
               </span>
             </div>

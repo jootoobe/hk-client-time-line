@@ -15,7 +15,7 @@
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
             matSuffix
             customToolTip
-            [contentTemplate]="template_help1"
+            [contentTemplate]="template_help7"
             [originX]="'center'"
             [originY]="'bottom'"
             [overlayX]="'center'"
@@ -23,7 +23,7 @@
             [offsetY]="5">
             help_outline
         </i>
-        <ng-template #template_help1>
+        <ng-template #template_help7>
           <div  customToolTipChiel
                 [innerHTML]="help1 | safeDomSanitizer: 'html'">
           </div>
@@ -226,23 +226,23 @@
         </div>
         <mat-radio-group class=""
         (change)="onRadioButtonTextColor($event)"  [(ngModel)]="radioRedeTextColor" [ngModelOptions]="{standalone: true}" >
-          <mat-radio-button [value]="'black'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'0,0,0'" class="flag-modal_radio--colors" >
             <!-- Black -->
             1
           </mat-radio-button>
-          <mat-radio-button [value]="'white'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'255,255,255'" class="flag-modal_radio--colors" >
             <!-- White -->
             2
           </mat-radio-button>
-          <mat-radio-button [value]="'red'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'255,0,0'" class="flag-modal_radio--colors" >
             <!-- Red -->
             3
           </mat-radio-button>
-          <mat-radio-button [value]="'blue'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'0,0,255'" class="flag-modal_radio--colors" >
             <!-- blue -->
             4
           </mat-radio-button>
-          <mat-radio-button [value]="'yellow'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'255,255,0'" class="flag-modal_radio--colors" >
             <!-- Yellow -->
             5
           </mat-radio-button>
@@ -258,7 +258,7 @@
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
             matSuffix
             customToolTip
-            [contentTemplate]="template_help3"
+            [contentTemplate]="template_help4"
             [originX]="'center'"
             [originY]="'bottom'"
             [overlayX]="'center'"
@@ -266,7 +266,7 @@
             [offsetY]="5">
             help_outline
         </i>
-      <ng-template #template_help3>
+      <ng-template #template_help4>
         <div  customToolTipChiel
               [innerHTML]="help1 | safeDomSanitizer: 'html'">
         </div>
@@ -306,7 +306,7 @@
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
             matSuffix
             customToolTip
-            [contentTemplate]="template_help3"
+            [contentTemplate]="template_help5"
             [originX]="'center'"
             [originY]="'bottom'"
             [overlayX]="'center'"
@@ -314,7 +314,7 @@
             [offsetY]="5">
             help_outline
         </i>
-      <ng-template #template_help3>
+      <ng-template #template_help5>
         <div  customToolTipChiel
               [innerHTML]="help1 | safeDomSanitizer: 'html'">
         </div>
@@ -335,6 +335,53 @@
             4
           </mat-radio-button>
           <mat-radio-button [value]="'0.5'" class="flag-modal_radio--colors" >
+            5
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <!-- RADIO COR DATA FUNDO -->
+      <div class="flag-modal_radio">
+        <div class="flag-modal_radio--text">
+          Cor data fundo
+        <!-- Custom ToolTip -->
+        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            matSuffix
+            customToolTip
+            [contentTemplate]="template_help6"
+            [originX]="'center'"
+            [originY]="'bottom'"
+            [overlayX]="'center'"
+            [overlayY]="'top'"
+            [offsetY]="5">
+            help_outline
+        </i>
+      <ng-template #template_help6>
+        <div  customToolTipChiel
+              [innerHTML]="help1 | safeDomSanitizer: 'html'">
+        </div>
+      </ng-template>
+        </div>
+        <mat-radio-group class=""
+        (change)="onRadioButtonTextColor($event)"  [(ngModel)]="radioRedeTextColor" [ngModelOptions]="{standalone: true}" >
+          <mat-radio-button [value]="'0,0,0'" class="flag-modal_radio--colors" >
+            <!-- Black -->
+            1
+          </mat-radio-button>
+          <mat-radio-button [value]="'255,255,255'" class="flag-modal_radio--colors" >
+            <!-- White -->
+            2
+          </mat-radio-button>
+          <mat-radio-button [value]="'255,0,0'" class="flag-modal_radio--colors" >
+            <!-- Red -->
+            3
+          </mat-radio-button>
+          <mat-radio-button [value]="'0,0,255'" class="flag-modal_radio--colors" >
+            <!-- blue -->
+            4
+          </mat-radio-button>
+          <mat-radio-button [value]="'255,255,0'" class="flag-modal_radio--colors" >
+            <!-- Yellow -->
             5
           </mat-radio-button>
         </mat-radio-group>
