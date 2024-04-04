@@ -130,7 +130,44 @@
       </div>
 
 
+      <!-- Description -->
+      <div class="flag-modal_description" [formGroupName]="0">
+        <mat-form-field [style.fontSize]="'1.4rem'">
+          <!-- Description -->
+          <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.mat-label' | translate}} </mat-label>
+          <textarea [placeholder]="'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.placeholder'| translate"
+                    matInput
+                    type="text"
+                    #textareaInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="15"
+                    maxlength="500"
+                    [errorStateMatcher]="matcher"
+                    formControlName="flag_description"
+                    appTrim
+                    [numInputAppTrim]="5"
+                    [formAll]="flagsForm.controls[0]"
+                    [nameFormAll]="'flag_description'"
 
+                    >
+          </textarea>
+          <mat-hint align="end">{{textareaInput.value.length}}/500</mat-hint>
+          <!-- Description is required -->
+          <mat-error *ngIf="flagsForm.controls[0].get('description')?.errors?.['required'] ">
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.mat-error-required' | translate}}
+          </mat-error>
+          <!-- Minimum 3 characters -->
+          <mat-error *ngIf="flagsForm.controls[0].get('description')?.errors?.['minlength'] && textareaInput.value.length > 0">
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.mat-error-minlength' | translate}}
+          </mat-error>
+          <!-- Maximum 500 characters -->
+          <mat-error *ngIf="flagsForm.controls[0].get('description')?.errors?.['maxLength'] || textareaInput.value.length > 500">
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.mat-error-maxlength' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
 
 
     </div>

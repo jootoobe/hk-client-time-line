@@ -115,6 +115,24 @@ export class TrimDirective {
       this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
     }
 
+
+
+    // 🅰️ JUST remove space for text-area
+    if (this.ngControl && this.ngControl?.control?.value && this.numInputAppTrim === 5) {
+      console.log('Pode entrar ngControl')
+      valueTrim = valueTrim.replace(/[\n\r]/g, ' ').replace(/ +(?= )/g, '').trim();
+      // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+      this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
+    }
+
+
+    // 🅿️ JUST remove space for text-area
+    if (!this.ngControl && this.numInputAppTrim === 5) {
+      console.log('Não pode entrar ngControl')
+      valueTrim = valueTrim.replace(/[\n\r]/g, ' ').replace(/ +(?= )/g, '').trim();
+      this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+    }
+
   }
 
 
