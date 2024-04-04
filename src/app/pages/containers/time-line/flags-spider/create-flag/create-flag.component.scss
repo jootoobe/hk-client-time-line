@@ -39,7 +39,7 @@
   &_title,
   &_date {
     width: 100%;
-    margin: 1rem 0 1rem -.5rem;
+    margin: 1rem 0 1rem -0.5rem;
     text-align: center;
     line-height: auto;
     font-size: 1.6rem;
@@ -55,8 +55,36 @@
     }
 
   }
+}
 
 
+.date-help {
+  margin: 0.2rem 0 0 5rem;
+  position: absolute;
+}
 
 
+// =========== MATERIAL ===========
+// ==============================
+
+:host ::ng-deep {
+  .input-color {
+
+    // removing the bottom part of the input
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      padding-bottom: 0px !important;
+    }
+
+    // .mat-mdc-form-field-label-wrapper { top: -1.5em; }
+
+    // &.mat-mdc-form-field-appearance-outline.mat-mdc-form-field-can-float.mat-mdc-form-field-should-float .mat-mdc-form-field-label {
+    //   transform: translateY(-1.1em) scale(.75);
+    //   width: 133.33333%;
+    // }
+  }
+
+  // move o icone do datepicker para o Custom ToolTip ficar mais a direita
+  .mat-mdc-icon-button.mat-mdc-button-base {
+    margin-right: 1rem !important;
+  }
 }
