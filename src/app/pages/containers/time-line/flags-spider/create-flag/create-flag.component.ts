@@ -31,8 +31,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   // RADIO BUTTON
-  radioRedeTextColor = '1' // text colors
-  radioRedeNets = { background: 'black', text: 'white' }
+  radioRedeTextColor = 'black' // text colors
+  radioRedeNets = '1'
   radioRedeTransparency = '0.2'
   constructor(
     private fb: FormBuilder,

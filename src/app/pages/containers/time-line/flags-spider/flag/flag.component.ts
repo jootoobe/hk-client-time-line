@@ -38,7 +38,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
             color_transparency: '0.5',
             color_hex: "#90ab3d",
             color_rgb: "144, 171, 64",
-            color_hsl: "75, 46%, 92%"
+            color_hsl: "75, 46%, 92%",
+            color_date: {background: '144, 171, 64', transparency: '0.3'}
           },
 
           date_obj: {
@@ -79,7 +80,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
                 color_transparency: '0.2',
                 color_hex: "#90ab3d",
                 color_rgb: "144, 171, 64",
-                color_hsl: "75, 46%, 92%"
+                color_hsl: "75, 46%, 92%",
+                color_date: {background: '255, 255, 0', transparency: '1'}
               },
 
 
@@ -135,5 +137,15 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     };
     return styles;
   }
+
+
+  setStylesDate(flag1: FlagModel): any {
+    let styles = {
+      'background-color': `rgba(${flag1.flag_design?.color_date.background}, ${flag1.flag_design?.color_date.transparency})`
+    };
+    return styles;
+  }
+
+
 
 }

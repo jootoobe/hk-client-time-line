@@ -44,7 +44,7 @@
           </div>
 
           <!-- Date -->
-          <div class="inside-flag_date" [ngStyle]="{'background-color' : 'rgba('+flags2.color_rgb+',.2)'}">
+          <div class="inside-flag_date" [ngStyle]="setStylesDate(flags2)">
             <div class="inside-flag_date_day">
               <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
               {{flags2.date_obj.day}}
@@ -187,7 +187,7 @@
           </div>
 
           <!-- Date -->
-          <div class="inside-flag_date" [ngStyle]="{'background-color' : 'rgba('+flag.color_rgb+',.2)'}">
+          <div class="inside-flag_date" [ngStyle]="setStylesDate(flag)">
             <div class="inside-flag_date_day">
               <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
               {{flag.date_obj.day}}

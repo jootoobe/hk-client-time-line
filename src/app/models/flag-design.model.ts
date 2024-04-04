@@ -6,5 +6,6 @@ export class FlagDesignModel {
     public color_hex: string,
     public color_rgb: string,
     public color_hsl: string,
+    public color_date: {background: string, transparency: string},
   ) { }
 }
