@@ -109,9 +109,8 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker
                           [calendarHeaderComponent]="timeHeader"
-                          #ref
-                          (closed)="toggleDatePicker(ref)"
-                          (opened)="toggleDatePicker(ref)"
+                          (closed)="toggleDatePicker(picker)"
+                          (opened)="toggleDatePicker(picker)"
                            >
           </mat-datepicker>
           <mat-error  *ngIf="flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.errors?.['required'] &&

@@ -12,7 +12,7 @@ import { MatDatepickerTimeHeaderComponent } from "../../../../../components/date
   styleUrls: ['./create-flag.component.scss',]
 })
 
-export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
+export class CreateFlagComponent implements OnInit, AfterViewInit {
   createTimeLineForm!: FormGroup
   matcher!: MyErrorStateMatcher // form validator errors
 
@@ -28,11 +28,6 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
     this.buildForm()
-
-  }
-
-
-  ngOnChanges(changes: SimpleChanges) {
 
   }
 

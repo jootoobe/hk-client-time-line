@@ -22,11 +22,13 @@ export class MatDatepickerTimeHeaderComponent<D, S> {
   // get timeControl(): AbstractControl {
   //   return this.parentFormDir.form.get(this.timeInputControlName || 'time');
   // }
+  // return this.createTimeLineForm.get('time_line')?.get('['controls']') as FormArray
 
   get timeControl(): any {
 
-    if(this.parentFormDir.form['controls']['flags']) {
-      let flags = this.parentFormDir.form['controls']['flags'] as FormArray
+
+    if(this.parentFormDir.form['controls']['time_line']?.get('flags')) {
+      let flags = this.parentFormDir.form['controls']['time_line']?.get('flags') as FormArray
       // return <FormArray>(<FormArray>this.parentFormDir.form['controls']['flags']).at(0).get('time')
       // flags.at(0).get('time')
       return flags['controls'][0]?.get('date_obj')?.get('time')
