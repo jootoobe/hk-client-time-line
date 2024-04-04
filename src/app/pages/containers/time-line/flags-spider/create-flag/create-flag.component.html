@@ -275,23 +275,61 @@
         <mat-radio-group class=""
         (change)="onRadioButtonNetsColor($event)"  [(ngModel)]="radioRedeNets" [ngModelOptions]="{standalone: true}" >
           <mat-radio-button [value]="[{background: 'black', text: 'white'}]" class="flag-modal_radio--colors" >
-            <!-- Black -->
             1
           </mat-radio-button>
           <mat-radio-button [value]="[{background: 'white', text: 'black'}]" class="flag-modal_radio--colors" >
-            <!-- White -->
             2
           </mat-radio-button>
           <mat-radio-button [value]="[{background: 'black', text: 'red'}]" class="flag-modal_radio--colors" >
-            <!-- Red -->
             3
           </mat-radio-button>
           <mat-radio-button [value]="[{background: 'red', text: 'white'}]" class="flag-modal_radio--colors" >
-            <!-- blue -->
             4
           </mat-radio-button>
           <mat-radio-button [value]="[{background: 'black', text: 'yellow'}]" class="flag-modal_radio--colors" >
-            <!-- Yellow -->
+            5
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+
+      <!-- RADIO COR TRANSPARÊNCIA FUNDO -->
+      <div class="flag-modal_radio">
+        <div class="flag-modal_radio--text">
+          Cor transparência bandeira
+        <!-- Custom ToolTip -->
+        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            matSuffix
+            customToolTip
+            [contentTemplate]="template_help3"
+            [originX]="'center'"
+            [originY]="'bottom'"
+            [overlayX]="'center'"
+            [overlayY]="'top'"
+            [offsetY]="5">
+            help_outline
+        </i>
+      <ng-template #template_help3>
+        <div  customToolTipChiel
+              [innerHTML]="help1 | safeDomSanitizer: 'html'">
+        </div>
+      </ng-template>
+        </div>
+        <mat-radio-group class=""
+        (change)="onRadioButtonTransparencyColor($event)"  [(ngModel)]="radioRedeTransparency" [ngModelOptions]="{standalone: true}" >
+          <mat-radio-button [value]="'0.1'" class="flag-modal_radio--colors" >
+            1
+          </mat-radio-button>
+          <mat-radio-button [value]="'0.2'" class="flag-modal_radio--colors" >
+            2
+          </mat-radio-button>
+          <mat-radio-button [value]="'0.3'" class="flag-modal_radio--colors" >
+            3
+          </mat-radio-button>
+          <mat-radio-button [value]="'0.4'" class="flag-modal_radio--colors" >
+            4
+          </mat-radio-button>
+          <mat-radio-button [value]="'0.5'" class="flag-modal_radio--colors" >
             5
           </mat-radio-button>
         </mat-radio-group>

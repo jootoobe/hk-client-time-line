@@ -1,4 +1,5 @@
 import { DateObjModel } from "./date-obj.model";
+import { FlagDesignModel } from "./flag-design.model";
 import { SocialMediaChipModel } from "./social-media-chip.model";
 import { SubjectTagModel } from "./subject-tag.model";
 
@@ -20,6 +21,8 @@ export class FlagModel {
     public social_medias_chips: SocialMediaChipModel[],
     public subject_tags: SubjectTagModel[],
     public flags2?: FlagModel[],
+    public flag_design?: FlagDesignModel,
+
   ) {
   }
 }
