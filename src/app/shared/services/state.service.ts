@@ -26,6 +26,14 @@ export class StateService {
   private redisAuthSubject = new BehaviorSubject<RedisAuthModel>(RedisAuthModel as any);
   redisAuthSubject$ = this.redisAuthSubject.asObservable();
 
+
+  private customToolTipSubject = new BehaviorSubject<{}>({ mouse: '', from: '' });
+  customToolTipSubject$ = this.customToolTipSubject.asObservable();
+
+
+  private timeLineTolltipSubject = new BehaviorSubject<any>({});
+  timeLineTolltipSubject$ = this.timeLineTolltipSubject.asObservable();
+
   constructor(@Inject(WINDOW) private window: Window) { }
 
   updateLanguageSignal(val: string) {
@@ -39,6 +47,33 @@ export class StateService {
   updateRedisAuth(val: RedisAuthModel) {
     return this.redisAuthSubject.next(val)
   }
+
+
+    /**
+  * toolTipSubject is used in the directive ToolTipRendererChieldDirective
+  * @param { CustomToolTipComponent} fom CustomToolTipComponent
+  * @param { ToolTipRendererChieldDirective} fom ToolTipRendererChieldDirective
+  */
+    toolTipSubject(val: any) {
+      this.customToolTipSubject.next(val)
+    }
+
+
+
+      /**
+  * Mainly used to support html tolltip
+  * @param { TIME-LINE } fom custom tolltip support
+  */
+  timeLineTolltip(val: any) {
+    this.timeLineTolltipSubject.next(val)
+  }
+
+
+
+
+
+
+
 
   /**
   * generate groups of 4 random characters

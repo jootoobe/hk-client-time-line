@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { StateService } from "../../../../../shared/services/state.service";
+import { TolltipCreateHelper } from "./tolltip-create-helper";
 
 
 @Component({
@@ -13,6 +14,10 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
   createTimeLineForm!: FormGroup
 
 
+  @ViewChild(TolltipCreateHelper) tolltipCreateHelper!: TolltipCreateHelper;
+  help1: string = ''
+  help2: string = ''
+  help3: string = ''
   constructor(private fb: FormBuilder, private stateService: StateService,) { }
 
 
@@ -27,7 +32,11 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    setTimeout(() => { // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
 
+      this.help1 = this.tolltipCreateHelper.help1()
+
+    }, 2000)
   }
 
 

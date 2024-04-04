@@ -6,10 +6,11 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from './material.module';
+import { CustomToolTipComponent } from './custom-tool-tip/custom-tool-tip.component';
 
 @NgModule({
   declarations: [
-
+    CustomToolTipComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +35,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-
+    CustomToolTipComponent,
 
   ],
   providers: [

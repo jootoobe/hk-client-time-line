@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { StateService } from "src/app/shared/services/state.service";
+import { StateService } from "../../../../../shared/services/state.service";
 
 
 @Component({

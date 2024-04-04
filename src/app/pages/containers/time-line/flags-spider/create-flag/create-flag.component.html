@@ -3,5 +3,26 @@
 
 <form [formGroup]="createTimeLineForm">
 
-
+    <!-- Title h1 -->
+    <!-- Let's talk about your flag -->
+    <div class="flag-modal_title-h1">
+      {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG.modal.title-h1' | translate}}
+      <!-- Custom ToolTip -->
+      <i  class="material-icons-outlined cursor_pointer noSelect flag-modal_help flag-modal_title-h1--help1"
+          matSuffix
+          customToolTip
+          [contentTemplate]="template_help1"
+          [originX]="'center'"
+          [originY]="'bottom'"
+          [overlayX]="'center'"
+          [overlayY]="'top'"
+          [offsetY]="5">
+          help_outline
+      </i>
+      <ng-template #template_help1>
+        <div  customToolTipChiel
+              [innerHTML]="help1 | safeDomSanitizer: 'html'">
+        </div>
+      </ng-template>
+    </div>
 </form>

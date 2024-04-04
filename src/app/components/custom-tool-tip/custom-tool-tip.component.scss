@@ -1,0 +1,18 @@
+.tooltip-conatiner {
+  // border: 1px solid gray;
+  // border-radius: 2px;
+  // padding: 1px 5px 4px 5px;
+  // background: linear-gradient(#FFFFFF 0px, #E4E5F0 100%);
+
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+  background: rgba(var(--color-primary), 1);
+  padding: .5rem;
+  max-width: 100rem;
+  color: rgb(240, 240, 240);
+  // white-space: pre-line;
+  border-radius: .5rem;
+  z-index: 10 !important;
+
+}
