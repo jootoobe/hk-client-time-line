@@ -8,7 +8,7 @@
     <div class="main-block--flags2">
       <div class="flag-2 inside-flag">
 
-        <div class="flag-2_card" [ngStyle]="setStyles(flag)">
+        <div class="flag-2_card" [ngStyle]="setStylesCards(flag)">
 
           <!-- RETANGULO BRANCO DE FUNDO -->
           <div class="flag-1_white--background"></div>
@@ -151,7 +151,7 @@
       <div class="flag-1 inside-flag"
         [ngStyle]="{'margin-right': flag.flag_margin_right+'rem', 'margin-left': flag.year && !firstx ? '5rem': '0'}">
 
-        <div class="flag-1_card" [ngStyle]="setStyles(flag)">
+        <div class="flag-1_card" [ngStyle]="setStylesCards(flag)">
 
           <!-- RETANGULO BRANCO DE FUNDO -->
           <div class="flag-1_white--background"></div>
@@ -275,8 +275,7 @@
 
       <div [ngStyle]="{'margin-left': flag.year && !firstx ? '5rem': '0'}">
         <!-- Flagpole -->
-        <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.color_rgb+',.3)'}">
-        </div>
+        <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.color_rgb+',.3)'}"></div>
 
         <!-- Flag base -->
         <div class="flag-1_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag.color_rgb+',.3)'}"> </div>
@@ -292,8 +291,7 @@
         </div>
 
         <!-- Filter 1 -->
-        <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.color_rgb+', 1)'}">
-        </div>
+        <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.color_rgb+', 1)'}">  </div>
       </div>
 
     </div>

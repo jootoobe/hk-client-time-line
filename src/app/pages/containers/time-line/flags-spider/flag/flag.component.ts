@@ -187,10 +187,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     return flags2
   }
 
-  setStyles(flag1: FlagModel): any {
+  setStylesCards(flag1: FlagModel): any {
     let styles = {
       'border-left': '.5rem solid rgba(' + flag1.color_rgb + ',1)',
-      'background-color': 'rgba(' + flag1.color_rgb + ',.3)'
+      'background-color': 'rgba(' + flag1.color_rgb + ',.2)'
     };
     return styles;
   }
