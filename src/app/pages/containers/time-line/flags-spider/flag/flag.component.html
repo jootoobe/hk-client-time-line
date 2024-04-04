@@ -62,11 +62,11 @@
               </div>
             </div>
             <!-- Description -->
-            <div class="inside-flag_description">
+            <div class="inside-flag_description" [ngStyle]="setStylesText(flag2)">
               <p>{{flag2.flag_description | truncate:250}}</p>
             </div>
             <!-- Nets -->
-            <div class="inside-flag_nets">
+            <div class="inside-flag_nets" [ngStyle]="setStylesText(flag2)">
               {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-02' | translate}}
             </div>
 
@@ -206,11 +206,11 @@
             </div>
           </div>
           <!-- Description -->
-          <div class="inside-flag_description">
+          <div class="inside-flag_description" [ngStyle]="setStylesText(flag)">
             <p>{{flag.flag_description | truncate:250}}</p>
           </div>
           <!-- Nets -->
-          <div class="inside-flag_nets">
+          <div class="inside-flag_nets" [ngStyle]="setStylesText(flag)">
             {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-02' | translate}}
           </div>
 
