@@ -8,6 +8,7 @@ import { SafeDomSanitizerPipe } from './pipes/safe-domSanitizer.pipe';
 import { ToolTipRendererChieldDirective } from './directives/custom-tooltip/tooltip-renderer-chield.directive';
 import { ToolTipRendererDirective } from './directives/custom-tooltip/tooltip-renderer.directive';
 import { TrimDirective } from './directives/trim.directive';
+import { MaskDateDirective } from './directives/mask-datepicker.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TrimDirective } from './directives/trim.directive';
     ToolTipRendererChieldDirective,
     ToolTipRendererDirective,
     TrimDirective,
+    MaskDateDirective,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { TrimDirective } from './directives/trim.directive';
     ToolTipRendererChieldDirective,
     ToolTipRendererDirective,
     TrimDirective,
+    MaskDateDirective,
   ],
   providers: [],
 })

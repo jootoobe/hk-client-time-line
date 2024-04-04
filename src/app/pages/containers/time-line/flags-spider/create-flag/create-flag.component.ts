@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@ang
 import { StateService } from "../../../../../shared/services/state.service";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
+import { MatDatepickerTimeHeaderComponent } from "../../../../../components/datepicker-time/mat-datepicker-time-header.component";
 
 
 @Component({
@@ -13,10 +14,13 @@ import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invali
 
 export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
   createTimeLineForm!: FormGroup
-
   matcher!: MyErrorStateMatcher // form validator errors
 
-  @ViewChild(TolltipCreateHelper, {static: true}) tolltipCreateHelper!: TolltipCreateHelper;
+  // Datepicker timer
+  timeHeader = MatDatepickerTimeHeaderComponent
+  minDate = new Date('-100/01/01'); // lowest date accepted for creating the flag
+
+  @ViewChild(TolltipCreateHelper, { static: true }) tolltipCreateHelper!: TolltipCreateHelper;
   help1: string = ''
   help2: string = ''
   help3: string = ''
@@ -41,6 +45,7 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
     setTimeout(() => { // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
 
       this.help1 = this.tolltipCreateHelper.help1()
+      this.help2 = this.tolltipCreateHelper.help2()
 
     }, 2000)
   }
@@ -55,7 +60,7 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
       })
     });
 
-    console.log('wwwwwwwww',this.createTimeLineForm.get('time_line')?.get('flags'))
+    console.log('wwwwwwwww', this.createTimeLineForm.get('time_line')?.get('flags'))
   }
 
   createFlag(): FormGroup {
@@ -95,9 +100,9 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
 
-    // ⬇️ Get Flag form
-    get flagsForm() {
-      return this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-    }
+  // ⬇️ Get Flag form
+  get flagsForm() {
+    return this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+  }
 
 }

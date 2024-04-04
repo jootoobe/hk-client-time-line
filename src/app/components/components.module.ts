@@ -7,9 +7,14 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from './material.module';
 import { CustomToolTipComponent } from './custom-tool-tip/custom-tool-tip.component';
+import { CustomDateAdapter } from '../shared/utils/custom.date.adapter';
+import { DateAdapter } from '@angular/material/core';
+import { MatDatepickerTimeHeaderComponent } from './datepicker-time/mat-datepicker-time-header.component';
+import { provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
+    MatDatepickerTimeHeaderComponent,
     CustomToolTipComponent,
   ],
   imports: [
@@ -35,12 +40,15 @@ import { CustomToolTipComponent } from './custom-tool-tip/custom-tool-tip.compon
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    MatDatepickerTimeHeaderComponent,
     CustomToolTipComponent,
 
   ],
   providers: [
     DatePipe,
-    ToastrService
+    ToastrService,
+    { provide: DateAdapter, useClass: CustomDateAdapter },
+    provideNgxMask()
   ],
 })
 export class ComponentsModule { }
