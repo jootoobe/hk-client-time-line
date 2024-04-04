@@ -5,6 +5,7 @@ import { TolltipCreateHelper } from "./tolltip-create-helper";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 import { MatDatepickerTimeHeaderComponent } from "../../../../../components/datepicker-time/mat-datepicker-time-header.component";
 import { ConvertColorService } from "../../../../../shared/services/convert-color.service";
+import { MatRadioChange } from "@angular/material/radio";
 
 
 @Component({
@@ -27,6 +28,10 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   help1: string = ''
   help2: string = ''
   help3: string = ''
+
+
+  // RADIO BUTTON
+  radioRedeTextColor = '1' // text colors
   constructor(
     private fb: FormBuilder,
      private stateService: StateService,
@@ -127,5 +132,12 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       flags.controls[0].get('color_hsl')?.setValue(colorFormats.hsl)
 
     }
+
+
+
+
+      onRadioButtonTextColor(e: MatRadioChange) {
+
+  }
 
 }
