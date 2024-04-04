@@ -31,7 +31,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
           flag_design: {
             color_text: '255,0,0',
-            color_nets: {
+            color_chips: {
               background: 'black',
               text: 'white'
             },
@@ -73,7 +73,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
               flag_design: {
                 color_text: 'black',
-                color_nets: {
+                color_chips: {
                   background: 'black',
                   text: 'white'
                 },
