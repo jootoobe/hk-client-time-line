@@ -64,7 +64,7 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
     }),
   ],
 
-  exports: [LanguagesTimeLineComponent]
+  exports: [LanguagesTimeLineComponent, TolltipCreateHelper]
 
 })
 export class TimeLineModule { }

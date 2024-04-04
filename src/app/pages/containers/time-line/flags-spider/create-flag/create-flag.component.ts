@@ -14,7 +14,7 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
   createTimeLineForm!: FormGroup
 
 
-  @ViewChild(TolltipCreateHelper) tolltipCreateHelper!: TolltipCreateHelper;
+  @ViewChild(TolltipCreateHelper, {static: true}) tolltipCreateHelper!: TolltipCreateHelper;
   help1: string = ''
   help2: string = ''
   help3: string = ''

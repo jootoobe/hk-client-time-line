@@ -31,8 +31,6 @@ export class StateService {
   customToolTipSubject$ = this.customToolTipSubject.asObservable();
 
 
-  private timeLineTolltipSubject = new BehaviorSubject<any>({});
-  timeLineTolltipSubject$ = this.timeLineTolltipSubject.asObservable();
 
   constructor(@Inject(WINDOW) private window: Window) { }
 
@@ -57,19 +55,6 @@ export class StateService {
     toolTipSubject(val: any) {
       this.customToolTipSubject.next(val)
     }
-
-
-
-      /**
-  * Mainly used to support html tolltip
-  * @param { TIME-LINE } fom custom tolltip support
-  */
-  timeLineTolltip(val: any) {
-    this.timeLineTolltipSubject.next(val)
-  }
-
-
-
 
 
 

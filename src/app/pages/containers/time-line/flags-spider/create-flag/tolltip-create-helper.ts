@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, effect } from "@angular/core";
 import { StateService } from "../../../../../shared/services/state.service";
 
 
@@ -11,12 +11,10 @@ export class TolltipCreateHelper {
   TIME_LINE!: any; // translator used in ToastrService
 
   constructor(private stateService: StateService) {
-
-    this.stateService.timeLineTolltipSubject$.subscribe(res => {
-      if(res) {
-        this.TIME_LINE = res
-        console.log('PPPPPPPPPPPPppp', this.TIME_LINE)
-      }
+    console.log('OOOOOOOOO EUUUUUUUU AQUIIIIIIi')
+    effect(() => {
+      this.TIME_LINE = this.stateService.languageSignalComputed()
+      console.log('TIME-LINE >>>>>>>>>>>>>>>>>>>>>.', this.TIME_LINE)
     })
   }
 
@@ -49,7 +47,6 @@ export class TolltipCreateHelper {
 
     `
   }
-
 
 
   help3() {
