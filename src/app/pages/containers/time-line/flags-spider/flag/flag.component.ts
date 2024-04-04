@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges } from "@angular/core";
-import { TimeLineModel } from "../../../../../models/flag.model";
+import { FlagModel, TimeLineModel } from "../../../../../models/flag.model";
 
 @Component({
   selector: 'flag',
@@ -87,15 +87,15 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit(): void { }
 
 
-  trackFlagsDataJson(index: number, flags1: any) {
+  trackFlagsDataJson(index: number, flags1: TimeLineModel) {
     return flags1
   }
 
-  trackFlagsDataJson2(index: number, flags2: any) {
+  trackFlagsDataJson2(index: number, flags2: TimeLineModel) {
     return flags2
   }
 
-  setStyles(flag1: any): any {
+  setStyles(flag1: FlagModel): any {
     let styles = {
       'border-left': '.5rem solid rgba(' + flag1.color_rgb + ',1)',
       'background-color': 'rgba(' + flag1.color_rgb + ',.3)'
