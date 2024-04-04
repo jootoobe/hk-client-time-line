@@ -32,13 +32,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   // RADIO BUTTON
   radioRedeTextColor = '1' // text colors
-  radioRedeNets = [{background: 'black', text: 'white'}]
+  radioRedeNets = { background: 'black', text: 'white' }
   radioRedeTransparency = '0.2'
   constructor(
     private fb: FormBuilder,
-     private stateService: StateService,
-     private convertColorService: ConvertColorService,
-     ) {
+    private stateService: StateService,
+    private convertColorService: ConvertColorService,
+  ) {
 
 
     this.buildForm()
@@ -74,6 +74,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   createFlag(): FormGroup {
 
+    // public color_text: string,
+    // public color_nets: {background: string, text: string},
+    // public color_transparency: string,
+    // public color_hex: string,
+    // public color_rgb: string,
+    // public color_hsl: string,
+
 
     return this.fb.group({
       year: new FormControl<string | null>(null + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
@@ -82,13 +89,27 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       flag_description: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]),
       flag_style: new FormControl<any | null>(null, [Validators.required]),
       flag_style2: new FormControl<any | null>(null, []),
+
       color_hex: new FormControl<string | null>('#90ab3d', []),
       color_rgb: new FormControl<string | null>('144, 171, 64', []),
       color_hsl: new FormControl<string | null>('75, 46%, 92%', []),
+
       flag_local_zone: new FormControl<string | null>(null, []),
       flag_created_at: new FormControl<string | null>(null, []),
       flag_update_at: new FormControl<string | null>('0', []),
       flag_margin_right: new FormControl<string | null>('0', []),
+
+      flag_design: this.fb.group({
+        color_text: new FormControl<string | null>(null, [Validators.required]), // A data day_month_year está com o horário certo
+        color_nets: this.fb.group({
+          background: new FormControl<string | null>(null, [Validators.required]),
+          text: new FormControl<string | null>(null, [Validators.required]),
+        }),
+        color_transparency: new FormControl<string | null>(null, [Validators.required]),
+        color_hex: new FormControl<string | null>('#90ab3d', [Validators.required]),
+        color_rgb: new FormControl<string | null>('144, 171, 64', [Validators.required]),
+        color_hsl: new FormControl<string | null>('75, 46%, 92%', [Validators.required]),
+      }),
 
       date_obj: this.fb.group({
         day_month_year: new FormControl<string | null>(null, [Validators.required, Validators.minLength(24)]), // A data day_month_year está com o horário certo
@@ -123,36 +144,36 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
 
-    //⬇️ Convert Color
-    convertColor() {
-      // this.createTimeLineForm.value.flags[0]['color_hex']
-      let colorFormats = this.convertColorService.convertColor(this.createTimeLineForm.value.flags[0]['color_hex'])
-      let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-      // flags.at(0).get('color_hex')?.setValue(this.createTimeLineForm.value.flags[0]['color_hex'])
-      flags.at(0).get('color_hex')?.setValue(colorFormats.hex)
-      flags.at(0).get('color_rgb')?.setValue(colorFormats.rgb)
-      flags.controls[0].get('color_hsl')?.setValue(colorFormats.hsl)
+  //⬇️ Convert Color
+  convertColor() {
+    // this.createTimeLineForm.value.flags[0]['color_hex']
+    let colorFormats = this.convertColorService.convertColor(this.createTimeLineForm.value.flags[0]['color_hex'])
+    let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+    // flags.at(0).get('color_hex')?.setValue(this.createTimeLineForm.value.flags[0]['color_hex'])
+    flags.at(0).get('color_hex')?.setValue(colorFormats.hex)
+    flags.at(0).get('color_rgb')?.setValue(colorFormats.rgb)
+    flags.controls[0].get('color_hsl')?.setValue(colorFormats.hsl)
 
-    }
-
-
+  }
 
 
-      onRadioButtonTextColor(e: MatRadioChange) {
-        console.log('11', e)
-
-      }
-
-      onRadioButtonNetsColor(e: MatRadioChange) {
-        console.log('22', e)
 
 
-      }
+  onRadioButtonTextColor(e: MatRadioChange) {
+    console.log('11', e)
 
-      onRadioButtonTransparencyColor(e: MatRadioChange) {
-        console.log('22', e)
+  }
+
+  onRadioButtonNetsColor(e: MatRadioChange) {
+    console.log('22', e)
 
 
-      }
+  }
+
+  onRadioButtonTransparencyColor(e: MatRadioChange) {
+    console.log('22', e)
+
+
+  }
 
 }

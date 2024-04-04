@@ -1,7 +1,7 @@
 
 <tolltip-create-html></tolltip-create-html>
 
-<!-- <pre> {{createTimeLineForm.value | json}}</pre> -->
+<pre> {{createTimeLineForm.value | json}}</pre>
 
 <form [formGroup]="createTimeLineForm">
   <div formGroupName="time_line">
@@ -274,19 +274,19 @@
         </div>
         <mat-radio-group class=""
         (change)="onRadioButtonNetsColor($event)"  [(ngModel)]="radioRedeNets" [ngModelOptions]="{standalone: true}" >
-          <mat-radio-button [value]="[{background: 'black', text: 'white'}]" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="{background: 'black', text: 'white'}" class="flag-modal_radio--colors" >
             1
           </mat-radio-button>
-          <mat-radio-button [value]="[{background: 'white', text: 'black'}]" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="{background: 'white', text: 'black'}" class="flag-modal_radio--colors" >
             2
           </mat-radio-button>
-          <mat-radio-button [value]="[{background: 'black', text: 'red'}]" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="{background: 'black', text: 'red'}" class="flag-modal_radio--colors" >
             3
           </mat-radio-button>
-          <mat-radio-button [value]="[{background: 'red', text: 'white'}]" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="{background: 'red', text: 'white'}" class="flag-modal_radio--colors" >
             4
           </mat-radio-button>
-          <mat-radio-button [value]="[{background: 'black', text: 'yellow'}]" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="{background: 'black', text: 'yellow'}" class="flag-modal_radio--colors" >
             5
           </mat-radio-button>
         </mat-radio-group>
