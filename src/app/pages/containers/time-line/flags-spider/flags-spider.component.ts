@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
-import { ConnectingExternalRoutesService } from '../../../../shared/connecting-external-routes/connecting-external-routes.service';
 import { environment } from '../../../../../environments/environment';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'flags-spider',
@@ -8,40 +8,30 @@ import { environment } from '../../../../../environments/environment';
   styleUrls: ['./flags-spider.component.scss']
 })
 export class FlagsSpiderComponent implements OnInit {
+  @ViewChild('createTimeLine', { static: false }) createTimeLine!: TemplateRef<any> // open modal ref - modal to create or edit timeline
+
   assetsProd = environment.assetsProd // assetsProd: 'http://localhost:4201',
 
 
-  constructor(private connectingExternalRoutesService: ConnectingExternalRoutesService) { }
+  constructor(
+    private dialogCreate: MatDialog,
+    private renderer2: Renderer2,
+    private elementRef: ElementRef,) { }
   ngOnInit(): void {
     console.log('FlagsSpiderComponent 🃏')
   }
 
 
-  navigateHomeSpider(data: string) {
 
-    let routerHomeSpider = {}
-    routerHomeSpider = {
-      router: data,
-      message: undefined
-    }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerHomeSpider)
-  }
+    // Open Create Time_Line
+    openCreateTimeLineDialog(val?: string): void {
 
-  navigateKanban(data: string) {
-    let routerKanban = {}
-    routerKanban = {
-      router: data,
-      message: undefined
-    }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerKanban)
-  }
+      this.dialogCreate.open(this.createTimeLine, {
+        disableClose: true,
+        panelClass: 'create-flag-dialog',
+        // backdropClass: 'backdropBackground',
+        position: {}
+      });
 
-  navigateSpiderTube(data: string) {
-    let routerSpiderTube = {}
-    routerSpiderTube = {
-      router: data,
-      message: undefined
     }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerSpiderTube)
-  }
 }

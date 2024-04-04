@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ConnectingExternalRoutesService } from '../../../shared/connecting-external-routes/connecting-external-routes.service';
 
 
 @Component({
@@ -9,37 +8,10 @@ import { ConnectingExternalRoutesService } from '../../../shared/connecting-exte
 })
 export class TimeLineComponent implements OnInit {
 
-  constructor(private connectingExternalRoutesService: ConnectingExternalRoutesService) { }
+  constructor() { }
   ngOnInit(): void {
     console.log('TimeLineComponent 🃏')
   }
 
 
-  navigateHomeSpider(data: string) {
-
-    let routerHomeSpider = {}
-    routerHomeSpider = {
-      router: data,
-      message: undefined
-    }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerHomeSpider)
-  }
-
-  navigateKanban(data: string) {
-    let routerKanban = {}
-    routerKanban = {
-      router: data,
-      message: undefined
-    }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerKanban)
-  }
-
-  navigateSpiderTube(data: string) {
-    let routerSpiderTube = {}
-    routerSpiderTube = {
-      router: data,
-      message: undefined
-    }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerSpiderTube)
-  }
 }

@@ -1,9 +1,16 @@
 
 
+<ng-template #createTimeLine>
+  <create-flag>
+  </create-flag>
+</ng-template>
+
+
 <!-- Top div 20%  -->
 <div class="main-div">
   <div class="first-div">
-    <top-div>
+    <top-div
+    (openModal)="openCreateTimeLineDialog('create')">
 
     </top-div>
   </div>
