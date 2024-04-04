@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, output } from '@angular/core';
 
-import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
+// import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
 import { SignInService } from '../../../../../spider-share/iam/services/auth/sign-in.service';
 
 @Component({
@@ -12,53 +12,17 @@ import { SignInService } from '../../../../../spider-share/iam/services/auth/sig
 })
 export class TopDivComponent implements OnInit {
 
+  openModal = output()
+
   constructor(
-    private connectingExternalRoutesService: ConnectingExternalRoutesService,
+    // private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private signInService: SignInService
     ) { }
   ngOnInit(): void {
     console.log('TopDivComponent 🃏')
   }
 
-  navigateHomeSpider(data: string) {
-
-    let routerHomeSpider = {}
-    routerHomeSpider = {
-      router: data,
-      message: undefined
-    }
-    this.connectingExternalRoutesService.navigateHomeSpider(routerHomeSpider)
-  }
-
-  navigateKanban(data: string) {
-    let routerKanban = {}
-    routerKanban = {
-      router: data,
-      message: undefined
-    }
-    this.connectingExternalRoutesService.navigateKanban(routerKanban)
-  }
-
-  navigateSpiderTube(data: string) {
-    let routerSpiderTube = {}
-    routerSpiderTube = {
-      router: data,
-      message: undefined
-    }
-    this.connectingExternalRoutesService.navigateSpiderTube(routerSpiderTube)
-  }
-
-
-
-  getHelloWorld() {
-    this.signInService.getHelloWorld()
-      .subscribe({
-        next: (res: any) => {
-          console.log('OK',res)
-        },
-        error: (err) => {
-        },
-        complete: () => { }
-      })
+  openCreateTimeLineDialog() {
+    this.openModal.emit()
   }
 }
