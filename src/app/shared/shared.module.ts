@@ -7,6 +7,7 @@ import { DragScrollDirective } from './directives/drag-scroll.directive';
 import { SafeDomSanitizerPipe } from './pipes/safe-domSanitizer.pipe';
 import { ToolTipRendererChieldDirective } from './directives/custom-tooltip/tooltip-renderer-chield.directive';
 import { ToolTipRendererDirective } from './directives/custom-tooltip/tooltip-renderer.directive';
+import { TrimDirective } from './directives/trim.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ToolTipRendererDirective } from './directives/custom-tooltip/tooltip-re
     DragScrollDirective,
     SafeDomSanitizerPipe,
     ToolTipRendererChieldDirective,
-    ToolTipRendererDirective
+    ToolTipRendererDirective,
+    TrimDirective,
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { ToolTipRendererDirective } from './directives/custom-tooltip/tooltip-re
     DragScrollDirective,
     SafeDomSanitizerPipe,
     ToolTipRendererChieldDirective,
-    ToolTipRendererDirective
+    ToolTipRendererDirective,
+    TrimDirective,
   ],
   providers: [],
 })

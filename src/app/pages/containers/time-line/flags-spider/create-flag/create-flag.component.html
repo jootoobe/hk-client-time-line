@@ -45,6 +45,10 @@
                   formControlName="flag_title"
                   [errorStateMatcher]="matcher"
 
+                  appTrim
+                  [numInputAppTrim]="4"
+                  [formAll]="flagsForm.controls[0]"
+                  [nameFormAll]="'flag_title'"
                   >
           <mat-hint align="end">{{flagTitle.value.length}}/50</mat-hint>
           <mat-error *ngIf="flagsForm.controls[0].get('title')?.errors?.['minlength']">
@@ -61,6 +65,13 @@
           </mat-error>
         </mat-form-field>
       </div>
+
+
+
+
+
+
+
     </div>
   </div>
 </form>

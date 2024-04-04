@@ -35,18 +35,24 @@
   flex-wrap: wrap;
 
 
-  &_title-h1 {
-    // flex-grow: 1;
-    // background-color: #f1f1f1;
+  &_title-h1,
+  &_title {
     width: 100%;
     margin: 1rem 0 1rem -.5rem;
     text-align: center;
     line-height: auto;
     font-size: 1.6rem;
+
     mat-form-field {
       // width: 80%;
       width: 25rem;
     }
+
+    &_title-h1 {
+      margin-top: 2rem;
+
+    }
+
   }
 
 
