@@ -171,6 +171,39 @@
       </div>
 
 
+
+
+      <div class="flag-modal_btn">
+
+        <button mat-stroked-button
+
+                class="btn_opt_transparent"
+                matDialogClose>
+          <!-- Back -->
+          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.back' | translate}}
+        </button>
+
+
+        <span>
+          <button mat-stroked-button class="btn_opt-invalid" *ngIf="createTimeLineForm.invalid">
+            <!-- Create flag -->
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
+          </button>
+
+          <button matDialogClose
+                  type="submit"
+                  *ngIf="createTimeLineForm.valid"
+                  mat-stroked-button
+                  class="btn_opt-valid"
+                  >
+              <!-- Create flag -->
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
+          </button>
+        </span>
+
+      </div>
+
+
     </div>
   </div>
 </form>

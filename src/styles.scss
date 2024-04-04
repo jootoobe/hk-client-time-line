@@ -126,6 +126,12 @@ html {
   font-family: var(--fonts-open-sans-serif);
   font-weight: var(--fonts-font-weight-400);
 }
+
+body {
+  color: rgba(var(--color-black), .8);
+  font-size: 1.4rem !important; // 14px default
+}
+
 // =========== END TIME-LINE STYLE COMENTAR ======================
 
 // .sidenav-example {
