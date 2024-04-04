@@ -105,4 +105,12 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
     return this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
   }
 
+
+  toggleDatePicker(ref: any) {
+    // if (!ref.opened) {
+    //   // this.updateSecondFlagSpace.emit(false)
+    //   this.geToTimestamp()
+    // }
+  }
+
 }
