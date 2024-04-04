@@ -79,12 +79,14 @@
   }
 
   &_radio {
-    &--text{
+    &--text {
       font-size: 1.4rem;
-      margin-left: -16rem;
       font-weight: var(--fonts-font-weight-500);
+      text-align: start;
+      margin-left: 3.5rem;
     }
-    &--text-color {
+
+    &--colors {
       margin: 0 1rem 0 1rem;
     }
   }

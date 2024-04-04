@@ -32,6 +32,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   // RADIO BUTTON
   radioRedeTextColor = '1' // text colors
+  radioRedeNets = [{background: 'black', text: 'white'}]
   constructor(
     private fb: FormBuilder,
      private stateService: StateService,
@@ -137,7 +138,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
       onRadioButtonTextColor(e: MatRadioChange) {
+        console.log('11', e)
 
-  }
+      }
+
+      onRadioButtonNetsColor(e: MatRadioChange) {
+        console.log('22', e)
+
+
+      }
 
 }
