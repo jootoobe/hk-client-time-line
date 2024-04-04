@@ -4,11 +4,11 @@
   <div class="main-block">
 
     <!-- 🅰️ FLAG 2 -->
-    @for (flags2 of flag.flags2; track trackFlagsDataJson2; let idx = $index; let firstx = $first) {
+    @for (flag2 of flag.flags2; track trackFlagsDataJson2; let idx = $index; let firstx = $first) {
     <div class="main-block--flags2">
       <div class="flag-2 inside-flag">
 
-        <div class="flag-2_card" [ngStyle]="setStylesCards(flags2)">
+        <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
 
           <!-- RETANGULO BRANCO DE FUNDO -->
           <div class="flag-1_white--background"></div>
@@ -16,15 +16,15 @@
           <!-- title -->
           <div id="title-content">
             <div class="box-inside-flag-title">
-              <span class="inside-flag_title">
-                {{flags2.flag_title | truncate:20}}
+              <span class="inside-flag_title" [ngStyle]="setStylesText(flag2)">
+                {{flag2.flag_title | truncate:20}}
               </span>
             </div>
 
             <!-- Menu Edit Delete -->
             <div class="box-inside-flag-title ">
               <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
-                id="menu-{{flags2.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+                id="menu-{{flag2.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
               <!-- Start Filter Sort-->
               <mat-menu #menuEditRemove="matMenu">
                 <span class="cursor_pointer noSelect box-inside-flag-title_menu">
@@ -44,25 +44,25 @@
           </div>
 
           <!-- Date -->
-          <div class="inside-flag_date" [ngStyle]="setStylesDate(flags2)">
+          <div class="inside-flag_date" [ngStyle]="setStylesDate(flag2)">
             <div class="inside-flag_date_day">
               <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
-              {{flags2.date_obj.day}}
+              {{flag2.date_obj.day}}
             </div>
             <div class="inside-flag_date_month">
               <span>
                 <!-- {{flag.date_obj.month.split('/').shift() | titlecase}} -->
-                {{flags2.date_obj.month_s}}
+                {{flag2.date_obj.month_s}}
               </span>
             </div>
             <div class="inside-flag_date_year">
               <!-- {{flag.date_obj.day_month_year.substring(0).split('-').shift()}} -->
-              {{flags2.date_obj.year}}
+              {{flag2.date_obj.year}}
             </div>
           </div>
           <!-- Description -->
           <div class="inside-flag_description">
-            <p>{{flags2.flag_description | truncate:250}}</p>
+            <p>{{flag2.flag_description | truncate:250}}</p>
           </div>
           <!-- Nets -->
           <div class="inside-flag_nets">
@@ -71,7 +71,7 @@
 
           <!-- Chips -->
           <div style="height: 12rem; width: 100%;">
-            @if(flags2.social_medias_chips.length === 0) {
+            @if(flag2.social_medias_chips.length === 0) {
             <mat-chip-listbox class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
               <p>
@@ -84,7 +84,7 @@
             } @else {
             <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'0rem'">
 
-              @for (chip of flags2.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
+              @for (chip of flag2.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
               <mat-grid-tile [rowspan]="'3'">
 
                 <mat-chip-listbox *ngIf="ichip < 6 && chip.name.length > 9">
@@ -103,7 +103,7 @@
 
                 <mat-chip-listbox *ngIf="ichip===6">
                   <mat-chip>
-                    +{{flags2.social_medias_chips.length - 6}}
+                    +{{flag2.social_medias_chips.length - 6}}
                   </mat-chip>
                 </mat-chip-listbox>
               </mat-grid-tile>
@@ -132,11 +132,11 @@
 
       <div>
         <!-- Flagpole -->
-        <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flags2.color_rgb+',.3)'}">
+        <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}">
         </div>
 
         <!-- Flag base -->
-        <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flags2.color_rgb+',.3)'}"> </div>
+        <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}"> </div>
 
         <!-- Filter 1 -->
         <!-- <div class="flag-2_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.color_rgb+', 1)'}">  </div> -->
