@@ -2,7 +2,7 @@
 
 ::ng-deep {
   .create-flag-dialog {
-    width: 30rem;
+    width: 35rem;
     height: auto;
     min-height: 40%;
     max-height: 89%;
@@ -24,4 +24,32 @@
   // .cdk-overlay-dark-backdrop {
   //   // background: rgba(0, 0, 0, .20);
   // }
+}
+
+
+.flag-modal {
+
+
+  display: flex;
+  // background-color: DodgerBlue;
+  flex-wrap: wrap;
+
+
+  &_title-h1 {
+    // flex-grow: 1;
+    // background-color: #f1f1f1;
+    width: 100%;
+    margin: 1rem 0 1rem -.5rem;
+    text-align: center;
+    line-height: auto;
+    font-size: 1.6rem;
+    mat-form-field {
+      // width: 80%;
+      width: 25rem;
+    }
+  }
+
+
+
+
 }

@@ -4,27 +4,63 @@
 <pre> {{createTimeLineForm.value | json}}</pre>
 
 <form [formGroup]="createTimeLineForm">
+  <div formGroupName="time_line">
+    <div formArrayName="flags">
 
-    <!-- Title h1 -->
-    <!-- Let's talk about your flag -->
-    <div class="flag-modal_title-h1">
-      {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG.modal.title-h1' | translate}}
-      <!-- Custom ToolTip -->
-      <i  class="material-icons-outlined cursor_pointer noSelect flag-modal_help flag-modal_title-h1--help1"
-          matSuffix
-          customToolTip
-          [contentTemplate]="template_help1"
-          [originX]="'center'"
-          [originY]="'bottom'"
-          [overlayX]="'center'"
-          [overlayY]="'top'"
-          [offsetY]="5">
-          help_outline
-      </i>
-      <ng-template #template_help1>
-        <div  customToolTipChiel
-              [innerHTML]="help1 | safeDomSanitizer: 'html'">
-        </div>
-      </ng-template>
+      <!-- Title h1 -->
+      <!-- Let's talk about your flag -->
+      <div class="flag-modal_title-h1">
+        {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG.modal.title-h1' | translate}}
+        <!-- Custom ToolTip -->
+        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            matSuffix
+            customToolTip
+            [contentTemplate]="template_help1"
+            [originX]="'center'"
+            [originY]="'bottom'"
+            [overlayX]="'center'"
+            [overlayY]="'top'"
+            [offsetY]="5">
+            help_outline
+        </i>
+        <ng-template #template_help1>
+          <div  customToolTipChiel
+                [innerHTML]="help1 | safeDomSanitizer: 'html'">
+          </div>
+        </ng-template>
+      </div>
+
+
+      <!-- title -->
+      <div class="flag-modal_title" [formGroupName]="0">
+        <!-- Flag name -->
+        <mat-form-field class="">
+          <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.title.mat-label' | translate}}</mat-label>
+          <input  type="text"
+
+                  #flagTitle
+                  maxlength="50"
+                  matInput
+                  [placeholder]="'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.title.placeholder'| translate"
+                  formControlName="flag_title"
+                  [errorStateMatcher]="matcher"
+
+                  >
+          <mat-hint align="end">{{flagTitle.value.length}}/50</mat-hint>
+          <mat-error *ngIf="flagsForm.controls[0].get('title')?.errors?.['minlength']">
+            <!-- Minimum 3 characters -->
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.title.mat-error-minlength' | translate}}
+          </mat-error>
+          <mat-error *ngIf="flagsForm.controls[0].get('title')?.errors?.['maxLength'] || flagTitle.value.length > 50">
+            <!-- Maximum 50 characters -->
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.title.mat-error-maxlength' | translate}}
+          </mat-error>
+          <mat-error *ngIf="flagsForm.controls[0].get('title')?.errors?.['required'] && flagTitle.value.length === 0">
+            <!-- Title is required -->
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.title.mat-error-required' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
+  </div>
 </form>

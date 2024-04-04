@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild }
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { StateService } from "../../../../../shared/services/state.service";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
+import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 
 
 @Component({
@@ -13,12 +14,18 @@ import { TolltipCreateHelper } from "./tolltip-create-helper";
 export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
   createTimeLineForm!: FormGroup
 
+  matcher!: MyErrorStateMatcher // form validator errors
 
   @ViewChild(TolltipCreateHelper, {static: true}) tolltipCreateHelper!: TolltipCreateHelper;
   help1: string = ''
   help2: string = ''
   help3: string = ''
-  constructor(private fb: FormBuilder, private stateService: StateService,) { }
+  constructor(private fb: FormBuilder, private stateService: StateService,) {
+
+
+    this.buildForm()
+
+  }
 
 
   ngOnChanges(changes: SimpleChanges) {
@@ -27,7 +34,6 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
   ngOnInit(): void {
-    this.buildForm()
 
   }
 
@@ -48,9 +54,13 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
         flags: new FormArray([this.createFlag()])
       })
     });
+
+    console.log('wwwwwwwww',this.createTimeLineForm.get('time_line')?.get('flags'))
   }
 
   createFlag(): FormGroup {
+
+
     return this.fb.group({
       year: new FormControl<string | null>(null + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
       flag_id: new FormControl<string | null>('flag_id_' + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
@@ -81,6 +91,13 @@ export class CreateFlagComponent implements OnInit, OnChanges, AfterViewInit {
       social_medias_chips: new FormArray([]),
       subject_tags: new FormArray([]),
     });
+
   }
+
+
+    // ⬇️ Get Flag form
+    get flagsForm() {
+      return this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+    }
 
 }
