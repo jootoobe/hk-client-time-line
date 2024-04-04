@@ -2,7 +2,7 @@
 
 ::ng-deep {
   .create-flag-dialog {
-    width: 35rem;
+    width: 32rem;
     height: auto;
     min-height: 40%;
     max-height: 89%;
@@ -49,20 +49,23 @@
       // width: 80%;
       width: 25rem;
     }
+  }
 
-    &_title-h1 {
-      margin-top: 2rem;
+  &_title-h1 {
+    margin-top: 2rem;
+    // background: red;
+  }
 
+  &_date {
+    &--help {
+      margin: 0.2rem 0 0 5rem;
+      position: absolute;
     }
-
   }
 }
 
 
-.date-help {
-  margin: 0.2rem 0 0 5rem;
-  position: absolute;
-}
+
 
 
 // =========== MATERIAL ===========
