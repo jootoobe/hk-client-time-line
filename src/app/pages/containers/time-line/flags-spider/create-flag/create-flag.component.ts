@@ -12,7 +12,7 @@ import { DateObjModel } from "../../../../../models/date-obj.model";
 import { DatePipe } from "@angular/common";
 import { LatitudeLongitudeService } from "../../../../../shared/services/latitude-longitude.service";
 import { ToastrService } from "ngx-toastr";
-import { TimeLineModel } from "../../../../../models/flag.model";
+import { FlagModel, TimeLineModel } from "../../../../../models/flag.model";
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -22,9 +22,8 @@ import { TimeLineModel } from "../../../../../models/flag.model";
 
 export class CreateFlagComponent implements OnInit, AfterViewInit {
 
-  @Input({required: true}) timeLine!:TimeLineModel
-
-
+  @Input({ required: true }) timeLine!: TimeLineModel
+  timestampExist!: FlagModel[];
 
 
   createTimeLineForm!: FormGroup
@@ -93,7 +92,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       flag_title: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       flag_description: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]),
       flag_style: new FormControl<any | null>(null, [Validators.required]),
-      flag_style2: new FormControl<any | null>(null, []),
       flag_created_at: new FormControl<string | null>(null, []),
       flag_update_at: new FormControl<string | null>('0', []),
       flag_margin_right: new FormControl<string | null>('0', []),
@@ -196,45 +194,79 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       })
   }
 
-  timestampDate(flag?: string) {
-
-    let datePicker: any = this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.value
+  timestampDate(sssssss?: string) {
+    this.timestampExist = []
+    let datePicker: any = ''
+    datePicker = this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.value
     console.log(datePicker)
     console.log('wwwwwww', this.time)
 
 
-    if (datePicker) {
+    // if (datePicker) {
       datePicker = datePicker.toISOString() // convert to timestemp
       let date: string = `${datePicker.split('T').shift()}T${this.time}${datePicker.substring(19)}`
       this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
 
       let dateSplit = datePicker.split('-')
       let newTimestamp = Date.parse(date.toString())
-
+      console.log(newTimestamp)
+      console.log(this.timeLine?.time_line?.flags)
 
       // Check if there are 01 or 02 identical timestamps
       for (let flag of this.timeLine?.time_line?.flags) {
-        console.log('ssssssssssssssssssssssssssss',flag)
-        // for (let f1 of f0.flags) {
-        //   if (f1.date_obj.timestamp === newTimestamp) {
-        //     timestampExist.push(f1)
-        //   }
-        // }
+        if (flag.date_obj.timestamp === newTimestamp) {
+          console.log('vvvvvvvvvvvvvvvvvvvvvvvvv', flag)
+          this.timestampExist.push(flag)
+        }
       }
 
-      this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
-        day_month_year: date,
-        day: (dateSplit[2]).split('T').shift(),
-        month: dateSplit[1],
-        month_s: dateSplit[1] === '01' ? 'JAN' : dateSplit[1] === '02' ? 'FEV' : dateSplit[1] === '03' ? 'MAR' : dateSplit[1] === '04' ? 'ABR' : dateSplit[1] === '05' ? 'MAI' : dateSplit[1] === '06' ? 'JUN' :
-          dateSplit[1] === '07' ? 'JUL' : dateSplit[1] === '08' ? 'AGO' : dateSplit[1] === '09' ? 'SET' : dateSplit[1] === '10' ? 'OUT' : dateSplit[1] === '11' ? 'NOV' : dateSplit[1] === '12' ? 'DEZ' : 'JAN',
-        month_code: Number(dateSplit[1]),
-        year: dateSplit[0],
-        timestamp: newTimestamp,
-        // time,
-      }), { emitEvent: false })
+      if (this.timestampExist.length === 2) {
+        return
+      }
 
-    }
+      if (this.timestampExist.length === 0) {
+        this.flagsForm.controls[0]?.get('flag_style')?.setValue(1)
+
+        this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
+          day_month_year: date,
+          day: (dateSplit[2]).split('T').shift(),
+          month: dateSplit[1],
+          month_s: dateSplit[1] === '01' ? 'JAN' : dateSplit[1] === '02' ? 'FEV' : dateSplit[1] === '03' ? 'MAR' : dateSplit[1] === '04' ? 'ABR' : dateSplit[1] === '05' ? 'MAI' : dateSplit[1] === '06' ? 'JUN' :
+            dateSplit[1] === '07' ? 'JUL' : dateSplit[1] === '08' ? 'AGO' : dateSplit[1] === '09' ? 'SET' : dateSplit[1] === '10' ? 'OUT' : dateSplit[1] === '11' ? 'NOV' : dateSplit[1] === '12' ? 'DEZ' : 'JAN',
+          month_code: Number(dateSplit[1]),
+          year: dateSplit[0],
+          timestamp: newTimestamp,
+          // time,
+        }), { emitEvent: false })
+
+      }
+
+      if (this.timestampExist.length === 1) {
+        console.log('pppppppppppppppppppppppppp')
+        this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
+
+        this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
+          day_month_year: date,
+          day: (dateSplit[2]).split('T').shift(),
+          month: dateSplit[1],
+          month_s: dateSplit[1] === '01' ? 'JAN' : dateSplit[1] === '02' ? 'FEV' : dateSplit[1] === '03' ? 'MAR' : dateSplit[1] === '04' ? 'ABR' : dateSplit[1] === '05' ? 'MAI' : dateSplit[1] === '06' ? 'JUN' :
+            dateSplit[1] === '07' ? 'JUL' : dateSplit[1] === '08' ? 'AGO' : dateSplit[1] === '09' ? 'SET' : dateSplit[1] === '10' ? 'OUT' : dateSplit[1] === '11' ? 'NOV' : dateSplit[1] === '12' ? 'DEZ' : 'JAN',
+          month_code: Number(dateSplit[1]),
+          year: dateSplit[0],
+          timestamp: newTimestamp,
+          // time,
+        }), { emitEvent: false })
+
+
+        this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
+
+        console.log('sssss', this.timestampExist)
+
+      }
+
+
+
+    // }
 
   }
 
