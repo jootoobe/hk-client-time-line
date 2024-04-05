@@ -27,7 +27,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
           flag_design: {
-            color_text: 'black',
+            color_text: '0,0,0',
             color_transparency: '0.2',
             color_hex: "#90ab3d",
             color_rgb: "144, 171, 64",
@@ -50,7 +50,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
             timestamp: 1708171200000,
             time: "12:00:00"
           },
-          social_medias_chips: [ {name:'Redes'}, {name:'TikTok'}, {name:'Wwwwwwwwww'}, {name:'Instagran'}, {name:'Wwwwwwwwww'}, {name:'Instagran'}, {name:'Wwwwwwwwww'}, {name:'Instagran'}],
+          social_medias_chips: [{ name: 'Redes' }, { name: 'TikTok' }, { name: 'Wwwwwwwwww' }, { name: 'Instagran' }, { name: 'Wwwwwwwwww' }, { name: 'Instagran' }, { name: 'Wwwwwwwwww' }, { name: 'Instagran' }],
           subject_tags: [],
 
           flags2: [
@@ -65,16 +65,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
               flag_update_at: "0",
               flag_margin_right: '0',
 
-              // public color_text: string,
-              // public color_transparency: string,
-              // public color_hex: string,
-              // public color_rgb: string,
-              // public color_hsl: string,
-              // public color_date: string,
-              // public color_chips: {background: string, text: string},
-
               flag_design: {
-                color_text: 'black',
+                color_text: '0,0,0',
                 color_transparency: '0.2',
                 color_hex: "#90ab3d",
                 color_rgb: "144, 171, 64",
@@ -132,21 +124,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     return flags2
   }
 
-  setStylesCards(flag1: FlagModel): any {
-    let styles = {
-      'border-left': '.5rem solid rgba(' + flag1.flag_design?.color_rgb + ',1)',
-      'background-color': `rgba(${flag1.flag_design?.color_rgb}, ${flag1.flag_design?.color_transparency})`
-    };
-    return styles;
-  }
 
 
-  setStylesDate(flag1: FlagModel): any {
-    let styles = {
-      'background-color': `rgba(${flag1.flag_design?.color_date}, 0.3)`
-    };
-    return styles;
-  }
+  //================================= FLAG STYLES ==============================
+  //==============================================================================
 
   setStylesText(flag1: FlagModel): any {
     let styles = {
@@ -163,5 +144,32 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     };
     return styles;
   }
+
+  setStylesDate(flag1: FlagModel): any {
+    if (flag1.flag_design?.color_date === '255,255,255') {
+      let styles = {
+        'background-color': `rgba(${flag1.flag_design?.color_date}, 1)`
+      };
+      return styles;
+    }
+    let styles = {
+      'background-color': `rgba(${flag1.flag_design?.color_date}, 0.3)`
+    };
+    return styles;
+  }
+
+  setStylesCards(flag1: FlagModel): any {
+    let styles = {
+      'border-left': '.5rem solid rgba(' + flag1.flag_design?.color_rgb + ',1)',
+      'background-color': `rgba(${flag1.flag_design?.color_rgb}, ${flag1.flag_design?.color_transparency})`
+    };
+    return styles;
+  }
+
+
+
+
+
+
 
 }

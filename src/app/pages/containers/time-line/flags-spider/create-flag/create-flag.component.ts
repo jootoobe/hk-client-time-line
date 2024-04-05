@@ -31,10 +31,10 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   // RADIO BUTTON
-  radioRedeTextColor:any = '0, 0, 0' // text colors
-  radioRedeNets = '1'
-  radioButtonDate = '144,171,64'
-  radioRedeTransparency = '0.2'
+  radioRedeTextColor = '0,0,0' // text colors
+  radioRedeNets = '1' // {background: '74,74,74', text: '255,255,255'}
+  radioButtonDate = '144,171,64' // cor fundo data com transparencia de 0.3
+  radioRedeTransparency = '0.2' // transparência bandeira
   constructor(
     private fb: FormBuilder,
     private stateService: StateService,
@@ -183,15 +183,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
   }
   radioButtonDateColor(e: MatRadioChange) {
-    console.log('22', e)
+    this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue(e.value)
 
 }
 
 
   onRadioButtonTransparencyColor(e: MatRadioChange) {
-    console.log('22', e)
-
-
+    this.flagsForm.controls[0]?.get('flag_design')?.get('color_transparency')?.setValue(e.value)
   }
 
 }

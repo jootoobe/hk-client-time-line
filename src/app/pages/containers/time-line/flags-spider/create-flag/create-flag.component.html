@@ -194,7 +194,7 @@
         </div>
         <mat-radio-group class=""
         (change)="onRadioButtonTextColor($event)"  [(ngModel)]="radioRedeTextColor" [ngModelOptions]="{standalone: true}" >
-          <mat-radio-button [value]="'74,74,74'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'0,0,0'" class="flag-modal_radio--colors" >
             <!-- Black-->
             1
           </mat-radio-button>
@@ -289,20 +289,20 @@
         </div>
         <mat-radio-group class=""
         (change)="radioButtonDateColor($event)"  [(ngModel)]="radioButtonDate" [ngModelOptions]="{standalone: true}" >
+          <mat-radio-button [value]="'144,171,64'" class="flag-modal_radio--colors" >
+            <!-- Mesma cor bandeira -->
+            1
+          </mat-radio-button>
           <mat-radio-button [value]="'0,0,0'" class="flag-modal_radio--colors" >
             <!-- Black -->
-            1
+            2
           </mat-radio-button>
           <mat-radio-button [value]="'255,255,255'" class="flag-modal_radio--colors" >
             <!-- White -->
-            2
+            3
           </mat-radio-button>
           <mat-radio-button [value]="'255,0,0'" class="flag-modal_radio--colors" >
             <!-- Red -->
-            3
-          </mat-radio-button>
-          <mat-radio-button [value]="'0,0,255'" class="flag-modal_radio--colors" >
-            <!-- blue -->
             4
           </mat-radio-button>
           <mat-radio-button [value]="'255,255,0'" class="flag-modal_radio--colors" >
