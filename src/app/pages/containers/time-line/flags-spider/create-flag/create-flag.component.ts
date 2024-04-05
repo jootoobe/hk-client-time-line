@@ -27,6 +27,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   // Datepicker timer
   timeHeader = MatDatepickerTimeHeaderComponent
   minDate = new Date('-100/01/01'); // lowest date accepted for creating the flag
+  time = '12:00:00'
 
   @ViewChild(TolltipCreateHelper, { static: true }) tolltipCreateHelper!: TolltipCreateHelper;
   help1: string = ''
@@ -104,13 +105,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       date_obj: this.fb.group({
         day_month_year: new FormControl<string | null>(null, [Validators.required, Validators.minLength(24)]), // A data day_month_year está com o horário certo
         date_origin: new FormControl<string | null>(null, [Validators.required, Validators.minLength(9), Validators.maxLength(10)]), // A data date_origin está com o horário errado - se tentar colocar o hotário certo da erro no  datepicker
-        day: new FormControl<string | null>(null, []),
-        month: new FormControl<string | null>(null, []),
+        day: new FormControl<string | null>(null, [Validators.required]),
+        month: new FormControl<string | null>(null, [Validators.required]),
         month_s: new FormControl<string | null>(null, []),
-        year: new FormControl<string | null>(null, []),
-        month_code: new FormControl<number | null>(0, []),
+        year: new FormControl<string | null>(null, [Validators.required]),
+        month_code: new FormControl<number | null>(0, [Validators.required]),
         timestamp: new FormControl<number | null>(null, [Validators.required]),
-        time: new FormControl<string | null>('12:00:00', []),
+        time: new FormControl<string | null>(this.time, [Validators.required]),
       }),
       social_medias_chips: new FormArray([]),
       subject_tags: new FormArray([]),
@@ -136,32 +137,57 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   //================================= 🅰️🅰️ TIME STEMP 🅰️🅰️ ==============================
   //==============================================================================
 
-  toggleDatePicker(ref: any) {
-    console.log('++++++++++++++++==', ref._opened)
+  toggleDatePicker(ref: any) {  // console.log('++++++++++++++++==', ref._opened)
+
   }
 
   setDateTimestamp() {
-    this.flagsForm.controls[0]?.get('date_obj')?.valueChanges
+    // GET DATE
+    this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.valueChanges
       .pipe(
         debounceTime(800), // digitação dentro do intervalo, ele espera pra fazer a busca
         distinctUntilChanged(),// Se eu digitar uma query - ele vai permitir apenas as msn que são diferentes umas das outras
       ).subscribe({
-        next: (flag: DateObjModel) => {
-          this.timestampDate(flag)
+        next: () => {
+          this.timestampDate()
+        },
+        error: (err) => { },
+        complete: () => { }
+      })
+
+    // GET TIME
+    this.flagsForm.controls[0]?.get('date_obj')?.get('time')?.valueChanges
+      .pipe(
+        debounceTime(800), // digitação dentro do intervalo, ele espera pra fazer a busca
+        distinctUntilChanged(),// Se eu digitar uma query - ele vai permitir apenas as msn que são diferentes umas das outras
+      ).subscribe({
+        next: (time: string) => {
+          console.log(time)
+          this.time = time
+          if(this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.value) {
+            this.timestampDate()
+          }
         },
         error: (err) => { },
         complete: () => { }
       })
   }
 
-  timestampDate(flag: DateObjModel) {
+  timestampDate(flag?: string) {
 
-    let datePicker = flag.day_month_year
-    console.log('wwwwwww', datePicker)
-
-    let time = flag.time
-    console.log('wwwwwww', time)
+    let datePicker: any = this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.value
+    console.log(datePicker)
+    console.log('wwwwwww',  this.time)
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
+
+    if (datePicker) {
+      datePicker = datePicker.toISOString() // convert to timestemp
+      let date: string = `${datePicker.split('T').shift()}T${this.time}${datePicker.substring(19)}`
+      this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
+      this.flagsForm.controls[0]?.get('date_obj')?.get('year')?.setValue(datePicker.split('-')[0])
+      console.log('wwwwwww', date)
+
+    }
 
   }
 
