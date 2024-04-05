@@ -130,6 +130,22 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     return styles;
   }
 
+  setStylesTextMonth(flag1: FlagModel): any {
+    let styles = {
+      'color': `rgba(${flag1.flag_design?.color_text}, 0.8)`
+    };
+    return styles;
+  }
+
+
+  setStylesTextYear(flag1: FlagModel): any {
+    let styles = {
+      'color': `rgba(${flag1.flag_design?.color_text}, 0.6)`
+    };
+    return styles;
+  }
+
+
 
   setStylesChip(flag1: FlagModel): any {
     let styles = {

@@ -51,13 +51,13 @@
                 <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
                 {{flag.date_obj.day}}
               </div>
-              <div class="inside-flag_date_month" [ngStyle]="setStylesText(flag2)">
+              <div class="inside-flag_date_month" [ngStyle]="setStylesTextMonth(flag2)">
                 <span>
                   <!-- {{flag.date_obj.month.split('/').shift() | titlecase}} -->
                   {{flag.date_obj.month_s}}
                 </span>
               </div>
-              <div class="inside-flag_date_year" [ngStyle]="setStylesText(flag2)">
+              <div class="inside-flag_date_year" [ngStyle]="setStylesTextYear(flag2)">
                 <!-- {{flag.date_obj.day_month_year.substring(0).split('-').shift()}} -->
                 {{flag.date_obj.year}}
               </div>
@@ -195,13 +195,13 @@
               <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
               {{flag.date_obj.day}}
             </div>
-            <div class="inside-flag_date_month" [ngStyle]="setStylesText(flag)">
+            <div class="inside-flag_date_month" [ngStyle]="setStylesTextMonth(flag)">
               <span>
                 <!-- {{flag.date_obj.month.split('/').shift() | titlecase}} -->
                 {{flag.date_obj.month_s}}
               </span>
             </div>
-            <div class="inside-flag_date_year" [ngStyle]="setStylesText(flag)">
+            <div class="inside-flag_date_year" [ngStyle]="setStylesTextYear(flag)">
               <!-- {{flag.date_obj.day_month_year.substring(0).split('-').shift()}} -->
               {{flag.date_obj.year}}
             </div>
