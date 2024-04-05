@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatRadioChange } from "@angular/material/radio";
 import { debounceTime, distinctUntilChanged, take, tap } from "rxjs";
@@ -12,6 +12,7 @@ import { DateObjModel } from "../../../../../models/date-obj.model";
 import { DatePipe } from "@angular/common";
 import { LatitudeLongitudeService } from "../../../../../shared/services/latitude-longitude.service";
 import { ToastrService } from "ngx-toastr";
+import { TimeLineModel } from "../../../../../models/flag.model";
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -20,6 +21,12 @@ import { ToastrService } from "ngx-toastr";
 })
 
 export class CreateFlagComponent implements OnInit, AfterViewInit {
+
+  @Input({required: true}) timeLine!:TimeLineModel
+
+
+
+
   createTimeLineForm!: FormGroup
   matcher!: MyErrorStateMatcher // form validator errors
 
@@ -205,14 +212,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       let newTimestamp = Date.parse(date.toString())
 
 
-      // // Check if there are 01 or 02 identical timestamps
-      // for (let f0 of this.flags) {
-      //   for (let f1 of f0.flags) {
-      //     if (f1.date_obj.timestamp === newTimestamp) {
-      //       timestampExist.push(f1)
-      //     }
-      //   }
-      // }
+      // Check if there are 01 or 02 identical timestamps
+      for (let flag of this.timeLine?.time_line?.flags) {
+        console.log('ssssssssssssssssssssssssssss',flag)
+        // for (let f1 of f0.flags) {
+        //   if (f1.date_obj.timestamp === newTimestamp) {
+        //     timestampExist.push(f1)
+        //   }
+        // }
+      }
 
       this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
         day_month_year: date,

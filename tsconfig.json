@@ -26,7 +26,10 @@
     // "allowSyntheticDefaultImports": true, // import * as myJson from '../assets/jsons/config.json';
     "lib": [
       "ES2022",
-      "dom"
+      "dom",
+      "dom.iterable",
+      "es5",
+      "es6",
     ]
   },
   "angularCompilerOptions": {

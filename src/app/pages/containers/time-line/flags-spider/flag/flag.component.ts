@@ -16,9 +16,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input({required: true}) timeLine!:TimeLineModel
 
-  // @Input() timeLine!:TimeLineModel
-  aaaa!: TimeLineModel
-
   constructor() {
     // if(this.aaaa?.time_line[0]?.flags2)
     // this.aaaa?.time_line[0]?.flags2[0]?.color_hsl
