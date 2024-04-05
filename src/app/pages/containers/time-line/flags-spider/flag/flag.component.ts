@@ -25,15 +25,16 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
           flag_update_at: "0",
           flag_margin_right: '3',
 
+
           flag_design: {
-            color_text: '255,0,0',
-            color_transparency: '0.5',
+            color_text: 'black',
+            color_transparency: '0.2',
             color_hex: "#90ab3d",
             color_rgb: "144, 171, 64",
             color_hsl: "75, 46%, 92%",
             color_date: '144, 171, 64',
             color_chips: {
-              background: '0,0,0',
+              background: '74,74,74',
               text: '255,255,255'
             },
           },
@@ -64,16 +65,24 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
               flag_update_at: "0",
               flag_margin_right: '0',
 
+              // public color_text: string,
+              // public color_transparency: string,
+              // public color_hex: string,
+              // public color_rgb: string,
+              // public color_hsl: string,
+              // public color_date: string,
+              // public color_chips: {background: string, text: string},
+
               flag_design: {
                 color_text: 'black',
                 color_transparency: '0.2',
                 color_hex: "#90ab3d",
                 color_rgb: "144, 171, 64",
-                color_date: '144, 171, 64',
                 color_hsl: "75, 46%, 92%",
+                color_date: '144, 171, 64',
                 color_chips: {
-                  background: 'black',
-                  text: 'white'
+                  background: '74,74,74',
+                  text: '255,255,255'
                 },
               },
 
