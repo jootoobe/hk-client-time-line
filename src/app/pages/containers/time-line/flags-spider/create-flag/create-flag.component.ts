@@ -51,7 +51,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => { // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
@@ -183,12 +184,12 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         next: (res: any) => {
           console.log('ZZZZZZZZZZZZZZZZZZZZZZzzz', res)
           if (res) {
-            this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
+            this.flagsForm.controls[0]?.get('geolocation')?.patchValue(({
               country_name: res.countryName,
               country_code: res.country_code,
               state: res.city,
-              city: res.countryName,
-              longitude: res.locality,
+              city: res.locality,
+              longitude: res.longitude,
               latitude: res.latitude,
             }))
 
