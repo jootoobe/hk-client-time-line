@@ -11,6 +11,7 @@ import { TolltipCreateHelper } from "./tolltip-create-helper";
 import { DateObjModel } from "../../../../../models/date-obj.model";
 import { DatePipe } from "@angular/common";
 import { LatitudeLongitudeService } from "../../../../../shared/services/latitude-longitude.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -46,6 +47,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     private convertColorService: ConvertColorService,
     private datePipe: DatePipe,
     private latitudeLongitudeService: LatitudeLongitudeService,
+    private toastrService: ToastrService,
   ) {
 
     this.buildForm()
@@ -111,7 +113,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         year: new FormControl<string | null>(null, [Validators.required]),
         month_code: new FormControl<number | null>(0, [Validators.required]),
         timestamp: new FormControl<number | null>(null, [Validators.required]),
-        time: new FormControl<string | null>(this.time, [Validators.required]),
+        time: new FormControl<string | null>(this.time, [Validators.required, Validators.minLength(8)]),
       }),
       social_medias_chips: new FormArray([]),
       subject_tags: new FormArray([]),
@@ -149,7 +151,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         distinctUntilChanged(),// Se eu digitar uma query - ele vai permitir apenas as msn que são diferentes umas das outras
       ).subscribe({
         next: () => {
-          this.timestampDate()
+          console.log(this.time.length)
+          if (this.time.length < 8) {
+            this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.setValue('')
+            this.toastrService.error('É obrigatório', 'Horário');
+            return
+          }
+          if (this.time.length >= 8) {
+            this.timestampDate()
+          }
         },
         error: (err) => { },
         complete: () => { }
@@ -162,10 +172,17 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         distinctUntilChanged(),// Se eu digitar uma query - ele vai permitir apenas as msn que são diferentes umas das outras
       ).subscribe({
         next: (time: string) => {
-          console.log(time)
+          console.log(time.length)
           this.time = time
-          if(this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.value) {
-            this.timestampDate()
+
+          if (time.length < 8) {
+            this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.setValue('')
+            return
+          }
+          if (time.length >= 8) {
+            if (this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.value) {
+              this.timestampDate()
+            }
           }
         },
         error: (err) => { },
@@ -177,7 +194,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     let datePicker: any = this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.value
     console.log(datePicker)
-    console.log('wwwwwww',  this.time)
+    console.log('wwwwwww', this.time)
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
 
     if (datePicker) {
