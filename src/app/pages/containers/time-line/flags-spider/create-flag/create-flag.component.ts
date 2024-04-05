@@ -182,7 +182,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.latitudeLongitudeService.latitudeLongitude()
       .subscribe({
         next: (res: any) => {
-          console.log('ZZZZZZZZZZZZZZZZZZZZZZzzz', res)
           if (res) {
             this.flagsForm.controls[0]?.get('geolocation')?.patchValue(({
               country_name: res.countryName,
