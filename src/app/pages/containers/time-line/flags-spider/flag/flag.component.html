@@ -230,7 +230,7 @@
             <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'.15rem'" >
 
               @for (chip of flag.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
-              <mat-grid-tile [rowspan]="'3'" >
+              <mat-grid-tile [rowspan]="'3'" class="inside-flag_chips-list">
 
                 <div *ngIf="ichip < 6 && chip.name.length > 9" >
                   <div class="inside-flag_chips">

@@ -53,7 +53,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
             timestamp: 1708171200000,
             time: "12:00:00"
           },
-          social_medias_chips: [ {name:'Redes'}, {name:'TikTok'}, {name:'T'}, {name:'Instagran'}, {name:'Wwwwwwwwww'}, {name:'Instagran'}, {name:'Wwwwwwwwww'}, {name:'Instagran'}],
+          social_medias_chips: [ {name:'Redes'}, {name:'TikTok'}, {name:'Wwwwwwwwww'}, {name:'Instagran'}, {name:'Wwwwwwwwww'}, {name:'Instagran'}, {name:'Wwwwwwwwww'}, {name:'Instagran'}],
           subject_tags: [],
 
           flags2: [

@@ -167,11 +167,14 @@
 
   // }
 
-  // &_chips-list{
-  //   // height: 5rem;
-  //   // margin-bottom: 5rem;
-  //   background: red;
-  // }
+  &_chips-list{
+    // height: 5rem;
+    // margin-bottom: 5rem;
+    // background: red;
+    margin-left: .3rem;
+    max-width: 9.5rem;
+  }
+
 
   &_chips{
       color: rgba(var(--color-white), 1);
@@ -227,4 +230,11 @@
       position: absolute;
     }
   }
+}
+
+// Importante para colocar o material chip todo no início
+// align-items: start !important;
+.mat-grid-tile-content {
+  align-items: start !important;
+  justify-content: start !important;
 }
