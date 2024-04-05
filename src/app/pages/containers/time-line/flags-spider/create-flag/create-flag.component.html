@@ -170,38 +170,6 @@
         </mat-form-field>
       </div>
 
-
-      <!-- color-picker -->
-      <div class="flag-modal_color-picker" [formGroupName]="0">
-        <mat-form-field class="input-color" floatPlaceholder="never" floatLabel="always">
-          <!-- Which color represents the flag? -->
-          <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.color.mat-label' | translate}} </mat-label>
-          <!-- [disableControl]="disableColor" -->
-          <input *ngIf="!disableColor"
-                  matInput
-                  placeholder=""
-                  readonly
-                  style="outline: none !important"
-                  type="color"
-                  formControlName="color_hex"
-                  (input)="convertColor()"
-                  class="">
-          <input *ngIf="disableColor"
-                  matInput
-                  placeholder=""
-                  [value]="flagsForm.controls[0].get('color_hex')?.value"
-                  readonly
-                  style="outline: none !important"
-                  type="color"
-                  disabled="true"
-                  class="">
-          <mat-error>
-            error
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-
       <!-- RADIO COR TEXTO -->
       <div class="flag-modal_radio">
         <div class="flag-modal_radio--text">
@@ -297,49 +265,6 @@
         </mat-radio-group>
       </div>
 
-
-      <!-- RADIO COR TRANSPARÊNCIA FUNDO -->
-      <div class="flag-modal_radio">
-        <div class="flag-modal_radio--text">
-          Cor transparência bandeira
-        <!-- Custom ToolTip -->
-        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
-            matSuffix
-            customToolTip
-            [contentTemplate]="template_help5"
-            [originX]="'center'"
-            [originY]="'bottom'"
-            [overlayX]="'center'"
-            [overlayY]="'top'"
-            [offsetY]="5">
-            help_outline
-        </i>
-      <ng-template #template_help5>
-        <div  customToolTipChiel
-              [innerHTML]="help1 | safeDomSanitizer: 'html'">
-        </div>
-      </ng-template>
-        </div>
-        <mat-radio-group class=""
-        (change)="onRadioButtonTransparencyColor($event)"  [(ngModel)]="radioRedeTransparency" [ngModelOptions]="{standalone: true}" >
-          <mat-radio-button [value]="'0.1'" class="flag-modal_radio--colors" >
-            1
-          </mat-radio-button>
-          <mat-radio-button [value]="'0.2'" class="flag-modal_radio--colors" >
-            2
-          </mat-radio-button>
-          <mat-radio-button [value]="'0.3'" class="flag-modal_radio--colors" >
-            3
-          </mat-radio-button>
-          <mat-radio-button [value]="'0.4'" class="flag-modal_radio--colors" >
-            4
-          </mat-radio-button>
-          <mat-radio-button [value]="'0.5'" class="flag-modal_radio--colors" >
-            5
-          </mat-radio-button>
-        </mat-radio-group>
-      </div>
-
       <!-- RADIO COR DATA FUNDO -->
       <div class="flag-modal_radio">
         <div class="flag-modal_radio--text">
@@ -387,7 +312,82 @@
         </mat-radio-group>
       </div>
 
+      <!-- RADIO COR TRANSPARÊNCIA FUNDO -->
+      <div class="flag-modal_radio">
+        <div class="flag-modal_radio--text">
+          Cor transparência bandeira
+        <!-- Custom ToolTip -->
+        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            matSuffix
+            customToolTip
+            [contentTemplate]="template_help5"
+            [originX]="'center'"
+            [originY]="'bottom'"
+            [overlayX]="'center'"
+            [overlayY]="'top'"
+            [offsetY]="5">
+            help_outline
+        </i>
+      <ng-template #template_help5>
+        <div  customToolTipChiel
+              [innerHTML]="help1 | safeDomSanitizer: 'html'">
+        </div>
+      </ng-template>
+        </div>
+        <mat-radio-group class=""
+        (change)="onRadioButtonTransparencyColor($event)"  [(ngModel)]="radioRedeTransparency" [ngModelOptions]="{standalone: true}" >
+          <mat-radio-button [value]="'0.1'" class="flag-modal_radio--colors" >
+            1
+          </mat-radio-button>
+          <mat-radio-button [value]="'0.2'" class="flag-modal_radio--colors" >
+            2
+          </mat-radio-button>
+          <mat-radio-button [value]="'0.3'" class="flag-modal_radio--colors" >
+            3
+          </mat-radio-button>
+          <mat-radio-button [value]="'0.4'" class="flag-modal_radio--colors" >
+            4
+          </mat-radio-button>
+          <mat-radio-button [value]="'0.5'" class="flag-modal_radio--colors" >
+            5
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
 
+
+      <!-- color-picker -->
+      <div class="flag-modal_color-picker" [formGroupName]="0">
+        <mat-form-field class="input-color" floatPlaceholder="never" floatLabel="always">
+          <!-- Which color represents the flag? -->
+          <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.color.mat-label' | translate}} </mat-label>
+          <!-- [disableControl]="disableColor" -->
+          <input *ngIf="!disableColor"
+                  matInput
+                  placeholder=""
+                  readonly
+                  style="outline: none !important"
+                  type="color"
+                  formControlName="color_hex"
+                  (input)="convertColor()"
+                  class="">
+          <input *ngIf="disableColor"
+                  matInput
+                  placeholder=""
+                  [value]="flagsForm.controls[0].get('color_hex')?.value"
+                  readonly
+                  style="outline: none !important"
+                  type="color"
+                  disabled="true"
+                  class="">
+          <mat-error>
+            error
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+
+      <!-- BUTTON -->
       <div class="flag-modal_btn">
 
         <button mat-stroked-button
