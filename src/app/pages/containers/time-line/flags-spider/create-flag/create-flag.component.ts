@@ -145,7 +145,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   setDateTimestamp() {
     // GET DATE
-    this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.valueChanges
+    this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.valueChanges
       .pipe(
         debounceTime(800), // digitação dentro do intervalo, ele espera pra fazer a busca
         distinctUntilChanged(),// Se eu digitar uma query - ele vai permitir apenas as msn que são diferentes umas das outras
@@ -153,7 +153,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         next: () => {
           console.log(this.time.length)
           if (this.time.length < 8) {
-            this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.setValue('')
+            this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.setValue('')
             this.toastrService.error('É obrigatório', 'Horário');
             return
           }
@@ -176,11 +176,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           this.time = time
 
           if (time.length < 8) {
-            this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.setValue('')
+            this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.setValue('')
             return
           }
           if (time.length >= 8) {
-            if (this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.value) {
+            if (this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.value) {
               this.timestampDate()
             }
           }
@@ -192,17 +192,30 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   timestampDate(flag?: string) {
 
-    let datePicker: any = this.flagsForm.controls[0]?.get('date_obj')?.get('day_month_year')?.value
+    let datePicker: any = this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.value
     console.log(datePicker)
     console.log('wwwwwww', this.time)
-    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
+
 
     if (datePicker) {
       datePicker = datePicker.toISOString() // convert to timestemp
       let date: string = `${datePicker.split('T').shift()}T${this.time}${datePicker.substring(19)}`
       this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
-      this.flagsForm.controls[0]?.get('date_obj')?.get('year')?.setValue(datePicker.split('-')[0])
-      console.log('wwwwwww', date)
+
+      let dateSplit = datePicker.split('-')
+      let newTimestamp = Date.parse(date.toString())
+
+      this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
+        day_month_year: date,
+        day: (dateSplit[2]).split('T').shift(),
+        month: dateSplit[1],
+        month_s: dateSplit[1] === '01' ? 'JAN' : dateSplit[1] === '02' ? 'FEV' : dateSplit[1] === '03' ? 'MAR' : dateSplit[1] === '04' ? 'ABR' : dateSplit[1] === '05' ? 'MAI' : dateSplit[1] === '06' ? 'JUN' :
+          dateSplit[1] === '07' ? 'JUL' : dateSplit[1] === '08' ? 'AGO' : dateSplit[1] === '09' ? 'SET' : dateSplit[1] === '10' ? 'OUT' : dateSplit[1] === '11' ? 'NOV' : dateSplit[1] === '12' ? 'DEZ' : 'JAN',
+        month_code: Number(dateSplit[1]),
+        year: dateSplit[0],
+        timestamp: newTimestamp,
+        // time,
+      }), { emitEvent: false })
 
     }
 
@@ -247,6 +260,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
   vrifyTimestapnFlag() {
+    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
+    // if (this.flagEdit === 'create') {
+    //   this.flagsForm['controls'][0]?.get('flag_created_at')?.setValue(currentlyDate)
+
+    // } else if (this.flagEdit === 'edit_flag1' || this.flagEdit === 'edit_flag2') {
+    //   this.flagsForm['controls'][0]?.get('flag_update_at')?.setValue(currentlyDate)
+    // }
     // I need this filter to add the flag in the same year
     // let yearFlag = this.flags.filter((yearFlag: any) => yearFlag.year === this.createTimeLineForm.get('year')?.value);
   }
