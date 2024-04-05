@@ -217,7 +217,7 @@
           <!-- Chips -->
           <div style="height: 12rem; width: 100%;">
             @if(flag.social_medias_chips.length === 0) {
-            <mat-chip-listbox class="inside-flag_no-net">
+            <div class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
               <p>
                 <mark> {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}</mark>
@@ -225,32 +225,32 @@
               <p>
                 {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
               </p>
-            </mat-chip-listbox>
+            </div>
             } @else {
-            <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'0rem'">
+            <mat-grid-list cols="3" rowHeight="1rem" [gutterSize]="'.15rem'" >
 
               @for (chip of flag.social_medias_chips; track trackFlagsDataJson; let ichip = $index) {
-              <mat-grid-tile [rowspan]="'3'">
+              <mat-grid-tile [rowspan]="'3'" >
 
-                <mat-chip-listbox *ngIf="ichip < 6 && chip.name.length > 9">
-                  <mat-chip>
+                <div *ngIf="ichip < 6 && chip.name.length > 9" >
+                  <div class="inside-flag_chips">
                     <!-- {{chip.name | truncate:8}} -->
                     {{chip.name | titlecase | truncate:6}}
-                  </mat-chip>
-                </mat-chip-listbox>
+                  </div>
+                </div>
 
-                <mat-chip-listbox *ngIf="ichip < 6  && chip.name.length <= 9">
-                  <mat-chip>
+                <div *ngIf="ichip < 6  && chip.name.length <= 9">
+                  <div class="inside-flag_chips">
                     <!-- {{chip.name | truncate:8}} -->
                     {{chip.name | titlecase }}
-                  </mat-chip>
-                </mat-chip-listbox>
+                  </div>
+                </div>
 
-                <mat-chip-listbox *ngIf="ichip===6">
-                  <mat-chip>
+                <div *ngIf="ichip===6">
+                  <div class="inside-flag_chips">
                     +{{flag.social_medias_chips.length - 6}}
-                  </mat-chip>
-                </mat-chip-listbox>
+                  </div>
+                </div>
               </mat-grid-tile>
               }
             </mat-grid-list>
