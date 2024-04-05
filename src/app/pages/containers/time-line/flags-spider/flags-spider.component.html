@@ -1,8 +1,7 @@
 
 
 <ng-template #createTimeLine>
-  <create-flag>
-  </create-flag>
+  <create-flag > </create-flag>
 </ng-template>
 
 
@@ -17,7 +16,7 @@
 
   <!-- Bottom div 80% -->
   <div class="second-div"  appDragScroll id="moveWheelId">
-    <flag> </flag>
+    <flag [timeLine]="timeLine"> </flag>
   </div>
 
   <!-- [ngStyle]="{'margin': openColse ? '-1.5rem': '2rem' }" -->

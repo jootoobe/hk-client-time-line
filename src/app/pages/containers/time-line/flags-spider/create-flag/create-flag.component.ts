@@ -85,7 +85,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       flag_id: new FormControl<string | null>('flag_id_' + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
       flag_title: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       flag_description: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]),
-      flag_style: new FormControl<any | null>(1, [Validators.required]),
+      flag_style: new FormControl<any | null>(null, [Validators.required]),
       flag_style2: new FormControl<any | null>(null, []),
       flag_created_at: new FormControl<string | null>(null, []),
       flag_update_at: new FormControl<string | null>('0', []),
@@ -203,6 +203,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
       let dateSplit = datePicker.split('-')
       let newTimestamp = Date.parse(date.toString())
+
+
+      // // Check if there are 01 or 02 identical timestamps
+      // for (let f0 of this.flags) {
+      //   for (let f1 of f0.flags) {
+      //     if (f1.date_obj.timestamp === newTimestamp) {
+      //       timestampExist.push(f1)
+      //     }
+      //   }
+      // }
 
       this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
         day_month_year: date,
