@@ -20,7 +20,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
           flag_description: "wwwwwww",
           flag_style: 1,
 
-          flag_local_zone: "America/Sao_Paulo",
           flag_created_at: "Feb 16, 2024, 9:09:03 PM",
           flag_update_at: "0",
           flag_margin_right: '3',
@@ -60,7 +59,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
               flag_title: "FLAG2",
               flag_description: "wwwwwww",
               flag_style: 2,
-              flag_local_zone: "America/Sao_Paulo",
               flag_created_at: "Feb 16, 2024, 9:09:03 PM",
               flag_update_at: "0",
               flag_margin_right: '0',

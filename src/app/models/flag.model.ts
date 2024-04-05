@@ -11,7 +11,6 @@ export class FlagModel {
     public flag_title: string,
     public flag_description: string,
     public flag_style: any,
-    public flag_local_zone: string,
     public flag_created_at: string,
     public flag_update_at: string,
     public flag_margin_right: string,
