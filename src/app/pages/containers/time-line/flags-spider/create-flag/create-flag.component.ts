@@ -31,9 +31,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   // RADIO BUTTON
-  radioRedeTextColor = '74,74,74' // text colors
+  radioRedeTextColor:any = '0, 0, 0' // text colors
   radioRedeNets = '1'
-  radioButtonDate = '0,0,0'
+  radioButtonDate = '144,171,64'
   radioRedeTransparency = '0.2'
   constructor(
     private fb: FormBuilder,
@@ -70,17 +70,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       })
     });
 
-    console.log('wwwwwwwww', this.createTimeLineForm.get('time_line')?.get('flags'))
+
   }
 
   createFlag(): FormGroup {
 
     // public color_text: string,
-    // public color_nets: {background: string, text: string},
     // public color_transparency: string,
     // public color_hex: string,
     // public color_rgb: string,
     // public color_hsl: string,
+    // public color_chips: {background: string, text: string},
+    // public color_date: {background: string, transparency: string},
 
 
     return this.fb.group({
@@ -96,15 +97,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       flag_margin_right: new FormControl<string | null>('0', []),
 
       flag_design: this.fb.group({
-        color_text: new FormControl<string | null>(null, [Validators.required]), // A data day_month_year está com o horário certo
-        color_nets: this.fb.group({
-          background: new FormControl<string | null>(null, [Validators.required]),
-          text: new FormControl<string | null>(null, [Validators.required]),
-        }),
-        color_transparency: new FormControl<string | null>(null, [Validators.required]),
+        color_text: new FormControl<string | null>('0, 0, 0', [Validators.required]),
+        color_transparency: new FormControl<string | null>('0.3', [Validators.required]),
         color_hex: new FormControl<string | null>('#90ab3d', [Validators.required]),
         color_rgb: new FormControl<string | null>('144, 171, 64', [Validators.required]),
         color_hsl: new FormControl<string | null>('75, 46%, 92%', [Validators.required]),
+        color_date: new FormControl<string | null>('144, 171, 64', [Validators.required]),
+        color_chips: this.fb.group({
+          background: new FormControl<string | null>('74,74,74', [Validators.required]),
+          text: new FormControl<string | null>('255,255,255', [Validators.required]),
+        }),
+
+
       }),
 
       date_obj: this.fb.group({
@@ -158,14 +162,25 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   onRadioButtonTextColor(e: MatRadioChange) {
-    console.log('11', e)
-
+    this.flagsForm.controls[0]?.get('flag_design')?.get('color_text')?.setValue(e.value)
   }
 
   onRadioButtonNetsColor(e: MatRadioChange) {
-    console.log('22', e)
-
-
+    if(e.value === '1') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({background: '74,74,74', text: '255,255,255'})
+    }
+    else if(e.value === '2') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({background: '255,255,255', text: '74,74,74'})
+    }
+    else if(e.value === '3') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({background: '74,74,74', text: '255,0,0'})
+    }
+    else if(e.value === '4') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({background: '255,0,0', text: '255,255,255'})
+    }
+    else if(e.value === '5') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({background: '74,74,74', text: '255,255,0'})
+    }
   }
   radioButtonDateColor(e: MatRadioChange) {
     console.log('22', e)

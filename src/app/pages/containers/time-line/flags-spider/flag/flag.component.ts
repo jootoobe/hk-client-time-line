@@ -27,15 +27,15 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
           flag_design: {
             color_text: '255,0,0',
-            color_chips: {
-              background: '0,0,0',
-              text: '255,255,255'
-            },
             color_transparency: '0.5',
             color_hex: "#90ab3d",
             color_rgb: "144, 171, 64",
             color_hsl: "75, 46%, 92%",
-            color_date: {background: '144, 171, 64', transparency: '0.3'}
+            color_date: '144, 171, 64',
+            color_chips: {
+              background: '0,0,0',
+              text: '255,255,255'
+            },
           },
 
           date_obj: {
@@ -66,15 +66,15 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
               flag_design: {
                 color_text: 'black',
+                color_transparency: '0.2',
+                color_hex: "#90ab3d",
+                color_rgb: "144, 171, 64",
+                color_date: '144, 171, 64',
+                color_hsl: "75, 46%, 92%",
                 color_chips: {
                   background: 'black',
                   text: 'white'
                 },
-                color_transparency: '0.2',
-                color_hex: "#90ab3d",
-                color_rgb: "144, 171, 64",
-                color_hsl: "75, 46%, 92%",
-                color_date: {background: '255, 255, 0', transparency: '1'}
               },
 
 
@@ -134,7 +134,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   setStylesDate(flag1: FlagModel): any {
     let styles = {
-      'background-color': `rgba(${flag1.flag_design?.color_date.background}, ${flag1.flag_design?.color_date.transparency})`
+      'background-color': `rgba(${flag1.flag_design?.color_date}, 0.3)`
     };
     return styles;
   }
