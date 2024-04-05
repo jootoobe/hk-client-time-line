@@ -226,24 +226,24 @@
         </div>
         <mat-radio-group class=""
         (change)="onRadioButtonTextColor($event)"  [(ngModel)]="radioRedeTextColor" [ngModelOptions]="{standalone: true}" >
-          <mat-radio-button [value]="'0,0,0'" class="flag-modal_radio--colors" >
-            <!-- Black -->
+          <mat-radio-button [value]="'1'" class="flag-modal_radio--colors" >
+            <!-- Black 0,0,0'-->
             1
           </mat-radio-button>
-          <mat-radio-button [value]="'255,255,255'" class="flag-modal_radio--colors" >
-            <!-- White -->
+          <mat-radio-button [value]="'2'" class="flag-modal_radio--colors" >
+            <!-- White 255,255,255-->
             2
           </mat-radio-button>
-          <mat-radio-button [value]="'255,0,0'" class="flag-modal_radio--colors" >
-            <!-- Red -->
+          <mat-radio-button [value]="'3'" class="flag-modal_radio--colors" >
+            <!-- Red 255,0,0-->
             3
           </mat-radio-button>
-          <mat-radio-button [value]="'0,0,255'" class="flag-modal_radio--colors" >
-            <!-- blue -->
+          <mat-radio-button [value]="'4'" class="flag-modal_radio--colors" >
+            <!-- blue 0,0,255-->
             4
           </mat-radio-button>
-          <mat-radio-button [value]="'255,255,0'" class="flag-modal_radio--colors" >
-            <!-- Yellow -->
+          <mat-radio-button [value]="'5'" class="flag-modal_radio--colors" >
+            <!-- Yellow 255,255,0-->
             5
           </mat-radio-button>
         </mat-radio-group>
