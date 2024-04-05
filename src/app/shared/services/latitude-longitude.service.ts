@@ -11,10 +11,7 @@ export class LatitudeLongitudeService {
   constructor(private http: HttpClient) { }
 
   latitudeLongitude(): Observable<any> {
-    return this.http.get<any>('https://api.bigdatacloud.net/data/reverse-geocode-client').pipe(
-      map((res) => {
-        return res;
-      }));
+    return this.http.get<any>('https://api.bigdatacloud.net/data/reverse-geocode-client')
   }
 
 }

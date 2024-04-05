@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatRadioChange } from "@angular/material/radio";
-import { debounceTime, distinctUntilChanged, tap } from "rxjs";
+import { debounceTime, distinctUntilChanged, take, tap } from "rxjs";
 
 import { MatDatepickerTimeHeaderComponent } from "../../../../../components/datepicker-time/mat-datepicker-time-header.component";
 import { ConvertColorService } from "../../../../../shared/services/convert-color.service";
@@ -58,6 +58,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       this.help1 = this.tolltipCreateHelper.help1()
       this.help2 = this.tolltipCreateHelper.help2()
     }, 500)
+
+    this.setDateTimestamp()
   }
 
 
@@ -70,7 +72,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       })
     });
 
-    this.setDateTimestamp()
+
   }
 
   createFlagobject(): FormGroup {
@@ -134,56 +136,78 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   //==============================================================================
 
   toggleDatePicker(ref: any) {
-    // console.log('++++++++++++++++==',ref._opened)
+    console.log('++++++++++++++++==', ref._opened)
   }
 
   setDateTimestamp() {
+    console.log('sssssssss 🅰️')
     this.flagsForm.controls[0]?.get('date_obj')?.valueChanges
-    .pipe(
-      debounceTime(800), // digitação dentro do intervalo, ele espera pra fazer a busca
-      distinctUntilChanged(), // Se eu digitar uma query - ele vai permitir apenas as msn que são diferentes umas das outras
-    ).subscribe({
-      next: (flag: DateObjModel) => {
-        this.latitudeLongitude(flag)
-      },
-      error: (err) => { },
-      complete: () => { }
-    })
+      .pipe(
+        debounceTime(800), // digitação dentro do intervalo, ele espera pra fazer a busca
+        distinctUntilChanged(),// Se eu digitar uma query - ele vai permitir apenas as msn que são diferentes umas das outras
+      ).subscribe({
+        next: (flag: DateObjModel) => {
+          this.timestampDate(flag)
+        },
+        error: (err) => { },
+        complete: () => { }
+      })
   }
 
+  timestampDate(flag: DateObjModel) {
 
-  latitudeLongitude(flag: DateObjModel) {
-    this.latitudeLongitudeService.latitudeLongitude()
-    .subscribe({
-      next: (res: any) => {
+    let datePicker = flag.day_month_year
+    console.log('wwwwwww', datePicker)
 
-        console.log('sssssssssssssssssssssss',res)
+    let time = flag.time
+    console.log('wwwwwww', time)
+    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
 
-        let datePicker = flag.day_month_year
-        console.log('wwwwwww',datePicker)
-
-        let time = flag.time
-        console.log('wwwwwww',time)
-        let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
-        let userTimeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone; // Pega a região em que a pessoa se encontra
-        console.log(userTimeZone)
-      },
-      error: (err) => { },
-      complete: () => { }
-    })
   }
+
 
 
   //================================= 🅰️🅰️ CREATE FLAG 🅰️🅰️ ==============================
   //==============================================================================
-  vrifyTimestapnFlag() {
 
+  latitudeLongitude() {
+    if (this.createTimeLineForm.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      return
+    }
 
-    // I need this filter to add the flag in the same year
-    // let yearFlag = this.flags.filter((yearFlag: any) => yearFlag.year === this.createTimeLineForm.get('year')?.value);
+    this.vrifyTimestapnFlag()
 
+    this.latitudeLongitudeService.latitudeLongitude()
+      .subscribe({
+        next: (res: any) => {
+          console.log('ZZZZZZZZZZZZZZZZZZZZZZzzz', res)
+          if (res) {
+            this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
+              country_name: res.countryName,
+              country_code: res.country_code,
+              state: res.city,
+              city: res.countryName,
+              longitude: res.locality,
+              latitude: res.latitude,
+            }))
+
+            this.createFlag()
+          }
+        },
+        error: (err) => {
+          this.createFlag()
+        },
+        complete: () => {
+
+        }
+      })
   }
 
+  vrifyTimestapnFlag() {
+    // I need this filter to add the flag in the same year
+    // let yearFlag = this.flags.filter((yearFlag: any) => yearFlag.year === this.createTimeLineForm.get('year')?.value);
+  }
 
   createFlag() {
     if (this.createTimeLineForm.invalid) {
@@ -191,8 +215,10 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       return
     }
 
-    this.vrifyTimestapnFlag()
   }
+
+
+
 
 
   //================================= 🅰️🅰️ RADIO BUTTON 🅰️🅰️==============================
@@ -231,16 +257,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   //================================= 🅰️🅰️ CONVERT COLORS 🅰️🅰️ ==============================
   //==============================================================================
 
-    //⬇️ Convert Color
-    convertColor() {
-      // this.createTimeLineForm.value.flags[0]['color_hex']
-      let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-      console.log('ssssssss',flags)
-      let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
-      flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
-      flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
-      flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
+  //⬇️ Convert Color
+  convertColor() {
+    // this.createTimeLineForm.value.flags[0]['color_hex']
+    let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+    console.log('ssssssss', flags)
+    let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
+    flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
+    flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
+    flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
 
-    }
+  }
+
+
+
 
 }
