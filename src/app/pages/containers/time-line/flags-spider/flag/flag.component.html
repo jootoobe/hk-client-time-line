@@ -233,21 +233,21 @@
               <mat-grid-tile [rowspan]="'3'" class="inside-flag_chips-list">
 
                 <div *ngIf="ichip < 6 && chip.name.length > 9" >
-                  <div class="inside-flag_chips">
+                  <div class="inside-flag_chips" [ngStyle]="setStylesChip(flag)">
                     <!-- {{chip.name | truncate:8}} -->
                     {{chip.name | titlecase | truncate:6}}
                   </div>
                 </div>
 
                 <div *ngIf="ichip < 6  && chip.name.length <= 9">
-                  <div class="inside-flag_chips">
+                  <div class="inside-flag_chips" [ngStyle]="setStylesChip(flag)">
                     <!-- {{chip.name | truncate:8}} -->
                     {{chip.name | titlecase }}
                   </div>
                 </div>
 
                 <div *ngIf="ichip===6">
-                  <div class="inside-flag_chips">
+                  <div class="inside-flag_chips" [ngStyle]="setStylesChip(flag)">
                     +{{flag.social_medias_chips.length - 6}}
                   </div>
                 </div>

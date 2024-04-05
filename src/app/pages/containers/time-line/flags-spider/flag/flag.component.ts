@@ -32,8 +32,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
           flag_design: {
             color_text: '255,0,0',
             color_chips: {
-              background: 'black',
-              text: 'white'
+              background: '0,0,0',
+              text: '255,255,255'
             },
             color_transparency: '0.5',
             color_hex: "#90ab3d",
@@ -154,5 +154,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
 
+  setStylesChip(flag1: FlagModel): any {
+    let styles = {
+      'color': `rgba(${flag1.flag_design?.color_chips.text}, 1)`,
+      'background-color': `rgba(${flag1.flag_design?.color_chips.background}, 1)`
+    };
+    return styles;
+  }
 
 }
