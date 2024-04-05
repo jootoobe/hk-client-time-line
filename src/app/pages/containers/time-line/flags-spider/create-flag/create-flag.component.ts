@@ -41,22 +41,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     private convertColorService: ConvertColorService,
   ) {
 
-
     this.buildForm()
-
   }
 
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     setTimeout(() => { // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
-
       this.help1 = this.tolltipCreateHelper.help1()
       this.help2 = this.tolltipCreateHelper.help2()
-
     }, 2000)
   }
 
@@ -74,16 +68,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
   createFlag(): FormGroup {
-
-    // public color_text: string,
-    // public color_transparency: string,
-    // public color_hex: string,
-    // public color_rgb: string,
-    // public color_hsl: string,
-    // public color_chips: {background: string, text: string},
-    // public color_date: {background: string, transparency: string},
-
-
     return this.fb.group({
       year: new FormControl<string | null>(null + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
       flag_id: new FormControl<string | null>('flag_id_' + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
@@ -107,10 +91,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           background: new FormControl<string | null>('74,74,74', [Validators.required]),
           text: new FormControl<string | null>('255,255,255', [Validators.required]),
         }),
-
-
       }),
-
       date_obj: this.fb.group({
         day_month_year: new FormControl<string | null>(null, [Validators.required, Validators.minLength(24)]), // A data day_month_year está com o horário certo
         date_origin: new FormControl<string | null>(null, [Validators.required, Validators.minLength(9), Validators.maxLength(10)]), // A data date_origin está com o horário errado - se tentar colocar o hotário certo da erro no  datepicker
