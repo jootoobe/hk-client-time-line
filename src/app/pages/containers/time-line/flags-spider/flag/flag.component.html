@@ -24,8 +24,9 @@
 
               <!-- Menu Edit Delete -->
               <div class="box-inside-flag-title ">
-                <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon" [ngStyle]="setStylesText(flag2)"
-                  id="menu-{{flag2.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+                <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
+                [ngStyle]="setStylesText(flag2)"
+                [matMenuTriggerFor]="menuEditRemove">more_vert</i>
                 <!-- Start Filter Sort-->
                 <mat-menu #menuEditRemove="matMenu">
                   <span class="cursor_pointer noSelect box-inside-flag-title_menu">
@@ -133,14 +134,14 @@
 
         <div>
           <!-- Flagpole -->
-          <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}">
+          <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}">
           </div>
 
           <!-- Flag base -->
-          <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.color_rgb+',.3)'}"> </div>
+          <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
 
           <!-- Filter 1 -->
-          <!-- <div class="flag-2_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.color_rgb+', 1)'}">  </div> -->
+          <!-- <div class="flag-2_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}">  </div> -->
         </div>
 
       </div>
@@ -169,7 +170,7 @@
             <!-- Menu Edit Delete -->
             <div class="box-inside-flag-title ">
               <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon" [ngStyle]="setStylesText(flag)"
-                id="menu-{{flag.color_hex.substring(1)}}" [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+               [matMenuTriggerFor]="menuEditRemove">more_vert</i>
               <!-- Start Filter Sort-->
               <mat-menu #menuEditRemove="matMenu">
                 <span class="cursor_pointer noSelect box-inside-flag-title_menu">
@@ -277,10 +278,10 @@
 
       <div [ngStyle]="{'margin-left': flag.year && !firstx ? '5rem': '0'}">
         <!-- Flagpole -->
-        <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.color_rgb+',.3)'}"></div>
+        <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"></div>
 
         <!-- Flag base -->
-        <div class="flag-1_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag.color_rgb+',.3)'}"> </div>
+        <div class="flag-1_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"> </div>
 
         <!-- Year -->
         <div class="flag-1_year Roboto_700">{{flag.year}}</div>
@@ -293,7 +294,7 @@
         </div>
 
         <!-- Filter 1 -->
-        <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.color_rgb+', 1)'}">  </div>
+        <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}">  </div>
       </div>
 
     </div>

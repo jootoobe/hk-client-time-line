@@ -20,10 +20,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
           flag_description: "wwwwwww",
           flag_style: 1,
 
-          color_hex: "#90ab3d",
-          color_rgb: "144, 171, 64",
-          color_hsl: "75, 46%, 92%",
-
           flag_local_zone: "America/Sao_Paulo",
           flag_created_at: "Feb 16, 2024, 9:09:03 PM",
           flag_update_at: "0",
@@ -63,9 +59,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
               flag_title: "FLAG2",
               flag_description: "wwwwwww",
               flag_style: 2,
-              color_hex: "#90ab3d",
-              color_rgb: "144, 171, 64",
-              color_hsl: "75, 46%, 92%",
               flag_local_zone: "America/Sao_Paulo",
               flag_created_at: "Feb 16, 2024, 9:09:03 PM",
               flag_update_at: "0",

@@ -89,11 +89,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       flag_description: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]),
       flag_style: new FormControl<any | null>(null, [Validators.required]),
       flag_style2: new FormControl<any | null>(null, []),
-
-      color_hex: new FormControl<string | null>('#90ab3d', []),
-      color_rgb: new FormControl<string | null>('144, 171, 64', []),
-      color_hsl: new FormControl<string | null>('75, 46%, 92%', []),
-
       flag_local_zone: new FormControl<string | null>(null, []),
       flag_created_at: new FormControl<string | null>(null, []),
       flag_update_at: new FormControl<string | null>('0', []),
