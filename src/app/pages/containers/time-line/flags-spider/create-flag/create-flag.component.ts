@@ -137,17 +137,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     //   this.geToTimestamp()
     // }
   }
-
+  // "color_hex": "#90ab3d",
+  // "color_rgb": "144, 171, 64",
+  // "color_hsl": "75, 46%, 92%
 
   //⬇️ Convert Color
   convertColor() {
     // this.createTimeLineForm.value.flags[0]['color_hex']
-    let colorFormats = this.convertColorService.convertColor(this.createTimeLineForm.value.flags[0]['color_hex'])
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-    // flags.at(0).get('color_hex')?.setValue(this.createTimeLineForm.value.flags[0]['color_hex'])
-    flags.at(0).get('color_hex')?.setValue(colorFormats.hex)
-    flags.at(0).get('color_rgb')?.setValue(colorFormats.rgb)
-    flags.controls[0].get('color_hsl')?.setValue(colorFormats.hsl)
+    console.log('ssssssss',flags)
+    let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
+    flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
+    flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
+    flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
 
   }
 
