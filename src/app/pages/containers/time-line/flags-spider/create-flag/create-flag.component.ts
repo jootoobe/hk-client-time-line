@@ -141,7 +141,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
   setDateTimestamp() {
-    console.log('sssssssss 🅰️')
     this.flagsForm.controls[0]?.get('date_obj')?.valueChanges
       .pipe(
         debounceTime(800), // digitação dentro do intervalo, ele espera pra fazer a busca
