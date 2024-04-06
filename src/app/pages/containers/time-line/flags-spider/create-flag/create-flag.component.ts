@@ -25,7 +25,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) flagSetting!: string
   timestampExist!: FlagModel[];
-
+  createFlagSubscribe!: TimeLineModel
 
   createTimeLineForm!: FormGroup
   matcher!: MyErrorStateMatcher // form validator errors
@@ -136,6 +136,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         longitude: new FormControl<number | null>(0, []),
         latitude: new FormControl<number | null>(0, []),
       }),
+      flags2: new FormArray([]),
     });
 
   }
@@ -200,7 +201,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       })
   }
 
-  timestampDate(sssssss?: string) {
+  timestampDate() {
     this.timestampExist = []
     let datePicker: any = ''
     datePicker = this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.value
@@ -299,11 +300,26 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   createFlag() {
 
+    if (this.timestampExist.length === 2) {
+      return
+    }
+
+    if (this.timestampExist.length === 0) {
+      this.createFlagSubscribe = this.createTimeLineForm.value
+    }
+
+    if (this.timestampExist.length === 1) {
+      let flags:any = this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
+      this.createFlagSubscribe = {iam_id: '', time_line: flags}
+    }
+
 
     if (this.createTimeLineForm.invalid) {
       this.matcher = new MyErrorStateMatcher();
       return
     }
+
+    console.log('sssssssssssssss>>>>>>>>>>>.', this.createFlagSubscribe)
 
   }
 
