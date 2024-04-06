@@ -236,6 +236,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
 
     if (this.timestampExist.length === 1) {
+      this.timestampExist[0].flag_margin_right = '3'
       this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
     }
 
@@ -311,9 +312,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     if (this.timestampExist.length === 1) {
       this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
       let flags:any = this.timestampExist
-      console.log('AAAAAAAAAAAA',this.timestampExist)
-      console.log('sssssssssssssss',this.flagsForm.controls[0].value)
-      console.log('JJJJJJJJJJJJJJJJJ',flags)
       this.createFlagSubscribe = {iam_id: '0', time_line: flags}
     }
 
@@ -322,6 +320,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       this.matcher = new MyErrorStateMatcher();
       return
     }
+
 
     console.log('sssssssssssssss>>>>>>>>>>>.', this.createFlagSubscribe)
 
