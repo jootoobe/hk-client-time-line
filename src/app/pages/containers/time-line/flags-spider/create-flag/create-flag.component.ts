@@ -82,7 +82,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   // ⬇️ New Form TimeLineModel
   buildForm(): void {
     this.createTimeLineForm = this.fb.group({
-      iam_id: new FormControl<string | null>(null, []),
+      iam_id: new FormControl<string | null>('0', []),
       time_line: this.fb.group({
         flags: new FormArray([this.createFlagobject()])
       })
@@ -93,7 +93,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   createFlagobject(): FormGroup {
     return this.fb.group({
-      year: new FormControl<string | null>(null + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
+      year: new FormControl<string | null>(null + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(3),  Validators.maxLength(4)]),
       flag_id: new FormControl<string | null>('flag_id_' + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
       flag_title: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       flag_description: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]),
