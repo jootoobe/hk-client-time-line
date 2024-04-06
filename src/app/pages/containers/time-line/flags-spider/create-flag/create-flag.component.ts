@@ -13,6 +13,7 @@ import { LatitudeLongitudeService } from "../../../../../shared/services/latitud
 import { StateService } from "../../../../../shared/services/state.service";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
+import { TimeLineService } from "../../../../../services/time-line.service";
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -55,6 +56,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     private datePipe: DatePipe,
     private latitudeLongitudeService: LatitudeLongitudeService,
     private toastrService: ToastrService,
+    private timeLineService: TimeLineService,
   ) {
 
     this.buildForm()
@@ -93,7 +95,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   createFlagobject(): FormGroup {
     return this.fb.group({
-      year: new FormControl<string | null>(null + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(3),  Validators.maxLength(4)]),
+      year: new FormControl<string | null>(null + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(3), Validators.maxLength(4)]),
       flag_id: new FormControl<string | null>('flag_id_' + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
       flag_title: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       flag_description: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]),
@@ -282,8 +284,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             }))
           }
         },
-        error: (err) => {   },
-        complete: () => {  }
+        error: (err) => { },
+        complete: () => { }
       })
   }
 
@@ -311,8 +313,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     if (this.timestampExist.length === 1) {
       this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
-      let flags:any = this.timestampExist
-      this.createFlagSubscribe = {iam_id: '0', time_line: flags}
+      let flags: any = this.timestampExist
+      this.createFlagSubscribe = { iam_id: '0', time_line: flags }
     }
 
 
@@ -323,6 +325,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
     console.log('sssssssssssssss>>>>>>>>>>>.', this.createFlagSubscribe)
+    this.timeLineService.createFlag(this.createFlagSubscribe)
+      .subscribe({
+        next: () => {
+
+        },
+        error: () => {
+
+        },
+        complete: () => {
+
+        }
+      })
+
 
   }
 
