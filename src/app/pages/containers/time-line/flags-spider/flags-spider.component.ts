@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
 import { MatDialog } from '@angular/material/dialog';
+
+import { environment } from '../../../../../environments/environment';
 import { TimeLineModel } from '../../../../models/flag.model';
 
 @Component({
@@ -12,6 +13,7 @@ export class FlagsSpiderComponent implements OnInit {
   @ViewChild('createTimeLine', { static: false }) createTimeLine!: TemplateRef<any> // open modal ref - modal to create or edit timeline
 
   assetsProd = environment.assetsProd // assetsProd: 'http://localhost:4201',
+  flagSetting!:string
 
   timeLine: TimeLineModel = {
     iam_id: '65ff5d9c8e66b41b0e36825d',
@@ -73,7 +75,8 @@ export class FlagsSpiderComponent implements OnInit {
 
 
     // Open Create Time_Line
-    openCreateTimeLineDialog(val?: string): void {
+    openCreateTimeLineDialog(val: string): void {
+      this.flagSetting = val
 
       this.dialogCreate.open(this.createTimeLine, {
         disableClose: true,

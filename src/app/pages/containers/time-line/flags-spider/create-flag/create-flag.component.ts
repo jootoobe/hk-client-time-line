@@ -1,18 +1,18 @@
+import { DatePipe } from "@angular/common";
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatRadioChange } from "@angular/material/radio";
+import { ToastrService } from "ngx-toastr";
 import { debounceTime, distinctUntilChanged, take, tap } from "rxjs";
 
 import { MatDatepickerTimeHeaderComponent } from "../../../../../components/datepicker-time/mat-datepicker-time-header.component";
+import { DateObjModel } from "../../../../../models/date-obj.model";
+import { FlagModel, TimeLineModel } from "../../../../../models/flag.model";
 import { ConvertColorService } from "../../../../../shared/services/convert-color.service";
+import { LatitudeLongitudeService } from "../../../../../shared/services/latitude-longitude.service";
 import { StateService } from "../../../../../shared/services/state.service";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
-import { DateObjModel } from "../../../../../models/date-obj.model";
-import { DatePipe } from "@angular/common";
-import { LatitudeLongitudeService } from "../../../../../shared/services/latitude-longitude.service";
-import { ToastrService } from "ngx-toastr";
-import { FlagModel, TimeLineModel } from "../../../../../models/flag.model";
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -23,6 +23,7 @@ import { FlagModel, TimeLineModel } from "../../../../../models/flag.model";
 export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
+  @Input({ required: true }) flagSetting!: string
   timestampExist!: FlagModel[];
 
 
@@ -61,6 +62,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+    this.latitudeLongitude()
+    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
+    if (this.flagSetting === 'create') {
+      this.flagsForm['controls'][0]?.get('flag_created_at')?.setValue(currentlyDate)
+    }
   }
 
   ngAfterViewInit(): void {
@@ -203,68 +209,51 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
     // if (datePicker) {
-      datePicker = datePicker.toISOString() // convert to timestemp
-      let date: string = `${datePicker.split('T').shift()}T${this.time}${datePicker.substring(19)}`
-      this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
+    datePicker = datePicker.toISOString() // convert to timestemp
+    let date: string = `${datePicker.split('T').shift()}T${this.time}${datePicker.substring(19)}`
+    this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
 
-      let dateSplit = datePicker.split('-')
-      let newTimestamp = Date.parse(date.toString())
-      console.log(newTimestamp)
-      console.log(this.timeLine?.time_line?.flags)
+    let dateSplit = datePicker.split('-')
+    let newTimestamp = Date.parse(date.toString())
+    console.log(newTimestamp)
+    console.log(this.timeLine?.time_line?.flags)
 
-      // Check if there are 01 or 02 identical timestamps
-      for (let flag of this.timeLine?.time_line?.flags) {
-        if (flag.date_obj.timestamp === newTimestamp) {
-          console.log('vvvvvvvvvvvvvvvvvvvvvvvvv', flag)
-          this.timestampExist.push(flag)
-        }
+    // Check if there are 01 or 02 identical timestamps
+    for (let flag of this.timeLine?.time_line?.flags) {
+      if (flag.date_obj.timestamp === newTimestamp) {
+        console.log('vvvvvvvvvvvvvvvvvvvvvvvvv', flag)
+        this.timestampExist.push(flag)
       }
+    }
 
-      if (this.timestampExist.length === 2) {
-        return
-      }
+    if (this.timestampExist.length === 2) {
+      return
+    }
 
-      if (this.timestampExist.length === 0) {
-        this.flagsForm.controls[0]?.get('flag_style')?.setValue(1)
+    if (this.timestampExist.length === 0) {
+      this.flagsForm.controls[0]?.get('flag_style')?.setValue(1)
+    }
 
-        this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
-          day_month_year: date,
-          day: (dateSplit[2]).split('T').shift(),
-          month: dateSplit[1],
-          month_s: dateSplit[1] === '01' ? 'JAN' : dateSplit[1] === '02' ? 'FEV' : dateSplit[1] === '03' ? 'MAR' : dateSplit[1] === '04' ? 'ABR' : dateSplit[1] === '05' ? 'MAI' : dateSplit[1] === '06' ? 'JUN' :
-            dateSplit[1] === '07' ? 'JUL' : dateSplit[1] === '08' ? 'AGO' : dateSplit[1] === '09' ? 'SET' : dateSplit[1] === '10' ? 'OUT' : dateSplit[1] === '11' ? 'NOV' : dateSplit[1] === '12' ? 'DEZ' : 'JAN',
-          month_code: Number(dateSplit[1]),
-          year: dateSplit[0],
-          timestamp: newTimestamp,
-          // time,
-        }), { emitEvent: false })
+    if (this.timestampExist.length === 1) {
+      this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
+    }
 
-      }
-
-      if (this.timestampExist.length === 1) {
-        console.log('pppppppppppppppppppppppppp')
-        this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
-
-        this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
-          day_month_year: date,
-          day: (dateSplit[2]).split('T').shift(),
-          month: dateSplit[1],
-          month_s: dateSplit[1] === '01' ? 'JAN' : dateSplit[1] === '02' ? 'FEV' : dateSplit[1] === '03' ? 'MAR' : dateSplit[1] === '04' ? 'ABR' : dateSplit[1] === '05' ? 'MAI' : dateSplit[1] === '06' ? 'JUN' :
-            dateSplit[1] === '07' ? 'JUL' : dateSplit[1] === '08' ? 'AGO' : dateSplit[1] === '09' ? 'SET' : dateSplit[1] === '10' ? 'OUT' : dateSplit[1] === '11' ? 'NOV' : dateSplit[1] === '12' ? 'DEZ' : 'JAN',
-          month_code: Number(dateSplit[1]),
-          year: dateSplit[0],
-          timestamp: newTimestamp,
-          // time,
-        }), { emitEvent: false })
+    this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
+      day_month_year: date,
+      day: (dateSplit[2]).split('T').shift(),
+      month: dateSplit[1],
+      month_s: dateSplit[1] === '01' ? 'JAN' : dateSplit[1] === '02' ? 'FEV' : dateSplit[1] === '03' ? 'MAR' : dateSplit[1] === '04' ? 'ABR' : dateSplit[1] === '05' ? 'MAI' : dateSplit[1] === '06' ? 'JUN' :
+        dateSplit[1] === '07' ? 'JUL' : dateSplit[1] === '08' ? 'AGO' : dateSplit[1] === '09' ? 'SET' : dateSplit[1] === '10' ? 'OUT' : dateSplit[1] === '11' ? 'NOV' : dateSplit[1] === '12' ? 'DEZ' : 'JAN',
+      month_code: Number(dateSplit[1]),
+      year: dateSplit[0],
+      timestamp: newTimestamp,
+      // time,
+    }), { emitEvent: false })
 
 
-        this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
+    // this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
 
-        console.log('sssss', this.timestampExist)
-
-      }
-
-
+    // console.log('sssss', this.timestampExist)
 
     // }
 
@@ -276,12 +265,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   //==============================================================================
 
   latitudeLongitude() {
-    if (this.createTimeLineForm.invalid) {
-      this.matcher = new MyErrorStateMatcher();
-      return
-    }
-
-    this.vrifyTimestapnFlag()
 
     this.latitudeLongitudeService.latitudeLongitude()
       .subscribe({
@@ -295,32 +278,28 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               longitude: res.longitude,
               latitude: res.latitude,
             }))
-
-            this.createFlag()
           }
         },
-        error: (err) => {
-          this.createFlag()
-        },
-        complete: () => {
-
-        }
+        error: (err) => {   },
+        complete: () => {  }
       })
   }
 
-  vrifyTimestapnFlag() {
-    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
-    // if (this.flagEdit === 'create') {
-    //   this.flagsForm['controls'][0]?.get('flag_created_at')?.setValue(currentlyDate)
+  // vrifyTimestapnFlag() {
+  //   let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
+  //   // if (this.flagEdit === 'create') {
+  //   //   this.flagsForm['controls'][0]?.get('flag_created_at')?.setValue(currentlyDate)
 
-    // } else if (this.flagEdit === 'edit_flag1' || this.flagEdit === 'edit_flag2') {
-    //   this.flagsForm['controls'][0]?.get('flag_update_at')?.setValue(currentlyDate)
-    // }
-    // I need this filter to add the flag in the same year
-    // let yearFlag = this.flags.filter((yearFlag: any) => yearFlag.year === this.createTimeLineForm.get('year')?.value);
-  }
+  //   // } else if (this.flagEdit === 'edit_flag1' || this.flagEdit === 'edit_flag2') {
+  //   //   this.flagsForm['controls'][0]?.get('flag_update_at')?.setValue(currentlyDate)
+  //   // }
+  //   // I need this filter to add the flag in the same year
+  //   // let yearFlag = this.flags.filter((yearFlag: any) => yearFlag.year === this.createTimeLineForm.get('year')?.value);
+  // }
 
   createFlag() {
+
+
     if (this.createTimeLineForm.invalid) {
       this.matcher = new MyErrorStateMatcher();
       return
