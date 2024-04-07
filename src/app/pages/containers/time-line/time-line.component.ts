@@ -18,6 +18,8 @@ export class TimeLineComponent implements OnInit {
     this.languagesLocale()
   }
 
+
+
   languagesLocale() {
     let languageStart: any = localStorage.getItem('leng') !== null ? localStorage.getItem('leng') : JSON.stringify('pt')
     this.getDateFormatString(`${JSON.parse(languageStart)}`)
