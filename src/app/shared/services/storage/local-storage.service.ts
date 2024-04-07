@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 
-import { EncryptDecryptKeyModel } from '../../../spider-share/iam/models/iam-keys/iam-crypto-keys.model';
+import { EncryptDecryptKeyModel } from '../../../spider-share/iam/models/cryptos/iam-keys/iam-crypto-keys.model';
 
 @Injectable({
   providedIn: 'root'

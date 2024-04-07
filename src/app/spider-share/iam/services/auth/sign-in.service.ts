@@ -6,7 +6,7 @@ import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { StateService } from '../../../../shared/services/state.service';
 import { LocalStorageService } from '../../../../shared/services/storage/local-storage.service';
-import { EncryptDecryptKeyModel } from '../../models/iam-keys/iam-crypto-keys.model';
+import { EncryptDecryptKeyModel } from '../../models/cryptos/iam-keys/iam-crypto-keys.model';
 
 // import { environment } from '../../../../../environments/environment';
 

@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 import { StateService } from './shared/services/state.service';
 import { LocalStorageService } from './shared/services/storage/local-storage.service';
 import { RedisAuthModel } from './spider-share/iam/models/auth/redis-auth.model';
-import { EncryptDecryptKeyModel } from './spider-share/iam/models/iam-keys/iam-crypto-keys.model';
+import { EncryptDecryptKeyModel } from './spider-share/iam/models/cryptos/iam-keys/iam-crypto-keys.model';
 
 @Component({
   selector: 'app-time-line', // Os seletores dos projetos devem esta identicos a seus microserviços
