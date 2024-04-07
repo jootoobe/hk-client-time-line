@@ -1,11 +1,11 @@
 import { Component, effect, OnInit, Renderer2 } from '@angular/core';
 
 import { environment } from '../environments/environment';
+import { TIMELINEKeysModel } from './models/cryptos/time-line-keys.model';
+import { TimeLineKeysService } from './services/time-line-keys.service';
 import { StateService } from './shared/services/state.service';
 import { LocalStorageService } from './shared/services/storage/local-storage.service';
 import { RedisAuthModel } from './spider-share/iam/models/auth/redis-auth.model';
-import { TIMELINEKeysModel } from './models/cryptos/time-line-keys.model';
-import { TimeLineKeysService } from './services/time-line-keys.service';
 
 @Component({
   selector: 'app-time-line', // Os seletores dos projetos devem esta identicos a seus microserviços
@@ -31,6 +31,11 @@ export class AppTimeLineComponent implements OnInit {
 
     effect(() => {
       this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
+      if(this.timeLineKeys && this.timeLineKeys?.LS?.ss) {
+        this.localStorageControlSession()
+        console.log('QUANTAS VEZES')
+      }
+
     })
 
     let styleCss = localStorage.getItem('ss') !== null ? localStorage.getItem('ss') : undefined
@@ -52,7 +57,6 @@ export class AppTimeLineComponent implements OnInit {
 
     if (this.letter) {
       this.letter = this.letter.charAt(0);
-      this.localStorageControlSession()
     }
   }
 

@@ -3,6 +3,7 @@ export class TIMELINEKeysModel {
     public SICK: string, //signInCryptoKey
     public LS: { // localStorage
       ss: string, // spider-share
+      tl:string
     }
   ) {
 
