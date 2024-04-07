@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { RedisAuthModel } from '../../spider-share/iam/models/auth/redis-auth.model';
 import { WINDOW } from './window.service';
+import { TIMELINEKeysModel } from '../../models/cryptos/iam-keys/iam-crypto-keys.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,13 @@ export class StateService {
   redisAuthSubject$ = this.redisAuthSubject.asObservable();
 
 
+  private keysCryptoIamSignal: WritableSignal<TIMELINEKeysModel> = signal<TIMELINEKeysModel>(TIMELINEKeysModel as any);
+  keysCryptoIamSignalComputed = computed(() => {
+    return this.keysCryptoIamSignal()
+  });
+
+
+
   private customToolTipSubject = new BehaviorSubject<{}>({ mouse: '', from: '' });
   customToolTipSubject$ = this.customToolTipSubject.asObservable();
 
@@ -42,19 +50,25 @@ export class StateService {
   //   return this.toastSignal.set(val)
   // }
 
+
+  // Relacionado as chaves de cryptografia
+  updateKeysCryptoIamSignal(val: TIMELINEKeysModel) {
+    return this.keysCryptoIamSignal.set(val)
+  }
+
   updateRedisAuth(val: RedisAuthModel) {
     return this.redisAuthSubject.next(val)
   }
 
 
-    /**
-  * toolTipSubject is used in the directive ToolTipRendererChieldDirective
-  * @param { CustomToolTipComponent} fom CustomToolTipComponent
-  * @param { ToolTipRendererChieldDirective} fom ToolTipRendererChieldDirective
-  */
-    toolTipSubject(val: any) {
-      this.customToolTipSubject.next(val)
-    }
+  /**
+* toolTipSubject is used in the directive ToolTipRendererChieldDirective
+* @param { CustomToolTipComponent} fom CustomToolTipComponent
+* @param { ToolTipRendererChieldDirective} fom ToolTipRendererChieldDirective
+*/
+  toolTipSubject(val: any) {
+    this.customToolTipSubject.next(val)
+  }
 
 
 

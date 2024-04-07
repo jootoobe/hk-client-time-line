@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, effect } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
 
 import { environment } from '../../../../../environments/environment';
 import { StateService } from '../../../../shared/services/state.service';
 import { LocalStorageService } from '../../../../shared/services/storage/local-storage.service';
-import { EncryptDecryptKeyModel } from '../../models/cryptos/iam-keys/iam-crypto-keys.model';
+import { TIMELINEKeysModel } from '../../../../models/cryptos/iam-keys/iam-crypto-keys.model';
 
 // import { environment } from '../../../../../environments/environment';
 
@@ -16,18 +16,22 @@ export class SignInService {
   API_IAM: string = environment.ApiIam;
   API_TIME_LINE: string = environment.ApiTimeLine;
 
-  encryptDecryptKey!: EncryptDecryptKeyModel
-
+  timeLineKeys!: TIMELINEKeysModel
   constructor(
     private http: HttpClient,
     private stateService: StateService,
     private localStorageService: LocalStorageService
-    ) {
-    this.encryptDecryptKey = new EncryptDecryptKeyModel()
+  ) {
+    effect(() => {
+      this.timeLineKeys = this.stateService.keysCryptoIamSignalComputed()
+    })
+
   }
 
 
   devSignIn(val: any): Observable<any> {
+
+    console.log('sssssssss',this.timeLineKeys.SICK)
 
     let date = new Date()
     // '3600' == 1hs
@@ -60,7 +64,7 @@ export class SignInService {
 
     // console.log('🅱️ ', this.redisAuth)
 
-    let neyBody: any = this.encryptAuthenticationServicel(this.redisAuth, `${this.encryptDecryptKey.spiderShareCryptoKeys.signInCryptoKey}`)
+    let neyBody: any = this.encryptAuthenticationServicel(this.redisAuth, `${this.timeLineKeys.SICK}`)
 
     let newVal = {
       email: val.email, // email
@@ -71,7 +75,7 @@ export class SignInService {
     return this.http.post<any>(`${this.API_IAM}/auth/sign-in`, newVal, { observe: 'response' }).pipe(
       map((res: any) => {
         let skich = res.headers.get('skich');
-        this.setData(skich, res.body, `${this.encryptDecryptKey.spiderShareCryptoKeys.signInCryptoKey}`)
+        this.setData(skich, res.body, `${this.timeLineKeys.SICK}`)
       }),
       // retry(1),
       // catchError(this.handleError)
@@ -106,7 +110,7 @@ export class SignInService {
       console.log('🅰️🅾🅿️ ', this.redisAuth)
       this.stateService.updateRedisAuth(this.redisAuth)
 
-      this.localStorageService.setItems('a', this.redisAuth, this.encryptDecryptKey.spiderShareCryptoKeys.localStorage.cryptoKey) // outputLetter tem que ser removida da chave skich
+      this.localStorageService.setItems('a', this.redisAuth, this.timeLineKeys.LS.ss) // outputLetter tem que ser removida da chave skich
       localStorage.setItem('al', 'a' + randomUUID)
 
     }
@@ -141,10 +145,10 @@ export class SignInService {
 
   }
 
-    // Teste autenticação apis
+  // Teste autenticação apis
   // Após autenticar é chamado o GET para testar o AuthGruard da api
   getHelloWorld(): Observable<any> {
-    return this.http.get(this.API_TIME_LINE+'/get-hello')
+    return this.http.get(this.API_TIME_LINE + '/get-hello')
   }
 
 

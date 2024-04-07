@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 
-import { EncryptDecryptKeyModel } from '../../../spider-share/iam/models/cryptos/iam-keys/iam-crypto-keys.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
   private items: any;
-  encryptDecryptKey!: EncryptDecryptKeyModel
 
   constructor() {
     // this._items = JSON.parse(localStorage.getItem('items') || '[]'); // get the data at lunch
-    this.encryptDecryptKey = new EncryptDecryptKeyModel()
   }
 
   removeAllLocalStorag() {
