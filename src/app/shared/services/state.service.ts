@@ -28,9 +28,9 @@ export class StateService {
   redisAuthSubject$ = this.redisAuthSubject.asObservable();
 
 
-  private keysCryptoIamSignal: WritableSignal<TIMELINEKeysModel> = signal<TIMELINEKeysModel>(TIMELINEKeysModel as any);
-  keysCryptoIamSignalComputed = computed(() => {
-    return this.keysCryptoIamSignal()
+  private keysCryptoTimeLineSignal: WritableSignal<TIMELINEKeysModel> = signal<TIMELINEKeysModel>(TIMELINEKeysModel as any);
+  keysCryptoTimeLineSignalComputed = computed(() => {
+    return this.keysCryptoTimeLineSignal()
   });
 
 
@@ -52,8 +52,8 @@ export class StateService {
 
 
   // Relacionado as chaves de cryptografia
-  updateKeysCryptoIamSignal(val: TIMELINEKeysModel) {
-    return this.keysCryptoIamSignal.set(val)
+  updateKeysCryptoTimeLineSignal(val: TIMELINEKeysModel) {
+    return this.keysCryptoTimeLineSignal.set(val)
   }
 
   updateRedisAuth(val: RedisAuthModel) {

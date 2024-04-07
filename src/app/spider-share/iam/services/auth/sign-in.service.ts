@@ -23,7 +23,7 @@ export class SignInService {
     private localStorageService: LocalStorageService
   ) {
     effect(() => {
-      this.timeLineKeys = this.stateService.keysCryptoIamSignalComputed()
+      this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
     })
 
   }

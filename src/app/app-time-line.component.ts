@@ -30,7 +30,7 @@ export class AppTimeLineComponent implements OnInit {
     this.getIam2()
 
     effect(() => {
-      this.timeLineKeys = this.stateService.keysCryptoIamSignalComputed()
+      this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
     })
 
     let styleCss = localStorage.getItem('ss') !== null ? localStorage.getItem('ss') : undefined
@@ -74,7 +74,7 @@ export class AppTimeLineComponent implements OnInit {
           let encode2: any = decodeURIComponent(`${encode1}`); // enconde 2
           encode2 = JSON.parse(encode2)
           console.log('sssssssss', encode2)
-          this.stateService.updateKeysCryptoIamSignal(encode2.TL)
+          this.stateService.updateKeysCryptoTimeLineSignal(encode2.TL)
         },
         error: (err) => {
 
