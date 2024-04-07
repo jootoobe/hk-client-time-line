@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { RedisAuthModel } from '../../spider-share/iam/models/auth/redis-auth.model';
 import { WINDOW } from './window.service';
-import { TIMELINEKeysModel } from '../../models/cryptos/iam-keys/iam-crypto-keys.model';
+import { TIMELINEKeysModel } from '../../models/cryptos/time-line-keys.model';
 
 @Injectable({
   providedIn: 'root'

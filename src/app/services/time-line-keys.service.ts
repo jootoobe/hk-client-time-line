@@ -9,7 +9,7 @@ import { TimeLineModel } from '../models/flag.model';
 @Injectable({
   providedIn: 'root'
 })
-export class IamCryptoService {
+export class TimeLineKeysService {
   API_IAM2: string = environment.ApiIam2;
 
   API_TIME_LINE: string = environment.ApiTimeLine
