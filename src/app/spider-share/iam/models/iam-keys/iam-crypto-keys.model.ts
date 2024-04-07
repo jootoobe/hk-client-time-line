@@ -6,10 +6,22 @@ class KeysModel {
   }
 
   timeLineBody = {
-    timeLineEncryptBody : ''
+    timeLineEncryptBody: ''
   }
 }
 
 export class EncryptDecryptKeyModel {
   spiderShareCryptoKeys: KeysModel = new KeysModel()
+}
+
+
+export class IAMEncryptDecryptKeyModel {
+  constructor(
+    public SICK: string, //signInCryptoKey
+    public LS: { // localStorage
+      ss: string, // spider-share
+    }
+  ) {
+
+  }
 }

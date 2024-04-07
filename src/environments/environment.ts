@@ -7,6 +7,8 @@ export const environment = {
 
   // ApiIam: 'http://localhost:3200/api-iam',
   ApiIam: 'https://iam.spider-share.com/api-iam', //http://hk-iam-back-spidershare.us-east-1.elasticbeanstalk.com
+  ApiIam2: 'http://localhost:3200/api-iam/c', // Get crypto data
+
 
   // API
   ApiTimeLine: 'http://localhost:3001/api-time-line',

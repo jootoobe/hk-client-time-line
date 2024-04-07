@@ -3,6 +3,8 @@ export const environment = {
   helloEnvironment: 'development',
 
   ApiIam: 'https://iam.spider-share.com/api-iam',
+  ApiIam2: 'http://localhost:3200/api-iam/c', // Get crypto data
+
 
   // API
   ApiTimeLine: 'https://time-line.spider-share.com/api-time-line',
