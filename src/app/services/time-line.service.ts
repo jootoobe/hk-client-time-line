@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import { Observable, map } from 'rxjs';
+import { map, Observable } from 'rxjs';
+
 import { environment } from '../../environments/environment';
 import { TimeLineModel } from '../models/flag.model';
-
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,7 @@ export class TimeLineService {
       })
     )
   }
+
 
 
   // encryptBody(inBody: any) {
