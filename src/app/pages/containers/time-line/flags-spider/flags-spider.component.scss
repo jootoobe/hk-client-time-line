@@ -5,17 +5,20 @@
 
 .first-div {
   display: grid;
+  height: 100%;
+  // background: red;
 }
 
 
 .second-div {
-  height: auto;
   display: grid;
-  margin-bottom: 0.5rem; // margem do scrol
+  height: 100%;
   align-items: end;
   overflow-y: hidden;
   overflow-x: overlay;
   position: relative;
+  // background: blue;
+  margin-bottom: 0.5rem; // margem do scrol
 }
 
 
@@ -35,3 +38,6 @@
 //     width: 3rem;
 //   }
 // }
+
+
+

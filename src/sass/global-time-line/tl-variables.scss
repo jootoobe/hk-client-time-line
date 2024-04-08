@@ -12,10 +12,12 @@
 
 .box-inside-flag-title {
   height: 5rem;
+
   // background: lightblue;
   // border: 1px solid grey;
   &_menu {
     margin-left: .5rem;
+
     &--edit,
     &--delete {
       height: 3rem;
@@ -24,6 +26,7 @@
       font-weight: var(--fonts-font-weight-500);
       position: absolute;
     }
+
     &--edit {
       padding-top: .5rem;
       color: rgba(var(--color-green), 1);
@@ -34,10 +37,12 @@
       // font-size: 1.9rem;
       color: rgba(var(--color-red), 1);
     }
+
     &--t1 {
       margin: -1.6rem 0rem -1.5rem 3.5rem;
     }
-    &--t2{
+
+    &--t2 {
       margin: -1.6rem 0 .5rem 3.5rem;
     }
   }
@@ -136,7 +141,7 @@
 
   }
 
-  &_no-net{
+  &_no-net {
     font-size: 1rem;
     font-weight: var(--fonts-font-weight-600);
     color: rgba(var(--color-black), .6);
@@ -167,7 +172,7 @@
 
   // }
 
-  &_chips-list{
+  &_chips-list {
     // height: 5rem;
     // margin-bottom: 5rem;
     // background: red;
@@ -176,19 +181,19 @@
   }
 
 
-  &_chips{
-      // color: rgba(var(--color-white), 1);
-      font-weight: var(--fonts-font-weight-600);
-      // background-color: rgba(var(--color-social-media-chips), 1) !important;
-      font-size: 1.2rem !important;
-      height: 2.5rem !important;
-      padding: .5rem 1rem 0 1rem;
-      border-radius: 5rem;
-      -webkit-border-radius: 5rem;
-      -moz-border-radius: 5rem;
-      -ms-border-radius: 5rem;
-      -o-border-radius: 5rem;
-}
+  &_chips {
+    // color: rgba(var(--color-white), 1);
+    font-weight: var(--fonts-font-weight-600);
+    // background-color: rgba(var(--color-social-media-chips), 1) !important;
+    font-size: 1.2rem !important;
+    height: 2rem !important;
+    padding: 0.5rem 1rem .2rem 1rem;
+    border-radius: 5rem;
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    -ms-border-radius: 5rem;
+    -o-border-radius: 5rem;
+  }
 
   &_open-kanban {
     // position: fixed;
@@ -230,11 +235,4 @@
       position: absolute;
     }
   }
-}
-
-// Importante para colocar o material chip todo no início
-// align-items: start !important;
-.mat-grid-tile-content {
-  align-items: start !important;
-  justify-content: start !important;
 }

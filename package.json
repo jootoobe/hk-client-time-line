@@ -12,7 +12,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "bundle-prod": "ng build && node concat.js",
-    "bundle-dev": "ng build --configuration development --output-path=../../back/hk-pro-back-spidershare/client/hk-client-time-line && node concat.js"
+    "bundle-dev": "ng build --configuration development --output-path=../../back/hk-back-time-line/client/hk-client-time-line && node concat.js"
   },
   "private": true,
   "dependencies": {
