@@ -26,7 +26,6 @@ export class DevSignInComponent {
         next: (res) => {
           this.loginDev = false
           // this.signInService.loginJustForDev({ loginDev: false, buttonClicked: false })
-          this.router.navigate(['/time-line'])
         },
         error: (err) => {
         },
@@ -34,6 +33,7 @@ export class DevSignInComponent {
           // define on request complete logic
           // 'complete' is not the same as 'finalize'!!
           // this logic will not be executed if error is fired
+          this.router.navigate(['/time-line'])
         }
       })
   }
