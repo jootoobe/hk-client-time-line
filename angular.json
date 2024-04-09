@@ -34,7 +34,7 @@
             "inlineStyleLanguage": "scss",
             "allowedCommonJsDependencies": [
               "crypto-js"
-           ],
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -42,7 +42,6 @@
             "styles": [
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
-
             ],
             "scripts": []
           },
@@ -62,7 +61,14 @@
               ],
               "outputHashing": "all",
               "aot": true,
-              "optimization": false,
+              "optimization": {
+                "scripts": false,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": true
+              },
               "extractLicenses": false,
               "sourceMap": false,
               "namedChunks": true,
@@ -88,7 +94,14 @@
               ],
               "outputHashing": "all",
               "aot": true,
-              "optimization": false,
+              "optimization": {
+                "scripts": false,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": true
+              },
               "extractLicenses": false,
               "sourceMap": false,
               "namedChunks": true,
@@ -103,18 +116,25 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "100mb",
-                  "maximumError": "100mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "200kb",
-                  "maximumError": "400kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "40kb"
                 }
               ],
               "outputHashing": "all",
               "aot": true,
-              "optimization": false,
+              "optimization": {
+                "scripts": false,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": true
+              },
               "extractLicenses": false,
               "sourceMap": false,
               "namedChunks": true,
