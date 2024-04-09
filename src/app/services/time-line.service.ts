@@ -4,7 +4,7 @@ import * as CryptoJS from 'crypto-js';
 import { map, Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { TimeLineModel } from '../models/flag.model';
+import { TimeLineModel } from '../models/time-line.model';
 
 @Injectable({
   providedIn: 'root'

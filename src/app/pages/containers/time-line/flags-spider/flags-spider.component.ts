@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, V
 import { MatDialog } from '@angular/material/dialog';
 
 import { environment } from '../../../../../environments/environment';
-import { TimeLineModel } from '../../../../models/flag.model';
+import { TimeLineModel } from '../../../../models/time-line.model';
 
 @Component({
   selector: 'flags-spider',
@@ -28,7 +28,7 @@ export class FlagsSpiderComponent implements OnInit {
 
           flag_created_at: "Feb 16, 2024, 9:09:03 PM",
           flag_update_at: "0",
-          flag_margin_right: '0',
+          flag_margin_right: '0', // aqui entra 3 se tiver 02 flags - server para aumentar a distância da próxima flag
 
 
           flag_design: {

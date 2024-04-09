@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 import { Observable, map } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { TimeLineModel } from '../models/flag.model';
+import { TimeLineModel } from '../models/time-line.model';
 
 
 @Injectable({
