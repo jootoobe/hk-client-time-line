@@ -12,6 +12,13 @@ export class LocalStorageService {
     // this._items = JSON.parse(localStorage.getItem('items') || '[]'); // get the data at lunch
   }
 
+  removeAlmostStorag() {
+    localStorage.removeItem('specialCharacters')
+    localStorage.removeItem('upperCaseCharacters')
+    localStorage.removeItem('a')
+    localStorage.removeItem('al')
+  }
+
   removeAllLocalStorag() {
     localStorage.clear()
   }
