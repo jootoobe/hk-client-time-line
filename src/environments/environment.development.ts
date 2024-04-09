@@ -12,7 +12,7 @@ export const environment = {
 
   styleSpiderShare: 'http://localhost:3000',
 
-  urlTranslate: 'http://localhost:3000',
+  urlTranslate: 'http://localhost:4200',
 
   assetsProd: 'http://localhost:3001', //'http://hk-api-iam-spidershare.us-east-1.elasticbeanstalk.com
 
