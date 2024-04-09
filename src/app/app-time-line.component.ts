@@ -61,7 +61,7 @@ export class AppTimeLineComponent implements OnInit {
   }
 
   localStorageControlSession() {
-    this.itemStorageToken = this.localStorageService.getLocalStorag(this.letter, this.timeLineKeys.LS.ss)
+    this.itemStorageToken = this.localStorageService.getLocalStorag(this.letter, this.timeLineKeys?.LS?.ss)
     console.log('TIME-LINE 🌜', this.itemStorageToken)
 
     if (this.itemStorageToken && this.itemStorageToken.email) {
