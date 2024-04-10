@@ -63,6 +63,7 @@ export class AppTimeLineComponent implements OnInit {
   localStorageControlSession() {
     this.itemStorageToken = this.localStorageService.getLocalStorag(this.letter, this.timeLineKeys?.LS?.ss)
     console.log('TIME-LINE 🌜', this.itemStorageToken)
+    console.log('TIME-LINE 🌜', this.timeLineKeys?.LS?.ss)
 
     if (this.itemStorageToken && this.itemStorageToken.email) {
       this.stateService.updateRedisAuth(this.itemStorageToken)

@@ -16,7 +16,7 @@ export class TimeLineService {
   constructor(private http: HttpClient) { }
 
   createFlag(lineTime: TimeLineModel): Observable<any> {
-    return this.http.post<TimeLineModel>(`${this.API_TIME_LINE}/vamo_que_vamo`, lineTime).pipe(
+    return this.http.post<TimeLineModel>(`${this.API_TIME_LINE}/controller`, lineTime).pipe(
       map(res => {
         return res
       })

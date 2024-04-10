@@ -4,7 +4,7 @@ export class GeolocationModel {
     public country_code: string, //countryCode
     public state: string, //city
     public city: string, // locality
-    public longitude: string, // longitude
-    public latitude: string, // latitude
+    public longitude: number, // longitude
+    public latitude: number, // latitude
   ) { }
 }

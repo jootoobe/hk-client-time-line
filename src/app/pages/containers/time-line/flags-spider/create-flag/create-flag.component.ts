@@ -7,6 +7,7 @@ import { debounceTime, distinctUntilChanged, take, tap } from "rxjs";
 
 import { MatDatepickerTimeHeaderComponent } from "../../../../../components/datepicker-time/mat-datepicker-time-header.component";
 import { DateObjModel } from "../../../../../models/date-obj.model";
+import { FlagModel } from "../../../../../models/flag.model";
 import { TimeLineModel } from "../../../../../models/time-line.model";
 import { TimeLineService } from "../../../../../services/time-line.service";
 import { ConvertColorService } from "../../../../../shared/services/convert-color.service";
@@ -14,7 +15,6 @@ import { LatitudeLongitudeService } from "../../../../../shared/services/latitud
 import { StateService } from "../../../../../shared/services/state.service";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
-import { FlagModel } from "../../../../../models/flag.model";
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -326,18 +326,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
     console.log('sssssssssssssss>>>>>>>>>>>.', this.createFlagSubscribe)
-    // this.timeLineService.createFlag(this.createFlagSubscribe)
-    //   .subscribe({
-    //     next: () => {
+    this.timeLineService.createFlag(this.createFlagSubscribe)
+      .subscribe({
+        next: () => {
 
-    //     },
-    //     error: () => {
+        },
+        error: () => {
 
-    //     },
-    //     complete: () => {
+        },
+        complete: () => {
 
-    //     }
-    //   })
+        }
+      })
 
 
   }

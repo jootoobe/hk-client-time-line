@@ -31,11 +31,10 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-
-    // if (req.url.includes('https://www.tiktok.com') ||
-    //   req.url.includes('https://www.tiktok.com/oembed?url=https://www.tiktok.com')) {
-    //   return next.handle(req)
-    // }
+    if (req.url.includes('https://get.geojs.io/v1/ip/geo.json') ||
+      req.url.includes('https://api.bigdatacloud.net/data/reverse-geocode-client')) {
+      return next.handle(req)
+    }
 
 
     // if(req.url.includes('api-iam/auth/rf')) {
