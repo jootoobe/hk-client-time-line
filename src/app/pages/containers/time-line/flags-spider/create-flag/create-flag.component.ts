@@ -324,7 +324,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     if (this.timestampExist.length === 1) {
       this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
       let flags: any = this.timestampExist
-      this.createFlagSubscribe = { iam_id: '0', time_line: flags }
+      this.createFlagSubscribe = { iam_id: '0', time_line: {flags} }
     }
 
 
