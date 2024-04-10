@@ -1,12 +1,4 @@
-import { FlagModel } from "./flag.model";
-
-export class FlagsModel {
-  constructor(
-    public flags: FlagModel[],
-  ) {
-  }
-}
-
+import { FlagsModel } from "./flag.model";
 
 export class TimeLineModel {
   constructor(
