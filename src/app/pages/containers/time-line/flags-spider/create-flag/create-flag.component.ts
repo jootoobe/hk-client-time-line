@@ -277,7 +277,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           if (res) {
             this.flagsForm.controls[0]?.get('geolocation')?.patchValue(({
               country_name: res.countryName,
-              country_code: res.country_code,
+              country_code: res.countryCode,
               state: res.city,
               city: res.locality,
               longitude: res.longitude,
