@@ -79,7 +79,7 @@ export class AppTimeLineComponent implements OnInit {
           let encode2: any = decodeURIComponent(`${encode1}`); // enconde 2
           encode2 = JSON.parse(encode2)
           console.log('sssssssss', encode2)
-          this.stateService.updateKeysCryptoTimeLineSignal(encode2.TL)
+          this.stateService.updateKeysCryptoTimeLineSignal(encode2.TLC)
         },
         error: (err) => {
 
