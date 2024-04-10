@@ -285,7 +285,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             }))
           }
         },
-        error: (err) => { },
+        error: (err) => {
+          this.flagsForm.controls[0]?.get('geolocation')?.patchValue(({
+            country_name: 'undefined',
+            country_code: 'undefined',
+            state: 'undefined',
+            city: 'undefined',
+            longitude: 0,
+            latitude: 0,
+          }))
+        },
         complete: () => { }
       })
   }
