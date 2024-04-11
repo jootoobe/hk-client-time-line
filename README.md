@@ -98,3 +98,10 @@
           },
           "defaultConfiguration": "production"
 ````
+
+
+````
+    // if (!isDevMode()) { // remove productions console.log
+    //   // console.log = function() {};
+    // }
+````
