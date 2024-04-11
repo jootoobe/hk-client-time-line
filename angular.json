@@ -65,7 +65,8 @@
                 "scripts": false,
                 "styles": {
                   "minify": true,
-                  "inlineCritical": true
+                  "inlineCritical": true,
+                  "removeSpecialComments": true
                 },
                 "fonts": true
               },
@@ -94,11 +95,12 @@
               ],
               "outputHashing": "all",
               "aot": true,
-              "optimization": {
+                   "optimization": {
                 "scripts": false,
                 "styles": {
                   "minify": true,
-                  "inlineCritical": true
+                  "inlineCritical": true,
+                  "removeSpecialComments": true
                 },
                 "fonts": true
               },
@@ -127,11 +129,12 @@
               ],
               "outputHashing": "all",
               "aot": true,
-              "optimization": {
+                   "optimization": {
                 "scripts": false,
                 "styles": {
                   "minify": true,
-                  "inlineCritical": true
+                  "inlineCritical": true,
+                  "removeSpecialComments": true
                 },
                 "fonts": true
               },
