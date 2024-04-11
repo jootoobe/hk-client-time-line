@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { effect, Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 import { environment } from '../../environments/environment';
+import { TIMELINEKeysModel } from '../models/cryptos/time-line-keys.model';
 import { TimeLineModel } from '../models/time-line.model';
+import { StateService } from '../shared/services/state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +14,26 @@ import { TimeLineModel } from '../models/time-line.model';
 export class TimeLineService {
 
   API_TIME_LINE: string = environment.ApiTimeLine
+  timeLineKeys!: TIMELINEKeysModel
+  constructor(
+    private http: HttpClient,
+    private stateService: StateService
+  ) {
+    effect(() => {
+      this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
+    })
+  }
 
-  constructor(private http: HttpClient) { }
+  createFlag(time_line: TimeLineModel): Observable<any> {
+    let newVal = {
+      time_line,
+      id: 0 // createFlag -- usado no back para identificar o decrypt
+    }
 
-  createFlag(lineTime: TimeLineModel): Observable<any> {
-    return this.http.post<TimeLineModel>(`${this.API_TIME_LINE}/controller`, lineTime).pipe(
+    let encrypto = this.encryptBody(newVal, this.timeLineKeys.BY.tl1)
+
+    let newValEncrypto = { a: this.timeLineKeys.BY.tl1 + encrypto }
+    return this.http.post<TimeLineModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
       map(res => {
         return res
       })
@@ -25,28 +42,28 @@ export class TimeLineService {
 
 
 
-  // encryptBody(inBody: any) {
-  //   const iamEncrypt: any = CryptoJS.AES.encrypt(JSON.stringify(inBody), timeLineEncryptBody,
-  //     {
-  //       keySize: 128 / 8,
-  //       iv: timeLineEncryptBody,
-  //       mode: CryptoJS.mode.CBC,
-  //       padding: CryptoJS.pad.Pkcs7
-  //     }).toString();
-  //   const neyBody: any = { a: iamEncrypt };
-  //   // this.decryptSignIn(neyBody)
-  //   return neyBody
+  encryptBody(inBody: any, key: any) {
+    const iamEncrypt: any = CryptoJS.AES.encrypt(JSON.stringify(inBody), key,
+      {
+        keySize: 128 / 8,
+        iv: key,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+      }).toString();
+    // const neyBody: any = { a: iamEncrypt };
+    // this.decryptSignIn(neyBody)
+    return iamEncrypt
 
-  // }
+  }
 
 
-  // dencryptBody(inBody: any) {
-  //   // inBody = JSON.parse(inBody)
-  //   let decrypted = undefined;
-  //   decrypted = CryptoJS.AES.decrypt(inBody.a, timeLineEncryptBody);
-  //   const timeLine = decrypted.toString(CryptoJS.enc.Utf8);
-  //   return JSON.parse(timeLine)
-  // }
+  dencryptBody(inBody: any, key: string) {
+    // inBody = JSON.parse(inBody)
+    let decrypted = undefined;
+    decrypted = CryptoJS.AES.decrypt(inBody.a, key);
+    const timeLine = decrypted.toString(CryptoJS.enc.Utf8);
+    return JSON.parse(timeLine)
+  }
 
 
 }
