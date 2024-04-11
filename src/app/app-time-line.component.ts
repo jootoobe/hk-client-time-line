@@ -1,4 +1,4 @@
-import { Component, effect, OnInit, Renderer2 } from '@angular/core';
+import { Component, effect, isDevMode, OnInit, Renderer2 } from '@angular/core';
 
 import { environment } from '../environments/environment';
 import { TIMELINEKeysModel } from './models/cryptos/time-line-keys.model';
@@ -52,6 +52,11 @@ export class AppTimeLineComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+
+    if (!isDevMode()) { // remove productions console.log
+      console.log = function() {};
+    }
+
     console.log('AppTimeLineComponent')
     this.letter = localStorage.getItem('al') !== null ? localStorage.getItem('al') : undefined
 
