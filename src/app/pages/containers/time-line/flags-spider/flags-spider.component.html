@@ -19,7 +19,9 @@
 
   <!-- Bottom div 80% -->
   <div class="second-div"  appDragScroll id="moveWheelId">
-    <flag [timeLine]="timeLine"> </flag>
+    @if(timeLine && timeLine.time_line){
+      <flag [timeLine]="timeLine"> </flag>
+    }
   </div>
 
   <!-- [ngStyle]="{'margin': openColse ? '-1.5rem': '2rem' }" -->

@@ -312,7 +312,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   // }
 
   createFlag() {
-
+    let valClear: any = {}
     if (this.timestampExist.length === 2) {
       return
     }
@@ -338,13 +338,12 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.timeLineService.createFlag(this.createFlagSubscribe)
       .subscribe({
         next: () => {
-
         },
         error: () => {
-
+          this.createFlagSubscribe = valClear
         },
         complete: () => {
-
+          this.createFlagSubscribe = valClear
         }
       })
 
