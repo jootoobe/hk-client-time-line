@@ -220,13 +220,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let dateSplit = datePicker.split('-')
     let newTimestamp = Date.parse(date.toString())
     console.log(newTimestamp)
-    console.log(this.timeLine?.time_line?.flags)
+    // console.log(this.timeLine?.time_line?.flags)
 
     // Check if there are 01 or 02 identical timestamps
-    for (let flag of this.timeLine?.time_line?.flags) {
-      if (flag.date_obj.timestamp === newTimestamp) {
-        console.log('vvvvvvvvvvvvvvvvvvvvvvvvv', flag)
-        this.timestampExist.push(flag)
+    if (this.timeLine && this.timeLine?.time_line) { // quando não existem bandeiras
+      for (let flag of this.timeLine?.time_line?.flags) {
+        if (flag.date_obj.timestamp === newTimestamp) {
+          console.log('vvvvvvvvvvvvvvvvvvvvvvvvv', flag)
+          this.timestampExist.push(flag)
+        }
       }
     }
 
@@ -324,7 +326,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     if (this.timestampExist.length === 1) {
       this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
       let flags: any = this.timestampExist
-      this.createFlagSubscribe = { iam_id: '0', time_line: {flags} }
+      this.createFlagSubscribe = { iam_id: '0', time_line: { flags } }
     }
 
 

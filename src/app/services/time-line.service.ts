@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { TIMELINEKeysModel } from '../models/cryptos/time-line-keys.model';
 import { TimeLineModel } from '../models/time-line.model';
 import { StateService } from '../shared/services/state.service';
+import { EncryptModel } from '../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class TimeLineService {
     })
   }
 
-  createFlag(time_line: TimeLineModel): Observable<any> {
+  createFlag(time_line: TimeLineModel): Observable<any> { //EncryptModel
 
     let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl1)
 
@@ -32,7 +33,15 @@ export class TimeLineService {
       id: 0,
       a: this.timeLineKeys.BY.tl1 + encrypto
     }
-    return this.http.post<TimeLineModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
+    return this.http.post<any>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+
+  getAllTimeLineById(): Observable<any> {
+    return this.http.get<any>(`${this.API_TIME_LINE}/controller`).pipe(
       map(res => {
         return res
       })
