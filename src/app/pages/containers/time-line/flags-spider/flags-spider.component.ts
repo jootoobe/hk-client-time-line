@@ -20,7 +20,7 @@ export class FlagsSpiderComponent implements OnInit {
 
   timeLine: TimeLineModel = {} as any
   // timeLine: TimeLineModel = {
-  //   iam_id: '65ff5d9c8e66b41b0e36825d',
+  //   // iam_id: '65ff5d9c8e66b41b0e36825d',
   //   time_line: {
   //     flags: [
   //       {
@@ -67,6 +67,7 @@ export class FlagsSpiderComponent implements OnInit {
   //     ],
   //   }
   // }
+
   timeLineKeys!: TIMELINEKeysModel
   constructor(
     private dialogCreate: MatDialog,
@@ -76,6 +77,7 @@ export class FlagsSpiderComponent implements OnInit {
     private stateService: StateService,
   ) {
 
+    console.log('======================', this.timeLine)
     effect(() => { // tenho que certificar que a chave esteja lo LS - chave ss que abre o body {a: 'asdasd..}
       this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
       if (this.timeLineKeys && this.timeLineKeys?.LS?.ss) {
@@ -109,7 +111,12 @@ export class FlagsSpiderComponent implements OnInit {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
         next: (res: any) => {
-          console.log('+++++++++++++++++++++', res)
+          this.timeLine = {
+            time_line: {
+              flags: res.flags
+            }
+          }
+          console.log('+++++++++++++++++++++', this.timeLine)
         },
         error: () => {
         },
