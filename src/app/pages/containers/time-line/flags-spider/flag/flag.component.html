@@ -9,7 +9,7 @@
         <!-- 'margin-left': flag.year && !first ? '5rem': '0'} -->
       <div  class="main-block--flags2"       
             [ngStyle]="{
-                        'margin-left':  last ? '12rem' : 
+                        'margin-left':  last ? '16rem' : 
                         !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'12rem',
             }">
         <div class="flag-2 inside-flag" 
@@ -135,10 +135,8 @@
                               </mat-icon>
                               </div> -->
         </div>
-
-        <div  [ngStyle]="{'margin-left':  last ? '0rem' : 
-                                          !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0',
-              }">
+        <!-- [ngStyle]="{'margin-left':  last ? '0rem' :   !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0',}" -->
+        <div>
           <!-- Flagpole -->
           <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}">
           </div>
