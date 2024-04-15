@@ -1,14 +1,14 @@
 <main class="main">
-  @for (flag of timeLine.time_line.flags | unique; track trackFlagsDataJson; let idx = $index; let firstx = $first) {
+  @for (flag of timeLine.time_line.flags | unique; track trackFlagsDataJson; let idx = $index; let first = $first; let last = $last) {
 
-  <div class="main-block">
+  <div class="main-block"  [ngStyle]="{'margin-right': last ? '50rem' : ''}">
 
-    <!-- 🅰️ FLAG 2 [ngStyle]="{'margin-right': !firstx && flag.flag_margin_right === '0' && !flag.year ? '2rem': '5rem'}" [ngStyle]="{'margin-left': 'calc('+ (idx) +' * 4rem)'}"-->
-    @for (flag2 of flag.flags2; track trackFlagsDataJson2; let idx2 = $index; let firstx2 = $first) {
+    <!-- 🅰️ FLAG 2 [ngStyle]="{'margin-right': !first && flag.flag_margin_right === '0' && !flag.year ? '2rem': '5rem'}" [ngStyle]="{'margin-left': 'calc('+ (idx) +' * 4rem)'}"-->
+    @for (flag2 of flag.flags2; track trackFlagsDataJson2; let idx2 = $index; let first2 = $first) {
       @if(flag2.flag_style === 2) {
-        <!-- 'margin-left': flag.year && !firstx ? '5rem': '0'} -->
+        <!-- 'margin-left': flag.year && !first ? '5rem': '0'} -->
       <div class="main-block--flags2" 
-      [ngStyle]="{'margin-left': flag.flag_margin_right === '3' && !firstx2 ? 'calc('+ (idx) +' * 12rem)' : '12rem'}" >
+      [ngStyle]="{'margin-left': flag.flag_margin_right === '3' && !first2 ? 'calc('+ (idx) +' * 12rem)' : '12rem'}" >
         <div class="flag-2 inside-flag">
 
           <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
@@ -150,29 +150,27 @@
 
     <!-- 🅰️ FLAG 1 -->
     <div class="main-block--flags"> 
-      <!--   !firstx && flag.flag_margin_right === '3' && !flag.year ? '100rem': 'margin-left': firstx ? '8rem': '7rem',
-        [ngStyle]="{'margin-right': flag.flag_margin_right+'rem', 'margin-left': flag.year && !firstx ? '5rem': '0'}"   !firstx && flag.flag_margin_right === '0' && flag.year ? '100rem':  -->
       <div class="flag-1 inside-flag"
-            [ngStyle]="{  'margin-left':  firstx && flag.flag_margin_right === '3' && flag.year ?  '8rem':
-                                          firstx && flag.flag_margin_right === '3' && !flag.year ?  '0rem':
-                                          firstx && flag.flag_margin_right === '0' && !flag.year ?  '0rem':
-                                          firstx && flag.flag_margin_right === '0' && flag.year ?  '8rem':
+            [ngStyle]="{  'margin-left':  first && flag.flag_margin_right === '3' && flag.year ?  '8rem':
+                                          first && flag.flag_margin_right === '3' && !flag.year ?  '0rem':
+                                          first && flag.flag_margin_right === '0' && !flag.year ?  '0rem':
+                                          first && flag.flag_margin_right === '0' && flag.year ?  '8rem':
                                           
-                                          !firstx && flag.flag_margin_right === '0' && !flag.year ? '7rem': 
-                                          !firstx && flag.flag_margin_right === '0' && flag.year ?  '12rem': 
-                                          !firstx && flag.flag_margin_right === '3' && flag.year ?  '0rem':
-                                          !firstx && flag.flag_margin_right === '3' && !flag.year ? '8rem': '0rem',
+                                          !first && flag.flag_margin_right === '0' && !flag.year ? '7rem': 
+                                          !first && flag.flag_margin_right === '0' && flag.year ?  '12rem': 
+                                          !first && flag.flag_margin_right === '3' && flag.year ?  '0rem':
+                                          !first && flag.flag_margin_right === '3' && !flag.year ? '8rem': '0rem',
             
                          
-                         'margin-right':  firstx && flag.flag_margin_right === '3' && flag.year ?  '3rem':
-                                          firstx && flag.flag_margin_right === '3' && !flag.year ?  '0rem':
-                                          firstx && flag.flag_margin_right === '0' && !flag.year ?  '0rem':
-                                          firstx && flag.flag_margin_right === '0' && flag.year ?  '0rem':
+                         'margin-right':  first && flag.flag_margin_right === '3' && flag.year ?  '3rem':
+                                          first && flag.flag_margin_right === '3' && !flag.year ?  '0rem':
+                                          first && flag.flag_margin_right === '0' && !flag.year ?  '0rem':
+                                          first && flag.flag_margin_right === '0' && flag.year ?  '0rem':
                                           
-                                          !firstx && flag.flag_margin_right === '0' && !flag.year ? '0rem': 
-                                          !firstx && flag.flag_margin_right === '0' && flag.year ?  '0rem': 
-                                          !firstx && flag.flag_margin_right === '3' && flag.year ?  '0rem':
-                                          !firstx && flag.flag_margin_right === '3' && !flag.year ? '0rem': '0rem'
+                                          !first && flag.flag_margin_right === '0' && !flag.year ? '0rem': 
+                                          !first && flag.flag_margin_right === '0' && flag.year ?  '0rem': 
+                                          !first && flag.flag_margin_right === '3' && flag.year ?  '0rem':
+                                          !first && flag.flag_margin_right === '3' && !flag.year ? '0rem': '0rem'
                                           
                                           }"
 
@@ -297,26 +295,26 @@
                   </div> -->
       </div>
 
-        <div [ngStyle]="{'margin-left':  firstx && flag.flag_margin_right === '3' && flag.year ?  '8rem':
-                                         firstx && flag.flag_margin_right === '3' && !flag.year ?  '0rem':
-                                         firstx && flag.flag_margin_right === '0' && !flag.year ?  '0rem':
-                                         firstx && flag.flag_margin_right === '0' && flag.year ?  '8rem':
+        <div [ngStyle]="{'margin-left':  first && flag.flag_margin_right === '3' && flag.year ?  '8rem':
+                                         first && flag.flag_margin_right === '3' && !flag.year ?  '0rem':
+                                         first && flag.flag_margin_right === '0' && !flag.year ?  '0rem':
+                                         first && flag.flag_margin_right === '0' && flag.year ?  '8rem':
                                          
-                                         !firstx && flag.flag_margin_right === '0' && !flag.year ? '7rem': 
-                                         !firstx && flag.flag_margin_right === '0' && flag.year ?  '12rem': 
-                                         !firstx && flag.flag_margin_right === '3' && flag.year ?  '0rem':
-                                         !firstx && flag.flag_margin_right === '3' && !flag.year ? '8rem': '0rem',
+                                         !first && flag.flag_margin_right === '0' && !flag.year ? '7rem': 
+                                         !first && flag.flag_margin_right === '0' && flag.year ?  '12rem': 
+                                         !first && flag.flag_margin_right === '3' && flag.year ?  '0rem':
+                                         !first && flag.flag_margin_right === '3' && !flag.year ? '8rem': '0rem',
 
 
-                        'margin-right':  firstx && flag.flag_margin_right === '3' && flag.year ?  '3rem':
-                                         firstx && flag.flag_margin_right === '3' && !flag.year ?  '0rem':
-                                         firstx && flag.flag_margin_right === '0' && !flag.year ?  '0rem':
-                                         firstx && flag.flag_margin_right === '0' && flag.year ?  '0rem':
+                        'margin-right':  first && flag.flag_margin_right === '3' && flag.year ?  '3rem':
+                                         first && flag.flag_margin_right === '3' && !flag.year ?  '0rem':
+                                         first && flag.flag_margin_right === '0' && !flag.year ?  '0rem':
+                                         first && flag.flag_margin_right === '0' && flag.year ?  '0rem':
                                          
-                                         !firstx && flag.flag_margin_right === '0' && !flag.year ? '0rem': 
-                                         !firstx && flag.flag_margin_right === '0' && flag.year ?  '0rem': 
-                                         !firstx && flag.flag_margin_right === '3' && flag.year ?  '0rem':
-                                         !firstx && flag.flag_margin_right === '3' && !flag.year ? '0rem': '0rem'
+                                         !first && flag.flag_margin_right === '0' && !flag.year ? '0rem': 
+                                         !first && flag.flag_margin_right === '0' && flag.year ?  '0rem': 
+                                         !first && flag.flag_margin_right === '3' && flag.year ?  '0rem':
+                                         !first && flag.flag_margin_right === '3' && !flag.year ? '0rem': '0rem'
         
     
       
