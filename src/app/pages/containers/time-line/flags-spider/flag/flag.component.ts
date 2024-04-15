@@ -25,6 +25,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnChanges(): void { }
 
   ngOnInit(): void {
+    // this.timeLine.time_line.flags[0].flags2
   }
 
 

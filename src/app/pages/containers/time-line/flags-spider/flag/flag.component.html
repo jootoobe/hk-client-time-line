@@ -4,12 +4,15 @@
   <div class="main-block"  [ngStyle]="{'margin-right': last ? '50rem' : ''}">
 
     <!-- 🅰️ FLAG 2 [ngStyle]="{'margin-right': !first && !last && flag.flag_margin_right === '0' && !flag.year ? '2rem': '5rem'}" [ngStyle]="{'margin-left': 'calc('+ (idx) +' * 4rem)'}"-->
-    @for (flag2 of flag.flags2; track trackFlagsDataJson2; let idx2 = $index; let first2 = $first; let last2 = $last) {
-      @if(flag2.flag_style === 2) {
+    @for (flag2 of flag.flags2; track trackFlagsDataJson2;) {
+      @if(flag.flags2.length === 1) {
         <!-- 'margin-left': flag.year && !first ? '5rem': '0'} -->
       <div  class="main-block--flags2"  [ngStyle]="{ 'margin-left': '12rem'}">
         <div class="flag-2 inside-flag" 
-            [ngStyle]="{'margin-left':  last ? '4rem' : '0'}" >
+            [ngStyle]="{
+              'margin-left':  last ? '4rem' : 
+                              !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0rem',
+              }" >
 
           <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
 
@@ -132,7 +135,7 @@
                               </div> -->
         </div>
 
-        <div>
+        <div  [ngStyle]="{'margin-left':  !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0rem'}">
           <!-- Flagpole -->
           <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}">
           </div>
