@@ -341,8 +341,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.timeLineService.createFlag(this.createFlagSubscribe)
       .subscribe({
         next: (res: EncryptModel) => {
-          let val: any = res.a[0]
-          this.stateService.updateGetAllTimeLine(val)
+          // let val: any = res.a[0]
+          this.getAllTimeLineById()
         },
         error: () => {
           this.createFlagSubscribe = valClear
@@ -351,10 +351,27 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           this.createFlagSubscribe = valClear
         }
       })
-
-
   }
 
+
+  // Remover depois
+  getAllTimeLineById() {
+    this.timeLineService.getAllTimeLineById()
+      .subscribe({
+        next: (res: any) => {
+          let newTimeLine = {
+            time_line: {
+              flags: res.flags
+            }
+          }
+          this.stateService.updateGetAllTimeLine(newTimeLine)
+        },
+        error: () => {
+        },
+        complete: () => {
+        }
+      })
+  }
 
 
 

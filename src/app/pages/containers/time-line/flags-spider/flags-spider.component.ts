@@ -85,8 +85,6 @@ export class FlagsSpiderComponent implements OnInit {
         complete: () => {
         }
       })
-
-
   }
 
 }
