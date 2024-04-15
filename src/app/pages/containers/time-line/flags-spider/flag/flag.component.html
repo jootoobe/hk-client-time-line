@@ -4,38 +4,12 @@
   <div class="main-block"  [ngStyle]="{'margin-right': last ? '50rem' : ''}">
 
     <!-- 🅰️ FLAG 2 [ngStyle]="{'margin-right': !first && !last && flag.flag_margin_right === '0' && !flag.year ? '2rem': '5rem'}" [ngStyle]="{'margin-left': 'calc('+ (idx) +' * 4rem)'}"-->
-    @for (flag2 of flag.flags2; track trackFlagsDataJson2; let idx2 = $index; let first2 = $first) {
+    @for (flag2 of flag.flags2; track trackFlagsDataJson2; let idx2 = $index; let first2 = $first; let last2 = $last) {
       @if(flag2.flag_style === 2) {
         <!-- 'margin-left': flag.year && !first ? '5rem': '0'} -->
-      <div class="main-block--flags2" 
-            [ngStyle]="{ 'margin-left': first && flag.flag_margin_right === '3' && flag.year ?  'calc('+ (idx) +' * 0rem)':
-                                        first && flag.flag_margin_right === '3' && !flag.year ?  'calc('+ (idx) +' * 0rem)':
-                                        first && flag.flag_margin_right === '0' && !flag.year ?  'calc('+ (idx) +' * 0rem)':
-                                        first && flag.flag_margin_right === '0' && flag.year ?  'calc('+ (idx) +' * 0rem)':
-
-                                        last && flag.flag_margin_right === '0' && !flag.year ? 'calc('+ (idx) +' * 0rem)': 
-                                        last && flag.flag_margin_right === '0' && flag.year ? 'calc('+ (idx) +' * 0rem)': 
-                                        last && flag.flag_margin_right === '3' && !flag.year ? 'calc('+ (idx) +' * 0rem)': 
-                                        last && flag.flag_margin_right === '3' && flag.year ? 'calc('+ (idx) +' * 0rem)': 
-
-                                        !first && !last && flag.flag_margin_right === '0' && !flag.year ? 'calc('+ (idx) +' * 0rem)': 
-                                        !first && !last && flag.flag_margin_right === '0' && flag.year ?  'calc('+ (idx) +' * 0rem)': 
-                                        !first && !last && flag.flag_margin_right === '3' && flag.year ?  'calc('+ (idx) +' * 0rem)':
-                                        !first && !last && flag.flag_margin_right === '3' && !flag.year ? 'calc('+ (idx) +' * 0rem)': '0rem',
-
-
-                            'margin-right': first && flag.flag_margin_right === '3' && flag.year ?  'calc('+ (idx) +' * 0rem)':
-                                            first && flag.flag_margin_right === '3' && !flag.year ?  'calc('+ (idx) +' * 0rem)':
-                                            first && flag.flag_margin_right === '0' && !flag.year ?  'calc('+ (idx) +' * 0rem)':
-                                            first && flag.flag_margin_right === '0' && flag.year ?  'calc('+ (idx) +' * 0rem)':
-
-                                            !first && !last && flag.flag_margin_right === '0' && !flag.year ? 'calc('+ (idx) +' * 0rem)': 
-                                            !first && !last && flag.flag_margin_right === '0' && flag.year ?  'calc('+ (idx) +' * 0rem)': 
-                                            !first && !last && flag.flag_margin_right === '3' && flag.year ?  'calc('+ (idx) +' * 0rem)':
-                                            !first && !last && flag.flag_margin_right === '3' && !flag.year ? 'calc('+ (idx) +' * 0rem)': '0rem'
-
-}">
-        <div class="flag-2 inside-flag">
+      <div  class="main-block--flags2"  [ngStyle]="{ 'margin-left': '12rem'}">
+        <div class="flag-2 inside-flag" 
+            [ngStyle]="{'margin-left':  last ? '4rem' : '0'}" >
 
           <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
 
