@@ -7,12 +7,13 @@
     @for (flag2 of flag.flags2; track trackFlagsDataJson2;) {
       @if(flag.flags2.length === 1) {
         <!-- 'margin-left': flag.year && !first ? '5rem': '0'} -->
-      <div  class="main-block--flags2"  [ngStyle]="{ 'margin-left': '12rem'}">
-        <div class="flag-2 inside-flag" 
+      <div  class="main-block--flags2"       
             [ngStyle]="{
-              'margin-left':  last ? '4rem' : 
-                              !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0rem',
-              }" >
+                        'margin-left':  last ? '12rem' : 
+                        !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'12rem',
+            }">
+        <div class="flag-2 inside-flag" 
+        >
 
           <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
 
@@ -135,8 +136,8 @@
                               </div> -->
         </div>
 
-        <div  [ngStyle]="{'margin-left':  last ? '4rem' : 
-                                          !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0rem',
+        <div  [ngStyle]="{'margin-left':  last ? '0rem' : 
+                                          !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0',
               }">
           <!-- Flagpole -->
           <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}">
