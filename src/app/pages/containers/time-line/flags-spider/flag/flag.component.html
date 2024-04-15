@@ -3,10 +3,12 @@
 
   <div class="main-block">
 
-    <!-- 🅰️ FLAG 2 -->
-    @for (flag2 of flag.flags2; track trackFlagsDataJson2; let idx = $index; let firstx = $first) {
+    <!-- 🅰️ FLAG 2 [ngStyle]="{'margin-right': !firstx && flag.flag_margin_right === '0' && !flag.year ? '2rem': '5rem'}" [ngStyle]="{'margin-left': 'calc('+ (idx) +' * 4rem)'}"-->
+    @for (flag2 of flag.flags2; track trackFlagsDataJson2; let idx2 = $index; let firstx2 = $first) {
       @if(flag2.flag_style === 2) {
-      <div class="main-block--flags2">
+        <!-- 'margin-left': flag.year && !firstx ? '5rem': '0'} -->
+      <div class="main-block--flags2" 
+      [ngStyle]="{'margin-left': flag.flag_margin_right === '3' && !firstx2 ? 'calc('+ (idx) +' * 12rem)' : '12rem'}" >
         <div class="flag-2 inside-flag">
 
           <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
@@ -49,17 +51,17 @@
             <div class="inside-flag_date" [ngStyle]="setStylesDate(flag2)" >
               <div class="inside-flag_date_day" [ngStyle]="setStylesText(flag2)">
                 <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
-                {{flag.date_obj.day}}
+                {{flag2.date_obj.day}}
               </div>
               <div class="inside-flag_date_month" [ngStyle]="setStylesTextMonth(flag2)">
                 <span>
                   <!-- {{flag.date_obj.month.split('/').shift() | titlecase}} -->
-                  {{flag.date_obj.month_s}}
+                  {{flag2.date_obj.month_s}}
                 </span>
               </div>
               <div class="inside-flag_date_year" [ngStyle]="setStylesTextYear(flag2)">
                 <!-- {{flag.date_obj.day_month_year.substring(0).split('-').shift()}} -->
-                {{flag.date_obj.year}}
+                {{flag2.date_obj.year}}
               </div>
             </div>
             <!-- Description -->
@@ -148,9 +150,11 @@
 
     <!-- 🅰️ FLAG 1 -->
     <div class="main-block--flags">
-
+      <!--   !firstx && flag.flag_margin_right === '3' && !flag.year ? '100rem':
+        [ngStyle]="{'margin-right': flag.flag_margin_right+'rem', 'margin-left': flag.year && !firstx ? '5rem': '0'}"   !firstx && flag.flag_margin_right === '0' && flag.year ? '100rem':  -->
       <div class="flag-1 inside-flag"
-        [ngStyle]="{'margin-right': flag.flag_margin_right+'rem', 'margin-left': flag.year && !firstx ? '5rem': '0'}">
+            [ngStyle]="{'margin-right': !firstx && flag.flag_margin_right === '0' && !flag.year ? '2rem': '5rem'}"
+       >
 
         <div class="flag-1_card" [ngStyle]="setStylesCards(flag)">
 
@@ -270,7 +274,7 @@
                   </div> -->
       </div>
 
-      <div [ngStyle]="{'margin-left': flag.year && !firstx ? '5rem': '0'}">
+      <div [ngStyle]="{'margin-length': !firstx && flag.flag_margin_right === '0' && !flag.year ? '0rem': '5rem'}">
         <!-- Flagpole -->
         <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"></div>
 
