@@ -73,6 +73,7 @@ export class FlagsSpiderComponent implements OnInit {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
         next: (res: any) => {
+          console.log('sssssssssssssss', res)
           let newTimeLine = {
             time_line: {
               flags: res.flags

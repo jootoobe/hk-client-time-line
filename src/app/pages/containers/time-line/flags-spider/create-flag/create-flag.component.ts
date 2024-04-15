@@ -219,6 +219,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
 
     let dateSplit = datePicker.split('-')
+    console.log('ZZZZZZZEEEEEEbbbbbbbbbbbb',dateSplit[0])
     let newTimestamp = Date.parse(date.toString())
     console.log(newTimestamp)
     // console.log(this.timeLine?.time_line?.flags)
@@ -253,7 +254,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       month_s: dateSplit[1] === '01' ? 'JAN' : dateSplit[1] === '02' ? 'FEV' : dateSplit[1] === '03' ? 'MAR' : dateSplit[1] === '04' ? 'ABR' : dateSplit[1] === '05' ? 'MAI' : dateSplit[1] === '06' ? 'JUN' :
         dateSplit[1] === '07' ? 'JUL' : dateSplit[1] === '08' ? 'AGO' : dateSplit[1] === '09' ? 'SET' : dateSplit[1] === '10' ? 'OUT' : dateSplit[1] === '11' ? 'NOV' : dateSplit[1] === '12' ? 'DEZ' : 'JAN',
       month_code: Number(dateSplit[1]),
-      year: dateSplit[0],
+      year: dateSplit[0].toString(),
       timestamp: newTimestamp,
       // time,
     }), { emitEvent: false })
@@ -326,7 +327,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     if (this.timestampExist.length === 1) {
       this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
-      let flags: any = this.timestampExist
+      let flags: FlagModel[] = this.timestampExist
+      flags[0].year = this.flagsForm.controls[0].get('year')?.value
       this.createFlagSubscribe = { iam_id: '0', time_line: { flags } }
     }
 
