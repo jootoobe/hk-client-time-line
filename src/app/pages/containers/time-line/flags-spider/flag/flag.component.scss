@@ -22,13 +22,13 @@
   width: auto; // usado para o scroll de baixo ficar mais fiel ao tamanho
 
   &--flags {
-    // margin-left: 5rem;
+    margin-left: 8rem;
   }
 
   &--flags2 {
     // left: 0;
     position: absolute;
-    margin-top: -6.5rem;
+    margin: -6.5rem 0rem 0rem 12rem;
   }
 }
 
