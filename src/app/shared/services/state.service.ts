@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { RedisAuthModel } from '../../spider-share/iam/models/auth/redis-auth.model';
 import { WINDOW } from './window.service';
 import { TIMELINEKeysModel } from '../../models/cryptos/time-line-keys.model';
+import { TimeLineModel } from '../../models/time-line.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,11 @@ export class StateService {
 
 
 
+  private getAllTimeLineSubject = new BehaviorSubject<TimeLineModel>(TimeLineModel as any);
+  getAllTimeLineSubject$ = this.getAllTimeLineSubject.asObservable();
+
+
+
   constructor(@Inject(WINDOW) private window: Window) { }
 
   updateLanguageSignal(val: string) {
@@ -58,6 +64,11 @@ export class StateService {
 
   updateRedisAuth(val: RedisAuthModel) {
     return this.redisAuthSubject.next(val)
+  }
+
+
+  updateGetAllTimeLine(val: TimeLineModel) {
+    return this.getAllTimeLineSubject.next(val)
   }
 
 

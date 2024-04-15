@@ -36,6 +36,17 @@ export class FlagsSpiderComponent implements OnInit {
       }
     })
 
+    this.stateService.getAllTimeLineSubject$
+    .subscribe({
+      next: (res: TimeLineModel) => {
+        if(res && res.time_line) {
+          this.timeLine = res
+        }
+      },
+      error: () => {},
+      complete: () => {}
+    })
+
   }
   ngOnInit(): void {
     console.log('FlagsSpiderComponent 🃏')
@@ -62,11 +73,12 @@ export class FlagsSpiderComponent implements OnInit {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
         next: (res: any) => {
-          this.timeLine = {
+          let newTimeLine = {
             time_line: {
               flags: res.flags
             }
           }
+          this.stateService.updateGetAllTimeLine(newTimeLine)
         },
         error: () => {
         },
@@ -76,12 +88,5 @@ export class FlagsSpiderComponent implements OnInit {
 
 
   }
-
-  // timeLineOutput(e: any) {
-  //   // this.timeLine = e
-
-  //   console.log('ssssssssssssss66666666666666666666666ssssssss',e)
-
-  // }
 
 }

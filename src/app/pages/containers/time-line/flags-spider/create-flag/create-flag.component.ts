@@ -341,8 +341,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.timeLineService.createFlag(this.createFlagSubscribe)
       .subscribe({
         next: (res: EncryptModel) => {
-          let val: any = res.a
-          this.timeLine = val
+          let val: any = res.a[0]
+          this.stateService.updateGetAllTimeLine(val)
         },
         error: () => {
           this.createFlagSubscribe = valClear
