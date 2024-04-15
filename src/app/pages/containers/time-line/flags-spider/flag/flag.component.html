@@ -153,7 +153,12 @@
       <!--   !firstx && flag.flag_margin_right === '3' && !flag.year ? '100rem':
         [ngStyle]="{'margin-right': flag.flag_margin_right+'rem', 'margin-left': flag.year && !firstx ? '5rem': '0'}"   !firstx && flag.flag_margin_right === '0' && flag.year ? '100rem':  -->
       <div class="flag-1 inside-flag"
-            [ngStyle]="{'margin-right': !firstx && flag.flag_margin_right === '0' && !flag.year ? '2rem': '5rem'}"
+            [ngStyle]="{ 'margin-left': firstx ? '8rem': '7rem',
+                         'margin-right':  !firstx && flag.flag_margin_right === '0' && !flag.year ? '5rem': 
+                                          !firstx && flag.flag_margin_right === '0' && flag.year ?  '3rem': 
+                                          !firstx && flag.flag_margin_right === '3' && flag.year ?  '4rem':
+                                          firstx && flag.flag_margin_right === '3' && flag.year ?  '4rem':
+                                          !firstx && flag.flag_margin_right === '3' && !flag.year ? '50rem': '0rem'}"
        >
 
         <div class="flag-1_card" [ngStyle]="setStylesCards(flag)">
@@ -274,7 +279,8 @@
                   </div> -->
       </div>
 
-      <div [ngStyle]="{'margin-length': !firstx && flag.flag_margin_right === '0' && !flag.year ? '0rem': '5rem'}">
+      <div [ngStyle]="{ 'margin-left': firstx ? '8rem': '7rem',
+                        'margin-length': !firstx && flag.flag_margin_right === '0' && !flag.year ? '0rem': '5rem'}">
         <!-- Flagpole -->
         <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"></div>
 
