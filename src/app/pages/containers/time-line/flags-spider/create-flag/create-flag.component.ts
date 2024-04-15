@@ -15,6 +15,7 @@ import { LatitudeLongitudeService } from "../../../../../shared/services/latitud
 import { StateService } from "../../../../../shared/services/state.service";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
+import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -339,7 +340,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     console.log('sssssssssssssss>>>>>>>>>>>.', this.createFlagSubscribe)
     this.timeLineService.createFlag(this.createFlagSubscribe)
       .subscribe({
-        next: () => {
+        next: (res: EncryptModel) => {
+          let val: any = res.a
+          this.timeLine = val
         },
         error: () => {
           this.createFlagSubscribe = valClear
@@ -380,10 +383,12 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,255,0' })
     }
   }
+
   radioButtonDateColor(e: MatRadioChange) {
     this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue(e.value)
 
   }
+
   onRadioButtonTransparencyColor(e: MatRadioChange) {
     this.flagsForm.controls[0]?.get('flag_design')?.get('color_transparency')?.setValue(e.value)
   }
@@ -396,7 +401,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   convertColor() {
     // this.createTimeLineForm.value.flags[0]['color_hex']
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-    console.log('ssssssss', flags)
     let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
     flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
     flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)

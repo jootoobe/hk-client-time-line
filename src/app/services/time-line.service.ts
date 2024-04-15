@@ -25,7 +25,7 @@ export class TimeLineService {
     })
   }
 
-  createFlag(time_line: TimeLineModel): Observable<any> { //EncryptModel
+  createFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
 
     let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl1)
 
@@ -33,7 +33,7 @@ export class TimeLineService {
       id: 0,
       a: this.timeLineKeys.BY.tl1 + encrypto
     }
-    return this.http.post<any>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
+    return this.http.post<EncryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
       map(res => {
         return res
       })

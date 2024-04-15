@@ -32,11 +32,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
   trackFlagsDataJson(index: number, flags1: TimeLineModel) {
-    return flags1
+    return flags1 ? flags1.time_line : undefined;
   }
 
   trackFlagsDataJson2(index: number, flags2: TimeLineModel) {
-    return flags2
+    return flags2 ? flags2.time_line : undefined;
   }
 
 
