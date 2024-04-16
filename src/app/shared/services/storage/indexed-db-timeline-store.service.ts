@@ -1,9 +1,11 @@
-import { Injectable } from "@angular/core";
+import { effect, Injectable } from "@angular/core";
 import * as CryptoJS from 'crypto-js';
-import { DBSchema, deleteDB, IDBPDatabase, openDB } from "idb";
+import { IDBPDatabase, openDB } from "idb";
 import { from, Observable, of } from "rxjs";
-import { map, mergeMap, switchMap, tap } from "rxjs/operators";
+import { map } from "rxjs/operators";
 import { TimeLineModel } from "../../../models/time-line.model";
+import { TIMELINEKeysModel } from "../../../models/cryptos/time-line-keys.model";
+import { StateService } from "../state.service";
 
 
 /**
@@ -26,9 +28,14 @@ export class IndexDbTimeLineService {
   databaseName = "SpiderShare";
 
   dbConnection$!: Observable<IDBPDatabase<MyDBKeysTimeLine>>;
+  timeLineKeys!: TIMELINEKeysModel
 
-  constructor() {
+  constructor(private stateService: StateService) {
     this.connectToIDBTimeLine()
+
+    effect(() => {
+      this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
+    })
   }
 
   // Creating connection and banks in indexDB
@@ -49,23 +56,51 @@ export class IndexDbTimeLineService {
 
 
   // ===================== ALL ADD, PUT FLAG ========================================
-// ====================== Return flag encryptIdb ====================================
+  // ====================== Return flag encryptIdb ====================================
   indexDbPutAllTimeLine<T>(target: MyDBKeysTimeLine, timeLine: TimeLineModel): Observable<any> {
     let data: any = { year: timeLine?.year }
-    
-    console.log('sssssss',data)
-    console.log('sssssss',timeLine)
-    return this.dbConnection$.pipe(
-      map(db => {
-        const tx = db.transaction(target, "readwrite");
-        tx.objectStore(target)
-          .put({ ...data, ...timeLine })
-          .then(v => { })
-          .catch(err => {
-          });
-        return timeLine;
-      })
-    );
+    // let newVal = this.encryptIDB(timeLine, this.timeLineKeys.LS.idb1)
+    // let time_line = {a: newVal}
+    console.log('ssssssssssss 🅱️',this.timeLineKeys.LS.idb1)
+    // console.log('ssssssssssss',newVal)
+    return of('')
+    // return this.dbConnection$.pipe(
+    //   map(db => {
+    //     const tx = db.transaction(target, "readwrite");
+    //     tx.objectStore(target)
+    //       .put({ ...data, ...time_line })
+    //       .then(v => { })
+    //       .catch(err => {
+    //       });
+    //     return timeLine;
+    //   })
+    // );
+  }
+
+
+  // ===================== Flags Cryptography IndexDB ADD PUT DATA ==================================
+  // ============================= Return flag encrypt flags =========================================
+  encryptIDB(inBody: any, key: any) {
+    const iamEncrypt: any = CryptoJS.AES.encrypt(JSON.stringify(inBody), key,
+      {
+        keySize: 128 / 8,
+        iv: key,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+      }).toString();
+    // const neyBody: any = { a: iamEncrypt };
+    // this.decryptSignIn(neyBody)
+    return iamEncrypt
+
+  }
+
+
+  dencryptIDB(inBody: any, key: string) {
+    // inBody = JSON.parse(inBody)
+    let decrypted = undefined;
+    decrypted = CryptoJS.AES.decrypt(inBody.a, key);
+    const timeLine = decrypted.toString(CryptoJS.enc.Utf8);
+    return JSON.parse(timeLine)
   }
 
 
