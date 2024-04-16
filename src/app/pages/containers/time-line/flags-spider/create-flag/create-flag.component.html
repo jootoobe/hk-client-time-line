@@ -4,7 +4,8 @@
 <pre> {{createTimeLineForm.value | json}}</pre>
 
 <form [formGroup]="createTimeLineForm"
-      (ngSubmit)="createTimeLineForm.valid && createFlag()">
+      (ngSubmit)="createTimeLineForm.valid && flagCreateEdit === 'create' && createFlag()"
+      (ngSubmit)="createTimeLineForm.valid && flagCreateEdit === 'edit' && updateFlag()">
   <div formGroupName="time_line">
     <div formArrayName="flags" class="flag-modal ">
 

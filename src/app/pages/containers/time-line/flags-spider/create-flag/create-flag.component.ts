@@ -32,7 +32,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   editFlag!: FlagModel;
   timestampExist!: FlagModel[];
-  createFlagSubscribe!: TimeLineModel
+  createEditFlagSubscribe!: TimeLineModel
 
   createTimeLineForm!: FormGroup
   matcher!: MyErrorStateMatcher // form validator errors
@@ -55,6 +55,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   radioRedeNets = '1' // {background: '74,74,74', text: '255,255,255'}
   radioButtonDate = '144,171,64' // cor fundo data com transparencia de 0.3
   radioRedeTransparency = '0.1' // transparência bandeira
+
   constructor(
     private fb: FormBuilder,
     private stateService: StateService,
@@ -75,7 +76,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     // Editing flag
     if (changes['editFlagForm']?.currentValue.flag_id) {
-      this.createTimeLineForm
       this.editFlag = changes['editFlagForm']?.currentValue
       this.updateFlagobject(this.editFlag)
     }
@@ -162,17 +162,24 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   updateFlagobject(flagVal: FlagModel) {
-
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
-    this.flagsForm.controls[0].patchValue(flagVal)
+  
+    if (flagVal.edit === 'edit-flag-1') {
+      this.flagsForm.controls[0].patchValue(flagVal)
+    }
+
+    if (flagVal.edit === 'edit-flag-2') {
+      let newVal: any = flagVal.flags2
+      this.flagsForm.controls[0].patchValue(newVal[0])
+    }
+
     this.flagsForm.controls[0]?.get('flag_update_at')?.setValue(currentlyDate)
 
     // o pipe | unique remove o ano
     this.flagsForm.controls[0]?.get('year')?.setValue(this.flagsForm.controls[0]?.get('date_obj')?.get('year')?.value)
 
-    // tem que fazer isso para não dar um problema com o matDatepicker
+    //tem que fazer isso para não dar um problema com o matDatepicker
     this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.setValue(new Date(flagVal.date_obj.date_origin))
-
 
   }
 
@@ -332,17 +339,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       })
   }
 
-  // vrifyTimestapnFlag() {
-  //   let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
-  //   // if (this.flagEdit === 'create') {
-  //   //   this.flagsForm['controls'][0]?.get('flag_created_at')?.setValue(currentlyDate)
-
-  //   // } else if (this.flagEdit === 'edit_flag1' || this.flagEdit === 'edit_flag2') {
-  //   //   this.flagsForm['controls'][0]?.get('flag_update_at')?.setValue(currentlyDate)
-  //   // }
-  //   // I need this filter to add the flag in the same year
-  //   // let yearFlag = this.flags.filter((yearFlag: any) => yearFlag.year === this.createTimeLineForm.get('year')?.value);
-  // }
 
   createFlag() {
     let valClear: any = {}
@@ -351,7 +347,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
 
     if (this.timestampExist.length === 0) {
-      this.createFlagSubscribe = this.createTimeLineForm.value
+      this.createEditFlagSubscribe = this.createTimeLineForm.value
     }
 
     if (this.timestampExist.length === 1) {
@@ -359,7 +355,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       let flags: FlagModel[] = this.timestampExist
       flags[0].year = this.flagsForm.controls[0].get('year')?.value
       flags[0].flag_margin_right = '3'
-      this.createFlagSubscribe = { iam_id: '0', time_line: { flags } }
+      this.createEditFlagSubscribe = { iam_id: '0', time_line: { flags } }
     }
 
 
@@ -369,8 +365,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
 
 
-    console.log('sssssssssssssss>>>>>>>>>>>.', this.createFlagSubscribe)
-    this.timeLineService.createFlag(this.createFlagSubscribe)
+    console.log('sssssssssssssss>>>>>>>>>>>.', this.createEditFlagSubscribe)
+    this.timeLineService.createFlag(this.createEditFlagSubscribe)
       .subscribe({
         next: (res: EncryptModel) => {
           // let val: any = res.a[0]
@@ -379,16 +375,26 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
         },
         error: () => {
-          this.createFlagSubscribe = valClear
+          this.createEditFlagSubscribe = valClear
         },
         complete: () => {
-          this.createFlagSubscribe = valClear
+          this.createEditFlagSubscribe = valClear
         }
       })
   }
 
 
   updateFlag() {
+
+    if (this.editFlag.edit === 'edit-flag-2') {
+      console.log('BANDEIRA 02', this.createEditFlagSubscribe)
+      this.editFlag.flags2?.push(this.createTimeLineForm.value)
+
+      console.log('ssssssssssss', this.editFlag)
+
+      //  this.createEditFlagSubscribe = { iam_id: '0', time_line: { flags } }
+
+    }
 
 
     if (this.createTimeLineForm.invalid) {
@@ -397,7 +403,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
 
 
-    console.log('sssssssssssssss>>>>>>>>>>>.', this.createFlagSubscribe)
+    console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
     // this.timeLineService.createFlag(this.createFlagSubscribe)
     //   .subscribe({
     //     next: (res: EncryptModel) => {
