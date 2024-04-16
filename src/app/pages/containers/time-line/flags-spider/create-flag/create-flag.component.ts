@@ -28,7 +28,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) flagSetting!: string
-  timestampExist: FlagModel[] | any;
+  timestampExist!: FlagModel[];
   createFlagSubscribe!: TimeLineModel
 
   createTimeLineForm!: FormGroup
@@ -211,20 +211,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.timestampExist = []
     let datePicker: any = ''
     datePicker = this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.value
-    console.log(datePicker)
-    console.log('wwwwwww', this.time)
 
-
-    // if (datePicker) {
     datePicker = datePicker.toISOString() // convert to timestemp
     let date: string = `${datePicker.split('T').shift()}T${this.time}${datePicker.substring(19)}`
     this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
 
     let dateSplit = datePicker.split('-')
-    console.log('ZZZZZZZEEEEEEbbbbbbbbbbbb', dateSplit[0])
     let newTimestamp = Date.parse(date.toString())
     console.log(newTimestamp)
-    // console.log(this.timeLine?.time_line?.flags)
 
     // Check if there are 01 or 02 identical timestamps
     if (this.timeLine && this.timeLine?.time_line) { // quando não existem bandeiras
@@ -236,8 +230,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
     }
 
-    if (this.timestampExist[0]?.flags2?.length === 1 ) {
-      
+    if (this.timestampExist[0]?.flags2?.length === 1) {
+      this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
+        day_month_year: '',
+        day: '',
+        month: '',
+        month_s: '',
+        month_code: '',
+        year: '',
+        timestamp: 0,
+        // time,
+      }), { emitEvent: false })
+
       this.toastrService.warning('Até 02 flags por data e horário', 'Máximo 02 flags');
       return
     }
@@ -262,13 +266,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       timestamp: newTimestamp,
       // time,
     }), { emitEvent: false })
-
-
-    // this.timestampExist[0].flags2?.push(this.flagsForm.controls[0].value)
-
-    // console.log('sssss', this.timestampExist)
-
-    // }
 
   }
 
@@ -338,7 +335,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
 
 
-    if (this.createTimeLineForm.invalid && this.timestampExist[0]?.flags2?.length === 0) {
+    if (this.createTimeLineForm.invalid) {
       this.matcher = new MyErrorStateMatcher();
       return
     }
@@ -349,7 +346,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: EncryptModel) => {
           // let val: any = res.a[0]
-          if(res.a === 'OK') {
+          if (res.a === 'OK') {
             this.getAllTimeLineById()
           }
         },
@@ -393,7 +390,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           time_line: newTimeLine.time_line
         })))
       .subscribe({
-        next: (res: string) => { 
+        next: (res: string) => {
         },
         error: (err) => { },
         complete: () => { }

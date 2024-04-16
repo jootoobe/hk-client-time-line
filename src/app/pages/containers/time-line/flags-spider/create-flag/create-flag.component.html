@@ -404,12 +404,12 @@
 
 
         <span>
-          @if(createTimeLineForm.invalid || timestampExist[0]?.flags2?.length > 0) {
+          @if(createTimeLineForm.invalid) {
           <button mat-stroked-button class="btn_opt-invalid" >
             <!-- Create flag -->
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
           </button>
-          } @else if(createTimeLineForm.valid && !timestampExist[0]?.flags2) {
+          } @else if(createTimeLineForm.valid) {
           <button matDialogClose type="submit" mat-stroked-button class="btn_opt-valid">
             <!-- Create flag -->
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
