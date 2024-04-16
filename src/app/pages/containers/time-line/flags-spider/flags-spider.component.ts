@@ -106,13 +106,30 @@ export class FlagsSpiderComponent implements OnInit {
           time_line: newTimeLine.time_line
         })))
       .subscribe({
-        next: (res: any) => {
-          console.log('CanvasTimeLineComponent - linha 394 - indexDbPutAllFlag()', res)
-     
-        },
+        next: (res: any) => {},
         error: (err) => { },
-        complete: () => { }
+        complete: () => { 
+          // this.indexDbGetAllTimeLine('0000')
+        }
       })
   }
+
+
+  // indexDbGetAllTimeLine(yearKey: string) {
+  //   const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
+  //   connTimeLine$.pipe(
+  //     switchMap(() =>
+  //       this.indexDbTimeLineService.indexDbGetAllTimeLine('time_line', yearKey)
+  //     ))
+  //     .subscribe({
+  //       next: (res: TimeLineModel) => {
+  //         console.log(res)
+  //       },
+  //       error: (err) => {
+  //       },
+  //       complete: () => {
+  //       }
+  //     })
+  // }
 
 }

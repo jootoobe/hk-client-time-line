@@ -2,7 +2,7 @@ import { effect, Injectable } from "@angular/core";
 import * as CryptoJS from 'crypto-js';
 import { IDBPDatabase, openDB } from "idb";
 import { from, Observable, of } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, switchMap } from "rxjs/operators";
 import { TimeLineModel } from "../../../models/time-line.model";
 import { TIMELINEKeysModel } from "../../../models/cryptos/time-line-keys.model";
 import { StateService } from "../state.service";
@@ -11,9 +11,8 @@ import { StateService } from "../state.service";
 /**
 * **************************************** RULES INDEX-DB *******************************************************
 * * * * * =================== Get ADD PUT - DELETE  is sent directly to the https service ============= * * * * *
+* @param { Rules } Used_so_that_other_microservices_have_access_to_data_without_having_to_use_the_backend
 * @param { 0000 }  IndexDb_key_0000 - Stores all data encrypted - used to load the application locally
-* @param { 0001 }  IndexDb_key_0001 - (ADD GET PUT) Stores all data encrypted - which must be sent to the backend - The delete method updates the entire index but is sent directly to the back
-* @param { Rules 0001 } Will_update_the_backend_when - 1º when string length reaches 5kb const KB changes: any = (len1 / 1024).toFixed(2); 2º when the page loads; 3º every hour it will be checked if data in key 0001
 
 */
 
@@ -56,12 +55,12 @@ export class IndexDbTimeLineService {
 
 
   // ===================== ALL ADD, PUT FLAG ========================================
-  // ====================== Return flag encryptIdb ====================================
-  indexDbPutAllTimeLine<T>(target: MyDBKeysTimeLine, timeLine: TimeLineModel): Observable<any> {
+  // ====================== Return flag encryptIDB ====================================
+  indexDbPutAllTimeLine(target: MyDBKeysTimeLine, timeLine: TimeLineModel): Observable<string> {
     let data: any = { year: timeLine?.year }
     let newVal = this.encryptIDB(timeLine, this.timeLineKeys.LS.idb1)
 
-    console.log('ssssssssssss 🅱️',this.timeLineKeys)
+    console.log('ssssssssssss 🅱️', this.timeLineKeys)
     return this.dbConnection$.pipe(
       map(db => {
         const tx = db.transaction(target, "readwrite");
@@ -70,8 +69,24 @@ export class IndexDbTimeLineService {
           .then(v => { })
           .catch(err => {
           });
-        return timeLine;
+        return '';
       })
+    );
+  }
+
+  // ======================================== ALL GET ===========================================================
+  // =============== Return flag dencryptIDB - Receives the key reference and returns the entire database' ======
+  indexDbGetAllTimeLine(target: MyDBKeysTimeLine, keyPar: string): Observable<TimeLineModel> {
+    return this.dbConnection$.pipe(
+      switchMap(db => {
+        const tx = db.transaction(target, "readonly");
+        const store = tx.objectStore(target);
+        return from(store.getAll());
+      }),
+      map((res:any) => {
+        let newVal = this.dencryptIDB(res[0], this.timeLineKeys.LS.idb1)
+        return newVal
+      }),
     );
   }
 
@@ -93,7 +108,7 @@ export class IndexDbTimeLineService {
   }
 
 
-  dencryptIDB(inBody: any, key: string) {
+  dencryptIDB(inBody: any, key: string): TimeLineModel {
     // inBody = JSON.parse(inBody)
     let decrypted = undefined;
     decrypted = CryptoJS.AES.decrypt(inBody.a, key);

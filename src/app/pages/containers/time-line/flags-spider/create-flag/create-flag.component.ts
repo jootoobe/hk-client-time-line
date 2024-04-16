@@ -3,7 +3,7 @@ import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, View
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatRadioChange } from "@angular/material/radio";
 import { ToastrService } from "ngx-toastr";
-import { debounceTime, distinctUntilChanged, take, tap } from "rxjs";
+import { debounceTime, distinctUntilChanged, switchMap, take, tap } from "rxjs";
 
 import { MatDatepickerTimeHeaderComponent } from "../../../../../components/datepicker-time/mat-datepicker-time-header.component";
 import { DateObjModel } from "../../../../../models/date-obj.model";
@@ -16,6 +16,7 @@ import { StateService } from "../../../../../shared/services/state.service";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
 import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
+import { IndexDbTimeLineService } from "../../../../../shared/services/storage/indexed-db-timeline-store.service";
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -59,6 +60,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     private latitudeLongitudeService: LatitudeLongitudeService,
     private toastrService: ToastrService,
     private timeLineService: TimeLineService,
+    private indexDbTimeLineService: IndexDbTimeLineService,
   ) {
 
     this.buildForm()
@@ -219,7 +221,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
 
     let dateSplit = datePicker.split('-')
-    console.log('ZZZZZZZEEEEEEbbbbbbbbbbbb',dateSplit[0])
+    console.log('ZZZZZZZEEEEEEbbbbbbbbbbbb', dateSplit[0])
     let newTimestamp = Date.parse(date.toString())
     console.log(newTimestamp)
     // console.log(this.timeLine?.time_line?.flags)
@@ -368,6 +370,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             }
           }
           this.stateService.updateGetAllTimeLine(newTimeLine)
+          this.indexDbPutAllTimeLine(newTimeLine)
         },
         error: () => {
         },
@@ -375,6 +378,26 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         }
       })
   }
+
+  indexDbPutAllTimeLine(newTimeLine: TimeLineModel) {
+    // let getNewVal = JSON.parse(localStorage.getItem('flags') || '[]');
+    const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
+    connTimeLine$.pipe(
+      switchMap(() =>
+        this.indexDbTimeLineService.indexDbPutAllTimeLine("time_line", {
+          year: '0000',
+          time_line: newTimeLine.time_line
+        })))
+      .subscribe({
+        next: (res: string) => { 
+        },
+        error: (err) => { },
+        complete: () => { }
+      })
+  }
+
+
+
 
 
 
