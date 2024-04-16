@@ -30,9 +30,11 @@
 
               <!-- Menu Edit Delete -->
               <div class="box-inside-flag-title ">
+                <!-- [ngStyle]="setStylesText(flag2)" -->
                 <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
-                [ngStyle]="setStylesText(flag2)"
-                [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+                  [matMenuTriggerFor]="menuEditRemove">
+                  more_vert
+                </i>
                 <!-- Start Filter Sort-->
                 <mat-menu #menuEditRemove="matMenu">
                   <span class="cursor_pointer noSelect box-inside-flag-title_menu">
@@ -83,11 +85,12 @@
             <div class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
               <p>
-                <mark [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }"> 
+                <!-- [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }" -->
+                <mark> 
                   {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}
                 </mark>
               </p>
-              <p [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }">
+              <p>
                 {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
               </p>
             </div>
@@ -174,8 +177,11 @@
 
             <!-- Menu Edit Delete -->
             <div class="box-inside-flag-title ">
-              <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon" [ngStyle]="setStylesText(flag)"
-                [matMenuTriggerFor]="menuEditRemove">more_vert</i>
+              <!-- [ngStyle]="setStylesText(flag2)" -->
+              <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
+                 [matMenuTriggerFor]="menuEditRemove">
+              more_vert
+              </i>
               <!-- Start Filter Sort-->
               <mat-menu #menuEditRemove="matMenu">
                 <span class="cursor_pointer noSelect box-inside-flag-title_menu">
@@ -226,9 +232,12 @@
             <div class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
               <p>
-                <mark [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }"> {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}</mark>
+                <!-- [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }" -->
+                <mark> 
+                  {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}
+                </mark>
               </p>
-              <p [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }">
+              <p>
                 {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
               </p>
             </div>
