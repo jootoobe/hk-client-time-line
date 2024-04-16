@@ -78,15 +78,21 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   setStylesDate(flag1: FlagModel): any {
-    if (flag1.flag_design?.color_date === '255,255,255') {
+    
+    if (flag1.flag_design?.color_date === '255,255,255' || 
+        flag1.flag_design?.color_date === '0,0,0' ||
+        flag1.flag_design?.color_date === '255,0,0' || 
+        flag1.flag_design?.color_date === '255,255,0' ) {
       let styles = {
         'background-color': `rgba(${flag1.flag_design?.color_date}, 1)`
       };
       return styles;
     }
+
     let styles = {
-      'background-color': `rgba(${flag1.flag_design?.color_date}, 0.3)`
+      'background-color': `rgba(${flag1.flag_design?.color_date}, 0.2)`
     };
+
     return styles;
   }
 

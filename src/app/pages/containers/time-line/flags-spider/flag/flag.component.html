@@ -83,9 +83,11 @@
             <div class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
               <p>
-                <mark> {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}</mark>
+                <mark [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }"> 
+                  {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}
+                </mark>
               </p>
-              <p>
+              <p [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }">
                 {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
               </p>
             </div>
@@ -224,9 +226,9 @@
             <div class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
               <p>
-                <mark> {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}</mark>
+                <mark [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }"> {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}</mark>
               </p>
-              <p>
+              <p [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }">
                 {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
               </p>
             </div>
