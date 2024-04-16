@@ -108,7 +108,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
       flag_design: this.fb.group({
         color_text: new FormControl<string | null>('0, 0, 0', [Validators.required]),
-        color_transparency: new FormControl<string | null>('0.3', [Validators.required]),
+        color_transparency: new FormControl<string | null>('0.1', [Validators.required]),
         color_hex: new FormControl<string | null>('#90ab3d', [Validators.required]),
         color_rgb: new FormControl<string | null>('144, 171, 64', [Validators.required]),
         color_hsl: new FormControl<string | null>('75, 46%, 92%', [Validators.required]),
