@@ -5,7 +5,6 @@ export class TimeLineModel {
     public time_line: FlagsModel,
     public iam_id?: string,
     public year?: string, // para o indexDB não dar erro
-    public TimeLine?: string, // para o indexDB não dar erro
   ) {
   }
 }

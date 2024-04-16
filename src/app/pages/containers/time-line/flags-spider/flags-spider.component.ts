@@ -98,9 +98,9 @@ export class FlagsSpiderComponent implements OnInit {
     const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
     connTimeLine$.pipe(
       switchMap(() =>
-        this.indexDbTimeLineService.indexDbPutAllTimeLine("TimeLine", {
+        this.indexDbTimeLineService.indexDbPutAllTimeLine("time_line", {
           year: '0000',
-          flags: newTimeLine
+          time_line: newTimeLine.time_line
         })))
       .subscribe({
         next: (res: any) => {

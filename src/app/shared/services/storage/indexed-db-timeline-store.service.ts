@@ -3,6 +3,7 @@ import * as CryptoJS from 'crypto-js';
 import { DBSchema, deleteDB, IDBPDatabase, openDB } from "idb";
 import { from, Observable, of } from "rxjs";
 import { map, mergeMap, switchMap, tap } from "rxjs/operators";
+import { TimeLineModel } from "../../../models/time-line.model";
 
 
 /**
@@ -15,21 +16,7 @@ import { map, mergeMap, switchMap, tap } from "rxjs/operators";
 */
 
 
-export interface TimeLine {
-  year: string;
-  time_line: any;
-}
-
-
-interface MyDBTimeLine {
-  TimeLine: {
-    year: string;
-    time_line: any;
-  };
-
-}
-
-type MyDBKeysTimeLine = keyof MyDBTimeLine;
+type MyDBKeysTimeLine = keyof TimeLineModel;
 
 @Injectable({
   providedIn: "root"
@@ -51,7 +38,7 @@ export class IndexDbTimeLineService {
         upgrade(db) {
           // db.createObjectStore("Status", { keyPath: "AppName" });
           // db.createObjectStore("Kanban", { keyPath: "year" });
-          db.createObjectStore("TimeLine", { keyPath: "year" });
+          db.createObjectStore("time_line", { keyPath: "year" });
         }
       })
     );
@@ -63,7 +50,7 @@ export class IndexDbTimeLineService {
 
   // ===================== ALL ADD, PUT FLAG ========================================
 // ====================== Return flag encryptIdb ====================================
-  indexDbPutAllTimeLine<T>(target: MyDBKeysTimeLine, timeLine: any): Observable<T> {
+  indexDbPutAllTimeLine<T>(target: MyDBKeysTimeLine, timeLine: TimeLineModel): Observable<any> {
     let data: any = { year: timeLine?.year }
     
     console.log('sssssss',data)
