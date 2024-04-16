@@ -6,6 +6,8 @@ import { TimeLineModel } from '../../../../models/time-line.model';
 import { TimeLineService } from '../../../../services/time-line.service';
 import { TIMELINEKeysModel } from '../../../../models/cryptos/time-line-keys.model';
 import { StateService } from '../../../../shared/services/state.service';
+import { IndexDbTimeLineService } from '../../../../shared/services/storage/indexed-db-timeline-store.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'flags-spider',
@@ -27,6 +29,7 @@ export class FlagsSpiderComponent implements OnInit {
     private elementRef: ElementRef,
     private timeLineService: TimeLineService,
     private stateService: StateService,
+    private indexDbTimeLineService: IndexDbTimeLineService,
   ) {
 
     effect(() => { // tenho que certificar que a chave esteja lo LS - chave ss que abre o body {a: 'asdasd..}
@@ -80,11 +83,32 @@ export class FlagsSpiderComponent implements OnInit {
             }
           }
           this.stateService.updateGetAllTimeLine(newTimeLine)
+          this.indexDbPutAllFlag(newTimeLine)
         },
         error: () => {
         },
         complete: () => {
         }
+      })
+  }
+
+
+  indexDbPutAllFlag(newTimeLine: TimeLineModel) {
+    // let getNewVal = JSON.parse(localStorage.getItem('flags') || '[]');
+    const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
+    connTimeLine$.pipe(
+      switchMap(() =>
+        this.indexDbTimeLineService.indexDbPutAllTimeLine("TimeLine", {
+          year: '0000',
+          flags: newTimeLine
+        })))
+      .subscribe({
+        next: (res: any) => {
+          console.log('CanvasTimeLineComponent - linha 394 - indexDbPutAllFlag()', res)
+     
+        },
+        error: (err) => { },
+        complete: () => { }
       })
   }
 
