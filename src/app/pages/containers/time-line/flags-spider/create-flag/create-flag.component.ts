@@ -50,7 +50,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   radioRedeTextColor = '0,0,0' // text colors
   radioRedeNets = '1' // {background: '74,74,74', text: '255,255,255'}
   radioButtonDate = '144,171,64' // cor fundo data com transparencia de 0.3
-  radioRedeTransparency = '0.2' // transparência bandeira
+  radioRedeTransparency = '0.1' // transparência bandeira
   constructor(
     private fb: FormBuilder,
     private stateService: StateService,
