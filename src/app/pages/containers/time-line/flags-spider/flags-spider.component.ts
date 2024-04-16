@@ -8,7 +8,7 @@ import { TIMELINEKeysModel } from '../../../../models/cryptos/time-line-keys.mod
 import { StateService } from '../../../../shared/services/state.service';
 import { IndexDbTimeLineService } from '../../../../shared/services/storage/indexed-db-timeline-store.service';
 import { switchMap } from 'rxjs';
-import { FlagsModel } from '../../../../models/flag.model';
+import { FlagModel, FlagsModel } from '../../../../models/flag.model';
 
 @Component({
   selector: 'flags-spider',
@@ -24,6 +24,7 @@ export class FlagsSpiderComponent implements OnInit {
   timeLine: TimeLineModel = {} as any
 
   timeLineKeys!: TIMELINEKeysModel
+  editFlagForm!: FlagModel | any
   constructor(
     private dialogCreate: MatDialog,
     private renderer2: Renderer2,
@@ -57,11 +58,19 @@ export class FlagsSpiderComponent implements OnInit {
 
   }
 
+  editFlag(flag: FlagModel) {
+    this.editFlagForm = flag
+    this.openCreateTimeLineDialog('edit')
+  }
 
 
   // Open Create Time_Line
   openCreateTimeLineDialog(val: string): void {
     this.flagSetting = val
+
+    if(val === 'create') {
+      this.editFlagForm = {}
+    }
 
     this.dialogCreate.open(this.createTimeLine, {
       disableClose: true,

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, ElementRef, EventEmitter, input, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges } from "@angular/core";
+import { AfterViewInit, Component, computed, ElementRef, EventEmitter, input, Input, OnChanges, OnInit, output, Output, Renderer2, SimpleChanges } from "@angular/core";
 
 import { FlagModel } from "../../../../../models/flag.model";
 import { TimeLineModel } from "../../../../../models/time-line.model";
@@ -14,7 +14,7 @@ export function coerceArray<T>(value: T | T[]): T[] {
   styleUrls: ['./flag.component.scss'],
 })
 export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
-
+  editFlagOutput = output<FlagModel>()
   @Input({required: true}) timeLine!:TimeLineModel
 
   constructor() {
@@ -106,6 +106,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
 
+
+    // ⬇️ Edit Flag
+    editFlag(flagEdit: FlagModel) {
+      this.editFlagOutput.emit(flagEdit)
+    }
 
 
 

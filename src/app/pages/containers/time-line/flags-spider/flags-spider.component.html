@@ -4,6 +4,7 @@
   <create-flag
               [timeLine]="timeLine"
               [flagSetting]="flagSetting"
+              [editFlagForm]="editFlagForm"
               > 
   </create-flag>
 </ng-template>
@@ -21,7 +22,10 @@
   <!-- Bottom div 80% -->
   <div class="second-div"  appDragScroll id="moveWheelId">
     @if(timeLine && timeLine.time_line){
-      <flag [timeLine]="timeLine"> </flag>
+      <flag [timeLine]="timeLine"
+            (editFlagOutput)="editFlag($event)"
+      > 
+      </flag>
     }
   </div>
 

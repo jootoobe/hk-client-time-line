@@ -27,6 +27,7 @@ import { IndexDbTimeLineService } from "../../../../../shared/services/storage/i
 export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
+  @Input({ required: true }) editFlagForm!: FlagModel
   @Input({ required: true }) flagSetting!: string
   timestampExist!: FlagModel[];
   createFlagSubscribe!: TimeLineModel
@@ -64,8 +65,20 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   ) {
 
     this.buildForm()
+
   }
 
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    console.log(changes['editFlagForm']?.currentValue)
+
+    // Editing flag
+    if (changes['editFlagForm']?.currentValue.year) {
+      this.updateFlagobject(changes['editFlagForm']?.currentValue)
+    }
+
+  }
 
   ngOnInit(): void {
     this.latitudeLongitude()
@@ -99,7 +112,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   createFlagobject(): FormGroup {
     return this.fb.group({
-      year: new FormControl<string | null>(null + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(3), Validators.maxLength(4)]),
+      year: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(4)]),
       flag_id: new FormControl<string | null>('flag_id_' + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
       flag_title: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       flag_description: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]),
@@ -147,6 +160,12 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   }
 
+
+  updateFlagobject(flagVal: FlagModel) {
+    this.createTimeLineForm.patchValue({
+
+    })
+  }
 
   // ⬇️ Get Flag form
   get flagsForm() {

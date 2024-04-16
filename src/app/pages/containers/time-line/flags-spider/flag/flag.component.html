@@ -37,7 +37,7 @@
                 </i>
                 <!-- Start Filter Sort-->
                 <mat-menu #menuEditRemove="matMenu">
-                  <span class="cursor_pointer noSelect box-inside-flag-title_menu">
+                  <span class="cursor_pointer noSelect box-inside-flag-title_menu" (click)="editFlag(flag)">
                     <i class="material-icons box-inside-flag-title_menu--edit">
                       edit
                     </i>
@@ -184,7 +184,7 @@
               </i>
               <!-- Start Filter Sort-->
               <mat-menu #menuEditRemove="matMenu">
-                <span class="cursor_pointer noSelect box-inside-flag-title_menu">
+                <span class="cursor_pointer noSelect box-inside-flag-title_menu" (click)="editFlag(flag)">
                   <i class="material-icons box-inside-flag-title_menu--edit" >
                     edit
                   </i>
