@@ -8,6 +8,7 @@ import { TIMELINEKeysModel } from '../../../../models/cryptos/time-line-keys.mod
 import { StateService } from '../../../../shared/services/state.service';
 import { IndexDbTimeLineService } from '../../../../shared/services/storage/indexed-db-timeline-store.service';
 import { switchMap } from 'rxjs';
+import { FlagsModel } from '../../../../models/flag.model';
 
 @Component({
   selector: 'flags-spider',
@@ -75,7 +76,7 @@ export class FlagsSpiderComponent implements OnInit {
   getAllTimeLineById() {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
-        next: (res: any) => {
+        next: (res: FlagsModel) => {
           console.log('sssssssssssssss', res)
           let newTimeLine = {
             time_line: {

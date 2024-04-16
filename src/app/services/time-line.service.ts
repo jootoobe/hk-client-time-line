@@ -8,6 +8,7 @@ import { TIMELINEKeysModel } from '../models/cryptos/time-line-keys.model';
 import { TimeLineModel } from '../models/time-line.model';
 import { StateService } from '../shared/services/state.service';
 import { EncryptModel } from '../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model';
+import { FlagsModel } from '../models/flag.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +41,13 @@ export class TimeLineService {
     )
   }
 
-  getAllTimeLineById(): Observable<any> {
-    return this.http.get<any>(`${this.API_TIME_LINE}/controller`).pipe(
+  getAllTimeLineById(): Observable<FlagsModel> {
+    let val = this.timeLineKeys.BY.tl1+'U2FsdGVkX1+TVq5MkDFDYrTSGvujWOb9'    
+    return this.http.get<FlagsModel>(`${this.API_TIME_LINE}/controller?val=${val}`).pipe(
       map(res => {
-        return res
+        let timeLine = this.dencryptBody(res, this.timeLineKeys.BY.tl1)
+        console.log('ssssssssssssssssssssssssssssssssssssssssssssssss',timeLine)
+        return timeLine
       })
     )
   }
