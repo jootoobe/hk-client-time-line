@@ -64,6 +64,7 @@
         "mat-stroked-button": {
           "button": {
             "create": "Create flag",
+            "edit": "Edit flag",
             "back": "Go back"
           }
         }
