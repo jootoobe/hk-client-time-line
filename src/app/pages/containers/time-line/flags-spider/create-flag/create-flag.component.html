@@ -96,11 +96,12 @@
           <!-- (dateChange)="addEvent('change', $event)" -->
           <!-- (keyup)="toTimestamp(dateInput.value)" -->
           <!-- (dateInput)="addEventDatePicker(dateInput.value, $event)" -->
+          <!-- "dateInput?.value" fica dando erro de console -->
           <input  formControlName="date_origin"
                   #dateInput
                   [min]="minDate"
                   appMaskDate
-                  [appMaskValue]="flagsForm.controls[0].get('date_obj')?.get('date_origin')?.value"
+                  [appMaskValue]="addDataMaskVal"
                   matInput
                   type="text"
                   maxlength="10"
@@ -108,6 +109,7 @@
                   [matDatepicker]="picker"
                   [errorStateMatcher]="matcher"
                   [placeholder]="'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.date.placeholder'| translate"
+                  (keyup)="addDataMask($event)"
                   >
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker

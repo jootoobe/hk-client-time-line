@@ -56,6 +56,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   radioButtonDate = '144,171,64' // cor fundo data com transparencia de 0.3
   radioRedeTransparency = '0.1' // transparência bandeira
 
+  addDataMaskVal = ''
+
   constructor(
     private fb: FormBuilder,
     private stateService: StateService,
@@ -386,14 +388,28 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   updateFlag() {
 
+    if (this.editFlag.edit === 'edit-flag-1') {
+      let flags:any = this.flagsForm.controls[0]?.value
+      flags.flags2 = this.editFlag.flags2
+
+      if(flags.flags2?.length >= 1) {
+        flags.flags2[0].flags2 = undefined
+        delete flags.flags2[0].flags2
+      }
+
+       this.createEditFlagSubscribe = { iam_id: '0', time_line: { flags: [flags]} }
+    }
+
     if (this.editFlag.edit === 'edit-flag-2') {
-      console.log('BANDEIRA 02', this.createEditFlagSubscribe)
-      this.editFlag.flags2?.push(this.createTimeLineForm.value)
+      this.editFlag.flags2 = []
+      this.editFlag.flags2?.push(this.flagsForm.controls[0]?.value)
 
-      console.log('ssssssssssss', this.editFlag)
-
-      //  this.createEditFlagSubscribe = { iam_id: '0', time_line: { flags } }
-
+      if( this.editFlag.flags2?.length >= 1) {
+        this.editFlag.flags2[0].flags2 = undefined
+        delete this.editFlag.flags2[0].flags2
+      }
+      
+      this.createEditFlagSubscribe = { iam_id: '0', time_line: { flags: [this.editFlag]} }
     }
 
 
@@ -515,6 +531,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   clearForm() {
     // this.editFlagForm = {}
+  }
+
+
+  addDataMask(event: any) {
+    this.addDataMaskVal = event.target.value;
   }
 
 }
