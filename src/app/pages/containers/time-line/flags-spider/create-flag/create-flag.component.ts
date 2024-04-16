@@ -28,7 +28,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) flagSetting!: string
-  timestampExist!: FlagModel[];
+  timestampExist: FlagModel[] | any;
   createFlagSubscribe!: TimeLineModel
 
   createTimeLineForm!: FormGroup
@@ -236,7 +236,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
     }
 
-    if (this.timestampExist.length === 2) {
+    if (this.timestampExist[0]?.flags2?.length === 1 ) {
+      
+      this.toastrService.warning('Até 02 flags por data e horário', 'Máximo 02 flags');
       return
     }
 
@@ -336,7 +338,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
 
 
-    if (this.createTimeLineForm.invalid) {
+    if (this.createTimeLineForm.invalid && this.timestampExist[0]?.flags2?.length === 0) {
       this.matcher = new MyErrorStateMatcher();
       return
     }

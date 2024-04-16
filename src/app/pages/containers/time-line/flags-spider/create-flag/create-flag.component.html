@@ -173,10 +173,11 @@
 
       <!-- RADIO COR TEXTO -->
       <div class="flag-modal_radio">
-        <div class="flag-modal_radio--text">
+        <div class="flag-modal_radio--text" >
           Cor do texto
         <!-- Custom ToolTip -->
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            style="margin-left: 15rem; margin-top: .5rem;"
             matSuffix
             customToolTip
             [contentTemplate]="template_help3"
@@ -225,6 +226,7 @@
           Cor contraste redes
         <!-- Custom ToolTip -->
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            style="margin-left: 10rem; margin-top: .5rem;"
             matSuffix
             customToolTip
             [contentTemplate]="template_help4"
@@ -272,6 +274,7 @@
           Cor data fundo
         <!-- Custom ToolTip -->
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            style="margin-left: 13rem; margin-top: .5rem;"
             matSuffix
             customToolTip
             [contentTemplate]="template_help6"
@@ -319,6 +322,7 @@
           Cor transparência bandeira
         <!-- Custom ToolTip -->
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            style="margin-left: 5rem; margin-top: .5rem;"
             matSuffix
             customToolTip
             [contentTemplate]="template_help5"
@@ -400,15 +404,15 @@
 
 
         <span>
-          @if(createTimeLineForm.invalid) {
+          @if(createTimeLineForm.invalid || timestampExist[0]?.flags2?.length > 0) {
           <button mat-stroked-button class="btn_opt-invalid" >
             <!-- Create flag -->
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
           </button>
-          } @else if(createTimeLineForm.valid) {
+          } @else if(createTimeLineForm.valid && !timestampExist[0]?.flags2) {
           <button matDialogClose type="submit" mat-stroked-button class="btn_opt-valid">
             <!-- Create flag -->
-            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
+          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
           </button>
           }
         </span>
