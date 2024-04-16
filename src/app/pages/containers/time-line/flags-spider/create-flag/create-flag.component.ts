@@ -27,7 +27,7 @@ import { IndexDbTimeLineService } from "../../../../../shared/services/storage/i
 export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
-  @Input({ required: true }) editFlagForm!: FlagModel
+  @Input({ required: true }) editFlagForm!: FlagModel | any
 
   editFlag!: FlagModel;
   timestampExist!: FlagModel[];
@@ -72,10 +72,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   ngOnChanges(changes: SimpleChanges) {
 
-    console.log(changes['editFlagForm']?.currentValue)
-
     // Editing flag
-    if (changes['editFlagForm']?.currentValue.year) {
+    if (changes['editFlagForm']?.currentValue.flag_id) {
+      this.createTimeLineForm
       this.editFlag = changes['editFlagForm']?.currentValue
       this.updateFlagobject(this.editFlag)
     }
@@ -162,68 +161,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   updateFlagobject(flagVal: FlagModel) {
-    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
 
-    console.log('PPPPPPPPPPPPPPPPPPPP', flagVal.date_obj.date_origin)
-
-    this.flagsForm.controls[0].patchValue({
-      year: flagVal.year,
-      flag_id: flagVal.flag_id,
-      flag_title: flagVal.flag_title,
-      flag_description: flagVal.flag_description,
-      flag_style: flagVal.flag_style,
-      flag_created_at: flagVal.flag_created_at,
-      flag_update_at: currentlyDate,
-      flag_margin_right: flagVal.flag_margin_right,
-
-      flag_design: {
-        color_text: flagVal.flag_design.color_text,
-        color_transparency: flagVal.flag_design.color_transparency,
-        color_hex: flagVal.flag_design.color_hex,
-        color_rgb: flagVal.flag_design.color_rgb,
-        color_hsl: flagVal.flag_design.color_hsl,
-        color_date: flagVal.flag_design.color_date,
-        color_chips: {
-          background: flagVal.flag_design.color_chips.background,
-          text: flagVal.flag_design.color_chips.text,
-        },
-      },
-      date_obj: {
-        day_month_year: flagVal.date_obj.day_month_year,
-        date_origin: flagVal.date_obj.date_origin,
-        day: flagVal.date_obj.day,
-        month: flagVal.date_obj.month,
-        month_s: flagVal.date_obj.month_s,
-        year: flagVal.date_obj.year,
-        month_code: flagVal.date_obj.month_code,
-        timestamp: flagVal.date_obj.timestamp,
-        time: flagVal.date_obj.time,
-      },
-      social_medias_chips: [],
-      subject_tags: [],
-
-      geolocation: {
-        country_name: flagVal.geolocation?.country_name,
-        country_code: flagVal.geolocation?.country_code,
-        state: flagVal.geolocation?.state,
-        city: flagVal.geolocation?.city,
-        longitude: flagVal.geolocation?.longitude,
-        latitude: flagVal.geolocation?.latitude,
-      },
-      flags2: [],
-    })
-
-    // this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
-    //   day_month_year: flagVal.date_obj.day_month_year,
-    //   // date_origin: flagVal.date_obj.date_origin,
-    //   day: flagVal.date_obj.day,
-    //   month: flagVal.date_obj.month,
-    //   month_s: flagVal.date_obj.month_s,
-    //   year: flagVal.date_obj.year,
-    //   month_code: flagVal.date_obj.month_code,
-    //   timestamp: flagVal.date_obj.timestamp,
-    //   time: flagVal.date_obj.time,
-    // }))
+    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
+    this.flagsForm.controls[0].patchValue(flagVal)
+    this.flagsForm.controls[0]?.get('flag_update_at')?.setValue(currentlyDate)
+    // o pipe | unique remove o ano
+    this.flagsForm.controls[0]?.get('year')?.setValue(this.flagsForm.controls[0]?.get('date_obj')?.get('year')?.value)
+    
   }
 
   // ⬇️ Get Flag form
@@ -532,6 +476,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
 
-
+  clearForm() {
+    this.editFlagForm = {}
+  }
 
 }
