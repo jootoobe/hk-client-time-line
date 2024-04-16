@@ -161,12 +161,17 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   updateFlagobject(flagVal: FlagModel) {
-
+    
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
     this.flagsForm.controls[0].patchValue(flagVal)
     this.flagsForm.controls[0]?.get('flag_update_at')?.setValue(currentlyDate)
+    
     // o pipe | unique remove o ano
     this.flagsForm.controls[0]?.get('year')?.setValue(this.flagsForm.controls[0]?.get('date_obj')?.get('year')?.value)
+
+    // tem que fazer isso para não dar um problema com o matDatepicker
+    this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.setValue(new Date(flagVal.date_obj.date_origin))
+
     
   }
 
