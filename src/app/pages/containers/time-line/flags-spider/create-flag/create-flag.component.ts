@@ -27,7 +27,7 @@ import { IndexDbTimeLineService } from "../../../../../shared/services/storage/i
 export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
-  @Input({ required: true }) editFlagForm!: FlagModel | any
+  @Input({ required: true }) editFlagForm!: FlagModel
 
   editFlag!: FlagModel;
   timestampExist!: FlagModel[];
@@ -477,7 +477,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   clearForm() {
-    this.editFlagForm = {}
+    // this.editFlagForm = {}
   }
 
 }
