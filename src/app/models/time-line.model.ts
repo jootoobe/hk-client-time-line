@@ -6,7 +6,7 @@ export class TimeLineModel {
     public iam_id?: string,
     public year?: string, // para o indexDB não dar erro
     public a?: string, // para o indexDB não dar erro
-    public edit?: string, // para edição
+   
   ) {
   }
 }

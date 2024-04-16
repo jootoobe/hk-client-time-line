@@ -108,7 +108,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
     // ⬇️ Edit Flag
-    editFlag(flagEdit: FlagModel) {
+    editFlag(flagEdit: FlagModel, editFlag:string) {
+      flagEdit.edit = editFlag
       this.editFlagOutput.emit(flagEdit)
     }
 

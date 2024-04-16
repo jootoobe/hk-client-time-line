@@ -99,7 +99,7 @@
                   #dateInput
                   [min]="minDate"
                   appMaskDate
-                  [appMaskValue]="dateInput.value"
+                  [appMaskValue]="flagsForm.controls[0].get('date_obj')?.get('date_origin')?.value"
                   matInput
                   type="text"
                   maxlength="10"

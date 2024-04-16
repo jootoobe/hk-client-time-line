@@ -20,7 +20,7 @@ export class FlagModel {
     public subject_tags: SubjectTagModel[],
     public geolocation?: GeolocationModel,
     public flags2?: FlagModel[],
-
+    public edit?: string, // para edição
   ) {
   }
 }

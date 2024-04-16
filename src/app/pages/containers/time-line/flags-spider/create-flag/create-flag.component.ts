@@ -28,7 +28,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) editFlagForm!: FlagModel
-  @Input({ required: true }) flagSetting!: string
+
+  editFlag!: FlagModel;
   timestampExist!: FlagModel[];
   createFlagSubscribe!: TimeLineModel
 
@@ -75,17 +76,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     // Editing flag
     if (changes['editFlagForm']?.currentValue.year) {
-      this.updateFlagobject(changes['editFlagForm']?.currentValue)
+      this.editFlag = changes['editFlagForm']?.currentValue
+      this.updateFlagobject(this.editFlag)
     }
 
   }
 
   ngOnInit(): void {
     this.latitudeLongitude()
-    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
-    if (this.flagSetting === 'create') {
-      this.flagsForm['controls'][0]?.get('flag_created_at')?.setValue(currentlyDate)
-    }
   }
 
   ngAfterViewInit(): void {
@@ -107,17 +105,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       })
     });
 
-
   }
 
   createFlagobject(): FormGroup {
+    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
+
     return this.fb.group({
       year: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(4)]),
       flag_id: new FormControl<string | null>('flag_id_' + this.stateService.getUniqueId(5), [Validators.required, Validators.minLength(32), Validators.maxLength(35)]),
       flag_title: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       flag_description: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]),
       flag_style: new FormControl<any | null>(null, [Validators.required]),
-      flag_created_at: new FormControl<string | null>(null, []),
+      flag_created_at: new FormControl<string | null>(currentlyDate, []),
       flag_update_at: new FormControl<string | null>('0', []),
       flag_margin_right: new FormControl<string | null>('0', []),
 
@@ -158,13 +157,73 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       flags2: new FormArray([]),
     });
 
+
   }
 
 
   updateFlagobject(flagVal: FlagModel) {
-    this.createTimeLineForm.patchValue({
+    let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
 
+    console.log('PPPPPPPPPPPPPPPPPPPP', flagVal.date_obj.date_origin)
+
+    this.flagsForm.controls[0].patchValue({
+      year: flagVal.year,
+      flag_id: flagVal.flag_id,
+      flag_title: flagVal.flag_title,
+      flag_description: flagVal.flag_description,
+      flag_style: flagVal.flag_style,
+      flag_created_at: flagVal.flag_created_at,
+      flag_update_at: currentlyDate,
+      flag_margin_right: flagVal.flag_margin_right,
+
+      flag_design: {
+        color_text: flagVal.flag_design.color_text,
+        color_transparency: flagVal.flag_design.color_transparency,
+        color_hex: flagVal.flag_design.color_hex,
+        color_rgb: flagVal.flag_design.color_rgb,
+        color_hsl: flagVal.flag_design.color_hsl,
+        color_date: flagVal.flag_design.color_date,
+        color_chips: {
+          background: flagVal.flag_design.color_chips.background,
+          text: flagVal.flag_design.color_chips.text,
+        },
+      },
+      date_obj: {
+        day_month_year: flagVal.date_obj.day_month_year,
+        date_origin: flagVal.date_obj.date_origin,
+        day: flagVal.date_obj.day,
+        month: flagVal.date_obj.month,
+        month_s: flagVal.date_obj.month_s,
+        year: flagVal.date_obj.year,
+        month_code: flagVal.date_obj.month_code,
+        timestamp: flagVal.date_obj.timestamp,
+        time: flagVal.date_obj.time,
+      },
+      social_medias_chips: [],
+      subject_tags: [],
+
+      geolocation: {
+        country_name: flagVal.geolocation?.country_name,
+        country_code: flagVal.geolocation?.country_code,
+        state: flagVal.geolocation?.state,
+        city: flagVal.geolocation?.city,
+        longitude: flagVal.geolocation?.longitude,
+        latitude: flagVal.geolocation?.latitude,
+      },
+      flags2: [],
     })
+
+    // this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
+    //   day_month_year: flagVal.date_obj.day_month_year,
+    //   // date_origin: flagVal.date_obj.date_origin,
+    //   day: flagVal.date_obj.day,
+    //   month: flagVal.date_obj.month,
+    //   month_s: flagVal.date_obj.month_s,
+    //   year: flagVal.date_obj.year,
+    //   month_code: flagVal.date_obj.month_code,
+    //   timestamp: flagVal.date_obj.timestamp,
+    //   time: flagVal.date_obj.time,
+    // }))
   }
 
   // ⬇️ Get Flag form

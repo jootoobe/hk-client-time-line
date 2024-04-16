@@ -19,7 +19,6 @@ export class FlagsSpiderComponent implements OnInit {
   @ViewChild('createTimeLine', { static: false }) createTimeLine!: TemplateRef<any> // open modal ref - modal to create or edit timeline
 
   assetsProd = environment.assetsProd // assetsProd: 'http://localhost:4201',
-  flagSetting!: string
 
   timeLine: TimeLineModel = {} as any
 
@@ -66,7 +65,6 @@ export class FlagsSpiderComponent implements OnInit {
 
   // Open Create Time_Line
   openCreateTimeLineDialog(val: string): void {
-    this.flagSetting = val
 
     if(val === 'create') {
       this.editFlagForm = {}
