@@ -59,22 +59,20 @@ export class IndexDbTimeLineService {
   // ====================== Return flag encryptIdb ====================================
   indexDbPutAllTimeLine<T>(target: MyDBKeysTimeLine, timeLine: TimeLineModel): Observable<any> {
     let data: any = { year: timeLine?.year }
-    // let newVal = this.encryptIDB(timeLine, this.timeLineKeys.LS.idb1)
-    // let time_line = {a: newVal}
-    console.log('ssssssssssss 🅱️',this.timeLineKeys.LS.idb1)
-    // console.log('ssssssssssss',newVal)
-    return of('')
-    // return this.dbConnection$.pipe(
-    //   map(db => {
-    //     const tx = db.transaction(target, "readwrite");
-    //     tx.objectStore(target)
-    //       .put({ ...data, ...time_line })
-    //       .then(v => { })
-    //       .catch(err => {
-    //       });
-    //     return timeLine;
-    //   })
-    // );
+    let newVal = this.encryptIDB(timeLine, this.timeLineKeys.LS.idb1)
+
+    console.log('ssssssssssss 🅱️',this.timeLineKeys)
+    return this.dbConnection$.pipe(
+      map(db => {
+        const tx = db.transaction(target, "readwrite");
+        tx.objectStore(target)
+          .put({ ...data, ...newVal })
+          .then(v => { })
+          .catch(err => {
+          });
+        return timeLine;
+      })
+    );
   }
 
 
@@ -88,9 +86,9 @@ export class IndexDbTimeLineService {
         mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.Pkcs7
       }).toString();
-    // const neyBody: any = { a: iamEncrypt };
+    const neyBody: any = { a: iamEncrypt };
     // this.decryptSignIn(neyBody)
-    return iamEncrypt
+    return neyBody
 
   }
 

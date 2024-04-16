@@ -83,7 +83,10 @@ export class FlagsSpiderComponent implements OnInit {
             }
           }
           this.stateService.updateGetAllTimeLine(newTimeLine)
-          this.indexDbPutAllFlag(newTimeLine)
+          // Dar tempo para a chave this.timeLineKeys.LS.idb1 carregar
+          setTimeout(()=>{
+            this.indexDbPutAllFlag(newTimeLine)
+          },2000)
         },
         error: () => {
         },
