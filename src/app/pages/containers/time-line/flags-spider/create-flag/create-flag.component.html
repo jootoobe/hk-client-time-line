@@ -403,20 +403,32 @@
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.back' | translate}}
         </button>
 
+        <!-- Edit flag-->
+        @if(createTimeLineForm.invalid && flagCreateEdit === 'edit') {
+          <!-- Btn invalid -->
+        <button mat-stroked-button class="btn_opt-invalid" >
+          Editar bandeira
+        </button>
+        } @else if(createTimeLineForm.valid && flagCreateEdit === 'edit') {
+        <button matDialogClose type="submit" mat-stroked-button class="btn_opt-valid">
+          <!-- Btn valid -->
+          Editar bandeira
+        </button>
+        }
 
-        <span>
-          @if(createTimeLineForm.invalid) {
+
+          <!-- Create flag -->
+          @if(createTimeLineForm.invalid && flagCreateEdit === 'create') {
+            <!-- Btn invalid -->
           <button mat-stroked-button class="btn_opt-invalid" >
-            <!-- Create flag -->
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
           </button>
-          } @else if(createTimeLineForm.valid) {
+          } @else if(createTimeLineForm.valid && flagCreateEdit === 'create') {
           <button matDialogClose type="submit" mat-stroked-button class="btn_opt-valid">
-            <!-- Create flag -->
-          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
+            <!-- Btn valid -->
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
           </button>
           }
-        </span>
 
       </div>
 

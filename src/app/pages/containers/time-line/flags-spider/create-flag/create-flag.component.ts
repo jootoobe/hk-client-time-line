@@ -28,6 +28,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) editFlagForm!: FlagModel
+  @Input({ required: true }) flagCreateEdit!: string
 
   editFlag!: FlagModel;
   timestampExist!: FlagModel[];
@@ -161,18 +162,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   updateFlagobject(flagVal: FlagModel) {
-    
+
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
     this.flagsForm.controls[0].patchValue(flagVal)
     this.flagsForm.controls[0]?.get('flag_update_at')?.setValue(currentlyDate)
-    
+
     // o pipe | unique remove o ano
     this.flagsForm.controls[0]?.get('year')?.setValue(this.flagsForm.controls[0]?.get('date_obj')?.get('year')?.value)
 
     // tem que fazer isso para não dar um problema com o matDatepicker
     this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.setValue(new Date(flagVal.date_obj.date_origin))
 
-    
+
   }
 
   // ⬇️ Get Flag form
@@ -386,6 +387,31 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       })
   }
 
+
+  updateFlag() {
+
+
+    if (this.createTimeLineForm.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      return
+    }
+
+
+    console.log('sssssssssssssss>>>>>>>>>>>.', this.createFlagSubscribe)
+    // this.timeLineService.createFlag(this.createFlagSubscribe)
+    //   .subscribe({
+    //     next: (res: EncryptModel) => {
+    //       // let val: any = res.a[0]
+    //       if (res.a === 'OK') {
+    //         this.getAllTimeLineById()
+    //       }
+    //     },
+    //     error: () => {
+    //     },
+    //     complete: () => {
+    //     }
+    //   })
+  }
 
   // Remover depois
   getAllTimeLineById() {

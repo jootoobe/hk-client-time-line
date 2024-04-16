@@ -24,6 +24,8 @@ export class FlagsSpiderComponent implements OnInit {
 
   timeLineKeys!: TIMELINEKeysModel
   editFlagForm!: FlagModel | any
+  flagCreateEdit!:string
+
   constructor(
     private dialogCreate: MatDialog,
     private renderer2: Renderer2,
@@ -65,7 +67,7 @@ export class FlagsSpiderComponent implements OnInit {
 
   // Open Create Time_Line
   openCreateTimeLineDialog(val: string): void {
-
+    this.flagCreateEdit = val
     if(val === 'create') {
       this.editFlagForm = {}
     }
