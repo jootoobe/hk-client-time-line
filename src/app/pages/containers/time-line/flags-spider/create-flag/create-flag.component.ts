@@ -413,12 +413,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           iam_id: '0',
           time_line: {
             flags: [
-              find[0]
+              find[0], // tenho que atualizar
+              this.flagsForm.controls[0].value // tenho que deletar 
             ]
           }
         }
         console.log('edit-flag-1', this.createEditFlagSubscribe)
       }
+
 
   }
 
