@@ -399,85 +399,66 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let flag2: any
     let find: any
 
-  // this.timeLine.time_line.flags.forEach((e:FlagModel, i:number) =>{
-  //   if(e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
-  //     this.timeLine.time_line.flags.splice(i, 1)
-  //   }
-  // })
-  if (this.editFlag.edit === 'edit-flag-2') {}
-  
-  
-  // encontro bandeiras com a mesma data - se o arry retornar 1 significa que estou tratando com 02 bandeiras 
-  // Quando aparece a posição 1 encontrada podem de 02 formas.
-  // 1 - Editando bandeiras com a mesa da - as bandeiras  não vão trocar de posição 
-  // 2 - As bandeiras estão trocando de posição tanto a bandeira 01 assumindo a posição 02, quanto a bandeira 02 mantendo a mesma posição só que mudando de data
-  // Se o array retorna 0 significa que estou estou editando uma única bandeira 
-  find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-  flag1 = this.editFlag
-  flag2 = this.editFlag.flags2
+    // this.timeLine.time_line.flags.forEach((e:FlagModel, i:number) =>{
+    //   if(e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+    //     this.timeLine.time_line.flags.splice(i, 1)
+    //   }
+    // })
+    if (this.editFlag.edit === 'edit-flag-2') { }
 
-  // Deleto 01 ou 02 bandeiras sempre antes de editar
-  this.timeLine.time_line.flags.forEach((e:FlagModel, i:number) =>{
-    if(e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
-      this.timeLine.time_line.flags.splice(i, 1)
-    }
-  })
-  
-  if (find.length === 1) { // já existe pelo menos uma bandeira com a data
 
-    this.timeLine.time_line.flags.forEach((e:FlagModel, i:number) =>{
-      //Troco a ordem das bandeiras.
-      if(e.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
-        e.flags2?.push(this.flagsForm.controls[0].value)
-        // console.log(e)
-        e.flag_margin_right = '3'
-        e.flag_style = 1
-        if(e.flags2?.length === 1) {
-          e.flags2[i].flag_style = 2
-          e.flags2[i].flag_margin_right = '0'
-        }
+    // encontro bandeiras com a mesma data - se o arry retornar 1 significa que estou tratando com 02 bandeiras 
+    // Quando aparece a posição 1 encontrada podem de 02 formas.
+    // 1 - Editando bandeiras com a mesa da - as bandeiras  não vão trocar de posição 
+    // 2 - As bandeiras estão trocando de posição tanto a bandeira 01 assumindo a posição 02, quanto a bandeira 02 mantendo a mesma posição só que mudando de data
+    // Se o array retorna 0 significa que estou estou editando uma única bandeira 
+    find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+    flag1 = this.editFlag
+    flag2 = this.editFlag.flags2
+
+    // Deleto 01 ou 02 bandeiras sempre antes de editar
+    this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+      if (e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+        this.timeLine.time_line.flags.splice(i, 1)
       }
     })
 
-    // flag 1 assumindo a una nova data na posição 02 só que a eu preciso adicionar a flag2 antiga que vai assumir a posição 1 na mesma data
-    if (this.editFlag.edit === 'edit-flag-1') { 
-      flag2[0].flag_style = 1
-      flag2[0].flag_margin_right = '0'
-      this.timeLine.time_line.flags.push(flag2[0])
+    if (find.length === 1) { // já existe pelo menos uma bandeira com a data
 
+      this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+        //Troco a ordem das bandeiras.
+        if (e.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+          e.flags2?.push(this.flagsForm.controls[0].value)
+          // console.log(e)
+          e.flag_margin_right = '3'
+          e.flag_style = 1
+          if (e.flags2?.length === 1) {
+            e.flags2[i].flag_style = 2
+            e.flags2[i].flag_margin_right = '0'
+          }
+        }
+      })
+
+      // flag 1 assumindo a una nova data na posição 02 só que a eu preciso adicionar a flag2 antiga que vai assumir a posição 1 na mesma data
+      if (this.editFlag.edit === 'edit-flag-1') {
+        flag2[0].flag_style = 1
+        flag2[0].flag_margin_right = '0'
+        this.timeLine.time_line.flags.push(flag2[0])
+
+
+      }
+      else if (this.editFlag.edit === 'edit-flag-2') {
+
+      }
+
+      console.log('++++++++++', this.timeLine.time_line.flags)
 
     } 
-    else if (this.editFlag.edit === 'edit-flag-2') { 
+    // não existe bandeira com a data
+    // a bandeira está indo para uma nova data que não existe ainda --- vai ter que ser criada.
+    else if (find.length === 0) { 
 
     }
-
-    console.log('++++++++++',this.timeLine.time_line.flags)
-
-  }
-
-  // if (this.editFlag.edit === 'edit-flag-1') {}
-   
-    // flag1 = this.editFlag
-    // flag2 = this.editFlag.flags2
-
-
-    // if (find.length === 1) {
-    //   find[0].flags2 = [this.flagsForm.controls[0].value]
-    //   find[0].flags2[0].flags2 = undefined
-    //   delete find[0].flags2[0].flags2
-
-    //     this.createEditFlagSubscribe = {
-    //       iam_id: '0',
-    //       time_line: {
-    //         flags: [
-    //           find[0], // tenho que atualizar
-    //           this.flagsForm.controls[0].value // tenho que deletar 
-    //         ]
-    //       }
-    //     }
-    //     console.log('edit-flag-1', this.createEditFlagSubscribe)
-    //   }
-
 
   }
 
