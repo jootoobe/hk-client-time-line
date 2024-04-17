@@ -47,7 +47,7 @@ export class TimeLineService {
     let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl2)
 
     let newValEncrypto = {
-      id: 0,
+      id: 1,
       a: this.timeLineKeys.BY.tl2 + encrypto
     }
     return this.http.put<EncryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
