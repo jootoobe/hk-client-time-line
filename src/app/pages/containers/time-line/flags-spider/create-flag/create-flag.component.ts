@@ -399,27 +399,71 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let flag2: any
     let find: any
 
-    find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-    flag1 = this.editFlag
-    flag2 = this.editFlag.flags2
+  // this.timeLine.time_line.flags.forEach((e:FlagModel, i:number) =>{
+  //   if(e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+  //     this.timeLine.time_line.flags.splice(i, 1)
+  //   }
+  // })
+  if (this.editFlag.edit === 'edit-flag-2') {}
+  
+  // console.log('sssssssssssss',this.editFlag)
+  
+  find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+  flag1 = this.editFlag
+  flag2 = this.editFlag.flags2
 
+  this.timeLine.time_line.flags.forEach((e:FlagModel, i:number) =>{
+    if(e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+      this.timeLine.time_line.flags.splice(i, 1)
+    }
+  })
+  
+  if (find.length === 1) {
 
-    if (find.length === 1) {
-      find[0].flags2 = [this.flagsForm.controls[0].value]
-      find[0].flags2[0].flags2 = undefined
-      delete find[0].flags2[0].flags2
+    // console.log('ssssssssssssssssss',find)
+    console.log('ssssssssssssssssss',find)
+    // console.log('aaaaaaaaaaaaaaaaaa',flag2)
 
-        this.createEditFlagSubscribe = {
-          iam_id: '0',
-          time_line: {
-            flags: [
-              find[0], // tenho que atualizar
-              this.flagsForm.controls[0].value // tenho que deletar 
-            ]
-          }
+    this.timeLine.time_line.flags.forEach((e:FlagModel, i:number) =>{
+      if(e.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+        // this.timeLine.time_line.flags.splice(i, 1)
+        e.flags2?.push(this.flagsForm.controls[0].value)
+        // console.log(e)
+        e.flag_margin_right = '3'
+        e.flag_style = 1
+        if(e.flags2?.length === 1) {
+          e.flags2[i].flag_style = 2
+          e.flags2[i].flag_margin_right = '0'
         }
-        console.log('edit-flag-1', this.createEditFlagSubscribe)
       }
+    })
+
+    console.log('++++++++++',this.timeLine.time_line.flags)
+
+  }
+
+  // if (this.editFlag.edit === 'edit-flag-1') {}
+   
+    // flag1 = this.editFlag
+    // flag2 = this.editFlag.flags2
+
+
+    // if (find.length === 1) {
+    //   find[0].flags2 = [this.flagsForm.controls[0].value]
+    //   find[0].flags2[0].flags2 = undefined
+    //   delete find[0].flags2[0].flags2
+
+    //     this.createEditFlagSubscribe = {
+    //       iam_id: '0',
+    //       time_line: {
+    //         flags: [
+    //           find[0], // tenho que atualizar
+    //           this.flagsForm.controls[0].value // tenho que deletar 
+    //         ]
+    //       }
+    //     }
+    //     console.log('edit-flag-1', this.createEditFlagSubscribe)
+    //   }
 
 
   }
