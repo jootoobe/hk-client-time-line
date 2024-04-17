@@ -433,13 +433,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           e.flags2?.push(this.flagsForm.controls[0].value)
           
           if (e && e?.flag_style && e.flag_margin_right && e?.date_obj.year ) {
-            // e.year = e.date_obj.year
             e.flag_style = 1
             e.flag_margin_right = '3'
           }
 
           if (e && e?.flags2 && e.flags2[i]?.flag_style && e.flags2?.length === 1) {
-            // e.flags2[i].year = e.flags2[i].date_obj.year
             e.flags2[i].flag_style = 2
             e.flags2[i].flag_margin_right = '0'
           }
@@ -450,10 +448,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if (this.editFlag.edit === 'edit-flag-1') {
         flag2[0].flag_style = 1
         flag2[0].flag_margin_right = '0'
-        // flag2[0].flags2 = undefined
-        // delete flag2[0].flags2
-
-        console.log('sssssssssssssssssssss', flag2[0].flags2)
         this.timeLine.time_line.flags.push(flag2[0])
       }
 
@@ -464,7 +458,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         this.timeLine.time_line.flags.push(flag1)
       }
 
-      console.log('++++++++++', this.timeLine.time_line.flags)
+      this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+        this.timeLine.iam_id = '0'
+        this.timeLine.time_line.flags[i].year = e.date_obj.year
+      })
+
+      console.log('sssssssssssssssss',this.timeLine)
+
+      this.updateWithDateChangesFlag()
 
     }
     // não existe bandeira com a data
@@ -479,19 +480,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   // Data é alterada.
   // esse update é quando uma noca data é criada - por isso tem que ser create o serviço 
   updateWithDateChangesFlag() {
-    // this.timeLineService.updateWithDateChangesFlag(this.createEditFlagSubscribe)
-    //   .subscribe({
-    //     next: (res: EncryptModel) => {
-    //       // let val: any = res.a[0]
-    //       if (res.a === 'OK') {
-    //         this.getAllTimeLineById()
-    //       }
-    //     },
-    //     error: () => {
-    //     },
-    //     complete: () => {
-    //     }
-    //   })
+    this.timeLineService.updateWithDateChangesFlag(this.timeLine)
+      .subscribe({
+        next: (res: EncryptModel) => {
+          // let val: any = res.a[0]
+          if (res.a === 'OK') {
+            this.getAllTimeLineById()
+          }
+        },
+        error: () => {
+        },
+        complete: () => {
+        }
+      })
   }
 
 
