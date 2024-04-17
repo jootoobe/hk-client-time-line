@@ -431,10 +431,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         //Troco a ordem das bandeiras.
         if (e.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
           e.flags2?.push(this.flagsForm.controls[0].value)
-          // console.log(e)
-          e.flag_margin_right = '3'
-          e.flag_style = 1
-          if (e.flags2?.length === 1) {
+          
+          if (e && e?.flag_style && e.flag_margin_right && e?.date_obj.year ) {
+            // e.year = e.date_obj.year
+            e.flag_style = 1
+            e.flag_margin_right = '3'
+          }
+
+          if (e && e?.flags2 && e.flags2[i]?.flag_style && e.flags2?.length === 1) {
+            // e.flags2[i].year = e.flags2[i].date_obj.year
             e.flags2[i].flag_style = 2
             e.flags2[i].flag_margin_right = '0'
           }
