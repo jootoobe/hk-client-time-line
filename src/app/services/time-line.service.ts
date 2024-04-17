@@ -48,9 +48,9 @@ export class TimeLineService {
 
     let newValEncrypto = {
       id: 0,
-      a: this.timeLineKeys.BY.tl1 + encrypto
+      a: this.timeLineKeys.BY.tl2 + encrypto
     }
-    return this.http.post<EncryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
+    return this.http.put<EncryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
       map(res => {
         return res
       })
@@ -58,11 +58,11 @@ export class TimeLineService {
   }
 
   getAllTimeLineById(): Observable<FlagsModel> {
-    let val = this.timeLineKeys.BY.tl1+'U2FsdGVkX1+TVq5MkDFDYrTSGvujWOb9'    
+    let val = this.timeLineKeys.BY.tl1 + 'U2FsdGVkX1+TVq5MkDFDYrTSGvujWOb9'
     return this.http.get<FlagsModel>(`${this.API_TIME_LINE}/controller?val=${val}`).pipe(
       map(res => {
         let timeLine = this.dencryptBody(res, this.timeLineKeys.BY.tl1)
-        console.log('ssssssssssssssssssssssssssssssssssssssssssssssss',timeLine)
+        console.log('ssssssssssssssssssssssssssssssssssssssssssssssss', timeLine)
         return timeLine
       })
     )
