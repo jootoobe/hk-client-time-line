@@ -416,6 +416,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     flag1 = this.editFlag
     flag2 = this.editFlag.flags2
 
+    console.log(')))0))))))))', flag1)
+
     // Deleto 01 ou 02 bandeiras sempre antes de editar
     this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
       if (e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
@@ -443,20 +445,26 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if (this.editFlag.edit === 'edit-flag-1') {
         flag2[0].flag_style = 1
         flag2[0].flag_margin_right = '0'
+        // flag2[0].flags2 = undefined
+        // delete flag2[0].flags2
+
+        console.log('sssssssssssssssssssss', flag2[0].flags2)
         this.timeLine.time_line.flags.push(flag2[0])
-
-
       }
-      else if (this.editFlag.edit === 'edit-flag-2') {
 
+      if (this.editFlag.edit === 'edit-flag-2') {
+        // flag1.flags2 = []
+        flag1.flag_style = 1
+        flag1.flag_margin_right = '0'
+        this.timeLine.time_line.flags.push(flag1)
       }
 
       console.log('++++++++++', this.timeLine.time_line.flags)
 
-    } 
+    }
     // não existe bandeira com a data
     // a bandeira está indo para uma nova data que não existe ainda --- vai ter que ser criada.
-    else if (find.length === 0) { 
+    else if (find.length === 0) {
 
     }
 
