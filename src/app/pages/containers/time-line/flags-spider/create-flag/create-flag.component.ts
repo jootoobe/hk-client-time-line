@@ -420,19 +420,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
     console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
-    // this.timeLineService.createFlag(this.createFlagSubscribe)
-    //   .subscribe({
-    //     next: (res: EncryptModel) => {
-    //       // let val: any = res.a[0]
-    //       if (res.a === 'OK') {
-    //         this.getAllTimeLineById()
-    //       }
-    //     },
-    //     error: () => {
-    //     },
-    //     complete: () => {
-    //     }
-    //   })
+    this.timeLineService.updateFlag(this.createEditFlagSubscribe)
+      .subscribe({
+        next: (res: EncryptModel) => {
+          // let val: any = res.a[0]
+          if (res.a === 'OK') {
+            this.getAllTimeLineById()
+          }
+        },
+        error: () => {
+        },
+        complete: () => {
+        }
+      })
   }
 
   // Remover depois

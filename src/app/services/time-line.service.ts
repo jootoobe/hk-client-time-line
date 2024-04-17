@@ -41,6 +41,22 @@ export class TimeLineService {
     )
   }
 
+
+  updateFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
+
+    let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl2)
+
+    let newValEncrypto = {
+      id: 0,
+      a: this.timeLineKeys.BY.tl1 + encrypto
+    }
+    return this.http.post<EncryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+
   getAllTimeLineById(): Observable<FlagsModel> {
     let val = this.timeLineKeys.BY.tl1+'U2FsdGVkX1+TVq5MkDFDYrTSGvujWOb9'    
     return this.http.get<FlagsModel>(`${this.API_TIME_LINE}/controller?val=${val}`).pipe(

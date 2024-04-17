@@ -8,6 +8,7 @@ export class TIMELINEKeysModel {
     },
     public BY: { // body
       tl1: string // createFlag
+      tl2: string // updateFlag
     }
   ) {
 
