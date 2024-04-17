@@ -415,14 +415,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       // a posição 1 sempre será atualizada porque já existe 
       if (this.editFlag.edit === 'edit-flag-1') {
 
-        this.createEditFlagSubscribe = { iam_id: '0', 
-                                          time_line: { 
-                                            flags: [
-                                              this.flagsForm.controls[0].value, // tem que ser criado 
-                                              flag2[0] // tem que ser atualizado
-                                            ] 
-                                          } 
-                                        }
+        this.createEditFlagSubscribe = {
+          iam_id: '0',
+          time_line: {
+            flags: [
+              this.flagsForm.controls[0].value, // tem que ser criado 
+              flag2[0] // tem que ser atualizado
+            ]
+          }
+        }
 
         this.createEditFlagSubscribe.time_line.flags[0].flags2 = []
         this.createEditFlagSubscribe.time_line.flags[0].flag_margin_right = '0'
@@ -438,24 +439,27 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
       if (this.editFlag.edit === 'edit-flag-2') {
 
-          this.createEditFlagSubscribe = { iam_id: '0', 
-                                            time_line: { 
-                                              flags: [
-                                                this.flagsForm.controls[0].value, // tem que ser criado 
-                                                flag1 // tem que ser atualizado
-                                              ] 
-                                            } 
-                                          }
+        this.createEditFlagSubscribe = {
+          iam_id: '0',
+          time_line: {
+            flags: [
+              this.flagsForm.controls[0].value, // tem que ser criado 
+              flag1 // tem que ser atualizado
+            ]
+          }
+        }
 
-          this.createEditFlagSubscribe.time_line.flags[0].flags2 = []
-          this.createEditFlagSubscribe.time_line.flags[1].flags2 = []
-          this.createEditFlagSubscribe.time_line.flags[1].flag_margin_right = '0'
-          // só para garantir
-          this.createEditFlagSubscribe.time_line.flags[0].flag_style = 1
-          this.createEditFlagSubscribe.time_line.flags[1].flag_style = 1
-          this.createEditFlagSubscribe.time_line.flags[0].flag_margin_right = '0'
-          console.log('edit-flag-1', this.createEditFlagSubscribe)
+        this.createEditFlagSubscribe.time_line.flags[0].flags2 = []
+        this.createEditFlagSubscribe.time_line.flags[1].flags2 = []
+        this.createEditFlagSubscribe.time_line.flags[1].flag_margin_right = '0'
+        // só para garantir
+        this.createEditFlagSubscribe.time_line.flags[0].flag_style = 1
+        this.createEditFlagSubscribe.time_line.flags[1].flag_style = 1
+        this.createEditFlagSubscribe.time_line.flags[0].flag_margin_right = '0'
+        console.log('edit-flag-1', this.createEditFlagSubscribe)
       }
+
+      this.updateWithDateChangesFlag()
     }
 
 
@@ -467,7 +471,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   // Data é alterada.
   // esse update é quando uma noca data é criada - por isso tem que ser create o serviço 
   updateWithDateChangesFlag() {
-
+    this.timeLineService.updateWithDateChangesFlag(this.createEditFlagSubscribe)
+      .subscribe({
+        next: (res: EncryptModel) => {
+          // let val: any = res.a[0]
+          if (res.a === 'OK') {
+            this.getAllTimeLineById()
+          }
+        },
+        error: () => {
+        },
+        complete: () => {
+        }
+      })
   }
 
 
@@ -506,7 +522,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
 
     console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
-    this.timeLineService.updateFlag(this.createEditFlagSubscribe)
+    this.timeLineService.updateNoDateChangesFlag(this.createEditFlagSubscribe)
       .subscribe({
         next: (res: EncryptModel) => {
           // let val: any = res.a[0]

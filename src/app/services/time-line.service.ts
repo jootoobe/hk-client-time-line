@@ -42,7 +42,7 @@ export class TimeLineService {
   }
 
 
-  updateFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
+  updateNoDateChangesFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
 
     let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl2)
 
@@ -51,6 +51,21 @@ export class TimeLineService {
       a: this.timeLineKeys.BY.tl2 + encrypto
     }
     return this.http.put<EncryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+
+  updateWithDateChangesFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
+
+    let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl2)
+
+    let newValEncrypto = {
+      id: 1,
+      a: this.timeLineKeys.BY.tl2 + encrypto
+    }
+    return this.http.put<EncryptModel>(`${this.API_TIME_LINE}/controller/date-changes`, newValEncrypto).pipe(
       map(res => {
         return res
       })
