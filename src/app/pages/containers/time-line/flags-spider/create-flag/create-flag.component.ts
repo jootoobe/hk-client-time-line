@@ -441,13 +441,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if(e1.flags2?.length === 1) {
         e1.flags2.forEach((e2: FlagModel, i2: number) => {
           if(e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
-            this.timeLine.time_line.flags.splice(i2, 1);
-            // this.timeLine.time_line.flags[i2].flags2 = [this.flagsForm.controls[0].value]
+            // this.timeLine.time_line.flags.splice(i2, 1);
+            this.timeLine.time_line.flags[i2].flags2 = [this.flagsForm.controls[0].value]
           } 
-          // else if(e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
-          //   this.timeLine.time_line.flags.splice(i2, 1);
-          //   this.timeLine.time_line.flags[i2].flags2 = [this.flagsForm.controls[0].value]
-          // }
+           if(e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+            // this.timeLine.time_line.flags.splice(i2, 1);
+            this.timeLine.time_line.flags[i2].flags2 = [this.flagsForm.controls[0].value]
+          }
         })
       }
       console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>.',e1)
