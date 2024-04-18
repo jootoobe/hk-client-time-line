@@ -434,16 +434,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
             console.log('aaaaaaaaaaa',find)
 
+            // Aqui separa a flag1 da flag 2
+            // A flag1 passa a ter uma nova data separada da flag2
             if(find.length === 0){
               this.editFlag.flags2[0].flag_style = 1
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
-            } else if(find.length === 1){
-
-            }
-
+            } else if(find.length === 1){}
             console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
        
+          // Aqui atualiza a flag 1 individualmente  
           } else if(!this.editFlag.flags2) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
           }
@@ -470,21 +470,22 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
 
+              // Aqui atualiza a flag 2 individualmente  
               if(this.editFlag.flags2) {
                 this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
 
                 find2 = this.timeLine.time_line.flags[i1].flags2?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
                 console.log('nnnnnnnnnnnnnnn',find2)
 
+                // Aqui separa a flag2 da flag 1
+                // A flag2 passa a ser 1 assumindo uma nova data 
                 if(find2.length === 0){
                   this.timeLine.time_line.flags[i1].flag_margin_right = '0'
                   this.editFlag.flags2[0].flag_style = 1
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
-                }
+                } else if(find.length === 1){}
 
-
-    
               } 
               console.log('fffffffffffffffffffffffffffffffffffffffffffffffff')
             }
