@@ -455,11 +455,12 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         }
       })
 
-      this.updateWithDateChangesFlag()
+      // this.updateWithDateChangesFlag()
     } 
+
     else if (find.length === 0) {
 
-      console.log('Cai aqui +++++++++++++++++++++++++++=+++')
+      console.log('Cai aqui +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=+++')
 
       if (this.editFlag.edit === 'edit-flag-1') {
 
@@ -507,11 +508,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         console.log('edit-flag-1', this.createEditFlagSubscribe)
       }
 
-      this.updateNoDateChangesFlag()
+      // this.updateNoDateChangesFlag()
 
     }
 
-
+  console.log('UUUUUUUUUUUUUUUUUUUUUUU', this.createEditFlagSubscribe)
     console.log('wwwwwwww', this.timeLineForEdit)
     console.log('flag1', flag1)
     console.log('flag2', flag2)
