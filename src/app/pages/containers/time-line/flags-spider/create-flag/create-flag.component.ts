@@ -426,38 +426,47 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
         // this.timeLine.time_line.flags.splice(i1, 1);
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
-          this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
-        }
-        console.log('bbbbbbbbbbbbbbbbbbbb')
 
+          if(this.editFlag.flags2) {
+            this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
+            this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
+          } else if(!this.editFlag.flags2) {
+            this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
+          }
+        }
+
+        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
       }
 
       if (e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
         // this.timeLine.time_line.flags.splice(i1, 1);
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
           this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
-          console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+
         }
+        console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
       }
 
-
       if (e1.flags2?.length === 1) {
-        e1.flags2.forEach((e2: FlagModel, i2: number) => {
+        this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number) => {
+
           if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
             if (this.editFlag.edit === 'edit-flag-2') {
               // this.timeLine.time_line.flags.splice(i2, 1);
               this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
             }
+            console.log('fffffffffffffffffffffffffffffffffffffffffffffffff')
           }
+
           if (e2.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
             if (this.editFlag.edit === 'edit-flag-2') {
               // this.timeLine.time_line.flags.splice(i2, 1);
               this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
             }
+            console.log('gggggggggggggggggggggggggggggggggggggggggggggggg')
           }
         })
       }
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>.', e1)
     })
     // this.timeLine = this.timeLine
     console.log(this.timeLineForEdit)
