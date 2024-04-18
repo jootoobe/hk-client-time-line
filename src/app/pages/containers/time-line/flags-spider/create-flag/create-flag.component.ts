@@ -445,23 +445,25 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       })
 
       // flag 1 assumindo a una nova data na posição 02 só que a eu preciso adicionar a flag2 antiga que vai assumir a posição 1 na mesma data
-      // if (this.editFlag.edit === 'edit-flag-1') {
-      //   // flag2[0].flag_style = 1
-      //   // flag2[0].flag_margin_right = '0'
-      //   this.timeLine.time_line.flags.push(flag2[0])
-      // }
+      if (this.editFlag.edit === 'edit-flag-1') {
+        if(flag2[0]?.length === 1) {
+          flag2[0].flag_style = 1
+          flag2[0].flag_margin_right = '0'
+          this.timeLine.time_line.flags.push(flag2[0])
+        }
+      }
 
       if (this.editFlag.edit === 'edit-flag-2') {
         // flag1.flags2 = []
-        // flag1.flag_style = 1
-        // flag1.flag_margin_right = '0'
+        flag1.flag_style = 1
+        flag1.flag_margin_right = '0'
         this.timeLine.time_line.flags.push(flag1)
       }
 
-      // this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
-      //   this.timeLine.iam_id = '0'
-      //   this.timeLine.time_line.flags[i].year = e.date_obj.year
-      // })
+      this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+        this.timeLine.iam_id = '0'
+        this.timeLine.time_line.flags[i].year = e.date_obj.year
+      })
 
       console.log('sssssssssssssssss',this.timeLine)
 
