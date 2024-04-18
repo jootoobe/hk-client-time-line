@@ -433,9 +433,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           } else if(!this.editFlag.flags2) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
           }
+          console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
         }
 
-        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
       }
 
       if (e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
@@ -443,8 +443,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
           this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
 
+          console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
         }
-        console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
       }
 
       if (e1.flags2?.length === 1) {
@@ -454,16 +454,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             if (this.editFlag.edit === 'edit-flag-2') {
               // this.timeLine.time_line.flags.splice(i2, 1);
               this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
+              console.log('fffffffffffffffffffffffffffffffffffffffffffffffff')
             }
-            console.log('fffffffffffffffffffffffffffffffffffffffffffffffff')
           }
 
           if (e2.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
             if (this.editFlag.edit === 'edit-flag-2') {
               // this.timeLine.time_line.flags.splice(i2, 1);
               this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
+              console.log('gggggggggggggggggggggggggggggggggggggggggggggggg')
             }
-            console.log('gggggggggggggggggggggggggggggggggggggggggggggggg')
           }
         })
       }
