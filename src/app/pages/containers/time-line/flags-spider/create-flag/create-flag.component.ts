@@ -420,58 +420,59 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     // Deleto 01 ou 02 bandeiras sempre antes de editar
     this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
-      if (e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+      if (e && e.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
         this.timeLine.time_line.flags.splice(i, 1)
       }
     })
 
-    if (find.length === 1) { // já existe pelo menos uma bandeira com a data
+    console.log(this.timeLine)
+    if (find && find.length === 1) { // já existe pelo menos uma bandeira com a data
 
       this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
         //Troco a ordem das bandeiras.
-        if (e.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+        if (e && e.date_obj.timestamp === this.flagsForm.controls[0].get('date_obj')?.get('timestamp')?.value) {
           e.flags2?.push(this.flagsForm.controls[0].value)
-          
-          if (e && e?.flag_style && e.flag_margin_right && e?.date_obj.year ) {
+          if (e && e.flag_style && e.flag_margin_right ) {
             e.flag_style = 1
             e.flag_margin_right = '3'
           }
 
-          if (e && e?.flags2 && e.flags2[i]?.flag_style && e.flags2?.length === 1) {
-            e.flags2[i].flag_style = 2
-            e.flags2[i].flag_margin_right = '0'
+          if (e.flags2?.length === 1) {
+            e.flags2[0].flag_style = 2
+            e.flags2[0].flag_margin_right = '0'
           }
         }
       })
 
       // flag 1 assumindo a una nova data na posição 02 só que a eu preciso adicionar a flag2 antiga que vai assumir a posição 1 na mesma data
-      if (this.editFlag.edit === 'edit-flag-1') {
-        flag2[0].flag_style = 1
-        flag2[0].flag_margin_right = '0'
-        this.timeLine.time_line.flags.push(flag2[0])
-      }
+      // if (this.editFlag.edit === 'edit-flag-1') {
+      //   // flag2[0].flag_style = 1
+      //   // flag2[0].flag_margin_right = '0'
+      //   this.timeLine.time_line.flags.push(flag2[0])
+      // }
 
       if (this.editFlag.edit === 'edit-flag-2') {
         // flag1.flags2 = []
-        flag1.flag_style = 1
-        flag1.flag_margin_right = '0'
+        // flag1.flag_style = 1
+        // flag1.flag_margin_right = '0'
         this.timeLine.time_line.flags.push(flag1)
       }
 
-      this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
-        this.timeLine.iam_id = '0'
-        this.timeLine.time_line.flags[i].year = e.date_obj.year
-      })
+      // this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+      //   this.timeLine.iam_id = '0'
+      //   this.timeLine.time_line.flags[i].year = e.date_obj.year
+      // })
 
       console.log('sssssssssssssssss',this.timeLine)
 
-      this.updateWithDateChangesFlag()
+      // this.updateWithDateChangesFlag()
 
     }
     // não existe bandeira com a data
     // a bandeira está indo para uma nova data que não existe ainda --- vai ter que ser criada.
-    else if (find.length === 0) {
-
+    
+     if (find.length === 0) {
+      console.log('Não tem nada')
     }
 
   }
