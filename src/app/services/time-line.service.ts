@@ -65,6 +65,8 @@ export class TimeLineService {
     //   id: 1,
     //   a: this.timeLineKeys.BY.tl2 + encrypto
     // }
+
+    console.log('sssssssssssss',time_line)
     return this.http.put<EncryptModel>(`${this.API_TIME_LINE}/controller/date-changes`, time_line).pipe(
       map(res => {
         return res

@@ -455,7 +455,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         }
       })
 
-      // this.updateWithDateChangesFlag()
+      this.timeLineForEdit.time_line.flags.forEach((e: FlagModel, i: number) => {
+        this.timeLineForEdit.iam_id = '0'
+        this.timeLineForEdit.time_line.flags[i].year = e.date_obj.year
+      })
+
+      this.updateWithDateChangesFlag()
+      return
     } 
 
     else if (find.length === 0) {
