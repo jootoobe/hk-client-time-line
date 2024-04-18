@@ -412,13 +412,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let index: number | undefined
     let find: any | undefined
 
-    flag1 = this.editFlag
+    // flag1 = this.editFlag
     
-    if (this.editFlag.flags2) {
-      flag2 = this.editFlag.flags2[0]
-    }
+    // if (this.editFlag.flags2) {
+    //   flag2 = this.editFlag.flags2[0]
+    // }
 
-    flag1.flags2 = []
+    // flag1.flags2 = []
 
 
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number) => {
@@ -440,13 +440,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
       if(e1.flags2?.length === 1) {
         e1.flags2.forEach((e2: FlagModel, i2: number) => {
-          if(e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+          if(e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
             // this.timeLine.time_line.flags.splice(i2, 1);
-            this.timeLine.time_line.flags[i2].flags2 = [this.flagsForm.controls[0].value]
+            this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
           } 
-           if(e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+           if(e2.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
             // this.timeLine.time_line.flags.splice(i2, 1);
-            this.timeLine.time_line.flags[i2].flags2 = [this.flagsForm.controls[0].value]
+            this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
           }
         })
       }
