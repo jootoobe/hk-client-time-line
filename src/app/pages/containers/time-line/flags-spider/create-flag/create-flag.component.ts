@@ -440,16 +440,21 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               this.editFlag.flags2[0].flag_style = 1
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
-            } else if(find.length === 1){}
+            } else if(find.length === 1){
+              console.log('MONTANDO 02 flags;;;;;;;;;;;;;;;;;;;;🅿️')
+            }
             console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
        
           // Aqui atualiza a flag 1 individualmente  
           } else if(!this.editFlag.flags2) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
           }
-          console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-        }
 
+        }
+        // if(this.editFlag.edit === 'edit-flag-1' && this.editFlag.flags2?.length === 0) {
+        //   console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+        //   console.log('um montando em cima do outro🎅')
+        // }
       }
 
       // if (e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
@@ -484,13 +489,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   this.editFlag.flags2[0].flag_style = 1
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
-                } else if(find.length === 1){}
+                } else if(find.length === 1){
+                  console.log('MONTANDO 02 flags;;;;;;;;;;;;;;;;;;;;🅰️')
+                }
 
               } 
-              console.log('fffffffffffffffffffffffffffffffffffffffffffffffff')
+      
             }
+            // if(this.editFlag.edit === 'edit-flag-2' && this.editFlag.flags2?.length === 1) {
+            //   console.log('fffffffffffffffffffffffffffffffffffffffffffffffff')
+            //   console.log('um montando em cima do outro🌝')
+            // }
           }
-          console.log('um montando em cima do outro', e1)
+  
           // if (e2.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
           //   if (this.editFlag.edit === 'edit-flag-2') {
           //     // this.timeLine.time_line.flags.splice(i2, 1);
@@ -511,39 +522,39 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   // Data é alterada.
   // esse update é quando uma noca data é criada - por isso tem que ser create o serviço 
   updateWithDateChangesFlag() {
-    this.timeLineService.updateWithDateChangesFlag(this.timeLine)
-      .subscribe({
-        next: (res: EncryptModel) => {
-          // let val: any = res.a[0]
-          if (res.a === 'OK') {
-            this.getAllTimeLineById()
-          }
-        },
-        error: () => {
-        },
-        complete: () => {
-        }
-      })
+    // this.timeLineService.updateWithDateChangesFlag(this.timeLine)
+    //   .subscribe({
+    //     next: (res: EncryptModel) => {
+    //       // let val: any = res.a[0]
+    //       if (res.a === 'OK') {
+    //         this.getAllTimeLineById()
+    //       }
+    //     },
+    //     error: () => {
+    //     },
+    //     complete: () => {
+    //     }
+    //   })
   }
 
 
   // Data não é alterada.
   // esse update é quando tem 02 flags na mesa data
   updateCreateFlag() {
-    console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
-    this.timeLineService.updateCreateFlag(this.createEditFlagSubscribe)
-      .subscribe({
-        next: (res: EncryptModel) => {
-          // let val: any = res.a[0]
-          if (res.a === 'OK') {
-            this.getAllTimeLineById()
-          }
-        },
-        error: () => {
-        },
-        complete: () => {
-        }
-      })
+    // console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
+    // this.timeLineService.updateCreateFlag(this.createEditFlagSubscribe)
+    //   .subscribe({
+    //     next: (res: EncryptModel) => {
+    //       // let val: any = res.a[0]
+    //       if (res.a === 'OK') {
+    //         this.getAllTimeLineById()
+    //       }
+    //     },
+    //     error: () => {
+    //     },
+    //     complete: () => {
+    //     }
+    //   })
   }
 
   // Remover depois
