@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'unique',
-  pure: true
+  pure: false
 })
 export class UniquePipe implements PipeTransform {
   transform(items: any[]): any {
@@ -14,7 +14,7 @@ export class UniquePipe implements PipeTransform {
         delete value.year
         // value.year = ''
         uniqueArr.push(value)
-        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+        // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
       } else {
         uniqueArr.push(value)
       }

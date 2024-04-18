@@ -411,118 +411,52 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let flag2: FlagModel | undefined
     let index: number | undefined
     let find: any | undefined
-    flag1 = this.editFlag
 
+    flag1 = this.editFlag
+    
     if (this.editFlag.flags2) {
       flag2 = this.editFlag.flags2[0]
     }
 
-    find = this.timeLineForEdit.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+    flag1.flags2 = []
 
-    index = this.timeLineForEdit.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-    if (index > -1) {
-      this.timeLineForEdit.time_line.flags.splice(index, 1);
-    }
 
-    if (find.length === 1) { // já existe pelo menos uma bandeira com a data
+    this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number) => {
 
-      this.timeLineForEdit.time_line.flags.forEach((e: FlagModel, i: number) => {
-        //Troco a ordem das bandeiras.
-        if (e && e.date_obj.timestamp === this.flagsForm.controls[0].get('date_obj')?.get('timestamp')?.value) {
-          e.flags2?.push(this.flagsForm.controls[0].value)
+      if( e1.date_obj.timestamp === this.editFlag.date_obj.timestamp && this.flagsForm.controls[0]?.get('flag_style')?.value === 1) {
+        // this.timeLine.time_line.flags.splice(i1, 1);
+        this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
+        console.log('bbbbbbbbbbbbbbbbbbbb')
 
-          if (e.flags2?.length === 1) {
-            e.flag_style = 1
-            e.flag_margin_right = '3'
-
-            e.flags2[0].flag_style = 2
-            e.flags2[0].flag_margin_right = '0'
-          }
-
-          if (flag2 && this.editFlag.edit === 'edit-flag-1') {
-            flag2.flag_style = 1
-            flag2.flag_margin_right = '0'
-            this.timeLineForEdit.time_line.flags.push(flag2)
-          }
-
-          if (flag1 && this.editFlag.edit === 'edit-flag-2') {
-            flag1.flags2 = []
-            flag1.flag_style = 1
-            flag1.flag_margin_right = '0'
-            this.timeLineForEdit.time_line.flags.push(flag1)
-          }
-
-        }
-      })
-
-      this.timeLineForEdit.time_line.flags.forEach((e: FlagModel, i: number) => {
-        this.timeLineForEdit.iam_id = '0'
-        this.timeLineForEdit.time_line.flags[i].year = e.date_obj.year
-      })
-
-      this.updateWithDateChangesFlag()
-      return
-    } 
-
-    else if (find.length === 0) {
-
-      console.log('Cai aqui +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=+++')
-
-      if (this.editFlag.edit === 'edit-flag-1') {
-
-        this.createEditFlagSubscribe = {
-          iam_id: '0',
-          time_line: {
-            flags: [
-              this.flagsForm.controls[0].value, // tem que ser criado 
-              flag2 // tem que ser atualizado
-            ]
-          }
-        }
-
-        this.createEditFlagSubscribe.time_line.flags[0].flags2 = []
-        this.createEditFlagSubscribe.time_line.flags[0].flag_margin_right = '0'
-        this.createEditFlagSubscribe.time_line.flags[1].flag_style = 1
-
-        // só para garantir
-        this.createEditFlagSubscribe.time_line.flags[1].flags2 = []
-        this.createEditFlagSubscribe.time_line.flags[0].flag_style = 1
-        this.createEditFlagSubscribe.time_line.flags[1].flag_margin_right = '0'
-
-        console.log('edit-flag-1', this.createEditFlagSubscribe)
+      } 
+      
+       if(e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value  && this.flagsForm.controls[0]?.get('flag_style')?.value === 1) {
+        // this.timeLine.time_line.flags.splice(i1, 1);
+        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+        this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
       }
 
-      if (this.editFlag.edit === 'edit-flag-2') {
 
-        this.createEditFlagSubscribe = {
-          iam_id: '0',
-          time_line: {
-            flags: [
-              this.flagsForm.controls[0].value, // tem que ser criado 
-              flag1 // tem que ser atualizado
-            ]
-          }
-        }
 
-        this.createEditFlagSubscribe.time_line.flags[0].flags2 = []
-        this.createEditFlagSubscribe.time_line.flags[1].flags2 = []
-        this.createEditFlagSubscribe.time_line.flags[1].flag_margin_right = '0'
-        // só para garantir
-        this.createEditFlagSubscribe.time_line.flags[0].flag_style = 1
-        this.createEditFlagSubscribe.time_line.flags[1].flag_style = 1
-        this.createEditFlagSubscribe.time_line.flags[0].flag_margin_right = '0'
-        console.log('edit-flag-1', this.createEditFlagSubscribe)
+      if(e1.flags2?.length === 1) {
+        e1.flags2.forEach((e2: FlagModel, i2: number) => {
+          if(e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+            this.timeLine.time_line.flags.splice(i2, 1);
+            // this.timeLine.time_line.flags[i2].flags2 = [this.flagsForm.controls[0].value]
+          } 
+          // else if(e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+          //   this.timeLine.time_line.flags.splice(i2, 1);
+          //   this.timeLine.time_line.flags[i2].flags2 = [this.flagsForm.controls[0].value]
+          // }
+        })
       }
-
-      this.updateCreateFlag()
-
-    }
-
-  console.log('UUUUUUUUUUUUUUUUUUUUUUU', this.createEditFlagSubscribe)
-    console.log('wwwwwwww', this.timeLineForEdit)
-    console.log('flag1', flag1)
-    console.log('flag2', flag2)
-  }
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>.',e1)
+    })
+    // this.timeLine = this.timeLine
+    console.log(this.timeLineForEdit)
+    console.log(flag1)
+    console.log(flag2)
+}
 
 
   // Data é alterada.
