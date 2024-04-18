@@ -42,7 +42,7 @@ export class TimeLineService {
   }
 
 
-  updateNoDateChangesFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
+  updateCreateFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
 
     let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl2)
 

@@ -514,7 +514,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         console.log('edit-flag-1', this.createEditFlagSubscribe)
       }
 
-      // this.updateNoDateChangesFlag()
+      this.updateCreateFlag()
 
     }
 
@@ -546,9 +546,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   // Data não é alterada.
   // esse update é quando tem 02 flags na mesa data
-  updateNoDateChangesFlag() {
+  updateCreateFlag() {
     console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
-    this.timeLineService.updateNoDateChangesFlag(this.createEditFlagSubscribe)
+    this.timeLineService.updateCreateFlag(this.createEditFlagSubscribe)
       .subscribe({
         next: (res: EncryptModel) => {
           // let val: any = res.a[0]
