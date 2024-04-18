@@ -25,7 +25,7 @@ import { IndexDbTimeLineService } from "../../../../../shared/services/storage/i
   styleUrls: ['./create-flag.component.scss',]
 })
 
-export class CreateFlagComponent implements OnInit, AfterViewInit {
+export class CreateFlagComponent1 implements OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) editFlagForm!: FlagModel
