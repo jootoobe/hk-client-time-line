@@ -430,22 +430,43 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           if(this.editFlag.flags2) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
+
+            find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+            console.log('aaaaaaaaaaa',find)
+
+            if(find.length === 0){
+              // this.timeLine.time_line.flags[i1].flag_margin_right = '0'
+              // this.timeLine.time_line.flags[i1].flag_style = 1
+
+              // let a: any = this.timeLine.time_line.flags[i1].flags2
+              // a[i1].flag_margin_right = '0'
+              // a[i1].flag_style = 1
+              // this.timeLine.time_line.flags[i1].flags2 = []
+              this.editFlag.flags2[0].flag_style = 1
+              this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+              this.timeLine.time_line.flags[i1].flags2 = []
+            } else if(find.length === 1){
+
+            }
+
+            console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
+       
           } else if(!this.editFlag.flags2) {
-            this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
+            // this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
           }
           console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
         }
 
       }
 
-      if (e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
-        // this.timeLine.time_line.flags.splice(i1, 1);
-        if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
-          this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
+      // if (e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+      //   // this.timeLine.time_line.flags.splice(i1, 1);
+      //   if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
+      //     this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
 
-          console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
-        }
-      }
+      //     console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+      //   }
+      // }
 
       if (e1.flags2?.length === 1) {
         this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number) => {
@@ -458,17 +479,17 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             }
           }
 
-          if (e2.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
-            if (this.editFlag.edit === 'edit-flag-2') {
-              // this.timeLine.time_line.flags.splice(i2, 1);
-              this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
-              console.log('gggggggggggggggggggggggggggggggggggggggggggggggg')
-            }
-          }
+          // if (e2.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+          //   if (this.editFlag.edit === 'edit-flag-2') {
+          //     // this.timeLine.time_line.flags.splice(i2, 1);
+          //     this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
+          //     console.log('gggggggggggggggggggggggggggggggggggggggggggggggg')
+          //   }
+          // }
         })
       }
     })
-    // this.timeLine = this.timeLine
+    this.timeLine = this.timeLine
     console.log(this.timeLineForEdit)
     console.log(flag1)
     console.log(flag2)
