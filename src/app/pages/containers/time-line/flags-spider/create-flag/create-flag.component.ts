@@ -408,10 +408,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   updateFlag() {
     let index: number | undefined
+    let index2: number | undefined
     let indexDelet: number | undefined
+    let indexDelet2: number | undefined
     let find: any | undefined
     let find2: any | undefined
     let find3: any | undefined
+    let find4: any | undefined
     let canTenter = false
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
@@ -441,9 +444,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               }
 
               console.log('333333333333333333333333333333333333')
-            } else if (find.length === 1) {
-              console.log('2222222222222222222222')
-            }
+            } 
+            // else if (find.length === 1) {  }
 
             console.log('ATUALIZANDO APENAS A FLAG 1 NA MESMA POSIÇÃO DATA')
 
@@ -474,26 +476,32 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
 
                 find2 = this.timeLine.time_line.flags[i1].flags2?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-                console.log('nnnnnnnnnnnnnnn', find2)
+                find4 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+                index2 = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+                indexDelet2 = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
+                // console.log('posição futura', find2)
+                console.log('estou aqui ', find4)
+                console.log('botção de edição', this.editFlag)
+                console.log('pra onde vou ', index2, 'onde estou',  indexDelet2)
                 // Aqui separa a flag2 da flag 1
                 // A flag2 passa a ser 1 assumindo uma nova data 
                 if (find2.length === 0) {
-                  this.timeLine.time_line.flags[i1].flag_margin_right = '0'
-                  this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
-                  this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                  this.timeLine.time_line.flags[i1].flags2 = []
+                  this.timeLine.time_line.flags[indexDelet2] = this.editFlag
+                  this.timeLine.time_line.flags[index2].flags2?.push(this.editFlag.flags2[0])
+                  this.timeLine.time_line.flags[indexDelet2].flags2 = []
+                  // this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                  // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+                  // this.timeLine.time_line.flags[i1].flags2 = []
 
                   console.log('777777777777777777777777777777777777777777777777777', find)
-                } else if (find.length === 1) {
-                  console.log('66666666666666666666666666666666666666666666', find)
-                }
+                } 
+                // else if (find.length === 1) { }
               }
             }
-            console.log('8888888888888888888888888888888888888888888888888', find)
           }
 
-          console.log('5555555555555555555555555555555555555555555555555')
+          console.log('FLAG 02 RODANDO')
         })
 
       }
