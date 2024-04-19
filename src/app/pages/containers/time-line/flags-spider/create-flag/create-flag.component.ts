@@ -526,22 +526,35 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               // }
 
               // find3 pra data que vai - this.editFlag.date_obj.timestamp é a data clicada edição
-              if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
-                console.log('🅰️21222222222222222222222222')
+              // if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
+              //   console.log('🅰️21222222222222222222222222')
+              //   this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              //   this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
 
-                // find3 pra data que vai - this.editFlag.date_obj.timestamp é a data clicada edição
-                // indexDelet é o index da flag editada
-                // index é para aonde a flag deve ir
-              } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
-                console.log('999999999999999999999999999999999999999')
-                this.timeLine.time_line.flags[index].flag_margin_right = '3'
-                this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+              //   let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              //   flag2[0].flag_style = 1
+              //   this.timeLine.time_line.flags[indexDelet] = flag2[0]
 
-                let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
-                flag2[0].flag_style = 1
-                this.timeLine.time_line.flags[indexDelet] = flag2[0]
+              //   // find3 pra data que vai - this.editFlag.date_obj.timestamp é a data clicada edição
+              //   // indexDelet é o index da flag editada
+              //   // index é para aonde a flag deve ir
+              // } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
+              //   console.log('999999999999999999999999999999999999999')
+              //   this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              //   this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
 
-              }
+              //   let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              //   flag2[0].flag_style = 1
+              //   this.timeLine.time_line.flags[indexDelet] = flag2[0]
+
+              // }
+
+              this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+
+              let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              flag2[0].flag_style = 1
+              this.timeLine.time_line.flags[indexDelet] = flag2[0]
 
               // // this.timeLine.time_line.flags[index] = newFla1[0]
               // this.timeLine.time_line.flags[index].flag_margin_right = '3'
@@ -560,7 +573,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
             // para frente da linha do tempo
             if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
-              console.log('🅰️21222222222222222222222222')
+              console.log('🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
               let newFla3: any
               if (index > -1) {
                 newFla3 = this.timeLine.time_line.flags.splice(index, 1);
@@ -571,7 +584,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
               // para trás da linha do tempo
             } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
-              console.log('999999999999999999999999999999999999999')
+              console.log('999999999999999999999999999999999999999🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️')
               this.timeLine.time_line.flags[index].flag_margin_right = '3'
               this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
 
