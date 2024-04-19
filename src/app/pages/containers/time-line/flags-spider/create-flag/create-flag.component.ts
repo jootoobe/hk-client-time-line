@@ -491,6 +491,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           console.log('um montando em cima do outro🎅', find3)
           if(find3.length === 1) { // aqui a bandeira sai de uma posição com 01 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data 
             console.log('ENTREOI AQUI 11111111111111111')
+            this.editFlag.flag_style = 2
+            let newFla1:any
+            if (index > -1) {
+              newFla1 =  this.timeLineForEdit.time_line.flags.splice(index, 1);
+            }
+            console.log('================',newFla1)
+            this.timeLine.time_line.flags[index] = newFla1[0]
+            this.timeLine.time_line.flags[index].flag_margin_right = '3'
+            this.timeLine.time_line.flags[index].flags2?.push(this.editFlag)
 
           } else if(find3.length === 2) { // aqui a bandeira sai de uma posição com 02 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data
             // find3
