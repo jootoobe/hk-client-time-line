@@ -505,7 +505,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               }
               console.log('ENTREOI AQUI 11111111111111111', newFla1)
 
-              // this.timeLine.time_line.flags[index] = newFla1[0]
+              this.timeLine.time_line.flags[index] = newFla1[0]
               this.timeLine.time_line.flags[index].flag_margin_right = '3'
               this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
 
