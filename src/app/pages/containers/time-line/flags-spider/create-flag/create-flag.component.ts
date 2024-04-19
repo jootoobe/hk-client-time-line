@@ -460,42 +460,43 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
       // 🅰️ Aqui atualiza a flag 2 individualmente  
       // this.editFlag é pego quando o usuário clica na em editar bandria. Na edição poder vir apenas a flag1 e a flag2 caso a bandeira tenha mais de uma bandeira na mesma data e horário 
-      this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
+      if (e1.flags2?.length === 1) {
+        this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
 
-        if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
-          if (this.editFlag.edit === 'edit-flag-2') {
-            // this.timeLine.time_line.flags.splice(i2, 1);
+          if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+            if (this.editFlag.edit === 'edit-flag-2') {
+              // this.timeLine.time_line.flags.splice(i2, 1);
 
 
-            // Aqui atualiza a flag 2 individualmente  
-            if (this.editFlag.flags2) {
-              canTenter = true
-              this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
+              // Aqui atualiza a flag 2 individualmente  
+              if (this.editFlag.flags2) {
+                canTenter = true
+                this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
 
-              find2 = this.timeLine.time_line.flags[i1].flags2?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-              console.log('nnnnnnnnnnnnnnn', find2)
+                find2 = this.timeLine.time_line.flags[i1].flags2?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+                console.log('nnnnnnnnnnnnnnn', find2)
 
-              // Aqui separa a flag2 da flag 1
-              // A flag2 passa a ser 1 assumindo uma nova data 
-              if (find2.length === 0) {
-                this.timeLine.time_line.flags[i1].flag_margin_right = '0'
-                this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
-                this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                this.timeLine.time_line.flags[i1].flags2 = []
+                // Aqui separa a flag2 da flag 1
+                // A flag2 passa a ser 1 assumindo uma nova data 
+                if (find2.length === 0) {
+                  this.timeLine.time_line.flags[i1].flag_margin_right = '0'
+                  this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                  this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+                  this.timeLine.time_line.flags[i1].flags2 = []
 
-                console.log('777777777777777777777777777777777777777777777777777', find)
-              } else if (find.length === 1) {
-                console.log('66666666666666666666666666666666666666666666', find)
+                  console.log('777777777777777777777777777777777777777777777777777', find)
+                } else if (find.length === 1) {
+                  console.log('66666666666666666666666666666666666666666666', find)
+                }
               }
             }
+            console.log('8888888888888888888888888888888888888888888888888', find)
           }
-          console.log('8888888888888888888888888888888888888888888888888', find)
-        }
 
-        console.log('5555555555555555555555555555555555555555555555555')
-      })
+          console.log('5555555555555555555555555555555555555555555555555')
+        })
 
-
+      }
       /**
       * **************************************** RULES MOVIMENTAÇÂO FLAG 2 *******************************************************
       * * * * * =================== Get ADD PUT -  ============= * * * * *
