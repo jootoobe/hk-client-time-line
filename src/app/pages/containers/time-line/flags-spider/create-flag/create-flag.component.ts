@@ -453,7 +453,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
 
       if (e1.flags2?.length === 1) {
-        e1.flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
+        this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
 
           if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
             if (this.editFlag.edit === 'edit-flag-2') {
