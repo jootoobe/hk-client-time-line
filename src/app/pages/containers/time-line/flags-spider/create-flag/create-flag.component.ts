@@ -497,7 +497,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             console.log('ENTREOI AQUI 22222222222222', index)
             
             this.timeLine.time_line.flags[index].flag_margin_right = '3'
-            
+            this.timeLine.time_line.flags[index].flags2?.push(find3[1])
           }
         }
       }
