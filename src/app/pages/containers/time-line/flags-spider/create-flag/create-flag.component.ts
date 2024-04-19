@@ -430,12 +430,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             // Aqui separa a flag1 da flag 2
             // A flag1 passa a ter uma nova data separada da flag2
             if (find.length === 0) {
-              // this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0]?.value
-              // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-              // this.timeLine.time_line.flags[i1].flags2 = []
-              this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
-              this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-              this.timeLine.time_line.flags[i1].flags2 = []
+
+              if(this.editFlag.flags2[0]) {
+                this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+              } else if(!this.editFlag.flags2[0]) {
+                this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+                this.timeLine.time_line.flags[i1].flags2 = []
+              }
+       
               console.log('333333333333333333333333333333333333', find)
             } else if (find.length === 1) { 
               console.log('2222222222222222222222', find)
