@@ -77,7 +77,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: TimeLineModel) => {
           if (res && res.time_line) {
-            this.timeLineForEdit = res
+            // this.timeLine = res
           }
         },
         error: () => { },
@@ -485,7 +485,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
       if (i1 === array1.length - 2) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-        index = this.timeLineForEdit.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+        index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
 
         if (find3) {
           console.log('um montando em cima do outro🎅', find3)
@@ -496,7 +496,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               console.log('ENTREOI AQUI 11111111111111111')
               let newFla1: any
               if (index > -1) {
-                newFla1 = this.timeLineForEdit.time_line.flags.splice(index, 1);
+                newFla1 = this.timeLine.time_line.flags.splice(index, 1);
               }
               this.timeLine.time_line.flags[index] = newFla1[0]
               this.timeLine.time_line.flags[index].flag_margin_right = '3'
@@ -519,8 +519,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     })
 
-    this.timeLine = this.timeLine
-    console.log(this.timeLineForEdit)
+    // this.timeLine = this.timeLine
+    console.log(this.timeLine)
     console.log(flag1)
     console.log(flag2)
   }

@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'unique',
-  pure: false
+  pure: true
 })
 export class UniquePipe implements PipeTransform {
   transform(items: any[]): any {
