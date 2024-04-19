@@ -430,7 +430,10 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             // Aqui separa a flag1 da flag 2
             // A flag1 passa a ter uma nova data separada da flag2
             if (find.length === 0) {
-              this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0]?.value
+              // this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0]?.value
+              // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+              // this.timeLine.time_line.flags[i1].flags2 = []
+              this.editFlag.flags2[0].flag_style = 1
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
               console.log('333333333333333333333333333333333333', find)
@@ -450,7 +453,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
 
       if (e1.flags2?.length === 1) {
-        this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
+        e1.flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
 
           if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
             if (this.editFlag.edit === 'edit-flag-2') {
@@ -487,136 +490,119 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
 
 
+      
+      if (i1 === array1.length - 1 && !aaaaaa) {
+        find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+        index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+        // find4 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+
+        indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+
+        if (find3) {
+          console.log('um montando em cima do outro🎅', find3)
+          console.log('um montando em cima do outro🎅', this.editFlag)
+          if (find3.length === 1) { // aqui a bandeira sai de uma posição com 01 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data 
+
+
+            if (this.editFlag && this.editFlag.flags2?.length === 0) {
+
+              let newFla1: any
+              if (index > -1) {
+                newFla1 = this.timeLine.time_line.flags.splice(indexDelet, 1);
+              }
+
+              // find3 pra data que vai - newFla1 é a data clicada edição
+              if (find3[0].date_obj.timestamp > newFla1[0].date_obj.timestamp) {
+                this.timeLine.time_line.flags[index - 1].flag_margin_right = '3'
+                this.timeLine.time_line.flags[index - 1].flags2?.push(this.flagsForm.controls[0].value)
+
+                // find3 pra data que vai - newFla1 é a data clicada edição
+              } else if (find3[0].date_obj.timestamp < newFla1[0].date_obj.timestamp) {
+                this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+              }
+              console.log(indexDelet, index, 'ENTREOI AQUI 11111111111111111', newFla1)
 
 
 
+            } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
+
+              // let newFla2: any
+              // if (index > -1) {
+              //   newFla2 = this.timeLine.time_line.flags.splice(indexDelet, 1);
+              // }
+
+              // find3 pra data que vai - this.editFlag.date_obj.timestamp é a data clicada edição
+              // if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
+              //   console.log('🅰️21222222222222222222222222')
+              //   this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              //   this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+
+              //   let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              //   flag2[0].flag_style = 1
+              //   this.timeLine.time_line.flags[indexDelet] = flag2[0]
+
+              //   // find3 pra data que vai - this.editFlag.date_obj.timestamp é a data clicada edição
+              //   // indexDelet é o index da flag editada
+              //   // index é para aonde a flag deve ir
+              // } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
+              //   console.log('999999999999999999999999999999999999999')
+              //   this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              //   this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+
+              //   let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              //   flag2[0].flag_style = 1
+              //   this.timeLine.time_line.flags[indexDelet] = flag2[0]
+
+              // }
+
+              this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+
+              let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              flag2[0].flag_style = 1
+              this.timeLine.time_line.flags[indexDelet] = flag2[0]
+
+              // // this.timeLine.time_line.flags[index] = newFla1[0]
+              // this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              // this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+              // this.editFlag.flags2[0].flag_style = 1
+              // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+              console.log(indexDelet, index, 'ENTREOI AQUI QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ')
+            }
+
+
+          } else if (find3.length === 2) { // aqui a bandeira sai de uma posição com 02 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data
+            // find3
+            console.log('ENTREOI AQUI 22222222222222', index, this.editFlag)
 
 
 
+            // para frente da linha do tempo
+            if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
+              console.log('🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
+              let newFla3: any
+              if (index > -1) {
+                newFla3 = this.timeLine.time_line.flags.splice(index, 1);
+              }
+              this.timeLine.time_line.flags[index] = newFla3[0]
+              this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+
+              // para trás da linha do tempo
+            } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
+              console.log('999999999999999999999999999999999999999🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️')
+              this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+
+            }
+
+            console.log('🅰️UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU')
 
 
-
-
-
-
-
-
-
-
-
-
-      // if (i1 === array1.length - 2 && !aaaaaa) {
-      //   find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-      //   index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-      //   // find4 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-
-      //   indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-
-      //   if (find3) {
-      //     console.log('um montando em cima do outro🎅', find3)
-      //     console.log('um montando em cima do outro🎅', this.editFlag)
-      //     if (find3.length === 1) { // aqui a bandeira sai de uma posição com 01 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data 
-
-
-      //       if (this.editFlag && this.editFlag.flags2?.length === 0) {
-
-      //         let newFla1: any
-      //         if (index > -1) {
-      //           newFla1 = this.timeLine.time_line.flags.splice(indexDelet, 1);
-      //         }
-
-      //         // find3 pra data que vai - newFla1 é a data clicada edição
-      //         if (find3[0].date_obj.timestamp > newFla1[0].date_obj.timestamp) {
-      //           this.timeLine.time_line.flags[index - 1].flag_margin_right = '3'
-      //           this.timeLine.time_line.flags[index - 1].flags2?.push(this.flagsForm.controls[0].value)
-
-      //           // find3 pra data que vai - newFla1 é a data clicada edição
-      //         } else if (find3[0].date_obj.timestamp < newFla1[0].date_obj.timestamp) {
-      //           this.timeLine.time_line.flags[index].flag_margin_right = '3'
-      //           this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-      //         }
-      //         console.log(indexDelet, index, 'ENTREOI AQUI 11111111111111111', newFla1)
-
-
-
-      //       } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
-
-      //         // let newFla2: any
-      //         // if (index > -1) {
-      //         //   newFla2 = this.timeLine.time_line.flags.splice(indexDelet, 1);
-      //         // }
-
-      //         // find3 pra data que vai - this.editFlag.date_obj.timestamp é a data clicada edição
-      //         // if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
-      //         //   console.log('🅰️21222222222222222222222222')
-      //         //   this.timeLine.time_line.flags[index].flag_margin_right = '3'
-      //         //   this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-
-      //         //   let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
-      //         //   flag2[0].flag_style = 1
-      //         //   this.timeLine.time_line.flags[indexDelet] = flag2[0]
-
-      //         //   // find3 pra data que vai - this.editFlag.date_obj.timestamp é a data clicada edição
-      //         //   // indexDelet é o index da flag editada
-      //         //   // index é para aonde a flag deve ir
-      //         // } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
-      //         //   console.log('999999999999999999999999999999999999999')
-      //         //   this.timeLine.time_line.flags[index].flag_margin_right = '3'
-      //         //   this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-
-      //         //   let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
-      //         //   flag2[0].flag_style = 1
-      //         //   this.timeLine.time_line.flags[indexDelet] = flag2[0]
-
-      //         // }
-
-      //         this.timeLine.time_line.flags[index].flag_margin_right = '3'
-      //         this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-
-      //         let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
-      //         flag2[0].flag_style = 1
-      //         this.timeLine.time_line.flags[indexDelet] = flag2[0]
-
-      //         // // this.timeLine.time_line.flags[index] = newFla1[0]
-      //         // this.timeLine.time_line.flags[index].flag_margin_right = '3'
-      //         // this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-      //         // this.editFlag.flags2[0].flag_style = 1
-      //         // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-      //         console.log(indexDelet, index, 'ENTREOI AQUI QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ')
-      //       }
-
-
-      //     } else if (find3.length === 2) { // aqui a bandeira sai de uma posição com 02 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data
-      //       // find3
-      //       console.log('ENTREOI AQUI 22222222222222', index, this.editFlag)
-
-
-
-      //       // para frente da linha do tempo
-      //       if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
-      //         console.log('🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
-      //         let newFla3: any
-      //         if (index > -1) {
-      //           newFla3 = this.timeLine.time_line.flags.splice(index, 1);
-      //         }
-      //         this.timeLine.time_line.flags[index] = newFla3[0]
-      //         this.timeLine.time_line.flags[index].flag_margin_right = '3'
-      //         this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-
-      //         // para trás da linha do tempo
-      //       } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
-      //         console.log('999999999999999999999999999999999999999🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️')
-      //         this.timeLine.time_line.flags[index].flag_margin_right = '3'
-      //         this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-
-      //       }
-
-      //       console.log('🅰️UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU')
-
-
-      //     }
-      //   }
-      // }
+          }
+        }
+      }
 
     })
 
