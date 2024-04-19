@@ -621,10 +621,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     })
 
-    // this.timeLine = this.timeLine
+
+    this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+      this.timeLine.iam_id = '0'
+      this.timeLine.time_line.flags[i].year = e.date_obj.year
+    })
+
+    this.timeLine = this.timeLine
     console.log(this.timeLine)
-    // console.log(flag1)
-    // console.log(flag2)
+        // console.log(flag1)
+        // console.log(flag2)
   }
 
 
