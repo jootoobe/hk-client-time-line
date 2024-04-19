@@ -627,10 +627,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       this.timeLine.time_line.flags[i].year = e.date_obj.year
     })
 
-    this.timeLine = this.timeLine
+    // this.timeLine = this.timeLine
+    // console.log(flag1)
+    // console.log(flag2)
+    this.filter()
     console.log(this.timeLine)
-        // console.log(flag1)
-        // console.log(flag2)
+  }
+
+
+  filter() {
+    this.timeLine.time_line.flags.sort((x:FlagModel, y:FlagModel)=>{
+      return x.date_obj.timestamp - y.date_obj.timestamp;
+    })
   }
 
 
