@@ -485,13 +485,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
       if (i1 === array1.length - 2) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+        index = this.timeLineForEdit.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp ===  this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
 
         if (find3) {
           console.log('um montando em cima do outro🎅', find3)
           if(find3.length === 1) { // aqui a bandeira sai de uma posição com 01 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data 
- 
-          } else if(find3.length === 2) { // aqui a bandeira sai de uma posição com 02 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data
+            console.log('ENTREOI AQUI 11111111111111111')
 
+          } else if(find3.length === 2) { // aqui a bandeira sai de uma posição com 02 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data
+            // find3
+            console.log('ENTREOI AQUI 22222222222222', index)
+            
+            this.timeLine.time_line.flags[index].flag_margin_right = '3'
+            
           }
         }
       }
