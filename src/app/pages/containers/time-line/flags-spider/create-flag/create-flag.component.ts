@@ -410,6 +410,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let flag1: FlagModel | undefined
     let flag2: FlagModel | undefined
     let index: number | undefined
+    let indexDelet: number | undefined
     let find: any | undefined
     let find2: any | undefined
     let find3: any | undefined
@@ -486,7 +487,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if (i1 === array1.length - 2) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-
+        // indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+        
         if (find3) {
           console.log('um montando em cima do outro🎅', find3)
           if (find3.length === 1) { // aqui a bandeira sai de uma posição com 01 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data 
@@ -498,6 +500,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               if (index > -1) {
                 newFla1 = this.timeLine.time_line.flags.splice(index, 1);
               }
+              console.log('sssssssssssssss',this.editFlag)
               this.timeLine.time_line.flags[index] = newFla1[0]
               this.timeLine.time_line.flags[index].flag_margin_right = '3'
               this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
