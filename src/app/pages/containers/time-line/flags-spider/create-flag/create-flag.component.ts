@@ -434,6 +434,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               if (this.editFlag.flags2[0]) {
               this.editFlag.flags2[0].flag_style = 1
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+              this.timeLine.time_line.flags[i1].flag_margin_right = '0'
               this.timeLine.time_line.flags[i1].flags2 = []
 
                 console.log('333333333333333333333333333333333333------------------------------------')
