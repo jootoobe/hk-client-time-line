@@ -412,14 +412,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let find: any | undefined
     let find2: any | undefined
     let find3: any | undefined
+    let canTenter = false
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
-
+          canTenter = false
           // 🅰️ Aqui atualiza a flag 1 individualmente  
           // this.editFlag é pego quando o usuário clica na em editar bandria. Na edição poder vir apenas a flag1 e a flag2 caso a bandeira tenha mais de uma bandeira na mesma data e horário 
           if (this.editFlag.flags2) {
+            canTenter = true
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2 // valor vindo do botão de edição
 
@@ -448,6 +450,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
 
           if (!this.editFlag.flags2) {
+            canTenter = true
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
             console.log('444444444444444444444444444444444444444')
           }
@@ -466,6 +469,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
             // Aqui atualiza a flag 2 individualmente  
             if (this.editFlag.flags2) {
+              canTenter = true
               this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
 
               find2 = this.timeLine.time_line.flags[i1].flags2?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
@@ -498,7 +502,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       * @param { Rules } Used_so_that_other_microservices_have_access_to_data_without_having_to_use_the_backend
       */
 
-      if (i1 === array1.length - 1) {
+      if (i1 === array1.length - 1 && !canTenter) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         // find4 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
