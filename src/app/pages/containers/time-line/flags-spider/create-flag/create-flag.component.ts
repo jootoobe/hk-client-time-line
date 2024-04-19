@@ -407,21 +407,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   // let findTimestamp!: TimeLineModel[]
 
   updateFlag() {
-    // let flag1: FlagModel | undefined
-    // let flag2: FlagModel | undefined
     let index: number | undefined
     let indexDelet: number | undefined
     let find: any | undefined
     let find2: any | undefined
     let find3: any | undefined
-    let find4: any | undefined
-    // flag1 = this.editFlag
-
-    // if (this.editFlag.flags2) {
-    //   flag2 = this.editFlag.flags2[0]
-    // }
-
-    // flag1.flags2 = []
 
 
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
@@ -435,7 +425,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
 
             find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-            console.log('aaaaaaaaaaa', find)
+            console.log('1111111111111', find)
 
             // Aqui separa a flag1 da flag 2
             // A flag1 passa a ter uma nova data separada da flag2
@@ -443,14 +433,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               this.editFlag.flags2[0].flag_style = 1
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
-            } else if (find.length === 1) { }
+              console.log('333333333333333333333333333333333333', find)
+            } else if (find.length === 1) { 
+              console.log('2222222222222222222222', find)
+
+            }
             console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
 
             // Aqui atualiza a flag 1 individualmente  
           } else if (!this.editFlag.flags2) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
+            console.log('444444444444444444444444444444444444444', find)
           }
-
+          console.log('9999999999999999999999999999999999999999999999999999999', find)
         }
       }
 
@@ -477,10 +472,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   this.editFlag.flags2[0].flag_style = 1
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
-                } else if (find.length === 1) { }
+                  console.log('777777777777777777777777777777777777777777777777777', find)
+                } else if (find.length === 1) { 
+                  console.log('66666666666666666666666666666666666666666666', find)
+                }
               }
             }
+            console.log('8888888888888888888888888888888888888888888888888', find)
           }
+
+          console.log('5555555555555555555555555555555555555555555555555', find)
         })
       }
 
