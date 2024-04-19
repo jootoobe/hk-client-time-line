@@ -412,6 +412,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let index: number | undefined
     let find: any | undefined
     let find2: any | undefined
+    let find3: any | undefined
     // flag1 = this.editFlag
 
     // if (this.editFlag.flags2) {
@@ -421,50 +422,37 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     // flag1.flags2 = []
 
 
-    this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+    this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
         // this.timeLine.time_line.flags.splice(i1, 1);
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
 
-          if(this.editFlag.flags2) {
+          if (this.editFlag.flags2) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
 
             find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-            console.log('aaaaaaaaaaa',find)
+            console.log('aaaaaaaaaaa', find)
 
             // Aqui separa a flag1 da flag 2
             // A flag1 passa a ter uma nova data separada da flag2
-            if(find.length === 0){
+            if (find.length === 0) {
               this.editFlag.flags2[0].flag_style = 1
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
-            } else if(find.length === 1){
+            } else if (find.length === 1) {
               console.log('MONTANDO 02 flags;;;;;;;;;;;;;;;;;;;;🅿️')
             }
             console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
-       
-          // Aqui atualiza a flag 1 individualmente  
-          } else if(!this.editFlag.flags2) {
+
+            // Aqui atualiza a flag 1 individualmente  
+          } else if (!this.editFlag.flags2) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
           }
 
         }
-        // if(this.editFlag.edit === 'edit-flag-1' && this.editFlag.flags2?.length === 0) {
-        //   console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-        //   console.log('um montando em cima do outro🎅')
-        // }
       }
-
-      // if (e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
-      //   // this.timeLine.time_line.flags.splice(i1, 1);
-      //   if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
-      //     this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
-
-      //     console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
-      //   }
-      // }
 
       if (e1.flags2?.length === 1) {
         this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number) => {
@@ -476,42 +464,43 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
               // Aqui atualiza a flag 2 individualmente  
-              if(this.editFlag.flags2) {
+              if (this.editFlag.flags2) {
                 this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
 
                 find2 = this.timeLine.time_line.flags[i1].flags2?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-                console.log('nnnnnnnnnnnnnnn',find2)
+                console.log('nnnnnnnnnnnnnnn', find2)
 
                 // Aqui separa a flag2 da flag 1
                 // A flag2 passa a ser 1 assumindo uma nova data 
-                if(find2.length === 0){
+                if (find2.length === 0) {
                   this.timeLine.time_line.flags[i1].flag_margin_right = '0'
                   this.editFlag.flags2[0].flag_style = 1
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
-                } else if(find.length === 1){
+                } else if (find.length === 1) {
                   console.log('MONTANDO 02 flags;;;;;;;;;;;;;;;;;;;;🅰️')
                 }
 
-              } 
-      
+              }
+
             }
-            // if(this.editFlag.edit === 'edit-flag-2' && this.editFlag.flags2?.length === 1) {
-            //   console.log('fffffffffffffffffffffffffffffffffffffffffffffffff')
-            //   console.log('um montando em cima do outro🌝')
-            // }
           }
-  
-          // if (e2.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
-          //   if (this.editFlag.edit === 'edit-flag-2') {
-          //     // this.timeLine.time_line.flags.splice(i2, 1);
-          //     this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
-          //     console.log('gggggggggggggggggggggggggggggggggggggggggggggggg')
-          //   }
-          // }
         })
       }
+      if (i1 === array1.length - 1) {
+        find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+
+        if (find3 && find3[0]) {
+          console.log('um montando em cima do outro🎅', find3)
+          if(find3.length === 1) { // aqui a bandeira sai de uma posição com 01 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data 
+ 
+          } else if(find3.length === 2) { // aqui a bandeira sai de uma posição com 02 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data
+
+          }
+        }
+      }
     })
+
     this.timeLine = this.timeLine
     console.log(this.timeLineForEdit)
     console.log(flag1)
