@@ -432,15 +432,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             if (find.length === 0) {
 
               if (this.editFlag.flags2[0]) {
-                this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
-                this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+              this.editFlag.flags2[0].flag_style = 1
+              this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+              this.timeLine.time_line.flags[i1].flags2 = []
+
+                console.log('333333333333333333333333333333333333------------------------------------')
               } else if (!this.editFlag.flags2[0]) {
-                this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
-                this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                this.timeLine.time_line.flags[i1].flags2 = []
+                // this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+                // this.timeLine.time_line.flags[i1].flags2 = []
+                console.log('333333333333333333333333333333333333')
               }
 
-              console.log('333333333333333333333333333333333333')
+             
             } 
             // else if (find.length === 1) {  }
 
