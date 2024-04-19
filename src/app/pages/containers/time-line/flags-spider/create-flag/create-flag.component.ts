@@ -412,14 +412,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let find: any | undefined
     let find2: any | undefined
     let find3: any | undefined
-
-
+    let aaaaaa = false
+    let bbbbbb = false
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
-
+      aaaaaa = false
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
         // this.timeLine.time_line.flags.splice(i1, 1);
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
-
+          aaaaaa = true
           if (this.editFlag.flags2) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
@@ -454,8 +454,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
           if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
             if (this.editFlag.edit === 'edit-flag-2') {
+              aaaaaa = true
               // this.timeLine.time_line.flags.splice(i2, 1);
-
 
 
               // Aqui atualiza a flag 2 individualmente  
@@ -485,7 +485,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         })
       }
 
-      if (i1 === array1.length - 2) {
+      if (i1 === array1.length - 2 && !aaaaaa) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         // find4 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
