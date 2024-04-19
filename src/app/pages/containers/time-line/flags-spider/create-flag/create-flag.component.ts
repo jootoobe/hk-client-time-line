@@ -447,6 +447,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
              
             } 
+            
             // else if (find.length === 1) {  }
 
             console.log('ATUALIZANDO APENAS A FLAG 1 NA MESMA POSIÇÃO DATA')
