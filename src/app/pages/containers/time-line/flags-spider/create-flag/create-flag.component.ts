@@ -433,7 +433,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               // this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0]?.value
               // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               // this.timeLine.time_line.flags[i1].flags2 = []
-              this.editFlag.flags2[0].flag_style = 1
+              this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
               console.log('333333333333333333333333333333333333', find)
@@ -472,7 +472,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 // A flag2 passa a ser 1 assumindo uma nova data 
                 if (find2.length === 0) {
                   this.timeLine.time_line.flags[i1].flag_margin_right = '0'
-                  this.editFlag.flags2[0].flag_style = 1
+                  this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
                   
