@@ -489,7 +489,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         // find4 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
-        indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+        // indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
         if (find3) {
           console.log('um montando em cima do outro🎅', find3)
@@ -501,9 +501,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
               let newFla1: any
               if (index > -1) {
-                newFla1 = this.timeLine.time_line.flags.splice(indexDelet, 1);
+                newFla1 = this.timeLine.time_line.flags.splice(index, 1);
               }
-              console.log('ENTREOI AQUI 11111111111111111')
+              console.log('ENTREOI AQUI 11111111111111111', newFla1)
 
               // this.timeLine.time_line.flags[index] = newFla1[0]
               this.timeLine.time_line.flags[index].flag_margin_right = '3'
@@ -511,9 +511,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
             } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
 
-              let newFla1: any
+              let newFla2: any
               if (index > -1) {
-                newFla1 = this.timeLine.time_line.flags.splice(indexDelet, 1);
+                newFla2 = this.timeLine.time_line.flags.splice(index, 1);
               }
 
               // this.timeLine.time_line.flags[index] = newFla1[0]
@@ -521,7 +521,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
               this.editFlag.flags2[0].flag_style = 1
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-              console.log('ENTREOI AQUI QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ')
+              console.log('ENTREOI AQUI QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ', newFla2)
             }
 
 
