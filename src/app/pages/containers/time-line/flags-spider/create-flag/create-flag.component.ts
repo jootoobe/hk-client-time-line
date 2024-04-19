@@ -471,10 +471,10 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 // Aqui separa a flag2 da flag 1
                 // A flag2 passa a ser 1 assumindo uma nova data 
                 if (find2.length === 0) {
-                  // this.timeLine.time_line.flags[i1].flag_margin_right = '0'
-                  // this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
-                  // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                  // this.timeLine.time_line.flags[i1].flags2 = []
+                  this.timeLine.time_line.flags[i1].flag_margin_right = '0'
+                  this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                  this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+                  this.timeLine.time_line.flags[i1].flags2 = []
                   
                   console.log('777777777777777777777777777777777777777777777777777', find)
                 } else if (find.length === 1) { 
