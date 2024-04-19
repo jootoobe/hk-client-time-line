@@ -413,6 +413,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let find: any | undefined
     let find2: any | undefined
     let find3: any | undefined
+    let find4: any | undefined
     // flag1 = this.editFlag
 
     // if (this.editFlag.flags2) {
@@ -441,9 +442,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               this.editFlag.flags2[0].flag_style = 1
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
-            } else if (find.length === 1) {
-              console.log('MONTANDO 02 flags;;;;;;;;;;;;;;;;;;;;🅿️')
-            }
+            } else if (find.length === 1) {}
             console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
 
             // Aqui atualiza a flag 1 individualmente  
@@ -455,7 +454,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
 
       if (e1.flags2?.length === 1) {
-        this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number) => {
+        this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
 
           if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
             if (this.editFlag.edit === 'edit-flag-2') {
@@ -477,20 +476,17 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   this.editFlag.flags2[0].flag_style = 1
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
-                } else if (find.length === 1) {
-                  console.log('MONTANDO 02 flags;;;;;;;;;;;;;;;;;;;;🅰️')
-                }
-
+                } else if (find.length === 1) {}
               }
-
             }
           }
         })
       }
-      if (i1 === array1.length - 1) {
+
+      if (i1 === array1.length - 2) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
 
-        if (find3 && find3[0]) {
+        if (find3) {
           console.log('um montando em cima do outro🎅', find3)
           if(find3.length === 1) { // aqui a bandeira sai de uma posição com 01 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data 
  
@@ -499,6 +495,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
         }
       }
+
     })
 
     this.timeLine = this.timeLine
