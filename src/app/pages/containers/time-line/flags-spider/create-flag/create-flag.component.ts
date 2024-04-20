@@ -438,18 +438,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               this.timeLine.time_line.flags[i1].flags2 = []
 
                 console.log('333333333333333333333333333333333333------------------------------------')
-              } else if (!this.editFlag.flags2[0]) {
+              } 
+               if (!this.editFlag.flags2[0]) {
                 // this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
                 // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                 // this.timeLine.time_line.flags[i1].flags2 = []
                 console.log('333333333333333333333333333333333333')
               }
-
-             
-            } 
-            
+            }             
             // else if (find.length === 1) {  }
-
             console.log('ATUALIZANDO APENAS A FLAG 1 NA MESMA POSIÇÃO DATA')
 
           }
@@ -624,6 +621,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     })
 
 
+    // Preciso passar esse for para repor os anos removidos no pipe | unique
     this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
       this.timeLine.iam_id = '0'
       this.timeLine.time_line.flags[i].year = e.date_obj.year
