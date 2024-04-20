@@ -467,16 +467,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
           if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
             if (this.editFlag.edit === 'edit-flag-2') {
-              // this.timeLine.time_line.flags.splice(i2, 1);
-
 
               // Aqui atualiza a flag 2 individualmente  
               if (this.editFlag.flags2) {
                 canTenter = true
-                // this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
 
                 find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp ===this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-                
+                index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+                indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+
                 console.log('nnnnnnnnnnnnnnn', find2)
 
                 // Aqui separa a flag2 da flag 1
@@ -490,7 +489,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   console.log('777777777777777777777777777777777777777777777777777', find)
                 } 
                 else if (find2.length === 1) {
-                  console.log('AQUI AQUI AQUI AQUI AQUI AQUI AQUI', find)
+                  this.timeLine.time_line.flags[index].flags2 = this.editFlag.flags2
+                  this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                  this.timeLine.time_line.flags[indexDelet].flags2 = []
+                  this.timeLine.time_line.flags[indexDelet].flag_margin_right = '0'
+                  // console.log('AQUI AQUI AQUI AQUI AQUI AQUI AQUI', find)
                  }
               }
             }
