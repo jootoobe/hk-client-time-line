@@ -632,6 +632,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     // console.log(flag2)
     this.filter()
     console.log(this.timeLine)
+    // this.updateCreateFlag()
   }
 
 
@@ -642,42 +643,24 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
 
-  // Data é alterada.
-  // esse update é quando uma noca data é criada - por isso tem que ser create o serviço 
-  updateWithDateChangesFlag() {
-    // this.timeLineService.updateWithDateChangesFlag(this.timeLine)
-    //   .subscribe({
-    //     next: (res: EncryptModel) => {
-    //       // let val: any = res.a[0]
-    //       if (res.a === 'OK') {
-    //         this.getAllTimeLineById()
-    //       }
-    //     },
-    //     error: () => {
-    //     },
-    //     complete: () => {
-    //     }
-    //   })
-  }
-
 
   // Data não é alterada.
   // esse update é quando tem 02 flags na mesa data
   updateCreateFlag() {
-    // console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
-    // this.timeLineService.updateCreateFlag(this.createEditFlagSubscribe)
-    //   .subscribe({
-    //     next: (res: EncryptModel) => {
-    //       // let val: any = res.a[0]
-    //       if (res.a === 'OK') {
-    //         this.getAllTimeLineById()
-    //       }
-    //     },
-    //     error: () => {
-    //     },
-    //     complete: () => {
-    //     }
-    //   })
+    console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
+    this.timeLineService.updateCreateFlag(this.timeLine)
+      .subscribe({
+        next: (res: EncryptModel) => {
+          // let val: any = res.a[0]
+          if (res.a === 'OK') {
+            this.getAllTimeLineById()
+          }
+        },
+        error: () => {
+        },
+        complete: () => {
+        }
+      })
   }
 
   // Remover depois

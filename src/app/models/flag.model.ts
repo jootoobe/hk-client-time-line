@@ -21,6 +21,7 @@ export class FlagModel {
     public geolocation?: GeolocationModel,
     public flags2?: FlagModel[],
     public edit?: string, // para edição
+    public flag_status_update?: string, // o status pode ser update, delete or create - usado quando a flag é editada
   ) {
   }
 }
