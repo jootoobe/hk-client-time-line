@@ -473,9 +473,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               // Aqui atualiza a flag 2 individualmente  
               if (this.editFlag.flags2) {
                 canTenter = true
-                this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
+                // this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0].value]
 
-                find2 = this.timeLine.time_line.flags[i1].flags2?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+                find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp ===this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
                 
                 console.log('nnnnnnnnnnnnnnn', find2)
 
@@ -489,7 +489,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
                   console.log('777777777777777777777777777777777777777777777777777', find)
                 } 
-                // else if (find.length === 1) { }
+                else if (find2.length === 1) {
+                  console.log('AQUI AQUI AQUI AQUI AQUI AQUI AQUI', find)
+                 }
               }
             }
           }
