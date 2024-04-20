@@ -524,13 +524,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 newFla1 = this.timeLine.time_line.flags.splice(indexDelet, 1);
               }
 
-              // find3 pra data que vai - newFla1 é a data clicada edição
+              // find3 pra data que vai - newFla1 é a data clicada edição - ando pra frente na time-line - fleg1 assumingo a posição 02
               if (find3[0].date_obj.timestamp > newFla1[0].date_obj.timestamp) {
                 this.timeLine.time_line.flags[index - 1].flag_margin_right = '3'
                 this.timeLine.time_line.flags[index - 1].flags2?.push(this.flagsForm.controls[0].value)
 
-                // find3 pra data que vai - newFla1 é a data clicada edição
+                console.log('1111111111111AAaaa')
+                // find3 pra data que vai - newFla1 é a data clicada edição - ando para trás na time-line - fleg1 assumingo a posição 02
               } else if (find3[0].date_obj.timestamp < newFla1[0].date_obj.timestamp) {
+                console.log('1111111111111BBBBBB')
                 this.timeLine.time_line.flags[index].flag_margin_right = '3'
                 this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
               }
