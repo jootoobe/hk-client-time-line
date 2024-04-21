@@ -418,8 +418,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
           canTenter = false
+
           // 🅰️ Aqui atualiza a flag 1 individualmente  
-          // this.editFlag é pego quando o usuário clica na em editar bandria. Na edição poder vir apenas a flag1 e a flag2 caso a bandeira tenha mais de uma bandeira na mesma data e horário 
           if (this.editFlag.flags2) {
             canTenter = true
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
@@ -427,50 +427,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
             find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
-            // Aqui separa a flag1 da flag 2
-            // A flag1 passa a ter uma nova data separada da flag2
+            // Aqui separa a flag1 da flag2 - tanto faz clicar na fleg1 ou na fleg2 que ambas se separam
+            // A flag2 passa a ter uma nova data separada da flag1 e vice versa
             if (find.length === 0) {
 
               if (this.editFlag.flags2[0]) {
-                // this.editFlag.flags2[0].flag_style = 1
                 this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                // this.timeLine.time_line.flags[i1].flag_margin_right = '0'
                 this.timeLine.time_line.flags[i1].flags2 = []
-
-                console.log('333333333333333333333333333333333333------------------------------------')
-              }
-              // Cai aqui quando a bandeira 1 muda de data - para uma data que não existe
-              if (!this.editFlag.flags2[0]) {
-                // this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
-                // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                // this.timeLine.time_line.flags[i1].flags2 = []
-                console.log('333333333333333333333333333333333333 🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
               }
             }
-            else if (find.length === 1) {
-              console.log('🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️')
-            }
-            console.log('ATUALIZANDO APENAS A FLAG 1 NA MESMA POSIÇÃO DATA')
-
-          }
-
-          if (!this.editFlag.flags2) {
-            canTenter = true
-            this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
-            console.log('444444444444444444444444444444444444444 🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
           }
         }
       }
-
-
-
-
-
-
-
-
-
-
 
 
       // 🅰️ Aqui atualiza a flag 2 individualmente  
