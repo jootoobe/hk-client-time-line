@@ -509,7 +509,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
                     this.timeLine.time_line.flags[index].flag_margin_right = '3'
-                    this.timeLine.time_line.flags[indexDelet].flag_margin_right = '0'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
                     console.log('AQUI AQUI AQUI AQUI AQUI AQUI AQUI', this.timeLine.time_line)
                     // flag 2 anda pra trás na time line 
@@ -518,7 +517,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                     
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
                     this.timeLine.time_line.flags[index].flag_margin_right = '3'
-                    this.timeLine.time_line.flags[indexDelet].flag_margin_right = '0'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
                     console.log('UI UI UI UI UI UI UI', this.timeLine.time_line)
                   }
@@ -648,6 +646,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
       this.timeLine.iam_id = '0'
       this.timeLine.time_line.flags[i].year = e.date_obj.year
+      if(e.flags2?.length === 1) {
+        e.flags2[i].flag_style = 2
+        e.flags2[i].flag_margin_right = '0'
+      }
+      if(e.flags2?.length === 0) {
+        e.flag_style = 1
+        e.flag_margin_right = '3'
+      }
     })
 
     // this.timeLine = this.timeLine
