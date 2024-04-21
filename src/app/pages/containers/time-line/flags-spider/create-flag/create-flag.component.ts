@@ -405,9 +405,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   * @param { TEST-2 } Edit_Bandeira_2_On_Same_Date - When flag 2 does not change position
   * @param { TEST-3 } Separates_Flag1_From_Flag2 - Separates flag1 from flag2
   * @param { TEST-4 } Separates_Flag2_From_Flag1 - Separates flag2 from flag1
-  * @param { TEST-5 } Edit_Flag1_Different_Sates - Edit flag 1 'different dates' without assuming position 02(flag). Test by going to the front of the timeline and going to the back of the timeline
-  * @param { TEST-6 } Edit_Flag2_Different_Sates - Edit flag 2 'different dates' without assuming position 02(flag). Test by going to the front of the timeline and going to the back of the timeline
-  * @param { TEST-7 } Flga2_Can_Walk_TimeLine_But_Keep_Possition01 - Editing fleg2 being able to walk on the time line and remaining the position 02
+  * @param { TEST-5 } Edit_Flag1_Different_Dates - Edit flag 1 'different dates' without assuming position 02(flag). Test by going to the front of the timeline and going to the back of the timeline
+  * @param { TEST-6 } Flga2_Can_Walk_TimeLine_But_Keep_Possition_02 - Editing fleg2 being able to walk on the time line and remaining the position 02
 
 
 
@@ -437,7 +436,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
             // { TEST-3 } Here separates flag1 from flag2
-              //  { TEST-6 } Edit_Flag2_Different_Sates
             if (find.length === 0) {
               if (this.editFlag.flags2[0]) {
                 this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
@@ -471,7 +469,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   this.timeLine.time_line.flags[i1].flags2 = []
                 }
 
-                // { TEST-7 } Editing fleg2 being able to walk on the time line and remaining in position 02
+                // { TEST-6 } Editing fleg2 being able to walk on the time line and remaining in position 02
                 if (find2.length === 1 && this.editFlag.flags2[0]) {
                   // flag 2 goes backwards in the time line
                   // It's a repetition even to pass only 01 time in the for loop
@@ -500,7 +498,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if (i1 === array1.length - 1 && !canTenter) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-        // find4 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
         indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
