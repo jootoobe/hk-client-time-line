@@ -554,24 +554,25 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
             if (this.editFlag && this.editFlag.flags2?.length === 0) {
 
-              let newFla1: any
-              if (index > -1) {
-                newFla1 = this.timeLine.time_line.flags.splice(indexDelet, 1);
-              }
+              // let newFla1: any
+              // if (index > -1) {
+              //   newFla1 = this.timeLine.time_line.flags.splice(indexDelet, 1);
+              // }
 
               // find3 pra data que vai - newFla1 é a data clicada edição - ando pra frente na time-line - fleg1 assumingo a posição 02
-              if (find3[0].date_obj.timestamp > newFla1[0].date_obj.timestamp) {
-                this.timeLine.time_line.flags[index - 1].flag_margin_right = '3'
-                this.timeLine.time_line.flags[index - 1].flags2?.push(this.flagsForm.controls[0].value)
-
+              if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
+                this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+                this.timeLine.time_line.flags.splice(indexDelet, 1);
                 console.log('1111111111111AAaaa')
                 // find3 pra data que vai - newFla1 é a data clicada edição - ando para trás na time-line - fleg1 assumingo a posição 02
-              } else if (find3[0].date_obj.timestamp < newFla1[0].date_obj.timestamp) {
+              } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
                 console.log('1111111111111BBBBBB')
                 this.timeLine.time_line.flags[index].flag_margin_right = '3'
                 this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+                this.timeLine.time_line.flags.splice(indexDelet, 1);
               }
-              console.log(indexDelet, index, 'ENTREOI AQUI 11111111111111111 🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒', newFla1)
+              console.log(indexDelet, index, 'ENTREOI AQUI 11111111111111111 🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒')
 
 
             } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
