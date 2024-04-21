@@ -561,22 +561,27 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               // }
 
               // find3 pra data que vai - newFla1 é a data clicada edição - ando pra frente na time-line - fleg1 assumingo a posição 02
+              // Quando tem 01 bandeira
               if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
+                // this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+                this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
                 this.timeLine.time_line.flags[index].flag_margin_right = '3'
-                this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+                this.timeLine.time_line.flags[index].flag_style = 2
                 this.timeLine.time_line.flags.splice(indexDelet, 1);
                 console.log('1111111111111AAaaa')
                 // find3 pra data que vai - newFla1 é a data clicada edição - ando para trás na time-line - fleg1 assumingo a posição 02
               } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
                 console.log('1111111111111BBBBBB')
+                // this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+                this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
                 this.timeLine.time_line.flags[index].flag_margin_right = '3'
-                this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+                this.timeLine.time_line.flags[index].flag_style = 2
                 this.timeLine.time_line.flags.splice(indexDelet, 1);
               }
               console.log(indexDelet, index, 'ENTREOI AQUI 11111111111111111 🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒')
 
 
-           
+           // Quando tem 02 bandeiras   
             }  else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
               // this.timeLine.time_line.flags[index].flag_margin_right = '3'
               // this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
@@ -584,6 +589,21 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               // let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
               // flag2[0].flag_style = 1
               // this.timeLine.time_line.flags[indexDelet] = flag2[0]
+
+              if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
+                this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+                // this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                this.timeLine.time_line.flags.splice(indexDelet, 1);
+                console.log('1111111111111AAaaa 🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
+                // find3 pra data que vai - newFla1 é a data clicada edição - ando para trás na time-line - fleg1 assumingo a posição 02
+              } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
+                console.log('1111111111111BBBBBB 🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
+                this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+                // this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                this.timeLine.time_line.flags.splice(indexDelet, 1);
+              }
+
+              
               console.log(indexDelet, index, 'ENTREOI AQUI QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
             }
 
