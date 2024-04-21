@@ -404,7 +404,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   * @param { TEST-1 } Edit_Bandeira_1_On_Same_Date - When flag 1 does not change position
   * @param { TEST-2 } Edit_Bandeira_2_On_Same_Date - When flag 2 does not change position
   * @param { TEST-3 } Separates_Flag1_From_Flag2 - Separates flag1 from flag2
-  * @param { TEST-3 } Separates_Flag2_From_Flag1 - Separates flag2 from flag1
+  * @param { TEST-4 } Separates_Flag2_From_Flag1 - Separates flag2 from flag1
+  * @param { TEST-5 } Edit_Flag1_Different_Sates - Edit flag 1 'different dates' without assuming position 02(flag). Test by going to the front of the timeline and going to the back of the timeline
+  * @param { TEST-6 } Edit_Flag2_Different_Sates - Edit flag 2 'different dates' without assuming position 02(flag). Test by going to the front of the timeline and going to the back of the timeline
+  * @param { TEST-7 } Flga2_Can_Walk_TimeLine_But_Keep_Possition01 - Editing fleg2 being able to walk on the time line and remaining the position 02
+
 
 
   */
@@ -424,6 +428,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           canTenter = false
 
           // 🅰️ { TEST-1 } - Here updates flag 1 individually  
+          //  { TEST-5 } Edit_Flag1_Different_Sates
           if (this.editFlag.flags2) {
             canTenter = true
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
@@ -432,6 +437,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
             // { TEST-3 } Here separates flag1 from flag2
+              //  { TEST-6 } Edit_Flag2_Different_Sates
             if (find.length === 0) {
               if (this.editFlag.flags2[0]) {
                 this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
@@ -466,7 +472,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   this.timeLine.time_line.flags[i1].flags2 = []
                 }
 
-                // Editando fleg2 para assumir 
+                // { TEST-7 } Editing fleg2 being able to walk on the time line and remaining in position 02
                 if (find2.length === 1 && this.editFlag.flags2[0]) {
                   // flag 2 anda pra trás na time line 
                   // é repetio mesmo para passar apenas 01 vez no for loop
