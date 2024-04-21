@@ -647,12 +647,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       this.timeLine.iam_id = '0'
       this.timeLine.time_line.flags[i].year = e.date_obj.year
       if(e.flags2?.length === 1) {
+        e.flag_style = 1
+        e.flag_margin_right = '3'
         e.flags2[i].flag_style = 2
         e.flags2[i].flag_margin_right = '0'
       }
       if(e.flags2?.length === 0) {
         e.flag_style = 1
-        e.flag_margin_right = '3'
+        e.flag_margin_right = '0'
       }
     })
 
