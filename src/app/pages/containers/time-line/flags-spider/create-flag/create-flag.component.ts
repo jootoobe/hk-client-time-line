@@ -439,19 +439,27 @@ updateFlag() {
         // 🅰️ { TEST-1 } - Here updates flag 1 individually  
         //  { TEST-5 } Edit_Flag1_Different_Sates
         if (this.editFlag.flags2) {
+          index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+          indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+
+
           canTenter = true
           this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
           this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2 // valor vindo do botão de edição
-          this.timeLine.time_line.flags[i1].flag_status_update = 'update'
+          this.timeLine.time_line.flags[i1].flag_status_update = 'create'
+        
+          this.editFlag.flag_status_update = 'delete'
+          this.timeLine.time_line.flags.push(this.editFlag)
 
           find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-
+          console.log('oooooooooooooooooooooo')
           // { TEST-3 } Here separates flag1 from flag2
           if (find.length === 0) {
             if (this.editFlag.flags2[0]) {
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
               this.timeLine.time_line.flags[i1].flag_status_update = 'create'
+              console.log('1111111111111111111111')
             }
           }
         }
@@ -579,7 +587,7 @@ updateFlag() {
 
   this.filter()
   console.log(this.timeLine)
-  // this.updateSubscribeFlag()
+  this.updateSubscribeFlag()
 }
 
 
