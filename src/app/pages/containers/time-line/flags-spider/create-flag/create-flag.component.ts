@@ -567,7 +567,7 @@ updateFlag() {
 
   this.filter()
   console.log(this.timeLine)
-  // this.updateCreateFlag()
+  this.updateSubscribeFlag()
 }
 
 
@@ -581,9 +581,9 @@ filter() {
 
 // Data não é alterada.
 // esse update é quando tem 02 flags na mesa data
-updateCreateFlag() {
-  console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
-  this.timeLineService.updateCreateFlag(this.timeLine)
+updateSubscribeFlag() {
+  console.log('updateFlag updateFlag', this.timeLine)
+  this.timeLineService.updateFlag(this.timeLine)
     .subscribe({
       next: (res: EncryptModel) => {
         // let val: any = res.a[0]
