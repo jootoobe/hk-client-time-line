@@ -405,10 +405,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   * @param { TEST-2 } Edit_Bandeira_2_On_Same_Date - When flag 2 does not change position
   * @param { TEST-3 } Separates_Flag1_From_Flag2 - Separates flag1 from flag2
   * @param { TEST-4 } Separates_Flag2_From_Flag1 - Separates flag2 from flag1
-  * @param { TEST-5 } Edit_Flag1_Different_Dates - Edit flag 1 'different dates' without assuming position 02(flag). Test by going to the front of the timeline and going to the back of the timeline
-  * @param { TEST-6 } Flga2_Can_Walk_TimeLine_But_Keep_Possition_02 - Editing fleg2 being able to walk on the time line and remaining the position 02
-
-
+  * @param { TEST-5 } Edit_Flag1_Different_Dates_keep_Position_01 - Edit flag 1 'different dates' remaining in position 01
+  * @param { TEST-6 } Edit_Flag2_Different_Dates_keep_Position_02 - Editing fleg2 being able to walk on the time line and remaining the position 02
 
   */
 
@@ -475,13 +473,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   // It's a repetition even to pass only 01 time in the for loop
                   if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                    // this.timeLine.time_line.flags[index].flag_margin_right = '3'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
 
                     // flag 2 moves forward on the timeline
                     // It's a repetition even to pass only 01 time in the for loop
                   } else if (this.editFlag.flags2[0].date_obj.timestamp > find2[0].date_obj.timestamp) {
-
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
 
@@ -494,7 +490,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
 
 
-
+      // 🎅 flag mounted on top of another taking position
       if (i1 === array1.length - 1 && !canTenter) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
@@ -502,9 +498,10 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
         if (find3) {
-          console.log('um montando em cima do outro🎅', find3)
-          console.log('um montando em cima do outro🎅', this.editFlag)
-          if (find3.length === 1) { // aqui a bandeira sai de uma posição com 01 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data 
+          console.log('um montando em cima do outro🎅')
+          
+          // aqui a bandeira 01 muda de data - se realocando na posição 02 
+          if (find3.length === 1) { 
 
 
             if (this.editFlag && this.editFlag.flags2?.length === 0) {
@@ -562,35 +559,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
               console.log(indexDelet, index, 'ENTREOI AQUI QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
             }
-
-
-          }
-          else if (find3.length === 2) { // aqui a bandeira sai de uma posição com 02 bandeiras para outra data que tenha 01 bandeira - ficando 02 bandeiras na mesma data
-            //   // find3
-            //   console.log('ENTREOI AQUI 22222222222222', index, this.editFlag)
-
-
-
-            //   // para frente da linha do tempo
-            //   if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
-            //     console.log('🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
-            //     let newFla3: any
-            //     if (index > -1) {
-            //       newFla3 = this.timeLine.time_line.flags.splice(index, 1);
-            //     }
-            //     this.timeLine.time_line.flags[index] = newFla3[0]
-            //     this.timeLine.time_line.flags[index].flag_margin_right = '3'
-            //     this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-
-            //     // para trás da linha do tempo
-            //   } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
-            console.log('999999999999999999999999999999999999999🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️🅰️')
-            //     this.timeLine.time_line.flags[index].flag_margin_right = '3'
-            //     this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
-
-            //   }
-
-            //   console.log('🅰️UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU')
 
 
           }
