@@ -450,6 +450,7 @@ updateFlag() {
             if (this.editFlag.flags2[0]) {
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
+              this.timeLine.time_line.flags[i1].flag_status_update = 'create'
             }
           }
         }
@@ -475,8 +476,11 @@ updateFlag() {
               // { TEST-4 } Here separates flag2 from flag1
               if (find2.length === 0) {
                 this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                this.editFlag.flags2[0].flag_status_update = 'create'
                 this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                 this.timeLine.time_line.flags[i1].flags2 = []
+                console.log('ZZZZZZZZZZZZzz')
+
               }
 
               // { TEST-6 } Editing fleg2 being able to walk on the time line and remaining in position 02
@@ -519,12 +523,15 @@ updateFlag() {
             // When there is 01 flag
             if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
               this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-              this.timeLine.time_line.flags.splice(indexDelet, 1);
+              // this.timeLine.time_line.flags.splice(indexDelet, 1);
+              this.timeLine.time_line.flags[indexDelet].flag_status_update = 'delete'
 
               // find3 for the upcoming date - I move backwards in the time-line - fleg1 assuming position 02
             } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
               this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-              this.timeLine.time_line.flags.splice(indexDelet, 1);
+              // this.timeLine.time_line.flags.splice(indexDelet, 1);
+              this.timeLine.time_line.flags[indexDelet].flag_status_update = 'delete'
+
             }
 
 
@@ -567,7 +574,7 @@ updateFlag() {
 
   this.filter()
   console.log(this.timeLine)
-  this.updateSubscribeFlag()
+  // this.updateSubscribeFlag()
 }
 
 
@@ -591,7 +598,9 @@ updateSubscribeFlag() {
           this.getAllTimeLineById()
         }
       },
-      error: () => {
+      error: (err) => {
+        console.log('ssssssssssss',err)
+        this.getAllTimeLineById()
       },
       complete: () => {
       }
