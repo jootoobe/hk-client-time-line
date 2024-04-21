@@ -449,7 +449,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
 
 
-
       if (e1.flags2?.length === 1) {
         // =================================== 🅿️ FLAG 2 forEach ========================================
         this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
@@ -474,37 +473,27 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
                 // { TEST-7 } Editing fleg2 being able to walk on the time line and remaining in position 02
                 if (find2.length === 1 && this.editFlag.flags2[0]) {
-                  // flag 2 anda pra trás na time line 
-                  // é repetio mesmo para passar apenas 01 vez no for loop
+                  // flag 2 goes backwards in the time line
+                  // It's a repetition even to pass only 01 time in the for loop
                   if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
                     // this.timeLine.time_line.flags[index].flag_margin_right = '3'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
-                    console.log('AQUI AQUI AQUI AQUI AQUI AQUI AQUI', this.timeLine.time_line)
-                    // flag 2 anda pra trás na time line 
-                    // é repetio mesmo para passar apenas 01 vez no for loop
+
+                    // flag 2 moves forward on the timeline
+                    // It's a repetition even to pass only 01 time in the for loop
                   } else if (this.editFlag.flags2[0].date_obj.timestamp > find2[0].date_obj.timestamp) {
 
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                    // this.timeLine.time_line.flags[index].flag_margin_right = '3'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
-                    console.log('UI UI UI UI UI UI UI', this.timeLine.time_line)
+
                   }
                 }
               }
             }
           }
-
-          console.log('FLAG 02 RODANDO')
         })
-
       }
-
-
-
-
-
-
 
 
 
