@@ -432,9 +432,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             if (find.length === 0) {
 
               if (this.editFlag.flags2[0]) {
-                this.editFlag.flags2[0].flag_style = 1
+                // this.editFlag.flags2[0].flag_style = 1
                 this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                this.timeLine.time_line.flags[i1].flag_margin_right = '0'
+                // this.timeLine.time_line.flags[i1].flag_margin_right = '0'
                 this.timeLine.time_line.flags[i1].flags2 = []
 
                 console.log('333333333333333333333333333333333333------------------------------------')
@@ -494,7 +494,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 // Aqui separa a flag2 da flag 1
                 // A flag2 passa a ser 1 assumindo uma nova data 
                 if (find2.length === 0) {
-                  this.timeLine.time_line.flags[i1].flag_margin_right = '0'
+                  // this.timeLine.time_line.flags[i1].flag_margin_right = '0'
                   this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
@@ -508,7 +508,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   // é repetio mesmo para passar apenas 01 vez no for loop
                   if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                    this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                    // this.timeLine.time_line.flags[index].flag_margin_right = '3'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
                     console.log('AQUI AQUI AQUI AQUI AQUI AQUI AQUI', this.timeLine.time_line)
                     // flag 2 anda pra trás na time line 
@@ -516,7 +516,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   } else if (this.editFlag.flags2[0].date_obj.timestamp > find2[0].date_obj.timestamp) {
                     
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                    this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                    // this.timeLine.time_line.flags[index].flag_margin_right = '3'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
                     console.log('UI UI UI UI UI UI UI', this.timeLine.time_line)
                   }
@@ -563,8 +563,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
                 // this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                this.timeLine.time_line.flags[index].flag_margin_right = '3'
-                this.timeLine.time_line.flags[index].flag_style = 2
+                // this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                // this.timeLine.time_line.flags[index].flag_style = 2
                 this.timeLine.time_line.flags.splice(indexDelet, 1);
                 console.log('1111111111111AAaaa')
                 // find3 pra data que vai - newFla1 é a data clicada edição - ando para trás na time-line - fleg1 assumingo a posição 02
@@ -572,8 +572,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 console.log('1111111111111BBBBBB')
                 // this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                this.timeLine.time_line.flags[index].flag_margin_right = '3'
-                this.timeLine.time_line.flags[index].flag_style = 2
+                // this.timeLine.time_line.flags[index].flag_margin_right = '3'
+                // this.timeLine.time_line.flags[index].flag_style = 2
                 this.timeLine.time_line.flags.splice(indexDelet, 1);
               }
               console.log(indexDelet, index, 'ENTREOI AQUI 11111111111111111 🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒')
@@ -649,8 +649,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if(e.flags2?.length === 1) {
         e.flag_style = 1
         e.flag_margin_right = '3'
-        e.flags2[i].flag_style = 2
-        e.flags2[i].flag_margin_right = '0'
+        e.flags2[0].flag_style = 2
+        e.flags2[0].flag_margin_right = '0'
       }
       if(e.flags2?.length === 0) {
         e.flag_style = 1
