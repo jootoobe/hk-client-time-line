@@ -413,50 +413,64 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     let find2: any | undefined
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
-       // para onde vai a bandeira 
-      find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp ===this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+      // para onde vai a bandeira 
+      find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp?.date_obj?.timestamp === this.flagsForm?.controls[0]?.get('date_obj')?.get('timestamp')?.value);
       // onde a bandeira está sendo editada 
-      find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+      find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp?.date_obj?.timestamp === this.editFlag?.date_obj.timestamp);
 
       // para onde vai a bandeira 
-      index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+      index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp?.date_obj?.timestamp === this.flagsForm?.controls[0]?.get('date_obj')?.get('timestamp')?.value);
       // onde a bandeira está sendo editada 
-      indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+      indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp?.date_obj?.timestamp === this.editFlag?.date_obj.timestamp);
 
-       // 🅰️ Data existe na time-line
-      if(e1.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+      // 🅰️ Data existe na time-line
+      if (e1?.date_obj?.timestamp === this.flagsForm?.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
         console.log('1111111 para onde vai a bandeira ', find)
-        console.log('2222222 onde a bandeira está sendo editada ',find)
-        console.log('3333333 para onde vai a bandeira',find)
-        console.log('4444444 onde a bandeira está sendo editada ',find)
+        console.log('2222222 onde a bandeira está sendo editada ', find)
+        console.log('3333333 para onde vai a bandeira', find)
+        console.log('4444444 onde a bandeira está sendo editada ', find)
 
-        if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
+        if (this.flagsForm?.controls[0]?.get('flag_style')?.value === 1 && this.editFlag?.edit === 'edit-flag-1') {
 
-        } else  if (this.flagsForm.controls[0]?.get('flag_style')?.value === 2 && this.editFlag.edit === 'edit-flag-2') {
+          // Editando bandeira 1 sem bandeira 02
+          if (this.editFlag?.flags2?.length === 0) {
+            this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
+            console.log('Editando bandeira 1 sem bandeira 02')
+
+            // Editando bandeira 1 com bandeira 02  
+          } else if (this.editFlag?.flags2?.length === 1) {
+
+          }
+
+        } else if (this.flagsForm.controls[0]?.get('flag_style')?.value === 2 && this.editFlag.edit === 'edit-flag-2') {
+          // Editando bandeira 02
+           if (this.editFlag?.flags2?.length === 1) {
+
+          }
 
         }
- 
+
       }
 
 
       // 🅰️ Data não existe na time-line 
-      if(e1.date_obj.timestamp !== this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
+      if (e1.date_obj.timestamp !== this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value) {
         console.log('1111111 para onde vai a bandeira ', find)
-        console.log('2222222 onde a bandeira está sendo editada ',find)
-        console.log('3333333 para onde vai a bandeira',find)
-        console.log('4444444 onde a bandeira está sendo editada ',find)
+        console.log('2222222 onde a bandeira está sendo editada ', find)
+        console.log('3333333 para onde vai a bandeira', find)
+        console.log('4444444 onde a bandeira está sendo editada ', find)
 
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
 
-        } else  if (this.flagsForm.controls[0]?.get('flag_style')?.value === 2 && this.editFlag.edit === 'edit-flag-2') {
+        } else if (this.flagsForm.controls[0]?.get('flag_style')?.value === 2 && this.editFlag.edit === 'edit-flag-2') {
 
         }
- 
+
       }
 
-      
 
- 
+
+
 
 
 
@@ -479,7 +493,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   filter() {
-    this.timeLine.time_line.flags.sort((x:FlagModel, y:FlagModel)=>{
+    this.timeLine.time_line.flags.sort((x: FlagModel, y: FlagModel) => {
       return x.date_obj.timestamp - y.date_obj.timestamp;
     })
   }
