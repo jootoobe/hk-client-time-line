@@ -575,13 +575,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               console.log(indexDelet, index, 'ENTREOI AQUI 11111111111111111 🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒🆒')
 
 
-            } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
-              this.timeLine.time_line.flags[index].flag_margin_right = '3'
-              this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
+           
+            }  else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
+              // this.timeLine.time_line.flags[index].flag_margin_right = '3'
+              // this.timeLine.time_line.flags[index].flags2?.push(this.flagsForm.controls[0].value)
 
-              let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
-              flag2[0].flag_style = 1
-              this.timeLine.time_line.flags[indexDelet] = flag2[0]
+              // let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              // flag2[0].flag_style = 1
+              // this.timeLine.time_line.flags[indexDelet] = flag2[0]
               console.log(indexDelet, index, 'ENTREOI AQUI QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
             }
 
