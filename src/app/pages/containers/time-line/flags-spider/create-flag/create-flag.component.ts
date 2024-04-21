@@ -442,7 +442,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                if (!this.editFlag.flags2[0]) {
                 this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
                 this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                this.timeLine.time_line.flags[i1].flags2 = []
+                // this.timeLine.time_line.flags[i1].flags2 = []
                 console.log('333333333333333333333333333333333333 🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝🌝')
               }
             }             
