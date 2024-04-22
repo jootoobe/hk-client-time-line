@@ -392,6 +392,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         },
         error: () => {
           this.createEditFlagSubscribe = valClear
+          this.getAllTimeLineById()
         },
         complete: () => {
           this.createEditFlagSubscribe = valClear
@@ -625,7 +626,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
         },
         error: () => {
-          console.log('EEEEEEEERRRRRROOOOOOOOOOOO')
+          this.getAllTimeLineById()
         },
         complete: () => {
         }
