@@ -392,7 +392,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         },
         error: () => {
           this.createEditFlagSubscribe = valClear
-          this.getAllTimeLineById()
+          this.indexDbGetAllTimeLine('0000')
         },
         complete: () => {
           this.createEditFlagSubscribe = valClear
@@ -626,7 +626,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
         },
         error: () => {
-          this.getAllTimeLineById()
+          this.indexDbGetAllTimeLine('0000')
         },
         complete: () => {
         }
@@ -671,7 +671,31 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
 
+  indexDbGetAllTimeLine(yearKey: string) {
+    const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
+    connTimeLine$.pipe(
+      switchMap(() =>
+        this.indexDbTimeLineService.indexDbGetAllTimeLine('time_line', yearKey)
+      ))
+      .subscribe({
+        next: (res: TimeLineModel) => {
+          console.log('this.indexDbGetAllTimeLine', res)
+          let valFlags: FlagModel[] = res.time_line.flags
+          let newTimeLine = {
+            time_line: {
+              flags: valFlags
+            }
+          }
+          this.stateService.updateGetAllTimeLine(newTimeLine)
+          this.indexDbPutAllTimeLine(newTimeLine)
 
+        },
+        error: (err) => {
+        },
+        complete: () => {
+        }
+      })
+  }
 
 
 
