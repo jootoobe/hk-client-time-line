@@ -465,7 +465,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         console.log('333333', index)
         console.log('44444', indexDelet)
 
-        if (this.editFlag.flags2?.length === 0) {
+        if (this.editFlag.flags2?.length === 0 && this.editFlag.edit === 'edit-flag-1') {
 
           if (find2.length === 0) { // flag 1 quando não existe data 
             this.timeLine.time_line.flags[indexDelet].flag_status_update = 'delete'
@@ -483,15 +483,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
           // Flag 1 seprando da flag2 - 
           // Ambas assumem a posição flag1 sem flag2
-        } else if (this.editFlag.flags2?.length === 1) {
+        } else if (this.editFlag.flags2?.length === 1 && this.editFlag.edit === 'edit-flag-1') {
 
-          if (find2 && this.editFlag.edit === 'edit-flag-1') {
+          if (find2) { // apenas atualiza a flag 1 que possui flag2 também
             this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
             this.timeLine.time_line.flags[i1] =  this.flagsForm.controls[0].value
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
             console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqq', find)
           
-          } else if (!find2 && this.editFlag.edit === 'edit-flag-1') {
+          } else if (!find2) { // separa as flags 1 e 2 em novas datas 
             this.editFlag.flags2[0].flag_status_update = 'update'
             this.timeLine.time_line.flags[indexDelet] = this.editFlag.flags2[0]
             this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
