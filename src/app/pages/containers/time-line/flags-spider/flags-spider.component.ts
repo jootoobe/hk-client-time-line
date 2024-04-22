@@ -9,6 +9,7 @@ import { IndexDbTimeLineService } from '../../../../shared/services/storage/inde
 import { switchMap } from 'rxjs';
 import { FlagModel, FlagsModel } from '../../../../models/flag.model';
 import { environment } from '../../../../../environments/environment';
+import { ConnectingExternalRoutesService } from '../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
 
 @Component({
   selector: 'flags-spider',
@@ -35,6 +36,7 @@ export class FlagsSpiderComponent implements OnInit {
     private timeLineService: TimeLineService,
     private stateService: StateService,
     private indexDbTimeLineService: IndexDbTimeLineService,
+    private connectingExternalRoutesService: ConnectingExternalRoutesService,
   ) {
 
     effect(() => { // tenho que certificar que a chave esteja lo LS - chave ss que abre o body {a: 'asdasd..}
@@ -60,14 +62,13 @@ export class FlagsSpiderComponent implements OnInit {
     console.log('FlagsSpiderComponent 🃏')
 
 
-    if (this.envProd) {
+    // start-loader
+    this.connectingExternalRoutesService.spiderShareLoader({message: true})
+    
+    setTimeout(() => {
       this.getAllTimeLineById()
-    }
-    else if (!this.envProd) {
-      setTimeout(() => {
-        this.getAllTimeLineById()
-      }, 1000)
-    }
+    }, 1000)
+
 
   }
 
@@ -105,10 +106,14 @@ export class FlagsSpiderComponent implements OnInit {
           }
           this.stateService.updateGetAllTimeLine(newTimeLine)
           this.indexDbPutAllFlag(newTimeLine)
+          // end-loader
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         error: () => {
           let newTimeLine = { time_line: { flags: [] } }
           this.stateService.updateGetAllTimeLine(newTimeLine)
+           // end-loader
+           this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => {
         }
