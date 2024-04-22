@@ -434,28 +434,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
-        // if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
-        //   canTenter = false
-
-        //   // 🅰️ { TEST-1 } - Here updates flag 1 individually  
-        //   //  { TEST-5 } Edit_Flag1_Different_Sates
-        //   if (this.editFlag.flags2) {
-        //     canTenter = true
-        //     this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
-        //     this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2 // valor vindo do botão de edição
-
-        //     find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-
-        //     // { TEST-3 } Here separates flag1 from flag2
-        //     if (find.length === 0) {
-        //       if (this.editFlag.flags2[0]) {
-        //         this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-        //         this.timeLine.time_line.flags[i1].flags2 = []
-        //       }
-        //     }
-        //   }
-        // }
-
+        //canTenter = false
         find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
         find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
@@ -553,7 +532,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
       // 🎅 flag mounted on top of another taking position
-      if (i1 === array1.length - 1 && !canTenter) {
+      if (i1 === array1.length - 1) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
