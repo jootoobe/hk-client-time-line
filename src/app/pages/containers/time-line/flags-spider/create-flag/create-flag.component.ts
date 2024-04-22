@@ -476,7 +476,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
           } else if (find2.length === 1) { // flag 1 na mesma data
             this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
-            this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
+            this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value 
             console.log('AAAAAAAAAAAAAAAAAAAAAA !!!!!!!!!!!!', find2)
             console.log('AAAAAAAAAAAAAAAAAAAAAAAA !!!!!!!!!!!!!!!!!', find)
           }
@@ -488,7 +488,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           if (find2) { // apenas atualiza a flag 1 que possui flag2 também
             this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
             this.timeLine.time_line.flags[i1] =  this.flagsForm.controls[0].value
-            this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
+            
+            this.editFlag.flags2[0].flag_status_update = 'update'
+            this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
             console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqq', find)
           
           } else if (!find2) { // separa as flags 1 e 2 em novas datas 
