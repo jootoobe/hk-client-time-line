@@ -441,10 +441,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           //  { TEST-5 } Edit_Flag1_Different_Sates
           if (this.editFlag.flags2) {
             canTenter = true
-            this.flagsForm.controls[0].get('flag_status_update')?.setValue('create')
+
+            if (this.editFlag.flags2?.length === 0) {
+              this.flagsForm.controls[0].get('flag_status_update')?.setValue('create')
+            } else if (this.editFlag.flags2?.length === 1) {
+              this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
+            }
+
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2 // valor vindo do botão de edição
-
             find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
 
@@ -457,13 +462,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB')
               }
             }
+          }
 
-            // quando 1 flag altera a posição eu preciso falar para o back qual flag deve ser deletada
-            if (this.editFlag.flags2.length === 0) {
-              this.editFlag.flag_status_update = 'delete'
-              this.timeLine.time_line.flags.push(this.editFlag)
-            }
-
+          // altera a posição de 1 flag
+          if (this.editFlag.flags2?.length === 0) {
+            console.log(')))))))))))))))))))))))))))))))))))))))))))))))')
+            this.editFlag.flag_status_update = 'delete'
+            this.timeLine.time_line.flags.push(this.editFlag)
           }
         }
       }
