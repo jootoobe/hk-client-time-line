@@ -484,14 +484,21 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           // Flag 1 seprando da flag2 - 
           // Ambas assumem a posição flag1 sem flag2
         } else if (this.editFlag.flags2?.length === 1) {
-          this.editFlag.flags2[0].flag_status_update = 'update'
-          this.timeLine.time_line.flags[indexDelet] = this.editFlag.flags2[0]
-          this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
-          this.timeLine.time_line.flags.push(this.flagsForm.controls[0].value)
 
-          console.log('ÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇ', find)
-          console.log('ÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇ', find2)
-          console.log('ÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇ', indexDelet)
+          if (find2 && this.editFlag.edit === 'edit-flag-1') {
+            this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
+            this.timeLine.time_line.flags[i1] =  this.flagsForm.controls[0].value
+            this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
+            console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqq', find)
+          
+          } else if (!find2 && this.editFlag.edit === 'edit-flag-1') {
+            this.editFlag.flags2[0].flag_status_update = 'update'
+            this.timeLine.time_line.flags[indexDelet] = this.editFlag.flags2[0]
+            this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
+            this.timeLine.time_line.flags.push(this.flagsForm.controls[0].value)
+            console.log('ÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇ', find)
+          }
+
         }
       }
 
