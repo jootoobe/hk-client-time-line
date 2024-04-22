@@ -134,7 +134,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       flag_created_at: new FormControl<string | null>(currentlyDate, []),
       flag_update_at: new FormControl<string | null>('0', []),
       flag_margin_right: new FormControl<string | null>('0', []),
-      flag_status_update: new FormControl<string | null>('', []),
 
       flag_design: this.fb.group({
         color_text: new FormControl<string | null>('0, 0, 0', [Validators.required]),
@@ -400,342 +399,306 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   }
 
 
-  // TESTES
-  // 1 - Editar bandeira 1 na mesma data
-  // 2 - Editar bandeira 2 na mesma data
-  // 3 - Aqui separa a flag1 da flag24 - Aqui separa a flag2 da flag1
-  // 5 - Editar bandeira 1 'datas diferentes'  se mantendo na posição 01
-  // 6 - Editar bandeira 2 'datas diferentes' se mantendo na posição 02
-  // 7 - Quando a flag1(não possui flag2) está em uma data A na time - lie e assume a posição 02 em outra data na time line
-  // 8 - Quando a flag1(possui flag2) está em uma data A na time - lie e assume a posição 02 em outra data na time line
+// TESTES
+// 1 - Editar bandeira 1 na mesma data
+// 2 - Editar bandeira 2 na mesma data
+// 3 - Aqui separa a flag1 da flag24 - Aqui separa a flag2 da flag1
+// 5 - Editar bandeira 1 'datas diferentes'  se mantendo na posição 01
+// 6 - Editar bandeira 2 'datas diferentes' se mantendo na posição 02
+// 7 - Quando a flag1(não possui flag2) está em uma data A na time - lie e assume a posição 02 em outra data na time line
+// 8 - Quando a flag1(possui flag2) está em uma data A na time - lie e assume a posição 02 em outra data na time line
 
-  /**
-  * **************************************** FLAGS POSITIONING TESTS *******************************************************
-  * * * * * =================== Get ADD PUT -  ============= * * * * *
-  * @param { TEST-1 } Edit_Bandeira_1_On_Same_Date - When flag 1 does not change position
-  * @param { TEST-2 } Edit_Bandeira_2_On_Same_Date - When flag 2 does not change position
-  * @param { TEST-3 } Separates_Flag1_From_Flag2 - Separates flag1 from flag2
-  * @param { TEST-4 } Separates_Flag2_From_Flag1 - Separates flag2 from flag1
-  * @param { TEST-5 } Edit_Flag1_Different_Dates_keep_Position_01 - Edit flag 1 'different dates' remaining in position 01
-  * @param { TEST-6 } Edit_Flag2_Different_Dates_keep_Position_02 - Editing fleg2 being able to walk on the time line and remaining the position 02
-  * @param { TEST-7 } Flag1_mounted_On_Top_Another_Position - When flag1 (does not have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
-  * @param { TEST-8 } Flag1_mounted_On_Top_Another_Position - When flag1 (does have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
-  
-  */
+/**
+* **************************************** FLAGS POSITIONING TESTS *******************************************************
+* * * * * =================== Get ADD PUT -  ============= * * * * *
+* @param { TEST-1 } Edit_Bandeira_1_On_Same_Date - When flag 1 does not change position
+* @param { TEST-2 } Edit_Bandeira_2_On_Same_Date - When flag 2 does not change position
+* @param { TEST-3 } Separates_Flag1_From_Flag2 - Separates flag1 from flag2
+* @param { TEST-4 } Separates_Flag2_From_Flag1 - Separates flag2 from flag1
+* @param { TEST-5 } Edit_Flag1_Different_Dates_keep_Position_01 - Edit flag 1 'different dates' remaining in position 01
+* @param { TEST-6 } Edit_Flag2_Different_Dates_keep_Position_02 - Editing fleg2 being able to walk on the time line and remaining the position 02
+* @param { TEST-7 } Flag1_mounted_On_Top_Another_Position - When flag1 (does not have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
+* @param { TEST-8 } Flag1_mounted_On_Top_Another_Position - When flag1 (does have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
+
+*/
 
 
-  updateFlag() {
-    let index: number | undefined
-    let indexCreatUpdateDelet: number | undefined
-    let find: any | undefined
-    let find2: any | undefined
-    let find3: any | undefined
-    let canTenter = false
-    this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
+updateFlag() {
+  let index: number | undefined
+  let indexDelet: number | undefined
+  let find: any | undefined
+  let find2: any | undefined
+  let find3: any | undefined
+  let canTenter = false
+  this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
-      if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
-        //canTenter = false
-        find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-        find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-        index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-        indexCreatUpdateDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-        console.log('1111111', find)
-        console.log('2222222', find2)
-        console.log('333333', index)
-        console.log('44444', indexCreatUpdateDelet)
+    if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+      if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
+        canTenter = false
 
-        if (this.editFlag.flags2?.length === 0 && this.editFlag.edit === 'edit-flag-1') {
+        // 🅰️ { TEST-1 } - Here updates flag 1 individually  
+        //  { TEST-5 } Edit_Flag1_Different_Sates
+        if (this.editFlag.flags2) {
+          canTenter = true
+          this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
+          this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2 // valor vindo do botão de edição
 
-          if (find2.length === 0) { // flag 1 quando não existe data 
-            this.timeLine.time_line.flags[indexCreatUpdateDelet].flag_status_update = 'delete'
-            this.flagsForm.controls[0].get('flag_status_update')?.setValue('create')
-            this.timeLine.time_line.flags.push(this.flagsForm.controls[0].value) // valor vindo do formulário 
-            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', find2)
-            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', find)
+          find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
-          } else if (find2.length === 1) { // flag 1 na mesma data
-            this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
-            this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // valor vindo do formulário 
-            console.log('AAAAAAAAAAAAAAAAAAAAAA !!!!!!!!!!!!', find2)
-            console.log('AAAAAAAAAAAAAAAAAAAAAAAA !!!!!!!!!!!!!!!!!', find)
+          // { TEST-3 } Here separates flag1 from flag2
+          if (find.length === 0) {
+            if (this.editFlag.flags2[0]) {
+              this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+              this.timeLine.time_line.flags[i1].flags2 = []
+            }
           }
-
-          // Flag 1 seprando da flag2 - 
-          // Ambas assumem a posição flag1 sem flag2
-        } else if (this.editFlag.flags2?.length === 1 && this.editFlag.edit === 'edit-flag-1') {
-
-          if (find.length === 1 && find2.length === 1) { // apenas atualiza a flag 1 que possui flag2 também
-            this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
-            this.timeLine.time_line.flags[i1] =  this.flagsForm.controls[0].value
-            this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
-            console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqq', find)
-          
-          } else if (find.length === 1 && find2.length === 0) { // separa as flags 1 e 2 em novas datasapenas atualiza a flag 1 que possui flag2 também
-            this.editFlag.flags2[0].flag_status_update = 'update'
-            this.timeLine.time_line.flags[indexCreatUpdateDelet] = this.editFlag.flags2[0]
-            this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
-            this.timeLine.time_line.flags.push(this.flagsForm.controls[0].value)
-            console.log('ÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇ', find)
-          }
-
         }
       }
+    }
 
 
+    if (e1.flags2?.length === 1) {
       // =================================== 🅿️ FLAG 2 forEach ========================================
-      if (e1.flags2?.length === 1) {
-        this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
+      this.timeLine.time_line.flags[i1].flags2?.forEach((e2: FlagModel, i2: number, array2: any) => {
 
-          if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
-            if (this.editFlag.edit === 'edit-flag-2') {
+        if (e2.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
+          if (this.editFlag.edit === 'edit-flag-2') {
 
-              // 🅰️ { TEST-2 } Here updates flag 2 individually  
-              if (this.editFlag.flags2) {
-                canTenter = true
-                find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-                index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-                indexCreatUpdateDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+            // 🅰️ { TEST-2 } Here updates flag 2 individually  
+            if (this.editFlag.flags2) {
+              canTenter = true
+              find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+              index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+              indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
-                console.log(find2)
-                console.log(index)
-                console.log(indexCreatUpdateDelet)
-                // { TEST-4 } Here separates flag2 from flag1
-                if (find2.length === 0) {
-                  this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
-                  this.editFlag.flags2[0].flag_status_update = 'create'
-                  this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-                  this.timeLine.time_line.flags[i1].flags2 = []
-                  this.timeLine.time_line.flags[indexCreatUpdateDelet].flag_status_update = 'update'
-                  console.log('2222222222222222222222222222222222')
 
-                }
+              // { TEST-4 } Here separates flag2 from flag1
+              if (find2.length === 0) {
+                this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+                this.timeLine.time_line.flags[i1].flags2 = []
+              }
 
-                // { TEST-6 } Editing fleg2 being able to walk on the time line and remaining in position 02
-                if (find2.length === 1 && this.editFlag.flags2[0]) {
-                  // flag 2 goes backwards in the time line
+              // { TEST-6 } Editing fleg2 being able to walk on the time line and remaining in position 02
+              if (find2.length === 1 && this.editFlag.flags2[0]) {
+                // flag 2 goes backwards in the time line
+                // It's a repetition even to pass only 01 time in the for loop
+                if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
+                  this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+                  this.timeLine.time_line.flags[indexDelet].flags2 = []
+
+                  // flag 2 moves forward on the timeline
                   // It's a repetition even to pass only 01 time in the for loop
-                  if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
-                    this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                    this.timeLine.time_line.flags[indexCreatUpdateDelet].flags2 = []
-                    console.log('33333333333333333333333333333333')
+                } else if (this.editFlag.flags2[0].date_obj.timestamp > find2[0].date_obj.timestamp) {
+                  this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+                  this.timeLine.time_line.flags[indexDelet].flags2 = []
 
-                    // flag 2 moves forward on the timeline
-                    // It's a repetition even to pass only 01 time in the for loop
-                  } else if (this.editFlag.flags2[0].date_obj.timestamp > find2[0].date_obj.timestamp) {
-                    this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                    this.timeLine.time_line.flags[indexCreatUpdateDelet].flags2 = []
-                    console.log('44444444444444444444444444444444444')
-
-                  }
                 }
               }
             }
           }
-        })
-      }
+        }
+      })
+    }
 
 
-      // 🎅 flag mounted on top of another taking position
-      if (i1 === array1.length - 1) {
-        find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-        index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-        indexCreatUpdateDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+    // 🎅 flag mounted on top of another taking position
+    if (i1 === array1.length - 1 && !canTenter) {
+      find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+      index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+      indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
-        if (find3) {
+      if (find3) {
 
-          if (find3.length === 1) {
+        if (find3.length === 1) {
 
-            // { TEST-7 } When flag1 (does not have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
-            if (this.editFlag && this.editFlag.flags2?.length === 0) {
+          // { TEST-7 } When flag1 (does not have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
+          if (this.editFlag && this.editFlag.flags2?.length === 0) {
 
-              // find3 for the upcoming date - I move forward on the time-line - fleg1 assuming position 02
-              // When there is 01 flag
-              if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
-                this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                this.timeLine.time_line.flags.splice(indexCreatUpdateDelet, 1);
-                console.log('555555555555555555555555555')
+            // find3 for the upcoming date - I move forward on the time-line - fleg1 assuming position 02
+            // When there is 01 flag
+            if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
+              this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+              this.timeLine.time_line.flags.splice(indexDelet, 1);
 
-                // find3 for the upcoming date - I move backwards in the time-line - fleg1 assuming position 02
-              } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
-                this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                this.timeLine.time_line.flags.splice(indexCreatUpdateDelet, 1);
-                console.log('6666666666666666666666666666')
-              }
+              // find3 for the upcoming date - I move backwards in the time-line - fleg1 assuming position 02
+            } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
+              this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+              this.timeLine.time_line.flags.splice(indexDelet, 1);
+            }
 
 
-              // { TEST-8 } When flag1 (does have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
-            } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
-              if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
-                this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                let flag2: any = this.timeLine.time_line.flags[indexCreatUpdateDelet].flags2
-                this.timeLine.time_line.flags[indexCreatUpdateDelet] = flag2[0]
-                console.log('77777777777777777777777777777777')
+            // { TEST-8 } When flag1 (does have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
+          } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
+            if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
+              this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+              let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              this.timeLine.time_line.flags[indexDelet] = flag2[0]
 
-              } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
-                this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                let flag2: any = this.timeLine.time_line.flags[indexCreatUpdateDelet].flags2
-                this.timeLine.time_line.flags[indexCreatUpdateDelet] = flag2[0]
-                console.log('888888888888888888888888888888888888')
-              }
+            } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
+              this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+              let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
+              this.timeLine.time_line.flags[indexDelet] = flag2[0]
             }
           }
         }
       }
+    }
 
-    })
-
-
-    // I need to pass this for to restore the removed years in the pipe | unique
-    // I need to pass the for to also correct flag_style and flag_margin_right
-    this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
-      this.timeLine.iam_id = '0'
-      this.timeLine.time_line.flags[i].year = e.date_obj.year
-      if (e.flags2?.length === 1) {
-        e.flag_style = 1
-        e.flag_margin_right = '3'
-        e.flags2[0].flag_style = 2
-        e.flags2[0].flag_margin_right = '0'
-      }
-      if (e.flags2?.length === 0) {
-        e.flag_style = 1
-        e.flag_margin_right = '0'
-      }
-    })
-
-    this.filter()
-    console.log(this.timeLine)
-    // this.updateSubscribeFlag()
-  }
+  })
 
 
-  filter() {
-    this.timeLine.time_line.flags.sort((x: FlagModel, y: FlagModel) => {
-      return x.date_obj.timestamp - y.date_obj.timestamp;
-    })
-  }
+  // I need to pass this for to restore the removed years in the pipe | unique
+  // I need to pass the for to also correct flag_style and flag_margin_right
+  this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+    this.timeLine.iam_id = '0'
+    this.timeLine.time_line.flags[i].year = e.date_obj.year
+    if (e.flags2?.length === 1) {
+      e.flag_style = 1
+      e.flag_margin_right = '3'
+      e.flags2[0].flag_style = 2
+      e.flags2[0].flag_margin_right = '0'
+    }
+    if (e.flags2?.length === 0) {
+      e.flag_style = 1
+      e.flag_margin_right = '0'
+    }
+  })
+
+  this.filter()
+  console.log(this.timeLine)
+  // this.updateSubscribeFlag()
+}
+
+
+filter() {
+  this.timeLine.time_line.flags.sort((x: FlagModel, y: FlagModel) => {
+    return x.date_obj.timestamp - y.date_obj.timestamp;
+  })
+}
 
 
 
-  // Data não é alterada.
-  // esse update é quando tem 02 flags na mesa data
-  updateSubscribeFlag() {
-    console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
-    this.timeLineService.updateFlag(this.timeLine)
-      .subscribe({
-        next: (res: EncryptModel) => {
-          // let val: any = res.a[0]
-          if (res.a === 'OK') {
-            this.getAllTimeLineById()
-          }
-        },
-        error: () => {
-        },
-        complete: () => {
+// Data não é alterada.
+// esse update é quando tem 02 flags na mesa data
+updateSubscribeFlag() {
+  console.log('updateFlag updateFlag', this.createEditFlagSubscribe)
+  this.timeLineService.updateFlag(this.timeLine)
+    .subscribe({
+      next: (res: EncryptModel) => {
+        // let val: any = res.a[0]
+        if (res.a === 'OK') {
+          this.getAllTimeLineById()
         }
-      })
-  }
+      },
+      error: () => {
+      },
+      complete: () => {
+      }
+    })
+}
 
-  // Remover depois
-  getAllTimeLineById() {
-    this.timeLineService.getAllTimeLineById()
-      .subscribe({
-        next: (res: any) => {
-          let newTimeLine = {
-            time_line: {
-              flags: res.flags
-            }
+// Remover depois
+getAllTimeLineById() {
+  this.timeLineService.getAllTimeLineById()
+    .subscribe({
+      next: (res: any) => {
+        let newTimeLine = {
+          time_line: {
+            flags: res.flags
           }
-          this.stateService.updateGetAllTimeLine(newTimeLine)
-          this.indexDbPutAllTimeLine(newTimeLine)
-        },
-        error: () => {
-        },
-        complete: () => {
         }
-      })
+        this.stateService.updateGetAllTimeLine(newTimeLine)
+        this.indexDbPutAllTimeLine(newTimeLine)
+      },
+      error: () => {
+      },
+      complete: () => {
+      }
+    })
+}
+
+indexDbPutAllTimeLine(newTimeLine: TimeLineModel) {
+  // let getNewVal = JSON.parse(localStorage.getItem('flags') || '[]');
+  const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
+  connTimeLine$.pipe(
+    switchMap(() =>
+      this.indexDbTimeLineService.indexDbPutAllTimeLine("time_line", {
+        year: '0000',
+        time_line: newTimeLine.time_line
+      })))
+    .subscribe({
+      next: (res: string) => {
+      },
+      error: (err) => { },
+      complete: () => { }
+    })
+}
+
+
+
+
+
+
+
+//================================= 🅰️🅰️ RADIO BUTTON 🅰️🅰️==============================
+//==============================================================================
+
+onRadioButtonTextColor(e: MatRadioChange) {
+  this.flagsForm.controls[0]?.get('flag_design')?.get('color_text')?.setValue(e.value)
+}
+
+onRadioButtonNetsColor(e: MatRadioChange) {
+  if (e.value === '1') {
+    this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,255,255' })
   }
-
-  indexDbPutAllTimeLine(newTimeLine: TimeLineModel) {
-    // let getNewVal = JSON.parse(localStorage.getItem('flags') || '[]');
-    const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
-    connTimeLine$.pipe(
-      switchMap(() =>
-        this.indexDbTimeLineService.indexDbPutAllTimeLine("time_line", {
-          year: '0000',
-          time_line: newTimeLine.time_line
-        })))
-      .subscribe({
-        next: (res: string) => {
-        },
-        error: (err) => { },
-        complete: () => { }
-      })
+  else if (e.value === '2') {
+    this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '255,255,255', text: '74,74,74' })
   }
-
-
-
-
-
-
-
-  //================================= 🅰️🅰️ RADIO BUTTON 🅰️🅰️==============================
-  //==============================================================================
-
-  onRadioButtonTextColor(e: MatRadioChange) {
-    this.flagsForm.controls[0]?.get('flag_design')?.get('color_text')?.setValue(e.value)
+  else if (e.value === '3') {
+    this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,0,0' })
   }
-
-  onRadioButtonNetsColor(e: MatRadioChange) {
-    if (e.value === '1') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,255,255' })
-    }
-    else if (e.value === '2') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '255,255,255', text: '74,74,74' })
-    }
-    else if (e.value === '3') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,0,0' })
-    }
-    else if (e.value === '4') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '255,0,0', text: '255,255,255' })
-    }
-    else if (e.value === '5') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,255,0' })
-    }
+  else if (e.value === '4') {
+    this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '255,0,0', text: '255,255,255' })
   }
-
-  radioButtonDateColor(e: MatRadioChange) {
-    this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue(e.value)
-
+  else if (e.value === '5') {
+    this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,255,0' })
   }
+}
 
-  onRadioButtonTransparencyColor(e: MatRadioChange) {
-    this.flagsForm.controls[0]?.get('flag_design')?.get('color_transparency')?.setValue(e.value)
-  }
+radioButtonDateColor(e: MatRadioChange) {
+  this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue(e.value)
 
+}
 
-  //================================= 🅰️🅰️ CONVERT COLORS 🅰️🅰️ ==============================
-  //==============================================================================
-
-  //⬇️ Convert Color
-  convertColor() {
-    // this.createTimeLineForm.value.flags[0]['color_hex']
-    let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-    let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
-    flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
-    flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
-    flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
-    flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-
-  }
+onRadioButtonTransparencyColor(e: MatRadioChange) {
+  this.flagsForm.controls[0]?.get('flag_design')?.get('color_transparency')?.setValue(e.value)
+}
 
 
-  clearForm() {
-    // this.editFlagForm = {}
-  }
+//================================= 🅰️🅰️ CONVERT COLORS 🅰️🅰️ ==============================
+//==============================================================================
+
+//⬇️ Convert Color
+convertColor() {
+  // this.createTimeLineForm.value.flags[0]['color_hex']
+  let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+  let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
+  flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
+  flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
+  flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
+  flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
+
+}
 
 
-  addDataMask(event: any) {
-    this.addDataMaskVal = event.target.value;
-  }
+clearForm() {
+  // this.editFlagForm = {}
+}
+
+
+addDataMask(event: any) {
+  this.addDataMaskVal = event.target.value;
+}
 
 }
