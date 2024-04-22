@@ -18,6 +18,7 @@ import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invali
 import { TolltipCreateHelper } from "./tolltip-create-helper";
 import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
 import { IndexDbTimeLineService } from "../../../../../shared/services/storage/indexed-db-timeline-store.service";
+import { ConnectingExternalRoutesService } from '../../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -69,6 +70,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     private toastrService: ToastrService,
     private timeLineService: TimeLineService,
     private indexDbTimeLineService: IndexDbTimeLineService,
+    private connectingExternalRoutesService: ConnectingExternalRoutesService,
   ) {
 
     this.buildForm()
@@ -380,6 +382,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       return
     }
 
+    // start-loader
+    this.connectingExternalRoutesService.spiderShareLoader({message: true})
 
     console.log('sssssssssssssss>>>>>>>>>>>.', this.createEditFlagSubscribe)
     this.timeLineService.createFlag(this.createEditFlagSubscribe)
@@ -393,6 +397,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         error: () => {
           this.createEditFlagSubscribe = valClear
           this.indexDbGetAllTimeLine('0000')
+          // end-loader
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => {
           this.createEditFlagSubscribe = valClear
@@ -645,8 +651,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
           this.stateService.updateGetAllTimeLine(newTimeLine)
           this.indexDbPutAllTimeLine(newTimeLine)
+          // end-loader
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         error: () => {
+        this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => {
         }

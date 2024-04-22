@@ -38,6 +38,16 @@ export class ConnectingExternalRoutesService {
     dispatchEvent(event)
   }
 
+  spiderShareLoader(data?: any) {
+    const routerSpiderTube = {
+      router: '',
+      message: data == undefined ? undefined : data.message
+    }
+    const event = new CustomEvent('spider-share-loader', { detail: routerSpiderTube, bubbles: true })
+    dispatchEvent(event)
+  }
+
+
 
 
 }
