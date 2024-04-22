@@ -426,7 +426,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   updateFlag() {
     let index: number | undefined
-    let indexDelet: number | undefined
+    let indexCreatUpdateDelet: number | undefined
     let find: any | undefined
     let find2: any | undefined
     let find3: any | undefined
@@ -438,16 +438,16 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
         find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-        indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+        indexCreatUpdateDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
         console.log('1111111', find)
         console.log('2222222', find2)
         console.log('333333', index)
-        console.log('44444', indexDelet)
+        console.log('44444', indexCreatUpdateDelet)
 
         if (this.editFlag.flags2?.length === 0 && this.editFlag.edit === 'edit-flag-1') {
 
           if (find2.length === 0) { // flag 1 quando não existe data 
-            this.timeLine.time_line.flags[indexDelet].flag_status_update = 'delete'
+            this.timeLine.time_line.flags[indexCreatUpdateDelet].flag_status_update = 'delete'
             this.flagsForm.controls[0].get('flag_status_update')?.setValue('create')
             this.timeLine.time_line.flags.push(this.flagsForm.controls[0].value) // valor vindo do formulário 
             console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', find2)
@@ -472,7 +472,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           
           } else if (find.length === 1 && find2.length === 0) { // separa as flags 1 e 2 em novas datasapenas atualiza a flag 1 que possui flag2 também
             this.editFlag.flags2[0].flag_status_update = 'update'
-            this.timeLine.time_line.flags[indexDelet] = this.editFlag.flags2[0]
+            this.timeLine.time_line.flags[indexCreatUpdateDelet] = this.editFlag.flags2[0]
             this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
             this.timeLine.time_line.flags.push(this.flagsForm.controls[0].value)
             console.log('ÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇ', find)
@@ -494,14 +494,18 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 canTenter = true
                 find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
                 index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-                indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-                console.log('1111111111111111111111111111111111111111')
+                indexCreatUpdateDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
+                console.log(find2)
+                console.log(index)
+                console.log(indexCreatUpdateDelet)
                 // { TEST-4 } Here separates flag2 from flag1
                 if (find2.length === 0) {
                   this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                  this.editFlag.flags2[0].flag_status_update = 'create'
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
+                  this.timeLine.time_line.flags[indexCreatUpdateDelet].flag_status_update = 'update'
                   console.log('2222222222222222222222222222222222')
 
                 }
@@ -512,14 +516,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   // It's a repetition even to pass only 01 time in the for loop
                   if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                    this.timeLine.time_line.flags[indexDelet].flags2 = []
+                    this.timeLine.time_line.flags[indexCreatUpdateDelet].flags2 = []
                     console.log('33333333333333333333333333333333')
 
                     // flag 2 moves forward on the timeline
                     // It's a repetition even to pass only 01 time in the for loop
                   } else if (this.editFlag.flags2[0].date_obj.timestamp > find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                    this.timeLine.time_line.flags[indexDelet].flags2 = []
+                    this.timeLine.time_line.flags[indexCreatUpdateDelet].flags2 = []
                     console.log('44444444444444444444444444444444444')
 
                   }
@@ -535,7 +539,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       if (i1 === array1.length - 1) {
         find3 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
         index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-        indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+        indexCreatUpdateDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
         if (find3) {
 
@@ -548,13 +552,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               // When there is 01 flag
               if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                this.timeLine.time_line.flags.splice(indexDelet, 1);
+                this.timeLine.time_line.flags.splice(indexCreatUpdateDelet, 1);
                 console.log('555555555555555555555555555')
 
                 // find3 for the upcoming date - I move backwards in the time-line - fleg1 assuming position 02
               } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                this.timeLine.time_line.flags.splice(indexDelet, 1);
+                this.timeLine.time_line.flags.splice(indexCreatUpdateDelet, 1);
                 console.log('6666666666666666666666666666')
               }
 
@@ -563,14 +567,14 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
               if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
-                this.timeLine.time_line.flags[indexDelet] = flag2[0]
+                let flag2: any = this.timeLine.time_line.flags[indexCreatUpdateDelet].flags2
+                this.timeLine.time_line.flags[indexCreatUpdateDelet] = flag2[0]
                 console.log('77777777777777777777777777777777')
 
               } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
-                let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
-                this.timeLine.time_line.flags[indexDelet] = flag2[0]
+                let flag2: any = this.timeLine.time_line.flags[indexCreatUpdateDelet].flags2
+                this.timeLine.time_line.flags[indexCreatUpdateDelet] = flag2[0]
                 console.log('888888888888888888888888888888888888')
               }
             }
