@@ -444,12 +444,14 @@ updateFlag() {
           this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2 // valor vindo do botão de edição
 
           find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
+          console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa')
 
           // { TEST-3 } Here separates flag1 from flag2
           if (find.length === 0) {
             if (this.editFlag.flags2[0]) {
               this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
               this.timeLine.time_line.flags[i1].flags2 = []
+              console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB')
             }
           }
         }
@@ -475,8 +477,11 @@ updateFlag() {
               // { TEST-4 } Here separates flag2 from flag1
               if (find2.length === 0) {
                 this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
+                this.editFlag.flags2[0].flag_status_update = 'create'
                 this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                 this.timeLine.time_line.flags[i1].flags2 = []
+                this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
+                console.log('5555555555555555555555555')
               }
 
               // { TEST-6 } Editing fleg2 being able to walk on the time line and remaining in position 02
@@ -485,13 +490,21 @@ updateFlag() {
                 // It's a repetition even to pass only 01 time in the for loop
                 if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
                   this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+                  this.timeLine.time_line.flags[index].flag_status_update = 'update'
+
+                  this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                   this.timeLine.time_line.flags[indexDelet].flags2 = []
+                  console.log('666666666666666666666666666')
 
                   // flag 2 moves forward on the timeline
                   // It's a repetition even to pass only 01 time in the for loop
                 } else if (this.editFlag.flags2[0].date_obj.timestamp > find2[0].date_obj.timestamp) {
                   this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+                  this.timeLine.time_line.flags[index].flag_status_update = 'update'
+
+                  this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                   this.timeLine.time_line.flags[indexDelet].flags2 = []
+                  console.log('77777777777777777777777777777')
 
                 }
               }
@@ -520,11 +533,13 @@ updateFlag() {
             if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
               this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
               this.timeLine.time_line.flags.splice(indexDelet, 1);
+              console.log('11111111111111111111111111111')
 
               // find3 for the upcoming date - I move backwards in the time-line - fleg1 assuming position 02
             } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
               this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
               this.timeLine.time_line.flags.splice(indexDelet, 1);
+              console.log('22222222222222222222222222')
             }
 
 
@@ -532,13 +547,23 @@ updateFlag() {
           } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
             if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
               this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+              this.timeLine.time_line.flags[index].flag_status_update = 'update'
+
               let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
               this.timeLine.time_line.flags[indexDelet] = flag2[0]
+              this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
+
+              console.log('3333333333333333333333333333')
+
 
             } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
               this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
+              this.timeLine.time_line.flags[index].flag_status_update = 'update'
+
               let flag2: any = this.timeLine.time_line.flags[indexDelet].flags2
               this.timeLine.time_line.flags[indexDelet] = flag2[0]
+              this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
+              console.log('4444444444444444444444444')
             }
           }
         }
