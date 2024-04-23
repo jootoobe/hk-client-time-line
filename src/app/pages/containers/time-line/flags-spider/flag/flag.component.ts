@@ -140,9 +140,17 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
-  filterColor(val?: any, del?: any) {
+  filterColor(flag?: any, id?: any) {
 
+    const card = this.elementRef.nativeElement.querySelectorAll([
+      '.flag-1_card', '.flag-1_line', '.flag-1_base', '.flag-1_filter',
+      '.flag-2_card', '.flag-2_line', '.flag-2_base', '.flag-2_filter2']);
 
+      card.forEach((e: any, i: number) => {
+        if (e.id != `color-${id}`) {
+          this.renderer2.setStyle(e, 'opacity', '.3');
+        }
+      });
   }
 
 

@@ -14,7 +14,8 @@
      >
         <div  class="flag-2 inside-flag"        
               (mouseover)="mouseUp(idx)"
-              (mouseleave)="mouseUp(-1)">
+              (mouseleave)="mouseUp(-1)"
+              id="color-{{flag.flag_design.color_hex.substring(1)}}">
 
           <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
 
@@ -151,14 +152,21 @@
           } @else {
             <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid hsl('+flag2.flag_design.color_hsl+')'}"> </div>
           } -->
-          <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
+          <div class="flag-2_line" 
+              id="color-{{flag.flag_design.color_hex.substring(1)}}"
+              [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
 
 
           <!-- Flag base -->
-          <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
+          <div class="flag-2_base" 
+              id="color-{{flag.flag_design.color_hex.substring(1)}}"
+              [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> 
+          </div>
 
           <!-- Filter 1 -->
-          <div class="flag-2_filter2 cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag2.flag_design.color_rgb+', 1)'}">  </div>
+          <div class="flag-2_filter2 cursor_pointer" 
+              id="color-{{flag.flag_design.color_hex.substring(1)}}"
+              [ngStyle]="{'background' : 'rgba('+flag2.flag_design.color_rgb+', 1)'}">  </div>
         </div>
 
       </div>
@@ -299,10 +307,14 @@
 
       <div>
         <!-- Flagpole -->
-        <div class="flag-1_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"></div>
+        <div class="flag-1_line" 
+            id="color-{{flag.flag_design.color_hex.substring(1)}}"
+            [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"></div>
 
         <!-- Flag base -->
-        <div class="flag-1_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"> </div>
+        <div class="flag-1_base" 
+            id="color-{{flag.flag_design.color_hex.substring(1)}}"
+            [ngStyle]="{'border-top' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"> </div>
 
         <!-- Year -->
         <div class="flag-1_year Roboto_700">{{flag.year}}</div>
@@ -316,7 +328,11 @@
 
         <!-- Filter 1 -->
         @if(flag.flags2.length === 0) {
-          <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}">  </div>
+          <div class="flag-1_filter cursor_pointer" 
+              id="color-{{flag.flag_design.color_hex.substring(1)}}"
+              [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}"
+              (click)="filterColor(flag, flag.flag_design.color_hex.substring(1))">  
+          </div>
         }
       </div>
 
