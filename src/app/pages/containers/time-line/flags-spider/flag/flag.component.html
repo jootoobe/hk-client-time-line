@@ -145,8 +145,14 @@
         <!-- [ngStyle]="{'margin-left':  last ? '0rem' :   !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0',}" -->
         <div>
           <!-- Flagpole -->
-          <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}">
-          </div>
+          <!-- Decidir mais para frente -->
+          <!-- @if(!cardIndexMouseUp) {
+            <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
+          } @else {
+            <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid hsl('+flag2.flag_design.color_hsl+')'}"> </div>
+          } -->
+          <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
+
 
           <!-- Flag base -->
           <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
@@ -162,7 +168,7 @@
     <!-- 🅰️ FLAG 1 -->
     <div  class="main-block--flags" 
           [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem' }"> 
-      <div class="flag-1 inside-flag" [ngStyle]="{ 'z-index': cardIndexMouseUp ? '0' : '2' }">
+      <div class="flag-1 inside-flag" [ngStyle]="{ 'z-index': cardIndexMouseUp ? '-1' : '2' }">
 
         <div class="flag-1_card" [ngStyle]="setStylesCards(flag)">
 
