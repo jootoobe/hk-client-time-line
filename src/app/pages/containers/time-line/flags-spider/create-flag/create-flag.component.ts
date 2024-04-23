@@ -647,7 +647,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     // start-loader
     this.connectingExternalRoutesService.spiderShareLoader({ message: true })
     // setTimeout(()=>{
-    // this.updateSubscribeFlag()
+    this.updateSubscribeFlag()
     // },3000)
   }
 
