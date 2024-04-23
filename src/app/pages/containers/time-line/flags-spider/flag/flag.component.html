@@ -144,8 +144,8 @@
         </div>
         <!-- [ngStyle]="{'margin-left':  last ? '0rem' :   !first && !last && flag.flag_margin_right === '3' && flag.year ?  '4rem':'0',}" -->
         <div>
-          <!-- Flagpole -->
           <!-- Decidir mais para frente -->
+          <!-- Flagpole -->
           <!-- @if(!cardIndexMouseUp) {
             <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
           } @else {
@@ -158,7 +158,7 @@
           <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
 
           <!-- Filter 1 -->
-          <!-- <div class="flag-2_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}">  </div> -->
+          <div class="flag-2_filter2 cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}">  </div>
         </div>
 
       </div>
@@ -312,7 +312,9 @@
         </div>
 
         <!-- Filter 1 -->
-        <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}">  </div>
+        @if(flag.flags2.length === 0) {
+          <div class="flag-1_filter cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}">  </div>
+        }
       </div>
 
     </div>
