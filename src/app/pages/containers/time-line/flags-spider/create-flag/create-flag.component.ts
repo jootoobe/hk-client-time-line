@@ -473,6 +473,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
         }
       }
+      
 
 
       if (e1.flags2?.length === 1) {
