@@ -449,7 +449,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           if (this.editFlag.flags2) {
             canTenter = true
 
-            if (this.editFlag.flags2?.length === 0 || this.editFlag.flags2?.length === 1) {
+            if (this.editFlag.flags2?.length === 0) {
               this.flagsForm.controls[0].get('flag_status_update')?.setValue('create')
             }
 
@@ -457,12 +457,15 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2 
             find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
+            console.log('11111111111111111111111111111')
             // { TEST-3 } Here separates flag1 from flag2
             if (find.length === 0) {
               if (this.editFlag.flags2[0]) {
                 this.editFlag.flags2[0].flag_status_update = 'update'
                 this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                 this.timeLine.time_line.flags[i1].flags2 = []
+                console.log('22222222222')
+
               }
             }
           }
@@ -470,6 +473,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           if (this.editFlag.flags2?.length === 0) {
             this.editFlag.flag_status_update = 'delete'
             this.timeLine.time_line.flags.push(this.editFlag)
+            console.log('3333333333333333')
           }
         }
       }
@@ -489,7 +493,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
                 index = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
                 indexDelet = this.timeLine.time_line.flags?.findIndex((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
-
+                console.log('444444444444444444444444')
                 // { TEST-4 } Here separates flag2 from flag1
                 if (find2.length === 0) {
                   this.editFlag.flags2[0] = this.flagsForm.controls[0]?.value
@@ -497,6 +501,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
                   this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
+                  console.log('555555555555555555')
                 }
 
                 // { TEST-6 } Editing fleg2 being able to walk on the time line and remaining in position 02
@@ -506,6 +511,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                   if (this.editFlag.flags2[0].date_obj.timestamp === find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0]?.value]
                     this.timeLine.time_line.flags[i1].flag_status_update = 'update'
+                    console.log('666666666666666666666')
                   }
                   // flag 2 goes backwards in the time line
                   // It's a repetition even to pass only 01 time in the for loop
@@ -515,6 +521,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
                     this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
+                    console.log('77777777777777777')
 
                     // flag 2 moves forward on the timeline
                     // It's a repetition even to pass only 01 time in the for loop
@@ -524,6 +531,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
                     this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
+                    console.log('888888888888888888888')
                   }
                 }
               }
@@ -553,6 +561,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 // this.timeLine.time_line.flags.splice(indexDelet, 1);
                 this.timeLine.time_line.flags[indexDelet].flag_status_update = 'delete'
                 this.timeLine.time_line.flags[index].flag_status_update = 'update'
+                console.log('9999999999999999999')
 
                 // find3 for the upcoming date - I move backwards in the time-line - fleg1 assuming position 02
               } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
@@ -560,6 +569,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 // this.timeLine.time_line.flags.splice(indexDelet, 1);
                 this.timeLine.time_line.flags[indexDelet].flag_status_update = 'delete'
                 this.timeLine.time_line.flags[index].flag_status_update = 'update'
+                console.log('100000000000000000000')
               }
 
 
@@ -571,6 +581,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 this.timeLine.time_line.flags[indexDelet] = flag2[0]
                 this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                 this.timeLine.time_line.flags[index].flag_status_update = 'update'
+                console.log('11-11-11-11-11-11-11-11-11-11')
 
               } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
@@ -578,6 +589,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
                 this.timeLine.time_line.flags[indexDelet] = flag2[0]
                 this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                 this.timeLine.time_line.flags[index].flag_status_update = 'update'
+                console.log('12-12-12-12-12-12-12-12-12-12-12-12')
+
               }
             }
           }
