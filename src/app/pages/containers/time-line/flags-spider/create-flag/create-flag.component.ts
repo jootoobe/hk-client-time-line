@@ -449,10 +449,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           if (this.editFlag.flags2) {
             canTenter = true
 
-            if (this.editFlag.flags2?.length === 0) {
+            if (this.editFlag.flags2?.length === 0 || this.editFlag.flags2?.length === 1) {
               this.flagsForm.controls[0].get('flag_status_update')?.setValue('create')
-            } else if (this.editFlag.flags2?.length === 1) {
-              this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
             }
 
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // value coming from the form
@@ -607,7 +605,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
     this.filter()
     console.log(this.timeLine)
-    this.updateSubscribeFlag()
+    // start-loader
+    this.connectingExternalRoutesService.spiderShareLoader({message: true})
+    setTimeout(()=>{
+      this.updateSubscribeFlag()
+    },3000)
   }
 
 
@@ -651,10 +653,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
           this.stateService.updateGetAllTimeLine(newTimeLine)
           this.indexDbPutAllTimeLine(newTimeLine)
-          // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         error: () => {
+        // end-loader
         this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => {
@@ -673,8 +674,13 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         })))
       .subscribe({
         next: (res: string) => {
+          // end-loader
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
-        error: (err) => { },
+        error: (err) => { 
+          // end-loader
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
+        },
         complete: () => { }
       })
   }
@@ -696,10 +702,12 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             }
           }
           this.stateService.updateGetAllTimeLine(newTimeLine)
-          this.indexDbPutAllTimeLine(newTimeLine)
-
+          // end-loader
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         error: (err) => {
+        // end-loader
+        this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => {
         }
