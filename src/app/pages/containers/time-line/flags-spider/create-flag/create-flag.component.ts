@@ -473,7 +473,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
         }
       }
-      
+
 
 
       if (e1.flags2?.length === 1) {
@@ -608,9 +608,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     console.log(this.timeLine)
     // start-loader
     this.connectingExternalRoutesService.spiderShareLoader({message: true})
-    setTimeout(()=>{
+    // setTimeout(()=>{
       this.updateSubscribeFlag()
-    },3000)
+    // },3000)
   }
 
 

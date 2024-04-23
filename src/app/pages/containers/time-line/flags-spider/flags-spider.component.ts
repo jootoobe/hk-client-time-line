@@ -61,9 +61,6 @@ export class FlagsSpiderComponent implements OnInit {
   ngOnInit(): void {
     console.log('FlagsSpiderComponent 🃏')
 
-
-    // start-loader
-    this.connectingExternalRoutesService.spiderShareLoader({message: true})
     
     setTimeout(() => {
       this.getAllTimeLineById()
