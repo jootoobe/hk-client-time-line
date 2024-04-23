@@ -158,7 +158,7 @@
           <div class="flag-2_base" [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
 
           <!-- Filter 1 -->
-          <div class="flag-2_filter2 cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}">  </div>
+          <div class="flag-2_filter2 cursor_pointer" [ngStyle]="{'background' : 'rgba('+flag2.flag_design.color_rgb+', 1)'}">  </div>
         </div>
 
       </div>
@@ -171,7 +171,9 @@
       <div class="flag-1 inside-flag" 
           [ngStyle]="{ 'z-index': cardIndexMouseUp.mouse && cardIndexMouseUp.index === idx? '-1' : '2' }">
 
-        <div class="flag-1_card" [ngStyle]="setStylesCards(flag)">
+        <div class="flag-1_card" 
+            id="color-{{flag.flag_design.color_hex.substring(1)}}"
+            [ngStyle]="setStylesCards(flag)">
 
           <!-- RETANGULO BRANCO DE FUNDO -->
           <div class="flag-1_white--background"></div>

@@ -15,10 +15,14 @@ export function coerceArray<T>(value: T | T[]): T[] {
 })
 export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   editFlagOutput = output<FlagModel>()
-  @Input({required: true}) timeLine!:TimeLineModel
-  cardIndexMouseUp = {index: 0, mouse: false}
+  @Input({ required: true }) timeLine!: TimeLineModel
+  cardIndexMouseUp = { index: 0, mouse: false }
+  filterColorId: any = [] // used to identify the html id of the filter color clicked on the bottom bars of the time line
 
-  constructor() {
+  constructor(
+    private renderer2: Renderer2,
+    private elementRef: ElementRef
+  ) {
     // if(this.aaaa?.time_line[0]?.flags2)
     // this.aaaa?.time_line[0]?.flags2[0]?.color_hsl
   }
@@ -79,11 +83,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   setStylesDate(flag1: FlagModel): any {
-    
-    if (flag1.flag_design?.color_date === '255,255,255' || 
-        flag1.flag_design?.color_date === '0,0,0' ||
-        flag1.flag_design?.color_date === '255,0,0' || 
-        flag1.flag_design?.color_date === '255,255,0' ) {
+
+    if (flag1.flag_design?.color_date === '255,255,255' ||
+      flag1.flag_design?.color_date === '0,0,0' ||
+      flag1.flag_design?.color_date === '255,0,0' ||
+      flag1.flag_design?.color_date === '255,255,0') {
       let styles = {
         'background-color': `rgba(${flag1.flag_design?.color_date}, 1)`
       };
@@ -108,12 +112,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
 
-    // ⬇️ Edit Flag
-    editFlag(flagEdit: FlagModel, editFlag:string) {
-      flagEdit.edit = editFlag
-      console.log(flagEdit)
-      this.editFlagOutput.emit(flagEdit)
-    }
+  // ⬇️ Edit Flag
+  editFlag(flagEdit: FlagModel, editFlag: string) {
+    flagEdit.edit = editFlag
+    console.log(flagEdit)
+    this.editFlagOutput.emit(flagEdit)
+  }
 
 
 
@@ -123,10 +127,22 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   mouseUp(val: number) {
     console.log(val)
     if (val === -1) {
-      this.cardIndexMouseUp = {index: -1, mouse: false} 
+      this.cardIndexMouseUp = { index: -1, mouse: false }
       return
     }
-    this.cardIndexMouseUp = {index: val, mouse: true}
+    this.cardIndexMouseUp = { index: val, mouse: true }
+  }
+
+
+  /**
+* **************************************** We have 2 types of filters ********************************************************
+* * * * * ====== Direct time line filter AND filter activated by the icon in the component TopDivComponent ========= * * * * *
+* @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
+* @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
+*/
+  filterColor(val?: any, del?: any) {
+
+
   }
 
 
