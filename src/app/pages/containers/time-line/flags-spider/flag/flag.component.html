@@ -102,7 +102,7 @@
 
                 <div *ngIf="ichip < 6 && chip.name.length > 9" class="inside-flag_chips" [ngStyle]="setStylesChip(flag2)">
                   <!-- {{chip.name | truncate:8}} -->
-                  {{chip.name | titlecase | truncate:6}}
+                  {{chip.name | titlecase | truncate:6:'chip'}}
                 </div>
 
 
@@ -249,7 +249,7 @@
 
                   <div *ngIf="ichip < 6 && chip.name.length > 9" class="inside-flag_chips" [ngStyle]="setStylesChip(flag)">
                     <!-- {{chip.name | truncate:8}} -->
-                    {{chip.name | titlecase | truncate:6}}
+                    {{chip.name | titlecase | truncate:6:'chip'}}
                   </div>
 
                   <div *ngIf="ichip < 6  && chip.name.length <= 9" class="inside-flag_chips" [ngStyle]="setStylesChip(flag)">
