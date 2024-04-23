@@ -444,10 +444,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
         if (this.flagsForm.controls[0]?.get('flag_style')?.value === 1 && this.editFlag.edit === 'edit-flag-1') {
           canTenter = false
 
-          // 🅰️ { TEST-1 } - Here updates flag 1 individually  
-          //  { TEST-5 } Edit_Flag1_Different_Sates
-
-          // Aqui a a flag é 1 --- INDIVIDUAL
+          // 🅰️ { TEST-1 } && { TEST-5 } - Here updates flag 1 individually  
           if (this.editFlag.flags2?.length === 0) {
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // value coming from the form
             this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
@@ -459,7 +456,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
             console.log('EU OU OQUE ????? --- SOU ---- 0000000000000000000000000')
           }
 
-          // Aqui a flag é 1 --- Possui flag2
+          // Flag1 -->> Possui Flag2
           if (this.editFlag.flags2?.length === 1) {
             find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
             console.log('ssssssssssssssssss', find2[0])
@@ -471,7 +468,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
               this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
             }
 
-            // 🅿️ se não tiver flag2 é necessário separa as flags -- todas para a posição 1
+            // 🅿️ { TEST-3 } se não tiver flag2 é necessário separa as flags -- todas para a posição 1
             if (!find2[0] && find2?.length === 0) {
               this.flagsForm.controls[0].get('flag_status_update')?.setValue('create')
               this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
