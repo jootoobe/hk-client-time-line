@@ -146,11 +146,17 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       '.flag-1_card', '.flag-1_line', '.flag-1_base', '.flag-1_filter',
       '.flag-2_card', '.flag-2_line', '.flag-2_base', '.flag-2_filter2']);
 
+      console.log('ssssssss',card)
+
       card.forEach((e: any, i: number) => {
-        if (e.id != `color-${id}`) {
+
+        console.log(e)
+
+        if (e.id !== `color-${id}`) {
           this.renderer2.setStyle(e, 'opacity', '.3');
         }
       });
+      
   }
 
 

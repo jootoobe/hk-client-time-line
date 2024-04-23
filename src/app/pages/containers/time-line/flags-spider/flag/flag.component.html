@@ -10,14 +10,16 @@
       @if(flag.flags2.length === 1) {
         <!-- 'margin-left': flag.year && !first ? '5rem': '0'} -->
       <div  class="main-block--flags2"       
-            [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem'}"
-     >
+            [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem'}">
+        
         <div  class="flag-2 inside-flag"        
               (mouseover)="mouseUp(idx)"
               (mouseleave)="mouseUp(-1)"
-              id="color-{{flag.flag_design.color_hex.substring(1)}}">
+             >
 
-          <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
+          <div  class="flag-2_card" 
+                [ngStyle]="setStylesCards(flag2)"  
+                id="color-{{flag2.flag_design.color_hex.substring(1)}}">
 
             <!-- RETANGULO BRANCO DE FUNDO -->
             <div class="flag-1_white--background"></div>
@@ -153,19 +155,19 @@
             <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid hsl('+flag2.flag_design.color_hsl+')'}"> </div>
           } -->
           <div class="flag-2_line" 
-              id="color-{{flag.flag_design.color_hex.substring(1)}}"
+              id="color-{{flag2.flag_design.color_hex.substring(1)}}"
               [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
 
 
           <!-- Flag base -->
           <div class="flag-2_base" 
-              id="color-{{flag.flag_design.color_hex.substring(1)}}"
+              id="color-{{flag2.flag_design.color_hex.substring(1)}}"
               [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> 
           </div>
 
           <!-- Filter 1 -->
           <div class="flag-2_filter2 cursor_pointer" 
-              id="color-{{flag.flag_design.color_hex.substring(1)}}"
+              id="color-{{flag2.flag_design.color_hex.substring(1)}}"
               [ngStyle]="{'background' : 'rgba('+flag2.flag_design.color_rgb+', 1)'}">  </div>
         </div>
 
