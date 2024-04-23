@@ -383,7 +383,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     }
 
     // start-loader
-    this.connectingExternalRoutesService.spiderShareLoader({ message: true })
+    this.connectingExternalRoutesService.spiderShareLoader({message: true})
 
     console.log('sssssssssssssss>>>>>>>>>>>.', this.createEditFlagSubscribe)
     this.timeLineService.createFlag(this.createEditFlagSubscribe)
@@ -398,7 +398,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           this.createEditFlagSubscribe = valClear
           this.indexDbGetAllTimeLine('0000')
           // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => {
           this.createEditFlagSubscribe = valClear
@@ -446,44 +446,32 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
           // 🅰️ { TEST-1 } - Here updates flag 1 individually  
           //  { TEST-5 } Edit_Flag1_Different_Sates
-
-          // Aqui a a flag é 1 --- INDIVIDUAL
-          if (this.editFlag.flags2?.length === 0) {
+          if (this.editFlag.flags2) {
+            canTenter = true
             this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // value coming from the form
-            this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
+            this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2 
+            find = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.editFlag.date_obj.timestamp);
 
+            console.log('11111111111111111111111111111')
+
+            // { TEST-3 } Here separates flag1 from flag2
+            if (find.length === 0) {
+              if (this.editFlag.flags2[0]) {
+                // this.editFlag.flags2[0].flag_status_update = 'update'
+                // this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
+                // this.timeLine.time_line.flags[i1].flags2 = []
+                console.log('22222222222')
+
+              }
+            }
+          }
+
+          if (this.editFlag.flags2?.length === 0) {
             this.timeLine.time_line.flags[i1].flag_status_update = 'create'
             this.editFlag.flag_status_update = 'delete'
             this.timeLine.time_line.flags.push(this.editFlag)
-
-            console.log('EU OU OQUE ????? --- SOU ---- 0000000000000000000000000')
+            console.log('3333333333333333')
           }
-
-          // Aqui a flag é 1 --- Possui flag2
-          if (this.editFlag.flags2?.length === 1) {
-            find2 = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
-            console.log('ssssssssssssssssss', find2[0])
-
-            // 🃏 Se o find2 tiver flag2 significa que é necessário apenas atualizar a posição da falg1
-            if (find2[0] && find2[0].flags2?.length === 1) {
-              this.flagsForm.controls[0].get('flag_status_update')?.setValue('update')
-              this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value // value coming from the form
-              this.timeLine.time_line.flags[i1].flags2 = this.editFlag.flags2
-            }
-
-            // 🅿️ se não tiver flag2 é necessário separa as flags -- todas para a posição 1
-            if (!find2[0] && find2?.length === 0) {
-              this.flagsForm.controls[0].get('flag_status_update')?.setValue('create')
-              this.timeLine.time_line.flags[i1] = this.flagsForm.controls[0].value
-
-              this.editFlag.flags2[0].flag_status_update = 'update'
-              this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
-
-              console.log('EU OU OQUE ????? --- SOU SEPAROOOO---- 22222222222222', find2)
-            }
-
-          }
-
         }
       }
 
@@ -629,9 +617,9 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     this.filter()
     console.log(this.timeLine)
     // start-loader
-    this.connectingExternalRoutesService.spiderShareLoader({ message: true })
+    this.connectingExternalRoutesService.spiderShareLoader({message: true})
     // setTimeout(()=>{
-    this.updateSubscribeFlag()
+      // this.updateSubscribeFlag()
     // },3000)
   }
 
@@ -678,8 +666,8 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           this.indexDbPutAllTimeLine(newTimeLine)
         },
         error: () => {
-          // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+        // end-loader
+        this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => {
         }
@@ -698,11 +686,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: string) => {
           // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
-        error: (err) => {
+        error: (err) => { 
           // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => { }
       })
@@ -726,11 +714,11 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
           }
           this.stateService.updateGetAllTimeLine(newTimeLine)
           // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         error: (err) => {
-          // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+        // end-loader
+        this.connectingExternalRoutesService.spiderShareLoader({message: false})
         },
         complete: () => {
         }
