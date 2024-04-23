@@ -168,7 +168,8 @@
     <!-- 🅰️ FLAG 1 -->
     <div  class="main-block--flags" 
           [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem' }"> 
-      <div class="flag-1 inside-flag" [ngStyle]="{ 'z-index': cardIndexMouseUp ? '-1' : '2' }">
+      <div class="flag-1 inside-flag" 
+          [ngStyle]="{ 'z-index': cardIndexMouseUp.mouse && cardIndexMouseUp.index === idx? '-1' : '2' }">
 
         <div class="flag-1_card" [ngStyle]="setStylesCards(flag)">
 
