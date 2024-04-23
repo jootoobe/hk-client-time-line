@@ -146,17 +146,29 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       '.flag-1_card', '.flag-1_line', '.flag-1_base', '.flag-1_filter',
       '.flag-2_card', '.flag-2_line', '.flag-2_base', '.flag-2_filter2']);
 
-      console.log('ssssssss',card)
+    const month = this.elementRef.nativeElement.querySelectorAll(['.flag-1_month']);
+    
+    const menu_remove_icon = this.elementRef.nativeElement.querySelectorAll(['.menu-remove-icon']);
 
-      card.forEach((e: any, i: number) => {
+    card.forEach((e: any, i: number) => {
+      if (e.id !== `color-${id}`) {
+        this.renderer2.setStyle(e, 'opacity', '.3');
+      }
+    });
 
-        console.log(e)
+    month.forEach((e: any, i: number) => {
+      if (e.id !== `month-${id}`) {
+        this.renderer2.setStyle(e, 'display', 'none');
+      }
 
-        if (e.id !== `color-${id}`) {
-          this.renderer2.setStyle(e, 'opacity', '.3');
-        }
-      });
-      
+    });
+
+    menu_remove_icon.forEach((e: any, i: number) => {
+      if (e.id != `menu-${id}}`) {
+        this.renderer2.setStyle(e, 'display', 'none');
+      }
+    });
+
   }
 
 
