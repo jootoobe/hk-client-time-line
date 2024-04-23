@@ -60,7 +60,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   radioRedeTransparency = '0.1' // transparência bandeira
 
   addDataMaskVal = ''
-
+  chipsArray!: FormArray
   constructor(
     private fb: FormBuilder,
     private stateService: StateService,
@@ -177,18 +177,40 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
 
   }
+  // ⬇️ Get Flag form
+  get flagsForm() {
+    return this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+  }
 
 
   updateFlagobject(flagVal: FlagModel) {
+    console.log('ssssssssssss', flagVal)
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
 
     if (flagVal.edit === 'edit-flag-1') {
       this.flagsForm.controls[0].patchValue(flagVal)
+
+      if (this.editFlag && this.editFlag.social_medias_chips.length > 0) {
+        this.chipsArray = (<FormArray>this.flagsForm.controls[0].get('social_medias_chips'))
+
+        this.editFlag.social_medias_chips.forEach((e: any) => {
+          this.chipsArray.push(new FormControl({ name: e.name }));
+        })
+      }
     }
 
     if (flagVal.edit === 'edit-flag-2') {
       let newVal: any = flagVal.flags2
       this.flagsForm.controls[0].patchValue(newVal[0])
+
+      if (this.editFlag.flags2 && this.editFlag.flags2?.length > 0) {
+        this.chipsArray = (<FormArray>this.flagsForm.controls[0].get('social_medias_chips'))
+
+        this.editFlag.flags2[0].social_medias_chips.forEach((e: any) => {
+          this.chipsArray.push(new FormControl({ name: e.name }));
+        })
+      }
+
     }
 
     this.flagsForm.controls[0]?.get('flag_update_at')?.setValue(currentlyDate)
@@ -201,10 +223,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
 
   }
 
-  // ⬇️ Get Flag form
-  get flagsForm() {
-    return this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-  }
+
 
   //================================= 🅰️🅰️ TIME STEMP 🅰️🅰️ ==============================
   //==============================================================================
@@ -628,7 +647,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     // start-loader
     this.connectingExternalRoutesService.spiderShareLoader({ message: true })
     // setTimeout(()=>{
-    this.updateSubscribeFlag()
+    // this.updateSubscribeFlag()
     // },3000)
   }
 
