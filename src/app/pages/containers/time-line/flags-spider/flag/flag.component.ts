@@ -150,24 +150,33 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     
     const menu_remove_icon = this.elementRef.nativeElement.querySelectorAll(['.menu-remove-icon']);
 
+    const white_background = this.elementRef.nativeElement.querySelectorAll(['.flag-1_white--background']);
+
     card.forEach((e: any, i: number) => {
       if (e.id !== `color-${id}`) {
         this.renderer2.setStyle(e, 'opacity', '.3');
       }
     });
 
-    month.forEach((e: any, i: number) => {
-      if (e.id !== `month-${id}`) {
-        this.renderer2.setStyle(e, 'display', 'none');
-      }
-
-    });
+    // month.forEach((e: any, i: number) => {
+    //   if (e.id !== `month-${id}`) {
+    //     this.renderer2.setStyle(e, 'display', 'none');
+    //   }
+    // });
 
     menu_remove_icon.forEach((e: any, i: number) => {
       if (e.id != `menu-${id}}`) {
         this.renderer2.setStyle(e, 'display', 'none');
       }
     });
+
+    white_background.forEach((e: any, i: number) => {
+      if (e.id !== `background-${id}}`) {
+        // this.renderer2.setStyle(e, 'background', 'white');
+        // this.renderer2.setStyle(e, 'opacity', '1');
+      }
+    });
+    
 
   }
 

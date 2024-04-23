@@ -181,12 +181,12 @@
       <div class="flag-1 inside-flag" 
           [ngStyle]="{ 'z-index': cardIndexMouseUp.mouse && cardIndexMouseUp.index === idx? '-1' : '2' }">
 
+            <!-- RETANGULO BRANCO DE FUNDO -->
+            <div class="flag-1_white--background"  id="background-{{flag.flag_design.color_hex.substring(1)}}"></div>
+            
         <div class="flag-1_card" 
             id="color-{{flag.flag_design.color_hex.substring(1)}}"
             [ngStyle]="setStylesCards(flag)">
-
-          <!-- RETANGULO BRANCO DE FUNDO -->
-          <div class="flag-1_white--background"></div>
 
           <!-- title -->
           <div id="title-content" >
