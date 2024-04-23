@@ -10,9 +10,11 @@
       @if(flag.flags2.length === 1) {
         <!-- 'margin-left': flag.year && !first ? '5rem': '0'} -->
       <div  class="main-block--flags2"       
-            [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem'}">
-        <div class="flag-2 inside-flag" 
-        >
+            [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem'}"
+     >
+        <div  class="flag-2 inside-flag"        
+              (mouseover)="mouseUp(idx)"
+              (mouseleave)="mouseUp(-1)">
 
           <div class="flag-2_card" [ngStyle]="setStylesCards(flag2)">
 
@@ -160,7 +162,7 @@
     <!-- 🅰️ FLAG 1 -->
     <div  class="main-block--flags" 
           [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem' }"> 
-      <div class="flag-1 inside-flag">
+      <div class="flag-1 inside-flag" [ngStyle]="{ 'z-index': cardIndexMouseUp ? '0' : '2' }">
 
         <div class="flag-1_card" [ngStyle]="setStylesCards(flag)">
 

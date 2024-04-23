@@ -16,6 +16,7 @@ export function coerceArray<T>(value: T | T[]): T[] {
 export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   editFlagOutput = output<FlagModel>()
   @Input({required: true}) timeLine!:TimeLineModel
+  cardIndexMouseUp = false
 
   constructor() {
     // if(this.aaaa?.time_line[0]?.flags2)
@@ -115,6 +116,18 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
 
+
+
+  // mouse hovers over flag 02 (pops up)
+  // Faz a flag vir para a frente
+  mouseUp(val: number) {
+    console.log(val)
+    if (val === -1) {
+      this.cardIndexMouseUp = false
+      return
+    }
+    this.cardIndexMouseUp = true
+  }
 
 
 }

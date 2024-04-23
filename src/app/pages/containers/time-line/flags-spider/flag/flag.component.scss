@@ -58,6 +58,7 @@
   &_line {
     // padding-top: 6.5rem;
     height: 10rem;
+    background: white; // aqui está relacionando com o mouseUp()
   }
 
   &_base {
@@ -108,7 +109,6 @@
     margin-left: -15rem;
     // margin-top: -2rem;
   }
-
 }
 
 // =========== MATERIAL ===========
