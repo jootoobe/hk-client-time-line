@@ -325,7 +325,7 @@
         <div class="flag-1_year Roboto_700">{{flag.year}}</div>
 
         <!-- Month - or - flag.month.split('/').pop() -->
-        <div class="flag-1_month Roboto_700">
+        <div class="flag-1_month Roboto_700 remove" id="remove-{{flag.flag_design.color_hex.substring(1)}}">
           <span >
             {{flag.date_obj.month_s +'/'+ flag.date_obj.year}}
           </span>
