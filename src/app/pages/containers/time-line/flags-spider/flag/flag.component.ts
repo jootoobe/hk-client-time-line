@@ -18,6 +18,9 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   cardIndexMouseUp = { index: 0, mouse: false }
   filterColorId: any = [] // used to identify the html id of the filter color clicked on the bottom bars of the time line
+  enableDisableMouse = true
+
+
 
   constructor(
     private renderer2: Renderer2,
@@ -125,12 +128,13 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   // mouse hovers over flag 02 (pops up)
   // Faz a flag vir para a frente
   mouseUp(val: number) {
-    console.log(val)
-    if (val === -1) {
-      this.cardIndexMouseUp = { index: -1, mouse: false }
-      return
+    if (this.enableDisableMouse) {
+      if (val === -1) {
+        this.cardIndexMouseUp = { index: -1, mouse: false }
+        return
+      }
+      this.cardIndexMouseUp = { index: val, mouse: true }
     }
-    this.cardIndexMouseUp = { index: val, mouse: true }
   }
 
 
@@ -141,6 +145,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
   filterColor(flag?: any, id?: any) {
+    this.enableDisableMouse = false
 
     const card = this.elementRef.nativeElement.querySelectorAll([
       '.flag-1_card', '.flag-1_line', '.flag-1_base', '.flag-1_filter',
