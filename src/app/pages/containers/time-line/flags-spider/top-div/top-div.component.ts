@@ -1,7 +1,8 @@
-import { Component, OnInit, output } from '@angular/core';
+import { Component, Input, OnInit, output } from '@angular/core';
 
 // import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
 import { SignInService } from '../../../../../spider-share/iam/services/auth/sign-in.service';
+import { TimeLineModel } from '../../../../../models/time-line.model';
 
 @Component({
   selector: 'top-div',
@@ -11,6 +12,7 @@ import { SignInService } from '../../../../../spider-share/iam/services/auth/sig
 
 })
 export class TopDivComponent implements OnInit {
+  @Input({ required: true }) timeLine!: TimeLineModel
 
   openModal = output()
 

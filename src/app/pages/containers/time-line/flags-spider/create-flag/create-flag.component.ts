@@ -19,6 +19,7 @@ import { TolltipCreateHelper } from "./tolltip-create-helper";
 import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
 import { IndexDbTimeLineService } from "../../../../../shared/services/storage/indexed-db-timeline-store.service";
 import { ConnectingExternalRoutesService } from '../../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
+import { FilterFlagsService } from '../../../../../shared/services/filter-flags.service';
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -71,6 +72,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     private timeLineService: TimeLineService,
     private indexDbTimeLineService: IndexDbTimeLineService,
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
+    private filterFlagsService: FilterFlagsService,
   ) {
 
     this.buildForm()
@@ -642,21 +644,19 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
       }
     })
 
-    this.filter()
-    console.log(this.timeLine)
+    this.timeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(this.timeLine)
+    console.log('pppppppppppppppppppppp',this.timeLine)
     // start-loader
     this.connectingExternalRoutesService.spiderShareLoader({ message: true })
-    // setTimeout(()=>{
     this.updateSubscribeFlag()
-    // },3000)
   }
 
 
-  filter() {
-    this.timeLine.time_line.flags.sort((x: FlagModel, y: FlagModel) => {
-      return x.date_obj.timestamp - y.date_obj.timestamp;
-    })
-  }
+  // filter() {
+  //   this.timeLine.time_line.flags.sort((x: FlagModel, y: FlagModel) => {
+  //     return x.date_obj.timestamp - y.date_obj.timestamp;
+  //   })
+  // }
 
 
 
