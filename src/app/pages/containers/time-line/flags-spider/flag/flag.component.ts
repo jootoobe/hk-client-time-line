@@ -22,6 +22,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
 
   filterColorId: any = [] // used to identify the html id of the filter color clicked on the bottom bars of the time line
+  valFilterClose = { color_hex: '', color_rgb: 0 } // stores the clicked filter and communicates with the top-div component
   enableDisableMouse = true // desabilita o mouse quando filtro esta ativado na bandeira 
   TOAST!: any // translator used in ToastrService
 
@@ -152,31 +153,33 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
   /**
+   * OBS filtra uma cor por vez apenas
 * **************************************** We have 2 types of filters ********************************************************
 * * * * * ====== Direct time line filter AND filter activated by the icon in the component TopDivComponent ========= * * * * *
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
-  filterColor(flag?: any, id?: any) {
-    this.enableDisableMouse = false
-    let index: number
+  filterColor(flag: FlagModel, id?: any) {
+    // this.enableDisableMouse = false
+    // let index: number
+    // this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
+    // index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
+
+    // // filtro já adicionado
+    // if (index >= 0) {
+    //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+    //   return
+    // }
+
+    //   // Até 5 filtros 
+    // if (this.filterColorId.length >= 5) {
+    //   this.toastrService.info('ssssssssss', 'PPPPPPPPP');
+    //   return
+    // } else if (this.filterColorId.length < 5) {
+    //   this.filterColorId.push(`color-${id}`)
+    // }
+
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
-    index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
-
-    // filtro já adicionado
-    if (index >= 0) {
-      this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
-      return
-    }
-
-      // Até 5 filtros 
-    if (this.filterColorId.length >= 5) {
-      this.toastrService.info('ssssssssss', 'PPPPPPPPP');
-      return
-    } else if (this.filterColorId.length < 5) {
-      this.filterColorId.push(`color-${id}`)
-    }
-
 
 
     const card = this.elementRef.nativeElement.querySelectorAll([
@@ -185,23 +188,31 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     const remove = this.elementRef.nativeElement.querySelectorAll(['.remove']);
 
+    if (this.filterColorId.length === 0) {
+      card.forEach((e: any, i: number) => {
+        if (e.id !== `color-${id}`) {
+          this.renderer2.setStyle(e, 'opacity', '.3');
+        }
+      });
 
+      remove.forEach((e: any, i: number) => {
+        if (e.id !== `remove-${id}`) {
+          this.renderer2.setStyle(e, 'display', 'none');
+        }
+      });
 
-
-    card.forEach((e: any, i: number) => {
-      if (e.id !== `color-${id}`) {
-        this.renderer2.setStyle(e, 'opacity', '.3');
+      this.filterColorId.push(`color-${id}`)
+      this.valFilterClose = {
+        color_hex: flag.flag_design.color_hex,
+        color_rgb: Number(flag.flag_design.color_rgb.split(',')[0])
       }
-    });
 
-    remove.forEach((e: any, i: number) => {
-      if (e.id !== `remove-${id}`) {
-        this.renderer2.setStyle(e, 'display', 'none');
-      }
-    });
+      console.log('sssssssssssss', this.filterColorId)
+      
+      console.log('sssssssssssss', this.valFilterClose)
+    }
 
 
-    console.log('sssssssssssss', this.filterColorId)
 
 
   }
