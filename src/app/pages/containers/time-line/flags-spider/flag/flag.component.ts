@@ -163,11 +163,13 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
     index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
 
+    // filtro já adicionado
     if (index >= 0) {
       this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
       return
     }
 
+      // Até 5 filtros 
     if (this.filterColorId.length >= 5) {
       this.toastrService.info('ssssssssss', 'PPPPPPPPP');
       return
@@ -175,19 +177,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       this.filterColorId.push(`color-${id}`)
     }
 
-
-    console.log('111111111111111111111111', index)
-
-
-
-    // if (this.filterColorId.length > 0) {
-    //   this.filterColorId.forEach((e: string) => {
-    //     if (e === `color-${id}`) {
-    //       this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
-    //       return
-    //     }
-    //   });
-    // }
 
 
     const card = this.elementRef.nativeElement.querySelectorAll([
