@@ -124,6 +124,9 @@ export class FlagsSpiderComponent implements OnInit {
       })
   }
 
+  toApplyFilter(event: TimeLineModel) {
+    this.timeLine = event
+  }
 
   indexDbPutAllFlag(newTimeLine: TimeLineModel) {
     // let getNewVal = JSON.parse(localStorage.getItem('flags') || '[]');

@@ -33,7 +33,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   @Input({ required: true }) editFlagForm!: FlagModel
   @Input({ required: true }) flagCreateEdit!: string
 
-  // timeLineForEdit!: TimeLineModel;
   editFlag!: FlagModel;
   timestampExist!: FlagModel[];
   createEditFlagSubscribe!: TimeLineModel
@@ -76,17 +75,6 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
   ) {
 
     this.buildForm()
-
-    // this.stateService.getAllTimeLineSubject$
-    //   .subscribe({
-    //     next: (res: TimeLineModel) => {
-    //       if (res && res.time_line) {
-    //         // this.timeLine = res
-    //       }
-    //     },
-    //     error: () => { },
-    //     complete: () => { }
-    //   })
 
   }
 

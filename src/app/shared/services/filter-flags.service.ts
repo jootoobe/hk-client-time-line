@@ -9,6 +9,7 @@ import { FlagModel } from '../../models/flag.model';
 export class FilterFlagsService {
 
   flags!: FlagModel[]
+  newFilterFlags!: TimeLineModel
   constructor() { }
 
 
@@ -22,11 +23,22 @@ export class FilterFlagsService {
 
 
 
-  filterFlags(description: any, attributeObject: any, flagArray: any): Observable<any> {
+  filterFlags(description: any, attributeObject: any, timeLine: TimeLineModel): Observable<any> {
+    let val: any = [];
 
-    return of(description)
+    if (!description) {
+      return of('')
+    }
 
-
+    if(attributeObject === 'flag_title') {
+      val = timeLine.time_line.flags.filter((optionFlag: FlagModel) => optionFlag.flag_title.toLowerCase().includes(description.toLowerCase()))
+      this.newFilterFlags = {
+        time_line: {
+          flags: val
+        }
+      }
+    }
+    return of(this.newFilterFlags)
 
   }
 

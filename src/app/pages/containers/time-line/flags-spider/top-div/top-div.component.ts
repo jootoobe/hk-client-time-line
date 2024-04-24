@@ -13,7 +13,7 @@ import { TimeLineModel } from '../../../../../models/time-line.model';
 })
 export class TopDivComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
-
+  toApplyFilter = output<TimeLineModel>()
   openModal = output()
 
   constructor(
@@ -27,4 +27,10 @@ export class TopDivComponent implements OnInit {
   openCreateTimeLineDialog() {
     this.openModal.emit()
   }
+
+  applyFilter(event: TimeLineModel) {
+    console.log('event event event event', event)
+    this.toApplyFilter.emit(event)
+  }
+
 }

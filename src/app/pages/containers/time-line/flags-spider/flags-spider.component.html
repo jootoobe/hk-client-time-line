@@ -15,7 +15,8 @@
   <div class="first-div">
     <top-div
     (openModal)="openCreateTimeLineDialog('create')"
-    [timeLine]="timeLine">
+    [timeLine]="timeLine"
+    (toApplyFilter)="toApplyFilter($event)">
 
     </top-div>
   </div>
