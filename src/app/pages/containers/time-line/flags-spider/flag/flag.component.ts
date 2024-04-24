@@ -160,25 +160,25 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
   filterColor(flag: FlagModel, id?: any) {
-    // this.enableDisableMouse = false
     // let index: number
     // this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
     // index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
-
+    
     // // filtro já adicionado
     // if (index >= 0) {
-    //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+      //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
     //   return
     // }
-
+    
     //   // Até 5 filtros 
     // if (this.filterColorId.length >= 5) {
-    //   this.toastrService.info('ssssssssss', 'PPPPPPPPP');
+      //   this.toastrService.info('ssssssssss', 'PPPPPPPPP');
     //   return
     // } else if (this.filterColorId.length < 5) {
-    //   this.filterColorId.push(`color-${id}`)
-    // }
-
+      //   this.filterColorId.push(`color-${id}`)
+      // }
+      
+    this.enableDisableMouse = false
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
 
 
