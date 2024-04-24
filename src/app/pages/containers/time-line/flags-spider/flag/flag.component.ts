@@ -151,6 +151,14 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
+  disableFilter(flag: FlagModel, id?: any) {
+
+    if (this.filterColorId[0] === `color-${id}`) {
+      this.filterColor(flag, id)
+    }
+
+  }
+
 
   /**
    * OBS filtra uma cor por vez apenas
