@@ -53,11 +53,13 @@ export class FilterFlagComponent implements OnInit {
     filterFlag() {
       let val = this.titleFlag.length >= 1 ? this.titleFlag : ''
 
-      this.filterFlagsService.filterFlags(val, 'flag_title', this.timeLine)
+      this.filterFlagsService.filterFlags(val, 'flag_title', this.indexDbGetAllData)
       .subscribe((res:any) => {
          if (res) {
-          this.applyFilter.emit(res)
-          } else if (!res) {
+          console.log('ssssssssssssss',res)
+          return this.applyFilter.emit(res)
+          } 
+          if (!res) {
             return this.applyFilter.emit(this.indexDbGetAllData)
           }
 
