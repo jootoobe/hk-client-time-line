@@ -169,7 +169,9 @@
           <!-- Filter 1 -->
           <div class="flag-2_filter2 cursor_pointer" 
               id="color-{{flag2.flag_design.color_hex.substring(1)}}"
-              [ngStyle]="{'background' : 'rgba('+flag2.flag_design.color_rgb+', 1)'}">  </div>
+              [ngStyle]="{'background' : 'rgba('+flag2.flag_design.color_rgb+', 1)'}"
+              (click)="filterColor(flag, flag.flag_design.color_hex.substring(1))">  
+            </div>
         </div>
 
       </div>
