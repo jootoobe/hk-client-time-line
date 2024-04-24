@@ -163,21 +163,21 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     // let index: number
     // this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
     // index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
-    
+
     // // filtro já adicionado
     // if (index >= 0) {
-      //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+    //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
     //   return
     // }
-    
+
     //   // Até 5 filtros 
     // if (this.filterColorId.length >= 5) {
-      //   this.toastrService.info('ssssssssss', 'PPPPPPPPP');
+    //   this.toastrService.info('ssssssssss', 'PPPPPPPPP');
     //   return
     // } else if (this.filterColorId.length < 5) {
-      //   this.filterColorId.push(`color-${id}`)
-      // }
-      
+    //   this.filterColorId.push(`color-${id}`)
+    // }
+
     this.enableDisableMouse = false
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
 
@@ -207,9 +207,26 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         color_rgb: Number(flag.flag_design.color_rgb.split(',')[0])
       }
 
-      console.log('sssssssssssss', this.filterColorId)
-      
-      console.log('sssssssssssss', this.valFilterClose)
+
+    } else if (this.filterColorId[0] === `color-${id}`) {
+      card.forEach((e: any, i: number) => {
+        if (e.id != `color-${id}`) {
+          this.renderer2.setStyle(e, 'opacity', '1');
+        }
+      });
+
+      // desabilita o click de edição das bandeiras filtradas
+      remove.forEach((e: any, i: number) => {
+        if (e.id != `remove-${id}`) {
+          this.renderer2.setStyle(e, 'display', 'inline-table');
+        }
+      })
+
+      this.valFilterClose = {
+        color_hex: '',
+        color_rgb: 0
+      }
+      this.filterColorId = []
     }
 
 
