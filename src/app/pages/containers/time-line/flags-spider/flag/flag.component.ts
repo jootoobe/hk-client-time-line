@@ -151,7 +151,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  disableFilter(flag: FlagModel, id?: any) {
+  disableFilter(flag: FlagModel, id?: string) {
 
     if (this.filterColorId[0] === `color-${id}`) {
       this.filterColor(flag, id)
@@ -167,7 +167,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
-  filterColor(flag: FlagModel, id?: any) {
+  filterColor(flag: FlagModel, id?: string, del?:string) {
     // let index: number
     // this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
     // index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
@@ -196,7 +196,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     const remove = this.elementRef.nativeElement.querySelectorAll(['.remove']);
 
-    if (this.filterColorId.length === 0) {
+    if (this.filterColorId.length === 0 ) {
       card.forEach((e: any, i: number) => {
         if (e.id !== `color-${id}`) {
           this.renderer2.setStyle(e, 'opacity', '.3');
@@ -216,7 +216,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
 
 
-    } else if (this.filterColorId[0] === `color-${id}`) {
+    } else if (this.filterColorId[0] === `color-${id}` || del === 'delete') {
+      this.enableDisableMouse = true
       card.forEach((e: any, i: number) => {
         if (e.id != `color-${id}`) {
           this.renderer2.setStyle(e, 'opacity', '1');
