@@ -18,6 +18,7 @@ export function coerceArray<T>(value: T | T[]): T[] {
 export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   editFlagOutput = output<FlagModel>()
   @Input({ required: true }) timeLine!: TimeLineModel
+  @Input({ required: true }) clearBarFilterDelete!: string
 
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
 
@@ -42,7 +43,14 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   }
 
-  ngOnChanges(): void { }
+  ngOnChanges(changes: SimpleChanges) {
+
+    // toda vez que clicar no botão "criar" o filtro da barra inferior deve ser desabilitado
+    if (changes['clearBarFilterDelete']?.currentValue) {
+      this.filterColor(this.timeLine.time_line.flags[0], '', changes['clearBarFilterDelete']?.currentValue)
+    }
+
+  }
 
   ngOnInit(): void {
     // this.timeLine.time_line.flags[0].flags2
@@ -167,7 +175,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
-  filterColor(flag: FlagModel, id?: string, del?:string) {
+  filterColor(flag: FlagModel, id?: string, disableFilter?:string) {
     // let index: number
     // this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
     // index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
@@ -186,7 +194,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     //   this.filterColorId.push(`color-${id}`)
     // }
 
-    this.enableDisableMouse = false
+
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
 
 
@@ -196,7 +204,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     const remove = this.elementRef.nativeElement.querySelectorAll(['.remove']);
 
-    if (this.filterColorId.length === 0 ) {
+    if (this.filterColorId.length === 0 && disableFilter !== 'disable' && disableFilter !== 'enable') {
+
+      this.enableDisableMouse = false
+
       card.forEach((e: any, i: number) => {
         if (e.id !== `color-${id}`) {
           this.renderer2.setStyle(e, 'opacity', '.3');
@@ -216,7 +227,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
 
 
-    } else if (this.filterColorId[0] === `color-${id}` || del === 'delete') {
+    } else if (this.filterColorId[0] === `color-${id}` || disableFilter === 'disable') {
       this.enableDisableMouse = true
       card.forEach((e: any, i: number) => {
         if (e.id != `color-${id}`) {

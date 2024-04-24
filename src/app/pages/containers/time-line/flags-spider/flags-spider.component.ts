@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild, effect } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild, effect, output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { TimeLineModel } from '../../../../models/time-line.model';
@@ -28,6 +28,7 @@ export class FlagsSpiderComponent implements OnInit {
   flagCreateEdit!: string
 
   envProd = environment.production
+  clearBarFilterDelete!:string
 
   constructor(
     private dialogCreate: MatDialog,
@@ -78,8 +79,14 @@ export class FlagsSpiderComponent implements OnInit {
   // Open Create Time_Line
   openCreateTimeLineDialog(val: string): void {
     this.flagCreateEdit = val
+   
     if (val === 'create') {
       this.editFlagForm = {}
+      this.clearBarFilterDelete = 'disable'
+      // Altera o estado no ngOnChanges FlagComponent
+      setTimeout(()=>{
+        this.clearBarFilterDelete = 'enable'
+      },1000)
     }
 
     this.dialogCreate.open(this.createTimeLine, {
