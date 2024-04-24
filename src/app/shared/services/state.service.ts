@@ -19,10 +19,10 @@ export class StateService {
   });
 
 
-  // private toastSignal: WritableSignal<{}> = signal<any>(undefined);
-  // toastSignalComputed = computed(() => {
-  //   return this.toastSignal()
-  // });
+  private toastSignal: WritableSignal<{}> = signal<any>(undefined);
+  toastSignalComputed = computed(() => {
+    return this.toastSignal()
+  });
 
   // Vai no header da aplicação
   private redisAuthSubject = new BehaviorSubject<RedisAuthModel>(RedisAuthModel as any);
@@ -52,9 +52,9 @@ export class StateService {
     return this.languageSignal.set(val)
   }
 
-  // updateToastSignal(val: any) {
-  //   return this.toastSignal.set(val)
-  // }
+  updateToastSignal(val: any) {
+    return this.toastSignal.set(val)
+  }
 
 
   // Relacionado as chaves de cryptografia

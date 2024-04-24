@@ -35,21 +35,16 @@ export class LanguagesTimeLineComponent implements OnInit {
       // localStorage.setItem('toast', JSON.stringify(value))
       // this.stateService.toastTs(value)
       if (value) {
-        // console.log('TIME-LINE', value)
         this.stateService.updateLanguageSignal(value)
       }
     });
 
-    // // Recebe a alteação da lingua vinda do Hk-pro-client-spidershare
-    // fromEvent(this.window, 'language-translate')
-    //   .subscribe({
-    //     next: (res: any) => {
-    //       this.translate.setDefaultLang(res.detail)
-    //       this.settingLanguage.emit(res.detail)
-    //     },
-    //     error: (err) => { },
-    //     complete: () => { }
-    //   })
+
+    this.translate.get('TOAST').subscribe((value) => {
+      if (value) {
+        this.stateService.updateToastSignal(value)
+      }
+    });
   }
 
 

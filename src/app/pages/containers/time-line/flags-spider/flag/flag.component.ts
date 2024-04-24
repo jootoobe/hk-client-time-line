@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, computed, ElementRef, EventEmitter, input, Input, OnChanges, OnInit, output, Output, Renderer2, SimpleChanges } from "@angular/core";
+import { AfterViewInit, Component, computed, effect, ElementRef, EventEmitter, input, Input, OnChanges, OnInit, output, Output, Renderer2, SimpleChanges } from "@angular/core";
 
 import { FlagModel } from "../../../../../models/flag.model";
 import { TimeLineModel } from "../../../../../models/time-line.model";
+import { ToastrService } from "ngx-toastr";
+import { StateService } from "../../../../../shared/services/state.service";
 
 export function coerceArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
@@ -16,18 +18,27 @@ export function coerceArray<T>(value: T | T[]): T[] {
 export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   editFlagOutput = output<FlagModel>()
   @Input({ required: true }) timeLine!: TimeLineModel
-  cardIndexMouseUp = { index: 0, mouse: false }
+
+  cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
+
   filterColorId: any = [] // used to identify the html id of the filter color clicked on the bottom bars of the time line
-  enableDisableMouse = true
+  enableDisableMouse = true // desabilita o mouse quando filtro esta ativado na bandeira 
+  TOAST!: any // translator used in ToastrService
 
 
 
   constructor(
     private renderer2: Renderer2,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private toastrService: ToastrService,
+    private stateService: StateService
   ) {
-    // if(this.aaaa?.time_line[0]?.flags2)
-    // this.aaaa?.time_line[0]?.flags2[0]?.color_hsl
+
+    effect(() => {
+      this.TOAST = this.stateService.toastSignalComputed()
+      console.log('TOAST', this.TOAST)
+    })
+
   }
 
   ngOnChanges(): void { }
@@ -47,6 +58,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   trackFlagsDataJson2(index: number, flags2: TimeLineModel) {
     return flags2 ? flags2.time_line : undefined;
   }
+
+
 
 
 
@@ -146,12 +159,45 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 */
   filterColor(flag?: any, id?: any) {
     this.enableDisableMouse = false
+    let index: number
+    this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
+    index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
+
+    if (index >= 0) {
+      this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+      return
+    }
+
+    if (this.filterColorId.length >= 5) {
+      this.toastrService.info('ssssssssss', 'PPPPPPPPP');
+      return
+    } else if (this.filterColorId.length < 5) {
+      this.filterColorId.push(`color-${id}`)
+    }
+
+
+    console.log('111111111111111111111111', index)
+
+
+
+    // if (this.filterColorId.length > 0) {
+    //   this.filterColorId.forEach((e: string) => {
+    //     if (e === `color-${id}`) {
+    //       this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+    //       return
+    //     }
+    //   });
+    // }
+
 
     const card = this.elementRef.nativeElement.querySelectorAll([
       '.flag-1_card', '.flag-1_line', '.flag-1_base', '.flag-1_filter',
       '.flag-2_card', '.flag-2_line', '.flag-2_base', '.flag-2_filter2']);
 
     const remove = this.elementRef.nativeElement.querySelectorAll(['.remove']);
+
+
+
 
     card.forEach((e: any, i: number) => {
       if (e.id !== `color-${id}`) {
@@ -164,6 +210,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         this.renderer2.setStyle(e, 'display', 'none');
       }
     });
+
+
+    console.log('sssssssssssss', this.filterColorId)
+
 
   }
 
