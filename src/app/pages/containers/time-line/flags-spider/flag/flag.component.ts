@@ -146,8 +146,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       '.flag-1_card', '.flag-1_line', '.flag-1_base', '.flag-1_filter',
       '.flag-2_card', '.flag-2_line', '.flag-2_base', '.flag-2_filter2']);
 
-    const month = this.elementRef.nativeElement.querySelectorAll(['.flag-1_month']);
-    
+    const open_kanban = this.elementRef.nativeElement.querySelectorAll(['.inside-flag_open-kanban']);
+
     const menu_remove_icon = this.elementRef.nativeElement.querySelectorAll(['.menu-remove-icon']);
 
     const white_background = this.elementRef.nativeElement.querySelectorAll(['.flag-1_white--background']);
@@ -158,11 +158,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
     });
 
-    // month.forEach((e: any, i: number) => {
-    //   if (e.id !== `month-${id}`) {
-    //     this.renderer2.setStyle(e, 'display', 'none');
-    //   }
-    // });
+    open_kanban.forEach((e: any, i: number) => {
+      if (e.id !== `open-kanban-${id}`) {
+        this.renderer2.setStyle(e, 'display', 'none');
+      }
+    });
 
     menu_remove_icon.forEach((e: any, i: number) => {
       if (e.id != `menu-${id}}`) {
@@ -172,11 +172,9 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     white_background.forEach((e: any, i: number) => {
       if (e.id !== `background-${id}}`) {
-        // this.renderer2.setStyle(e, 'background', 'white');
-        // this.renderer2.setStyle(e, 'opacity', '1');
       }
     });
-    
+
 
   }
 
