@@ -155,7 +155,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     const menu_remove_icon = this.elementRef.nativeElement.querySelectorAll(['.menu-remove-icon']);
 
-    const white_background = this.elementRef.nativeElement.querySelectorAll(['.flag-1_white--background']);
 
     card.forEach((e: any, i: number) => {
       if (e.id !== `color-${id}`) {
@@ -173,12 +172,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       if (e.id != `menu-${id}}`) {
         this.renderer2.setStyle(e, 'display', 'none');
       }
+      
     });
 
-    white_background.forEach((e: any, i: number) => {
-      if (e.id !== `background-${id}}`) {
-      }
-    });
+    
 
 
   }
