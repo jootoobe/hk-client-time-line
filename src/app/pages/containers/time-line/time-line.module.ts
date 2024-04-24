@@ -14,6 +14,7 @@ import { TimeLineRoutingModule } from './time-line.routing';
 import { FlagComponent } from './flags-spider/flag/flag.component';
 import { CreateFlagComponent } from './flags-spider/create-flag/create-flag.component';
 import { TolltipCreateHelper } from './flags-spider/create-flag/tolltip-create-helper';
+import { FilterFlagComponent } from './flags-spider/filter-flag/filter-flag.component';
 
 let urlTranslate = environment.urlTranslate
 
@@ -48,7 +49,8 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
     LanguagesTimeLineComponent,
     FlagComponent,
     CreateFlagComponent,
-    TolltipCreateHelper
+    TolltipCreateHelper,
+    FilterFlagComponent
   ],
   imports: [
     CommonModule,

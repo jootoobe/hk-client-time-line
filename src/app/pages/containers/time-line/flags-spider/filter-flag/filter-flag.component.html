@@ -1,0 +1,71 @@
+<ng-template #filterTimeLine>
+  <div class="filter-time-line-dialog">
+    <div class="filter-grid-container">
+      <!-- Filter Flags -->
+      <div class="item-main-header"> 
+         <!-- {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG.modal.grid1' | translate}} -->
+        </div>
+      <div class="item-main-close ">
+        <span class="cursor_pointer" matDialogClose>X</span>
+      </div>
+
+      <div class="item-filter-title">
+        <!-- Title -->
+        <div class="item-date-start--title">
+          <!-- {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG.modal.grid3' | translate}} -->
+        </div>
+        <!-- Flag title filter -->
+        <mat-form-field class="example-full-width">
+          <mat-label> 
+            <!-- {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.title.mat-label' | translate}} -->
+          </mat-label>
+          <input  matInput
+                  value=""
+                 >
+        </mat-form-field>
+      </div>
+      <div class="item-filter-description"> </div>
+
+      <div class="item-date-end"></div>
+
+
+      <div class="item-color">
+        <!-- Color -->
+        <div class="item-color--hex">
+          <!-- {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG.modal.grid8' | translate}} -->
+        </div>
+        <mat-form-field>
+          <!-- Color filter -->
+          <mat-label>
+            <!-- {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.mat-label' | translate}} -->
+          </mat-label>
+          <mat-select >
+
+          </mat-select>
+        </mat-form-field>
+
+        <!-- filter for chips -->
+        <div class="item-color_display">
+          <div class="item-color_display--box" >
+
+            <div class="item-color_text">  </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-btn">
+        <div class="item-btn--add-filter">
+          <!-- Apply filter -->
+          <button mat-stroked-button
+                  class="btn_red-spider"
+                  matDialogClose
+                  >
+              <!-- {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}} -->
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</ng-template>
