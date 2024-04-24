@@ -25,19 +25,46 @@ export class FilterFlagsService {
 
   filterFlags(description: any, attributeObject: any, timeLine: TimeLineModel): Observable<any> {
     let val: any = [];
-
+    let val2: any = [];
     if (!description) {
       return of('')
     }
 
     if(attributeObject === 'flag_title') {
+
       val = timeLine.time_line.flags.filter((optionFlag: FlagModel) => optionFlag.flag_title.toLowerCase().includes(description.toLowerCase()))
-      this.newFilterFlags = {
-        time_line: {
-          flags: val
+      val2 = timeLine.time_line.flags.filter((optionFlag: FlagModel) => optionFlag.flags2?.some(item => item.flag_title.toLowerCase().includes(description.toLowerCase())))
+      
+      if(val.length > 0) {
+        this.newFilterFlags = {
+          time_line: {
+            flags: val
+          }
         }
       }
+
+      if(val2.length > 0 && val.length === 0) {
+        console.log('oooooooooooooooooooooooooooooooooooooooooooooo')
+        this.newFilterFlags = {
+          time_line: {
+            flags: val2
+          }
+        }
+      }
+
+      if(val2.length === 0 && val.length === 0) {
+        this.newFilterFlags = {
+          time_line: {
+            flags: val || val2
+          }
+        }
+      }
+
+
     }
+
+    console.log(val)
+    console.log(val2)
     return of(this.newFilterFlags)
 
   }
