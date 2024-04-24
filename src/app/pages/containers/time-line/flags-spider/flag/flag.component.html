@@ -34,7 +34,7 @@
 
 
               <!-- Menu Edit Delete -->
-              <div class="box-inside-flag-title ">
+              <div class="box-inside-flag-title remove"  id="remove-{{flag.flag_design.color_hex.substring(1)}}">
                 <!-- [ngStyle]="setStylesText(flag2)" -->
                 <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
                   [matMenuTriggerFor]="menuEditRemove">
@@ -130,7 +130,7 @@
           </div >
           </div> <!-- Card End -->
           <!-- Open Kanban -->
-          <div class="inside-flag_open-kanban cursor_pointer">
+          <div class="inside-flag_open-kanban cursor_pointer remove" id="remove-{{flag.flag_design.color_hex.substring(1)}}">
             <!-- Abrir Kanban -->
             {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-04' | translate}}
             <mat-icon matSuffix class="material-icons ">
@@ -200,7 +200,7 @@
             </div>
 
             <!-- Menu Edit Delete -->
-            <div class="box-inside-flag-title ">
+            <div class="box-inside-flag-title remove" id="remove-{{flag.flag_design.color_hex.substring(1)}}">
               <!-- [ngStyle]="setStylesText(flag2)" -->
               <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
                  [matMenuTriggerFor]="menuEditRemove">
@@ -294,7 +294,7 @@
           </div>
         </div> <!-- Card End -->
         <!-- Open Kanban -->
-        <div class="inside-flag_open-kanban cursor_pointer" id="open-kanban-{{flag.flag_design.color_hex.substring(1)}}">
+        <div class="inside-flag_open-kanban cursor_pointer remove" id="remove-{{flag.flag_design.color_hex.substring(1)}}">
           <!-- Abrir Kanban -->
           {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-04' | translate}}
           <mat-icon matSuffix class="material-icons ">
@@ -325,7 +325,7 @@
         <div class="flag-1_year Roboto_700">{{flag.year}}</div>
 
         <!-- Month - or - flag.month.split('/').pop() -->
-        <div class="flag-1_month Roboto_700" id="month-{{flag.flag_design.color_hex.substring(1)}}">
+        <div class="flag-1_month Roboto_700">
           <span >
             {{flag.date_obj.month_s +'/'+ flag.date_obj.year}}
           </span>

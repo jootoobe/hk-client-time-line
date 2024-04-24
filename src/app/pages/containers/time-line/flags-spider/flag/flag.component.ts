@@ -151,10 +151,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       '.flag-1_card', '.flag-1_line', '.flag-1_base', '.flag-1_filter',
       '.flag-2_card', '.flag-2_line', '.flag-2_base', '.flag-2_filter2']);
 
-    const open_kanban = this.elementRef.nativeElement.querySelectorAll(['.inside-flag_open-kanban']);
-
-    const menu_remove_icon = this.elementRef.nativeElement.querySelectorAll(['.menu-remove-icon']);
-
+    const remove = this.elementRef.nativeElement.querySelectorAll(['.remove']);
 
     card.forEach((e: any, i: number) => {
       if (e.id !== `color-${id}`) {
@@ -162,21 +159,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
     });
 
-    open_kanban.forEach((e: any, i: number) => {
-      if (e.id !== `open-kanban-${id}`) {
+    remove.forEach((e: any, i: number) => {
+      if (e.id !== `remove-${id}`) {
         this.renderer2.setStyle(e, 'display', 'none');
       }
     });
-
-    menu_remove_icon.forEach((e: any, i: number) => {
-      if (e.id != `menu-${id}}`) {
-        this.renderer2.setStyle(e, 'display', 'none');
-      }
-      
-    });
-
-    
-
 
   }
 
