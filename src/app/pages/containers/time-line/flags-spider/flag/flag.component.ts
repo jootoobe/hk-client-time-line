@@ -27,8 +27,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   enableDisableMouse = true // desabilita o mouse quando filtro esta ativado na bandeira 
   TOAST!: any // translator used in ToastrService
 
-  bbbb = true
-
 
   constructor(
     private renderer2: Renderer2,

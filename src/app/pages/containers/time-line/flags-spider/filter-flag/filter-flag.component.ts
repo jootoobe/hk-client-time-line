@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, effect, output } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { TimeLineModel } from "../../../../../models/time-line.model";
 import { FilterFlagsService } from "../../../../../shared/services/filter-flags.service";
@@ -6,6 +6,7 @@ import { StateService } from "../../../../../shared/services/state.service";
 import { IndexDbTimeLineService } from "../../../../../shared/services/storage/indexed-db-timeline-store.service";
 import { switchMap } from "rxjs";
 import { FlagModel } from "../../../../../models/flag.model";
+import { ToastrService } from "ngx-toastr";
 
 
 @Component({
@@ -24,23 +25,22 @@ export class FilterFlagComponent implements OnInit {
 
   selectedColors = 'Filtre sua bandeira pelas cores'
 
+  TOAST!: any // translator used in ToastrService
+
+  // colorArray: any = []
   constructor(
     private dialogCreate: MatDialog,
     private filterFlagsService: FilterFlagsService,
-    // private stateService: StateService,
     private indexDbTimeLineService: IndexDbTimeLineService,
+    private stateService: StateService,
+    private toastrService: ToastrService,
   ) {
 
-    // this.stateService.getAllTimeLineSubject$
-    //   .subscribe({
-    //     next: (res: TimeLineModel) => {
-    //       if (res && res.time_line) {
-    //         this.indexDbGetAllData = res
-    //       }
-    //     },
-    //     error: () => { },
-    //     complete: () => { }
-    //   })
+
+    effect(() => {
+      this.TOAST = this.stateService.toastSignalComputed()
+      console.log('TOAST', this.TOAST)
+    })
 
   }
 
@@ -99,6 +99,37 @@ export class FilterFlagComponent implements OnInit {
   toApplyFilter() {
     this.applyFilterCloseDialog = true
     this.dialogCreate.closeAll()
+  }
+
+  addColors(val: FlagModel) {
+    let valFilter = []
+    valFilter = this.timeLine.time_line.flags.filter(() => val.flag_design.color_hex.toLowerCase());
+
+    console.log('sssssssss',valFilter)
+
+    if (valFilter.length !== 0) {
+      // this.toastrService.info('Has already been added', 'Flag color');
+      this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-1']);
+      return
+    }
+
+    // if (this.colorArray.length < 5) {
+    //   this.colorArray.push(val);
+    //   this.filtercolorFlag(this.colorArray)
+    //   // array of colors added by filter
+    //   // sent to the component top-div
+    //   let newVal = {
+    //     color_rgb: Number(val.color_rgb.split(',')[0]),
+    //     color_hex: val.color_hex
+    //   }
+    //   this.filterInpuTopDiv.push(newVal)
+    //   this.filterFlagsService.topDivFilterInpu(this.filterInpuTopDiv)
+
+    // } else if (this.colorArray.length >= 4) {
+    //   // this.toastrService.info('The filter becomes more effective', 'Add 05 colors at a time');
+    //   this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-1']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-1']['message-1']);
+
+    // }
   }
 
 

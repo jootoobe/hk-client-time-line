@@ -46,12 +46,9 @@
           </mat-label>
           <mat-select [(value)]="selectedColors">
             <ng-container *ngFor="let flag of indexDbGetAllData.time_line.flags | uniqueSpecific: 'color_hex'">
-              <!-- <mat-option [value]="'Cores bandeiras ano' + flag.year" disabled>
-                {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.placeholder' | translate}} {{flag.year}}
-              </mat-option> -->
               <mat-option   *ngIf="flag.flag_design.color_hex"
                             [value]="flag.flag_design.color_hex"
-                          >
+                            (click)="addColors(flag)">
               <div class="item-color_span"
                     [ngStyle]="{'background': flag.flag_design.color_hex,
                                 'color': flag?.flag_design?.color_rgb?.split(',')?.shift() < 200 ? 'white' : 'black'}">
