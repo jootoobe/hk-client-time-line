@@ -38,8 +38,7 @@ export class FilterFlagComponent implements OnInit {
     private toastrService: ToastrService,
   ) {
 
-    this.filterTopDiv = []
-    this.colorArray = []
+
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()
       console.log('TOAST', this.TOAST)
@@ -48,6 +47,9 @@ export class FilterFlagComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.filterTopDiv = []
+    this.colorArray = []
+    
     this.indexDbGetAllTimeLine('0000')
   }
 
@@ -106,13 +108,16 @@ export class FilterFlagComponent implements OnInit {
 
   addColors(val: FlagModel, colorHex:string, colorRgb: string) {
     console.log(val)
+    console.log(colorHex)
+    console.log(colorRgb)
+    
     let flagsReturnFilter:any = []
     let valFilter:any = []
-    valFilter  = this.filterTopDiv.filter((colorHex:any) => colorHex.color_hex === val.flag_design.color_hex.toLowerCase());
-    flagsReturnFilter = this.timeLine.time_line.flags.filter((colorHex:FlagModel) => colorHex.flag_design.color_hex.toLowerCase() === val.flag_design.color_hex.toLowerCase());
+    valFilter  = this.filterTopDiv?.filter((colorHex:any) => colorHex.color_hex?.toLowerCase() === val.flag_design.color_hex?.toLowerCase());
+    flagsReturnFilter = this.indexDbGetAllData.time_line.flags?.filter((colorHex:FlagModel) => colorHex.flag_design.color_hex?.toLowerCase() === val.flag_design.color_hex?.toLowerCase());
 
     console.log('2222222222222222222222222222222222222222222222222222222222222222222222222222222222222',flagsReturnFilter)
-    
+    console.log('333333333333333333333333333333333333333333333333333333333333333333333',valFilter)
     if (valFilter.length > 0) {
       // this.toastrService.info('Has already been added', 'Flag color');
       this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-1']);
@@ -124,7 +129,7 @@ export class FilterFlagComponent implements OnInit {
       this.colorArray.push(...flagsReturnFilter)
       this.filterTopDiv.push({color_hex: colorHex , color_rgb: colorRgb, color_rgb_number: Number(colorRgb.split(',')[0])})
 
-      this.timeLine.time_line.flags = this.colorArray
+      // this.timeLine.time_line.flags = this.colorArray
 
       // let newTimeLine = {
       //   time_line: {
