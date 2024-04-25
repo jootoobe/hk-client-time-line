@@ -52,11 +52,11 @@
               <mat-option   *ngIf="flag.flag_design.color_hex"
                             [value]="flag.flag_design.color_hex"
                           >
-              <span class="item-color_span"
+              <div class="item-color_span"
                     [ngStyle]="{'background': flag.flag_design.color_hex,
                                 'color': flag?.flag_design?.color_rgb?.split(',')?.shift() < 200 ? 'white' : 'black'}">
               {{ flag.flag_design.color_hex }} 
-              </span>
+              </div>
               </mat-option>
             </ng-container>
           </mat-select>
