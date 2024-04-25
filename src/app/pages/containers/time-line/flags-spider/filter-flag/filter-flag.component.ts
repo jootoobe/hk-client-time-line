@@ -27,7 +27,7 @@ export class FilterFlagComponent implements OnInit {
 
   TOAST!: any // translator used in ToastrService
 
-  colorArray: any[] = []
+  colorArray: any
 
   filterTopDiv= [{color_rgb: '', color_hex: '', color_rgb_number: 0}] as any
   constructor(
@@ -39,7 +39,7 @@ export class FilterFlagComponent implements OnInit {
   ) {
 
     this.filterTopDiv = []
-    
+    this.colorArray = []
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()
       console.log('TOAST', this.TOAST)
@@ -107,9 +107,9 @@ export class FilterFlagComponent implements OnInit {
   addColors(val: FlagModel, colorHex:string, colorRgb: string) {
     console.log(val)
     let flagsReturnFilter:any = []
-    let valFilter:any
+    let valFilter:any = []
     valFilter  = this.filterTopDiv.filter((colorHex:any) => colorHex.color_hex === val.flag_design.color_hex.toLowerCase());
-    flagsReturnFilter = this.timeLine.time_line.flags.filter((colorHex:FlagModel) => colorHex.flag_design.color_hex === val.flag_design.color_hex.toLowerCase());
+    flagsReturnFilter = this.timeLine.time_line.flags.filter((colorHex:FlagModel) => colorHex.flag_design.color_hex.toLowerCase() === val.flag_design.color_hex.toLowerCase());
 
     console.log('2222222222222222222222222222222222222222222222222222222222222222222222222222222222222',flagsReturnFilter)
     
@@ -121,18 +121,20 @@ export class FilterFlagComponent implements OnInit {
     
     
     if (this.filterTopDiv.length < 5) {
+      this.colorArray.push(...flagsReturnFilter)
       this.filterTopDiv.push({color_hex: colorHex , color_rgb: colorRgb, color_rgb_number: Number(colorRgb.split(',')[0])})
-      flagsReturnFilter.forEach((e:FlagModel, i:number) => {
-          this.colorArray.push(e)
-      });
 
-      let newTimeLine = {
-        time_line: {
-          flags: this.colorArray
-        }
-      }
-      this.timeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
-      console.log('sssssssssssssssss',newTimeLine)
+      this.timeLine.time_line.flags = this.colorArray
+
+      // let newTimeLine = {
+      //   time_line: {
+      //     flags: this.colorArray
+      //   }
+      // }
+      // let val = this.filterFlagsService.filterOrderFlags(newTimeLine)
+      // console.log('sssssssssssssssss', this.colorArray)
+      // console.log('sssssssssssssssss',newTimeLine)
+      console.log('sssssssssssssssss', this.colorArray)
 
     } else if (this.filterTopDiv.length >= 4) {
       // this.toastrService.info('The filter becomes more effective', 'Add 05 colors at a time');
