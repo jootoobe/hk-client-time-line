@@ -275,7 +275,7 @@ export class CreateFlagComponent implements OnInit, AfterViewInit {
     datePicker = this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.value
 
     datePicker = datePicker.toISOString() // convert to timestemp
-    let date: string = `${datePicker.split('T').shift()}T${this.time}${datePicker.substring(19)}`
+    let date: string = `${datePicker.split('T').shift()}T${this.time}${datePicker?.substring(19)}`
     this.flagsForm.controls[0]?.get('year')?.setValue(datePicker.split('-')[0])
 
     let dateSplit = datePicker.split('-')

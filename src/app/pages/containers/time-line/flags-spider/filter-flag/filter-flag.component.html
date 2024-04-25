@@ -54,7 +54,7 @@
                           >
               <span class="item-color_span"
                     [ngStyle]="{'background': flag.flag_design.color_hex,
-                                'color': flag.flag_design.color_rgb.split(',').shift() < 200 ? 'white' : 'black'}">
+                                'color': flag?.flag_design?.color_rgb?.split(',')?.shift() < 200 ? 'white' : 'black'}">
               {{ flag.flag_design.color_hex }} 
               </span>
               </mat-option>

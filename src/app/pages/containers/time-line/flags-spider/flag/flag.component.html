@@ -24,12 +24,12 @@
           <!-- RETANGULO BRANCO DE FUNDO -->
           <!-- QUANDO O FILTRO (BARRA) FOR ATIVADO -->
           @if(!enableDisableMouse) {
-            <div id="opacity-{{flag2.flag_design.color_hex.substring(1)}}" class="flag-1_white2--background opacity"></div>
+            <div id="opacity-{{flag2.flag_design.color_hex?.substring(1)}}" class="flag-1_white2--background opacity"></div>
           }
 
           <div  class="flag-2_card" 
                 [ngStyle]="setStylesCards(flag2)"  
-                id="color-{{flag2.flag_design.color_hex.substring(1)}}">
+                id="color-{{flag2.flag_design.color_hex?.substring(1)}}">
 
             <!-- RETANGULO BRANCO DE FUNDO -->
             <div class="flag-1_white--background"></div>
@@ -44,11 +44,11 @@
 
 
               <!-- Menu Edit Delete -->
-              <div class="box-inside-flag-title remove"  id="remove-{{flag2.flag_design.color_hex.substring(1)}}">
+              <div class="box-inside-flag-title remove"  id="remove-{{flag2.flag_design.color_hex?.substring(1)}}">
                 <!-- [ngStyle]="setStylesText(flag2)" -->
                 <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
                   [matMenuTriggerFor]="menuEditRemove"
-                  (click)="disableFilter(flag, flag.flag_design.color_hex.substring(1))">
+                  (click)="disableFilter(flag, flag.flag_design.color_hex?.substring(1))">
                   more_vert
                 </i>
                 <!-- Start Filter Sort-->
@@ -141,7 +141,7 @@
           </div >
           </div> <!-- Card End -->
           <!-- Open Kanban -->
-          <div class="inside-flag_open-kanban cursor_pointer remove" id="remove-{{flag.flag_design.color_hex.substring(1)}}">
+          <div class="inside-flag_open-kanban cursor_pointer remove" id="remove-{{flag.flag_design.color_hex?.substring(1)}}">
             <!-- Abrir Kanban -->
             {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-04' | translate}}
             <mat-icon matSuffix class="material-icons ">
@@ -166,21 +166,21 @@
             <div class="flag-2_line" [ngStyle]="{'border-left' : '.5rem solid hsl('+flag2.flag_design.color_hsl+')'}"> </div>
           } -->
           <div class="flag-2_line" 
-              id="color-{{flag2.flag_design.color_hex.substring(1)}}"
+              id="color-{{flag2.flag_design.color_hex?.substring(1)}}"
               [ngStyle]="{'border-left' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> </div>
 
 
           <!-- Flag base -->
           <div class="flag-2_base" 
-              id="color-{{flag2.flag_design.color_hex.substring(1)}}"
+              id="color-{{flag2.flag_design.color_hex?.substring(1)}}"
               [ngStyle]="{'border-top' : '.5rem solid rgba('+flag2.flag_design.color_rgb+',.3)'}"> 
           </div>
 
           <!-- Filter 1 -->
           <div class="flag-2_filter2 cursor_pointer" 
-              id="color-{{flag2.flag_design.color_hex.substring(1)}}"
+              id="color-{{flag2.flag_design.color_hex?.substring(1)}}"
               [ngStyle]="{'background' : 'rgba('+flag2.flag_design.color_rgb+', 1)'}"
-              (click)="filterColor(flag, flag.flag_design.color_hex.substring(1))">  
+              (click)="filterColor(flag, flag.flag_design.color_hex?.substring(1))">  
             </div>
         </div>
 
@@ -198,7 +198,7 @@
         <div class="flag-1_white--background"></div>
             
         <div class="flag-1_card" 
-            id="color-{{flag.flag_design.color_hex.substring(1)}}"
+            id="color-{{flag.flag_design.color_hex?.substring(1)}}"
             [ngStyle]="setStylesCards(flag)">
 
         <!-- RETANGULO BRANCO DE FUNDO -->
@@ -213,11 +213,11 @@
             </div>
 
             <!-- Menu Edit Delete -->
-            <div class="box-inside-flag-title remove" id="remove-{{flag.flag_design.color_hex.substring(1)}}">
+            <div class="box-inside-flag-title remove" id="remove-{{flag.flag_design.color_hex?.substring(1)}}">
               <!-- [ngStyle]="setStylesText(flag2)" -->
               <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
                  [matMenuTriggerFor]="menuEditRemove"
-                 (click)="disableFilter(flag, flag.flag_design.color_hex.substring(1))">
+                 (click)="disableFilter(flag, flag.flag_design.color_hex?.substring(1))">
               more_vert
               </i>
               <!-- Start Filter Sort-->
@@ -308,7 +308,7 @@
           </div>
         </div> <!-- Card End -->
         <!-- Open Kanban -->
-        <div class="inside-flag_open-kanban cursor_pointer remove" id="remove-{{flag.flag_design.color_hex.substring(1)}}">
+        <div class="inside-flag_open-kanban cursor_pointer remove" id="remove-{{flag.flag_design.color_hex?.substring(1)}}">
           <!-- Abrir Kanban -->
           {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-04' | translate}}
           <mat-icon matSuffix class="material-icons ">
@@ -327,19 +327,19 @@
       <div>
         <!-- Flagpole -->
         <div class="flag-1_line" 
-            id="color-{{flag.flag_design.color_hex.substring(1)}}"
+            id="color-{{flag.flag_design.color_hex?.substring(1)}}"
             [ngStyle]="{'border-left' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"></div>
 
         <!-- Flag base -->
         <div class="flag-1_base" 
-            id="color-{{flag.flag_design.color_hex.substring(1)}}"
+            id="color-{{flag.flag_design.color_hex?.substring(1)}}"
             [ngStyle]="{'border-top' : '.5rem solid rgba('+flag.flag_design.color_rgb+',.3)'}"> </div>
 
         <!-- Year -->
         <div class="flag-1_year Roboto_700">{{flag.year}}</div>
 
         <!-- Month - or - flag.month.split('/').pop() -->
-        <div class="flag-1_month Roboto_700 remove" id="remove-{{flag.flag_design.color_hex.substring(1)}}">
+        <div class="flag-1_month Roboto_700 remove" id="remove-{{flag.flag_design.color_hex?.substring(1)}}">
           <span >
             {{flag.date_obj.month_s +'/'+ flag.date_obj.year}}
           </span>
@@ -348,9 +348,9 @@
         <!-- Filter 1 -->
         @if(flag.flags2.length === 0) {
           <div class="flag-1_filter cursor_pointer" 
-              id="color-{{flag.flag_design.color_hex.substring(1)}}"
+              id="color-{{flag.flag_design.color_hex?.substring(1)}}"
               [ngStyle]="{'background' : 'rgba('+flag.flag_design.color_rgb+', 1)'}"
-              (click)="filterColor(flag, flag.flag_design.color_hex.substring(1))">  
+              (click)="filterColor(flag, flag.flag_design.color_hex?.substring(1))">  
           </div>
         }
       </div>
