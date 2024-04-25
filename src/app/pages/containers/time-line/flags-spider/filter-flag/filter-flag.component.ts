@@ -16,7 +16,8 @@ export class FilterFlagComponent implements OnInit {
   indexDbGetAllData!: TimeLineModel
   titleFlag!: string;
   applyFilter = output<TimeLineModel>()
-  
+  applyFilterCloseDialog = false
+  emitFilterApply!: TimeLineModel
   constructor(
     private dialogCreate: MatDialog,
     private filterFlagsService: FilterFlagsService,
@@ -39,33 +40,62 @@ export class FilterFlagComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    // Open Create Time_Line
-    openFilterTimeLineDialog() {
-      this.dialogCreate.open(this.filterTimeLine, {
-        disableClose: false,
-        panelClass: 'filter-time-line-dialog',
-        // backdropClass: 'backdropBackground',
-        position: {}
-      });
-  
-    }
+  // Open Create Time_Line
+  openFilterTimeLineDialog() {
+    let dialogRef = this.dialogCreate.open(this.filterTimeLine, {
+      disableClose: false,
+      panelClass: 'filter-time-line-dialog',
+      // backdropClass: 'backdropBackground',
+      position: {}
+    });
 
-    filterFlag() {
-      let val = this.titleFlag.length >= 1 ? this.titleFlag : ''
 
-      this.filterFlagsService.filterFlags(val, 'flag_title', this.indexDbGetAllData)
-      .subscribe((res:any) => {
-         if (res) {
-          console.log('ssssssssssssss',res)
-          return this.applyFilter.emit(res)
-          } 
-          if (!res) {
-            return this.applyFilter.emit(this.indexDbGetAllData)
-          }
+    dialogRef.afterClosed().subscribe(result => {
+      if (this.applyFilterCloseDialog) {
+        this.applyFilter.emit(this.emitFilterApply)
+
+      } else if (!this.applyFilterCloseDialog) {
+        this.titleFlag = ''
+        this.applyFilter.emit(this.indexDbGetAllData)
+      }
+    });
+
+
+
+
+  }
+
+  filterFlag() {
+    this.applyFilterCloseDialog = false
+    let val = this.titleFlag.length >= 1 ? this.titleFlag : ''
+
+    this.filterFlagsService.filterFlags(val, 'flag_title', this.indexDbGetAllData)
+      .subscribe((res: any) => {
+        if (res) {
+          this.emitFilterApply = res
+          console.log('ssssssssssssss', this.emitFilterApply)
+          return this.applyFilter.emit(this.emitFilterApply)
+        }
+        if (!res) {
+          this.titleFlag = ''
+          return this.applyFilter.emit(this.indexDbGetAllData)
+        }
 
       })
-      
-    }
+
+  }
+
+
+  closeFilter() {
+    this.titleFlag = ''
+    return this.applyFilter.emit(this.indexDbGetAllData)
+  }
+
+
+  toApplyFilter() {
+    this.applyFilterCloseDialog = true
+    this.dialogCreate.closeAll()
+  }
 }
 
 
