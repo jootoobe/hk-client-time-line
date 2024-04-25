@@ -21,6 +21,12 @@
               (mouseover)="mouseUp(idx)" 
               (mouseleave)="mouseUp(-1)">
 
+          <!-- RETANGULO BRANCO DE FUNDO -->
+          <!-- QUANDO O FILTRO (BARRA) FOR ATIVADO -->
+          @if(!enableDisableMouse) {
+            <div id="opacity-{{flag2.flag_design.color_hex.substring(1)}}" class="flag-1_white2--background opacity"></div>
+          }
+
           <div  class="flag-2_card" 
                 [ngStyle]="setStylesCards(flag2)"  
                 id="color-{{flag2.flag_design.color_hex.substring(1)}}">

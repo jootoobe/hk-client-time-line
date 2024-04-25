@@ -27,6 +27,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   enableDisableMouse = true // desabilita o mouse quando filtro esta ativado na bandeira 
   TOAST!: any // translator used in ToastrService
 
+  bbbb = true
 
 
   constructor(
@@ -150,13 +151,13 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   // mouse hovers over flag 02 (pops up)
   // Faz a flag vir para a frente
   mouseUp(val: number) {
-    if (this.enableDisableMouse) {
+    // if (this.enableDisableMouse) {
       if (val === -1) {
         this.cardIndexMouseUp = { index: -1, mouse: false }
         return
       }
       this.cardIndexMouseUp = { index: val, mouse: true }
-    }
+    // }
   }
 
   disableFilter(flag: FlagModel, id?: string) {
@@ -203,6 +204,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       '.flag-2_card', '.flag-2_line', '.flag-2_base', '.flag-2_filter2']);
 
     const remove = this.elementRef.nativeElement.querySelectorAll(['.remove']);
+    const opacity = this.elementRef.nativeElement.querySelectorAll(['.opacity']);
 
     if (this.filterColorId.length === 0 && disableFilter !== 'disable' && disableFilter !== 'enable') {
 
@@ -219,6 +221,13 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
           this.renderer2.setStyle(e, 'display', 'none');
         }
       });
+      
+      opacity.forEach((e: any, i: number) => {
+        if (e.id === `opacity-${id}`) {
+          this.renderer2.setStyle(e, 'opacity', '1');
+        }
+      });
+
 
       this.filterColorId.push(`color-${id}`)
       this.valFilterClose = {
