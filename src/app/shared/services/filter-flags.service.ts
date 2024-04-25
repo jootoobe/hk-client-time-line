@@ -34,14 +34,15 @@ export class FilterFlagsService {
 
     if (attributeObject === 'flag_title') {
 
-      val = timeLine.time_line.flags.filter((optionFlag: FlagModel) => optionFlag.flag_title.toLowerCase().includes(description.toLowerCase()))
       val2 = timeLine.time_line.flags.filter((optionFlag: FlagModel) => optionFlag.flags2?.some(item => item.flag_title.toLowerCase().includes(description.toLowerCase())))
+      val = timeLine.time_line.flags.filter((optionFlag: FlagModel) => optionFlag.flag_title.toLowerCase().includes(description.toLowerCase()))
 
-      val.forEach((e: FlagModel) => {
+  
+      val2.forEach((e: FlagModel) => {
         newVal.push(e)
       });
 
-      val2.forEach((e: FlagModel) => {
+      val.forEach((e: FlagModel) => {
         newVal.push(e)
       });
 
@@ -53,9 +54,14 @@ export class FilterFlagsService {
       }
     }
 
+    this.newFilterFlags.time_line.flags.sort((x: FlagModel, y: FlagModel) => {
+      return x.date_obj.timestamp - y.date_obj.timestamp;
+    })
+
     return of(this.newFilterFlags)
 
   }
+
 
 
 
