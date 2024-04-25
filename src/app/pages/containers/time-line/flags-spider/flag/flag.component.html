@@ -13,12 +13,12 @@
             [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem'}">
 
      
-        <!--  -->
+        <!-- tarja na lateral esquerda criada para desativar o mouseleave e mouseleave  -->
         <div  class="main-block--mouse-up"></div>
         
         <!-- Mouseover || Mouseleave-->
         <div  class="flag-2 inside-flag" 
-              (mouseover)="mouseUp(idx)" 
+              (mouseleave)="mouseUp(idx)" 
               (mouseleave)="mouseUp(-1)">
 
           <div  class="flag-2_card" 
