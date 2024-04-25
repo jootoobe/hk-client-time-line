@@ -15,6 +15,7 @@ export class TopDivComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   toApplyFilter = output<TimeLineModel>()
   openModal = output()
+  clearBarFilterBar = output() // limpa o filtro barra inferior
 
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
@@ -31,6 +32,10 @@ export class TopDivComponent implements OnInit {
   applyFilter(event: TimeLineModel) {
     console.log('event event event event', event)
     this.toApplyFilter.emit(event)
+  }
+
+  clearBarFilter() {
+   this.clearBarFilterBar.emit() 
   }
 
 }

@@ -28,7 +28,7 @@ export class FlagsSpiderComponent implements OnInit {
   flagCreateEdit!: string
 
   envProd = environment.production
-  clearBarFilterDelete!:string
+  clearBarFilterDelete!: string
 
   constructor(
     private dialogCreate: MatDialog,
@@ -62,7 +62,7 @@ export class FlagsSpiderComponent implements OnInit {
   ngOnInit(): void {
     console.log('FlagsSpiderComponent 🃏')
 
-    
+
     setTimeout(() => {
       this.getAllTimeLineById()
     }, 1000)
@@ -75,18 +75,25 @@ export class FlagsSpiderComponent implements OnInit {
     this.openCreateTimeLineDialog('edit')
   }
 
+  clearBarFilterBar(e: any) {
+    this.clearBarFilterDelete = 'disable'
+    // Altera o estado no ngOnChanges FlagComponent
+    setTimeout(() => {
+      this.clearBarFilterDelete = 'enable'
+    }, 1000)
+  }
 
   // Open Create Time_Line
   openCreateTimeLineDialog(val: string): void {
     this.flagCreateEdit = val
-   
+
     if (val === 'create') {
       this.editFlagForm = {}
       this.clearBarFilterDelete = 'disable'
       // Altera o estado no ngOnChanges FlagComponent
-      setTimeout(()=>{
+      setTimeout(() => {
         this.clearBarFilterDelete = 'enable'
-      },1000)
+      }, 1000)
     }
 
     this.dialogCreate.open(this.createTimeLine, {
@@ -111,13 +118,13 @@ export class FlagsSpiderComponent implements OnInit {
           this.stateService.updateGetAllTimeLine(newTimeLine)
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({message: false})
+          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
         },
         error: () => {
           let newTimeLine = { time_line: { flags: [] } }
           this.stateService.updateGetAllTimeLine(newTimeLine)
-           // end-loader
-           this.connectingExternalRoutesService.spiderShareLoader({message: false})
+          // end-loader
+          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
         },
         complete: () => {
         }

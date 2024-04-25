@@ -43,7 +43,8 @@
               matSuffix
               class="material-icons cursor_pointer"
               fontSet="material-icons-outlined"
-              (click)="filter.openFilterTimeLineDialog()">
+              (click)="filter.openFilterTimeLineDialog()"
+              (click)="clearBarFilter()">
       <span>filter_alt</span>
       <filter-flag  #filter
                     [timeLine]="timeLine"
