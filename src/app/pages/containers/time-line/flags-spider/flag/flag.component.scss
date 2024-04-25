@@ -21,6 +21,16 @@
   white-space: normal; // deixa os textos dentor da caixa
   width: auto; // usado para o scroll de baixo ficar mais fiel ao tamanho
 
+  &--mouse-up{
+    width: 4rem;
+    height: 22rem;
+    background: transparent;
+    // background: red;
+    position: absolute;
+    margin: 3.5rem 0 0 26.5rem;
+    z-index: 2;
+  }
+
   &--flags {
     margin-left: 7rem;
   }
