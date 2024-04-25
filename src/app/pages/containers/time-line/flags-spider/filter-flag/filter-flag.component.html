@@ -49,12 +49,13 @@
               <!-- <mat-option [value]="'Cores bandeiras ano' + flag.year" disabled>
                 {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.placeholder' | translate}} {{flag.year}}
               </mat-option> -->
-              <mat-option   *ngIf="flag.flag_design.color_hex != 'undefined'"
+              <mat-option   *ngIf="flag.flag_design.color_hex"
                             [value]="flag.flag_design.color_hex"
                           >
               <span class="item-color_span"
-                    [ngStyle]="{'background': flag.flag_design.color_hex}">
-              {{ flag.flag_design.color_hex }}
+                    [ngStyle]="{'background': flag.flag_design.color_hex,
+                                'color': flag.flag_design.color_rgb.split(',').shift() < 200 ? 'white' : 'black'}">
+              {{ flag.flag_design.color_hex }} 
               </span>
               </mat-option>
             </ng-container>
