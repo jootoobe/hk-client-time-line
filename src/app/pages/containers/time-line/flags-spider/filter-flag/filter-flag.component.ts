@@ -17,7 +17,7 @@ export class FilterFlagComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   @ViewChild('filterTimeLine', { static: false }) filterTimeLine!: TemplateRef<ElementRef>; // open modal ref
   indexDbGetAllData!: TimeLineModel
-  titleFlag!: string; // digitação filtro
+  titleFlag!: any; // digitação filtro
   applyFilter = output<TimeLineModel>()
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado

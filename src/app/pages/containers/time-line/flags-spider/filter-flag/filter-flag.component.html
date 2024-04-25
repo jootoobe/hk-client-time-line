@@ -71,14 +71,24 @@
         </div>
       </div>
 
+
       <div class="item-btn">
         <div class="item-btn--add-filter">
           <!-- Apply filter matDialogClose-->
-          <button mat-stroked-button
+          @if(titleFlag?.length > 0) {
+            <button mat-stroked-button
                   class="btn_red-spider"
                   (click)="toApplyFilter()">
-              {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
-          </button>
+                  {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
+            </button>
+          } @else {
+            <button mat-stroked-button
+                    class="btn_opt-invalid"
+                  >
+                  {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
+            </button>
+          }
+ 
         </div>
       </div>
 
