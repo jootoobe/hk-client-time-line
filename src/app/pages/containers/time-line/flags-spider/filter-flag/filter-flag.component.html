@@ -45,16 +45,16 @@
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.mat-label' | translate}}
           </mat-label>
           <mat-select [(value)]="selectedColors">
-            <ng-container *ngFor="let flag of timeLine.time_line.flags | uniqueSpecific: 'color_hex'">
+            <ng-container *ngFor="let flag of indexDbGetAllData.time_line.flags | uniqueSpecific: 'color_hex'">
               <!-- <mat-option [value]="'Cores bandeiras ano' + flag.year" disabled>
                 {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.placeholder' | translate}} {{flag.year}}
               </mat-option> -->
               <mat-option   *ngIf="flag.flag_design.color_hex != 'undefined'"
-              [value]="flag.flag_design.color_hex"
+                            [value]="flag.flag_design.color_hex"
                           >
               <span class="item-color_span"
                     [ngStyle]="{'background': flag.flag_design.color_hex}">
-              {{  flag.flag_design.color_hex }}
+              {{ flag.flag_design.color_hex }}
               </span>
               </mat-option>
             </ng-container>

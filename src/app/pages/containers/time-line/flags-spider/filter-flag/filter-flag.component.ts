@@ -3,6 +3,9 @@ import { MatDialog } from "@angular/material/dialog";
 import { TimeLineModel } from "../../../../../models/time-line.model";
 import { FilterFlagsService } from "../../../../../shared/services/filter-flags.service";
 import { StateService } from "../../../../../shared/services/state.service";
+import { IndexDbTimeLineService } from "../../../../../shared/services/storage/indexed-db-timeline-store.service";
+import { switchMap } from "rxjs";
+import { FlagModel } from "../../../../../models/flag.model";
 
 
 @Component({
@@ -18,29 +21,31 @@ export class FilterFlagComponent implements OnInit {
   applyFilter = output<TimeLineModel>()
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
-  
+
   selectedColors = 'Filtre sua bandeira pelas cores'
 
   constructor(
     private dialogCreate: MatDialog,
     private filterFlagsService: FilterFlagsService,
-    private stateService: StateService,
+    // private stateService: StateService,
+    private indexDbTimeLineService: IndexDbTimeLineService,
   ) {
 
-    this.stateService.getAllTimeLineSubject$
-      .subscribe({
-        next: (res: TimeLineModel) => {
-          if (res && res.time_line) {
-            this.indexDbGetAllData = res
-          }
-        },
-        error: () => { },
-        complete: () => { }
-      })
+    // this.stateService.getAllTimeLineSubject$
+    //   .subscribe({
+    //     next: (res: TimeLineModel) => {
+    //       if (res && res.time_line) {
+    //         this.indexDbGetAllData = res
+    //       }
+    //     },
+    //     error: () => { },
+    //     complete: () => { }
+    //   })
 
   }
 
   ngOnInit(): void {
+    this.indexDbGetAllTimeLine('0000')
   }
 
   // Open Create Time_Line
@@ -94,6 +99,33 @@ export class FilterFlagComponent implements OnInit {
   toApplyFilter() {
     this.applyFilterCloseDialog = true
     this.dialogCreate.closeAll()
+  }
+
+
+
+  indexDbGetAllTimeLine(yearKey: string) {
+    const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
+    connTimeLine$.pipe(
+      switchMap(() =>
+        this.indexDbTimeLineService.indexDbGetAllTimeLine('time_line', yearKey)
+      ))
+      .subscribe({
+        next: (res: TimeLineModel) => {
+          console.log('this.indexDbGetAllTimeLine', res)
+          let valFlags: FlagModel[] = res.time_line.flags
+          let newTimeLine = {
+            time_line: {
+              flags: valFlags
+            }
+          }
+          this.indexDbGetAllData = newTimeLine
+        },
+        error: (err) => {
+
+        },
+        complete: () => {
+        }
+      })
   }
 }
 
