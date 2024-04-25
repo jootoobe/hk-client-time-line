@@ -27,7 +27,9 @@ export class FilterFlagComponent implements OnInit {
 
   TOAST!: any // translator used in ToastrService
 
-  // colorArray: any = []
+  colorArray: any[] = []
+
+  filterTopDiv= [{color_rgb: '', color_hex: '', color_rgb_number: 0}] as any
   constructor(
     private dialogCreate: MatDialog,
     private filterFlagsService: FilterFlagsService,
@@ -36,7 +38,8 @@ export class FilterFlagComponent implements OnInit {
     private toastrService: ToastrService,
   ) {
 
-
+    this.filterTopDiv = []
+    
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()
       console.log('TOAST', this.TOAST)
@@ -101,35 +104,42 @@ export class FilterFlagComponent implements OnInit {
     this.dialogCreate.closeAll()
   }
 
-  addColors(val: FlagModel) {
-    let valFilter = []
-    valFilter = this.timeLine.time_line.flags.filter(() => val.flag_design.color_hex.toLowerCase());
+  addColors(val: FlagModel, colorHex:string, colorRgb: string) {
+    console.log(val)
+    let flagsReturnFilter:any = []
+    let valFilter:any
+    valFilter  = this.filterTopDiv.filter((colorHex:any) => colorHex.color_hex === val.flag_design.color_hex.toLowerCase());
+    flagsReturnFilter = this.timeLine.time_line.flags.filter((colorHex:FlagModel) => colorHex.flag_design.color_hex === val.flag_design.color_hex.toLowerCase());
 
-    console.log('sssssssss',valFilter)
-
-    if (valFilter.length !== 0) {
+    console.log('2222222222222222222222222222222222222222222222222222222222222222222222222222222222222',flagsReturnFilter)
+    
+    if (valFilter.length > 0) {
       // this.toastrService.info('Has already been added', 'Flag color');
       this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-1']);
       return
     }
+    
+    
+    if (this.filterTopDiv.length < 5) {
+      this.filterTopDiv.push({color_hex: colorHex , color_rgb: colorRgb, color_rgb_number: Number(colorRgb.split(',')[0])})
+      flagsReturnFilter.forEach((e:FlagModel, i:number) => {
+          this.colorArray.push(e)
+      });
 
-    // if (this.colorArray.length < 5) {
-    //   this.colorArray.push(val);
-    //   this.filtercolorFlag(this.colorArray)
-    //   // array of colors added by filter
-    //   // sent to the component top-div
-    //   let newVal = {
-    //     color_rgb: Number(val.color_rgb.split(',')[0]),
-    //     color_hex: val.color_hex
-    //   }
-    //   this.filterInpuTopDiv.push(newVal)
-    //   this.filterFlagsService.topDivFilterInpu(this.filterInpuTopDiv)
+      let newTimeLine = {
+        time_line: {
+          flags: this.colorArray
+        }
+      }
+      this.timeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
+      console.log('sssssssssssssssss',newTimeLine)
 
-    // } else if (this.colorArray.length >= 4) {
-    //   // this.toastrService.info('The filter becomes more effective', 'Add 05 colors at a time');
-    //   this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-1']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-1']['message-1']);
+    } else if (this.filterTopDiv.length >= 4) {
+      // this.toastrService.info('The filter becomes more effective', 'Add 05 colors at a time');
+      this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-1']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-1']['message-1']);
 
-    // }
+    }
+
   }
 
 

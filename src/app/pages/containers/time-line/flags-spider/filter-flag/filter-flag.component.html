@@ -48,7 +48,7 @@
             <ng-container *ngFor="let flag of indexDbGetAllData.time_line.flags | uniqueSpecific: 'color_hex'">
               <mat-option   *ngIf="flag.flag_design.color_hex"
                             [value]="flag.flag_design.color_hex"
-                            (click)="addColors(flag)">
+                            (click)="addColors(flag, flag.flag_design.color_hex, flag.flag_design.color_rgb)">
               <div class="item-color_span"
                     [ngStyle]="{'background': flag.flag_design.color_hex,
                                 'color': flag?.flag_design?.color_rgb?.split(',')?.shift() < 200 ? 'white' : 'black'}">
@@ -59,11 +59,17 @@
           </mat-select>
         </mat-form-field>
 
-        <!-- filter for chips -->
-        <div class="item-color_display">
-          <div class="item-color_display--box" >
-
-            <div class="item-color_text">  </div>
+        <!-- filtro quadrados -->
+        <div class="item-color_display" *ngIf="filterTopDiv.length > 0">
+          <div class="item-color_display--box" *ngFor="let color of filterTopDiv; let i = index;">
+            <div  class="item-color_display--colors cursor_pointer"
+                  [ngStyle]="{ 'background': color.color_hex}">
+              <mat-icon class="material-icons"
+                        [ngStyle]="{'color': color.color_rgb?.split(',')?.shift()  < 200 ? 'white' : 'black'}">
+                        done
+              </mat-icon>
+            </div>
+            <div class="item-color_text"> {{color.color_hex}} </div>
           </div>
         </div>
       </div>
