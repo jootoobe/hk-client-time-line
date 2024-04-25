@@ -14,10 +14,11 @@ export class FilterFlagComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   @ViewChild('filterTimeLine', { static: false }) filterTimeLine!: TemplateRef<ElementRef>; // open modal ref
   indexDbGetAllData!: TimeLineModel
-  titleFlag!: string;
+  titleFlag!: string; // digitação filtro
   applyFilter = output<TimeLineModel>()
-  applyFilterCloseDialog = false
-  emitFilterApply!: TimeLineModel
+  applyFilterCloseDialog = false // if else dialogRef.afterClosed()
+  emitFilterApply!: TimeLineModel // guarda o filtro aplicado
+
   constructor(
     private dialogCreate: MatDialog,
     private filterFlagsService: FilterFlagsService,
@@ -49,31 +50,27 @@ export class FilterFlagComponent implements OnInit {
       position: {}
     });
 
+    dialogRef.afterClosed()
+      .subscribe(() => {
+        if (this.applyFilterCloseDialog) {
+          this.applyFilter.emit(this.emitFilterApply)
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (this.applyFilterCloseDialog) {
-        this.applyFilter.emit(this.emitFilterApply)
-
-      } else if (!this.applyFilterCloseDialog) {
-        this.titleFlag = ''
-        this.applyFilter.emit(this.indexDbGetAllData)
-      }
-    });
-
-
-
-
+        } else if (!this.applyFilterCloseDialog) {
+          this.titleFlag = ''
+          this.applyFilter.emit(this.indexDbGetAllData)
+        }
+      });
   }
+
 
   filterFlag() {
     this.applyFilterCloseDialog = false
     let val = this.titleFlag.length >= 1 ? this.titleFlag : ''
 
     this.filterFlagsService.filterFlags(val, 'flag_title', this.indexDbGetAllData)
-      .subscribe((res: any) => {
+      .subscribe((res: TimeLineModel) => {
         if (res) {
           this.emitFilterApply = res
-          console.log('ssssssssssssss', this.emitFilterApply)
           return this.applyFilter.emit(this.emitFilterApply)
         }
         if (!res) {
