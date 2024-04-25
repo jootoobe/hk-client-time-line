@@ -1,6 +1,7 @@
 <ng-template #filterTimeLine>
   <div class="filter-time-line-dialog">
     <div class="filter-grid-container">
+
       <!-- Filter Flags -->
       <div class="item-main-header"> 
          {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG.modal.grid1' | translate}}
@@ -14,6 +15,7 @@
         <div class="item-date-start--title">
           {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG.modal.grid3' | translate}}
         </div>
+
         <!-- Flag title filter -->
         <mat-form-field class="example-full-width">
           <mat-label> 
@@ -32,18 +34,30 @@
       <div class="item-date-end"></div>
 
 
+      <!-- Color -->
       <div class="item-color">
-        <!-- Color -->
         <div class="item-color--hex">
           {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG.modal.grid8' | translate}}
         </div>
+        <!-- Color filter -->
         <mat-form-field>
-          <!-- Color filter -->
           <mat-label>
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.mat-label' | translate}}
           </mat-label>
-          <mat-select >
-
+          <mat-select [(value)]="selectedColors">
+            <ng-container *ngFor="let flag of timeLine.time_line.flags | uniqueSpecific: 'color_hex'">
+              <!-- <mat-option [value]="'Cores bandeiras ano' + flag.year" disabled>
+                {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.placeholder' | translate}} {{flag.year}}
+              </mat-option> -->
+              <mat-option   *ngIf="flag.flag_design.color_hex != 'undefined'"
+              [value]="flag.flag_design.color_hex"
+                          >
+              <span class="item-color_span"
+                    [ngStyle]="{'background': flag.flag_design.color_hex}">
+              {{  flag.flag_design.color_hex }}
+              </span>
+              </mat-option>
+            </ng-container>
           </mat-select>
         </mat-form-field>
 

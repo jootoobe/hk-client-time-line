@@ -18,6 +18,8 @@ export class FilterFlagComponent implements OnInit {
   applyFilter = output<TimeLineModel>()
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
+  
+  selectedColors = 'Filtre sua bandeira pelas cores'
 
   constructor(
     private dialogCreate: MatDialog,

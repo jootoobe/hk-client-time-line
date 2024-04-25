@@ -9,6 +9,7 @@ import { ToolTipRendererChieldDirective } from './directives/custom-tooltip/tool
 import { ToolTipRendererDirective } from './directives/custom-tooltip/tooltip-renderer.directive';
 import { TrimDirective } from './directives/trim.directive';
 import { MaskDateDirective } from './directives/mask-datepicker.directive';
+import { UniqueSpecificPipe } from './pipes/unique-specific.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MaskDateDirective } from './directives/mask-datepicker.directive';
     ToolTipRendererDirective,
     TrimDirective,
     MaskDateDirective,
+    UniqueSpecificPipe,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { MaskDateDirective } from './directives/mask-datepicker.directive';
     ToolTipRendererDirective,
     TrimDirective,
     MaskDateDirective,
+    UniqueSpecificPipe
   ],
   providers: [],
 })
