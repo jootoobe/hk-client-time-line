@@ -24,7 +24,7 @@ export class FilterFlagComponent implements OnInit {
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
 
-  selectedColors = 'Filtre sua bandeira pelas cores'
+  selectedColors:any = 'Filtre sua bandeira pelas cores'
 
   TOAST!: any // translator used in ToastrService
 
@@ -170,7 +170,7 @@ export class FilterFlagComponent implements OnInit {
 
 
     if (this.colorArray.length <= 0) {
-      this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
+      this.clearFilter('update')
       return
     }
     newTimeLine = {
@@ -230,6 +230,17 @@ export class FilterFlagComponent implements OnInit {
         this.selectColor.push(value)
       }
     })
+  }
+
+  clearFilter(update?: string) {
+    this.selectedColors = null
+    this.colorArray = []
+    this.filterTopDiv = []
+    this.titleFlag = ''
+
+    if (update === 'update') {
+      this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
+    }
   }
 }
 
