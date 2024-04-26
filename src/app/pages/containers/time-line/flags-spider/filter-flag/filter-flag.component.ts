@@ -18,19 +18,19 @@ export class FilterFlagComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   @ViewChild('filterTimeLine', { static: false }) filterTimeLine!: TemplateRef<ElementRef>; // open modal ref
   indexDbGetAllData!: TimeLineModel
+  selectColor!: FlagModel[]
   titleFlag!: any; // digitação filtro
   toApplyFilterText = output<TimeLineModel>()
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
 
-  aaaaaaaaaaaaaaaaaa!: FlagModel[]
   selectedColors = 'Filtre sua bandeira pelas cores'
 
   TOAST!: any // translator used in ToastrService
 
   colorArray: any
 
-  filterTopDiv= [{color_rgb: '', color_hex: '', color_rgb_number: 0}] as any
+  filterTopDiv = [{ color_rgb: '', color_hex: '', color_rgb_number: 0 }] as any
   constructor(
     private dialogCreate: MatDialog,
     private filterFlagsService: FilterFlagsService,
@@ -51,7 +51,7 @@ export class FilterFlagComponent implements OnInit {
   ngOnInit(): void {
     this.filterTopDiv = []
     this.colorArray = []
-    
+
 
   }
 
@@ -75,7 +75,7 @@ export class FilterFlagComponent implements OnInit {
         }
       });
 
-      this.indexDbGetAllTimeLine('0000')
+    this.indexDbGetAllTimeLine('0000')
   }
 
 
@@ -110,26 +110,26 @@ export class FilterFlagComponent implements OnInit {
     this.dialogCreate.closeAll()
   }
 
-  addColors(val: FlagModel, colorHex:string, colorRgb: string) {
+  addColors(val: FlagModel, colorHex: string, colorRgb: string) {
     console.log(val)
     console.log(colorHex)
     console.log(colorRgb)
-    
-    let flagsReturnFilter:any = []
-    let valFilter:any = []
-    valFilter  = this.filterTopDiv?.filter((colorHex:any) => colorHex.color_hex?.toLowerCase() === val.flag_design.color_hex?.toLowerCase());
+
+    let flagsReturnFilter: any = []
+    let valFilter: any = []
+    valFilter = this.filterTopDiv?.filter((colorHex: any) => colorHex.color_hex?.toLowerCase() === val.flag_design.color_hex?.toLowerCase());
 
     if (valFilter.length > 0) {
       this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-1']);
       return
     }
-    
-    
-    if (this.colorArray.length < 5) {
-      this.filterTopDiv.push({color_hex: colorHex , color_rgb: colorRgb, color_rgb_number: Number(colorRgb.split(',')[0])})
 
-      this.indexDbGetAllData.time_line.flags.forEach((e:FlagModel, i:number) =>{
-        if((e.flag_design.color_hex?.toLowerCase()) === (colorHex?.toLowerCase())) {
+
+    if (this.colorArray.length < 5) {
+      this.filterTopDiv.push({ color_hex: colorHex, color_rgb: colorRgb, color_rgb_number: Number(colorRgb.split(',')[0]) })
+
+      this.indexDbGetAllData.time_line.flags.forEach((e: FlagModel, i: number) => {
+        if ((e.flag_design.color_hex?.toLowerCase()) === (colorHex?.toLowerCase())) {
           flagsReturnFilter.push(e)
         }
       })
@@ -158,8 +158,8 @@ export class FilterFlagComponent implements OnInit {
     this.filterTopDiv.splice(i, 1)
     console.log(this.colorArray.length <= 0)
     console.log(this.colorArray.length <= 0)
-    if(this.colorArray.length <= 0) {
-      this.indexDbGetAllTimeLine('0000', 'reset')
+    if (this.colorArray.length <= 0) {
+      this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
       return
     }
     let newTimeLine = {
@@ -172,7 +172,7 @@ export class FilterFlagComponent implements OnInit {
   }
 
 
-  indexDbGetAllTimeLine(yearKey: string, reset?:string) {
+  indexDbGetAllTimeLine(yearKey: string, reset?: string) {
     const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
     connTimeLine$.pipe(
       switchMap(() =>
@@ -187,11 +187,12 @@ export class FilterFlagComponent implements OnInit {
               flags: valFlags
             }
           }
-          
+
           this.indexDbGetAllData = newTimeLine
-          console.log('PAPAPAPPAPAPAPPAPAPA',this.indexDbGetAllData)
-          this.identifyColor(this.indexDbGetAllData.time_line.flags)
-          if(reset==='reset'){
+          console.log('PAPAPAPPAPAPAPPAPAPA', this.indexDbGetAllData)
+          this.uniqueColor(this.indexDbGetAllData.time_line.flags)
+
+          if (reset === 'reset') {
             this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
           }
         },
@@ -203,34 +204,21 @@ export class FilterFlagComponent implements OnInit {
       })
   }
 
-  convertToNumber(val: any):number {
-      let numberValue = Number(val);
-      return numberValue
+  convertToNumber(val: any): number {
+    let numberValue = Number(val);
+    return numberValue
   }
 
-  identifyColor(flags:any[]) {
-  //   console.log('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',item)
-  this.aaaaaaaaaaaaaaaaaa = [];
-  let allCode = flags.map((value) => value.flag_design.color_hex);
-  flags.map((value, index) => {
-    if (allCode.indexOf(value.flag_design.color_hex) !== index) {
-      // uniqueArr.push(value)
-    } else {
-      this.aaaaaaaaaaaaaaaaaa.push(value)
-    }
-  })
-  console.log('ssssssssssssssssssssssssssssss',this.aaaaaaaaaaaaaaaaaa)
-}
+  uniqueColor(flags: any[]) {
+    this.selectColor = [];
+    let allCode = flags.map((value) => value.flag_design.color_hex);
+    flags.map((value, index) => {
+      if (allCode.indexOf(value.flag_design.color_hex) !== index) {
+        // uniqueArr.push(value)
+      } else {
+        this.selectColor.push(value)
+      }
+    })
+  }
 }
 
-// let uniqueArr: any = [];
-// let allCode = items.map((value) => value['flag_design'][term]);
-// items.map((value, index) => {
-//   if (allCode.indexOf(value['flag_design'][term]) !== index) {
-//     value.flag_design.color_hex = undefined
-//     delete value.flag_design.color_hex
-//     uniqueArr.push(value)
-//   } else {
-//     uniqueArr.push(value)
-//   }
-// })
