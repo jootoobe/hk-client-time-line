@@ -23,6 +23,7 @@ export class FilterFlagComponent implements OnInit {
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
 
+  aaaaaaaaaaaaaaaaaa!: FlagModel[]
   selectedColors = 'Filtre sua bandeira pelas cores'
 
   TOAST!: any // translator used in ToastrService
@@ -42,6 +43,7 @@ export class FilterFlagComponent implements OnInit {
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()
       console.log('TOAST', this.TOAST)
+      this.indexDbGetAllTimeLine('0000')
     })
 
   }
@@ -50,7 +52,7 @@ export class FilterFlagComponent implements OnInit {
     this.filterTopDiv = []
     this.colorArray = []
     
-    this.indexDbGetAllTimeLine('0000')
+
   }
 
   // Open Create Time_Line
@@ -188,6 +190,7 @@ export class FilterFlagComponent implements OnInit {
           
           this.indexDbGetAllData = newTimeLine
           console.log('PAPAPAPPAPAPAPPAPAPA',this.indexDbGetAllData)
+          this.identifyColor(this.indexDbGetAllData.time_line.flags)
           if(reset==='reset'){
             this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
           }
@@ -204,6 +207,30 @@ export class FilterFlagComponent implements OnInit {
       let numberValue = Number(val);
       return numberValue
   }
+
+  identifyColor(flags:any[]) {
+  //   console.log('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',item)
+  this.aaaaaaaaaaaaaaaaaa = [];
+  let allCode = flags.map((value) => value.flag_design.color_hex);
+  flags.map((value, index) => {
+    if (allCode.indexOf(value.flag_design.color_hex) !== index) {
+      // uniqueArr.push(value)
+    } else {
+      this.aaaaaaaaaaaaaaaaaa.push(value)
+    }
+  })
+  console.log('ssssssssssssssssssssssssssssss',this.aaaaaaaaaaaaaaaaaa)
+}
 }
 
-
+// let uniqueArr: any = [];
+// let allCode = items.map((value) => value['flag_design'][term]);
+// items.map((value, index) => {
+//   if (allCode.indexOf(value['flag_design'][term]) !== index) {
+//     value.flag_design.color_hex = undefined
+//     delete value.flag_design.color_hex
+//     uniqueArr.push(value)
+//   } else {
+//     uniqueArr.push(value)
+//   }
+// })
