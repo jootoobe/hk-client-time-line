@@ -34,7 +34,7 @@
     'date-start date-start date-start date-start    date-start     date-end'
     'chips      chips      chips      chips         chips          chips'
     'color      color      color      color         color          color'
-    'filter-btn filter-btn filter-btn  filter-btn  filter-btn     filter-btn'
+    'item-btn-clear item-btn-clear item-btn-clear  filter-btn  filter-btn     filter-btn'
   ;
   grid-template-columns: 16.4% 16.4% 16.4% 16.4% 16.4% 16.4%;
   gap: .1rem;
@@ -139,6 +139,10 @@
   }
 }
 
+.item-btn-clear {
+  grid-area: item-btn-clear;
+}
+
 .item-btn {
   grid-area: filter-btn;
 }
@@ -171,6 +175,12 @@
   font-size: 2rem;
   padding: 2rem 2rem 0 0;
   font-weight: var(--fonts-font-weight-700);
+}
+
+.item-btn-clear {
+  text-align: start;
+  margin: 3rem 0rem 2rem 2rem;
+
 }
 
 .item-btn {

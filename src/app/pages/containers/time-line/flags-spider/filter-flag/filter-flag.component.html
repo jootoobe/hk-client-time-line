@@ -73,16 +73,32 @@
         </div>
       </div>
 
+      <div class="item-btn-clear">
+        <!-- <div class=""> -->
+        <!-- Apply filter matDialogClose-->
+        @if(titleFlag?.length > 0 || filterTopDiv?.length) {
+        <button mat-stroked-button class="btn_red-spider" (click)="clearFilter('update')">
+          Limpar filtro
+        </button>
+        }
+        @else if(filterTopDiv?.length === 0 || titleFlag?.length === 0) {
+        <button mat-stroked-button class="btn_red-spider">
+          Limpar filtro
+        </button>
+        }
+      
+        <!-- </div> -->
+      </div>
 
       <div class="item-btn">
         <div class="item-btn--add-filter">
           <!-- Apply filter matDialogClose-->
           @if(titleFlag?.length > 0) {
-          <button mat-stroked-button class="btn_red-spider" (click)="toApplyFilter('text')">
+          <button mat-stroked-button class="btn_opt-valid " (click)="toApplyFilter('text')">
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
           </button>
           }@else if(filterTopDiv?.length > 0) {
-          <button mat-stroked-button class="btn_red-spider" (click)="toApplyFilter('color')">
+          <button mat-stroked-button class="btn_opt-valid" (click)="toApplyFilter('color')">
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
           </button>
 
