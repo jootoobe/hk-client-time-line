@@ -153,9 +153,14 @@ export class FilterFlagComponent implements OnInit {
 
   }
 
-  removeColor(i: number) {
-    this.colorArray.splice(i, 1);
+  removeColor(i: number, color:any) {
+
+    let indexDelet1 =  this.colorArray?.findIndex((colorHex: any) => colorHex.flag_design.color_hex?.toLowerCase() === color?.toLowerCase());
+
+    this.colorArray.splice(indexDelet1, 1);
     this.filterTopDiv.splice(i, 1)
+
+
     console.log(this.colorArray.length <= 0)
     console.log(this.colorArray.length <= 0)
     if (this.colorArray.length <= 0) {
