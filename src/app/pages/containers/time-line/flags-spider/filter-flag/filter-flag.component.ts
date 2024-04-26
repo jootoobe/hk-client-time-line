@@ -114,7 +114,7 @@ export class FilterFlagComponent implements OnInit {
     let flagsReturnFilter:any = []
     let valFilter:any = []
     valFilter  = this.filterTopDiv?.filter((colorHex:any) => colorHex.color_hex?.toLowerCase() === val.flag_design.color_hex?.toLowerCase());
-    flagsReturnFilter = this.indexDbGetAllData.time_line.flags?.filter((colorHex:FlagModel) => colorHex.flag_design.color_hex?.toLowerCase() === val.flag_design.color_hex?.toLowerCase());
+    // flagsReturnFilter = this.indexDbGetAllData.time_line.flags?.filter((colorHex:FlagModel) => colorHex.flag_design.color_hex?.toLowerCase() === val.flag_design.color_hex?.toLowerCase());
 
     console.log('2222222222222222222222222222222222222222222222222222222222222222222222222222222222222',flagsReturnFilter)
     console.log('333333333333333333333333333333333333333333333333333333333333333333333',valFilter)
@@ -126,20 +126,16 @@ export class FilterFlagComponent implements OnInit {
     
     
     if (this.filterTopDiv.length < 5) {
-      this.colorArray.push(...flagsReturnFilter)
+      // this.colorArray.push(...flagsReturnFilter)
       this.filterTopDiv.push({color_hex: colorHex , color_rgb: colorRgb, color_rgb_number: Number(colorRgb.split(',')[0])})
 
-      // this.timeLine.time_line.flags = this.colorArray
+      this.timeLine.time_line.flags.forEach((e:FlagModel, i:number) =>{
+        if((e.flag_design.color_hex?.toLowerCase()) === (colorHex?.toLowerCase())) {
+          flagsReturnFilter.push(e)
+        }
+      })
 
-      // let newTimeLine = {
-      //   time_line: {
-      //     flags: this.colorArray
-      //   }
-      // }
-      // let val = this.filterFlagsService.filterOrderFlags(newTimeLine)
-      // console.log('sssssssssssssssss', this.colorArray)
-      // console.log('sssssssssssssssss',newTimeLine)
-      console.log('sssssssssssssssss', this.colorArray)
+      this.colorArray = this.colorArray.concat(flagsReturnFilter)
 
     } else if (this.filterTopDiv.length >= 4) {
       // this.toastrService.info('The filter becomes more effective', 'Add 05 colors at a time');
