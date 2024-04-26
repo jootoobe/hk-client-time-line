@@ -149,9 +149,26 @@ export class FilterFlagComponent implements OnInit {
 
   }
 
+  removeColor(i: number) {
+    this.colorArray.splice(i, 1);
+    this.filterTopDiv.splice(i, 1)
+    console.log(this.colorArray.length <= 0)
+    console.log(this.colorArray.length <= 0)
+    if(this.colorArray.length <= 0) {
+      this.indexDbGetAllTimeLine('0000', 'reset')
+      return
+    }
+    let newTimeLine = {
+      time_line: {
+        flags: this.colorArray
+      }
+    }
+
+    this.stateService.updateGetAllTimeLine(newTimeLine)
+  }
 
 
-  indexDbGetAllTimeLine(yearKey: string) {
+  indexDbGetAllTimeLine(yearKey: string, reset?:string) {
     const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
     connTimeLine$.pipe(
       switchMap(() =>
@@ -166,7 +183,12 @@ export class FilterFlagComponent implements OnInit {
               flags: valFlags
             }
           }
+          
           this.indexDbGetAllData = newTimeLine
+          console.log('PAPAPAPPAPAPAPPAPAPA',this.indexDbGetAllData)
+          if(reset==='reset'){
+            this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
+          }
         },
         error: (err) => {
 

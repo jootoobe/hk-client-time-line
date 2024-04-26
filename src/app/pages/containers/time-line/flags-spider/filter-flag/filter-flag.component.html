@@ -62,7 +62,7 @@
         <!-- filtro quadrados -->
         <div class="item-color_display" *ngIf="filterTopDiv.length > 0">
           <div class="item-color_display--box" *ngFor="let color of filterTopDiv; let i = index;">
-            <div  class="item-color_display--colors cursor_pointer"
+            <div  class="item-color_display--colors cursor_pointer" (click)="removeColor(i)"
                   [ngStyle]="{ 'background': color.color_hex}">
               <mat-icon class="material-icons"
                         [ngStyle]="{'color': color.color_rgb?.split(',')?.shift()  < 200 ? 'white' : 'black'}">
