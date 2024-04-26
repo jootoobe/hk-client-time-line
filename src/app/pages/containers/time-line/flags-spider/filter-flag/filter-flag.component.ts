@@ -24,7 +24,7 @@ export class FilterFlagComponent implements OnInit {
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
 
-  selectedColors:any = 'Filtre sua bandeira pelas cores'
+  selectedColors: any = 'Filtre sua bandeira pelas cores'
 
   TOAST!: any // translator used in ToastrService
 
@@ -66,12 +66,13 @@ export class FilterFlagComponent implements OnInit {
 
     dialogRef.afterClosed()
       .subscribe(() => {
-        if (this.applyFilterCloseDialog) {
+        if (this.applyFilterCloseDialog && this.titleFlag?.lenght > 0) {
           this.toApplyFilterText.emit(this.emitFilterApply)
 
+        } else if (this.applyFilterCloseDialog && this.filterTopDiv?.lenght > 0) {
+          // não preciso fazer nada aqui
         } else if (!this.applyFilterCloseDialog) {
-          this.titleFlag = ''
-          this.toApplyFilterText.emit(this.indexDbGetAllData)
+          this.clearFilter('update') // aqui é quando clico fora do modal ou no X
         }
       });
 
@@ -81,7 +82,7 @@ export class FilterFlagComponent implements OnInit {
 
   filterFlag() {
 
-    if(this.filterTopDiv?.length > 0) {
+    if (this.filterTopDiv?.length > 0) {
       this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
       this.clearFilter('update')
       return
@@ -107,19 +108,18 @@ export class FilterFlagComponent implements OnInit {
 
 
   closeFilter() {
-    this.titleFlag = ''
-    return this.toApplyFilterText.emit(this.indexDbGetAllData)
+    this.clearFilter('update')
   }
 
 
-  toApplyFilter() {
+  toApplyFilter(val?: string) {
     this.applyFilterCloseDialog = true
     this.dialogCreate.closeAll()
   }
 
   addColors(val: FlagModel, colorHex: string, colorRgb: string) {
 
-    if(this.titleFlag?.length > 0) {
+    if (this.titleFlag?.length > 0) {
       this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
       this.clearFilter('update')
       return

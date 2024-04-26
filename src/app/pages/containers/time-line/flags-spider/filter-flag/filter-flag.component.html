@@ -1,13 +1,12 @@
-
 @if(timeLine) {
 <ng-template #filterTimeLine>
   <div class="filter-time-line-dialog">
     <div class="filter-grid-container">
 
       <!-- Filter Flags -->
-      <div class="item-main-header"> 
-         {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG.modal.grid1' | translate}}
-        </div>
+      <div class="item-main-header">
+        {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG.modal.grid1' | translate}}
+      </div>
       <div class="item-main-close " (click)="closeFilter()">
         <span class="cursor_pointer" matDialogClose>X</span>
       </div>
@@ -20,16 +19,14 @@
 
         <!-- Flag title filter -->
         <mat-form-field class="example-full-width">
-          <mat-label> 
+          <mat-label>
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.title.mat-label' | translate}}
           </mat-label>
-          <input  matInput
-                  value=""
-                  [placeholder]="'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.title.placeholder' | translate"
-                  [(ngModel)]="titleFlag"
-                  (keyup)="filterFlag()"
-                  [disabled]="filterTopDiv?.length > 0"
-                 >
+          <input matInput value=""
+            [placeholder]="'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.title.placeholder' | translate"
+            [(ngModel)]="titleFlag" 
+            (keyup)="filterFlag()" 
+            [disabled]="filterTopDiv?.length > 0">
         </mat-form-field>
       </div>
       <div class="item-filter-description"> </div>
@@ -49,14 +46,13 @@
           </mat-label>
           <mat-select [(value)]="selectedColors" [disabled]="titleFlag?.length > 0">
             <ng-container *ngFor="let flag of selectColor;">
-              <mat-option   *ngIf="flag.flag_design.color_hex"
-                            [value]="flag.flag_design.color_hex"
-                            (click)="addColors(flag, flag.flag_design.color_hex, flag.flag_design.color_rgb)">
-              <div class="item-color_span"
-                    [ngStyle]="{'background': flag.flag_design.color_hex,
+              <mat-option *ngIf="flag.flag_design.color_hex" [value]="flag.flag_design.color_hex"
+                          (click)="addColors(flag, flag.flag_design.color_hex, flag.flag_design.color_rgb)">
+                <div class="item-color_span"
+                  [ngStyle]="{'background': flag.flag_design.color_hex,
                                 'color': convertToNumber(flag?.flag_design?.color_rgb?.split(',')?.shift()) < 200 ? 'white' : 'black'}">
-              {{ flag.flag_design.color_hex }} 
-              </div>
+                  {{ flag.flag_design.color_hex }}
+                </div>
               </mat-option>
             </ng-container>
           </mat-select>
@@ -65,11 +61,11 @@
         <!-- filtro quadrados -->
         <div class="item-color_display" *ngIf="filterTopDiv.length > 0">
           <div class="item-color_display--box" *ngFor="let color of filterTopDiv; let i = index;">
-            <div  class="item-color_display--colors cursor_pointer" (click)="removeColor(i, color.color_hex)"
-                  [ngStyle]="{ 'background': color.color_hex}">
+            <div class="item-color_display--colors cursor_pointer" (click)="removeColor(i, color.color_hex)"
+              [ngStyle]="{ 'background': color.color_hex}">
               <mat-icon class="material-icons"
-                        [ngStyle]="{'color': color.color_rgb?.split(',')?.shift()  < 200 ? 'white' : 'black'}">
-                        done
+                [ngStyle]="{'color': color.color_rgb?.split(',')?.shift()  < 200 ? 'white' : 'black'}">
+                done
               </mat-icon>
             </div>
             <div class="item-color_text"> {{color.color_hex}} </div>
@@ -82,19 +78,20 @@
         <div class="item-btn--add-filter">
           <!-- Apply filter matDialogClose-->
           @if(titleFlag?.length > 0) {
-            <button mat-stroked-button
-                  class="btn_red-spider"
-                  (click)="toApplyFilter()">
-                  {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
-            </button>
-          } @else {
-            <button mat-stroked-button
-                    class="btn_opt-invalid"
-                  >
-                  {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
-            </button>
+          <button mat-stroked-button class="btn_red-spider" (click)="toApplyFilter('text')">
+            {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
+          </button>
+          }@else if(filterTopDiv?.length > 0) {
+          <button mat-stroked-button class="btn_red-spider" (click)="toApplyFilter('color')">
+            {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
+          </button>
+
+          } @else if(filterTopDiv?.length === 0 || titleFlag?.length === 0) {
+          <button mat-stroked-button class="btn_opt-invalid">
+            {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
+          </button>
           }
- 
+
         </div>
       </div>
 
