@@ -49,8 +49,6 @@ export class FilterFlagComponent implements OnInit {
   ngOnInit(): void {
     this.filterTopDiv = []
     this.colorArray = []
-    
-    this.indexDbGetAllTimeLine('0000')
   }
 
   // Open Create Time_Line
