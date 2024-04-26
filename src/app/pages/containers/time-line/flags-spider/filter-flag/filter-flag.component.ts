@@ -125,7 +125,7 @@ export class FilterFlagComponent implements OnInit {
     }
 
 
-    if (this.colorArray.length < 5) {
+    if (this.filterTopDiv.length < 5) {
       this.filterTopDiv.push({ color_hex: colorHex, color_rgb: colorRgb, color_rgb_number: Number(colorRgb.split(',')[0]) })
 
       this.indexDbGetAllData.time_line.flags.forEach((e: FlagModel, i: number) => {
