@@ -27,7 +27,7 @@ import { FilterFlagsService } from '../../../../../shared/services/filter-flags.
   styleUrls: ['./create-flag.component.scss',]
 })
 
-export class CreateFlagComponent implements OnInit, AfterViewInit {
+export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) editFlagForm!: FlagModel
