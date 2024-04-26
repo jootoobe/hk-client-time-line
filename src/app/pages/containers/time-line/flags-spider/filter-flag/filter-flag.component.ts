@@ -80,6 +80,13 @@ export class FilterFlagComponent implements OnInit {
 
 
   filterFlag() {
+
+    if(this.filterTopDiv?.length > 0) {
+      this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
+      this.clearFilter('update')
+      return
+    }
+
     this.applyFilterCloseDialog = false
     let val = this.titleFlag.length >= 1 ? this.titleFlag : ''
 
@@ -111,9 +118,12 @@ export class FilterFlagComponent implements OnInit {
   }
 
   addColors(val: FlagModel, colorHex: string, colorRgb: string) {
-    console.log(val)
-    console.log(colorHex)
-    console.log(colorRgb)
+
+    if(this.titleFlag?.length > 0) {
+      this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
+      this.clearFilter('update')
+      return
+    }
 
     let flagsReturnFilter: any = []
     let valFilter: any = []
@@ -173,6 +183,10 @@ export class FilterFlagComponent implements OnInit {
       this.clearFilter('update')
       return
     }
+    this.selectedColors = null
+    this.titleFlag = ''
+
+
     newTimeLine = {
       time_line: {
         flags: this.colorArray
@@ -234,9 +248,9 @@ export class FilterFlagComponent implements OnInit {
 
   clearFilter(update?: string) {
     this.selectedColors = null
+    this.titleFlag = ''
     this.colorArray = []
     this.filterTopDiv = []
-    this.titleFlag = ''
 
     if (update === 'update') {
       this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
