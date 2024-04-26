@@ -13,7 +13,7 @@ import { TimeLineModel } from '../../../../../models/time-line.model';
 })
 export class TopDivComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
-  toApplyFilter = output<TimeLineModel>()
+  toApplyFilterText = output<TimeLineModel>()
   openModal = output()
   clearBarFilterBar = output() // limpa o filtro barra inferior
 
@@ -29,9 +29,9 @@ export class TopDivComponent implements OnInit {
     this.openModal.emit()
   }
 
-  applyFilter(event: TimeLineModel) {
+  applyFilterText(event: TimeLineModel) {
     console.log('event event event event', event)
-    this.toApplyFilter.emit(event)
+    this.toApplyFilterText.emit(event)
   }
 
   clearBarFilter() {

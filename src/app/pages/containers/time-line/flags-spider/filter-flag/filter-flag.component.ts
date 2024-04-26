@@ -19,7 +19,7 @@ export class FilterFlagComponent implements OnInit {
   @ViewChild('filterTimeLine', { static: false }) filterTimeLine!: TemplateRef<ElementRef>; // open modal ref
   indexDbGetAllData!: TimeLineModel
   titleFlag!: any; // digitação filtro
-  applyFilter = output<TimeLineModel>()
+  toApplyFilterText = output<TimeLineModel>()
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
 
@@ -65,11 +65,11 @@ export class FilterFlagComponent implements OnInit {
     dialogRef.afterClosed()
       .subscribe(() => {
         if (this.applyFilterCloseDialog) {
-          this.applyFilter.emit(this.emitFilterApply)
+          this.toApplyFilterText.emit(this.emitFilterApply)
 
         } else if (!this.applyFilterCloseDialog) {
           this.titleFlag = ''
-          this.applyFilter.emit(this.indexDbGetAllData)
+          this.toApplyFilterText.emit(this.indexDbGetAllData)
         }
       });
   }
@@ -83,11 +83,11 @@ export class FilterFlagComponent implements OnInit {
       .subscribe((res: TimeLineModel) => {
         if (res) {
           this.emitFilterApply = res
-          return this.applyFilter.emit(this.emitFilterApply)
+          return this.toApplyFilterText.emit(this.emitFilterApply)
         }
         if (!res) {
           this.titleFlag = ''
-          return this.applyFilter.emit(this.indexDbGetAllData)
+          return this.toApplyFilterText.emit(this.indexDbGetAllData)
         }
 
       })
@@ -97,7 +97,7 @@ export class FilterFlagComponent implements OnInit {
 
   closeFilter() {
     this.titleFlag = ''
-    return this.applyFilter.emit(this.indexDbGetAllData)
+    return this.toApplyFilterText.emit(this.indexDbGetAllData)
   }
 
 

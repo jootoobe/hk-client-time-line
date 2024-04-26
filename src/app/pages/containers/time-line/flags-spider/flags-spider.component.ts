@@ -131,7 +131,7 @@ export class FlagsSpiderComponent implements OnInit {
       })
   }
 
-  toApplyFilter(event: TimeLineModel) {
+  toApplyFilterText(event: TimeLineModel) {
     this.timeLine = event
   }
 
