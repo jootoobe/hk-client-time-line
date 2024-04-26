@@ -72,6 +72,8 @@ export class FilterFlagComponent implements OnInit {
           this.toApplyFilterText.emit(this.indexDbGetAllData)
         }
       });
+
+      this.indexDbGetAllTimeLine('0000')
   }
 
 
