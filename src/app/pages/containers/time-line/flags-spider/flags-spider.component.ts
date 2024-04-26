@@ -50,14 +50,10 @@ export class FlagsSpiderComponent implements OnInit {
     this.stateService.getAllTimeLineSubject$
       .subscribe({
         next: (res: TimeLineModel) => {
-          let val: any = {}
-          this.timeLine = val
+          // let val: any = {}
+          // this.timeLine = val
           if (res && res.time_line) {
-            // precisou ser adicionado porque quando a cor setá sendo removida não estaba atualizando a timeline
-            // Cor removida de dentro do filtro abaixo do select
-            setTimeout(()=>{
-              this.timeLine = res
-            },10)
+            this.timeLine = res
           }
         },
         error: () => { },

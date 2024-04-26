@@ -153,21 +153,27 @@ export class FilterFlagComponent implements OnInit {
 
   }
 
-  removeColor(i: number, color:any) {
+  removeColor(i: number, color: any) {
 
-    let indexDelet1 =  this.colorArray?.findIndex((colorHex: any) => colorHex.flag_design.color_hex?.toLowerCase() === color?.toLowerCase());
+    this.colorArray = this.colorArray.map((res: any) => {
+      if ((res.flag_design.color_hex?.toLowerCase()) !== (color?.toLowerCase())) {
+        return res
+      }
+    });
 
-    this.colorArray.splice(indexDelet1, 1);
+    this.colorArray = this.colorArray.filter((element: any) => {
+      return element !== undefined;
+    });
+
     this.filterTopDiv.splice(i, 1)
+    let newTimeLine: any = {}
 
 
-    console.log(this.colorArray.length <= 0)
-    console.log(this.colorArray.length <= 0)
     if (this.colorArray.length <= 0) {
       this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
       return
     }
-    let newTimeLine = {
+    newTimeLine = {
       time_line: {
         flags: this.colorArray
       }
