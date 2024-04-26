@@ -197,6 +197,11 @@ export class FilterFlagComponent implements OnInit {
         }
       })
   }
+
+  convertToNumber(val: any):number {
+      let numberValue = Number(val);
+      return numberValue
+  }
 }
 
 

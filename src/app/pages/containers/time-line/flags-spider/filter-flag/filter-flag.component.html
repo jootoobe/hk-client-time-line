@@ -47,13 +47,13 @@
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.mat-label' | translate}}
           </mat-label>
           <mat-select [(value)]="selectedColors">
-            <ng-container *ngFor="let flag of indexDbGetAllData.time_line.flags | uniqueSpecific: 'color_hex'">
+            <ng-container *ngFor="let flag of indexDbGetAllData.time_line.flags;">
               <mat-option   *ngIf="flag.flag_design.color_hex"
                             [value]="flag.flag_design.color_hex"
                             (click)="addColors(flag, flag.flag_design.color_hex, flag.flag_design.color_rgb)">
               <div class="item-color_span"
                     [ngStyle]="{'background': flag.flag_design.color_hex,
-                                'color': flag?.flag_design?.color_rgb?.split(',')?.shift() < 200 ? 'white' : 'black'}">
+                                'color': convertToNumber(flag?.flag_design?.color_rgb?.split(',')?.shift()) < 200 ? 'white' : 'black'}">
               {{ flag.flag_design.color_hex }} 
               </div>
               </mat-option>
