@@ -95,6 +95,8 @@ export class FilterFlagComponent implements OnChanges, OnInit {
 
   filterFlag() {
 
+    // Aqui só vai entrar se der algum bug no html
+    // Já existe uma trava [disabled]="filterTopDiv?.length > 0"
     if (this.filterTopDiv?.length > 0) {
       this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
       this.clearFilter('update')
@@ -139,6 +141,8 @@ export class FilterFlagComponent implements OnChanges, OnInit {
 
     this.applyFilterCloseDialog = false
 
+    // Aqui só vai entrar se der algum bug no html
+    // Já existe uma trava [disabled]="titleFlag?.length > 0"
     if (this.titleFlag?.length > 0) {
       this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
       this.clearFilter('update')
