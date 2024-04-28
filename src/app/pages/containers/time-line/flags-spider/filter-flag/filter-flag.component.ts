@@ -80,11 +80,14 @@ export class FilterFlagComponent implements OnChanges, OnInit {
       .subscribe(() => {
         if (this.applyFilterCloseDialog && this.titleFlag?.lenght > 0) {
           this.toApplyFilterTextOutput.emit(this.emitFilterApply)
+          console.log('32222222222222222222222222222')
 
         } else if (this.applyFilterCloseDialog && this.filterTopDiv?.lenght > 0) {
           // não preciso fazer nada aqui
+          console.log('11111111111111111111111111111')
         } else if (!this.applyFilterCloseDialog) {
           this.clearFilter('update') // aqui é quando clico fora do modal ou no X
+          console.log('33333333333333333333333333333333333333')
         }
       });
 
@@ -107,6 +110,7 @@ export class FilterFlagComponent implements OnChanges, OnInit {
       .subscribe((res: TimeLineModel) => {
         if (res) {
           this.emitFilterApply = res
+          this.stateService.updateChecksFilterIsActive(true)
           return this.toApplyFilterTextOutput.emit(this.emitFilterApply)
         }
         if (!res) {
@@ -165,7 +169,7 @@ export class FilterFlagComponent implements OnChanges, OnInit {
       }
 
       this.stateService.updateGetAllTimeLine(newTimeLine)
-
+      this.stateService.updateChecksFilterIsActive(true)
 
     } else if (this.filterTopDiv.length >= 4) {
       // this.toastrService.info('The filter becomes more effective', 'Add 05 colors at a time');
@@ -266,6 +270,7 @@ export class FilterFlagComponent implements OnChanges, OnInit {
 
     if (update === 'update') {
       this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
+      this.stateService.updateChecksFilterIsActive(false)
     }
   }
 }

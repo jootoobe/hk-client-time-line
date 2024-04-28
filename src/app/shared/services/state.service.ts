@@ -29,16 +29,21 @@ export class StateService {
   redisAuthSubject$ = this.redisAuthSubject.asObservable();
 
 
+  // Relacionado as chaves de cryptografia
   private keysCryptoTimeLineSignal: WritableSignal<TIMELINEKeysModel> = signal<TIMELINEKeysModel>(TIMELINEKeysModel as any);
   keysCryptoTimeLineSignalComputed = computed(() => {
     return this.keysCryptoTimeLineSignal()
   });
 
-
+  // usado para verifica se o filtro está ativo ou não
+  // quando o filtro está ativo o menu de edição e deletar não poder aparecer 
+  private checksFilterIsActiveSignal: WritableSignal<boolean> = signal<boolean>(false);
+  checksFilterIsActiveSignalComputed = computed(() => {
+    return this.checksFilterIsActiveSignal()
+  });
 
   private customToolTipSubject = new BehaviorSubject<{}>({ mouse: '', from: '' });
   customToolTipSubject$ = this.customToolTipSubject.asObservable();
-
 
 
   private getAllTimeLineSubject = new BehaviorSubject<TimeLineModel>(TimeLineModel as any);
@@ -46,8 +51,11 @@ export class StateService {
 
 
 
+
+
   constructor(@Inject(WINDOW) private window: Window) { }
 
+  // 🅰️ Signal
   updateLanguageSignal(val: string) {
     return this.languageSignal.set(val)
   }
@@ -56,12 +64,18 @@ export class StateService {
     return this.toastSignal.set(val)
   }
 
-
-  // Relacionado as chaves de cryptografia
   updateKeysCryptoTimeLineSignal(val: TIMELINEKeysModel) {
     return this.keysCryptoTimeLineSignal.set(val)
   }
 
+
+  updateChecksFilterIsActive(val: boolean) {
+    return this.checksFilterIsActiveSignal.set(val)
+  }
+
+
+
+  //🅿️ BehaviorSubject
   updateRedisAuth(val: RedisAuthModel) {
     return this.redisAuthSubject.next(val)
   }
@@ -70,6 +84,9 @@ export class StateService {
   updateGetAllTimeLine(val: TimeLineModel) {
     return this.getAllTimeLineSubject.next(val)
   }
+
+
+
 
 
   /**

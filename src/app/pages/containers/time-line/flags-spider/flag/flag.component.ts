@@ -28,6 +28,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   valFilterClose = { color_hex: '', color_rgb: 0 } // stores the clicked filter and communicates with the top-div component
   enableDisableMouse = true // desabilita o mouse quando filtro esta ativado na bandeira 
   TOAST!: any // translator used in ToastrService
+  checksFilterIsActive = false
 
 
   constructor(
@@ -40,6 +41,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()
       console.log('TOAST', this.TOAST)
+    })
+
+    effect(() => { // verifica se o filtro está ativo 
+      this.checksFilterIsActive = this.stateService.checksFilterIsActiveSignalComputed()
     })
 
   }

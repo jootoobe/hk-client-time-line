@@ -44,29 +44,31 @@
 
 
               <!-- Menu Edit Delete -->
-              <div class="box-inside-flag-title remove"  id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
-                <!-- [ngStyle]="setStylesText(flag2)" -->
-                <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
-                  [matMenuTriggerFor]="menuEditRemove"
-                  (click)="disableFilter(flag, flag.flag_design.color_hex?.substring(1))">
-                  more_vert
-                </i>
-                <!-- Start Filter Edit-->
-                <mat-menu #menuEditRemove="matMenu">
-                  <span class="cursor_pointer noSelect box-inside-flag-title_menu" (click)="editFlag(flag, 'edit-flag-2')">
-                    <i class="material-icons box-inside-flag-title_menu--edit">
-                      edit
-                    </i>
-                    <div class="box-inside-flag-title_menu--t1">Editar</div>
-                  </span> <br>
-                  <span class="cursor_pointer noSelect box-inside-flag-title_menu">
-                    <i class="material-icons box-inside-flag-title_menu--delete">
-                      delete_forever
-                    </i>
-                    <div class="box-inside-flag-title_menu--t2">Deletar</div>
-                  </span>
-                </mat-menu>
-              </div>
+              @if(!checksFilterIsActive) {
+                <div class="box-inside-flag-title remove"  id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
+                  <!-- [ngStyle]="setStylesText(flag2)" -->
+                  <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
+                    [matMenuTriggerFor]="menuEditRemove"
+                    (click)="disableFilter(flag, flag.flag_design.color_hex?.substring(1))">
+                    more_vert
+                  </i>
+                  <!-- Start Filter Edit-->
+                  <mat-menu #menuEditRemove="matMenu">
+                    <span class="cursor_pointer noSelect box-inside-flag-title_menu" (click)="editFlag(flag, 'edit-flag-2')">
+                      <i class="material-icons box-inside-flag-title_menu--edit">
+                        edit
+                      </i>
+                      <div class="box-inside-flag-title_menu--t1">Editar</div>
+                    </span> <br>
+                    <span class="cursor_pointer noSelect box-inside-flag-title_menu">
+                      <i class="material-icons box-inside-flag-title_menu--delete">
+                        delete_forever
+                      </i>
+                      <div class="box-inside-flag-title_menu--t2">Deletar</div>
+                    </span>
+                  </mat-menu>
+                </div>
+              }
             </div>
 
             <!-- Date -->
@@ -213,29 +215,31 @@
             </div>
 
             <!-- Menu Edit Delete -->
-            <div class="box-inside-flag-title remove" id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
-              <!-- [ngStyle]="setStylesText(flag2)" -->
-              <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
-                 [matMenuTriggerFor]="menuEditRemove"
-                 (click)="disableFilter(flag, flag.flag_design.color_hex?.substring(1))">
-              more_vert
-              </i>
-              <!-- Start Filter Edit-->
-              <mat-menu #menuEditRemove="matMenu">
-                <span class="cursor_pointer noSelect box-inside-flag-title_menu" (click)="editFlag(flag, 'edit-flag-1')">
-                  <i class="material-icons box-inside-flag-title_menu--edit" >
-                    edit
-                  </i>
-                  <div class="box-inside-flag-title_menu--t1">Editar</div>
-                </span> <br>
-                <span class="cursor_pointer noSelect box-inside-flag-title_menu">
-                  <i class="material-icons box-inside-flag-title_menu--delete">
-                    delete_forever
-                  </i>
-                  <div class="box-inside-flag-title_menu--t2">Deletar</div>
-                </span>
-              </mat-menu>
-            </div>
+            @if(!checksFilterIsActive) {
+              <div class="box-inside-flag-title remove" id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
+                <!-- [ngStyle]="setStylesText(flag2)" -->
+                <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon"
+                  [matMenuTriggerFor]="menuEditRemove"
+                  (click)="disableFilter(flag, flag.flag_design.color_hex?.substring(1))">
+                more_vert
+                </i>
+                <!-- Start Filter Edit-->
+                <mat-menu #menuEditRemove="matMenu">
+                  <span class="cursor_pointer noSelect box-inside-flag-title_menu" (click)="editFlag(flag, 'edit-flag-1')">
+                    <i class="material-icons box-inside-flag-title_menu--edit" >
+                      edit
+                    </i>
+                    <div class="box-inside-flag-title_menu--t1">Editar</div>
+                  </span> <br>
+                  <span class="cursor_pointer noSelect box-inside-flag-title_menu">
+                    <i class="material-icons box-inside-flag-title_menu--delete">
+                      delete_forever
+                    </i>
+                    <div class="box-inside-flag-title_menu--t2">Deletar</div>
+                  </span>
+                </mat-menu>
+              </div>
+            }
           </div>
 
           <!-- Date -->
