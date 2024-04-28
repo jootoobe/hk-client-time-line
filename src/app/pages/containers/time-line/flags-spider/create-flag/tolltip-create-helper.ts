@@ -59,12 +59,12 @@ export class TolltipCreateHelper {
     return `
 
     <div  style="height: auto; width:27rem; margin: .5rem ">
-    <p>${msn3_a}.</p>
-    <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
-    <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
-    <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}o</li>
-    <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
-    <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+    <p>${msn3_a}</p>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}o</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
     </div>
     `
   }
@@ -78,15 +78,16 @@ export class TolltipCreateHelper {
     let msn4_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-e']
     let msn4_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-f']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
+
     return `
 
     <div  style="height: auto; width:27rem; margin: .5rem ">
-    <p>Altere as cores de contraste das redes</p>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 01 - Fundo: <strong>preto</strong> com texto <strong>branco</strong></li>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 02 - Fundo: <strong>branco</strong> com texto <strong>preto</strong></li>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 03 - Fundo: <strong>preto</strong> com texto <strong>vermelho</strong></li>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 04 - Fundo: <strong>vermelho</strong> com texto <strong>branco</strong></li>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 05 - Fundo: <strong>preto</strong> com texto <strong>amarelo</strong></li>
+    <p>${msn4_a}</p>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn4_b}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn4_c}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
     </div>
     `
   }

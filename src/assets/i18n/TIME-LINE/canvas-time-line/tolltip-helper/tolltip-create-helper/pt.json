@@ -17,6 +17,13 @@
         "help3-e": "Opção cor 01 - azul",
         "help3-f": "Opção cor 01 - amarelo",
 
+        "help4-a": "Altere as cores de contraste das redes.",
+        "help4-b": "Opção cor 01 - Fundo: <strong>preto</strong> com texto <strong>branco</strong>",
+        "help4-c": "Opção cor 02 - Fundo: <strong>branco</strong> com texto <strong>preto</strong>",
+        "help4-d": "Opção cor 03 - Fundo: <strong>preto</strong> com texto <strong>vermelho</strong>",
+        "help4-e": "Opção cor 04 - Fundo: <strong>vermelho</strong> com texto <strong>branco</strong>",
+        "help4-f": "Opção cor 05 - Fundo: <strong>preto</strong> com texto <strong>amarelo</strong>",
+
 
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help1-img1-a.png",
         "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help2-img2-a.png"

@@ -177,7 +177,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
 
   updateFlagobject(flagVal: FlagModel) {
-    console.log('ssssssssssss', flagVal)
+    
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
 
     if (flagVal.edit === 'edit-flag-1') {
