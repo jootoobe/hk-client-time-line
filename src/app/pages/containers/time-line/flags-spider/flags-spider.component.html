@@ -14,10 +14,10 @@
 <div class="main-div">
   <div class="first-div">
     <top-div
-    (openModal)="openCreateTimeLineDialog('create')"
+    (openModalOutput)="openCreateTimeLineDialog('create')"
     [timeLine]="timeLine"
     (toApplyFilterTextOutput)="toApplyFilterTextEvent($event)"
-    (clearBarFilterBar)="clearBarFilterBar($event)">
+    (clearBarFilterBarOutput)="clearBarFilterBarEvent($event)">
     
     </top-div>
   </div>
@@ -26,7 +26,7 @@
   <div class="second-div"  appDragScroll id="moveWheelId">
     @if(timeLine && timeLine.time_line){
       <flag [timeLine]="timeLine"
-            (editFlagOutput)="editFlag($event)"
+            (editFlagOutput)="editFlagEvent($event)"
             [clearBarFilterDelete]="clearBarFilterDelete"
             (resetFlagsOutput)="resetFlagsEvent($event)"
       > 

@@ -14,8 +14,8 @@ import { TimeLineModel } from '../../../../../models/time-line.model';
 export class TopDivComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   toApplyFilterTextOutput = output<TimeLineModel>()
-  openModal = output()
-  clearBarFilterBar = output() // limpa o filtro barra inferior
+  openModalOutput = output()
+  clearBarFilterBarOutput = output() // limpa o filtro barra inferior
 
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
@@ -26,7 +26,7 @@ export class TopDivComponent implements OnInit {
   }
 
   openCreateTimeLineDialog() {
-    this.openModal.emit()
+    this.openModalOutput.emit()
   }
 
   toApplyFilterTextEvent(event: TimeLineModel) {
@@ -34,8 +34,8 @@ export class TopDivComponent implements OnInit {
     this.toApplyFilterTextOutput.emit(event)
   }
 
-  clearBarFilter() {
-   this.clearBarFilterBar.emit() 
+  clearBarFilterBar() {
+   this.clearBarFilterBarOutput.emit() 
   }
 
 }

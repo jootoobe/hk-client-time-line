@@ -74,12 +74,12 @@ export class FlagsSpiderComponent implements OnInit {
 
   }
 
-  editFlag(flag: FlagModel) {
+  editFlagEvent(flag: FlagModel) {
     this.editFlagForm = flag
     this.openCreateTimeLineDialog('edit')
   }
 
-  clearBarFilterBar(e: any) {
+  clearBarFilterBarEvent(e: any) {
     this.clearBarFilterDelete = 'disable'
     // Altera o estado no ngOnChanges FlagComponent
     setTimeout(() => {
