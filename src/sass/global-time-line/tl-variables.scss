@@ -73,10 +73,11 @@
 
   i {
     // position: absolute;
-    margin: 0.7rem 0 0 0rem;
+    margin: 0;
     font-size: 2.7rem;
     color: rgba(var(--color-black), 0.6);
-    // background: red;
+    background: rgba(var(--color-white), 1);
+    padding: 0.5rem 0 0.5rem 0;
   }
 
 
