@@ -204,15 +204,21 @@
     margin: -2rem 0 .5rem 20rem;
     font-size: 1.2rem;
     position: absolute;
+    background: rgba(var(--color-white), 1);
+    padding: 0 1rem .2rem .5rem;
 
     // color: rgba(var(--color-black), .7);
     // border-bottom: .1rem solid  rgba(var(--color-black), .2);
     mat-icon {
       // color: rgba(var(--color-black), 1);
-      margin: .1rem 0 0 .3rem;
+      margin: 0 0 0 .3rem;
       // font-weight: var(--fonts-font-weight-600);
       font-size: 1.6rem;
       position: absolute;
+      height: 1.5rem;
+      padding: .1rem  0rem .4rem 0rem;
+      background: rgba(var(--color-white), 1);
+
     }
 
   }
