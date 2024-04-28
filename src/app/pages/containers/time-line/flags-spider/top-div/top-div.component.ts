@@ -13,6 +13,8 @@ import { TimeLineModel } from '../../../../../models/time-line.model';
 })
 export class TopDivComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
+  // toda vez que o menu for clicado eu limpoo filtro todo -- O Filtro não pode estar ativo quando o usuário edita ou deleta a bandeira 
+  @Input({ required: true }) resetFilterInput!: Boolean 
   toApplyFilterTextOutput = output<TimeLineModel>()
   openModalOutput = output()
   clearBarFilterBarOutput = output() // limpa o filtro barra inferior

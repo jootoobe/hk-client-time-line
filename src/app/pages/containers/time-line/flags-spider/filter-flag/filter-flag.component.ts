@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, effect, output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, SimpleChanges, TemplateRef, ViewChild, effect, output } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { TimeLineModel } from "../../../../../models/time-line.model";
 import { FilterFlagsService } from "../../../../../shared/services/filter-flags.service";
@@ -16,6 +16,9 @@ import { ToastrService } from "ngx-toastr";
 })
 export class FilterFlagComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
+  @Input({ required: true }) resetFilterInput!: Boolean 
+
+
   @ViewChild('filterTimeLine', { static: false }) filterTimeLine!: TemplateRef<ElementRef>; // open modal ref
   indexDbGetAllData!: TimeLineModel
   selectColor!: FlagModel[]
@@ -45,6 +48,15 @@ export class FilterFlagComponent implements OnInit {
       console.log('TOAST', this.TOAST)
       this.indexDbGetAllTimeLine('0000')
     })
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    // toda vez que clicar no botão "criar" o filtro da barra inferior deve ser desabilitado
+    if (changes['resetFilterInput']?.currentValue) {
+      this.clearFilter('update')
+    }
 
   }
 

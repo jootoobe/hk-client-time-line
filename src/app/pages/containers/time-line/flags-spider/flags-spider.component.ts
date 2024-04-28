@@ -32,6 +32,7 @@ export class FlagsSpiderComponent implements OnInit {
 
   resetFlags!: TimeLineModel
 
+  resetFilter = false
   constructor(
     private dialogCreate: MatDialog,
     private renderer2: Renderer2,
@@ -109,8 +110,13 @@ export class FlagsSpiderComponent implements OnInit {
 
   }
 
-  resetFlagsEvent(e:any) {
+  resetFlagsEvent(e: any) {
     this.timeLine = this.resetFlags
+    this.resetFilter = true
+    this.stateService.updateGetAllTimeLine(this.timeLine)
+    setTimeout(() => {
+      this.resetFilter = false
+    }, 1000)
   }
 
   getAllTimeLineById() {
