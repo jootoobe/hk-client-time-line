@@ -177,7 +177,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
 
   updateFlagobject(flagVal: FlagModel) {
-    
+
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
 
     if (flagVal.edit === 'edit-flag-1') {
@@ -217,7 +217,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     // UPDATE RADIO BUTTON
     this.radioRedeTextColor = this.flagsForm.controls[0]?.get('flag_design')?.get('color_text')?.value
-   
+
     let val = this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.value
 
     if (val.background === '74,74,74' && val.text === '255,255,255') { //{background: 'black', text: 'white'}
@@ -236,9 +236,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       this.radioRedeNets = '5'
     }
 
-    
+
     this.radioButtonDate = this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.value
-    console.log('sssssssssss',this.radioButtonDate)
+    console.log('sssssssssss', this.radioButtonDate)
     this.radioRedeTransparency = this.flagsForm.controls[0]?.get('flag_design')?.get('color_transparency')?.value
   }
 
@@ -799,7 +799,22 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   radioButtonDateColor(e: MatRadioChange) {
-    this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue(e.value)
+
+    if (e.value === '1') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue(this.flagsForm.controls[0].get('flag_design')?.get('color_rgb')?.value)
+    }
+    else if (e.value === '2') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue('0, 0, 0') // preto
+    }
+    else if (e.value === '3') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue('255, 255, 255') // branco
+    }
+    else if (e.value === '4') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue('255, 0, 0') // vermelho
+    }
+    else if (e.value === '5') {
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.setValue('255, 255, 0') // amarelo
+    }
 
   }
 
@@ -820,7 +835,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
     flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
     flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-    this.radioButtonDate = this.flagsForm.controls[0].get('flag_design')?.get('color_rgb')?.value
+
   }
 
 

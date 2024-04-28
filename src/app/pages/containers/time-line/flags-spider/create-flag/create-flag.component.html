@@ -299,24 +299,24 @@
                         (change)="radioButtonDateColor($event)"  
                         [(ngModel)]="radioButtonDate" 
                         [ngModelOptions]="{standalone: true}" >
-          <mat-radio-button [value]="radioButtonDate" 
+          <mat-radio-button [value]="'1'" 
                             class="flag-modal_radio--colors" >
             <!-- Mesma cor bandeira -->
             1
           </mat-radio-button>
-          <mat-radio-button [value]="'0, 0, 0'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'2'" class="flag-modal_radio--colors" >
             <!-- Black -->
             2
           </mat-radio-button>
-          <mat-radio-button [value]="'255, 255, 255'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'3'" class="flag-modal_radio--colors" >
             <!-- White -->
             3
           </mat-radio-button>
-          <mat-radio-button [value]="'255, 0, 0'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'4'" class="flag-modal_radio--colors" >
             <!-- Red -->
             4
           </mat-radio-button>
-          <mat-radio-button [value]="'255, 255, 0'" class="flag-modal_radio--colors" >
+          <mat-radio-button [value]="'5'" class="flag-modal_radio--colors" >
             <!-- Yellow -->
             5
           </mat-radio-button>
