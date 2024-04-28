@@ -30,8 +30,8 @@ import { FilterFlagsService } from '../../../../../shared/services/filter-flags.
 export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
   @Input({ required: true }) timeLine!: TimeLineModel
-  @Input({ required: true }) editFlagForm!: FlagModel
-  @Input({ required: true }) flagCreateEdit!: string
+  @Input({ required: true }) editFlagFormInput!: FlagModel
+  @Input({ required: true }) flagCreateEditInput!: string
 
   editFlag!: FlagModel;
   timestampExist!: FlagModel[];
@@ -82,8 +82,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   ngOnChanges(changes: SimpleChanges) {
 
     // Editing flag
-    if (changes['editFlagForm']?.currentValue.flag_id) {
-      this.editFlag = changes['editFlagForm']?.currentValue
+    if (changes['editFlagFormInput']?.currentValue.flag_id) {
+      this.editFlag = changes['editFlagFormInput']?.currentValue
       this.updateFlagobject(this.editFlag)
     }
 

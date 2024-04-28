@@ -4,8 +4,8 @@
 <pre> {{createTimeLineForm.value | json}}</pre>
 
 <form [formGroup]="createTimeLineForm"
-      (ngSubmit)="createTimeLineForm.valid && flagCreateEdit === 'create' && createFlag()"
-      (ngSubmit)="createTimeLineForm.valid && flagCreateEdit === 'edit' && updateFlag()">
+      (ngSubmit)="createTimeLineForm.valid && flagCreateEditInput === 'create' && createFlag()"
+      (ngSubmit)="createTimeLineForm.valid && flagCreateEditInput === 'edit' && updateFlag()">
   <div formGroupName="time_line">
     <div formArrayName="flags" class="flag-modal ">
 
@@ -407,12 +407,12 @@
         </button>
 
         <!-- Edit flag-->
-        @if(createTimeLineForm.invalid && flagCreateEdit === 'edit') {
+        @if(createTimeLineForm.invalid && flagCreateEditInput === 'edit') {
           <!-- Btn invalid -->
         <button mat-stroked-button class="btn_opt-invalid" >
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.edit' | translate}}
         </button>
-        } @else if(createTimeLineForm.valid && flagCreateEdit === 'edit') {
+        } @else if(createTimeLineForm.valid && flagCreateEditInput === 'edit') {
         <button matDialogClose type="submit" mat-stroked-button class="btn_opt-valid">
           <!-- Btn valid -->
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.edit' | translate}}
@@ -421,12 +421,12 @@
 
 
           <!-- Create flag -->
-          @if(createTimeLineForm.invalid && flagCreateEdit === 'create') {
+          @if(createTimeLineForm.invalid && flagCreateEditInput === 'create') {
             <!-- Btn invalid -->
           <button mat-stroked-button class="btn_opt-invalid" >
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
           </button>
-          } @else if(createTimeLineForm.valid && flagCreateEdit === 'create') {
+          } @else if(createTimeLineForm.valid && flagCreateEditInput === 'create') {
           <button matDialogClose type="submit" mat-stroked-button class="btn_opt-valid">
             <!-- Btn valid -->
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
