@@ -13,6 +13,13 @@
 .box-inside-flag-title {
   height: 5rem;
 
+  &_background{
+    width: 2rem;
+    height: 3.7rem;
+    background: rgba(var(--color-white), 1);
+    position: absolute;
+    margin: 0 0 0 .6rem;
+  }
   // background: lightblue;
   // border: 1px solid grey;
   &_menu {
@@ -64,8 +71,8 @@
 
   mat-icon {
     // position: absolute;
-    margin: 0.7rem 0 0 0rem;
-    font-size: 2.7rem;
+    // margin: 0.7rem 0 0 0rem;
+    // font-size: 2.7rem;
     color: rgba(var(--color-black), 0.6);
     // background: red;
   }
@@ -73,11 +80,12 @@
 
   i {
     // position: absolute;
-    margin: 0;
+    margin-left: .3rem;
     font-size: 2.7rem;
-    color: rgba(var(--color-black), 0.6);
-    background: rgba(var(--color-white), 1);
-    padding: 0.5rem 0 0.5rem 0;
+    color: rgba(var(--color-black), .6);
+    padding: .5rem 0;
+    position: absolute;
+    z-index: 2;
   }
 
 

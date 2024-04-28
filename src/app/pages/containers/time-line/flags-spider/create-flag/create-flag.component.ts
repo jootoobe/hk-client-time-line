@@ -54,9 +54,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   help4: string = ''
 
   // RADIO BUTTON
-  radioRedeTextColor = '0,0,0' // text colors
+  radioRedeTextColor = '0, 0, 0' // text colors
   radioRedeNets = '1' // {background: '74,74,74', text: '255,255,255'}
-  radioButtonDate = '144,171,64' // cor fundo data com transparencia de 0.3
+  radioButtonDate = '144, 171, 64' // cor fundo data com transparencia de 0.3
   radioRedeTransparency = '0.1' // transparência bandeira
 
   addDataMaskVal = ''
