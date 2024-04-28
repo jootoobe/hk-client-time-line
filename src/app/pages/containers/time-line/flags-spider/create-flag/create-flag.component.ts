@@ -97,6 +97,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     setTimeout(() => { // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
       this.help1 = this.tolltipCreateHelper.help1()
       this.help2 = this.tolltipCreateHelper.help2()
+      this.help3 = this.tolltipCreateHelper.help3()
     }, 500)
 
     this.setDateTimestamp()

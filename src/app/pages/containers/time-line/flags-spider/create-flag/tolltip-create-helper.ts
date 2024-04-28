@@ -51,13 +51,20 @@ export class TolltipCreateHelper {
   help3() {
     let msn3_a:string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-a']
     let msn3_b:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-b']
-    let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
+    let msn3_c:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-c']
+    let msn3_d:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-d']
+    let msn3_e:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-e']
+    let msn3_f:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-f']
+    // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
     return `
 
-    <div  style="height: auto; width:35rem;">
-    <p>${msn3_a}</p>
-    <p style="margin: .5rem 0 1rem 0;">${msn3_b}</p>
-      <img  style="height: auto;width:100%" src="${img3_a}" alt="Spider Share">
+    <div  style="height: auto; width:27rem; margin: .5rem ">
+    <p>${msn3_a}.</p>
+    <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
+    <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
+    <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}o</li>
+    <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
+    <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
     </div>
     `
   }
