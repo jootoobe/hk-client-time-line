@@ -1,0 +1,38 @@
+{
+  "TIME-LINE": {
+    "Flag1-Flag2-Component": {
+      "FLAGS-1-2": {
+        "START_COMMENTARY--FLAGS-1-2": "============== HTML START FLAG1 && FLAG2 COMPONENT FOLDER =============================",
+        "modal": {
+          "item-01": "No se ha creado ninguna red.",
+          "item-02": "Redes",
+          "item-03": "Para crear su primera red, vaya a ↔️ 'Abrir kanban' a continuación.",
+          "item-04": "Abierto kanban",
+          "tag-title": "",
+          "title-h1": ""
+        }
+      },
+      "FLAGS-1-2_MATERIAL": {
+        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL Flag1Component Flag2Component=============================================",
+        "input": {
+          "chip": {
+            "mat-label": "",
+            "placeholder": "",
+            "mat-label2": "",
+            "placeholder2": "",
+            "mat-error-required": "",
+            "mat-error-maxlength": "",
+            "mat-error-minlength": "",
+            "mat-error": ""
+          }
+        },
+        "mat-stroked-button": {
+          "button": {
+            "create": "",
+            "back": ""
+          }
+        }
+      }
+    }
+  }
+}
