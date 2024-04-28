@@ -1,7 +1,7 @@
 
 <tolltip-create-html></tolltip-create-html>
 
-<!-- <pre> {{createTimeLineForm.value | json}}</pre> -->
+<pre> {{createTimeLineForm.value | json}}</pre>
 
 <form [formGroup]="createTimeLineForm"
       (ngSubmit)="createTimeLineForm.valid && flagCreateEditInput === 'create' && createFlag()"
@@ -180,9 +180,8 @@
           <!-- Cor do texto -->
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-1' | translate}}
 
-        <!-- Custom ToolTip -->
+        <!-- Custom ToolTip style="margin-left: 15rem; margin-top: .5rem";-->
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
-            style="margin-left: 15rem; margin-top: .5rem;"
             matSuffix
             customToolTip
             [contentTemplate]="template_help3"
@@ -230,9 +229,8 @@
         <div class="flag-modal_radio--text">
           <!-- Cor contraste redes -->
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-2' | translate}}
-        <!-- Custom ToolTip -->
+        <!-- Custom ToolTip    style="margin-left: 10rem; margin-top: .5rem;"-->
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
-            style="margin-left: 10rem; margin-top: .5rem;"
             matSuffix
             customToolTip
             [contentTemplate]="template_help4"
@@ -279,9 +277,8 @@
         <div class="flag-modal_radio--text">
           <!-- Cor data fundo -->
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-3' | translate}}
-        <!-- Custom ToolTip -->
+        <!-- Custom ToolTip style="margin-left: 13rem; margin-top: .5rem;"-->
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
-            style="margin-left: 13rem; margin-top: .5rem;"
             matSuffix
             customToolTip
             [contentTemplate]="template_help6"
@@ -328,9 +325,8 @@
         <div class="flag-modal_radio--text">
           <!-- Cor transparência bandeira -->
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-4' | translate}}
-        <!-- Custom ToolTip -->
+        <!-- Custom ToolTip style="margin-left: 0; margin-top: .5rem;"-->
         <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
-            style="margin-left: 5rem; margin-top: .5rem;"
             matSuffix
             customToolTip
             [contentTemplate]="template_help5"
