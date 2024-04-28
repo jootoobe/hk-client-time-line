@@ -114,6 +114,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       })
     });
 
+    this.flagsForm.controls[0].get('flag_design')?.get('color_rgb')?.setValue(this.radioButtonDate)
   }
 
   createFlagobject(): FormGroup {
@@ -237,6 +238,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     
     this.radioButtonDate = this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.value
+    console.log('sssssssssss',this.radioButtonDate)
     this.radioRedeTransparency = this.flagsForm.controls[0]?.get('flag_design')?.get('color_transparency')?.value
   }
 
@@ -818,7 +820,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
     flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
     flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-
+    this.radioButtonDate = this.flagsForm.controls[0].get('flag_design')?.get('color_rgb')?.value
   }
 
 
