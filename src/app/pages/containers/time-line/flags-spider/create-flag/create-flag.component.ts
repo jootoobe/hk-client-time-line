@@ -236,8 +236,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     
-
-
+    this.radioButtonDate = this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.value
+    this.radioRedeTransparency = this.flagsForm.controls[0]?.get('flag_design')?.get('color_transparency')?.value
   }
 
 
