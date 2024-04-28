@@ -78,17 +78,16 @@ export class FilterFlagComponent implements OnChanges, OnInit {
 
     dialogRef.afterClosed()
       .subscribe(() => {
+        
         if (this.applyFilterCloseDialog && this.titleFlag?.lenght > 0) {
           this.toApplyFilterTextOutput.emit(this.emitFilterApply)
-          console.log('32222222222222222222222222222')
 
         } else if (this.applyFilterCloseDialog && this.filterTopDiv?.lenght > 0) {
           // não preciso fazer nada aqui
-          console.log('11111111111111111111111111111')
         } else if (!this.applyFilterCloseDialog) {
           this.clearFilter('update') // aqui é quando clico fora do modal ou no X
-          console.log('33333333333333333333333333333333333333')
-        }
+        } 
+    
       });
 
     this.indexDbGetAllTimeLine('0000')
@@ -131,9 +130,15 @@ export class FilterFlagComponent implements OnChanges, OnInit {
   toApplyFilter(val?: string) {
     this.applyFilterCloseDialog = true
     this.dialogCreate.closeAll()
+
+    setTimeout(()=>{
+      this.applyFilterCloseDialog = false
+    },1000)
   }
 
   addColors(val: FlagModel, colorHex: string, colorRgb: string) {
+
+    this.applyFilterCloseDialog = false
 
     if (this.titleFlag?.length > 0) {
       this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
