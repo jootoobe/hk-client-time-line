@@ -78,12 +78,14 @@
         <!-- Apply filter matDialogClose-->
         @if(titleFlag?.length > 0 || filterTopDiv?.length) {
         <button mat-stroked-button class="btn_red-spider" (click)="clearFilter('update')">
-          Limpar filtro
+          <!-- Limpar filtro -->
+          {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.clean-filter' | translate}}
         </button>
         }
         @else if(filterTopDiv?.length === 0 || titleFlag?.length === 0) {
         <button mat-stroked-button class="btn_red-spider">
-          Limpar filtro
+          <!-- Limpar filtro -->
+          {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.clean-filter' | translate}}
         </button>
         }
       

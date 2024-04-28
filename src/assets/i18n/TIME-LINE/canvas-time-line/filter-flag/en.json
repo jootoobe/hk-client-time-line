@@ -32,7 +32,8 @@
         },
         "mat-stroked-button": {
           "button": {
-            "apply-filter": "Apply filter"
+            "apply-filter": "Apply filter",
+            "clean-filter": "Clean filter"
           }
         }
       }
