@@ -30,6 +30,8 @@ export class FlagsSpiderComponent implements OnInit {
   envProd = environment.production
   clearBarFilterDelete!: string
 
+  resetFlags!: TimeLineModel
+
   constructor(
     private dialogCreate: MatDialog,
     private renderer2: Renderer2,
@@ -107,6 +109,9 @@ export class FlagsSpiderComponent implements OnInit {
 
   }
 
+  resetFlagsEvent(e:any) {
+    this.timeLine = this.resetFlags
+  }
 
   getAllTimeLineById() {
     this.timeLineService.getAllTimeLineById()
@@ -117,6 +122,8 @@ export class FlagsSpiderComponent implements OnInit {
               flags: res.flags
             }
           }
+
+          this.resetFlags = newTimeLine
           this.stateService.updateGetAllTimeLine(newTimeLine)
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader

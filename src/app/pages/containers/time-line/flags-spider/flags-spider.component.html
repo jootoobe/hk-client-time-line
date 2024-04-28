@@ -28,11 +28,13 @@
       <flag [timeLine]="timeLine"
             (editFlagOutput)="editFlag($event)"
             [clearBarFilterDelete]="clearBarFilterDelete"
+            (resetFlagsOutput)="resetFlagsEvent($event)"
       > 
       </flag>
     }
   </div>
 
+  
   <!-- [ngStyle]="{'margin': openColse ? '-1.5rem': '2rem' }" -->
   <!-- <div class="play-video cursor_pointer">
     <img  class="play-video_img" src="{{assetsProd}}/assets/youtube.png" alt="Spider Share">

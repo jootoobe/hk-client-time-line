@@ -20,6 +20,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) clearBarFilterDelete!: string
 
+  resetFlagsOutput = output()
+
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
 
   filterColorId: any = [] // used to identify the html id of the filter color clicked on the bottom bars of the time line
@@ -163,6 +165,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     if (this.filterColorId[0] === `color-${id}`) {
       this.filterColor(flag, id)
     }
+
+    this.resetFlagsOutput.emit()
 
   }
 
