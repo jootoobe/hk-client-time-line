@@ -213,6 +213,28 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     //tem que fazer isso para não dar um problema com o matDatepicker
     this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.setValue(new Date(flagVal.date_obj.date_origin))
 
+
+    // UPDATE RADIO BUTTON
+    this.radioRedeTextColor = this.flagsForm.controls[0]?.get('flag_design')?.get('color_text')?.value
+    let val = this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.value
+
+    if (val.background === '74,74,74' && val.text === '255,255,255') { //{background: 'black', text: 'white'}
+      this.radioRedeNets = '1'
+    }
+    else if (val.background === '255,255,255' && val.text === '74,74,74') { //{background: 'white', text: 'black'}
+      this.radioRedeNets = '2'
+    }
+    else if (val.background === '74,74,74' && val.text === '255,0,0') { //{background: 'black', text: 'red'}
+      this.radioRedeNets = '3'
+    }
+    else if (val.background === '255,0,0' && val.text === '255,255,255') { //{background: 'red', text: 'white'}
+      this.radioRedeNets = '4'
+    }
+    else if (val.background === '74,74,74' && val.text === '255,255,0') { //{background: 'black', text: 'yellow'}
+      this.radioRedeNets = '5'
+    }
+
+
   }
 
 
@@ -635,7 +657,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     })
 
     this.timeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(this.timeLine)
-    console.log('pppppppppppppppppppppp',this.timeLine)
+    console.log('pppppppppppppppppppppp', this.timeLine)
     // start-loader
     this.connectingExternalRoutesService.spiderShareLoader({ message: true })
     this.updateSubscribeFlag()
