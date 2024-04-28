@@ -67,7 +67,15 @@
             "edit": "Editar bandeira",
             "back": "Voltar"
           }
+        },
+
+        "radio-button": {
+          "mat-label-1": "Cor do texto",
+          "mat-label-2": "Cor contraste redes",
+          "mat-label-3": "Cor data fundo",
+          "mat-label-4": "Cor transparência bandeira"
         }
+
       }
     }
   }

@@ -59,7 +59,6 @@ export class TolltipCreateHelper {
     <p style="margin: .5rem 0 1rem 0;">${msn3_b}</p>
       <img  style="height: auto;width:100%" src="${img3_a}" alt="Spider Share">
     </div>
-
     `
   }
 
