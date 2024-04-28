@@ -160,6 +160,12 @@ input[type=color]::-webkit-color-swatch {
   font-weight: var(--fonts-font-weight-500);
 }
 
+:host ::ng-deep .mat-mdc-radio-touch-target {
+   top: 0; 
+   height: 0; 
+   left: 0; 
+   width: 0; 
+}
 
 :host ::ng-deep .mdc-radio__outer-circle {
   // tamanho circulo externo - aro externo

@@ -19,9 +19,9 @@ export class TolltipCreateHelper {
 
   // Alimenta o ToolTip {{'TIME-LINE.CREATE-FLAG.modal.title-h1' | translate}}
   help1() {
-    let msn1_a:string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-a']
-    let msn1_b:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-b']
-    let img1_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-img1-a']
+    let msn1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-a']
+    let msn1_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-b']
+    let img1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-img1-a']
     return `
     <div  style="height: auto; width:35rem;">
       <p>${msn1_a}</p>
@@ -33,9 +33,9 @@ export class TolltipCreateHelper {
 
 
   help2() {
-    let msn2_a:string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-a']
-    let msn2_b:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-b']
-    let img2_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-img2-a']
+    let msn2_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-a']
+    let msn2_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-b']
+    let img2_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-img2-a']
     return `
 
     <div  style="height: auto; width:35rem;">
@@ -49,12 +49,12 @@ export class TolltipCreateHelper {
 
 
   help3() {
-    let msn3_a:string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-a']
-    let msn3_b:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-b']
-    let msn3_c:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-c']
-    let msn3_d:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-d']
-    let msn3_e:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-e']
-    let msn3_f:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-f']
+    let msn3_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-a']
+    let msn3_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-b']
+    let msn3_c: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-c']
+    let msn3_d: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-d']
+    let msn3_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-e']
+    let msn3_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-f']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
     return `
 
@@ -70,31 +70,32 @@ export class TolltipCreateHelper {
   }
 
 
+  help4() {
+    let msn4_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-a']
+    let msn4_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-b']
+    let msn4_c: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-c']
+    let msn4_d: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-d']
+    let msn4_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-e']
+    let msn4_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-f']
+    // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
+    return `
+
+    <div  style="height: auto; width:27rem; margin: .5rem ">
+    <p>Altere as cores dos textos seguindo as opções abaixo.</p>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 01 - preto</li>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 02 - branco</li>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 03 - vermelho</li>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 04 - azul</li>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 05 - amarelo</li>
+    </div>
+    `
+  }
+
+
 
 }
 
 
-// {
-//   "START_COMMENTARY--TOLLTIP-HELPER": "============== HTML START TOLLTIP-HELPER COMPONENT FOLDER =============================",
-//   "TIME-LINE": {
-//     "TOLLTIP-HTML-MSN": {
-
-//       "TolltipCreateHelper": {
-//         "START_COMMENTARY--TOLLTIP-CREATE": "============== HTML FEEDS INFORMATION INTO TOLLTIP HELP =============================",
-//         "help1-a": "A bandeira serve para identificar um grupo de redes sociais que possuem links ou vídeos guardados, facilitando na hora da busca.",
-//         "help1-b": "A criação da bandeira permite posteriormente um fácil acesso aos documentos salvos dentro do kanban.",
-//         "help2-a": "A data e o horário, representam o posicionamento da flag na timeline.",
-//         "help2-b": "É possível ter até 02 flags com a mesma data e hora.",
-//         "help5": "",
-//         "help6": "",
-//         "help7": "",
-//         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help1-img1-a.png",
-//         "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help2-img2-a.png"
-//       }
-
-//     }
-//   }
-// }
 
 
 
@@ -104,9 +105,14 @@ export class TolltipCreateHelper {
 
 
 
-
-
-
+// <div  style="height: auto; width:27rem; margin: .5rem ">
+// <p>Altere as cores dos textos seguindo as opções abaixo.</p>
+// <li style="margin: .5rem 0 1rem .5rem;">Opção cor 01 - preto</li>
+// <li style="margin: .5rem 0 1rem .5rem;">Opção cor 02 - branco</li>
+// <li style="margin: .5rem 0 1rem .5rem;">Opção cor 03 - vermelho</li>
+// <li style="margin: .5rem 0 1rem .5rem;">Opção cor 04 - azul</li>
+// <li style="margin: .5rem 0 1rem .5rem;">Opção cor 05 - amarelo</li>
+// </div>
 
 
 

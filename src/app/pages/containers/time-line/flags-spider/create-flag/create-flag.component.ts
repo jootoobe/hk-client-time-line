@@ -51,7 +51,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   help1: string = ''
   help2: string = ''
   help3: string = ''
-
+  help4: string = ''
 
   // RADIO BUTTON
   radioRedeTextColor = '0,0,0' // text colors
@@ -98,6 +98,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       this.help1 = this.tolltipCreateHelper.help1()
       this.help2 = this.tolltipCreateHelper.help2()
       this.help3 = this.tolltipCreateHelper.help3()
+      this.help4 = this.tolltipCreateHelper.help4()
     }, 500)
 
     this.setDateTimestamp()
