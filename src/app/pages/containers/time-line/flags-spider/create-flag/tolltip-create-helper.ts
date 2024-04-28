@@ -81,12 +81,12 @@ export class TolltipCreateHelper {
     return `
 
     <div  style="height: auto; width:27rem; margin: .5rem ">
-    <p>Altere as cores dos textos seguindo as opções abaixo.</p>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 01 - preto</li>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 02 - branco</li>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 03 - vermelho</li>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 04 - azul</li>
-    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 05 - amarelo</li>
+    <p>Altere as cores de contraste das redes</p>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 01 - Fundo: <strong>preto</strong> com texto <strong>branco</strong></li>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 02 - Fundo: <strong>branco</strong> com texto <strong>preto</strong></li>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 03 - Fundo: <strong>preto</strong> com texto <strong>vermelho</strong></li>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 04 - Fundo: <strong>vermelho</strong> com texto <strong>branco</strong></li>
+    <li style="margin: .5rem 0 1rem .5rem;">Opção cor 05 - Fundo: <strong>preto</strong> com texto <strong>amarelo</strong></li>
     </div>
     `
   }

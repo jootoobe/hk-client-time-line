@@ -111,9 +111,8 @@ export class FlagsSpiderComponent implements OnInit {
   }
 
   resetFlagsEvent(e: any) {
-    this.timeLine = this.resetFlags
     this.resetFilter = true
-    this.stateService.updateGetAllTimeLine(this.timeLine)
+    this.indexDbGetAllTimeLine('0000')
     setTimeout(() => {
       this.resetFilter = false
     }, 1000)
@@ -169,21 +168,28 @@ export class FlagsSpiderComponent implements OnInit {
   }
 
 
-  // indexDbGetAllTimeLine(yearKey: string) {
-  //   const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
-  //   connTimeLine$.pipe(
-  //     switchMap(() =>
-  //       this.indexDbTimeLineService.indexDbGetAllTimeLine('time_line', yearKey)
-  //     ))
-  //     .subscribe({
-  //       next: (res: TimeLineModel) => {
-  //         console.log(res)
-  //       },
-  //       error: (err) => {
-  //       },
-  //       complete: () => {
-  //       }
-  //     })
-  // }
+  indexDbGetAllTimeLine(yearKey: string) {
+    const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
+    connTimeLine$.pipe(
+      switchMap(() =>
+        this.indexDbTimeLineService.indexDbGetAllTimeLine('time_line', yearKey)
+      ))
+      .subscribe({
+        next: (res: TimeLineModel) => {
+          let valFlags: FlagModel[] = res.time_line.flags
+          let newTimeLine = {
+            time_line: {
+              flags: valFlags
+            }
+          }
+          this.resetFlags = newTimeLine
+          this.stateService.updateGetAllTimeLine(newTimeLine)
+        },
+        error: (err) => {
+        },
+        complete: () => {
+        }
+      })
+  }
 
 }
