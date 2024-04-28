@@ -18,7 +18,7 @@ export function coerceArray<T>(value: T | T[]): T[] {
 export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   editFlagOutput = output<FlagModel>()
   @Input({ required: true }) timeLine!: TimeLineModel
-  @Input({ required: true }) clearBarFilterDelete!: string
+  @Input({ required: true }) clearBarFilterDeleteInput!: string
 
   resetFlagsOutput = output()
 
@@ -47,8 +47,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges) {
 
     // toda vez que clicar no botão "criar" o filtro da barra inferior deve ser desabilitado
-    if (changes['clearBarFilterDelete']?.currentValue) {
-      this.filterColor(this.timeLine.time_line.flags[0], '', changes['clearBarFilterDelete']?.currentValue)
+    if (changes['clearBarFilterDeleteInput']?.currentValue) {
+      this.filterColor(this.timeLine.time_line.flags[0], '', changes['clearBarFilterDeleteInput']?.currentValue)
     }
 
   }

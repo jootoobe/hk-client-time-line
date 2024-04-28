@@ -28,7 +28,7 @@
     @if(timeLine && timeLine.time_line){
       <flag [timeLine]="timeLine"
             (editFlagOutput)="editFlagEvent($event)"
-            [clearBarFilterDelete]="clearBarFilterDelete"
+            [clearBarFilterDeleteInput]="clearBarFilterDelete"
             (resetFlagsOutput)="resetFlagsEvent($event)"
       > 
       </flag>
