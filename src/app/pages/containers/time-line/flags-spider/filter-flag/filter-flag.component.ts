@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, SimpleChanges, TemplateRef, ViewChild, effect, output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef, ViewChild, effect, output } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { TimeLineModel } from "../../../../../models/time-line.model";
 import { FilterFlagsService } from "../../../../../shared/services/filter-flags.service";
@@ -14,7 +14,7 @@ import { ToastrService } from "ngx-toastr";
   templateUrl: './filter-flag.component.html',
   styleUrls: ['./filter-flag.component.scss'],
 })
-export class FilterFlagComponent implements OnInit {
+export class FilterFlagComponent implements OnChanges, OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) resetFilterInput!: Boolean 
 
@@ -53,7 +53,7 @@ export class FilterFlagComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
 
-    // toda vez que clicar no botão "criar" o filtro da barra inferior deve ser desabilitado
+    // Limpa o filtro quando o usuário clica para abrir o menu de edição ou para deletar a bandeira
     if (changes['resetFilterInput']?.currentValue) {
       this.clearFilter('update')
     }
