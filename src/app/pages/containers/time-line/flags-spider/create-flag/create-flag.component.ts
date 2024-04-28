@@ -216,6 +216,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     // UPDATE RADIO BUTTON
     this.radioRedeTextColor = this.flagsForm.controls[0]?.get('flag_design')?.get('color_text')?.value
+   
     let val = this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.value
 
     if (val.background === '74,74,74' && val.text === '255,255,255') { //{background: 'black', text: 'white'}
@@ -233,6 +234,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     else if (val.background === '74,74,74' && val.text === '255,255,0') { //{background: 'black', text: 'yellow'}
       this.radioRedeNets = '5'
     }
+
+    
 
 
   }
