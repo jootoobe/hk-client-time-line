@@ -81,7 +81,6 @@ export class FilterFlagComponent implements OnChanges, OnInit {
         
         if (this.applyFilterCloseDialog && this.titleFlag?.lenght > 0) {
           this.toApplyFilterTextOutput.emit(this.emitFilterApply)
-
         } else if (this.applyFilterCloseDialog && this.filterTopDiv?.lenght > 0) {
           // não preciso fazer nada aqui
         } else if (!this.applyFilterCloseDialog) {
