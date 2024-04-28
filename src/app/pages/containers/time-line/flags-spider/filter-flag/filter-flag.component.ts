@@ -20,7 +20,7 @@ export class FilterFlagComponent implements OnInit {
   indexDbGetAllData!: TimeLineModel
   selectColor!: FlagModel[]
   titleFlag!: any; // digitação filtro
-  toApplyFilterText = output<TimeLineModel>()
+  toApplyFilterTextOutput = output<TimeLineModel>()
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
 
@@ -67,7 +67,7 @@ export class FilterFlagComponent implements OnInit {
     dialogRef.afterClosed()
       .subscribe(() => {
         if (this.applyFilterCloseDialog && this.titleFlag?.lenght > 0) {
-          this.toApplyFilterText.emit(this.emitFilterApply)
+          this.toApplyFilterTextOutput.emit(this.emitFilterApply)
 
         } else if (this.applyFilterCloseDialog && this.filterTopDiv?.lenght > 0) {
           // não preciso fazer nada aqui
@@ -95,11 +95,11 @@ export class FilterFlagComponent implements OnInit {
       .subscribe((res: TimeLineModel) => {
         if (res) {
           this.emitFilterApply = res
-          return this.toApplyFilterText.emit(this.emitFilterApply)
+          return this.toApplyFilterTextOutput.emit(this.emitFilterApply)
         }
         if (!res) {
           this.titleFlag = ''
-          return this.toApplyFilterText.emit(this.indexDbGetAllData)
+          return this.toApplyFilterTextOutput.emit(this.indexDbGetAllData)
         }
 
       })
