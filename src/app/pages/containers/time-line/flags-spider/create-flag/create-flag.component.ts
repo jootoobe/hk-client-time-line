@@ -220,24 +220,42 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     let val = this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.value
 
-    if (val.background === '74,74,74' && val.text === '255,255,255') { //{background: 'black', text: 'white'}
+    if (val.background === '74, 74, 74' && val.text === '255, 255, 255') { //{background: 'black', text: 'white'}
       this.radioRedeNets = '1'
     }
-    else if (val.background === '255,255,255' && val.text === '74,74,74') { //{background: 'white', text: 'black'}
+    else if (val.background === '255 ,255, 255' && val.text === '74, 74, 74') { //{background: 'white', text: 'black'}
       this.radioRedeNets = '2'
     }
-    else if (val.background === '74,74,74' && val.text === '255,0,0') { //{background: 'black', text: 'red'}
+    else if (val.background === '74, 74, 74' && val.text === '255, 0, 0') { //{background: 'black', text: 'red'}
       this.radioRedeNets = '3'
     }
-    else if (val.background === '255,0,0' && val.text === '255,255,255') { //{background: 'red', text: 'white'}
+    else if (val.background === '255, 0, 0' && val.text === '255, 255, 255') { //{background: 'red', text: 'white'}
       this.radioRedeNets = '4'
     }
-    else if (val.background === '74,74,74' && val.text === '255,255,0') { //{background: 'black', text: 'yellow'}
+    else if (val.background === '74, 74, 74' && val.text === '255, 255, 0') { //{background: 'black', text: 'yellow'}
       this.radioRedeNets = '5'
     }
 
 
-    this.radioButtonDate = this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.value
+
+    let val2 = this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.value
+
+    if (val2 === this.flagsForm.controls[0]?.get('flag_design')?.get('color_rgb')?.value ) {  //   <!-- Mesma cor bandeira -->
+      this.radioButtonDate = '1'
+    }
+    else if (val2 === '0, 0, 0') { // preto
+      this.radioButtonDate = '2'
+    }
+    else if (val2 === '255, 255, 255') { //branco
+      this.radioButtonDate = '3'
+    }
+    else if (val2 === '255, 0, 0') { //vermelho
+      this.radioButtonDate = '4'
+    }
+    else if (val2 === '255, 255, 0') { // amarelo
+      this.radioButtonDate = '5'
+    }
+
     console.log('sssssssssss', this.radioButtonDate)
     this.radioRedeTransparency = this.flagsForm.controls[0]?.get('flag_design')?.get('color_transparency')?.value
   }
