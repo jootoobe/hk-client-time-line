@@ -46,11 +46,19 @@ export class TopDivComponent implements OnInit {
 
   toApplyFilterTextEvent(event: string) {
     this.toApplyFilterText = event
+
+    let val = event === '' ? [] : [event]
+    
+    let activeFilter = {
+      flag: val,
+      activeFilter: 'filter already exists'
+    }
+    this.stateService.updateActiveFilterSignal(activeFilter) 
   }
 
   toApplyFilterColorEvent(event: any) {
     this.toApplyFilterColor = event
-    
+
       let activeFilter = {
         flag: event,
         activeFilter: 'filter already exists'

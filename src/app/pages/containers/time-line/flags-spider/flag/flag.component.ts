@@ -64,6 +64,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       else if (this.activeFilterSignal.activeFilter === '0') {
         this.saveFlagopacityFilter = this.activeFilterSignal?.flag
       }
+      // Quando o filtro texto está aplicado
+      else if (this.activeFilterSignal.activeFilter === 'filter already exists2') {
+        this.filterAlreadyExists = this.activeFilterSignal.flag
+      }
+      // Quando o filtro cor está aplicado
       else if (this.activeFilterSignal.activeFilter === 'filter already exists') {
         this.filterAlreadyExists = this.activeFilterSignal.flag
       }
