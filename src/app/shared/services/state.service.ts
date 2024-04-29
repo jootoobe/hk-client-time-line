@@ -7,11 +7,9 @@ import { WINDOW } from './window.service';
 import { TIMELINEKeysModel } from '../../models/cryptos/time-line-keys.model';
 import { TimeLineModel } from '../../models/time-line.model';
 import { FlagModel } from '../../models/flag.model';
+import { IFilterCheckActive } from '../../interfaces/filter-check-active.interface';
 
-interface IFilterCheckActive {
-  flag?: FlagModel,
-  activeFilter?: string
-}
+
 
 @Injectable({
   providedIn: 'root'

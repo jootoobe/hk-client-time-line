@@ -4,6 +4,7 @@ import { FlagModel } from "../../../../../models/flag.model";
 import { TimeLineModel } from "../../../../../models/time-line.model";
 import { ToastrService } from "ngx-toastr";
 import { StateService } from "../../../../../shared/services/state.service";
+import { IFilterCheckActive } from "../../../../../interfaces/filter-check-active.interface";
 
 export function coerceArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
@@ -32,7 +33,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   checksFilterIsActive = false
 
   checkingOpacityFilterApplied = ''
-  activeFilterSignal = ''
+  activeFilterSignal!: IFilterCheckActive
+  saveFlagopacityFilter: FlagModel | undefined
   constructor(
     private renderer2: Renderer2,
     private elementRef: ElementRef,
@@ -50,28 +52,34 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     })
 
 
-    // effect(() => { // verifica se o filtro está ativo 
-    //   this.activeFilterSignal = this.stateService.activeFilterSignalComputed()
-    //   console.log('ssssssssssssss',this.activeFilterSignal)
-    //   if(this.activeFilterSignal === '1') {
+    effect(() => { // verifica se o filtro está ativo 
 
-    //   }
-    //   else if(this.activeFilterSignal === '2') {
+      this.activeFilterSignal = this.stateService.activeFilterSignalComputed()
+      if (this.activeFilterSignal.activeFilter === '1') {
+        this.saveFlagopacityFilter = this.activeFilterSignal?.flag
+      }
+      else if (this.activeFilterSignal.activeFilter === '0') {
+        this.saveFlagopacityFilter = this.activeFilterSignal?.flag
+        console.log('___________________________________________-',this.saveFlagopacityFilter)
+      }
+      else if (this.activeFilterSignal.activeFilter === '2') {
 
-    //   }
-    //   else if(this.activeFilterSignal === 'create') {
-    //     console.log('ppppppppppppppppppppppppiiiiiiiiiiiirrrrrrrrrrruuuuuuuuuuulito')
-        
-    //     // this.filterColor()
-    //   }
-    // })
+      }
+      // Limpa filtro opacity
+      else if (this.activeFilterSignal.activeFilter === 'create') {
+        if (this.activeFilterSignal) {
+          let id = this.saveFlagopacityFilter?.flag_design?.color_hex?.substring(1)
+          this.filterColor(this.saveFlagopacityFilter, id)
+        }
+      }
+    })
 
   }
 
   ngOnChanges(changes: SimpleChanges) {
 
     if (changes['checkingOpacityFilterAppliedInput']?.currentValue) {
-      console.log('ssssssssssssssssssssss' , changes['checkingOpacityFilterAppliedInput']?.currentValue)
+      console.log('ssssssssssssssssssssss', changes['checkingOpacityFilterAppliedInput']?.currentValue)
       this.checkingOpacityFilterApplied = changes['checkingOpacityFilterAppliedInput']?.currentValue
     }
 
@@ -202,7 +210,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
-  filterColor(flag: FlagModel, id?: string) {
+  filterColor(flag?: FlagModel, id?: string) {
 
     // if (this.activeFilterSignal !== '0' && this.activeFilterSignal !== '1') {
     //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
@@ -245,15 +253,20 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
       this.filterColorId.push(`color-${id}`)
       this.valFilterClose = {
-        color_hex: flag.flag_design.color_hex,
-        color_rgb: Number(flag.flag_design.color_rgb.split(',')[0])
+        color_hex: flag?.flag_design.color_hex,
+        color_rgb: Number(flag?.flag_design.color_rgb.split(',')[0])
       }
 
-      // this.stateService.updateActiveFilterSignal('1') 
+      let activeFilter = {
+        flag,
+        activeFilter: '1'
+      }
+
+      this.stateService.updateActiveFilterSignal(activeFilter)
       this.valFilterColorBarOutput.emit(this.valFilterClose)
 
 
-    } else if (this.filterColorId[0] === `color-${id}`) {
+    } else if (this.filterColorId[0] === `color-${id}` && this.activeFilterSignal) {
       this.enableDisableMouse = true
       card.forEach((e: any, i: number) => {
         if (e.id != `color-${id}`) {
@@ -274,11 +287,17 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
       this.filterColorId = []
       this.valFilterColorBarOutput.emit(this.valFilterClose)
+
+      let activeFilter = {
+        activeFilter: '0'
+      }
+
+      setTimeout(()=>{
+        this.stateService.updateActiveFilterSignal(activeFilter)
+      },100)
+
+
     }
-
-
-
-
   }
 
 

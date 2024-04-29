@@ -3,6 +3,7 @@ import { Component, Input, OnInit, output } from '@angular/core';
 // import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
 import { SignInService } from '../../../../../spider-share/iam/services/auth/sign-in.service';
 import { TimeLineModel } from '../../../../../models/time-line.model';
+import { StateService } from '../../../../../shared/services/state.service';
 
 @Component({
   selector: 'top-div',
@@ -24,13 +25,16 @@ export class TopDivComponent implements OnInit {
 
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
-    private signInService: SignInService
+    private stateService: StateService
   ) { }
   ngOnInit(): void {
     console.log('TopDivComponent 🃏')
   }
 
   openCreateTimeLineDialog() {
+    let activeFilter = {activeFilter: 'create'}
+    this.stateService.updateActiveFilterSignal(activeFilter) 
+
     this.openModalOutput.emit()
   }
 
