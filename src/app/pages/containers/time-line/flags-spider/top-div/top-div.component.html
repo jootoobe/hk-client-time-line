@@ -27,16 +27,16 @@
 
   <!-- Filter opacity -->
   <!-- Text Filtrando... -->
-  <div  class="item-filtering" 
+  <!-- <div  class="item-filtering" 
         >
-        <!-- {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-05' | translate}} -->
+        {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-05' | translate}}
   </div>
   <div class="item-filter" >
     <div class="item-filter_close cursor_pointer"
-                >
-      <!-- X -->
+    >
+      X
     </div>
-  </div>
+  </div> -->
 
   <div class="item-right">
     <mat-icon
@@ -72,9 +72,15 @@
   {{'TIME-LINE.TopDivComponent.TOP-DIV.input-filter.item-01' | translate}}
 </div>
 
-<div class="flex-container" >
+<div class="flex-container" *ngIf="toApplyFilterColor.length > 0">
 
-
+  <span class="cursor_pointer filter-input"
+       *ngFor="let filterInpuTopDiv of toApplyFilterColor; let i = index"
+                (click)="filter.removeColor(i, filterInpuTopDiv)"
+                [ngStyle]="{'background': filterInpuTopDiv.color_hex,
+                            'color': filterInpuTopDiv.color_rgb < 200 ? 'white' : 'black'}">
+    X
+  </span>
 </div>
 
 

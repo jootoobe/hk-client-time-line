@@ -282,7 +282,8 @@ export class FilterFlagComponent implements OnChanges, OnInit {
     this.titleFlag = ''
     this.colorArray = []
     this.filterTopDiv = []
-
+    this.toApplyFilterColorOutput.emit(this.filterTopDiv)
+    
     if (update === 'update') {
       this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
       this.stateService.updateChecksFilterIsActive(false)
