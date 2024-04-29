@@ -20,7 +20,7 @@ export class TopDivComponent implements OnInit {
   clearBarFilterBarOutput = output() // limpa o filtro barra inferior
 
   toApplyFilterText = ''
-  toApplyFilterColor = [{ color_rgb: '', color_hex: '', color_rgb_number: 0 }] as any
+  toApplyFilterColor = [] as any
 
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
@@ -37,6 +37,10 @@ export class TopDivComponent implements OnInit {
   timeLineEvent(event: TimeLineModel) {
     console.log('event event event event', event)
     this.timeLineOutput.emit(event)
+  }
+  
+  toApplyFilterTextEvent(event: string) {
+    this.toApplyFilterText = event
   }
 
   toApplyFilterColorEvent(event: any) {

@@ -24,6 +24,8 @@ export class FilterFlagComponent implements OnChanges, OnInit {
   selectColor!: FlagModel[]
   titleFlag!: any; // digitação filtro
   timeLineOutput = output<TimeLineModel>()
+  toApplyFilterTextOutput = output<string>()
+
   toApplyFilterColorOutput = output<[{ color_rgb: '', color_hex: '', color_rgb_number: 0 }]>()
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
@@ -88,7 +90,7 @@ export class FilterFlagComponent implements OnChanges, OnInit {
         } else if (!this.applyFilterCloseDialog) {
           this.clearFilter('update') // aqui é quando clico fora do modal ou no X
         } 
-    
+        
       });
 
     this.indexDbGetAllTimeLine('0000')
@@ -113,12 +115,15 @@ export class FilterFlagComponent implements OnChanges, OnInit {
         if (res) {
           this.emitFilterApply = res
           this.stateService.updateChecksFilterIsActive(true)
-          return this.timeLineOutput.emit(this.emitFilterApply)
+          this.timeLineOutput.emit(this.emitFilterApply)
+          return this.toApplyFilterTextOutput.emit(val) 
         }
         if (!res) {
           this.titleFlag = ''
-          return this.timeLineOutput.emit(this.indexDbGetAllData)
+          this.timeLineOutput.emit(this.indexDbGetAllData)
+          return this.toApplyFilterTextOutput.emit('')  
         }
+
 
       })
 
