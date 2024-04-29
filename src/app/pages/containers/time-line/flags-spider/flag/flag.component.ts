@@ -21,11 +21,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   @Input({ required: true }) clearBarFilterDeleteInput!: string
 
   resetFlagsOutput = output()
+  valFilterColorBarOutput = output()  // stores the clicked filter and communicates with the top-div component
 
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
 
   filterColorId: any = [] // used to identify the html id of the filter color clicked on the bottom bars of the time line
-  valFilterClose = { color_hex: '', color_rgb: 0 } // stores the clicked filter and communicates with the top-div component
+  valFilterClose = { color_hex: '', color_rgb: 0 } as any// stores the clicked filter and communicates with the top-div component - start -> filterColor()
   enableDisableMouse = true // desabilita o mouse quando filtro esta ativado na bandeira 
   TOAST!: any // translator used in ToastrService
   checksFilterIsActive = false
@@ -242,6 +243,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         color_rgb: Number(flag.flag_design.color_rgb.split(',')[0])
       }
 
+      this.valFilterColorBarOutput.emit(this.valFilterClose)
+
 
     } else if (this.filterColorId[0] === `color-${id}` || disableFilter === 'disable') {
       this.enableDisableMouse = true
@@ -263,6 +266,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         color_rgb: 0
       }
       this.filterColorId = []
+      this.valFilterColorBarOutput.emit(this.valFilterClose)
     }
 
 

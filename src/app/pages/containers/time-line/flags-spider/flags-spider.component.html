@@ -18,7 +18,8 @@
     [timeLine]="timeLine"
     (timeLineOutput)="timeLineEvent($event)"
     (clearBarFilterBarOutput)="clearBarFilterBarEvent($event)"
-    [resetFilterInput]="resetFilter">
+    [resetFilterInput]="resetFilter"
+    [valFilterColorBarInput]="valFilterColorBar">
     
     </top-div>
   </div>
@@ -30,6 +31,7 @@
             (editFlagOutput)="editFlagEvent($event)"
             [clearBarFilterDeleteInput]="clearBarFilterDelete"
             (resetFlagsOutput)="resetFlagsEvent($event)"
+            (valFilterColorBarOutput)="valFilterColorBar = $event "
       > 
       </flag>
     }

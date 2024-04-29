@@ -33,6 +33,9 @@ export class FlagsSpiderComponent implements OnInit {
   resetFlags!: TimeLineModel
 
   resetFilter = false
+
+  valFilterColorBar!:any // stores the clicked filter bar and communicates with the top-div component
+
   constructor(
     private dialogCreate: MatDialog,
     private renderer2: Renderer2,
