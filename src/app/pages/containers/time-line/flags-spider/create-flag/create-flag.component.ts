@@ -799,20 +799,21 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   onRadioButtonNetsColor(e: MatRadioChange) {
+    console.log('eeeeeeeeeeeeeeeeee', e)
     if (e.value === '1') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,255,255' })
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74, 74, 74', text: '255, 255, 255' })
     }
     else if (e.value === '2') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '255,255,255', text: '74,74,74' })
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '255, 255, 255', text: '74, 74, 74' })
     }
     else if (e.value === '3') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,0,0' })
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74, 74, 74', text: '255, 0, 0' })
     }
     else if (e.value === '4') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '255,0,0', text: '255,255,255' })
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '255, 0, 0', text: '255, 255, 255' })
     }
     else if (e.value === '5') {
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74,74,74', text: '255,255,0' })
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_chips')?.setValue({ background: '74, 74, 74', text: '255, 255, 0' })
     }
   }
 
