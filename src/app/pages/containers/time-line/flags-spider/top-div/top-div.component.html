@@ -36,7 +36,7 @@
         {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-05' | translate}}
   </div>
   <div class="item-filter cursor_pointer">
-    <div class="item-filter_close "
+    <div class="item-filter_close " (click)="closeFilter(valFilterColorBarInput.color_hex)"
         [ngStyle]="{'background': valFilterColorBarInput?.color_hex,
                     'color': valFilterColorBarInput?.color_rgb < 200 ? 'white' : 'black'}"
     >

@@ -65,6 +65,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       else if (this.activeFilterSignal.activeFilter === '2') {
 
       }
+      // fecha o filtro opacity - click closeFilter Top-div
+      else if (this.activeFilterSignal?.activeFilter?.includes('#')) {
+        let id = this.activeFilterSignal?.activeFilter?.substring(1)
+        this.filterColor(this.saveFlagopacityFilter, id)
+      }
+      
       // Limpa filtro opacity
       else if (this.activeFilterSignal.activeFilter === 'create') {
         if (this.activeFilterSignal.flag) {
@@ -267,7 +273,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       this.valFilterColorBarOutput.emit(this.valFilterClose)
 
 
-    } else if (this.filterColorId[0] === `color-${id}` && this.activeFilterSignal) {
+    } else if (this.filterColorId[0] === `color-${id}`) {
       this.enableDisableMouse = true
       card.forEach((e: any, i: number) => {
         if (e.id != `color-${id}`) {

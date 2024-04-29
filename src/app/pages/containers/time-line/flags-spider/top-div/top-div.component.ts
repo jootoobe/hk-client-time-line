@@ -19,6 +19,7 @@ export class TopDivComponent implements OnInit {
   @Input({ required: true }) valFilterColorBarInput = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
   timeLineOutput = output<TimeLineModel>()
   openModalOutput = output()
+  closeFilterId = output<string>()
 
   toApplyFilterText = ''
   toApplyFilterColor = [] as any //  <!-- Filter select -->
@@ -52,6 +53,9 @@ export class TopDivComponent implements OnInit {
   }
 
 
-
+  closeFilter(val: string) {
+    let activeFilter = {activeFilter: val}
+    this.stateService.updateActiveFilterSignal(activeFilter) 
+  }
 
 }
