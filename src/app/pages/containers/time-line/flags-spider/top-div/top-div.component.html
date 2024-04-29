@@ -76,7 +76,7 @@
 
   <span class="cursor_pointer filter-input"
        *ngFor="let filterInpuTopDiv of toApplyFilterColor; let i = index"
-                (click)="filter.removeColor(i, filterInpuTopDiv)"
+                (click)="filter.removeColor(i, filterInpuTopDiv.color_hex)"
                 [ngStyle]="{'background': filterInpuTopDiv.color_hex,
                             'color': filterInpuTopDiv.color_rgb < 200 ? 'white' : 'black'}">
     X

@@ -196,6 +196,8 @@ export class FilterFlagComponent implements OnChanges, OnInit {
   }
 
   removeColor(i: number, color: any) {
+    
+
 
     this.colorArray = this.colorArray.map((res: any) => {
       if ((res.flag_design.color_hex?.toLowerCase()) !== (color?.toLowerCase())) {
@@ -283,7 +285,7 @@ export class FilterFlagComponent implements OnChanges, OnInit {
     this.colorArray = []
     this.filterTopDiv = []
     this.toApplyFilterColorOutput.emit(this.filterTopDiv)
-    
+
     if (update === 'update') {
       this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
       this.stateService.updateChecksFilterIsActive(false)
