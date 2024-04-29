@@ -19,6 +19,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   editFlagOutput = output<FlagModel>()
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) clearBarFilterDeleteInput!: string
+  @Input({ required: true }) checkingOpacityFilterAppliedInput!: string
 
   resetFlagsOutput = output()
   valFilterColorBarOutput = output<{ color_hex: '', color_rgb: 0 }>()  // stores the clicked filter and communicates with the top-div component
@@ -31,7 +32,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   TOAST!: any // translator used in ToastrService
   checksFilterIsActive = false
 
-
+  checkingOpacityFilterApplied = ''
   constructor(
     private renderer2: Renderer2,
     private elementRef: ElementRef,
@@ -55,6 +56,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     // toda vez que clicar no botão "criar" o filtro da barra inferior deve ser desabilitado
     if (changes['clearBarFilterDeleteInput']?.currentValue) {
       this.filterColor(this.timeLine.time_line.flags[0], '', changes['clearBarFilterDeleteInput']?.currentValue)
+    }
+    if (changes['checkingOpacityFilterAppliedInput']?.currentValue) {
+      console.log('ssssssssssssssssssssss' , changes['checkingOpacityFilterAppliedInput']?.currentValue)
+      this.checkingOpacityFilterApplied = changes['checkingOpacityFilterAppliedInput']?.currentValue
     }
 
   }
@@ -117,9 +122,9 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   setStylesDate(flag1: FlagModel): any {
 
     if (flag1.flag_design?.color_date === '255, 255, 255' && flag1.flag_design?.color_rgb !== '255, 255, 255' ||
-        flag1.flag_design?.color_date === '0, 0, 0' && flag1.flag_design?.color_rgb !== '0, 0, 0' ||
-       flag1.flag_design?.color_date === '255, 0, 0' && flag1.flag_design?.color_rgb !== '255, 0, 0' ||
-        flag1.flag_design?.color_date === '255, 255, 0' && flag1.flag_design?.color_rgb !== '255, 255, 0') {
+      flag1.flag_design?.color_date === '0, 0, 0' && flag1.flag_design?.color_rgb !== '0, 0, 0' ||
+      flag1.flag_design?.color_date === '255, 0, 0' && flag1.flag_design?.color_rgb !== '255, 0, 0' ||
+      flag1.flag_design?.color_date === '255, 255, 0' && flag1.flag_design?.color_rgb !== '255, 255, 0') {
       let styles = {
         'background-color': `rgba(${flag1.flag_design?.color_date}, 1)`
       };
@@ -158,11 +163,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   // Faz a flag vir para a frente
   mouseUp(val: number) {
     // if (this.enableDisableMouse) {
-      if (val === -1) {
-        this.cardIndexMouseUp = { index: -1, mouse: false }
-        return
-      }
-      this.cardIndexMouseUp = { index: val, mouse: true }
+    if (val === -1) {
+      this.cardIndexMouseUp = { index: -1, mouse: false }
+      return
+    }
+    this.cardIndexMouseUp = { index: val, mouse: true }
     // }
   }
 
@@ -184,24 +189,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
-  filterColor(flag: FlagModel, id?: string, disableFilter?:string) {
-    // let index: number
-    // this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
-    // index = this.filterColorId?.findIndex((val: string) => val === `color-${id}`);
+  filterColor(flag: FlagModel, id?: string, disableFilter?: string) {
 
-    // // filtro já adicionado
-    // if (index >= 0) {
-    //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
-    //   return
-    // }
-
-    //   // Até 5 filtros 
-    // if (this.filterColorId.length >= 5) {
-    //   this.toastrService.info('ssssssssss', 'PPPPPPPPP');
-    //   return
-    // } else if (this.filterColorId.length < 5) {
-    //   this.filterColorId.push(`color-${id}`)
-    // }
+    if (this.checkingOpacityFilterApplied === 'not ok') {
+      this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+      return
+    }
 
 
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
@@ -229,7 +222,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
           this.renderer2.setStyle(e, 'display', 'none');
         }
       });
-      
+
       opacity.forEach((e: any, i: number) => {
         if (e.id === `opacity-${id}`) {
           this.renderer2.setStyle(e, 'opacity', '1');

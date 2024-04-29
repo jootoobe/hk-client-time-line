@@ -8,17 +8,18 @@ import { TimeLineModel } from '../../../../../models/time-line.model';
   selector: 'top-div',
   templateUrl: './top-div.component.html',
   styleUrl: './top-div.component.scss',
-  providers:[SignInService]
+  providers: [SignInService]
 
 })
 export class TopDivComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   // toda vez que o menu for clicado eu limpoo filtro todo -- O Filtro não pode estar ativo quando o usuário edita ou deleta a bandeira 
-  @Input({ required: true }) resetFilterInput!: Boolean 
+  @Input({ required: true }) resetFilterInput!: Boolean
   // <!-- Filter opacity -->
   @Input({ required: true }) valFilterColorBarInput = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
   timeLineOutput = output<TimeLineModel>()
   openModalOutput = output()
+  checkingOpacityFilterAppliedOutput = output<string>()
   clearBarFilterBarOutput = output() // limpa o filtro barra inferior
 
   toApplyFilterText = ''
@@ -27,7 +28,7 @@ export class TopDivComponent implements OnInit {
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private signInService: SignInService
-    ) { }
+  ) { }
   ngOnInit(): void {
     console.log('TopDivComponent 🃏')
   }
@@ -40,18 +41,29 @@ export class TopDivComponent implements OnInit {
     console.log('event event event event', event)
     this.timeLineOutput.emit(event)
   }
-  
+
   toApplyFilterTextEvent(event: string) {
     this.toApplyFilterText = event
+    this.checkingOpacityFilterApplied()
   }
 
   toApplyFilterColorEvent(event: any) {
-    console.log('event event event event', event)
     this.toApplyFilterColor = event
+    this.checkingOpacityFilterApplied()
   }
 
   clearBarFilterBar() {
-   this.clearBarFilterBarOutput.emit() 
+    this.clearBarFilterBarOutput.emit()
+  }
+
+  checkingOpacityFilterApplied() {
+
+    if (this.valFilterColorBarInput?.color_rgb && this.valFilterColorBarInput?.color_hex || this.toApplyFilterColor?.length > 0) {
+      this.checkingOpacityFilterAppliedOutput.emit('not ok')
+
+    } else if (!this.valFilterColorBarInput?.color_rgb && !this.valFilterColorBarInput?.color_hex || this.toApplyFilterColor?.length === 0) {
+      this.checkingOpacityFilterAppliedOutput.emit('ok')
+    }
   }
 
 }

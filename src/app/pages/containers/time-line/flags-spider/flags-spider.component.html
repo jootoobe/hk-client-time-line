@@ -19,7 +19,8 @@
     (timeLineOutput)="timeLineEvent($event)"
     (clearBarFilterBarOutput)="clearBarFilterBarEvent($event)"
     [resetFilterInput]="resetFilter"
-    [valFilterColorBarInput]="valFilterColorBar">
+    [valFilterColorBarInput]="valFilterColorBar"
+    (checkingOpacityFilterAppliedOutput)="checkingOpacityFilterApplied = $event">
     
     </top-div>
   </div>
@@ -32,6 +33,7 @@
             [clearBarFilterDeleteInput]="clearBarFilterDelete"
             (resetFlagsOutput)="resetFlagsEvent($event)"
             (valFilterColorBarOutput)="valFilterColorBar = $event "
+            [checkingOpacityFilterAppliedInput]="checkingOpacityFilterApplied"
       > 
       </flag>
     }

@@ -35,7 +35,7 @@ export class FlagsSpiderComponent implements OnInit {
   resetFilter = false
 
   valFilterColorBar = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
-
+  checkingOpacityFilterApplied = '' // verifica se o filtro no modal está ativo ou não
   constructor(
     private dialogCreate: MatDialog,
     private renderer2: Renderer2,
