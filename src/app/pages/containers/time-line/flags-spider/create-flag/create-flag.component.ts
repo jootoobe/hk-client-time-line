@@ -56,7 +56,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   // RADIO BUTTON
   radioRedeTextColor = '0, 0, 0' // text colors
   radioRedeNets = '1' // {background: '74,74,74', text: '255,255,255'}
-  radioButtonDate = '144, 171, 64' // cor fundo data com transparencia de 0.3
+  radioButtonDate = '1' // cor fundo data com transparencia de 0.3
   radioRedeTransparency = '0.1' // transparência bandeira
 
   addDataMaskVal = ''
@@ -139,8 +139,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         color_hsl: new FormControl<string | null>('75, 46%, 92%', [Validators.required]),
         color_date: new FormControl<string | null>('144, 171, 64', [Validators.required]),
         color_chips: this.fb.group({
-          background: new FormControl<string | null>('74,74,74', [Validators.required]),
-          text: new FormControl<string | null>('255,255,255', [Validators.required]),
+          background: new FormControl<string | null>('74, 74, 74', [Validators.required]),
+          text: new FormControl<string | null>('255, 255, 255', [Validators.required]),
         }),
       }),
       date_obj: this.fb.group({
