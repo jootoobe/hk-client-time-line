@@ -112,7 +112,7 @@ export class FlagsSpiderComponent implements OnInit {
 
   resetFlagsEvent(e: any) {
     this.resetFilter = true
-    this.indexDbGetAllTimeLine('0000')
+    // this.indexDbGetAllTimeLine('0000')
     setTimeout(() => {
       this.resetFilter = false
     }, 1000)

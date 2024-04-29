@@ -114,7 +114,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       })
     });
 
-    this.flagsForm.controls[0].get('flag_design')?.get('color_rgb')?.setValue(this.radioButtonDate)
   }
 
   createFlagobject(): FormGroup {
