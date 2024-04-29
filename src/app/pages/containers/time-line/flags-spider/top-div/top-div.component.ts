@@ -59,7 +59,7 @@ export class TopDivComponent implements OnInit {
   }
 
   openFilterDialogCloseFilterOpacity(){
-    let activeFilter = {activeFilter: 'create'}
+    let activeFilter = {activeFilter: 'filter'}
     this.stateService.updateActiveFilterSignal(activeFilter) 
   }
 
