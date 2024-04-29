@@ -32,6 +32,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   checksFilterIsActive = false
 
   checkingOpacityFilterApplied = ''
+  activeFilterSignal = ''
   constructor(
     private renderer2: Renderer2,
     private elementRef: ElementRef,
@@ -46,6 +47,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     effect(() => { // verifica se o filtro está ativo 
       this.checksFilterIsActive = this.stateService.checksFilterIsActiveSignalComputed()
+    })
+
+
+    effect(() => { // verifica se o filtro está ativo 
+      this.activeFilterSignal = this.stateService.activeFilterSignalComputed()
+      console.log('ssssssssssssss',this.activeFilterSignal)
     })
 
   }
@@ -184,12 +191,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
-  filterColor(flag: FlagModel, id?: string, disableFilter?: string) {
+  filterColor(flag: FlagModel, id?: string) {
 
-    // if (this.checkingOpacityFilterApplied === 'not ok') {
-    //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
-    //   return
-    // }
+    if (this.activeFilterSignal !== '0' && this.activeFilterSignal !== '1') {
+      this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+      return
+    }
 
 
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
@@ -231,6 +238,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         color_rgb: Number(flag.flag_design.color_rgb.split(',')[0])
       }
 
+      this.stateService.updateActiveFilterSignal('1') 
       this.valFilterColorBarOutput.emit(this.valFilterClose)
 
 
@@ -255,6 +263,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
       this.filterColorId = []
       this.valFilterColorBarOutput.emit(this.valFilterClose)
+      this.stateService.updateActiveFilterSignal('0')
     }
 
 

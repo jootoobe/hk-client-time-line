@@ -24,6 +24,16 @@ export class StateService {
     return this.toastSignal()
   });
 
+   // '0' não tem filtro ativo
+   // '1' filtro barra ativo
+   // '2' filtro texto ativo
+   // '3' filtro color ativo
+  private activeFilterSignal: WritableSignal<string> = signal<any>('0');
+  activeFilterSignalComputed = computed(() => {
+    return this.activeFilterSignal()
+  });
+
+
   // Vai no header da aplicação
   private redisAuthSubject = new BehaviorSubject<RedisAuthModel>(RedisAuthModel as any);
   redisAuthSubject$ = this.redisAuthSubject.asObservable();
@@ -52,7 +62,6 @@ export class StateService {
 
 
 
-
   constructor(@Inject(WINDOW) private window: Window) { }
 
   // 🅰️ Signal
@@ -71,6 +80,10 @@ export class StateService {
 
   updateChecksFilterIsActive(val: boolean) {
     return this.checksFilterIsActiveSignal.set(val)
+  }
+
+  updateActiveFilterSignal(val: string) {
+    return this.activeFilterSignal.set(val)
   }
 
 
