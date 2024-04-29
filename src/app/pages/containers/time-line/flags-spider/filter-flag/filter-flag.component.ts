@@ -7,6 +7,7 @@ import { IndexDbTimeLineService } from "../../../../../shared/services/storage/i
 import { switchMap } from "rxjs";
 import { FlagModel } from "../../../../../models/flag.model";
 import { ToastrService } from "ngx-toastr";
+import { IFilterCheckActive } from "../../../../../interfaces/filter-check-active.interface";
 
 
 @Component({
@@ -36,6 +37,7 @@ export class FilterFlagComponent implements OnInit {
   colorArray: any
 
   filterTopDiv = [{ color_rgb: '', color_hex: '', color_rgb_number: 0 }] as any
+  activeFilterSignal!: IFilterCheckActive
 
   constructor(
     private dialogCreate: MatDialog,
@@ -50,6 +52,18 @@ export class FilterFlagComponent implements OnInit {
       this.TOAST = this.stateService.toastSignalComputed()
       console.log('TOAST', this.TOAST)
       this.indexDbGetAllTimeLine('0000')
+    })
+
+    effect(() => { // verifica se o filtro está ativo 
+      this.activeFilterSignal = this.stateService.activeFilterSignalComputed()
+      if (this.activeFilterSignal.activeFilter === 'create') {
+        if(this.filterTopDiv?.length > 0 || this.titleFlag?.length > 0) {
+          setTimeout(()=>{
+            this.clearFilter('update')
+          },200)
+        }
+      }
+    
     })
 
   }
@@ -280,6 +294,7 @@ export class FilterFlagComponent implements OnInit {
     if (update === 'update') {
       this.stateService.updateGetAllTimeLine(this.indexDbGetAllData)
       this.stateService.updateChecksFilterIsActive(false)
+      this.toApplyFilterTextOutput.emit('')  
     }
   }
 }

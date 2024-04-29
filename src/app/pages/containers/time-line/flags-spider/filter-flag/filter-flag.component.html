@@ -22,11 +22,12 @@
           <mat-label>
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.title.mat-label' | translate}}
           </mat-label>
-          <input matInput value=""
-            [placeholder]="'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.title.placeholder' | translate"
-            [(ngModel)]="titleFlag" 
-            (keyup)="filterFlag()" 
-            [disabled]="filterTopDiv?.length > 0">
+          <input matInput
+                [placeholder]="'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.title.placeholder' | translate"
+                [(ngModel)]="titleFlag" 
+                (keyup)="filterFlag()" 
+                [value]="titleFlag"
+                [disabled]="filterTopDiv?.length > 0">
         </mat-form-field>
       </div>
       <div class="item-filter-description"> </div>
