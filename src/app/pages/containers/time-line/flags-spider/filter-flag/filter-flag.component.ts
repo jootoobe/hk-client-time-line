@@ -14,9 +14,8 @@ import { ToastrService } from "ngx-toastr";
   templateUrl: './filter-flag.component.html',
   styleUrls: ['./filter-flag.component.scss'],
 })
-export class FilterFlagComponent implements OnChanges, OnInit {
+export class FilterFlagComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
-  @Input({ required: true }) resetFilterInput!: Boolean 
 
 
   @ViewChild('filterTimeLine', { static: false }) filterTimeLine!: TemplateRef<ElementRef>; // open modal ref
@@ -55,14 +54,6 @@ export class FilterFlagComponent implements OnChanges, OnInit {
 
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-
-    // Limpa o filtro quando o usuário clica para abrir o menu de edição ou para deletar a bandeira
-    if (changes['resetFilterInput']?.currentValue) {
-      this.clearFilter('update')
-    }
-
-  }
 
   ngOnInit(): void {
     this.filterTopDiv = []

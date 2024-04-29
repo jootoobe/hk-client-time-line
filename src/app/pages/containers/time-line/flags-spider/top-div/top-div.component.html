@@ -37,7 +37,6 @@
   </div>
   <div class="item-filter cursor_pointer">
     <div class="item-filter_close "
-        (click)="clearBarFilterBar()"
         [ngStyle]="{'background': valFilterColorBarInput?.color_hex,
                     'color': valFilterColorBarInput?.color_rgb < 200 ? 'white' : 'black'}"
     >
@@ -51,14 +50,15 @@
               class="material-icons cursor_pointer"
               fontSet="material-icons-outlined"
               (click)="filter.openFilterTimeLineDialog()"
-              (click)="clearBarFilterBar()">
+              >
       <span>filter_alt</span>
+      
       <filter-flag  #filter
                     [timeLine]="timeLine"
                     (timeLineOutput)="timeLineEvent($event)"
                     (toApplyFilterColorOutput)="toApplyFilterColorEvent($event)"
                     (toApplyFilterTextOutput)="toApplyFilterTextEvent($event)"
-                    [resetFilterInput]="resetFilterInput"
+                  
       >
       </filter-flag>
     </mat-icon>

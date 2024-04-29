@@ -10,28 +10,24 @@
 </ng-template>
 
 
-<!-- Top div 20%  -->
+<!-- Top div 20%   -->
 <div class="main-div">
   <div class="first-div">
     <top-div
     (openModalOutput)="openCreateTimeLineDialog('create')"
     [timeLine]="timeLine"
-    (timeLineOutput)="timeLineEvent($event)"
-    (clearBarFilterBarOutput)="clearBarFilterBarEvent($event)"
-    [resetFilterInput]="resetFilter"
+    (timeLineOutput)="timeLineEvent($event)"  
     [valFilterColorBarInput]="valFilterColorBar"
     (checkingOpacityFilterAppliedOutput)="checkingOpacityFilterApplied = $event">
     
     </top-div>
   </div>
 
-  <!-- Bottom div 80% -->
+  <!-- Bottom div 80%  (resetFlagsOutput)="resetFlagsEvent($event)"-->
   <div class="second-div"  appDragScroll id="moveWheelId">
     @if(timeLine && timeLine.time_line){
       <flag [timeLine]="timeLine"
-            (editFlagOutput)="editFlagEvent($event)"
-            [clearBarFilterDeleteInput]="clearBarFilterDelete"
-            (resetFlagsOutput)="resetFlagsEvent($event)"
+            (editFlagOutput)="editFlagEvent($event)"           
             (valFilterColorBarOutput)="valFilterColorBar = $event "
             [checkingOpacityFilterAppliedInput]="checkingOpacityFilterApplied"
       > 

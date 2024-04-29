@@ -18,10 +18,9 @@ export function coerceArray<T>(value: T | T[]): T[] {
 export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   editFlagOutput = output<FlagModel>()
   @Input({ required: true }) timeLine!: TimeLineModel
-  @Input({ required: true }) clearBarFilterDeleteInput!: string
   @Input({ required: true }) checkingOpacityFilterAppliedInput!: string
 
-  resetFlagsOutput = output()
+  // resetFlagsOutput = output()
   valFilterColorBarOutput = output<{ color_hex: '', color_rgb: 0 }>()  // stores the clicked filter and communicates with the top-div component
 
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
@@ -53,10 +52,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnChanges(changes: SimpleChanges) {
 
-    // toda vez que clicar no botão "criar" o filtro da barra inferior deve ser desabilitado
-    if (changes['clearBarFilterDeleteInput']?.currentValue) {
-      this.filterColor(this.timeLine.time_line.flags[0], '', changes['clearBarFilterDeleteInput']?.currentValue)
-    }
     if (changes['checkingOpacityFilterAppliedInput']?.currentValue) {
       console.log('ssssssssssssssssssssss' , changes['checkingOpacityFilterAppliedInput']?.currentValue)
       this.checkingOpacityFilterApplied = changes['checkingOpacityFilterAppliedInput']?.currentValue
@@ -177,7 +172,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       this.filterColor(flag, id)
     }
 
-    this.resetFlagsOutput.emit()
+    // this.resetFlagsOutput.emit()
 
   }
 
@@ -191,10 +186,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 */
   filterColor(flag: FlagModel, id?: string, disableFilter?: string) {
 
-    if (this.checkingOpacityFilterApplied === 'not ok') {
-      this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
-      return
-    }
+    // if (this.checkingOpacityFilterApplied === 'not ok') {
+    //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+    //   return
+    // }
 
 
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
@@ -207,7 +202,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     const remove = this.elementRef.nativeElement.querySelectorAll(['.remove']);
     const opacity = this.elementRef.nativeElement.querySelectorAll(['.opacity']);
 
-    if (this.filterColorId.length === 0 && disableFilter !== 'disable' && disableFilter !== 'enable') {
+    if (this.filterColorId.length === 0) {
 
       this.enableDisableMouse = false
 
@@ -239,7 +234,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       this.valFilterColorBarOutput.emit(this.valFilterClose)
 
 
-    } else if (this.filterColorId[0] === `color-${id}` || disableFilter === 'disable') {
+    } else if (this.filterColorId[0] === `color-${id}`) {
       this.enableDisableMouse = true
       card.forEach((e: any, i: number) => {
         if (e.id != `color-${id}`) {

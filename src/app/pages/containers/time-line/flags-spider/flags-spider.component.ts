@@ -28,11 +28,9 @@ export class FlagsSpiderComponent implements OnInit {
   flagCreateEdit!: string
 
   envProd = environment.production
-  clearBarFilterDelete!: string
 
   resetFlags!: TimeLineModel
 
-  resetFilter = false
 
   valFilterColorBar = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
   checkingOpacityFilterApplied = '' // verifica se o filtro no modal está ativo ou não
@@ -83,26 +81,13 @@ export class FlagsSpiderComponent implements OnInit {
     this.openCreateTimeLineDialog('edit')
   }
 
-  clearBarFilterBarEvent(e: any) {
-    this.clearBarFilterDelete = 'disable'
-    // Altera o estado no ngOnChanges FlagComponent
-    setTimeout(() => {
-      this.clearBarFilterDelete = 'enable'
-    }, 1000)
-  }
 
   // Open Create Time_Line
   openCreateTimeLineDialog(val: string): void {
     this.flagCreateEdit = val
 
     if (val === 'create') {
-      this.resetFilter = true
       this.editFlagForm = {}
-      this.clearBarFilterDelete = 'disable'
-      // Altera o estado no ngOnChanges FlagComponent
-      setTimeout(() => {
-        this.clearBarFilterDelete = 'enable'
-      }, 1000)
     }
 
     this.dialogCreate.open(this.createTimeLine, {
@@ -112,14 +97,6 @@ export class FlagsSpiderComponent implements OnInit {
       position: {}
     });
 
-  }
-
-  resetFlagsEvent(e: any) {
-    this.resetFilter = true
-    // this.indexDbGetAllTimeLine('0000')
-    setTimeout(() => {
-      this.resetFilter = false
-    }, 1000)
   }
 
   getAllTimeLineById() {
