@@ -18,7 +18,6 @@ export class TopDivComponent implements OnInit {
   @Input({ required: true }) valFilterColorBarInput = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
   timeLineOutput = output<TimeLineModel>()
   openModalOutput = output()
-  checkingOpacityFilterAppliedOutput = output<string>()
 
   toApplyFilterText = ''
   toApplyFilterColor = [] as any //  <!-- Filter select -->
@@ -29,7 +28,6 @@ export class TopDivComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     console.log('TopDivComponent 🃏')
-    this.checkingOpacityFilterAppliedOutput.emit('ok')
   }
 
   openCreateTimeLineDialog() {
@@ -43,23 +41,13 @@ export class TopDivComponent implements OnInit {
 
   toApplyFilterTextEvent(event: string) {
     this.toApplyFilterText = event
-    this.checkingOpacityFilterApplied()
   }
 
   toApplyFilterColorEvent(event: any) {
     this.toApplyFilterColor = event
-    this.checkingOpacityFilterApplied()
   }
 
 
-  checkingOpacityFilterApplied() {
 
-    if (this.valFilterColorBarInput?.color_rgb && this.valFilterColorBarInput?.color_hex || this.toApplyFilterText?.length > 0) {
-      this.checkingOpacityFilterAppliedOutput.emit('not ok')
-
-    } else if (!this.valFilterColorBarInput?.color_rgb && !this.valFilterColorBarInput?.color_hex || this.toApplyFilterText?.length === 0) {
-      this.checkingOpacityFilterAppliedOutput.emit('ok')
-    }
-  }
 
 }
