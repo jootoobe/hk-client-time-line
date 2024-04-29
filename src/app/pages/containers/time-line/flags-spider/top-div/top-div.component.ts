@@ -31,6 +31,7 @@ export class TopDivComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     console.log('TopDivComponent 🃏')
+    this.checkingOpacityFilterAppliedOutput.emit('ok')
   }
 
   openCreateTimeLineDialog() {
@@ -58,10 +59,10 @@ export class TopDivComponent implements OnInit {
 
   checkingOpacityFilterApplied() {
 
-    if (this.valFilterColorBarInput?.color_rgb && this.valFilterColorBarInput?.color_hex || this.toApplyFilterColor?.length > 0) {
+    if (this.valFilterColorBarInput?.color_rgb && this.valFilterColorBarInput?.color_hex || this.toApplyFilterText?.length > 0) {
       this.checkingOpacityFilterAppliedOutput.emit('not ok')
 
-    } else if (!this.valFilterColorBarInput?.color_rgb && !this.valFilterColorBarInput?.color_hex || this.toApplyFilterColor?.length === 0) {
+    } else if (!this.valFilterColorBarInput?.color_rgb && !this.valFilterColorBarInput?.color_hex || this.toApplyFilterText?.length === 0) {
       this.checkingOpacityFilterAppliedOutput.emit('ok')
     }
   }
