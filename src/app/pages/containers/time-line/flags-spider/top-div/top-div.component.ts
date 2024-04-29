@@ -15,13 +15,14 @@ export class TopDivComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   // toda vez que o menu for clicado eu limpoo filtro todo -- O Filtro não pode estar ativo quando o usuário edita ou deleta a bandeira 
   @Input({ required: true }) resetFilterInput!: Boolean 
+  // <!-- Filter opacity -->
   @Input({ required: true }) valFilterColorBarInput = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
   timeLineOutput = output<TimeLineModel>()
   openModalOutput = output()
   clearBarFilterBarOutput = output() // limpa o filtro barra inferior
 
   toApplyFilterText = ''
-  toApplyFilterColor = [] as any
+  toApplyFilterColor = [] as any //  <!-- Filter select -->
 
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
