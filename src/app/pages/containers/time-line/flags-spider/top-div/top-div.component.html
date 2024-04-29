@@ -26,10 +26,10 @@
   <!-- <div class="item-menu">{{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-04' | translate}}</div> -->
 
   <!-- Filter opacity -->
-  <!-- Filtrando... -->
+  <!-- Text Filtrando... -->
   <div  class="item-filtering"
         >
-        <!-- {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-05' | translate}} -->
+        {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-05' | translate}}
   </div>
   <div class="item-filter" >
     <div class="item-filter_close cursor_pointer"
@@ -48,7 +48,8 @@
       <span>filter_alt</span>
       <filter-flag  #filter
                     [timeLine]="timeLine"
-                    (toApplyFilterTextOutput)="toApplyFilterTextEvent($event)"
+                    (timeLineOutput)="timeLineEvent($event)"
+                    (toApplyFilterColorOutput)="toApplyFilterColorEvent($event)"
                     [resetFilterInput]="resetFilterInput"
       >
       </filter-flag>

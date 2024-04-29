@@ -23,7 +23,8 @@ export class FilterFlagComponent implements OnChanges, OnInit {
   indexDbGetAllData!: TimeLineModel
   selectColor!: FlagModel[]
   titleFlag!: any; // digitação filtro
-  toApplyFilterTextOutput = output<TimeLineModel>()
+  timeLineOutput = output<TimeLineModel>()
+  toApplyFilterColorOutput = output<[{ color_rgb: '', color_hex: '', color_rgb_number: 0 }]>()
   applyFilterCloseDialog = false // if else dialogRef.afterClosed()
   emitFilterApply!: TimeLineModel // guarda o filtro aplicado
 
@@ -34,6 +35,7 @@ export class FilterFlagComponent implements OnChanges, OnInit {
   colorArray: any
 
   filterTopDiv = [{ color_rgb: '', color_hex: '', color_rgb_number: 0 }] as any
+
   constructor(
     private dialogCreate: MatDialog,
     private filterFlagsService: FilterFlagsService,
@@ -80,7 +82,7 @@ export class FilterFlagComponent implements OnChanges, OnInit {
       .subscribe(() => {
         
         if (this.applyFilterCloseDialog && this.titleFlag?.lenght > 0) {
-          this.toApplyFilterTextOutput.emit(this.emitFilterApply)
+          this.timeLineOutput.emit(this.emitFilterApply)
         } else if (this.applyFilterCloseDialog && this.filterTopDiv?.lenght > 0) {
           // não preciso fazer nada aqui
         } else if (!this.applyFilterCloseDialog) {
@@ -111,11 +113,11 @@ export class FilterFlagComponent implements OnChanges, OnInit {
         if (res) {
           this.emitFilterApply = res
           this.stateService.updateChecksFilterIsActive(true)
-          return this.toApplyFilterTextOutput.emit(this.emitFilterApply)
+          return this.timeLineOutput.emit(this.emitFilterApply)
         }
         if (!res) {
           this.titleFlag = ''
-          return this.toApplyFilterTextOutput.emit(this.indexDbGetAllData)
+          return this.timeLineOutput.emit(this.indexDbGetAllData)
         }
 
       })
@@ -178,6 +180,7 @@ export class FilterFlagComponent implements OnChanges, OnInit {
 
       this.stateService.updateGetAllTimeLine(newTimeLine)
       this.stateService.updateChecksFilterIsActive(true)
+      this.toApplyFilterColorOutput.emit(this.filterTopDiv)
 
     } else if (this.filterTopDiv.length >= 4) {
       // this.toastrService.info('The filter becomes more effective', 'Add 05 colors at a time');
@@ -238,7 +241,6 @@ export class FilterFlagComponent implements OnChanges, OnInit {
           }
 
           this.indexDbGetAllData = newTimeLine
-          console.log('PAPAPAPPAPAPAPPAPAPA', this.indexDbGetAllData)
           this.uniqueColor(this.indexDbGetAllData.time_line.flags)
 
           if (reset === 'reset') {

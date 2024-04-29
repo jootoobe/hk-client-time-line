@@ -15,9 +15,12 @@ export class TopDivComponent implements OnInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   // toda vez que o menu for clicado eu limpoo filtro todo -- O Filtro não pode estar ativo quando o usuário edita ou deleta a bandeira 
   @Input({ required: true }) resetFilterInput!: Boolean 
-  toApplyFilterTextOutput = output<TimeLineModel>()
+  timeLineOutput = output<TimeLineModel>()
   openModalOutput = output()
   clearBarFilterBarOutput = output() // limpa o filtro barra inferior
+
+  toApplyFilterText = ''
+  toApplyFilterColor = [{ color_rgb: '', color_hex: '', color_rgb_number: 0 }] as any
 
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
@@ -31,9 +34,14 @@ export class TopDivComponent implements OnInit {
     this.openModalOutput.emit()
   }
 
-  toApplyFilterTextEvent(event: TimeLineModel) {
+  timeLineEvent(event: TimeLineModel) {
     console.log('event event event event', event)
-    this.toApplyFilterTextOutput.emit(event)
+    this.timeLineOutput.emit(event)
+  }
+
+  toApplyFilterColorEvent(event: any) {
+    console.log('event event event event', event)
+    this.toApplyFilterColor = event
   }
 
   clearBarFilterBar() {
