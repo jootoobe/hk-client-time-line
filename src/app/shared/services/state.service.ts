@@ -6,6 +6,12 @@ import { RedisAuthModel } from '../../spider-share/iam/models/auth/redis-auth.mo
 import { WINDOW } from './window.service';
 import { TIMELINEKeysModel } from '../../models/cryptos/time-line-keys.model';
 import { TimeLineModel } from '../../models/time-line.model';
+import { FlagModel } from '../../models/flag.model';
+
+interface IFilterCheckActive {
+  flag?: FlagModel,
+  activeFilter?: string
+}
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +34,7 @@ export class StateService {
    // '1' filtro barra ativo
    // '2' filtro texto ativo
    // '3' filtro color ativo
-  private activeFilterSignal: WritableSignal<string> = signal<any>('0');
+  private activeFilterSignal: WritableSignal<IFilterCheckActive> = signal<IFilterCheckActive>({});
   activeFilterSignalComputed = computed(() => {
     return this.activeFilterSignal()
   });
@@ -82,7 +88,7 @@ export class StateService {
     return this.checksFilterIsActiveSignal.set(val)
   }
 
-  updateActiveFilterSignal(val: string) {
+  updateActiveFilterSignal(val: IFilterCheckActive) {
     return this.activeFilterSignal.set(val)
   }
 

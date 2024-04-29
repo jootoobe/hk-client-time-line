@@ -50,10 +50,21 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     })
 
 
-    effect(() => { // verifica se o filtro está ativo 
-      this.activeFilterSignal = this.stateService.activeFilterSignalComputed()
-      console.log('ssssssssssssss',this.activeFilterSignal)
-    })
+    // effect(() => { // verifica se o filtro está ativo 
+    //   this.activeFilterSignal = this.stateService.activeFilterSignalComputed()
+    //   console.log('ssssssssssssss',this.activeFilterSignal)
+    //   if(this.activeFilterSignal === '1') {
+
+    //   }
+    //   else if(this.activeFilterSignal === '2') {
+
+    //   }
+    //   else if(this.activeFilterSignal === 'create') {
+    //     console.log('ppppppppppppppppppppppppiiiiiiiiiiiirrrrrrrrrrruuuuuuuuuuulito')
+        
+    //     // this.filterColor()
+    //   }
+    // })
 
   }
 
@@ -193,10 +204,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 */
   filterColor(flag: FlagModel, id?: string) {
 
-    if (this.activeFilterSignal !== '0' && this.activeFilterSignal !== '1') {
-      this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
-      return
-    }
+    // if (this.activeFilterSignal !== '0' && this.activeFilterSignal !== '1') {
+    //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+    //   return
+    // }
 
 
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
@@ -238,7 +249,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         color_rgb: Number(flag.flag_design.color_rgb.split(',')[0])
       }
 
-      this.stateService.updateActiveFilterSignal('1') 
+      // this.stateService.updateActiveFilterSignal('1') 
       this.valFilterColorBarOutput.emit(this.valFilterClose)
 
 
@@ -263,7 +274,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
       this.filterColorId = []
       this.valFilterColorBarOutput.emit(this.valFilterClose)
-      this.stateService.updateActiveFilterSignal('0')
     }
 
 
