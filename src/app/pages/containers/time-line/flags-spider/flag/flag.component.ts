@@ -67,7 +67,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
       // Limpa filtro opacity
       else if (this.activeFilterSignal.activeFilter === 'create') {
-        if (this.activeFilterSignal) {
+        if (this.activeFilterSignal.flag) {
           let id = this.saveFlagopacityFilter?.flag_design?.color_hex?.substring(1)
           this.filterColor(this.saveFlagopacityFilter, id)
         }
@@ -218,6 +218,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     // }
 
 
+    console.log('pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp')
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
 
 
