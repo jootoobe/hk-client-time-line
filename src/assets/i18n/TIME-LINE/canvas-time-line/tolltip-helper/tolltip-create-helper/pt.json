@@ -25,6 +25,16 @@
         "help4-f": "Opção cor 05 - Fundo: <strong>preto</strong> com texto <strong>amarelo</strong>",
 
 
+        "help5-a": "Altere a cor de fundo da data seguindo as opções abaixo.",
+        "help5-b": "Opção cor 01 - mesma cor da bandeira como transparência",
+        "help5-c": "Opção cor 02 - preto - rgb(0, 0, 0)",
+        "help5-d": "Opção cor 03 - branco - rgb(255, 255, 255)",
+        "help5-e": "Opção cor 04 - vermelho - rgb(255, 0, 0)",
+        "help5-f": "Opção cor 05 - amarelo - rgb(255, 255, 0)",
+        "help5-g": "OBS: Se a cor da bandeira for igual as opções de 2 à 5, automaticamente a cor do fundo da data assumirá a posição 01 que possui transparência.",
+
+
+
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help1-img1-a.png",
         "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help2-img2-a.png"
       }
