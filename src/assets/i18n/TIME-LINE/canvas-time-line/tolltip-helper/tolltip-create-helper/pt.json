@@ -34,6 +34,14 @@
         "help5-g": "OBS: Se a cor da bandeira for igual as opções de 2 à 5, automaticamente a cor do fundo da data assumirá a posição 01 que possui transparência.",
 
 
+        "help6-a": "Altere a transparência da bandeira seguindo as opções abaixo.",
+        "help6-b": "Opção 01 - 90% de transparência",
+        "help6-c": "Opção 01 - 80% de transparência",
+        "help6-d": "Opção 01 - 70% de transparência",
+        "help6-e": "Opção 01 - 60% de transparência",
+        "help6-f": "Opção 01 - 50% de transparência",
+
+
 
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help1-img1-a.png",
         "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help2-img2-a.png"

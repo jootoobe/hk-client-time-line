@@ -118,6 +118,28 @@ export class TolltipCreateHelper {
   }
 
 
+  help6() {
+    let msn6_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-a']
+    let msn6_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-b']
+    let msn6_c: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-c']
+    let msn6_d: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-d']
+    let msn6_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-e']
+    let msn6_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-f']
+    // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
+
+    return `
+
+    <div  style="height: auto; width:30rem; margin: .5rem ">
+      <p>${msn6_a}</p>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn6_b}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn6_c}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+    </div>
+    `
+  }
+
 
 }
 
