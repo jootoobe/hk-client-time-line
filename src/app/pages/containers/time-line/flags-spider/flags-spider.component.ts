@@ -93,6 +93,7 @@ export class FlagsSpiderComponent implements OnInit {
     this.flagCreateEdit = val
 
     if (val === 'create') {
+      this.resetFilter = true
       this.editFlagForm = {}
       this.clearBarFilterDelete = 'disable'
       // Altera o estado no ngOnChanges FlagComponent
