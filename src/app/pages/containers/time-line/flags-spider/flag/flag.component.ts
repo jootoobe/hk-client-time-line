@@ -21,7 +21,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   @Input({ required: true }) clearBarFilterDeleteInput!: string
 
   resetFlagsOutput = output()
-  valFilterColorBarOutput = output()  // stores the clicked filter and communicates with the top-div component
+  valFilterColorBarOutput = output<{ color_hex: '', color_rgb: 0 }>()  // stores the clicked filter and communicates with the top-div component
 
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
 

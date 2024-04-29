@@ -34,7 +34,7 @@ export class FlagsSpiderComponent implements OnInit {
 
   resetFilter = false
 
-  valFilterColorBar!:any // stores the clicked filter bar and communicates with the top-div component
+  valFilterColorBar = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
 
   constructor(
     private dialogCreate: MatDialog,

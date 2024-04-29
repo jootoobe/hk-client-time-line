@@ -31,17 +31,20 @@
 
   <!-- Filter opacity -->
   <!-- Text Filtrando... -->
-  <div  class="item-filtering" 
-        *ngIf="valFilterColorBarInput?.color_hex && toApplyFilterColor?.length === 0">
+  @if(valFilterColorBarInput?.color_rgb && valFilterColorBarInput?.color_hex && toApplyFilterColor?.length === 0) {
+  <div  class="item-filtering">
         {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-05' | translate}}
   </div>
-  <div class="item-filter cursor_pointer" *ngIf="valFilterColorBarInput?.color_hex && toApplyFilterColor?.length === 0">
+  <div class="item-filter cursor_pointer">
     <div class="item-filter_close "
+        (click)="clearBarFilterBar()"
+        [ngStyle]="{'background': valFilterColorBarInput?.color_hex,
+                    'color': valFilterColorBarInput?.color_rgb < 200 ? 'white' : 'black'}"
     >
       X
     </div>
   </div>
-
+  }
   <div class="item-right">
     <mat-icon
               matSuffix
