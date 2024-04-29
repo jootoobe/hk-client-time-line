@@ -36,9 +36,15 @@
   </div>
 
 
-  <!-- [ngStyle]="{'margin': openColse ? '-1.5rem': '2rem' }" -->
-  <!-- <div class="play-video cursor_pointer">
-    <img  class="play-video_img" src="{{assetsProd}}/assets/youtube.png" alt="Spider Share">
-  </div> -->
+  <div class="play-video cursor_pointer" [ngStyle]="{'z-index': flagLength <= 0 ? '1': '-1'}">
+    <img  class="play-video_img" src="{{assetsProd}}/assets/youtube.png" alt="Spider Share"
+          [ngStyle]="{'width': flagLength <= 0 ? '4rem': '2.5rem',
+                      'margin': flagLength <= 0 ? '0 2rem 2.7rem 0': '0 2rem .7rem 0' }">
+  </div>
+
+  <div class="open-clos-scroll cursor_pointer" #openClose >
+    <span id="open" (click)="openCloseHorizontalScroll('open')">open</span>
+    <span id="close" (click)="openCloseHorizontalScroll('close')">close</span>
+  </div>
 
 </div>

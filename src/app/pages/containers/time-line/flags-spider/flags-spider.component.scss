@@ -22,22 +22,30 @@
 }
 
 
-// .play-video {
-//   left: 0;
-//   bottom: 0;
-//   width: 100%;
-//   display: flex;
-//   flex-wrap: nowrap;
-//   justify-content: end;
-//   position: fixed;
-//   // z-index: -1;
-//   // align-items: start;
+.play-video {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: end;
+  position: fixed;
+  // z-index: -1;
+  // align-items: start;
 
-//   &_img {
-//     margin: 0 2rem .7rem 0;
-//     width: 3rem;
-//   }
-// }
+  &_img {
+    margin: 0 2rem .7rem 0;
+    width: 3rem;
+  }
+}
 
+
+
+.open-clos-scroll {
+  position: fixed;
+  bottom: 0.5rem;
+  font-size: 1rem;
+  margin-left: 2rem;
+}
 
 

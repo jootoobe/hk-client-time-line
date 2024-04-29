@@ -10,13 +10,17 @@ import { switchMap } from 'rxjs';
 import { FlagModel, FlagsModel } from '../../../../models/flag.model';
 import { environment } from '../../../../../environments/environment';
 import { ConnectingExternalRoutesService } from '../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
+import { DetectBrowserNameService } from '../../../../shared/services/detect-browser-name.service';
 
 @Component({
   selector: 'flags-spider',
   templateUrl: './flags-spider.component.html',
   styleUrls: ['./flags-spider.component.scss']
 })
-export class FlagsSpiderComponent implements OnInit {
+export class FlagsSpiderComponent implements OnInit, AfterViewInit {
+  @ViewChild('openClose', { static: true }) openClose!: ElementRef //  relating to the method openCloseHorizontalScroll()
+
+  
   @ViewChild('createTimeLine', { static: false }) createTimeLine!: TemplateRef<any> // open modal ref - modal to create or edit timeline
 
   assetsProd = environment.assetsProd // assetsProd: 'http://localhost:4201',
@@ -31,6 +35,11 @@ export class FlagsSpiderComponent implements OnInit {
 
   resetFlags!: TimeLineModel
 
+  detectBrowser!: string // used to identify the firefox browser and send an alter to the user
+  openColse = true // used to show and hide the horizontal scroll
+  flagLength = 0 // used to adjust the horizontal line style, to show and hide the word end
+
+
 
   valFilterColorBar = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
   checkingOpacityFilterApplied = '' // verifica se o filtro no modal está ativo ou não
@@ -42,6 +51,7 @@ export class FlagsSpiderComponent implements OnInit {
     private stateService: StateService,
     private indexDbTimeLineService: IndexDbTimeLineService,
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
+    private detectBrowserNameService: DetectBrowserNameService,
   ) {
 
     effect(() => { // tenho que certificar que a chave esteja lo LS - chave ss que abre o body {a: 'asdasd..}
@@ -73,7 +83,10 @@ export class FlagsSpiderComponent implements OnInit {
       this.getAllTimeLineById()
     }, 1000)
 
+  }
 
+  ngAfterViewInit(): void {
+    this.openCloseHorizontalScroll('open')
   }
 
   editFlagEvent(flag: FlagModel) {
@@ -111,6 +124,7 @@ export class FlagsSpiderComponent implements OnInit {
 
           this.resetFlags = newTimeLine
           this.stateService.updateGetAllTimeLine(newTimeLine)
+          this.flagLength = newTimeLine.time_line?.flags?.length
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
@@ -172,5 +186,33 @@ export class FlagsSpiderComponent implements OnInit {
         }
       })
   }
+
+
+    // horizontal scroll button open and close
+    openCloseHorizontalScroll(val: string) {
+      const open = this.openClose.nativeElement.querySelector("#open");
+      const close = this.openClose.nativeElement.querySelector("#close");
+  
+      if (this.detectBrowser !== 'firefox') {
+        if (val === 'open') {
+          // open.style.opacity = '0';
+          // close.style.opacity = '1';
+          this.openColse = true
+          open.style.display = 'none';
+          close.style.display = 'inline-table';
+          return
+        } else if (val === 'close') {
+          this.openColse = false
+          // open.style.opacity = '1';
+          // close.style.opacity = '0';
+          open.style.display = 'inline-table';
+          close.style.display = 'none';
+          return
+        }
+      }
+      alert('Para você ter uma melhor experiência utilize outro browser como Opera, Chrome, Edge ..... 😄')
+      open.style.display = 'none';
+      close.style.display = 'none';
+    }
 
 }
