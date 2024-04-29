@@ -18,9 +18,50 @@
   overflow-x: overlay;
   position: relative;
   // background: blue;
-  margin-bottom: 0.5rem; // margem do scrol
+  bottom: 0.5rem; // margem do scrol
 }
 
+
+
+.open-clos-scroll {
+  position: fixed;
+  bottom: 0.5rem;
+  font-size: 1rem;
+  margin-left: 1.5rem;
+}
+
+
+
+//=============== SCROLL =============
+//==================================
+.second-div::-webkit-scrollbar {
+  // width: 10px;
+  height: 1rem;
+}
+
+/* Track */
+.second-div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 .4rem rgba(var(--colorT-time-line-board), 1);
+  border-radius: 1rem;
+  margin: 0 10rem 0 5rem;
+  background-clip: content-box;
+}
+
+/* Handle */
+.second-div::-webkit-scrollbar-thumb {
+  width: 3rem;
+  min-width: 3rem;
+  background: linear-gradient(to right, rgba(var(--colorT-scrollH-1, 1)), rgba(var(--colorT-scrollH-2, 1)), rgba(var(--colorT-time-line-board, 1)));
+  border-radius: 1rem;
+}
+
+// END - > works together with the  [ngStyle]="{'min-width': flagLength <= 0 ? '100%': flagLength > 6 ? '100%': '100%' }"
+// according to the length of the arry
+.end {
+  margin: -35rem 10rem 0 15rem;
+  font-size: 8rem;
+  // position: absolute;
+}
 
 .play-video {
   left: 0;
@@ -38,14 +79,3 @@
     width: 3rem;
   }
 }
-
-
-
-.open-clos-scroll {
-  position: fixed;
-  bottom: 0.5rem;
-  font-size: 1rem;
-  margin-left: 2rem;
-}
-
-
