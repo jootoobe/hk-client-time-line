@@ -70,13 +70,14 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         let id = this.activeFilterSignal?.activeFilter?.substring(1)
         this.filterColor(this.saveFlagopacityFilter, id)
       }
-      
+
       // Limpa filtro opacity
       else if (this.activeFilterSignal.activeFilter === 'create') {
-        if (this.activeFilterSignal.flag) {
-          let id = this.saveFlagopacityFilter?.flag_design?.color_hex?.substring(1)
-          this.filterColor(this.saveFlagopacityFilter, id)
-        }
+        console.log('PERUUUUUU',this.activeFilterSignal)
+          if(this.saveFlagopacityFilter?.flag_title) {
+            let id = this.saveFlagopacityFilter?.flag_design?.color_hex?.substring(1)
+            this.filterColor(this.saveFlagopacityFilter, id)
+          }
       }
     })
 
