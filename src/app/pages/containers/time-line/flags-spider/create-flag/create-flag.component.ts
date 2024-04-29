@@ -60,7 +60,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   radioRedeTransparency = '0.1' // transparência bandeira
 
   addDataMaskVal = ''
-  chipsArray!: FormArray
+  chipsArray!: FormArray | any
   constructor(
     private fb: FormBuilder,
     private stateService: StateService,
@@ -74,6 +74,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     private filterFlagsService: FilterFlagsService,
   ) {
 
+    this.chipsArray = []
     this.buildForm()
 
   }

@@ -225,53 +225,54 @@
 
 
       <!-- RADIO COR REDES FUNDO -->
-      <div class="flag-modal_radio">
-        <div class="flag-modal_radio--text">
-          <!-- Cor contraste redes -->
-          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-2' | translate}}
-        <!-- Custom ToolTip    style="margin-left: 10rem; margin-top: .5rem;"-->
-        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
-            matSuffix
-            customToolTip
-            [contentTemplate]="template_help4"
-            [originX]="'center'"
-            [originY]="'bottom'"
-            [overlayX]="'center'"
-            [overlayY]="'top'"
-            [offsetY]="5">
-            help_outline
-        </i>
-      <ng-template #template_help4>
-        <div  customToolTipChiel
-              [innerHTML]="help4 | safeDomSanitizer: 'html'">
+      @if(chipsArray.length > 0) {
+        <div class="flag-modal_radio">
+          <div class="flag-modal_radio--text">
+            <!-- Cor contraste redes -->
+            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-2' | translate}}
+          <!-- Custom ToolTip    style="margin-left: 10rem; margin-top: .5rem;"-->
+          <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+              matSuffix
+              customToolTip
+              [contentTemplate]="template_help4"
+              [originX]="'center'"
+              [originY]="'bottom'"
+              [overlayX]="'center'"
+              [overlayY]="'top'"
+              [offsetY]="5">
+              help_outline
+          </i>
+        <ng-template #template_help4>
+          <div  customToolTipChiel
+                [innerHTML]="help4 | safeDomSanitizer: 'html'">
+          </div>
+        </ng-template>
+          </div>
+          <mat-radio-group class=""
+          (change)="onRadioButtonNetsColor($event)"  [(ngModel)]="radioRedeNets" [ngModelOptions]="{standalone: true}" >
+            <mat-radio-button [value]="'1'" class="flag-modal_radio--colors" >
+              <!-- {background: '74,74,74', text: '255,255,255'} -- {background: 'black', text: 'white'} -->
+              1
+            </mat-radio-button>
+            <mat-radio-button [value]="'2'" class="flag-modal_radio--colors" >
+              <!-- {background: '255,255,255', text: '74,74,74'} --- {background: 'white', text: 'black'} -->
+              2
+            </mat-radio-button>
+            <mat-radio-button [value]="'3'" class="flag-modal_radio--colors" >
+              <!-- {background: '74,74,74', text: '255,0,0'} --- {background: 'black', text: 'red'} -->
+              3
+            </mat-radio-button>
+            <mat-radio-button [value]="'4'" class="flag-modal_radio--colors" >
+              <!-- {background: '255,0,0', text: '255,255,255'} -- {background: 'red', text: 'white'} -->
+              4
+            </mat-radio-button>
+            <mat-radio-button [value]="'5'" class="flag-modal_radio--colors" >
+              <!-- {background: '74,74,74', text: '255,255,0'} --- {background: 'black', text: 'yellow'} -->
+              5
+            </mat-radio-button>
+          </mat-radio-group>
         </div>
-      </ng-template>
-        </div>
-        <mat-radio-group class=""
-        (change)="onRadioButtonNetsColor($event)"  [(ngModel)]="radioRedeNets" [ngModelOptions]="{standalone: true}" >
-          <mat-radio-button [value]="'1'" class="flag-modal_radio--colors" >
-            <!-- {background: '74,74,74', text: '255,255,255'} -- {background: 'black', text: 'white'} -->
-            1
-          </mat-radio-button>
-          <mat-radio-button [value]="'2'" class="flag-modal_radio--colors" >
-            <!-- {background: '255,255,255', text: '74,74,74'} --- {background: 'white', text: 'black'} -->
-            2
-          </mat-radio-button>
-          <mat-radio-button [value]="'3'" class="flag-modal_radio--colors" >
-            <!-- {background: '74,74,74', text: '255,0,0'} --- {background: 'black', text: 'red'} -->
-            3
-          </mat-radio-button>
-          <mat-radio-button [value]="'4'" class="flag-modal_radio--colors" >
-            <!-- {background: '255,0,0', text: '255,255,255'} -- {background: 'red', text: 'white'} -->
-            4
-          </mat-radio-button>
-          <mat-radio-button [value]="'5'" class="flag-modal_radio--colors" >
-            <!-- {background: '74,74,74', text: '255,255,0'} --- {background: 'black', text: 'yellow'} -->
-            5
-          </mat-radio-button>
-        </mat-radio-group>
-      </div>
-
+      }
       <!-- RADIO COR DATA FUNDO -->
       <div class="flag-modal_radio">
         <div class="flag-modal_radio--text">
