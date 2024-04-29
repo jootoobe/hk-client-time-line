@@ -35,6 +35,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   checkingOpacityFilterApplied = ''
   activeFilterSignal!: IFilterCheckActive
   saveFlagopacityFilter: FlagModel | undefined
+  filterAlreadyExists: any = []
   constructor(
     private renderer2: Renderer2,
     private elementRef: ElementRef,
@@ -55,15 +56,16 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     effect(() => { // verifica se o filtro está ativo 
 
       this.activeFilterSignal = this.stateService.activeFilterSignalComputed()
+      // aqui fica eu tenho a flag clicada no filtro
       if (this.activeFilterSignal.activeFilter === '1') {
         this.saveFlagopacityFilter = this.activeFilterSignal?.flag
       }
+      // aqui fica undefined
       else if (this.activeFilterSignal.activeFilter === '0') {
         this.saveFlagopacityFilter = this.activeFilterSignal?.flag
-        console.log('___________________________________________-',this.saveFlagopacityFilter)
       }
-      else if (this.activeFilterSignal.activeFilter === '2') {
-
+      else if (this.activeFilterSignal.activeFilter === 'filter already exists') {
+        this.filterAlreadyExists = this.activeFilterSignal.flag
       }
       // fecha o filtro opacity - click closeFilter Top-div
       else if (this.activeFilterSignal?.activeFilter?.includes('#')) {
@@ -73,10 +75,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
       // Limpa filtro opacity
       else if (this.activeFilterSignal.activeFilter === 'create' || this.activeFilterSignal.activeFilter === 'filter') {
-          if(this.saveFlagopacityFilter?.flag_title) {
-            let id = this.saveFlagopacityFilter?.flag_design?.color_hex?.substring(1)
-            this.filterColor(this.saveFlagopacityFilter, id)
-          }
+        if (this.saveFlagopacityFilter?.flag_title) {
+          let id = this.saveFlagopacityFilter?.flag_design?.color_hex?.substring(1)
+          this.filterColor(this.saveFlagopacityFilter, id)
+        }
       }
     })
 
@@ -216,15 +218,15 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */
-  filterColor(flag?: FlagModel, id?: string) {
+  filterColor(flag?: FlagModel | any, id?: string) {
 
-    // if (this.activeFilterSignal !== '0' && this.activeFilterSignal !== '1') {
-    //   this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
-    //   return
-    // }
+    console.log(this.filterAlreadyExists)
+    if (this.filterAlreadyExists.length > 0) {
+      this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+      return
+    }
 
-
-    console.log('pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp')
+    // this.filterAlreadyExists = []
     this.filterColorId.filter((colorId: any) => colorId === `color-${id}`);
 
 
@@ -299,9 +301,9 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         activeFilter: '0'
       }
 
-      setTimeout(()=>{
+      setTimeout(() => {
         this.stateService.updateActiveFilterSignal(activeFilter)
-      },100)
+      }, 100)
 
 
     }

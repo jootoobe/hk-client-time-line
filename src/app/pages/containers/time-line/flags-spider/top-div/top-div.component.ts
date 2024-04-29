@@ -50,6 +50,12 @@ export class TopDivComponent implements OnInit {
 
   toApplyFilterColorEvent(event: any) {
     this.toApplyFilterColor = event
+    
+      let activeFilter = {
+        flag: event,
+        activeFilter: 'filter already exists'
+      }
+      this.stateService.updateActiveFilterSignal(activeFilter) 
   }
 
 
