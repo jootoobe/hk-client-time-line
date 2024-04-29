@@ -74,7 +74,7 @@
 
 <div class="flex-container" *ngIf="toApplyFilterColor.length > 0">
 
-  <span class="cursor_pointer filter-input"
+  <span class="cursor_pointer filter-input noSelect"
        *ngFor="let filterInpuTopDiv of toApplyFilterColor; let i = index"
                 (click)="filter.removeColor(i, filterInpuTopDiv.color_hex)"
                 [ngStyle]="{'background': filterInpuTopDiv.color_hex,
@@ -84,12 +84,14 @@
 </div>
 
 
-<!-- <div class="flex-container" >
-  <span class="filter-text-close cursor_pointer" >
+<div class="flex-container" *ngIf="toApplyFilterText.length > 0">
+  <span class="filter-text-close cursor_pointer noSelect" (click)="filter.clearFilter('update')"
+                                                          (click)="toApplyFilterText= ''" 
+                                                           >
     X
   </span>
   <div class="filter-input-text">
-
+    {{toApplyFilterText | truncate:50}}
   </div>
-</div> -->
+</div> 
 
