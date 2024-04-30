@@ -17,6 +17,7 @@ export function coerceArray<T>(value: T | T[]): T[] {
   styleUrls: ['./flag.component.scss'],
 })
 export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
+
   editFlagOutput = output<FlagModel>()
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) checkingOpacityFilterAppliedInput!: string
@@ -36,6 +37,9 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   activeFilterSignal!: IFilterCheckActive
   saveFlagopacityFilter: FlagModel | undefined
   filterAlreadyExists: any = []
+
+  language: string = ''
+
   constructor(
     private renderer2: Renderer2,
     private elementRef: ElementRef,
@@ -86,6 +90,14 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         }
       }
     })
+
+  
+
+    effect(() => {
+      this.language = this.stateService.languageSignalComputed()
+      console.log('qqqqqqqqqqq',this.language)
+    })
+
 
   }
 

@@ -12,7 +12,7 @@ export class TolltipCreateHelper {
 
   constructor(private stateService: StateService) {
     effect(() => {
-      this.TIME_LINE = this.stateService.languageSignalComputed()
+      this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
       console.log('TIME-LINE >>>>>>>>>>>>>>>>>>>>>.', this.TIME_LINE)
     })
   }

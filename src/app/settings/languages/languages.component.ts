@@ -25,7 +25,7 @@ export class LanguagesTimeLineComponent implements OnInit {
     console.log('languageStart', this.languageStart)
     translate.addLangs(['pt', 'en', 'es'])
     translate.setDefaultLang(`${this.languageStart}`)
-    // this.stateService.updateLanguageSignal(translate.store.defaultLang)
+    this.stateService.updateLanguageSignal(translate.store.defaultLang)
 
   }
 
@@ -35,7 +35,7 @@ export class LanguagesTimeLineComponent implements OnInit {
       // localStorage.setItem('toast', JSON.stringify(value))
       // this.stateService.toastTs(value)
       if (value) {
-        this.stateService.updateLanguageSignal(value)
+        this.stateService.updateTranslatorLanguageSignal(value)
       }
     });
 

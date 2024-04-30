@@ -22,6 +22,11 @@ export class StateService {
     return this.languageSignal()
   });
 
+  private translatorLanguageSignal: WritableSignal<any> = signal<any>({});
+  translatorLanguageSignalComputed = computed(() => {
+    return this.translatorLanguageSignal()
+  });
+
 
   private toastSignal: WritableSignal<{}> = signal<any>(undefined);
   toastSignalComputed = computed(() => {
@@ -72,6 +77,11 @@ export class StateService {
   updateLanguageSignal(val: string) {
     return this.languageSignal.set(val)
   }
+
+  updateTranslatorLanguageSignal(val: any) {
+    return this.translatorLanguageSignal.set(val)
+  }
+
 
   updateToastSignal(val: any) {
     return this.toastSignal.set(val)

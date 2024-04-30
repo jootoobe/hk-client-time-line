@@ -47,7 +47,7 @@ export class AppTimeLineComponent implements OnInit {
     // http://localhost:4200/styles-CUIQ32FR.css
 
     effect(() => {
-      this.TESTE = this.stateService.languageSignalComputed()
+      this.TESTE = this.stateService.translatorLanguageSignalComputed()
       console.log('TIME-LINE', this.TESTE)
     })
   }
