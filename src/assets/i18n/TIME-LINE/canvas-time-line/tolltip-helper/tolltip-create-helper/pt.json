@@ -5,7 +5,7 @@
       "CreateFlagComponent": {
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
         "help1-a": "A bandeira serve para identificar um grupo de redes sociais que possuem links ou vídeos guardados, facilitando na hora da busca.",
-        "help1-b": "A criação da bandeira permite posteriormente um fácil acesso aos documentos salvos dentro do kanban.",
+        "help1-b": "A criação da bandeira permite um fácil acesso aos documentos salvos dentro do kanban, futuramente.",
        
         "help2-a": "A data e o horário, representam o posicionamento da flag na timeline.",
         "help2-b": "É possível ter até 02 flags com a mesma data e hora.",

@@ -5,7 +5,7 @@
       "CreateFlagComponent": {
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
         "help1-a": "The flag serves to identify a group of social networks that have links or videos saved, making it easier to search.",
-        "help1-b": "Creating the flag later allows easy access to documents saved within the kanban.",
+        "help1-b": "Creating the flag allows easy access to documents saved within the kanban in the future.",
        
         "help2-a": "The date and time represent the positioning of the flag on the timeline.",
         "help2-b": "It is possible to have up to 2 flags with the same date and time.",
@@ -43,8 +43,7 @@
 
 
 
-        "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help1-img1-a.png",
-        "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help2-img2-a.png"
+        "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/en/help1-img1-a.png"
       }
 
     }
