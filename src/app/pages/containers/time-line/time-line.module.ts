@@ -23,19 +23,19 @@ let urlTranslate = environment.urlTranslate
 export function HttpLoaderFactory(_httpBackend: HttpBackend) {
   return new MultiTranslateHttpLoader(_httpBackend, [
     // TIME-LINE
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/top-div/`, suffix: ".json" },
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/filter-flag/`, suffix: ".json" },
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/create-flag/`, suffix: ".json" },
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/flags-1-2/`, suffix: ".json" },
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/components/modal-doublechecker/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/top-div/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/filter-flag/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/create-flag/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/flags-1-2/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/components/modal-doublechecker/`, suffix: ".json" },
 
     // TOLLTIP HELPER
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/tolltip-helper/tolltip-create-helper/`, suffix: ".json" },
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/tolltip-helper/components/modal-doublechecker/`, suffix: ".json" },
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/tolltip-helper/tolltip-helper-global/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/tolltip-helper/tolltip-create-helper/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/tolltip-helper/components/modal-doublechecker/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/tolltip-helper/tolltip-helper-global/`, suffix: ".json" },
 
     // TOAST SERVICE
-    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/canvas-time-line/toastr-service/`, suffix: ".json" },
+    { prefix: `${urlTranslate}/assets/i18n/TIME-LINE/flags-spider/toastr-service/`, suffix: ".json" },
 
   ]);
 }
