@@ -46,7 +46,13 @@
           }
         },
         "warning": {
-          "msn-0": {}
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Até 02 flags por data e horário",
+            "message-1": "Máximo 02 flags",
+            "status": ""
+          }
         }
       },
       "CanvasTimeLineComponent": {

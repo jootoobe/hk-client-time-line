@@ -343,7 +343,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     if (this.timeLine && this.timeLine?.time_line) { // quando não existem bandeiras
       for (let flag of this.timeLine?.time_line?.flags) {
         if (flag.date_obj.timestamp === newTimestamp) {
-          console.log('vvvvvvvvvvvvvvvvvvvvvvvvv', flag)
           this.timestampExist.push(flag)
         }
       }
@@ -361,7 +360,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         // time,
       }), { emitEvent: false })
 
-      this.toastrService.warning('Até 02 flags por data e horário', 'Máximo 02 flags');
+      //'Até 02 flags por data e horário', 'Máximo 02 flags'
+      this.toastrService.error(this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-0']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-0']['message-1']);
+
       return
     }
 
