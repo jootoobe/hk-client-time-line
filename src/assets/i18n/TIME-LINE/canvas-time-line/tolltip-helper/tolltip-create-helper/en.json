@@ -34,12 +34,12 @@
         "help5-g": "NOTE: If the color of the flag is the same as options 2 to 5, the background color of the date will automatically assume position 01, which has transparency.",
 
 
-        "help6-a": "Altere a transparência da bandeira seguindo as opções abaixo.",
-        "help6-b": "Opção 01 - 90% de transparência",
-        "help6-c": "Opção 01 - 80% de transparência",
-        "help6-d": "Opção 01 - 70% de transparência",
-        "help6-e": "Opção 01 - 60% de transparência",
-        "help6-f": "Opção 01 - 50% de transparência",
+        "help6-a": "Change the transparency of the flag by following the options below.",
+        "help6-b": "Option 01 - 90% transparency",
+        "help6-c": "Option 01 - 80% transparency",
+        "help6-d": "Option 01 - 70% transparency",
+        "help6-e": "Option 01 - 60% transparency",
+        "help6-f": "Option 01 - 50% transparency",
 
 
 
