@@ -96,7 +96,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     effect(() => {
       this.language = this.stateService.languageSignalComputed()
-      console.log('qqqqqqqqqqq',this.language)
     })
 
 

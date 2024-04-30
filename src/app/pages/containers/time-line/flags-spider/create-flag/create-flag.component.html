@@ -404,6 +404,7 @@
       <div class="flag-modal_btn">
 
         <button mat-stroked-button
+                [ngStyle]="{'margin-right': language === 'pt' ? '5rem': language === 'en' ? '6rem': '5rem'}"
                 class="btn_opt_transparent"
                 matDialogClose   
                 (click)="clearForm()">
