@@ -10,14 +10,14 @@
         "help2-a": "A data e o horário, representam o posicionamento da flag na timeline.",
         "help2-b": "É possível ter até 02 flags com a mesma data e hora.",
         
-        "help3-a": "Altere as cores dos textos seguindo as opções abaixo.",
+        "help3-a": "Altere as cores dos textos, seguindo as opções abaixo.",
         "help3-b": "Opção cor 01 - preto",
         "help3-c": "Opção cor 01 - branco",
         "help3-d": "Opção cor 01 - vermelho",
         "help3-e": "Opção cor 01 - azul",
         "help3-f": "Opção cor 01 - amarelo",
 
-        "help4-a": "Altere as cores de contraste das redes.",
+        "help4-a": "Altere as cores de contraste das rede,s seguindo as opções abaixo.",
         "help4-b": "Opção cor 01 - Fundo: <strong>preto</strong> com texto <strong>branco</strong>",
         "help4-c": "Opção cor 02 - Fundo: <strong>branco</strong> com texto <strong>preto</strong>",
         "help4-d": "Opção cor 03 - Fundo: <strong>preto</strong> com texto <strong>vermelho</strong>",
@@ -25,7 +25,7 @@
         "help4-f": "Opção cor 05 - Fundo: <strong>preto</strong> com texto <strong>amarelo</strong>",
 
 
-        "help5-a": "Altere a cor de fundo da data seguindo as opções abaixo.",
+        "help5-a": "Altere a cor de fundo da data, seguindo as opções abaixo.",
         "help5-b": "Opção cor 01 - mesma cor da bandeira como transparência",
         "help5-c": "Opção cor 02 - preto - rgb(0, 0, 0)",
         "help5-d": "Opção cor 03 - branco - rgb(255, 255, 255)",
@@ -34,7 +34,7 @@
         "help5-g": "OBS: Se a cor da bandeira for igual as opções de 2 à 5, automaticamente a cor do fundo da data assumirá a posição 01 que possui transparência.",
 
 
-        "help6-a": "Altere a transparência da bandeira seguindo as opções abaixo.",
+        "help6-a": "Altere a transparência da bandeira, seguindo as opções abaixo.",
         "help6-b": "Opção 01 - 90% de transparência",
         "help6-c": "Opção 01 - 80% de transparência",
         "help6-d": "Opção 01 - 70% de transparência",

@@ -4,20 +4,20 @@
 
       "CreateFlagComponent": {
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
-        "help1-a": "The flag serves to identify a group of social networks that have links or videos saved, making it easier to search.",
+        "help1-a": "The flag serves to identify a group of social nets that have links or videos saved, making it easier to search.",
         "help1-b": "Creating the flag allows easy access to documents saved within the kanban in the future.",
        
         "help2-a": "The date and time represent the positioning of the flag on the timeline.",
         "help2-b": "It is possible to have up to 2 flags with the same date and time.",
         
-        "help3-a": "Change the text colors by following the options below.",
+        "help3-a": "Change the text colors, by following the options below.",
         "help3-b": "Color option 01 - black",
         "help3-c": "Opção cor 01 - white",
         "help3-d": "Opção cor 01 - red",
         "help3-e": "Opção cor 01 - blue",
         "help3-f": "Opção cor 01 - yellow",
 
-        "help4-a": "Change the contrast colors of the networks.",
+        "help4-a": "Change the contrast colors of the nets, by following the options below.",
         "help4-b": "Color option 01 - Background: <strong>black</strong> com texto <strong>white</strong>",
         "help4-c": "Color option 02 - Background: <strong>white</strong> com texto <strong>black</strong>",
         "help4-d": "Color option 03 - Background: <strong>black</strong> com texto <strong>red</strong>",
@@ -25,7 +25,7 @@
         "help4-f": "Color option 05 - Background: <strong>black</strong> com texto <strong>yellow</strong>",
 
 
-        "help5-a": "Change the date background color by following the options below.",
+        "help5-a": "Change the date background color, by following the options below.",
         "help5-b": "Color option 01 - same color as the flag as transparency",
         "help5-c": "Color option 02 - black - rgb(0, 0, 0)",
         "help5-d": "Color option 03 - white - rgb (255, 255, 255)",
@@ -34,7 +34,7 @@
         "help5-g": "NOTE: If the color of the flag is the same as options 2 to 5, the background color of the date will automatically assume position 01, which has transparency.",
 
 
-        "help6-a": "Change the transparency of the flag by following the options below.",
+        "help6-a": "Change the transparency of the flag, by following the options below.",
         "help6-b": "Option 01 - 90% transparency",
         "help6-c": "Option 01 - 80% transparency",
         "help6-d": "Option 01 - 70% transparency",

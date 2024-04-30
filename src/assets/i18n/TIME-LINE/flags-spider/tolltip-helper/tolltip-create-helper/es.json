@@ -10,14 +10,14 @@
         "help2-a": "La fecha y la hora representan la posición de la bandera en la línea de tiempo.",
         "help2-b": "Es posible tener hasta 2 banderas con la misma fecha y hora.",
         
-        "help3-a": "Cambie los colores del texto siguiendo las opciones a continuación.",
+        "help3-a": "Cambie los colores del texto, siguiendo las opciones a continuación.",
         "help3-b": "Opción color 01 - negro",
         "help3-c": "Opción color 02 - blanco",
         "help3-d": "Opción color 03 - rojo",
         "help3-e": "Opción color 04 - azul",
         "help3-f": "Opción color 05 - amarillo",
 
-        "help4-a": "Cambia los colores de contraste de las redes.",
+        "help4-a": "Cambia los colores de contraste de las redes, siguiendo las opciones a continuación.",
         "help4-b": "Opción color 01 - Fondo: <strong>negro</strong> con texto <strong>blanco</strong>",
         "help4-c": "Opción color 02 - Fondo: <strong>blanco</strong> con texto <strong>negro</strong>",
         "help4-d": "Opción color 03 - Fondo: <strong>negro</strong> con texto <strong>rojo</strong>",
@@ -25,7 +25,7 @@
         "help4-f": "Opción color 05 - Fondo: <strong>negro</strong> con texto <strong>amarillo</strong>",
 
 
-        "help5-a": "Altere a cor de fundo da data seguindo as opções abaixo.",
+        "help5-a": "Cambie el color de fondo de la fecha, siguiendo las opciones a continuación.",
         "help5-b": "Opción color 01: el mismo color que la bandera como transparencia",
         "help5-c": "Opción color 02 - negro - rgb(0, 0, 0)",
         "help5-d": "Opción color 03 - blanco - rgb(255, 255, 255)",
@@ -34,7 +34,7 @@
         "help5-g": "NOTA: Si el color de la bandera es el mismo que las opciones 2 a 5, el color de fondo de la fecha asumirá automáticamente la posición 01, que tiene transparencia.",
 
 
-        "help6-a": "Cambie la transparencia de la bandera siguiendo las opciones a continuación.",
+        "help6-a": "Cambie la transparencia de la bandera, siguiendo las opciones a continuación.",
         "help6-b": "Opción 01 - 90% de transparencia",
         "help6-c": "Opción 01 - 80% de transparencia",
         "help6-d": "Opción 01 - 70% de transparencia",
