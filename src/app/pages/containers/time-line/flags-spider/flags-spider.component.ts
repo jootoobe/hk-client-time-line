@@ -93,12 +93,13 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
     setTimeout(() => {
       this.getAllTimeLineById()
+      this.openCloseHorizontalScroll('open')
     }, 1000)
 
   }
 
   ngAfterViewInit(): void {
-    this.openCloseHorizontalScroll('open')
+
   }
 
   editFlagEvent(flag: FlagModel) {
@@ -206,13 +207,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     const open = this.openClose.nativeElement.querySelector("#open");
     const close = this.openClose.nativeElement.querySelector("#close");
 
-    console.log('pppppppppppppppppppppppppppppppppppppppppppppppppppp')
-
-    console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv',this.TOAST['TIME-LINE']['FlagsSpiderComponent'].alert['message'])
     // Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄
     if (this.detectBrowser === 'firefox') {
-      console.log('ENTROUUUUUUUUUUUUUUUuu')
-      alert('sss') // this.TOAST['TIME-LINE']['FlagsSpiderComponent'].alert['message']
+      alert(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].alert['msn-0']['message'])
     }
 
     // if (this.detectBrowser !== 'firefox') {

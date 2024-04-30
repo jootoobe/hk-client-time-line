@@ -126,11 +126,13 @@
           "msn-0": {}
         },
         "alert": {
-          "code": "",
-          "message": "Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄",
-          "message-0": "",
-          "message-1": "",
-          "status": ""
+          "msn-0": {
+            "code": "",
+            "message": "Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄",
+            "message-0": "",
+            "message-1": "",
+            "status": ""
+          }
         }
       }
     }

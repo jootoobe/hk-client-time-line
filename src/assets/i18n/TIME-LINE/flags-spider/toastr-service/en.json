@@ -97,6 +97,41 @@
         "warning": {
           "msn-0": {}
         }
+      },
+      "FlagsSpiderComponent": {
+        "START_TOAST_COMMENTARY--FILTER": "============== TS FilterFlagComponent >> START COMPONENT FOLDER =============================",
+        "success": {
+          "msn-0": {}
+        },
+        "error": {
+          "msn-0": {}
+        },
+        "info": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "",
+            "message-1": "",
+            "status": ""
+          },
+          "msn-1": {
+            "code": "",
+            "message": "",
+            "message-0": "",
+            "message-1": "",
+            "status": ""
+          }
+        },
+        "warning": {
+          "msn-0": {}
+        },
+        "alert": {
+          "code": "",
+          "message": "Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄",
+          "message-0": "",
+          "message-1": "",
+          "status": ""
+        }
       }
     }
   }
