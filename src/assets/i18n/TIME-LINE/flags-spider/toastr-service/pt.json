@@ -65,7 +65,14 @@
         },
         "info": {
           "msn-0": {
-            "code": "",
+            "code": "",  
+            "message": "",
+            "message-0": "Remova o atual",
+            "message-1": "Filtro já aplicado",
+            "status": ""
+          },
+          "msn-1": {
+            "code": "",  
             "message": "",
             "message-0": "Remova o atual",
             "message-1": "Filtro já aplicado",
@@ -97,6 +104,13 @@
             "message": "",
             "message-0": "O filtro fica mais eficaz",
             "message-1": "Adicione 05 cores por vez",
+            "status": ""
+          },
+          "msn-2": {
+            "code": "",
+            "message": "",
+            "message-0": "Aplique um filtro por vez",
+            "message-1": "Filtro individual",
             "status": ""
           }
         },

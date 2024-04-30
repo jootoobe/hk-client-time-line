@@ -98,6 +98,13 @@
             "message-0": "The filter becomes more effective",
             "message-1": "Add 5 colors at a time",
             "status": ""
+          },
+          "msn-2": {
+            "code": "",
+            "message": "",
+            "message-0": "Apply one filter at a time",
+            "message-1": "Individual filter",
+            "status": ""
           }
         },
         "warning": {

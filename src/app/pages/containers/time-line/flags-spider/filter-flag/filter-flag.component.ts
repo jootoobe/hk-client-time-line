@@ -107,7 +107,8 @@ export class FilterFlagComponent implements OnInit {
     // Aqui só vai entrar se der algum bug no html
     // Já existe uma trava [disabled]="filterTopDiv?.length > 0"
     if (this.filterTopDiv?.length > 0) {
-      this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
+      // 'Aplique um filtro por vez', 'Filtro individual'
+      this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-2']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-2']['message-1']);
       this.clearFilter('update')
       return
     }
@@ -156,7 +157,8 @@ export class FilterFlagComponent implements OnInit {
     // Aqui só vai entrar se der algum bug no html
     // Já existe uma trava [disabled]="titleFlag?.length > 0"
     if (this.titleFlag?.length > 0) {
-      this.toastrService.info('Aplique um filtro por vez', 'Filtro individual');
+      // 'Aplique um filtro por vez', 'Filtro individual';
+      this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-2']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-2']['message-1']);
       this.clearFilter('update')
       return
     }
@@ -166,6 +168,7 @@ export class FilterFlagComponent implements OnInit {
     valFilter = this.filterTopDiv?.filter((colorHex: any) => colorHex.color_hex?.toLowerCase() === val.flag_design.color_hex?.toLowerCase());
 
     if (valFilter.length > 0) {
+      // Filtro já aplicado Remova o atual
       this.toastrService.info(this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['FilterFlagComponent'].info['msn-0']['message-1']);
       return
     }
