@@ -30,6 +30,7 @@
             (editFlagOutput)="editFlagEvent($event)"           
             (valFilterColorBarOutput)="valFilterColorBar = $event "
             [checkingOpacityFilterAppliedInput]="checkingOpacityFilterApplied"
+            [flagLengthInput]="flagLength"
       > 
       </flag>
     }
@@ -39,10 +40,10 @@
   <div class="play-video cursor_pointer" [ngStyle]="{'z-index': flagLength <= 0 ? '1': '-1'}">
     <img  class="play-video_img" src="{{assetsProd}}/assets/youtube.png" alt="Spider Share"
           [ngStyle]="{'width': flagLength <= 0 ? '4rem': '2.5rem',
-                      'margin': flagLength <= 0 ? '0 2rem 2.7rem 0': '0 2rem .7rem 0' }">
+                      'margin': flagLength <= 0 ? '0 2rem 2.7rem 0': '0 2rem .5rem 0' }">
   </div>
 
-  <div class="open-clos-scroll cursor_pointer" #openClose >
+  <div class="open-clos-scroll cursor_pointer" #openClose [ngStyle]="{'opacity': flagLength > 4 ? '1': '0'}">
     <span id="open" (click)="openCloseHorizontalScroll('open')">open</span>
     <span id="close" (click)="openCloseHorizontalScroll('close')">close</span>
   </div>

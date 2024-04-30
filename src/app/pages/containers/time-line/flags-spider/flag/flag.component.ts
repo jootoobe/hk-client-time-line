@@ -21,6 +21,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   editFlagOutput = output<FlagModel>()
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) checkingOpacityFilterAppliedInput!: string
+  @Input({ required: true }) flagLengthInput!: number
 
   // resetFlagsOutput = output()
   valFilterColorBarOutput = output<{ color_hex: '', color_rgb: 0 }>()  // stores the clicked filter and communicates with the top-div component

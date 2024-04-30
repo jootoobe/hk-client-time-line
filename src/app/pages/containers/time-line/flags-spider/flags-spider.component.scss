@@ -55,13 +55,7 @@
   border-radius: 1rem;
 }
 
-// END - > works together with the  [ngStyle]="{'min-width': flagLength <= 0 ? '100%': flagLength > 6 ? '100%': '100%' }"
-// according to the length of the arry
-.end {
-  margin: -35rem 10rem 0 15rem;
-  font-size: 8rem;
-  // position: absolute;
-}
+
 
 .play-video {
   left: 0;

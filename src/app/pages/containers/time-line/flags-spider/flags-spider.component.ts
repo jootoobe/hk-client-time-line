@@ -11,6 +11,7 @@ import { FlagModel, FlagsModel } from '../../../../models/flag.model';
 import { environment } from '../../../../../environments/environment';
 import { ConnectingExternalRoutesService } from '../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
 import { DetectBrowserNameService } from '../../../../shared/services/detect-browser-name.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'flags-spider',
@@ -20,7 +21,7 @@ import { DetectBrowserNameService } from '../../../../shared/services/detect-bro
 export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   @ViewChild('openClose', { static: true }) openClose!: ElementRef //  relating to the method openCloseHorizontalScroll()
 
-  
+
   @ViewChild('createTimeLine', { static: false }) createTimeLine!: TemplateRef<any> // open modal ref - modal to create or edit timeline
 
   assetsProd = environment.assetsProd // assetsProd: 'http://localhost:4201',
@@ -43,6 +44,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   valFilterColorBar = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
   checkingOpacityFilterApplied = '' // verifica se o filtro no modal está ativo ou não
+
+  TOAST: any
+
   constructor(
     private dialogCreate: MatDialog,
     private renderer2: Renderer2,
@@ -52,6 +56,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private indexDbTimeLineService: IndexDbTimeLineService,
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private detectBrowserNameService: DetectBrowserNameService,
+    // private toastrService: ToastrService,
   ) {
 
     effect(() => { // tenho que certificar que a chave esteja lo LS - chave ss que abre o body {a: 'asdasd..}
@@ -74,8 +79,15 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         complete: () => { }
       })
 
+
+    effect(() => {
+      this.TOAST = this.stateService.toastSignalComputed()
+    })
+
   }
   ngOnInit(): void {
+    this.detectBrowser = this.detectBrowserNameService.detectBrowserName()
+
     console.log('FlagsSpiderComponent 🃏')
 
 
@@ -188,31 +200,41 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
 
-    // horizontal scroll button open and close
-    openCloseHorizontalScroll(val: string) {
-      const open = this.openClose.nativeElement.querySelector("#open");
-      const close = this.openClose.nativeElement.querySelector("#close");
-  
-      if (this.detectBrowser !== 'firefox') {
-        if (val === 'open') {
-          // open.style.opacity = '0';
-          // close.style.opacity = '1';
-          this.openColse = true
-          open.style.display = 'none';
-          close.style.display = 'inline-table';
-          return
-        } else if (val === 'close') {
-          this.openColse = false
-          // open.style.opacity = '1';
-          // close.style.opacity = '0';
-          open.style.display = 'inline-table';
-          close.style.display = 'none';
-          return
-        }
-      }
-      alert('Para você ter uma melhor experiência utilize outro browser como Opera, Chrome, Edge ..... 😄')
-      open.style.display = 'none';
-      close.style.display = 'none';
+  // horizontal scroll button open and close
+  // Levar para aplicação principal
+  openCloseHorizontalScroll(val: string) {
+    const open = this.openClose.nativeElement.querySelector("#open");
+    const close = this.openClose.nativeElement.querySelector("#close");
+
+    console.log('pppppppppppppppppppppppppppppppppppppppppppppppppppp')
+
+    console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv',this.TOAST['TIME-LINE']['FlagsSpiderComponent'].alert['message'])
+    // Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄
+    if (this.detectBrowser === 'firefox') {
+      console.log('ENTROUUUUUUUUUUUUUUUuu')
+      alert('sss') // this.TOAST['TIME-LINE']['FlagsSpiderComponent'].alert['message']
     }
+
+    // if (this.detectBrowser !== 'firefox') {
+    if (val === 'open') {
+      // open.style.opacity = '0';
+      // close.style.opacity = '1';
+      this.openColse = true
+      open.style.display = 'none';
+      close.style.display = 'inline-table';
+      return
+    } else if (val === 'close') {
+      this.openColse = false
+      // open.style.opacity = '1';
+      // close.style.opacity = '0';
+      open.style.display = 'inline-table';
+      close.style.display = 'none';
+      return
+    }
+    // }
+
+    open.style.display = 'none';
+    close.style.display = 'none';
+  }
 
 }
