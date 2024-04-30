@@ -7,7 +7,13 @@
           "msn-0": {}
         },
         "error": {
-          "msn-0": {}
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "É obrigatório",
+            "message-1": "Horário",
+            "status": ""
+          }
         },
         "info": {
           "msn-0": {

@@ -1,6 +1,6 @@
 import { style } from '@angular/animations';
 import { DatePipe } from "@angular/common";
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, effect } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatRadioChange } from "@angular/material/radio";
 import { ToastrService } from "ngx-toastr";
@@ -60,6 +60,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   radioButtonDate = '1' // cor fundo data com transparencia de 0.3
   radioRedeTransparency = '0.1' // transparência bandeira
 
+  TOAST: any
+
   addDataMaskVal = ''
   chipsArray!: FormArray | any
   constructor(
@@ -74,6 +76,10 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private filterFlagsService: FilterFlagsService,
   ) {
+
+    effect(() => {
+      this.TOAST = this.stateService.toastSignalComputed()
+    })
 
     this.chipsArray = []
     this.buildForm()
@@ -283,7 +289,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           console.log(this.time.length)
           if (this.time.length < 8) {
             this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.setValue('')
-            this.toastrService.error('É obrigatório', 'Horário');
+            // this.toastrService.error('É obrigatório', 'Horário');
+            this.toastrService.error(this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-0']['message-1']);
             return
           }
           if (this.time.length >= 8) {

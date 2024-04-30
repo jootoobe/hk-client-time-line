@@ -6,8 +6,14 @@
         "success": {
           "msn-0": {}
         },
-        "error": {
-          "msn-0": {}
+        "error": { 
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Is required",
+            "message-1": "Time",
+            "status": ""
+          }
         },
         "info": {
           "msn-0": {
