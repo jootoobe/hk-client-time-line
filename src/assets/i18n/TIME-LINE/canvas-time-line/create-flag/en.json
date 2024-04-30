@@ -67,6 +67,12 @@
             "edit": "Edit flag",
             "back": "Go back"
           }
+        },
+        "radio-button": {
+          "mat-label-1": "Text color",
+          "mat-label-2": "Contrast color nets",
+          "mat-label-3": "Color date background",
+          "mat-label-4": "Color transparency flag"
         }
       }
     }
