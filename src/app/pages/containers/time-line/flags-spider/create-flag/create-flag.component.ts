@@ -226,7 +226,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     if (val.background === '74, 74, 74' && val.text === '255, 255, 255') { //{background: 'black', text: 'white'}
       this.radioRedeNets = '1'
     }
-    else if (val.background === '255 ,255, 255' && val.text === '74, 74, 74') { //{background: 'white', text: 'black'}
+    else if (val.background === '255, 255, 255' && val.text === '74, 74, 74') { //{background: 'white', text: 'black'}
       this.radioRedeNets = '2'
     }
     else if (val.background === '74, 74, 74' && val.text === '255, 0, 0') { //{background: 'black', text: 'red'}
