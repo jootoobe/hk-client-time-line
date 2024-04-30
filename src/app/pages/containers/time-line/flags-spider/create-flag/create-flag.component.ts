@@ -365,6 +365,10 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     if (this.timestampExist.length === 1) {
       // this.timestampExist[0].flag_margin_right = '3'
       this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
+
+      // Seto a mesma cor da flag1 - para facilitar a vida do usuário
+      this.flagsForm.controls[0]?.get('flag_design')?.get('color_hex')?.setValue(this.timestampExist[0].flag_design.color_hex)
+      this.convertColor()
     }
 
     this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
