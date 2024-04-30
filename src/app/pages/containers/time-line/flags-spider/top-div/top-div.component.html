@@ -15,14 +15,16 @@
       <!-- Button to open modal and create flag -->
       <!-- There are no flags yet -->
     <div class="btn-div" >
-      <div class="btn-div_create">
-        <button
-                mat-stroked-button
-                class="btn_red-spider"
-                >
-            {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-08' | translate}}
-        </button>
-      </div>
+      @if(timeLine && timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length  === 0) {
+        <div class="btn-div_create">
+          <button (click)="openCreateTimeLineDialog()"
+                  mat-stroked-button
+                  class="btn_red-spider"
+                  >
+              {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-08' | translate}}
+          </button>
+        </div>
+      }
     </div>
   </div>
 
@@ -45,7 +47,8 @@
   </div>
   }
   <div class="item-right">
-    <mat-icon
+    @if(timeLine && timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length  > 0) {
+      <mat-icon
               matSuffix
               class="material-icons cursor_pointer"
               fontSet="material-icons-outlined"
@@ -53,24 +56,23 @@
               (click)="openFilterDialogCloseFilterOpacity()"
               >
       <span>filter_alt</span>
-      
+      </mat-icon>
+      <!-- Create -->
+      <button
+              mat-stroked-button
+              class="btn_opt-valid btn_setting"
+              (click)="openCreateTimeLineDialog()">
+          {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-07' | translate}}
+      </button>
+    }
       <filter-flag  #filter
                     [timeLine]="timeLine"
                     (timeLineOutput)="timeLineEvent($event)"
                     (toApplyFilterColorOutput)="toApplyFilterColorEvent($event)"
-                    (toApplyFilterTextOutput)="toApplyFilterTextEvent($event)"
-                  
-      >
+                    (toApplyFilterTextOutput)="toApplyFilterTextEvent($event)" >
       </filter-flag>
-    </mat-icon>
-    <!-- Create -->
-    <button
-            mat-stroked-button
-            class="btn_opt-valid btn_setting"
-            (click)="openCreateTimeLineDialog()">
-        {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-07' | translate}}
-    </button>
   </div>
+    
 </div><!-- End Grids -->
 
 
