@@ -3,13 +3,14 @@
     "Flag1-Flag2-Component": {
       "FLAGS-1-2": {
         "START_COMMENTARY--FLAGS-1-2": "============== HTML START FLAG1 && FLAG2 COMPONENT FOLDER =============================",
-        "modal": {
+        "flag": {
           "item-01": "Não existe rede criada.",
           "item-02": "Redes",
           "item-03": "Para criar a sua primeira rede, entre em ↔️ 'Abrir kanban' logo abaixo.",
           "item-04": "Abrir Kanban",
           "tag-title": "",
-          "title-h1": ""
+          "title-h1": "",
+          "timeline-end": "Fim"
         }
       },
       "FLAGS-1-2_MATERIAL": {

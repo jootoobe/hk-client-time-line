@@ -95,7 +95,7 @@
             </div>
             <!-- Nets -->
             <div class="inside-flag_nets" [ngStyle]="setStylesText(flag2)">
-              {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-02' | translate}}
+              {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-02' | translate}}
             </div>
 
           <!-- Chips -->
@@ -106,11 +106,11 @@
               <p>
                 <!-- [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }" -->
                 <mark> 
-                  {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}
+                  {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-01' | translate}}
                 </mark>
               </p>
               <p>
-                {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
+                {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-03' | translate}}
               </p>
             </div>
             } @else {
@@ -146,7 +146,7 @@
           <!-- Open Kanban -->
           <div class="inside-flag_open-kanban cursor_pointer remove" id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
             <!-- Abrir Kanban -->
-            {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-04' | translate}}
+            {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-04' | translate}}
             <mat-icon matSuffix class="material-icons ">
               view_kanban
             </mat-icon>
@@ -267,7 +267,7 @@
           </div>
           <!-- Nets -->
           <div class="inside-flag_nets" [ngStyle]="setStylesText(flag)">
-            {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-02' | translate}}
+            {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-02' | translate}}
           </div>
 
           <!-- Chips -->
@@ -278,11 +278,11 @@
               <p>
                 <!-- [ngStyle]="{'color': 'rgba('+flag.flag_design.color_text+',1)' }" -->
                 <mark> 
-                  {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-01' | translate}}
+                  {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-01' | translate}}
                 </mark>
               </p>
               <p>
-                {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-03' | translate}}
+                {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-03' | translate}}
               </p>
             </div>
             } @else {
@@ -319,7 +319,7 @@
             [ngStyle]="{'margin': language === 'es' ? '-2rem 0 .5rem 18.7rem' : 
                                   language === 'en' ? '-2rem 0 .5rem 19.7rem' : ''}">
           <!-- Abrir Kanban -->
-          {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.modal.item-04' | translate}}
+          {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-04' | translate}}
           <mat-icon matSuffix class="material-icons ">
             view_kanban
           </mat-icon>
@@ -370,7 +370,9 @@
 
   <div class="end" *ngIf="last && flagLengthInput > 4">
     <span *ngIf="flagLengthInput > 4">
-      FIM
+      <!-- FIM -->
+      {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.timeline-end' | translate}}
+
     </span>
   </div>
 
