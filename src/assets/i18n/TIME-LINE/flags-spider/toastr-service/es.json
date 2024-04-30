@@ -13,29 +13,29 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Mais à frente poderá adicionar outras, no ambiente kanban",
-            "message-1": "Adicione 04 redes por vez",
+            "message-0": "Posteriormente podrás agregar otros, en el entorno kanban",
+            "message-1": "Agregue 4 redes a la vez",
             "status": ""
           },
           "msn-1": {
             "code": "",
             "message": "",
-            "message-0": "A opção já existe",
-            "message-1": "Rede Social",
+            "message-0": "La opción ya existe",
+            "message-1": "Red social",
             "status": ""
           },
           "msn-2": {
             "code": "",
             "message": "",
-            "message-0": "Ao alterar o horário no calendário, a bandeira irá se deslocar na linha do tempo",
-            "message-1": "02 bandeiras por horário!",
+            "message-0": "Al cambiar la hora en el calendario, la bandera se moverá en la línea de tiempo",
+            "message-1": "02 banderas por vez!",
             "status": ""
           },
           "msn-3": {
             "code": "",
             "message": "",
-            "message-0": "Tags que melhor representam a sua bandeira",
-            "message-1": "Adicione até 04 tags!",
+            "message-0": "Etiquetas que mejor representan tu bandera",
+            "message-1": "Agrega hasta 4 etiquetas!",
             "status": ""
           }
         },
@@ -55,8 +55,8 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Remova o atual",
-            "message-1": "Filtro já aplicado",
+            "message-0": "Eliminar la corriente",
+            "message-1": "Filtro ya aplicado",
             "status": ""
           }
         },
@@ -76,15 +76,15 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Já foi adicionada",
-            "message-1": "Cor Bandeira",
+            "message-0": "Ya ha sido agregado",
+            "message-1": "Color de la bandera",
             "status": ""
           },
           "msn-1": {
             "code": "",
             "message": "",
-            "message-0": "O filtro fica mais eficaz",
-            "message-1": "Adicione 05 cores por vez",
+            "message-0": "El filtro se vuelve más efectivo",
+            "message-1": "Añade 5 colores a la vez",
             "status": ""
           }
         },
