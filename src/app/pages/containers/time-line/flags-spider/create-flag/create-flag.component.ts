@@ -289,7 +289,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           console.log(this.time.length)
           if (this.time.length < 8) {
             this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.setValue('')
-            // this.toastrService.error('É obrigatório', 'Horário');
+            //'É obrigatório', 'Horário'
             this.toastrService.error(this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-0']['message-1']);
             return
           }
