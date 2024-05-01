@@ -326,5 +326,17 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
+  deleteFlag(flagDelete: FlagModel | any, editFlag: string) {
+    let id:any = ''
+    if(editFlag === 'edit-flag-1') {
+      id = flagDelete.flag_id?.split('_')
 
+    } else if(editFlag === 'edit-flag-2') {
+      id = flagDelete.flags2[0].flag_id?.split('_')
+    }
+
+    console.log('sssssssssssss',id[2])
+    
+
+  }
 }
