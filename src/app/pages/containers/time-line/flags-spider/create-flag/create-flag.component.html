@@ -367,7 +367,6 @@
         </mat-radio-group>
       </div>
 
-{{disableColor}}
       <!-- color-picker -->
       <div class="flag-modal_color-picker" [formGroupName]="0">
         <mat-form-field class="input-color" floatPlaceholder="never" floatLabel="always" formGroupName="flag_design">
@@ -383,14 +382,16 @@
                   formControlName="color_hex"
                   (input)="convertColor()"
                   class="">
+          
           <input *ngIf="disableColor"
                   matInput
                   placeholder=""
-                  [value]="flagsForm.controls[0].get('color_hex')?.value"
+                  (click)="canNotConvertColor()"
+                  [value]="colorHexaVal"
                   readonly
                   style="outline: none !important"
                   type="color"
-                  disabled="true"
+                  disabled="false"
                   class="">
           <mat-error>
             error

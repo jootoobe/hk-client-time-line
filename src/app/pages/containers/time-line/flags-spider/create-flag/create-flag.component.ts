@@ -41,6 +41,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   matcher!: MyErrorStateMatcher // form validator errors
 
   disableColor = false
+  colorHexaVal = ''
 
   // Datepicker timer
   timeHeader = MatDatepickerTimeHeaderComponent
@@ -191,6 +192,27 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
   updateFlagobject(flagVal: FlagModel) {
 
+    // Aqui eu desabilito a cor da dandeira 02
+    // A bandeira 02 não pode editar a cor
+    setTimeout(() => {
+      let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+      let twoFlagsPosition: any = []
+
+      this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+        if (e.date_obj.timestamp === flags.at(0)?.get('date_obj')?.get('timestamp')?.value) {
+          twoFlagsPosition.push(e)
+        }
+      })
+
+      if (twoFlagsPosition[0].flags2?.length > 0) {
+        this.disableColor = true
+        // 'Deve ser igual a cor da bandeira 01', 'A babdeira 02'
+        // this.toastrService.warning('Deve ser igual a cor da bandeira 01', 'A babdeira 02');
+
+      }
+    }, 200)
+
+
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
 
     if (flagVal.edit === 'edit-flag-1') {
@@ -203,6 +225,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           this.chipsArray.push(new FormControl({ name: e.name }));
         })
       }
+      this.convertColor()
     }
 
     if (flagVal.edit === 'edit-flag-2') {
@@ -216,7 +239,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           this.chipsArray.push(new FormControl({ name: e.name }));
         })
       }
-
+      this.convertColor()
     }
 
     this.flagsForm.controls[0]?.get('flag_update_at')?.setValue(currentlyDate)
@@ -253,7 +276,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     let val2 = this.flagsForm.controls[0]?.get('flag_design')?.get('color_date')?.value
 
-    if (val2 === this.flagsForm.controls[0]?.get('flag_design')?.get('color_rgb')?.value ) {  //   <!-- Mesma cor bandeira -->
+    if (val2 === this.flagsForm.controls[0]?.get('flag_design')?.get('color_rgb')?.value) {  //   <!-- Mesma cor bandeira -->
       this.radioButtonDate = '1'
     }
     else if (val2 === '0, 0, 0') { // preto
@@ -371,16 +394,19 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     if (this.timestampExist.length === 0) {
+      this.disableColor = false
       this.flagsForm.controls[0]?.get('flag_style')?.setValue(1)
+      this.convertColor()
     }
 
     if (this.timestampExist.length === 1) {
+      this.disableColor = true
       // this.timestampExist[0].flag_margin_right = '3'
       this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
 
       // Seto a mesma cor da flag1 - para facilitar a vida do usuário
-      this.flagsForm.controls[0]?.get('flag_design')?.get('color_hex')?.setValue(this.timestampExist[0].flag_design.color_hex)
-      this.convertColor()
+      // this.flagsForm.controls[0]?.get('flag_design')?.get('color_hex')?.setValue(this.timestampExist[0].flag_design.color_hex)
+      this.convertColor(this.timestampExist[0].flag_design.color_hex)
     }
 
     this.flagsForm.controls[0]?.get('date_obj')?.patchValue(({
@@ -692,10 +718,10 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         e.flags2[0].flag_style = 2
         e.flags2[0].flag_margin_right = '0'
         // flag_design
-        e.flags2[0].flag_design.color_hex = e.flag_design.color_hex
-        e.flags2[0].flag_design.color_rgb = e.flag_design.color_rgb
-        e.flags2[0].flag_design.color_hsl = e.flag_design.color_hsl
-        
+        // e.flags2[0].flag_design.color_hex = e.flag_design.color_hex
+        // e.flags2[0].flag_design.color_rgb = e.flag_design.color_rgb
+        // e.flags2[0].flag_design.color_hsl = e.flag_design.color_hsl
+
       }
       if (e.flags2?.length === 0) {
         e.flag_style = 1
@@ -868,19 +894,35 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
   //================================= 🅰️🅰️ CONVERT COLORS 🅰️🅰️ ==============================
   //==============================================================================
-
   //⬇️ Convert Color
-  convertColor() {
-    // this.createTimeLineForm.value.flags[0]['color_hex']
+  convertColor(val?: string) {
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+    if (val) {
+      let colorFormats = this.convertColorService.convertColor(val)
+      flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
+      flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
+      flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
+      flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
+      this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+      return
+    }
+    // this.createTimeLineForm.value.flags[0]['color_hex']
     let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
     flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
     flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
     flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
     flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
+    this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
 
   }
 
+  canNotConvertColor() {
+
+    this.toastrService.warning('Deve ser igual a cor da bandeira 01', 'A babdeira 02');
+    // this.toastrService.warning(this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-1']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-1']['message-1']);
+    // this.flagssssss =  this.flagsForm.at(0)?.get('flag_design')?.get('color_hex')?.value
+    return
+  }
 
   clearForm() {
     // this.editFlagForm = {}
