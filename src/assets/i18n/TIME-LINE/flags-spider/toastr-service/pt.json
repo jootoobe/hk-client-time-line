@@ -52,6 +52,13 @@
             "message-0": "Até 02 flags por data e horário",
             "message-1": "Máximo 02 flags",
             "status": ""
+          },
+          "msn-1": {
+            "code": "",
+            "message": "",
+            "message-0": "Devem possuir a mesma cor",
+            "message-1": "Bandeira  01 e 02 mesma data",
+            "status": ""
           }
         }
       },

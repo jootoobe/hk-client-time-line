@@ -52,6 +52,13 @@
             "message-0": "Up to 2 flags per date and time",
             "message-1": "Maximum 02 flags",
             "status": ""
+          },
+          "msn-1": {
+            "code": "",
+            "message": "",
+            "message-0": "They must have the same color",
+            "message-1": "Flag 01 and 02 same date",
+            "status": ""
           }
         }
       },

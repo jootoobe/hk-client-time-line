@@ -52,6 +52,13 @@
             "message-0": "Hasta 2 banderas por fecha y hora",
             "message-1": "Máximo 02 banderas",
             "status": ""
+          },
+          "msn-1": {
+            "code": "",
+            "message": "",
+            "message-0": "Deben tener el mismo color",
+            "message-1": "Bandera 01 y 02 misma fecha",
+            "status": ""
           }
         }
       },

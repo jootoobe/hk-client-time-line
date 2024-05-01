@@ -917,11 +917,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   canNotConvertColor() {
+    // this.toastrService.warning('Devem possuir a mesma cor', 'Bandeira  01 e 02');
+    this.toastrService.warning(this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-1']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-1']['message-1']);
 
-    this.toastrService.warning('Deve ser igual a cor da bandeira 01', 'A babdeira 02');
-    // this.toastrService.warning(this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-1']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-1']['message-1']);
-    // this.flagssssss =  this.flagsForm.at(0)?.get('flag_design')?.get('color_hex')?.value
-    return
   }
 
   clearForm() {
