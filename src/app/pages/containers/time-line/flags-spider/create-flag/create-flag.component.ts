@@ -388,7 +388,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       }), { emitEvent: false })
 
       //'Até 02 flags por data e horário', 'Máximo 02 flags'
-      this.toastrService.error(this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-0']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-0']['message-1']);
+      this.toastrService.warning(this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-0']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-0']['message-1']);
 
       return
     }
