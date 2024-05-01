@@ -718,9 +718,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         e.flags2[0].flag_style = 2
         e.flags2[0].flag_margin_right = '0'
         // flag_design
-        // e.flags2[0].flag_design.color_hex = e.flag_design.color_hex
-        // e.flags2[0].flag_design.color_rgb = e.flag_design.color_rgb
-        // e.flags2[0].flag_design.color_hsl = e.flag_design.color_hsl
+        e.flags2[0].flag_design.color_hex = e.flag_design.color_hex
+        e.flags2[0].flag_design.color_rgb = e.flag_design.color_rgb
+        e.flags2[0].flag_design.color_hsl = e.flag_design.color_hsl
 
       }
       if (e.flags2?.length === 0) {
