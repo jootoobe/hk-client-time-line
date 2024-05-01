@@ -33,7 +33,7 @@
 
   <!-- Filter opacity -->
   <!-- Text Filtrando... -->
-  @if(valFilterColorBarInput?.color_rgb && valFilterColorBarInput?.color_hex && toApplyFilterColor?.length === 0) {
+  @if(valFilterColorBarInput?.color_hex && toApplyFilterColor?.length === 0) {
   <div  class="item-filtering">
         {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-05' | translate}}
   </div>
@@ -88,7 +88,7 @@
        *ngFor="let filterInpuTopDiv of toApplyFilterColor; let i = index"
                 (click)="filter.removeColor(i, filterInpuTopDiv.color_hex)"
                 [ngStyle]="{'background': filterInpuTopDiv.color_hex,
-                            'color': filterInpuTopDiv.color_rgb < 200 ? 'white' : 'black'}">
+                            'color': filterInpuTopDiv.color_rgb_number < 200 ? 'white' : 'black'}">
     X
   </span>
 </div>
