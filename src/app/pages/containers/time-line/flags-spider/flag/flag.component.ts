@@ -5,6 +5,8 @@ import { TimeLineModel } from "../../../../../models/time-line.model";
 import { ToastrService } from "ngx-toastr";
 import { StateService } from "../../../../../shared/services/state.service";
 import { IFilterCheckActive } from "../../../../../interfaces/filter-check-active.interface";
+import { TimeLineService } from "../../../../../services/time-line.service";
+import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
 
 export function coerceArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
@@ -25,6 +27,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   // resetFlagsOutput = output()
   valFilterColorBarOutput = output<{ color_hex: '', color_rgb: 0 }>()  // stores the clicked filter and communicates with the top-div component
+  getFlagOutput = output()
 
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
 
@@ -45,7 +48,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     private renderer2: Renderer2,
     private elementRef: ElementRef,
     private toastrService: ToastrService,
-    private stateService: StateService
+    private stateService: StateService,
+    private timeLineService: TimeLineService
   ) {
 
     effect(() => {
@@ -328,14 +332,25 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   deleteFlag(flagDelete: FlagModel | any, editFlag: string) {
     let id:any = ''
+    let flag = ''
     if(editFlag === 'edit-flag-1') {
       id = flagDelete.flag_id?.split('_')
-
+      flag = '1'
     } else if(editFlag === 'edit-flag-2') {
       id = flagDelete.flags2[0].flag_id?.split('_')
+      flag = '2'
     }
 
-    console.log('sssssssssssss',id[2])
+    this.timeLineService.deleteById(id[2], flag)
+    .subscribe({
+      next: (res: EncryptModel) => {
+        if(res.a === 'OK') {
+          this.getFlagOutput.emit()
+        }
+      },
+      error: (err) => { },
+      complete: () => { }
+    })
     
 
   }

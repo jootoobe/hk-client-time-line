@@ -70,6 +70,15 @@ export class TimeLineService {
   }
 
 
+  deleteById(id:string, flag:string): Observable<EncryptModel> {
+    return this.http.delete<EncryptModel>(`${this.API_TIME_LINE}/controller?id=${id}&flag=${flag}`).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+
+
 
   encryptBody(inBody: any, key: any) {
     const iamEncrypt: any = CryptoJS.AES.encrypt(JSON.stringify(inBody), key,

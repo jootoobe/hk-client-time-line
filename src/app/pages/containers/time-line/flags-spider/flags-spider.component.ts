@@ -125,6 +125,10 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   }
 
+  getFlagEvent(e:any) {
+    this.getAllTimeLineById()
+  }
+
   getAllTimeLineById() {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
