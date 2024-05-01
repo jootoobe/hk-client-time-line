@@ -1,7 +1,7 @@
 
 <tolltip-create-html></tolltip-create-html>
 
-<!-- <pre> {{createTimeLineForm.value | json}}</pre> -->
+<pre> {{createTimeLineForm.value | json}}</pre>
 
 <form [formGroup]="createTimeLineForm"
       (ngSubmit)="createTimeLineForm.valid && flagCreateEditInput === 'create' && createFlag()"
@@ -367,7 +367,7 @@
         </mat-radio-group>
       </div>
 
-
+{{disableColor}}
       <!-- color-picker -->
       <div class="flag-modal_color-picker" [formGroupName]="0">
         <mat-form-field class="input-color" floatPlaceholder="never" floatLabel="always" formGroupName="flag_design">
