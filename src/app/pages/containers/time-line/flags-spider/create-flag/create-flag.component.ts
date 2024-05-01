@@ -239,7 +239,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           this.chipsArray.push(new FormControl({ name: e.name }));
         })
       }
-      this.convertColor()
+      this.convertColor(this.flagsForm.at(0)?.get('flag_design')?.get('color_hex')?.value)
     }
 
     this.flagsForm.controls[0]?.get('flag_update_at')?.setValue(currentlyDate)
