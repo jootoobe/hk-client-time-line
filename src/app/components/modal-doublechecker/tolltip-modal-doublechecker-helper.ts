@@ -27,7 +27,7 @@ export class TolltipModalSoublecheckerHelper {
     let img1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['ModalDoubleCheckerComponent']['help1-img1-a']
     return `
 
-    <div style='margin-left: .5rem;  max-width: 30rem;'>
+    <div style='margin-left: .5rem;  max-width: 35rem;'>
       <p style='margin-top: 1rem;'><span style='margin-left: .2rem;'>${msn1_a}</span> </p>
       <p style='margin-top: 1rem;'><span style='margin-left: .2rem;'>${msn1_b}</span>  </p>
       <p style='margin-top: 1rem;'><span style='margin-left: .2rem;'>${msn1_c}</span></p>

@@ -45,7 +45,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   language: string = ''
 
-  aaaaaa = false
 
   doubleCheckerData!: DoubleCheckModel
 
@@ -337,7 +336,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   // modal-doublechecker
   deleteChecksBeforeSocialMediasChips(flagDelete: FlagModel, editFlag: string) {
-    this.aaaaaa = true
     
     // Value sent to the modal
     this.doubleCheckerData = {
@@ -345,7 +343,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         types: {
           type: 'type-delete',
           flag: flagDelete,
-          _id: flagDelete.flag_id
+          _id: editFlag
         },
       }
 

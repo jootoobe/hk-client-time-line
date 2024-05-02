@@ -27,7 +27,6 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dialogCreate: MatDialog,
-    // private filterFlagsService: FilterFlagsService
   ) { }
   ngOnInit(): void {
 
@@ -36,7 +35,7 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() =>{ // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
-      // this.help1 = this.tolltipModalSoublecheckerHelper.help1()
+      this.help1 = this.tolltipModalSoublecheckerHelper.help1()
     },2000)
   }
 
@@ -54,20 +53,6 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
 
     });
 
-    // if (this.dataSetting.modals?.types?.type === 'type-delete') {
-    //   let valFilterClose: object = {
-    //     color_hex: this.dataSetting.modals?.types?.flag?.color_hex,
-    //   }
-
-    //   this.clearBarFilterWhenDelete.emit(valFilterClose)
-
-    //   this.filterFlagsService.clearFilter('clear') // input filter when the user creates a new flag, the filters are reset
-
-    // }
-
-    // // this.dataDialogRef.afterOpened().pipe()
-    // // .subscribe(res=>{
-    // // })
   }
 
   deleteFlag() {
