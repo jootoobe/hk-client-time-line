@@ -335,24 +335,34 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   // modal-doublechecker
-  deleteChecksBeforeSocialMediasChips(flagDelete: FlagModel, editFlag: string) {
-    
-    // Value sent to the modal
-    this.doubleCheckerData = {
-      modals: {
-        types: {
-          type: 'type-delete',
-          flag: flagDelete,
-          _id: editFlag
-        },
-      }
+  deleteChecksBeforeSocialMediasChips(flagDelete: FlagModel | any, editFlag: string) {
 
+    if (editFlag === 'edit-flag-1') {
+      // Value sent to the modal
+      this.doubleCheckerData = {
+        modals: {
+          types: {
+            type: 'type-delete',
+            flag: flagDelete,
+            _id: editFlag
+          },
+        }
+      }
+    } else if (editFlag === 'edit-flag-2') {
+      this.doubleCheckerData = {
+        modals: {
+          types: {
+            type: 'type-delete',
+            flag: flagDelete.flags2[0],
+            _id: editFlag
+          },
+        }
+      }
     }
   }
 
-  deleteFlagEvent(e:boolean) {
-    let editFlag:any = this.doubleCheckerData.modals.types._id
-
+  deleteFlagEvent(e: boolean) {
+    let editFlag: any = this.doubleCheckerData.modals.types._id
     this.deleteFlag(this.doubleCheckerData.modals.types.flag, editFlag)
   }
 
@@ -371,7 +381,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       flag = '1' // bandeira 1 - individual
 
     } else if (editFlag === 'edit-flag-2') {
-      id = flagDelete.flags2[0].flag_id?.split('_')
+      id = flagDelete.flag_id?.split('_')
       flag = '2' // bandeira 2
     }
 
