@@ -73,6 +73,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           // this.timeLine = val
           if (res && res.time_line) {
             this.timeLine = res
+            this.flagLength = this.timeLine.time_line?.flags?.length
+
           }
         },
         error: () => { },
@@ -141,7 +143,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
           this.resetFlags = newTimeLine
           this.stateService.updateGetAllTimeLine(newTimeLine)
-          this.flagLength = newTimeLine.time_line?.flags?.length
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
