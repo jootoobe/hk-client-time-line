@@ -350,6 +350,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
+  deleteFlagEvent(e:boolean) {
+    let editFlag:any = this.doubleCheckerData.modals.types._id
+
+    this.deleteFlag(this.doubleCheckerData.modals.types.flag, editFlag)
+  }
+
   deleteFlag(flagDelete: FlagModel | any, editFlag: string) {
 
     let id: any = ''

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, output } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { TolltipModalSoublecheckerHelper } from "./tolltip-modal-doublechecker-helper";
 import { DoubleCheckModel } from "../../models/time-line/time-line.model";
@@ -15,12 +15,7 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
   @Input({ required: false }) doubleCheckerDataInput!: DoubleCheckModel
 
   @ViewChild('doubleChecker', { static: false }) doubleChecker!: TemplateRef<any>; // open modal ref
-  @Output() deleteFlagEmit = new EventEmitter<any>();
-
-
-  @Output() clearBarFilterWhenDelete = new EventEmitter<any>();
-
-  // dataDialogRef!: MatDialogRef<any>;
+  deleteFlagOutput = output<boolean>();
 
   @ViewChild(TolltipModalSoublecheckerHelper) tolltipModalSoublecheckerHelper!: TolltipModalSoublecheckerHelper;
   help1:string = ''
@@ -56,10 +51,7 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
   }
 
   deleteFlag() {
-    // if (this.dataSetting.modals.types.flag.social_medias_chips.length <= 0) {
-    //   this.deleteFlagEmit.emit(true)
-    //   return
-    // }
+    this.deleteFlagOutput.emit(true)
   }
 
 
