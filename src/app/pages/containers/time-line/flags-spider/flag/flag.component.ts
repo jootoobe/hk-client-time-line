@@ -7,6 +7,7 @@ import { StateService } from "../../../../../shared/services/state.service";
 import { IFilterCheckActive } from "../../../../../interfaces/filter-check-active.interface";
 import { TimeLineService } from "../../../../../services/time-line.service";
 import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
+import { DoubleCheckModel } from "../../../../../models/time-line/time-line.model";
 
 export function coerceArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
@@ -43,6 +44,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   filterAlreadyExists: any = []
 
   language: string = ''
+
+  aaaaaa = false
+
+  doubleCheckerData!: DoubleCheckModel
 
   constructor(
     private renderer2: Renderer2,
@@ -330,25 +335,42 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
+  // modal-doublechecker
+  deleteChecksBeforeSocialMediasChips(flagDelete: FlagModel, editFlag: string) {
+    this.aaaaaa = true
+    
+    // Value sent to the modal
+    this.doubleCheckerData = {
+      modals: {
+        types: {
+          type: 'type-delete',
+          flag: flagDelete,
+          _id: flagDelete.flag_id
+        },
+      }
+
+    }
+  }
+
   deleteFlag(flagDelete: FlagModel | any, editFlag: string) {
 
     let id: any = ''
     let flag = ''
 
     if (editFlag === 'edit-flag-1' && flagDelete.flags2?.length > 0) {
-      id = flagDelete.flag_id?.split('_') 
+      id = flagDelete.flag_id?.split('_')
       flag = '3' // bandeira 1 - possui bandeira 2
     }
 
     if (editFlag === 'edit-flag-1' && flagDelete.flags2?.length === 0) {
-      id = flagDelete.flag_id?.split('_') 
+      id = flagDelete.flag_id?.split('_')
       flag = '1' // bandeira 1 - individual
 
     } else if (editFlag === 'edit-flag-2') {
       id = flagDelete.flags2[0].flag_id?.split('_')
       flag = '2' // bandeira 2
     }
-    
+
 
     this.timeLineService.deleteById(id[2], flag)
       .subscribe({

@@ -1,0 +1,59 @@
+::ng-deep {
+  .double-checker {
+    width: 36rem;
+    height: auto;
+    min-height: 40%;
+    max-height: 50%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .mdc-dialog__container {
+      padding: 0.1rem !important; // distance from scroll to modal
+    }
+
+  }
+}
+
+
+.doublecheck {
+
+  &_title {
+    margin: 2rem 0 2rem 0;
+  }
+
+  &_title,
+  &_btn {
+    width: 100%;
+    text-align: center;
+    line-height: auto;
+  }
+
+  &_flag,
+  &_kanban {
+    margin: 2rem 1rem 0 2rem;
+
+    i {
+      font-weight: var(--fonts-font-weight-700);
+    }
+
+    &--done {
+      color: green;
+    }
+
+    &--close {
+      color: red;
+    }
+  }
+
+
+  &_btn {
+    margin: 3rem 0 2rem 0;
+
+    &--back {
+      margin-right: 10rem;
+
+    }
+  }
+
+
+}

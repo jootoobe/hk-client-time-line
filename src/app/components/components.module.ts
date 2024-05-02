@@ -11,11 +11,15 @@ import { CustomDateAdapter } from '../shared/utils/custom.date.adapter';
 import { DateAdapter } from '@angular/material/core';
 import { MatDatepickerTimeHeaderComponent } from './datepicker-time/mat-datepicker-time-header.component';
 import { provideNgxMask } from 'ngx-mask';
+import { ModalDoubleCheckerComponent } from './modal-doublechecker/modal-doublechecker.component';
+import { TolltipModalSoublecheckerHelper } from './modal-doublechecker/tolltip-modal-doublechecker-helper';
 
 @NgModule({
   declarations: [
     MatDatepickerTimeHeaderComponent,
     CustomToolTipComponent,
+    ModalDoubleCheckerComponent,
+    TolltipModalSoublecheckerHelper
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,8 @@ import { provideNgxMask } from 'ngx-mask';
     SharedModule,
     MatDatepickerTimeHeaderComponent,
     CustomToolTipComponent,
-
+    ModalDoubleCheckerComponent,
+    TolltipModalSoublecheckerHelper
   ],
   providers: [
     DatePipe,

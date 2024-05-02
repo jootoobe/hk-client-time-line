@@ -1,0 +1,89 @@
+<!-- <tolltip-modal-doublechecker-helper></tolltip-modal-doublechecker-helper> -->
+
+<!-- MODAL DIALOGO DOUBLE CHECK Example -->
+
+<!-- <div *ngIf="dataSetting.modals.types.type === 'type-1' ">
+  <ng-template #doubleChecker let-data>
+    Example
+    <div  mat-dialog-title> {{dataSetting.modals.types.type}}</div>
+    <div mat-dialog-content> 11</div>
+    <div mat-dialog-actions> 22</div>
+    </ng-template>
+</div> -->
+
+
+<!-- MODAL DIALOGO DOUBLE CHECK TIPO 01 -->
+@if(doubleCheckerDataInput && doubleCheckerDataInput.modals.types.type === 'type-delete') {
+  <div class="doublecheck">
+    <ng-template #doubleChecker let-data>
+      <div class="doublecheck_title">Deseja deletar a bandeira ?</div>
+      <div class="doublecheck_flag">
+        <strong>Flag:</strong>
+          {{data.modals.types.flag.flag_title | truncate:25}}
+        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+            matSuffix
+            customToolTip
+            [contentTemplate]="delete_template_01"
+            [originX]="'center'"
+            [originY]="'bottom'"
+            [overlayX]="'center'"
+            [overlayY]="'top'"
+            [offsetY]="-200">
+          help_outline
+        </i>
+        <ng-template #delete_template_01>
+          <div  class="" customToolTipChiel
+                [innerHTML]="help1 | safeDomSanitizer: 'html'">
+          </div>
+        </ng-template>
+      </div>
+      <div class="doublecheck_kanban">
+        <strong>Kanban:</strong>
+        <!-- {{data.modals.types.flag.social_medias_chips.length > 0 ? 'Existe kanban para ser removido': 'Zero kanban para ser removido'}} -->
+        <span *ngIf="data.modals.types.flag.social_medias_chips.length > 0">
+          {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.item-01' | translate}}
+        </span>
+        <span *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">
+          {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.item-02' | translate}}
+        </span>
+        <i  class="material-icons doublecheck_kanban--done" *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">done</i>
+        <!-- <i  class="material-icons doublecheck_kanban--close" *ngIf="data.modals.types.flag.social_medias_chips.length > 0">close</i> -->
+      </div>
+
+      <div class="doublecheck_btn">
+        <!-- Back -->
+        <button matDialogClose
+                mat-stroked-button
+                class="btn_opt_transparent doublecheck_btn--back" >
+          Voltar
+        </button>
+        <!-- Delete flag -->
+        <button *ngIf="data.modals.types.flag.social_medias_chips.length <= 0"
+                matDialogClose
+                mat-stroked-button
+                class="btn_opt-delete"
+                (click)="deleteFlag()"
+                [disabled]="false">
+          Deletar
+        </button>
+        <button *ngIf="data.modals.types.flag.social_medias_chips.length > 0"
+                matDialogClose
+                mat-stroked-button
+                class="btn_opt-invalid"
+                [disabled]="true">
+          Deletar
+        </button>
+      </div>
+    </ng-template>
+  </div>
+}
+<!-- MODAL DIALOGO DOUBLE CHECK TIPO 02 -->
+<!-- <div *ngIf="dataSetting.modals.types.type === 'type-2' ">
+  <ng-template #doubleChecker let-data>
+    AAAAAAAa
+    <div mat-dialog-title> {{data.modals.types.type}}</div>
+
+    <div mat-dialog-content> 11</div>
+    <div mat-dialog-actions> 22</div>
+  </ng-template>
+</div> -->

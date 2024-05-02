@@ -1,3 +1,13 @@
+<!-- @if(aaaaaa) { -->
+
+  <modal-doublechecker [doubleCheckerDataInput]="doubleCheckerData"
+                        #doubleCheckerClick
+  >
+  
+</modal-doublechecker>
+<!-- } -->
+
+
 <main class="main">
   @for (flag of timeLine.time_line.flags | unique; track trackFlagsDataJson; let idx = $index; let first = $first; let last = $last) {
     <!-- [ngStyle]="{ 'margin-left': flag.flag_margin_right+'rem'}" -->
@@ -61,9 +71,11 @@
                       </i>
                       <div class="box-inside-flag-title_menu--t1">Editar</div>
                     </span> <br>
-                    <span class="cursor_pointer noSelect box-inside-flag-title_menu" (click)="deleteFlag(flag, 'edit-flag-2')">
+                    <span class="cursor_pointer noSelect box-inside-flag-title_menu" 
+                          (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-2')" 
+                          (click)="doubleCheckerClick.openDoubleCheckerDialog()">
                       <i class="material-icons box-inside-flag-title_menu--delete">
-                        delete_forever
+                        delete_forever 
                       </i>
                       <div class="box-inside-flag-title_menu--t2">Deletar</div>
                     </span>
@@ -233,7 +245,9 @@
                     </i>
                     <div class="box-inside-flag-title_menu--t1">Editar</div>
                   </span> <br>
-                  <span class="cursor_pointer noSelect box-inside-flag-title_menu" (click)="deleteFlag(flag, 'edit-flag-1')">
+                  <span class="cursor_pointer noSelect box-inside-flag-title_menu" 
+                        (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-1')"
+                        (click)="doubleCheckerClick.openDoubleCheckerDialog()">
                     <i class="material-icons box-inside-flag-title_menu--delete">
                       delete_forever
                     </i>
