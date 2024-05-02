@@ -348,6 +348,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       id = flagDelete.flags2[0].flag_id?.split('_')
       flag = '2' // bandeira 2
     }
+    
 
     this.timeLineService.deleteById(id[2], flag)
       .subscribe({
