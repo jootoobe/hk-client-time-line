@@ -96,7 +96,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
     })
 
-  
+
 
     effect(() => {
       this.language = this.stateService.languageSignalComputed()
@@ -331,27 +331,35 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   deleteFlag(flagDelete: FlagModel | any, editFlag: string) {
-    let id:any = ''
+
+    let id: any = ''
     let flag = ''
-    if(editFlag === 'edit-flag-1') {
-      id = flagDelete.flag_id?.split('_')
-      flag = '1'
-    } else if(editFlag === 'edit-flag-2') {
+
+    if (editFlag === 'edit-flag-1' && flagDelete.flags2?.length > 0) {
+      id = flagDelete.flag_id?.split('_') 
+      flag = '3' // bandeira 1 - possui bandeira 2
+    }
+
+    if (editFlag === 'edit-flag-1' && flagDelete.flags2?.length === 0) {
+      id = flagDelete.flag_id?.split('_') 
+      flag = '1' // bandeira 1 - individual
+
+    } else if (editFlag === 'edit-flag-2') {
       id = flagDelete.flags2[0].flag_id?.split('_')
-      flag = '2'
+      flag = '2' // bandeira 2
     }
 
     this.timeLineService.deleteById(id[2], flag)
-    .subscribe({
-      next: (res: EncryptModel) => {
-        if(res.a === 'OK') {
-          this.getFlagOutput.emit()
-        }
-      },
-      error: (err) => { },
-      complete: () => { }
-    })
-    
+      .subscribe({
+        next: (res: EncryptModel) => {
+          if (res.a === 'OK') {
+            this.getFlagOutput.emit()
+          }
+        },
+        error: (err) => { },
+        complete: () => { }
+      })
+
 
   }
 }
