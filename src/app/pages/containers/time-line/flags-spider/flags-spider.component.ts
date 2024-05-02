@@ -110,6 +110,10 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
 
+  closeModalEvent(e:any) {
+    this.dialogCreate.closeAll()
+  }
+  
   // Open Create Time_Line
   openCreateTimeLineDialog(val: string): void {
     this.flagCreateEdit = val

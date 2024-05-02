@@ -1,6 +1,6 @@
 import { style } from '@angular/animations';
 import { DatePipe } from "@angular/common";
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, effect } from "@angular/core";
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, effect, output } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatRadioChange } from "@angular/material/radio";
 import { ToastrService } from "ngx-toastr";
@@ -32,6 +32,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) editFlagFormInput!: FlagModel
   @Input({ required: true }) flagCreateEditInput!: string
+  closeModalOutput = output()
 
   editFlag!: FlagModel;
   timestampExist!: FlagModel[];
@@ -389,7 +390,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
       //'Até 02 flags por data e horário', 'Máximo 02 flags'
       this.toastrService.warning(this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-0']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].warning['msn-0']['message-1']);
-
+      this.closeModalOutput.emit()
       return
     }
 
