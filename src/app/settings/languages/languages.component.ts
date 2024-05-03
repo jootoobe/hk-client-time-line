@@ -67,9 +67,9 @@ export class LanguagesTimeLineComponent implements OnInit {
           //'LENG' pt, es, en
           this.stateService.updateLanguageSignal(res.detail.message)
 
-          // setTimeout(()=>{
-          //   this.getLeng()
-          // },500)
+          setTimeout(()=>{
+            this.getLeng()
+          },500)
         },
         error: (err) => { },
         complete: () => { }

@@ -11,9 +11,10 @@ export class TolltipModalSoublecheckerHelper {
   TIME_LINE!: any; // translator used in ToastrService
 
   constructor(private stateService: StateService) {
+    
     effect(() => {
       this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
-      console.log('TIME-LINE >>>>>>>>>>>>>>>>>>>>>.', this.TIME_LINE)
+      console.log('TIME-LINE >>>>>>>>>>>>>>>>>>>>>.🌝', this.TIME_LINE)
     })
   }
 

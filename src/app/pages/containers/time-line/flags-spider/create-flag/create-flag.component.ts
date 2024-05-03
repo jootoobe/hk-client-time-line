@@ -66,6 +66,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   language = ''
   addDataMaskVal = ''
   chipsArray!: FormArray | any
+
+  TIME_LINE: any
+
   constructor(
     private fb: FormBuilder,
     private stateService: StateService,
@@ -90,6 +93,18 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     this.chipsArray = []
     this.buildForm()
 
+    effect(() => {
+      this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
+      if(this.TIME_LINE) {
+        this.help1 = this.tolltipCreateHelper.help1()
+        this.help2 = this.tolltipCreateHelper.help2()
+        this.help3 = this.tolltipCreateHelper.help3()
+        this.help4 = this.tolltipCreateHelper.help4()
+        this.help5 = this.tolltipCreateHelper.help5()
+        this.help6 = this.tolltipCreateHelper.help6()
+      }
+    })
+
   }
 
 
@@ -108,14 +123,14 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => { // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
-      this.help1 = this.tolltipCreateHelper.help1()
-      this.help2 = this.tolltipCreateHelper.help2()
-      this.help3 = this.tolltipCreateHelper.help3()
-      this.help4 = this.tolltipCreateHelper.help4()
-      this.help5 = this.tolltipCreateHelper.help5()
-      this.help6 = this.tolltipCreateHelper.help6()
-    }, 500)
+    // setTimeout(() => { // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
+    //   this.help1 = this.tolltipCreateHelper.help1()
+    //   this.help2 = this.tolltipCreateHelper.help2()
+    //   this.help3 = this.tolltipCreateHelper.help3()
+    //   this.help4 = this.tolltipCreateHelper.help4()
+    //   this.help5 = this.tolltipCreateHelper.help5()
+    //   this.help6 = this.tolltipCreateHelper.help6()
+    // }, 500)
 
     this.setDateTimestamp()
   }

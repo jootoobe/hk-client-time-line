@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, output } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, effect, output } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { TolltipModalSoublecheckerHelper } from "./tolltip-modal-doublechecker-helper";
 import { DoubleCheckModel } from "../../models/time-line/time-line.model";
+import { StateService } from "../../shared/services/state.service";
 
 
 
@@ -19,19 +20,28 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
 
   @ViewChild(TolltipModalSoublecheckerHelper) tolltipModalSoublecheckerHelper!: TolltipModalSoublecheckerHelper;
   help1:string = ''
-
+  TIME_LINE: any
   constructor(
     private dialogCreate: MatDialog,
-  ) { }
+    private stateService: StateService,
+  ) { 
+    
+    effect(() => {
+      this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
+      if(this.TIME_LINE) {
+        this.help1 = this.tolltipModalSoublecheckerHelper.help1()
+      }
+    })
+  }
   ngOnInit(): void {
 
   }
 
 
   ngAfterViewInit(): void {
-    setTimeout(() =>{ // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
-      this.help1 = this.tolltipModalSoublecheckerHelper.help1()
-    },2000)
+    // setTimeout(() =>{ // aqui precisa de setTimeout para espear o tradutor carregar adequadamente
+    //   this.help1 = this.tolltipModalSoublecheckerHelper.help1()
+    // },2000)
   }
 
   // Open Create Time_Line
