@@ -31,20 +31,49 @@ export class LanguagesTimeLineComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getLeng()
+  }
+
+
+  getLeng() {
+    //'TIME-LINE'
     this.translate.get('TIME-LINE').subscribe((value) => {
-      // localStorage.setItem('toast', JSON.stringify(value))
-      // this.stateService.toastTs(value)
       if (value) {
         this.stateService.updateTranslatorLanguageSignal(value)
       }
     });
 
 
+    //'TOAST'
     this.translate.get('TOAST').subscribe((value) => {
       if (value) {
         this.stateService.updateToastSignal(value)
       }
     });
+
+    this.updateTranslate()
+  }
+
+
+  updateTranslate() {
+
+    // # Recebe a alteração da tradução enviada pela aplicação spider-sahre
+    fromEvent(this.window, 'translator-changes')
+      .subscribe({
+        next: (res: any) => {
+          console.log('# Recebe a alteração da tradução enviada pela aplicação spider-sahre', res.detail.message)
+          this.translate.setDefaultLang(res.detail.message)
+          //'LENG' pt, es, en
+          this.stateService.updateLanguageSignal(res.detail.message)
+
+          // setTimeout(()=>{
+          //   this.getLeng()
+          // },500)
+        },
+        error: (err) => { },
+        complete: () => { }
+      })
+
   }
 
 
