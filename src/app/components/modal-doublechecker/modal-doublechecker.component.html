@@ -16,7 +16,10 @@
 @if(doubleCheckerDataInput && doubleCheckerDataInput.modals.types.type === 'type-delete') {
   <div class="doublecheck">
     <ng-template #doubleChecker let-data>
-      <div class="doublecheck_title">Deseja deletar a bandeira ?</div>
+      <div class="doublecheck_title">
+        <!-- Deseja deletar a bandeira ? -->
+        {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.title.t1' | translate}}
+      </div>
       <div class="doublecheck_flag">
         <strong>Flag:</strong>
           {{data.modals.types.flag.flag_title | truncate:25}}
@@ -55,7 +58,8 @@
         <button matDialogClose
                 mat-stroked-button
                 class="btn_opt_transparent doublecheck_btn--back" >
-          Voltar
+          <!-- Voltar -->
+          {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.button.back' | translate}}
         </button>
         <!-- Delete flag -->
         <button *ngIf="data.modals.types.flag.social_medias_chips.length <= 0"
@@ -64,14 +68,16 @@
                 class="btn_opt-delete"
                 (click)="deleteFlag()"
                 [disabled]="false">
-          Deletar
+          <!-- Deletar -->
+          {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.button.delete' | translate}}
         </button>
         <button *ngIf="data.modals.types.flag.social_medias_chips.length > 0"
                 matDialogClose
                 mat-stroked-button
                 class="btn_opt-invalid"
                 [disabled]="true">
-          Deletar
+          <!-- Deletar -->
+          {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.button.delete' | translate}}
         </button>
       </div>
     </ng-template>

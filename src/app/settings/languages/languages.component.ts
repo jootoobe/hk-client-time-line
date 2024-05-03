@@ -32,6 +32,7 @@ export class LanguagesTimeLineComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLeng()
+    this.updateTranslate()
   }
 
 
@@ -51,7 +52,7 @@ export class LanguagesTimeLineComponent implements OnInit {
       }
     });
 
-    this.updateTranslate()
+
   }
 
 

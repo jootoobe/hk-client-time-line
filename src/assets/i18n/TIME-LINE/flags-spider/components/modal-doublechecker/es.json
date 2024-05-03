@@ -5,16 +5,21 @@
         "START_COMMENTARY--MODAL-DOUBLE-CHECKER": "============== HTML START MODAL-DOUBLE-CHECKER COMPONENT FOLDER =============================",
         "modal-dialog": {
           "item-01": "Hay kanban que eliminar",
-          "item-02": "No hay kanban que eliminar"
+          "item-02": "No hay kanban que eliminar",
+          "title": {
+            "t1": "¿Quieres borrar una bandeira?"
+          },
+          "img": {
+            "spider-share-01": ""
+          },
+          "button": {
+            "edite": "",
+            "delete": "Borrar",
+            "back": "Volver"
+          }
         },
-        "img": {
-          "spider-share-01": ""
-        },
-        "button": {
-          "edite": "",
-          "delete": "Borrar",
-          "back": "Volver"
-        }
+        "modal-dialog2": {}
+   
       }
     }
   }
