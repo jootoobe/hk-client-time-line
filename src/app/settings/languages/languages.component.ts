@@ -26,13 +26,14 @@ export class LanguagesTimeLineComponent implements OnInit {
     translate.addLangs(['pt', 'en', 'es'])
     translate.setDefaultLang(`${this.languageStart}`)
     this.stateService.updateLanguageSignal(translate.store.defaultLang)
-
+    
+    this.getLeng()
+    this.updateTranslate()
   }
 
 
   ngOnInit(): void {
-    this.getLeng()
-    this.updateTranslate()
+
   }
 
 

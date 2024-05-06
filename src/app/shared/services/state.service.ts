@@ -82,7 +82,6 @@ export class StateService {
     return this.translatorLanguageSignal.set(val)
   }
 
-
   updateToastSignal(val: any) {
     return this.toastSignal.set(val)
   }
