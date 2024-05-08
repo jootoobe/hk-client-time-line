@@ -59,11 +59,10 @@ export class TimeLineService {
 
 
   getAllTimeLineById(): Observable<FlagsModel> {
-    let val = this.timeLineKeys.BY.tl1 + 'U2FsdGVkX1+TVq5MkDFDYrTSGvujWOb9'
+    let val = this.timeLineKeys.BY.tl3 + 'U2FsdGVkX1+TVq5MkDFDYrTSGvujWOb9'
     return this.http.get<FlagsModel>(`${this.API_TIME_LINE}/controller?val=${val}`).pipe(
       map(res => {
-        let timeLine = this.dencryptBody(res, this.timeLineKeys.BY.tl1)
-        console.log('ssssssssssssssssssssssssssssssssssssssssssssssss', timeLine)
+        let timeLine = this.dencryptBody(res, this.timeLineKeys.BY.tl3) // criar chave GET
         return timeLine
       })
     )
