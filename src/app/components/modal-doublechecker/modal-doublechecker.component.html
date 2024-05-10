@@ -14,7 +14,7 @@
 
 <!-- MODAL DIALOGO DOUBLE CHECK TIPO 01 -->
 @if(doubleCheckerDataInput && doubleCheckerDataInput.modals.types.type === 'type-delete') {
-  <div class="doublecheck">
+  <div class="doublecheck Roboto_500">
     <ng-template #doubleChecker let-data>
       <div class="doublecheck_title">
         <!-- Deseja deletar a bandeira ? -->
@@ -49,7 +49,7 @@
         <span *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">
           {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.item-02' | translate}}
         </span>
-        <i  class="material-icons doublecheck_kanban--done" *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">done</i>
+        <i  class="material-icons doublecheck_kanban--done " *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">done</i>
         <!-- <i  class="material-icons doublecheck_kanban--close" *ngIf="data.modals.types.flag.social_medias_chips.length > 0">close</i> -->
       </div>
 
