@@ -37,7 +37,7 @@
       <div class="flag-modal_title" [formGroupName]="0">
 
         <!-- Flag name -->
-        <mat-form-field class="MatLable_600">
+        <mat-form-field class="TextIput_500 MatLable_600">
           <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.title.mat-label' | translate}}</mat-label>
           <input  type="text"
                   #flagTitle
@@ -72,7 +72,7 @@
       <!-- https://github.com/JsDaddy/ngx-mask -->
       <!-- mask="d0/M0/0000" -->
       <div class="flag-modal_date" [formGroupName]="0">
-        <mat-form-field formGroupName="date_obj" class="MatLable_600">
+        <mat-form-field formGroupName="date_obj" class="TextIput_500 MatLable_600">
           <!-- Flag date -->
           <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.date.mat-label' | translate}} </mat-label>
             <!-- Custom ToolTip -->
@@ -137,7 +137,7 @@
 
       <!-- Description -->
       <div class="flag-modal_description" [formGroupName]="0">
-        <mat-form-field [style.fontSize]="'1.4rem'" class="MatLable_600">
+        <mat-form-field [style.fontSize]="'1.4rem'" class="TextIput_500 MatLable_600">
           <!-- Description -->
           <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.mat-label' | translate}} </mat-label>
           <textarea [placeholder]="'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.placeholder'| translate"
@@ -369,7 +369,7 @@
 
       <!-- color-picker -->
       <div class="flag-modal_color-picker" [formGroupName]="0">
-        <mat-form-field class="input-color " floatPlaceholder="never" floatLabel="always" formGroupName="flag_design">
+        <mat-form-field class="input-color TextIput_500 MatLable_600" floatPlaceholder="never" floatLabel="always" formGroupName="flag_design">
           <!-- Which color represents the flag? -->
           <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.color.mat-label' | translate}} </mat-label>
           <!-- [disableControl]="disableColor" -->
