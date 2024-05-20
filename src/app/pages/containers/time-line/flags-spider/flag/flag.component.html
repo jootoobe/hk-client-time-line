@@ -155,7 +155,8 @@
           </div >
           </div> <!-- Card End -->
           <!-- Open Kanban -->
-          <div class="inside-flag_open-kanban cursor_pointer remove" id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
+          <div class="inside-flag_open-kanban cursor_pointer remove" 
+              id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
             <!-- Abrir Kanban -->
             {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-04' | translate}}
             <mat-icon matSuffix class="material-icons ">
@@ -328,6 +329,7 @@
         </div> <!-- Card End language-->
         <!-- Open Kanban     margin: -2rem 0 .5rem 18.7rem;-->
         <div class="inside-flag_open-kanban cursor_pointer remove" 
+            (click)="getFlagIdNavegateKanban(flag)"
             id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}"
             [ngStyle]="{'margin': language === 'es' ? '-2rem 0 .5rem 18.7rem' : 
                                   language === 'en' ? '-2rem 0 .5rem 19.7rem' : ''}">

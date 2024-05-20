@@ -24,7 +24,7 @@ type MyDBKeysTimeLine = keyof TimeLineModel;
 })
 export class IndexDbTimeLineService {
   version = 1;
-  databaseName = "SpiderShare";
+  databaseName = "TimeLine";
 
   dbConnection$!: Observable<IDBPDatabase<MyDBKeysTimeLine>>;
   timeLineKeys!: TIMELINEKeysModel

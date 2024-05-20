@@ -22,6 +22,8 @@ export class FlagModel {
     public flags2?: FlagModel[],
     public edit?: string, // para edição
     public flag_status_update?: string, // o status pode ser update, delete or create - usado quando a flag é editada
+
+
   ) {
   }
 }
@@ -30,6 +32,7 @@ export class FlagModel {
 export class FlagsModel {
   constructor(
     public flags: FlagModel[],
+    public _id?: string,
   ) {
   }
 }

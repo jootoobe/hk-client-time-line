@@ -12,6 +12,7 @@ import { environment } from '../../../../../environments/environment';
 import { ConnectingExternalRoutesService } from '../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
 import { DetectBrowserNameService } from '../../../../shared/services/detect-browser-name.service';
 import { ToastrService } from 'ngx-toastr';
+import { LocalStorageService } from '../../../../shared/services/storage/local-storage.service';
 
 @Component({
   selector: 'flags-spider',
@@ -46,6 +47,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   checkingOpacityFilterApplied = '' // verifica se o filtro no modal está ativo ou não
 
   TOAST: any
+  timeLineId = environment.timeLineId
 
   constructor(
     private dialogCreate: MatDialog,
@@ -56,6 +58,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private indexDbTimeLineService: IndexDbTimeLineService,
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private detectBrowserNameService: DetectBrowserNameService,
+    private localStorageService: LocalStorageService,
     // private toastrService: ToastrService,
   ) {
 
@@ -139,6 +142,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
         next: (res: FlagsModel) => {
+
+          this.localStorageService.setItems('t', res._id, this.timeLineId)
+
           let newTimeLine = {
             time_line: {
               flags: res.flags
