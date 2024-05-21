@@ -412,6 +412,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     console.log('flagId flagId flagId flagIdflagId', flagId)
     this.localStorageService.setItems('f', flagId.flag_id, this.valIdKanban)
+    localStorage.setItem('flag_title', flagId.flag_title)
 
     const routerHome = {
       router: `/kanban/${idFlag[2]}`,
