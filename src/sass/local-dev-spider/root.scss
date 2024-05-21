@@ -1,0 +1,89 @@
+// @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+
+
+
+
+
+// só pode ter um root
+:root {
+  // ===== FONTS =======
+  //=====================
+  --fonts-open-sans-serif: 'Open Sans', sans-serif;
+  --fonts-font-weight-100: 100;
+  --fonts-font-weight-400: 400;
+  --fonts-font-weight-500: 500;
+  --fonts-font-weight-600: 600;
+  --fonts-font-weight-700: 700;
+  --fonts-font-weight-800: 800;
+  --fonts-font-weight-900: 900;
+
+  // ===== COLORS =======
+  //=====================
+  --color-primary: 38, 50, 56; // #263238  https://m1.material.io/style/color.html#color-color-palette
+  --color-secondary: 156, 29, 31; // red spider
+  --color-tertiary: 144, 171, 64; // green button
+  --color-black-spider: 23, 30, 34; // testando
+  --color-black: 0, 0, 0;
+  --color-light-gray: 245, 245, 245;
+  --color-light-gray-blue: 236, 239, 241;
+  --color-white: 255, 255, 255;
+  --color-red: 255, 0, 0;
+  --color-green: 76, 175, 80;
+
+    // ===== MATERIAL-INPUT =======
+  //===============================
+  --color-material-input-lable: 55, 71, 79;
+
+  // ===== NAV COLORS =======
+  --color-nav: 23, 30, 34;
+  --color-nav-icon: 192, 19, 22;
+  --color-nav-gray: 134, 144, 163;
+
+  // ===== ICONS COLORS =======
+  //===========================
+  --color-icons: 40, 67, 135;
+  // $social-media-chips: #4a4a4a; -- arrumar isso
+
+  // ===== TIME-LINE =======
+  //===========================
+  --colorT-time-line-board: 242, 242, 242; //#F2F2F2;
+  --colorT-scrollH-1: 207, 216, 220; //#cfd8dc;
+  --colorT-scrollH-2: 236, 239, 241; //#eceff1;
+  // --colorT-scrollH-3: #F2F2F2;
+  --color-social-media-chips: 74, 74, 74; //#4a4a4a;
+
+  
+
+
+  //=============== GLOBAL SCROLL =============
+  //===========================================
+
+  ::-webkit-scrollbar {
+    scrollbar-width: thin;
+    width: .6rem;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    // box-shadow: inset 0 0 .4rem rgba(231, 7, 7, 0);
+    border-radius: 1rem;
+    // margin: 0 10rem 0 5rem;
+    background-clip: content-box;
+  }
+
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    width: 3rem;
+    min-width: 3rem;
+    background: linear-gradient(to right, rgb(200, 200, 200), rgb(220, 220, 220)), rgba(245, 245, 245, 1);
+    border-radius: 1rem;
+  }
+
+
+}
+
+
+// primary: $Hk-pro-client-spidershare-primary,    // imput colors material
+// secondary: $Hk-pro-client-spidershare-primary, // red spider
+// black-spider: $Hk-pro-client-spidershare-primary, // black-spider

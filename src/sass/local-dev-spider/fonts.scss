@@ -1,0 +1,71 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap';
+
+
+
+// ============================
+// FONTE ROBOTO
+//=============================
+.Roboto {
+
+  &_100 {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+
+    &--i {
+      @extend .Roboto_100;
+      font-style: italic;
+    } 
+  }
+
+
+  &_400 {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+
+    &--i {
+      @extend .Roboto_400;
+      font-style: italic;
+    } 
+  }
+
+
+  &_400 {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+
+    &--i {
+      @extend .Roboto_400;
+      font-style: italic;
+    } 
+  }
+
+  &_500 {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+
+    &--i {
+      @extend .Roboto_500;
+      font-style: italic;
+    }
+  }
+
+  &_700 {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+
+    &--i {
+      @extend .Roboto_700;
+      font-style: italic;
+    }
+  }
+
+  &_900 {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    font-weight: 900;
+
+    &--i {
+      @extend .Roboto_900;
+      font-style: italic;
+    }
+  }
+}

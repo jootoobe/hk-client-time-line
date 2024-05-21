@@ -1,0 +1,61 @@
+
+
+.mat-mdc-outlined-button.mat-mdc-button-base.btn {
+
+  &_opt-invalid {
+    // height: 3.2rem;
+    // font-size: 12px;
+    color: rgba(var(--color-black), .26);
+    background: rgba(var(--color-black), .12);
+
+   
+  }
+
+  &_kanban_create {
+    color: rgba(var(--color-primary), 1);
+    background: rgba(var(--color-white), 1);  
+  }
+
+  &_opt-valid {
+    // height: 3.2rem;
+    // font-size: 12px;
+    color: rgba(var(--color-white), 1);
+    background: rgba(var(--color-tertiary), 1);
+    // letter-spacing: 0;
+  }
+
+  &_opt-delete {
+    // height: 3.2rem;
+    // font-size: 12px;
+    color: rgba(var(--color-white), 1);
+    background: rgba(var(--color-red), 1);
+    // letter-spacing: 0;
+  }
+
+  &_black {
+    color: rgba(var(--color-black), .87);
+    // letter-spacing: 0;
+  }
+
+  &_red-spider {
+    background-color: rgba(var(--color-secondary), 1);
+    color: rgba(var(--color-white), 1);
+    // letter-spacing: 0;
+  }
+
+  &_opt-transparent {
+    color: rgba(var(--color-primary), .9);
+    background: transparent;
+    // letter-spacing: 0;
+  }
+
+  &_mr-26 {
+    margin-right: 6.5rem;
+
+  }
+
+  &_hove-valid:hover{
+      color: rgba(var(--color-white), 1);
+      background: rgba(var(--color-tertiary), 1);
+  }
+}

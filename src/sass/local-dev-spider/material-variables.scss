@@ -1,0 +1,80 @@
+// Deixa o lable do input com a for bold no momento do focused
+// https://stackoverflow.com/questions/73141542/custom-style-material-input-without-ng-deep-important
+// https://stackblitz.com/edit/angular-dhmjnl?file=src%2Fstyles.scss
+.MatLable {
+  color: rgba(var(--color-material-input-lable), 1) !important;
+
+  &_500 {
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+      font-weight: var(--fonts-font-weight-500) !important;
+    }
+  }
+
+  &_600 {
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+      font-weight: var(--fonts-font-weight-600) !important;
+    }
+  }
+
+  &_700 {
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+      font-weight: var(--fonts-font-weight-700) !important;
+    }
+  }
+
+  &_800 {
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+      font-weight: var(--fonts-font-weight-800) !important;
+    }
+  }
+
+  &_900 {
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+      font-weight: var(--fonts-font-weight-900) !important;
+    }
+  }
+}
+
+.TextIput {
+
+  &_500 {
+
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+      // color: rgba(255, 255, 255, 0.87);
+      font-weight: var(--fonts-font-weight-500) !important;
+    }
+  }
+
+  &_600 {
+
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+      // color: rgba(255, 255, 255, 0.87);
+      font-weight: var(--fonts-font-weight-600) !important;
+    }
+  }
+
+  &_700 {
+
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+      // color: rgba(255, 255, 255, 0.87);
+      font-weight: var(--fonts-font-weight-700) !important;
+    }
+  }
+
+  &_800 {
+
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+      // color: rgba(255, 255, 255, 0.87);
+      font-weight: var(--fonts-font-weight-800) !important;
+    }
+  }
+
+  &_900 {
+
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+      // color: rgba(255, 255, 255, 0.87);
+      font-weight: var(--fonts-font-weight-900) !important;
+    }
+  }
+
+}

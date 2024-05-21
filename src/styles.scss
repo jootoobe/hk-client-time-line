@@ -102,6 +102,8 @@ $Hk-pro-client-spidershare-warn: mat.define-light-theme((color: (primary: $Hk-pr
 @include mat.all-component-themes($Hk-pro-client-spidershare-warn);
 
 
+// ============ DESENVOLVIMENTO LOCAL ===================
+@import './sass/local-dev-spider/global.scss';
 
 // // =========== TIME-LINE STYLE NÃO COMENTAR ======================
 @import './sass/global-time-line/tl-global.scss';

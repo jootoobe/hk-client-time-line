@@ -1,0 +1,184 @@
+@import './variables';
+
+// https://stackoverflow.com/questions/55965585/mdc-how-to-style-label-text
+// https://marco-troost.medium.com/optimizing-material-design-autofilled-outlined-textfields-while-retaining-usability-45b0958b4cbf
+// https://github.com/angular/components/blob/main/src/material/form-field/form-field.scss
+// https://github.com/angular/components/issues/26115
+
+
+// Deixa o lable do input com a for bold no momento do focused
+// .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+//   color: #37474f !important;
+//   font-weight: 700;
+//   font-size: 1.4rem !important;
+// }
+
+
+
+// Ajute do padding direita e esquerda do fundo cinza
+.mdc-text-field {
+  // padding: 0 16px;
+  padding: 0 1rem !important;
+  font-size: 1.4rem !important;
+}
+
+// .mat-mdc-form-field { //I didn't change it here to let the component inputs be changed if necessary
+// height: 6rem !important; // form height text area problem
+// }
+
+
+// Altura do input e largura
+.mat-mdc-form-field-infix {
+  min-height: 0rem;
+  // width: 10rem !important;
+}
+
+// cor input
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//   background-color: white;
+//   // height: 10rem;
+// }
+
+// cor de fundo do input quando o focused está ativado
+.mat-mdc-form-field-focus-overlay {
+  background-color: rgba(var(--color-black), 0.4);
+
+}
+
+// cor de fundo do input quando o focused está ativado
+// .mat-mdc-form-field-focus-overlay {
+//   background-color: rgb(134, 6, 6);
+// }
+
+// cor input
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//   background-color: rgb(134, 6, 6);
+//   // height: 10rem;
+// }
+
+// cor input digitiando
+// .mdc-text-field--focused:not(.mdc-text-field--disabled) {
+//     background-color: rgb(14, 98, 167);
+// }
+
+.mat-mdc-form-field-hint-end {
+  font-size: 1.2rem;
+  // position: absolute;
+}
+
+// Posicionando o erro embaixo do input
+.mat-mdc-form-field-error {
+  font-size: 1rem;
+  margin: -0.4rem 0 0 -0.9rem;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+// parte de baixo do input
+.mat-mdc-form-field-bottom-align {
+  height: 1rem;
+}
+
+
+// cursos do input verde
+.mdc-text-field .mdc-text-field__input {
+  caret-color: #64dd17 // caret-color: var(--mdc-theme-surface, rgb(30, 255, 0));
+}
+
+
+// Contador em baixo do input ex: 50/50
+.mat-mdc-form-field-hint-end {
+  font-size: 1.1rem;
+  margin-top: -.3rem;
+}
+
+
+
+// Radio Button Styme
+.mat-mdc-radio-button.mat-accent {
+  padding: 0rem;
+  --mdc-radio-selected-icon-color: #455a64; // cor icone
+  --mdc-radio-selected-hover-icon-color: #455a64; // cor icone
+  --mdc-radio-selected-pressed-icon-color: #455a64; // cor icone
+  --mdc-radio-selected-focus-icon-color: #455a64; // cor icone
+
+  --mdc-radio-unselected-icon-color: #b0bec5; // cor do icone não checado - sem a bola no interior
+  --mdc-radio-unselected-pressed-icon-color: #b0bec5; // cor do icone não checado - sem a bola no interior
+
+  --mdc-radio-disabled-selected-icon-color: #607d8b;
+  --mdc-radio-disabled-unselected-icon-color: #607d8b;
+  --mdc-radio-unselected-hover-icon-color: #607d8b;
+
+
+  --mat-radio-ripple-color: rgba(var(--color-secondary), 1); // red spider
+  --mat-radio-checked-ripple-color: red;
+  --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
+}
+
+
+
+
+// Text imput
+// .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input,
+// .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+//   // color: rgba(255, 255, 255, 0.87);
+//   // font-weight: 600;
+// }
+
+// Cores iniciais
+// .mdc-text-field:not(.mdc-text-field--disabled)+.mdc-text-field-helper-line .mdc-text-field-helper-text,
+// .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+//   color:red
+// }
+
+// .mdc-text-field--filled .mdc-line-ripple::after {
+//   border-bottom-color: red;
+//   /* @alternate */
+//   border-bottom-color: var(--mdc-theme-surface, red);
+// }
+
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+//   border-color: white;
+//   /* @alternate */
+//   border-color: var(--mdc-theme-surface, white);
+// }
+
+
+// // class="
+// // mat-mdc-form-field example-full-width ng-tns-c1205077789-0
+// // mat-mdc-form-field-type-mat-input
+// // mat-form-field-appearance-fill mat-primary ng-star-inserted mat-form-field-hide-placeholder"
+
+// .mat-mdc-form-field .mat-form-field-appearance-fill{
+//   color: red;
+//   background: #ff0000;
+// }
+
+// .mat-mdc-form-field-icon-prefix,
+// .mat-mdc-form-field-icon-suffix {
+//   // Vertically center icons.
+//   align-self: center;
+//   // The line-height can cause the prefix/suffix container to be taller than the actual icons,
+//   // breaking the vertical centering. To prevent this we set the line-height to 0.
+//   line-height: 0;
+//   // MDC applies `pointer-events: none` to the `.mdc-text-field--disabled`. This breaks clicking on
+//   // prefix and suffix buttons, so we override `pointer-events` to always allow clicking.
+//   pointer-events: auto;
+//   // Needs a z-index to ensure it's on top of other content clickable. See #27043.
+//   position: relative;
+//   z-index: 1;
+//   color: red;
+//   background-color: red;
+// }
+
+// cor input
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//   // background-color: rgb(134, 6, 6);
+//   // height: 10rem;
+// }
+
+// .mdc-text-field--focused:not(.mdc-text-field--disabled) {
+//     background-color: rgb(248, 248, 248);
+// }
