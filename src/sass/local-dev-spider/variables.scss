@@ -272,3 +272,31 @@ input[type="password"]::-ms-clear {
     position: absolute;
   }
 }
+
+
+
+
+.body-open-sidenav {
+  width: calc(100% - 5.6rem);
+  margin-left: 5.6rem;
+  left: 0;
+  height: auto;
+  // min-height: 100%;
+  
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+}
+
+
+.active.body-open-sidenav {
+  width: calc(100% - 22rem);
+  margin-left: 22rem;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+}
