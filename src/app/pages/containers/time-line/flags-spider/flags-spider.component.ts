@@ -159,12 +159,13 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   getAllTimeLineById(kanban: any[]) {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
-        next: (res: FlagsModel[]) => {
+        next: (res: TimeLineModel[]) => {
 
           console.log('UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUuu',res)
+          
 
 
-          // let newTimeLine = {
+          // let newTimeLine: TimeLineModel = {
           //   time_line: {
           //     flags: res.flags
           //   }
