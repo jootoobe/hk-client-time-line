@@ -26,12 +26,11 @@ export class TimeLineGetKanbanService {
 
 
   getTimeLineKanbanById(): Observable<any> {
-    console.log('ooooooooooo')
     let val = this.timeLineKeys.BY.tl3 + 'U2FxdGPkX1+TVa5MkDFDYrTSGvujWOb0'
     return this.http.get<any>(`${this.API_KANBAN}/controller/time-line-kanban?val=${val}`).pipe(
       map(res => {
-        // let timeLine = this.dencryptTimeLineGetKanbanBody(res, this.timeLineKeys.BY.tl3) // criar chave GET
-        // return timeLine
+        let timeLine = this.dencryptTimeLineGetKanbanBody(res, this.timeLineKeys.BY.tl3) // criar chave GET
+        return timeLine
       })
     )
   }

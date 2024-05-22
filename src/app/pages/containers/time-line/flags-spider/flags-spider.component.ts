@@ -97,8 +97,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
     setTimeout(() => {
-      // this.getTimeLineKanbanById()
-      this.getAllTimeLineById()
+      this.getTimeLineKanbanById()
+      // this.getAllTimeLineById()
       this.openCloseHorizontalScroll('open')
     }, 1000)
 
@@ -137,7 +137,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   getFlagEvent(e: any) {
     console.log('wwwwwwwwwwwwwwwwwwwwwwwww', e)
-    // this.getTimeLineKanbanById()
+    this.getTimeLineKanbanById()
     // this.getAllTimeLineById()
   }
 
@@ -146,6 +146,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: any) => {
           console.log('======>>>>>>>>>>>>>>>.',res)
+          this.getAllTimeLineById(res)
         },
         error: () => {
 
@@ -155,7 +156,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       })
   }
 
-  getAllTimeLineById() {
+  getAllTimeLineById(kanban: any[]) {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
         next: (res: FlagsModel[]) => {
