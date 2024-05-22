@@ -16,7 +16,7 @@
                                       !first && last && flag.year ? '7rem':  ''}"> 
     <!-- 🅰️ FLAG 2 [ngStyle]="{'margin-right': !first && !last && flag.flag_margin_right === '0' && !flag.year ? '2rem': '5rem'}" [ngStyle]="{'margin-left': 'calc('+ (idx) +' * 4rem)'}"-->
     @for (flag2 of flag.flags2; track trackFlagsDataJson2;) {
-      @if(flag.flags2.length === 1) {
+      @if(flag.flags2?.length === 1) {
         <!-- 'margin-left': flag.year && !first ? '5rem': '0'} -->
       <div  class="main-block--flags2"       
             [ngStyle]="{ 'margin-right': flag.flag_margin_right+'rem'}">
