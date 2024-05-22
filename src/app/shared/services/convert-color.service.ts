@@ -70,19 +70,16 @@ export class ConvertColorService {
     hsl = `${h}, ${s}%, 93%`
 
     if(Number(rgb.split(',')[0]) >= 210 && Number(rgb.split(',')[1]) <= 255 || Number(rgb.split(',')[0]) >= 210 && Number(rgb.split(',')[2]) <= 255) {
-      console.log('caiu 245 a 255')
       hsl = `${h}, ${s}%, 97%`
     }
 
     if(Number(rgb.split(',')[1]) >= 220 && Number(rgb.split(',')[1]) <= 255 && Number(rgb.split(',')[2]) >= 220 && Number(rgb.split(',')[2]) <= 255) {
-      console.log('caiu 245 a 255')
       hsl = '0, 0%, 98%'
       rgb = '220,220,220'
       hex = '#dcdcdc'
     }
 
     if(Number(rgb.split(',')[1]) >= 195 && Number(rgb.split(',')[1]) <= 219 && Number(rgb.split(',')[2]) >= 195 && Number(rgb.split(',')[2]) <= 219) {
-      console.log('caiu 195 a 219')
       hsl = `${h}, ${s}%, 95%`
     }
 

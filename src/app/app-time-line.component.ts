@@ -33,7 +33,6 @@ export class AppTimeLineComponent implements OnInit {
       this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
       if(this.timeLineKeys && this.timeLineKeys?.LS?.ss) {
         this.localStorageControlSession()
-        console.log('QUANTAS VEZES')
       }
 
     })
@@ -43,17 +42,14 @@ export class AppTimeLineComponent implements OnInit {
     this.renderer.setAttribute(link, 'rel', 'stylesheet');
     this.renderer.setAttribute(link, 'href', `${this.styleSpiderShare}/styles-${styleCss}.css`);
     this.renderer.appendChild(document.head, link);
-    console.log(`${this.styleSpiderShare}/styles-${styleCss}.css`)
     // http://localhost:4200/styles-CUIQ32FR.css
 
     effect(() => {
       this.TESTE = this.stateService.translatorLanguageSignalComputed()
-      console.log('TIME-LINE', this.TESTE)
     })
   }
   ngOnInit(): void {
 
-    console.log('AppTimeLineComponent')
     this.letter = localStorage.getItem('al') !== null ? localStorage.getItem('al') : undefined
 
     if (this.letter) {
@@ -63,8 +59,6 @@ export class AppTimeLineComponent implements OnInit {
 
   localStorageControlSession() {
     this.itemStorageToken = this.localStorageService.getLocalStorag(this.letter, this.timeLineKeys?.LS?.ss)
-    console.log('TIME-LINE 🌜', this.itemStorageToken)
-    console.log('TIME-LINE 🌜', this.timeLineKeys?.LS?.ss)
 
     if (this.itemStorageToken && this.itemStorageToken.email) {
       this.stateService.updateRedisAuth(this.itemStorageToken)
@@ -79,7 +73,6 @@ export class AppTimeLineComponent implements OnInit {
           let encode1 = decodeURIComponent(`${res.a}`); // enconde 1
           let encode2: any = decodeURIComponent(`${encode1}`); // enconde 2
           encode2 = JSON.parse(encode2)
-          console.log('sssssssss', encode2)
           this.stateService.updateKeysCryptoTimeLineSignal(encode2.TLC)
         },
         error: (err) => {

@@ -14,7 +14,6 @@ export class SafeDomSanitizerPipe implements PipeTransform {
       // return this.domSanitizer.bypassSecurityTrustResourceUrl(`data:image/svg+xml;base64,${base64string}`);
     }
     // if(url.includes('http')) {
-    //   console.log('FOIO')
     //   return
     // }
     // return this.domSanitizer.bypassSecurityTrustResourceUrl(url);

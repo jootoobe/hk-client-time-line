@@ -14,7 +14,6 @@ export class UniquePipe implements PipeTransform {
         delete value.year
         // value.year = ''
         uniqueArr.push(value)
-        // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
       } else {
         uniqueArr.push(value)
       }

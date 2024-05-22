@@ -22,7 +22,6 @@ export class LanguagesTimeLineComponent implements OnInit {
 
     this.languageStart = localStorage.getItem('leng') !== null ? localStorage.getItem('leng') : JSON.stringify('pt')
     this.languageStart = JSON.parse(this.languageStart)
-    console.log('languageStart', this.languageStart)
     translate.addLangs(['pt', 'en', 'es'])
     translate.setDefaultLang(`${this.languageStart}`)
     this.stateService.updateLanguageSignal(translate.store.defaultLang)
@@ -63,7 +62,6 @@ export class LanguagesTimeLineComponent implements OnInit {
     fromEvent(this.window, 'translator-changes')
       .subscribe({
         next: (res: any) => {
-          console.log('# Recebe a alteração da tradução enviada pela aplicação spider-sahre', res.detail.message)
           this.translate.setDefaultLang(res.detail.message)
           //'LENG' pt, es, en
           this.stateService.updateLanguageSignal(res.detail.message)

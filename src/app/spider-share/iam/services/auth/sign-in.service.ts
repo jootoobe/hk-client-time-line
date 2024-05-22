@@ -31,8 +31,6 @@ export class SignInService {
 
   devSignIn(val: any): Observable<any> {
 
-    console.log('sssssssss',this.timeLineKeys.SICK)
-
     let date = new Date()
     // '3600' == 1hs
     let expiresToken = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
@@ -62,7 +60,6 @@ export class SignInService {
       },
     }
 
-    // console.log('🅱️ ', this.redisAuth)
 
     let neyBody: any = this.encryptAuthenticationServicel(this.redisAuth, `${this.timeLineKeys.SICK}`)
 
@@ -85,7 +82,6 @@ export class SignInService {
   setData(skich: string, resBody: any, decryptKey: string) {
 
     let newRes: any = this.decryptAuthenticationService(resBody, decryptKey)
-    console.log(newRes)
 
     if (skich && resBody && resBody.a && newRes && newRes.email) {
 
@@ -107,7 +103,6 @@ export class SignInService {
         },
       }
 
-      console.log('🅰️🅾🅿️ ', this.redisAuth)
       this.stateService.updateRedisAuth(this.redisAuth)
 
       this.localStorageService.setItems('a', this.redisAuth, this.timeLineKeys.LS.ss) // outputLetter tem que ser removida da chave skich

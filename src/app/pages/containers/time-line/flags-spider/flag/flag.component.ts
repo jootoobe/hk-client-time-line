@@ -65,7 +65,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()
-      console.log('TOAST', this.TOAST)
     })
 
     effect(() => { // verifica se o filtro está ativo 
@@ -119,7 +118,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges) {
 
     if (changes['checkingOpacityFilterAppliedInput']?.currentValue) {
-      console.log('ssssssssssssssssssssss', changes['checkingOpacityFilterAppliedInput']?.currentValue)
       this.checkingOpacityFilterApplied = changes['checkingOpacityFilterAppliedInput']?.currentValue
     }
 
@@ -213,7 +211,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   // ⬇️ Edit Flag
   editFlag(flagEdit: FlagModel, editFlag: string) {
     flagEdit.edit = editFlag
-    console.log(flagEdit)
     this.editFlagOutput.emit(flagEdit)
   }
 
@@ -252,7 +249,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 */
   filterColor(flag?: FlagModel | any, id?: string) {
 
-    console.log(this.filterAlreadyExists)
     if (this.filterAlreadyExists.length > 0) {
       this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
       return
@@ -410,7 +406,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   getFlagIdNavegateKanban(flagId: FlagModel) {
     let idFlag = flagId.flag_id.split('_')
 
-    console.log('flagId flagId flagId flagIdflagId', flagId)
     this.localStorageService.setItems('f', flagId.flag_id, this.valIdKanban)
     localStorage.setItem('flag_title', flagId.flag_title)
 

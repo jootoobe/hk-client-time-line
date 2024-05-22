@@ -50,7 +50,6 @@ export class FilterFlagComponent implements OnInit {
 
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()
-      console.log('TOAST', this.TOAST)
       this.indexDbGetAllTimeLine('0000')
     })
 
@@ -247,7 +246,6 @@ export class FilterFlagComponent implements OnInit {
       ))
       .subscribe({
         next: (res: TimeLineModel) => {
-          console.log('this.indexDbGetAllTimeLine', res)
           let valFlags: FlagModel[] = res.time_line.flags
           let newTimeLine = {
             time_line: {

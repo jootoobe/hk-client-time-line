@@ -77,7 +77,6 @@ export class ToolTipRendererDirective implements OnDestroy {
           }
         },
         error: (err) => {
-          // console.log('Erro', err)
         },
         complete: () => {
           this.unsubscribe.unsubscribe()
@@ -138,12 +137,10 @@ export class ToolTipRendererDirective implements OnDestroy {
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       // document.write("mobile device");
-      // console.log('mobile device')
       return this.stateService.toolTipSubject({ mouse: 'mouseleave', from: 'customToolTipParent' })
 
     } else {
       // document.write("not mobile device");
-      // console.log('not mobile device')
       this.active = setTimeout(() => {
         this.stateService.toolTipSubject({ mouse: 'mouseleave', from: 'customToolTipParent' })
       }, 50)

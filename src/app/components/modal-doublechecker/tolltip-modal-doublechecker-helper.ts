@@ -14,7 +14,6 @@ export class TolltipModalSoublecheckerHelper {
     
     effect(() => {
       this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
-      console.log('TIME-LINE >>>>>>>>>>>>>>>>>>>>>.🌝', this.TIME_LINE)
     })
   }
 

@@ -29,7 +29,6 @@ export class TopDivComponent implements OnInit {
     private stateService: StateService
   ) { }
   ngOnInit(): void {
-    console.log('TopDivComponent 🃏')
   }
 
   openCreateTimeLineDialog() {
@@ -40,7 +39,6 @@ export class TopDivComponent implements OnInit {
   }
 
   timeLineEvent(event: TimeLineModel) {
-    console.log('event event event event', event)
     this.timeLineOutput.emit(event)
   }
 

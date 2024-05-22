@@ -60,7 +60,6 @@ export class IndexDbTimeLineService {
     let data: any = { year: timeLine?.year }
     let newVal = this.encryptIDB(timeLine, this.timeLineKeys.LS.idb1)
 
-    console.log('ssssssssssss 🅱️', this.timeLineKeys)
     return this.dbConnection$.pipe(
       map(db => {
         const tx = db.transaction(target, "readwrite");
