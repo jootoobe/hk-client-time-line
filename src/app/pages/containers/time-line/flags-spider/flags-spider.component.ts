@@ -108,6 +108,11 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   }
 
+  getFlagEvent(e: any) {
+    console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',e)
+    this.getTimeLineKanbanById()
+  }
+
   editFlagEvent(flag: FlagModel) {
     this.editFlagForm = flag
     this.openCreateTimeLineDialog('edit')
@@ -135,10 +140,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   }
 
-  getFlagEvent(e: any) {
-    console.log('wwwwwwwwwwwwwwwwwwwwwwwww', e)
-    this.getTimeLineKanbanById()
-  }
+
 
   getTimeLineKanbanById() {
     this.timeLineGetKanbanService.getTimeLineKanbanById()
@@ -169,11 +171,15 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             })
           })
 
+          console.log(newFlag)
+
           newFlag.forEach((e: FlagModel, i: number) => {
             kanban.forEach((e1: any, i1: number) => {
-              console.log(e1)
               if (e.flag_id === e1.kanbans.flag_id) {
-                e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
+                let filter = newFlag?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
+                if(filter?.length === 0) {
+                  e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
+                }
               }
             })
           })
