@@ -151,14 +151,14 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           // let newTimeLine = { time_line: { flags: [] } }
           // this.stateService.updateGetAllTimeLine(newTimeLine)
           // end-loader
-          // if (err.error.code === 2053) { // não exite ainda -- deve ser criado
-          //   this.getAllTimeLineById([])
-          //   return
-          // }
+          if (err.error.code === 2053) { // não exite ainda -- deve ser criado
+            this.getAllTimeLineById([])
+            return
+          }
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
           //('Tente atualizar a página', 'Erro carregamento time-line');
           this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
-        
+
         },
         complete: () => { }
       })
@@ -203,14 +203,19 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
         },
-        error: () => {
-          // let newTimeLine = { time_line: { flags: [] } }
-          // this.stateService.updateGetAllTimeLine(newTimeLine)
+        error: (err) => {
+          let newTimeLine = { time_line: { flags: [] } }
+          this.stateService.updateGetAllTimeLine(newTimeLine)
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+
+          console.log('sssssssssss',err)
+
+          if (err.error.code !== 2009) { // não exite ainda -- deve ser criado
             //('Tente atualizar a página', 'Erro carregamento time-line');
             this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
-        
+          }
+
 
         },
         complete: () => {
