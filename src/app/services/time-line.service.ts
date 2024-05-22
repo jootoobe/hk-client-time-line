@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { effect, Injectable } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+import * as CryptoJS1 from 'crypto-js';
 import { map, Observable, of } from 'rxjs';
 
 import { environment } from '../../environments/environment';
@@ -80,12 +80,12 @@ export class TimeLineService {
 
 
   encryptBody(inBody: any, key: any) {
-    const iamEncrypt: any = CryptoJS.AES.encrypt(JSON.stringify(inBody), key,
+    const iamEncrypt: any = CryptoJS1.AES.encrypt(JSON.stringify(inBody), key,
       {
         keySize: 128 / 8,
         iv: key,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
+        mode: CryptoJS1.mode.CBC,
+        padding: CryptoJS1.pad.Pkcs7
       }).toString();
     // const neyBody: any = { a: iamEncrypt };
     // this.decryptSignIn(neyBody)
@@ -97,8 +97,8 @@ export class TimeLineService {
   dencryptBody(inBody: any, key: string) {
     // inBody = JSON.parse(inBody)
     let decrypted = undefined;
-    decrypted = CryptoJS.AES.decrypt(inBody.a, key);
-    const timeLine = decrypted.toString(CryptoJS.enc.Utf8);
+    decrypted = CryptoJS1.AES.decrypt(inBody.a, key);
+    const timeLine = decrypted.toString(CryptoJS1.enc.Utf8);
     return JSON.parse(timeLine)
   }
 

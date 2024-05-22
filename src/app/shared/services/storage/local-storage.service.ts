@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+import * as CryptoJS3 from 'crypto-js';
 
 
 @Injectable({
@@ -54,8 +54,8 @@ export class LocalStorageService {
       let decrypted: any = '';
       let iam: any = ''
       let iam2: any = ''
-      decrypted = CryptoJS.AES.decrypt(inBody.a, key);
-      iam = decrypted.toString(CryptoJS.enc.Utf8);
+      decrypted = CryptoJS3.AES.decrypt(inBody.a, key);
+      iam = decrypted.toString(CryptoJS3.enc.Utf8);
       iam2 = JSON.parse(iam)
       // return JSON.parse(iam)
       return iam2
@@ -68,12 +68,12 @@ export class LocalStorageService {
     let body = ''
     body = inBody
     try {
-      const iamEncrypt: any = CryptoJS.AES.encrypt(JSON.stringify(body), key,
+      const iamEncrypt: any = CryptoJS3.AES.encrypt(JSON.stringify(body), key,
         {
           keySize: 128 / 8,
           iv: key,
-          mode: CryptoJS.mode.CBC,
-          padding: CryptoJS.pad.Pkcs7
+          mode: CryptoJS3.mode.CBC,
+          padding: CryptoJS3.pad.Pkcs7
         }).toString();
       return { a: iamEncrypt }
     } catch (error) {

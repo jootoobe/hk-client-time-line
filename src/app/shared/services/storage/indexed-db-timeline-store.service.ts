@@ -1,5 +1,5 @@
 import { effect, Injectable } from "@angular/core";
-import * as CryptoJS from 'crypto-js';
+import * as CryptoJS2 from 'crypto-js';
 import { IDBPDatabase, openDB } from "idb";
 import { from, Observable, of } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
@@ -93,12 +93,12 @@ export class IndexDbTimeLineService {
   // ===================== Flags Cryptography IndexDB ADD PUT DATA ==================================
   // ============================= Return flag encrypt flags =========================================
   encryptIDB(inBody: any, key: any) {
-    const iamEncrypt: any = CryptoJS.AES.encrypt(JSON.stringify(inBody), key,
+    const iamEncrypt: any = CryptoJS2.AES.encrypt(JSON.stringify(inBody), key,
       {
         keySize: 128 / 8,
         iv: key,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
+        mode: CryptoJS2.mode.CBC,
+        padding: CryptoJS2.pad.Pkcs7
       }).toString();
     const neyBody: any = { a: iamEncrypt };
     // this.decryptSignIn(neyBody)
@@ -110,8 +110,8 @@ export class IndexDbTimeLineService {
   dencryptIDB(inBody: any, key: string): TimeLineModel {
     // inBody = JSON.parse(inBody)
     let decrypted = undefined;
-    decrypted = CryptoJS.AES.decrypt(inBody.a, key);
-    const timeLine = decrypted.toString(CryptoJS.enc.Utf8);
+    decrypted = CryptoJS2.AES.decrypt(inBody.a, key);
+    const timeLine = decrypted.toString(CryptoJS2.enc.Utf8);
     return JSON.parse(timeLine)
   }
 

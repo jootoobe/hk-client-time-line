@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { effect, Injectable } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+import * as CryptoJS4 from 'crypto-js';
 import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
 
 import { environment } from '../../../../../environments/environment';
@@ -113,12 +113,12 @@ export class SignInService {
 
   encryptAuthenticationServicel(inBody: any, key: any) {
     try {
-      const iamEncrypt: any = CryptoJS.AES.encrypt(JSON.stringify(inBody), key,
+      const iamEncrypt: any = CryptoJS4.AES.encrypt(JSON.stringify(inBody), key,
         {
           keySize: 128 / 8,
           iv: key,
-          mode: CryptoJS.mode.CBC,
-          padding: CryptoJS.pad.Pkcs7
+          mode: CryptoJS4.mode.CBC,
+          padding: CryptoJS4.pad.Pkcs7
         }).toString();
       return { a: iamEncrypt }
     } catch (error) {
@@ -130,8 +130,8 @@ export class SignInService {
   decryptAuthenticationService(inBody: any, key: string) {
     try {
       let decrypted = undefined;
-      decrypted = CryptoJS.AES.decrypt(inBody.a, key);
-      const iam = decrypted.toString(CryptoJS.enc.Utf8);
+      decrypted = CryptoJS4.AES.decrypt(inBody.a, key);
+      const iam = decrypted.toString(CryptoJS4.enc.Utf8);
       return JSON.parse(iam)
     } catch (error) {
       return { a: '' }
