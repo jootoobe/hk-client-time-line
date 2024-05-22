@@ -12,7 +12,6 @@ import { environment } from '../../../../../environments/environment';
 import { ConnectingExternalRoutesService } from '../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
 import { DetectBrowserNameService } from '../../../../shared/services/detect-browser-name.service';
 import { ToastrService } from 'ngx-toastr';
-import { LocalStorageService } from '../../../../shared/services/storage/local-storage.service';
 import { TimeLineGetKanbanService } from '../../../../services/time-line-get-kanban.service';
 
 @Component({
@@ -59,7 +58,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private indexDbTimeLineService: IndexDbTimeLineService,
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private detectBrowserNameService: DetectBrowserNameService,
-    private localStorageService: LocalStorageService,
     private timeLineGetKanbanService: TimeLineGetKanbanService,
     // private toastrService: ToastrService,
   ) {
@@ -99,8 +97,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
     setTimeout(() => {
-      this.getTimeLineKanbanById()
-      // this.getAllTimeLineById()
+      // this.getTimeLineKanbanById()
+      this.getAllTimeLineById()
       this.openCloseHorizontalScroll('open')
     }, 1000)
 
@@ -160,21 +158,22 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   getAllTimeLineById() {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
-        next: (res: FlagsModel) => {
+        next: (res: FlagsModel[]) => {
 
-          this.localStorageService.setItems('t', res._id, this.timeLineId)
+          console.log('UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUuu',res)
 
-          let newTimeLine = {
-            time_line: {
-              flags: res.flags
-            }
-          }
 
-          this.resetFlags = newTimeLine
-          this.stateService.updateGetAllTimeLine(newTimeLine)
-          this.indexDbPutAllFlag(newTimeLine)
-          // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          // let newTimeLine = {
+          //   time_line: {
+          //     flags: res.flags
+          //   }
+          // }
+
+          // this.resetFlags = newTimeLine
+          // this.stateService.updateGetAllTimeLine(newTimeLine)
+          // this.indexDbPutAllFlag(newTimeLine)
+          // // end-loader
+          // this.connectingExternalRoutesService.spiderShareLoader({ message: false })
         },
         error: () => {
           let newTimeLine = { time_line: { flags: [] } }
