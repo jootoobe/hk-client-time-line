@@ -52,7 +52,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   doubleCheckerData!: DoubleCheckModel
 
   valIdKanban = environment.isIdValidId
-
+  timeLineId = environment.timeLineId
   constructor(
     private renderer2: Renderer2,
     private elementRef: ElementRef,
@@ -407,6 +407,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     let idFlag = flagId.flag_id.split('_')
 
     this.localStorageService.setItems('f', flagId.flag_id, this.valIdKanban)
+    this.localStorageService.setItems('t', flagId._id, this.timeLineId)
+    
     localStorage.setItem('flag_title', flagId.flag_title)
 
     const routerHome = {

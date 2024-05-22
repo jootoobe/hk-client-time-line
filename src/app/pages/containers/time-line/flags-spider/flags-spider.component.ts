@@ -138,7 +138,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   getFlagEvent(e: any) {
     console.log('wwwwwwwwwwwwwwwwwwwwwwwww', e)
     this.getTimeLineKanbanById()
-    // this.getAllTimeLineById()
   }
 
   getTimeLineKanbanById() {
@@ -163,8 +162,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: TimeLineModel[]) => {
 
-          console.log('UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUuu', res)
-
           res.forEach((e: TimeLineModel, i: number) => {
             e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
               newFlag.push(e1)
@@ -175,32 +172,25 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           newFlag.forEach((e: FlagModel, i: number) => {
             kanban.forEach((e1: any, i1: number) => {
               console.log(e1)
-
-
               if (e.flag_id === e1.kanbans.flag_id) {
                 e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
               }
-        
             })
           })
 
 
 
-          console.log('ZZZZZZZZZZZZZZZz', newFlag)
+          let newTimeLine: TimeLineModel = {
+            time_line: {
+              flags: newFlag
+            }
+          }
 
-
-
-          // let newTimeLine: TimeLineModel = {
-          //   time_line: {
-          //     flags: res.flags
-          //   }
-          // }
-
-          // this.resetFlags = newTimeLine
-          // this.stateService.updateGetAllTimeLine(newTimeLine)
-          // this.indexDbPutAllFlag(newTimeLine)
-          // // end-loader
-          // this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          this.resetFlags = newTimeLine
+          this.stateService.updateGetAllTimeLine(newTimeLine)
+          this.indexDbPutAllFlag(newTimeLine)
+          // end-loader
+          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
         },
         error: () => {
           let newTimeLine = { time_line: { flags: [] } }
