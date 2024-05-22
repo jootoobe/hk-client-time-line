@@ -157,11 +157,22 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
   getAllTimeLineById(kanban: any[]) {
+    let newFlag:any = []
+    
     this.timeLineService.getAllTimeLineById()
-      .subscribe({
-        next: (res: TimeLineModel[]) => {
+    .subscribe({
+      next: (res: TimeLineModel[]) => {
 
           console.log('UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUuu',res)
+
+          res.forEach((e:TimeLineModel, i:number) =>{
+            e.time_line.flags.forEach((e1: FlagModel, i1:number) =>{
+              newFlag.push(e1)
+              newFlag[i]._id = e._id
+            })
+          })
+
+          console.log('ZZZZZZZZZZZZZZZz',newFlag)
           
 
 
