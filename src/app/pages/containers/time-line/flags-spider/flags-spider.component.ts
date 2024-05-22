@@ -145,7 +145,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     this.timeLineGetKanbanService.getTimeLineKanbanById()
       .subscribe({
         next: (res: any) => {
-          console.log('======>>>>>>>>>>>>>>>.',res)
+          console.log('======>>>>>>>>>>>>>>>.', res)
           this.getAllTimeLineById(res)
         },
         error: () => {
@@ -157,23 +157,37 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
   getAllTimeLineById(kanban: any[]) {
-    let newFlag:any = []
-    
+    let newFlag: any = []
+
     this.timeLineService.getAllTimeLineById()
-    .subscribe({
-      next: (res: TimeLineModel[]) => {
+      .subscribe({
+        next: (res: TimeLineModel[]) => {
 
-          console.log('UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUuu',res)
+          console.log('UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUuu', res)
 
-          res.forEach((e:TimeLineModel, i:number) =>{
-            e.time_line.flags.forEach((e1: FlagModel, i1:number) =>{
+          res.forEach((e: TimeLineModel, i: number) => {
+            e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
               newFlag.push(e1)
               newFlag[i]._id = e._id
             })
           })
 
-          console.log('ZZZZZZZZZZZZZZZz',newFlag)
-          
+          newFlag.forEach((e: FlagModel, i: number) => {
+            kanban.forEach((e1: any, i1: number) => {
+              console.log(e1)
+
+
+              if (e.flag_id === e1.kanbans.flag_id) {
+                e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
+              }
+        
+            })
+          })
+
+
+
+          console.log('ZZZZZZZZZZZZZZZz', newFlag)
+
 
 
           // let newTimeLine: TimeLineModel = {
