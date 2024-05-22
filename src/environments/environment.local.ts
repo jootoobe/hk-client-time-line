@@ -9,9 +9,11 @@ export const environment = {
   ApiIam: 'http://localhost:3200/api-iam',//'https://iam.spider-share.com/api-iam', //http://hk-iam-back-spidershare.us-east-1.elasticbeanstalk.com
   ApiIam2: 'http://localhost:3200/api-iam/c', // Get crypto data
 
-  // API
+  // API Time-line
   ApiTimeLine: 'http://localhost:3001/api-time-line',
 
+  //Kanban
+  ApiKanban: 'http://localhost:3002/api-kanban',
 
   // A Aplicação principal está gerando número aleatório no build - 31d50b1623a24feb
   // Solução definitiva tem que fazer a mesma coisa com o build das aplicações filhas

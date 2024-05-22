@@ -10,8 +10,12 @@ export const environment = {
   ApiIam2: 'http://localhost:3200/api-iam/c', // Get crypto data
 
 
-  // API
+  // API Time-line
   ApiTimeLine: 'http://localhost:3001/api-time-line',
+
+  //Kanban
+  ApiKanban: 'http://localhost:3002/api-kanban',
+  
 
   styleSpiderShare: 'http://localhost:4200',
 

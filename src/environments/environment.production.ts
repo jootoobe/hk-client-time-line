@@ -9,6 +9,9 @@ export const environment = {
   // API
   ApiTimeLine: 'https://time-line.spider-share.com/api-time-line', // http://hk-back-time-line.us-east-1.elasticbeanstalk.com/
 
+  // Kanban
+  ApiKanban: 'https://kanban.spider-share.com/api-kanban',
+
 
   styleSpiderShare: 'https://www.spider-share.com',
 
