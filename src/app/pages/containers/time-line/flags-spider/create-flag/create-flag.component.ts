@@ -794,7 +794,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           time_line: newTimeLine.time_line
         })))
       .subscribe({
-        next: (res: string) => {
+        next: (res: TimeLineModel) => {
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
         },

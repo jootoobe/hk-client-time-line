@@ -56,7 +56,7 @@ export class IndexDbTimeLineService {
 
   // ===================== ALL ADD, PUT FLAG ========================================
   // ====================== Return flag encryptIDB ====================================
-  indexDbPutAllTimeLine(target: MyDBKeysTimeLine, timeLine: TimeLineModel): Observable<string> {
+  indexDbPutAllTimeLine(target: MyDBKeysTimeLine, timeLine: TimeLineModel): Observable<TimeLineModel> {
     let data: any = { year: timeLine?.year }
     let newVal = this.encryptIDB(timeLine, this.timeLineKeys.LS.idb1)
 
@@ -68,7 +68,7 @@ export class IndexDbTimeLineService {
           .then(v => { })
           .catch(err => {
           });
-        return '';
+        return timeLine;
       })
     );
   }

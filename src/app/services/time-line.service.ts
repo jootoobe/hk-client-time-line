@@ -78,6 +78,21 @@ export class TimeLineService {
   }
 
 
+  updateSocialMediasChipsFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
+
+    let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl2)
+
+    let newValEncrypto = {
+      id: 1,
+      a: this.timeLineKeys.BY.tl2 + encrypto
+    }
+    return this.http.put<EncryptModel>(`${this.API_TIME_LINE}/controller/medias-chips`, newValEncrypto).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+
 
   encryptBody(inBody: any, key: any) {
     const iamEncrypt: any = CryptoJS1.AES.encrypt(JSON.stringify(inBody), key,

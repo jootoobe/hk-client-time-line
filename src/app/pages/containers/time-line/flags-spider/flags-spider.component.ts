@@ -209,8 +209,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
 
-          console.log('sssssssssss',err)
-
           if (err.error.code !== 2009) { // não exite ainda -- deve ser criado
             //('Tente atualizar a página', 'Erro carregamento time-line');
             this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
@@ -237,11 +235,24 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           time_line: newTimeLine.time_line
         })))
       .subscribe({
-        next: (res: any) => { },
+        next: (res: TimeLineModel) => {
+          console.log('ssssssssssssssssssss', res)
+          this.updateSocialMediasChipsFlag(res)
+        },
         error: (err) => { },
         complete: () => {
           // this.indexDbGetAllTimeLine('0000')
         }
+      })
+  }
+
+
+  updateSocialMediasChipsFlag(timeLine: TimeLineModel) {
+    this.timeLineService.updateSocialMediasChipsFlag(timeLine)
+      .subscribe({
+        next: (res: any) => { },
+        error: (err) => { },
+        complete: () => { }
       })
   }
 
