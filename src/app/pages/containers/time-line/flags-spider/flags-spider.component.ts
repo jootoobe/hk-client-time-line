@@ -59,7 +59,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private detectBrowserNameService: DetectBrowserNameService,
     private timeLineGetKanbanService: TimeLineGetKanbanService,
-    // private toastrService: ToastrService,
+    private toastrService: ToastrService,
   ) {
 
     effect(() => { // tenho que certificar que a chave esteja lo LS - chave ss que abre o body {a: 'asdasd..}
@@ -105,11 +105,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-
   }
 
   getFlagEvent(e: any) {
-    console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',e)
     this.getTimeLineKanbanById()
   }
 
@@ -149,11 +147,20 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           console.log('======>>>>>>>>>>>>>>>.', res)
           this.getAllTimeLineById(res)
         },
-        error: () => {
-
+        error: (err) => {
+          // let newTimeLine = { time_line: { flags: [] } }
+          // this.stateService.updateGetAllTimeLine(newTimeLine)
+          // end-loader
+          // if (err.error.code === 2053) { // não exite ainda -- deve ser criado
+          //   this.getAllTimeLineById([])
+          //   return
+          // }
+          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          //('Tente atualizar a página', 'Erro carregamento time-line');
+          this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
+        
         },
-        complete: () => {
-        }
+        complete: () => { }
       })
   }
 
@@ -177,14 +184,12 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             kanban.forEach((e1: any, i1: number) => {
               if (e.flag_id === e1.kanbans.flag_id) {
                 let filter = newFlag?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
-                if(filter?.length === 0) {
+                if (filter?.length === 0) {
                   e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
                 }
               }
             })
           })
-
-
 
           let newTimeLine: TimeLineModel = {
             time_line: {
@@ -199,10 +204,14 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
         },
         error: () => {
-          let newTimeLine = { time_line: { flags: [] } }
-          this.stateService.updateGetAllTimeLine(newTimeLine)
+          // let newTimeLine = { time_line: { flags: [] } }
+          // this.stateService.updateGetAllTimeLine(newTimeLine)
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+            //('Tente atualizar a página', 'Erro carregamento time-line');
+            this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
+        
+
         },
         complete: () => {
         }

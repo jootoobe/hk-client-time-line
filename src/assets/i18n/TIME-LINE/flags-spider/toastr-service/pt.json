@@ -131,17 +131,16 @@
           "msn-0": {}
         },
         "error": {
-          "msn-0": {}
-        },
-        "info": {
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "",
-            "message-1": "",
+            "message-0": "Tente atualizar a página",
+            "message-1": "Erro carregamento time-line",
             "status": ""
-          },
-          "msn-1": {
+          }
+        },
+        "info": {
+          "msn-0": {
             "code": "",
             "message": "",
             "message-0": "",
