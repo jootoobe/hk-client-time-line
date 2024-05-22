@@ -13,7 +13,7 @@ import { EncryptModel } from '../../../../hk-pro-client-spidershare/src/app/mode
 })
 export class TimeLineGetKanbanService {
 
-  API_TIME_LINE: string = environment.ApiTimeLine
+  API_KANBAN: string = environment.ApiKanban
   timeLineKeys!: TIMELINEKeysModel
   constructor(
     private http: HttpClient,
@@ -25,21 +25,13 @@ export class TimeLineGetKanbanService {
   }
 
 
-  getKanbanById(): Observable<any> {
-    let val = this.timeLineKeys.BY.tl3 + 'U2FsdGVkX1+TVq5MkDFDYrTSGvujWOb9'
-    return this.http.get<any>(`${this.API_TIME_LINE}/controller?val=${val}`).pipe(
+  getTimeLineKanbanById(): Observable<any> {
+    console.log('ooooooooooo')
+    let val = this.timeLineKeys.BY.tl3 + 'U2FxdGPkX1+TVa5MkDFDYrTSGvujWOb0'
+    return this.http.get<any>(`${this.API_KANBAN}/controller/time-line-kanban?val=${val}`).pipe(
       map(res => {
         // let timeLine = this.dencryptTimeLineGetKanbanBody(res, this.timeLineKeys.BY.tl3) // criar chave GET
         // return timeLine
-      })
-    )
-  }
-
-
-  deleteById(id:string, flag:string): Observable<EncryptModel> {
-    return this.http.delete<EncryptModel>(`${this.API_TIME_LINE}/controller?id=${id}&flag=${flag}`).pipe(
-      map(res => {
-        return res
       })
     )
   }

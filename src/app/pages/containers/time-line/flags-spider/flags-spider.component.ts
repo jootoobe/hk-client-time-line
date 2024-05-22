@@ -13,6 +13,7 @@ import { ConnectingExternalRoutesService } from '../../../../shared/services/con
 import { DetectBrowserNameService } from '../../../../shared/services/detect-browser-name.service';
 import { ToastrService } from 'ngx-toastr';
 import { LocalStorageService } from '../../../../shared/services/storage/local-storage.service';
+import { TimeLineGetKanbanService } from '../../../../services/time-line-get-kanban.service';
 
 @Component({
   selector: 'flags-spider',
@@ -59,6 +60,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private detectBrowserNameService: DetectBrowserNameService,
     private localStorageService: LocalStorageService,
+    private timeLineGetKanbanService: TimeLineGetKanbanService,
     // private toastrService: ToastrService,
   ) {
 
@@ -97,7 +99,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
     setTimeout(() => {
-      this.getAllTimeLineById()
+      this.getTimeLineKanbanById()
+      // this.getAllTimeLineById()
       this.openCloseHorizontalScroll('open')
     }, 1000)
 
@@ -113,10 +116,10 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
 
-  closeModalEvent(e:any) {
+  closeModalEvent(e: any) {
     this.dialogCreate.closeAll()
   }
-  
+
   // Open Create Time_Line
   openCreateTimeLineDialog(val: string): void {
     this.flagCreateEdit = val
@@ -134,8 +137,24 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   }
 
-  getFlagEvent(e:any) {
-    this.getAllTimeLineById()
+  getFlagEvent(e: any) {
+    console.log('wwwwwwwwwwwwwwwwwwwwwwwww', e)
+    // this.getTimeLineKanbanById()
+    // this.getAllTimeLineById()
+  }
+
+  getTimeLineKanbanById() {
+    this.timeLineGetKanbanService.getTimeLineKanbanById()
+      .subscribe({
+        next: (res: any) => {
+          console.log('======>>>>>>>>>>>>>>>.',res)
+        },
+        error: () => {
+
+        },
+        complete: () => {
+        }
+      })
   }
 
   getAllTimeLineById() {
