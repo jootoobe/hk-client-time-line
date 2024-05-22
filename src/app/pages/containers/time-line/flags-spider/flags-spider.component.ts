@@ -151,7 +151,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           // let newTimeLine = { time_line: { flags: [] } }
           // this.stateService.updateGetAllTimeLine(newTimeLine)
           // end-loader
-          if (err.error.code === 2053) { // não exite ainda -- deve ser criado
+          if (err.error.code === 3053) { // KANBAN não exite ainda -- deve ser criado
             this.getAllTimeLineById([])
             return
           }
