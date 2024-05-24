@@ -918,6 +918,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
       this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
       return
+    } else if(!val) {
+      this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+
     }
     // this.createTimeLineForm.value.flags[0]['color_hex']
     // let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
