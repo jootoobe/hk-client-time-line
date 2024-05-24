@@ -7,6 +7,7 @@ import { environment } from '../../../../../environments/environment';
 import { TIMELINEKeysModel } from '../../../../models/cryptos/time-line-keys.model';
 import { StateService } from '../../../../shared/services/state.service';
 import { LocalStorageService } from '../../../../shared/services/storage/local-storage.service';
+import { CookieService } from '../../../../shared/services/cookies/cookie.service';
 
 // import { environment } from '../../../../../environments/environment';
 
@@ -20,7 +21,8 @@ export class SignInService {
   constructor(
     private http: HttpClient,
     private stateService: StateService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private cookieService: CookieService
   ) {
     effect(() => {
       this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
@@ -81,6 +83,13 @@ export class SignInService {
 
   setData(skich: string, resBody: any, decryptKey: string) {
 
+    this.cookieService.clearAllCookies()
+
+    let outputLetter = skich.charAt(0); // pego a letra a,b,c,d....
+    // let newStr = skich.substring(1) // retiro da chave do token a primeira letra
+    // skich = newStr // chave sem a primeira letra
+    // console.log('KEY', skich)
+
     let newRes: any = this.decryptAuthenticationService(resBody, decryptKey)
 
     if (skich && resBody && resBody.a && newRes && newRes.email) {
@@ -92,9 +101,9 @@ export class SignInService {
 
         skich: skich, //skich não tirei a letra inicial
         sub: newRes.sub, // sub
-        irt_id: newRes.irt_id, // refresh_token_id
-        iat: newRes.iat, // iat = iam + accessToken
-        irt: newRes.irt, //irt = iam + refreshTokenId
+        irt_id: '123456789', // refresh_token_id
+        iat: '123456789', // iat = iam + accessToken
+        irt: '123456789', //irt = iam + refreshTokenId
         password_changed_times: newRes.password_changed_times, // password_changed_times
         password: '', // ? password
         expires: {
@@ -103,10 +112,19 @@ export class SignInService {
         },
       }
 
-      this.stateService.updateRedisAuth(this.redisAuth)
+      let redisAuth2 = {
+        irt_id: newRes.irt_id, // refresh_token_id
+        iat: newRes.iat, // iat = iam + accessToken
+        irt: newRes.irt, //irt = iam + refreshTokenId
+      }
 
-      this.localStorageService.setItems('a', this.redisAuth, this.timeLineKeys.LS.ss) // outputLetter tem que ser removida da chave skich
-      localStorage.setItem('al', 'a' + randomUUID)
+      // localStorage
+      // this.localStorageService.setItems('a', this.redisAuth, this.IAMEncryptDecryptKey.LS.ss) // outputLetter tem que ser removida da chave skich
+      localStorage.setItem('al', outputLetter + randomUUID)
+
+      // #Cookie
+      this.cookieService.setEncryptedCookie(outputLetter, redisAuth2, 3, '/', '', true, 'Strict'); // exdays 3 dias
+      this.cookieService.setEncryptedCookie('v1', this.redisAuth, 3, '/', '', true, 'Strict'); // exdays 3 dias
 
     }
   }

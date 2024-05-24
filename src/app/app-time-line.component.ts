@@ -6,6 +6,7 @@ import { TimeLineKeysService } from './services/time-line-keys.service';
 import { StateService } from './shared/services/state.service';
 import { LocalStorageService } from './shared/services/storage/local-storage.service';
 import { RedisAuthModel } from './spider-share/iam/models/auth/redis-auth.model';
+import { CookieService } from './shared/services/cookies/cookie.service';
 
 @Component({
   selector: 'app-time-line', // Os seletores dos projetos devem esta identicos a seus microserviços
@@ -25,7 +26,8 @@ export class AppTimeLineComponent implements OnInit {
     private renderer: Renderer2,
     private stateService: StateService,
     private localStorageService: LocalStorageService,
-    private timeLineKeysService: TimeLineKeysService
+    private timeLineKeysService: TimeLineKeysService,
+    private cookieService: CookieService
   ) {
     this.getIam2()
 
@@ -58,7 +60,14 @@ export class AppTimeLineComponent implements OnInit {
   }
 
   localStorageControlSession() {
-    this.itemStorageToken = this.localStorageService.getLocalStorag(this.letter, this.timeLineKeys?.LS?.ss)
+    // this.itemStorageToken = this.localStorageService.getLocalStorag(this.letter, this.IAMEncryptDecryptKey?.LS?.ss)
+    let decryptedValue = this.cookieService.getEncryptedCookie(this.letter);
+    this.itemStorageToken = this.cookieService.getEncryptedCookie('v1');
+    if(decryptedValue) {
+      this.itemStorageToken.irt_id = decryptedValue.irt_id
+      this.itemStorageToken.iat = decryptedValue.iat
+      this.itemStorageToken.irt = decryptedValue.irt
+    }
 
     if (this.itemStorageToken && this.itemStorageToken.email) {
       this.stateService.updateRedisAuth(this.itemStorageToken)
