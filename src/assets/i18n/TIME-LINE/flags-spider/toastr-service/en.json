@@ -13,6 +13,20 @@
             "message-0": "Is required",
             "message-1": "Time",
             "status": ""
+          },
+          "msn-1": {
+            "code": "",
+            "message": "",
+            "message-0": "Error creating flag",
+             "message-1": "Error Time Line",
+            "status": ""
+          },
+          "msn-2": {
+            "code": "",
+            "message": "",
+            "message-0": "Error editing flag",
+             "message-1": "Error Time Line",
+            "status": ""
           }
         },
         "info": {
@@ -60,27 +74,6 @@
             "message-1": "Flag 01 and 02 same date",
             "status": ""
           }
-        }
-      },
-      "CanvasTimeLineComponent": {
-        "START_TOAST_COMMENTARY--CANVAS": "============== TS CanvasTimeLineComponent >> START COMPONENT FOLDER =============================",
-        "success": {
-          "msn-0": {}
-        },
-        "error": {
-          "msn-0": {}
-        },
-        "info": {
-          "msn-0": {
-            "code": "",
-            "message": "",
-            "message-0": "Remove the current",
-            "message-1": "Filter already applied",
-            "status": ""
-          }
-        },
-        "warning": {
-          "msn-0": {}
         }
       },
       "FilterFlagComponent": {
@@ -155,6 +148,42 @@
           "msn-0": {
             "code": "",
             "message": "For a better visual experience, use another browser such as Opera, Chrome, Edge..... 😄",
+            "message-0": "",
+            "message-1": "",
+            "status": ""
+          }
+        }
+      },
+      "FlagComponent": {
+        "START_TOAST_COMMENTARY--FILTER": "============== TS FlagComponent >> START COMPONENT FOLDER =============================",
+        "success": {
+          "msn-0": {}
+        },
+        "error": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Error removing flag",
+            "message-1": "Error Time Line",
+            "status": ""
+          }
+        },
+        "info": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Remove the current",
+            "message-1": "Filter already applied",
+            "status": ""
+          }
+        },
+        "warning": {
+          "msn-0": {}
+        },
+        "alert": {
+          "msn-0": {
+            "code": "",
+            "message": "",
             "message-0": "",
             "message-1": "",
             "status": ""

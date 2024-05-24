@@ -95,7 +95,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     effect(() => {
       this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
-      if(this.TIME_LINE) {
+      if (this.TIME_LINE) {
         this.help1 = this.tolltipCreateHelper.help1()
         this.help2 = this.tolltipCreateHelper.help2()
         this.help3 = this.tolltipCreateHelper.help3()
@@ -255,7 +255,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           this.chipsArray.push(new FormControl({ name: e.name }));
         })
       }
-      this.convertColor(this.flagsForm.at(0)?.get('flag_design')?.get('color_hex')?.value)
+      // this.convertColor(this.flagsForm.at(0)?.get('flag_design')?.get('color_hex')?.value)
+      this.convertColor()
     }
 
     this.flagsForm.controls[0]?.get('flag_update_at')?.setValue(currentlyDate)
@@ -471,6 +472,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
 
+
   createFlag() {
     let valClear: any = {}
     if (this.timestampExist.length === 2) {
@@ -511,6 +513,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           this.indexDbGetAllTimeLine('0000')
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          this.toastrService.error(this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-1']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-1']['message-1']);
+
         },
         complete: () => {
           this.createEditFlagSubscribe = valClear
@@ -755,7 +759,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
           }
         },
         error: () => {
+          this.toastrService.error(this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-2']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-2']['message-1']);
           this.indexDbGetAllTimeLine('0000')
+
         },
         complete: () => {
         }
@@ -764,14 +770,25 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
   // Remover depois
   getAllTimeLineById() {
+    let newFlag: any = []
+
     this.timeLineService.getAllTimeLineById()
       .subscribe({
-        next: (res: any) => {
-          let newTimeLine = {
+        next: (res: TimeLineModel[]) => {
+
+          res.forEach((e: TimeLineModel, i: number) => {
+            e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+              newFlag.push(e1)
+              newFlag[i]._id = e._id
+            })
+          })
+
+          let newTimeLine: TimeLineModel = {
             time_line: {
-              flags: res.flags
+              flags: newFlag
             }
           }
+          newTimeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
           this.stateService.updateGetAllTimeLine(newTimeLine)
           this.indexDbPutAllTimeLine(newTimeLine)
         },
@@ -891,6 +908,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //==============================================================================
   //⬇️ Convert Color
   convertColor(val?: string) {
+    console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',val)
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
     if (val) {
       let colorFormats = this.convertColorService.convertColor(val)
@@ -902,12 +920,12 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       return
     }
     // this.createTimeLineForm.value.flags[0]['color_hex']
-    let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
-    flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
-    flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
-    flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
-    flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-    this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+    // let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
+    // flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
+    // flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
+    // flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
+    // flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
+    // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
 
   }
 

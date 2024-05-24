@@ -13,6 +13,7 @@ import { ConnectingExternalRoutesService } from '../../../../shared/services/con
 import { DetectBrowserNameService } from '../../../../shared/services/detect-browser-name.service';
 import { ToastrService } from 'ngx-toastr';
 import { TimeLineGetKanbanService } from '../../../../services/time-line-get-kanban.service';
+import { FilterFlagsService } from '../../../../shared/services/filter-flags.service';
 
 @Component({
   selector: 'flags-spider',
@@ -60,6 +61,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private detectBrowserNameService: DetectBrowserNameService,
     private timeLineGetKanbanService: TimeLineGetKanbanService,
     private toastrService: ToastrService,
+    private filterFlagsService: FilterFlagsService,
   ) {
 
     effect(() => { // tenho que certificar que a chave esteja lo LS - chave ss que abre o body {a: 'asdasd..}
@@ -90,6 +92,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     })
 
   }
+
+
   ngOnInit(): void {
     this.detectBrowser = this.detectBrowserNameService.detectBrowserName()
 
@@ -104,11 +108,11 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit(): void {
-  }
+  ngAfterViewInit(): void { }
 
   getFlagEvent(e: any) {
-    this.getTimeLineKanbanById()
+    console.log('ssssssssssss', e)
+    this.getAllTimeLineById([], false)
   }
 
   editFlagEvent(flag: FlagModel) {
@@ -139,20 +143,23 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
 
-
   getTimeLineKanbanById() {
     this.timeLineGetKanbanService.getTimeLineKanbanById()
       .subscribe({
         next: (res: any) => {
+
+          let kanbans = res.sort((a: any, b: any) => a.kanbans.track_position_id - b.kanbans.track_position_id);
+
           console.log('======>>>>>>>>>>>>>>>.', res)
-          this.getAllTimeLineById(res)
+
+          this.getAllTimeLineById(kanbans, true)
         },
         error: (err) => {
           // let newTimeLine = { time_line: { flags: [] } }
           // this.stateService.updateGetAllTimeLine(newTimeLine)
           // end-loader
           if (err.error.code === 3053) { // KANBAN não exite ainda -- deve ser criado
-            this.getAllTimeLineById([])
+            this.getAllTimeLineById([], true)
             return
           }
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
@@ -164,8 +171,11 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       })
   }
 
-  getAllTimeLineById(kanban: any[]) {
+
+
+  getAllTimeLineById(kanban: any[], val?: boolean) {
     let newFlag: any = []
+
 
     this.timeLineService.getAllTimeLineById()
       .subscribe({
@@ -173,23 +183,29 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
           res.forEach((e: TimeLineModel, i: number) => {
             e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+              e1.social_medias_chips = []
               newFlag.push(e1)
               newFlag[i]._id = e._id
             })
           })
 
-          console.log(newFlag)
 
-          newFlag.forEach((e: FlagModel, i: number) => {
-            kanban.forEach((e1: any, i1: number) => {
-              if (e.flag_id === e1.kanbans.flag_id) {
-                let filter = newFlag?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
-                if (filter?.length === 0) {
-                  e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
-                }
+          if (val) {
+            newFlag.forEach((e: FlagModel, i: number) => {
+              if (kanban?.length > 0) {
+                kanban.forEach((e1: any, i1: number) => {
+                  if (e.flag_id === e1.kanbans.flag_id && e1.kanbans.track_social_media) {
+                    let filter = newFlag[i]?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
+                    if (filter?.length === 0) {
+                      e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
+                    }
+                  }
+                })
+              } else if (kanban.length === 0) {
+                e.social_medias_chips = []
               }
             })
-          })
+          }
 
           let newTimeLine: TimeLineModel = {
             time_line: {
@@ -197,15 +213,17 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             }
           }
 
+          newTimeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
+
+
           this.resetFlags = newTimeLine
-          this.stateService.updateGetAllTimeLine(newTimeLine)
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
         },
         error: (err) => {
           let newTimeLine = { time_line: { flags: [] } }
-          this.stateService.updateGetAllTimeLine(newTimeLine)
+          this.indexDbPutAllFlag(newTimeLine)
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
 
@@ -226,6 +244,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
   indexDbPutAllFlag(newTimeLine: TimeLineModel) {
+
     // let getNewVal = JSON.parse(localStorage.getItem('flags') || '[]');
     const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
     connTimeLine$.pipe(
@@ -236,7 +255,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         })))
       .subscribe({
         next: (res: TimeLineModel) => {
-          console.log('ssssssssssssssssssss', res)
           this.updateSocialMediasChipsFlag(res)
         },
         error: (err) => { },
@@ -248,9 +266,17 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
   updateSocialMediasChipsFlag(timeLine: TimeLineModel) {
+    timeLine.year = undefined
+    delete timeLine.year
+    timeLine.iam_id = '0'
+    console.log(timeLine)
+    // this.stateService.updateGetAllTimeLine(timeLine)
+
     this.timeLineService.updateSocialMediasChipsFlag(timeLine)
       .subscribe({
-        next: (res: any) => { },
+        next: (res: any) => {
+          this.stateService.updateGetAllTimeLine(timeLine)
+        },
         error: (err) => { },
         complete: () => { }
       })

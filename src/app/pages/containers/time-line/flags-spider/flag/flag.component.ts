@@ -250,7 +250,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   filterColor(flag?: FlagModel | any, id?: string) {
 
     if (this.filterAlreadyExists.length > 0) {
-      this.toastrService.info(this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['CanvasTimeLineComponent'].info['msn-0']['message-1']);
+      this.toastrService.info(this.TOAST['TIME-LINE']['FlagComponent'].info['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagComponent'].info['msn-0']['message-1']);
       return
     }
 
@@ -396,7 +396,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
             this.getFlagOutput.emit()
           }
         },
-        error: (err) => { },
+        error: (err) => { 
+          console.log('ssssssssss',err.error.code)
+          this.toastrService.error(this.TOAST['TIME-LINE']['FlagComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagComponent'].error['msn-0']['message-1']);
+
+        },
         complete: () => { }
       })
 

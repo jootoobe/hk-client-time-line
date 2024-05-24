@@ -13,6 +13,20 @@
             "message-0": "É obrigatório",
             "message-1": "Horário",
             "status": ""
+          },
+          "msn-1": {
+            "code": "",
+            "message": "",
+            "message-0": "Erro ao criar a bandeira",
+            "message-1": "Erro Time Line",
+            "status": ""
+          },
+          "msn-2": {
+            "code": "",
+            "message": "",
+            "message-0": "Erro ao editar a bandeira",
+            "message-1": "Erro Time Line",
+            "status": ""
           }
         },
         "info": {
@@ -60,34 +74,6 @@
             "message-1": "Bandeira  01 e 02 mesma data",
             "status": ""
           }
-        }
-      },
-      "CanvasTimeLineComponent": {
-        "START_TOAST_COMMENTARY--CANVAS": "============== TS CanvasTimeLineComponent >> START COMPONENT FOLDER =============================",
-        "success": {
-          "msn-0": {}
-        },
-        "error": {
-          "msn-0": {}
-        },
-        "info": {
-          "msn-0": {
-            "code": "",  
-            "message": "",
-            "message-0": "Remova o atual",
-            "message-1": "Filtro já aplicado",
-            "status": ""
-          },
-          "msn-1": {
-            "code": "",  
-            "message": "",
-            "message-0": "Remova o atual",
-            "message-1": "Filtro já aplicado",
-            "status": ""
-          }
-        },
-        "warning": {
-          "msn-0": {}
         }
       },
       "FilterFlagComponent": {
@@ -155,6 +141,42 @@
           "msn-0": {
             "code": "",
             "message": "Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄",
+            "message-0": "",
+            "message-1": "",
+            "status": ""
+          }
+        }
+      },
+      "FlagComponent": {
+        "START_TOAST_COMMENTARY--FILTER": "============== TS FlagComponent >> START COMPONENT FOLDER =============================",
+        "success": {
+          "msn-0": {}
+        },
+        "error": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Erro ao remover a bandeira",
+            "message-1": "Erro Time Line",
+            "status": ""
+          }
+        },
+        "info": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Remova o atual",
+            "message-1": "Filtro já aplicado",
+            "status": ""
+          }
+        },
+        "warning": {
+          "msn-0": {}
+        },
+        "alert": {
+          "msn-0": {
+            "code": "",
+            "message": "",
             "message-0": "",
             "message-1": "",
             "status": ""
