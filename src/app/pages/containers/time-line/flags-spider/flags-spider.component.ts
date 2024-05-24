@@ -171,6 +171,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       })
   }
 
+  
+
 
 
   getAllTimeLineById(kanban: any[], val?: boolean) {
