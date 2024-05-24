@@ -116,7 +116,6 @@ export class TolltipCreateHelper {
     `
   }
 
-
   help6() {
     let msn6_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-a']
     let msn6_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-b']
