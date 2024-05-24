@@ -101,6 +101,23 @@ export class SignInService {
 
         skich: skich, //skich não tirei a letra inicial
         sub: newRes.sub, // sub
+        irt_id: newRes.irt_id, // refresh_token_id
+        iat: newRes.iat, // iat = iam + accessToken
+        irt: newRes.irt, //irt = iam + refreshTokenId
+        password_changed_times: newRes.password_changed_times, // password_changed_times
+        password: '', // ? password
+        expires: {
+          token: (newRes?.expires?.token), // -2960000
+          refresh_token: newRes?.expires?.refresh_token,
+        },
+      }
+
+
+      let redisAuth1 = {
+        email: newRes.email, // email
+
+        skich: skich, //skich não tirei a letra inicial
+        sub: newRes.sub, // sub
         irt_id: '123456789', // refresh_token_id
         iat: '123456789', // iat = iam + accessToken
         irt: '123456789', //irt = iam + refreshTokenId
@@ -112,11 +129,16 @@ export class SignInService {
         },
       }
 
+      
       let redisAuth2 = {
         irt_id: newRes.irt_id, // refresh_token_id
         iat: newRes.iat, // iat = iam + accessToken
         irt: newRes.irt, //irt = iam + refreshTokenId
       }
+
+
+      this.stateService.updateRedisAuth(this.redisAuth)
+
 
       // localStorage
       // this.localStorageService.setItems('a', this.redisAuth, this.IAMEncryptDecryptKey.LS.ss) // outputLetter tem que ser removida da chave skich
@@ -124,7 +146,7 @@ export class SignInService {
 
       // #Cookie
       this.cookieService.setEncryptedCookie(outputLetter, redisAuth2, 3, '/', '', true, 'Strict'); // exdays 3 dias
-      this.cookieService.setEncryptedCookie('v1', this.redisAuth, 3, '/', '', true, 'Strict'); // exdays 3 dias
+      this.cookieService.setEncryptedCookie('v1', redisAuth1, 3, '/', '', true, 'Strict'); // exdays 3 dias
 
     }
   }
