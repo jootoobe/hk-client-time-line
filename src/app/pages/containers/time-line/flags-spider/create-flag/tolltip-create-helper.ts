@@ -111,11 +111,9 @@ export class TolltipCreateHelper {
       <li style="margin: .5rem 0 1rem .5rem;">${msn5_d}</li>
       <li style="margin: .5rem 0 1rem .5rem;">${msn5_e}</li>
       <li style="margin: .5rem 0 1rem .5rem;">${msn5_f}</li>
+      <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
     </div>
     `
-    // Antigo OBS... info
-    // <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
-
   }
 
 
