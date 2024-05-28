@@ -156,12 +156,15 @@
           </div> <!-- Card End -->
           <!-- Open Kanban -->
           <div class="inside-flag_open-kanban cursor_pointer remove" 
+              (click)="getFlagIdNavegateKanban(flag)"
               id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
             <!-- Abrir Kanban -->
-            {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-04' | translate}}
-            <mat-icon matSuffix class="material-icons ">
-              view_kanban
-            </mat-icon>
+            <span>
+              {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-04' | translate}}
+              <mat-icon matSuffix class="material-icons ">
+                view_kanban
+              </mat-icon>
+          </span>
           </div>
           <!-- Open Details -->
           <!-- <div class="inside-flag_open-detail cursor_pointer">
