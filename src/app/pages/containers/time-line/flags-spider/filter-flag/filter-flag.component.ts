@@ -246,6 +246,7 @@ export class FilterFlagComponent implements OnInit {
       ))
       .subscribe({
         next: (res: TimeLineModel) => {
+          console.log('INDEXDB TIME LINE 🎅', res)
           let valFlags: FlagModel[] = res.time_line.flags
           let newTimeLine = {
             time_line: {

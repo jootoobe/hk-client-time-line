@@ -150,7 +150,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
           let kanbans = res.sort((a: any, b: any) => a.kanbans.track_position_id - b.kanbans.track_position_id);
 
-          console.log('======>>>>>>>>>>>>>>>.', res)
+          console.log('TIME LINE GET KANBAN 🎅', res)
 
           this.getAllTimeLineById(kanbans, true)
         },
@@ -182,6 +182,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
         next: (res: TimeLineModel[]) => {
+
+          console.log('GET TIME LINE 🎅', res)
 
           res.forEach((e: TimeLineModel, i: number) => {
             e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
