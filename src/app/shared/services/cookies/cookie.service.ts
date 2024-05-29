@@ -72,11 +72,11 @@ export class CookieService {
 
       if (exdays) {
         if (exdays instanceof Date) {
-          cookieString += "; exdays=" + exdays.toUTCString();
+          cookieString += "; expires=" + exdays.toUTCString();
         } else {
           const expirationDate = new Date();
           expirationDate.setTime(expirationDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
-          cookieString += "; exdays=" + expirationDate.toUTCString();
+          cookieString += "; expires=" + expirationDate.toUTCString();
         }
       }
 
