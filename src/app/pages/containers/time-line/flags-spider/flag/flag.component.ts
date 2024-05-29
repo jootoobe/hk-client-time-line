@@ -8,7 +8,6 @@ import { IFilterCheckActive } from "../../../../../interfaces/filter-check-activ
 import { TimeLineService } from "../../../../../services/time-line.service";
 import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
 import { DoubleCheckModel } from "../../../../../models/time-line/time-line.model";
-import { environment } from "../../../../../../environments/environment";
 import { LocalStorageService } from "../../../../../shared/services/storage/local-storage.service";
 import { ConnectingExternalRoutesService } from "../../../../../shared/services/connecting-external-routes/connecting-external-routes.service";
 
@@ -51,8 +50,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   doubleCheckerData!: DoubleCheckModel
 
-  valIdKanban = environment.isIdValidId
-  timeLineId = environment.timeLineId
   constructor(
     private renderer2: Renderer2,
     private elementRef: ElementRef,
@@ -409,11 +406,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   getFlagIdNavegateKanban(flagId: FlagModel) {
     let idFlag = flagId.flag_id.split('_')
-
-    this.localStorageService.setItems('f', flagId.flag_id, this.valIdKanban)
-    this.localStorageService.setItems('t', flagId._id, this.timeLineId)
-    
-    localStorage.setItem('flag_title', flagId.flag_title)
 
     const routerHome = {
       router: `/kanban/${idFlag[2]}`,

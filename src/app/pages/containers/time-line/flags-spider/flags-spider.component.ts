@@ -48,7 +48,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   checkingOpacityFilterApplied = '' // verifica se o filtro no modal está ativo ou não
 
   TOAST: any
-  timeLineId = environment.timeLineId
 
   constructor(
     private dialogCreate: MatDialog,
