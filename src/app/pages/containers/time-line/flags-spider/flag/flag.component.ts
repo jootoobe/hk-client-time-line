@@ -407,11 +407,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   getFlagIdNavegateKanban(flagId: FlagModel) {
     let idFlag = flagId.flag_id.split('_')
 
-    const routerHome = {
+    const routerKanban = {
       router: `/kanban/${idFlag[2]}`,
       message: 'Time-Line >> navigating to kanban byId'
     }
-    this.connectingExternalRoutesService.navigateKanban(routerHome)
+    this.connectingExternalRoutesService.navigateKanban(routerKanban)
 
   }
 }
