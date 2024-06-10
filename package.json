@@ -11,7 +11,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "bundle-prod": "ng build --verbose && node concat.js",
+    "bundle-prod": "ng build && node concat.js",
     "bundle-dev": "ng build --verbose --configuration development --output-path=../../back/hk-back-time-line/client/hk-client-time-line && node concat.js"
   },
   "private": true,
