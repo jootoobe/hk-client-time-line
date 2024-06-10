@@ -62,7 +62,7 @@
               "outputHashing": "all",
               "aot": true,
               "optimization": {
-                "scripts": false,
+                "scripts": true,
                 "styles": {
                   "minify": true,
                   "inlineCritical": true,
@@ -96,7 +96,7 @@
               "outputHashing": "all",
               "aot": true,
               "optimization": {
-                "scripts": false,
+                "scripts": true,
                 "styles": {
                   "minify": true,
                   "inlineCritical": true,
