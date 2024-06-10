@@ -24,7 +24,7 @@
     "resolveJsonModule": true, // import * as myJson from '../assets/jsons/config.json';
     // "esModuleInterop": true, // import * as myJson from '../assets/jsons/config.json';
     // "allowSyntheticDefaultImports": true, // import * as myJson from '../assets/jsons/config.json';
-    "removeComments": true,
+    "removeComments": true, // remove todos os comentários
     "lib": [
       "ES2022",
       "dom",
