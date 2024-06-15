@@ -311,7 +311,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       // desabilita o click de edição das bandeiras filtradas
       remove.forEach((e: any, i: number) => {
         if (e.id != `remove-${id}`) {
-          this.renderer2.setStyle(e, 'display', 'inline-table');
+          this.renderer2.setStyle(e, 'display', 'inline-flex');
         }
       })
 
