@@ -15,7 +15,7 @@
 // == flag 01 and flag 02 are correlated ====
 
 .main-block {
-  display: inline-block;
+  display: inline-flex;
   white-space: normal; // deixa os textos dentor da caixa
   width: auto; // usado para o scroll de baixo ficar mais fiel ao tamanho
 

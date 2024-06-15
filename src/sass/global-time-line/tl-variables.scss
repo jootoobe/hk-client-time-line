@@ -207,9 +207,9 @@
   }
 
   &_open-kanban {
-    display: flex;
+    display: inline-flex;
     justify-content: end;
-    // position: absolute;
+    position: absolute;
     width: 30rem;
     margin: -2.2rem 0 0 .5rem;
     height: 2.2rem;
