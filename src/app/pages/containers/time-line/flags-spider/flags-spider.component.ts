@@ -169,7 +169,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       })
   }
 
-  
+
 
 
 
@@ -181,18 +181,28 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: TimeLineModel[]) => {
 
-          console.log('GET TIME LINE 🎅', res)
+          console.log('GET TIME LINE 🎅🎅🎅', res)
 
-          res.forEach((e: TimeLineModel, i: number) => {
-            e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
-              e1.social_medias_chips = []
-              newFlag.push(e1)
-              newFlag[i]._id = e._id
+
+          if (!val) {
+            res.forEach((e: TimeLineModel, i: number) => {
+              e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+                // e1.social_medias_chips = [] não pode ter quando deleta
+                newFlag.push(e1)
+                newFlag[i]._id = e._id
+              })
             })
-          })
-
+          }
 
           if (val) {
+            res.forEach((e: TimeLineModel, i: number) => {
+              e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+                e1.social_medias_chips = []
+                newFlag.push(e1)
+                newFlag[i]._id = e._id
+              })
+            })
+
             newFlag.forEach((e: FlagModel, i: number) => {
               if (kanban?.length > 0) {
                 kanban.forEach((e1: any, i1: number) => {
@@ -221,9 +231,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           this.resetFlags = newTimeLine
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
-          setTimeout(()=>{
+          setTimeout(() => {
             this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-          },2000)
+          }, 2000)
         },
         error: (err) => {
           let newTimeLine = { time_line: { flags: [] } }
