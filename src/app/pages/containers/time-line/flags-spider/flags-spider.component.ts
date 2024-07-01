@@ -184,7 +184,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           console.log('GET TIME LINE 🎅🎅🎅', res)
 
 
-          if (!val) {
+          // if (!val) {
             res.forEach((e: TimeLineModel, i: number) => {
               e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
                 // e1.social_medias_chips = [] não pode ter quando deleta
@@ -192,16 +192,16 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
                 newFlag[i]._id = e._id
               })
             })
-          }
+          // }
 
           if (val) {
-            res.forEach((e: TimeLineModel, i: number) => {
-              e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
-                e1.social_medias_chips = []
-                newFlag.push(e1)
-                newFlag[i]._id = e._id
-              })
-            })
+            // res.forEach((e: TimeLineModel, i: number) => {
+            //   e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+            //     e1.social_medias_chips = []
+            //     newFlag.push(e1)
+            //     newFlag[i]._id = e._id
+            //   })
+            // })
 
             newFlag.forEach((e: FlagModel, i: number) => {
               if (kanban?.length > 0) {
