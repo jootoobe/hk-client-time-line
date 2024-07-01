@@ -56,7 +56,7 @@
             <!-- Minimum 3 characters -->
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.title.mat-error-minlength' | translate}}
           </mat-error>
-          <mat-error *ngIf="flagsForm.controls[0].get('flag_title')?.errors?.['maxLength'] || flagTitle.value.length > 50">
+          <mat-error *ngIf="flagsForm.controls[0].get('flag_title')?.errors?.['maxlength'] || flagTitle.value.length > 50">
             <!-- Maximum 50 characters -->
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.title.mat-error-maxlength' | translate}}
           </mat-error>
@@ -168,7 +168,7 @@
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.mat-error-minlength' | translate}}
           </mat-error>
           <!-- Maximum 500 characters -->
-          <mat-error *ngIf="flagsForm.controls[0].get('flag_description')?.errors?.['maxLength'] || textareaInput.value.length > 500">
+          <mat-error *ngIf="flagsForm.controls[0].get('flag_description')?.errors?.['maxlength'] || textareaInput.value.length > 500">
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.description.mat-error-maxlength' | translate}}
           </mat-error>
         </mat-form-field>

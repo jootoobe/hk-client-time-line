@@ -1,7 +1,7 @@
 import { FlagModel } from "../flag.model"
 
 
-export class DoubleCheckModel {
+export class DoubleCheckDialogModel {
   constructor(
     public modals: {
       types: {

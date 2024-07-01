@@ -74,10 +74,15 @@
 
   &_setting {
     width: auto;
-    &--01{
+    &--01 { // botão Crial flag, Cria kanban
       font-size: 1.2rem;
       height: 2.5rem;
       padding: .5rem;
+    }
+    &--02{
+      font-size: 1.2rem;
+      height: 2.5rem;
+      padding: .5rem 1rem .5rem 1rem;
     }
   }
 }

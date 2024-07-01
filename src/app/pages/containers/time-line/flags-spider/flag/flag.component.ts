@@ -7,7 +7,7 @@ import { StateService } from "../../../../../shared/services/state.service";
 import { IFilterCheckActive } from "../../../../../interfaces/filter-check-active.interface";
 import { TimeLineService } from "../../../../../services/time-line.service";
 import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
-import { DoubleCheckModel } from "../../../../../models/time-line/time-line.model";
+import { DoubleCheckModel } from "../../../../../models/double-check-dialog/double-check-dialog.model";
 import { LocalStorageService } from "../../../../../shared/services/storage/local-storage.service";
 import { ConnectingExternalRoutesService } from "../../../../../shared/services/connecting-external-routes/connecting-external-routes.service";
 
