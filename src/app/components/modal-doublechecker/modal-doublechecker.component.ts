@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, effect, output } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { TolltipModalSoublecheckerHelper } from "./tolltip-modal-doublechecker-helper";
-import { DoubleCheckModel } from "../../models/double-check-dialog/double-check-dialog.model";
+import { DoubleCheckDialogModel } from "../../models/double-check-dialog/double-check-dialog.model";
 import { StateService } from "../../shared/services/state.service";
 
 
@@ -13,7 +13,7 @@ import { StateService } from "../../shared/services/state.service";
   providers: []
 })
 export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
-  @Input({ required: false }) doubleCheckerDataInput!: DoubleCheckModel
+  @Input({ required: false }) doubleCheckerDataInput!: DoubleCheckDialogModel
 
   @ViewChild('doubleChecker', { static: false }) doubleChecker!: TemplateRef<any>; // open modal ref
   deleteFlagOutput = output<boolean>();
