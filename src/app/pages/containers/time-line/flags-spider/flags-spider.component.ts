@@ -110,7 +110,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void { }
 
   getFlagEvent(e: any) {
-    console.log('ssssssssssss', e)
     this.getAllTimeLineById([], false)
   }
 
@@ -222,7 +221,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           this.resetFlags = newTimeLine
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          setTimeout(()=>{
+            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          },2000)
         },
         error: (err) => {
           let newTimeLine = { time_line: { flags: [] } }
