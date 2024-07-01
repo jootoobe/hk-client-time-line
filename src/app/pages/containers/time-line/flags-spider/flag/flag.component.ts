@@ -405,6 +405,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getFlagIdNavegateKanban(flagId: FlagModel) {
+    console.log('ssssssssssssssssssssss',flagId)
     let idFlag = flagId.flag_id.split('_')
 
     const routerKanban = {

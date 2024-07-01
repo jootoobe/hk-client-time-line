@@ -185,14 +185,21 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
           // if (!val) {
-            res.forEach((e: TimeLineModel, i: number) => {
-              e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
-                // e1.social_medias_chips = [] não pode ter quando deleta
-                newFlag.push(e1)
-                newFlag[i]._id = e._id
-              })
+          res.forEach((e: TimeLineModel, i: number) => {
+            e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+
+              if (e1.flags2 && e1.flags2.length > 0) {
+                  e1.flags2[0]._id = e._id
+              }
+
+              // e1.social_medias_chips = [] não pode ter quando deleta
+              newFlag.push(e1)
+              newFlag[i]._id = e._id
+
             })
+          })
           // }
+
 
           if (val) {
             // res.forEach((e: TimeLineModel, i: number) => {
