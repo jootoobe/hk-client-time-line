@@ -189,7 +189,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
 
               if (e1.flags2 && e1.flags2.length > 0) {
-                  e1.flags2[0]._id = e._id
+                e1.flags2[0]._id = e._id
               }
 
               // e1.social_medias_chips = [] não pode ter quando deleta
@@ -213,10 +213,21 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             newFlag.forEach((e: FlagModel, i: number) => {
               if (kanban?.length > 0) {
                 kanban.forEach((e1: any, i1: number) => {
+                  console.log('ssssssss', e1.kanbans.track_social_media)
+                  console.log('ssssssss', newFlag[i])
+                    // ADD social_medias_chips FLAG1
                   if (e.flag_id === e1.kanbans.flag_id && e1.kanbans.track_social_media) {
                     let filter = newFlag[i]?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
                     if (filter?.length === 0) {
                       e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
+                    }
+                  }
+
+                  // ADD social_medias_chips FLAG2
+                  if (e.flags2 && e.flags2[0].flag_id === e1.kanbans.flag_id && e1.kanbans.track_social_media) {
+                    let filter2 = e.flags2[0]?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
+                    if (filter2?.length === 0) {
+                      e.flags2[0].social_medias_chips.push({ name: e1.kanbans.track_social_media })
                     }
                   }
                 })
