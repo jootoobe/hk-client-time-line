@@ -195,6 +195,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
               if (e1.flags2 && e1.flags2.length > 0) {
                 e1.flags2[0]._id = e._id
+                e1.flags2[0].social_medias_chips = []
               }
 
               e1.social_medias_chips = []
