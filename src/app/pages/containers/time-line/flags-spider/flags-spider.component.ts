@@ -36,8 +36,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   envProd = environment.production
 
-  resetFlags!: TimeLineModel
-
+  // resetFlags!: TimeLineModel
+  oldVersionFlags!: TimeLineModel
   detectBrowser!: string // used to identify the firefox browser and send an alter to the user
   openColse = true // used to show and hide the horizontal scroll
   flagLength = 0 // used to adjust the horizontal line style, to show and hide the word end
@@ -90,6 +90,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       this.TOAST = this.stateService.toastSignalComputed()
     })
 
+    this.indexDbGetAllTimeLine('0000')
   }
 
 
@@ -104,6 +105,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       // this.getAllTimeLineById()
       this.openCloseHorizontalScroll('open')
     }, 1000)
+
+
 
   }
 
@@ -246,7 +249,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           newTimeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
 
 
-          this.resetFlags = newTimeLine
+          // this.resetFlags = newTimeLine
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
           setTimeout(() => {
@@ -298,20 +301,58 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
   updateSocialMediasChipsFlag(timeLine: TimeLineModel) {
-    timeLine.year = undefined
-    delete timeLine.year
-    timeLine.iam_id = '0'
-    console.log(timeLine)
-    // this.stateService.updateGetAllTimeLine(timeLine)
+    console.log('ATUAL', timeLine)
+    console.log('ANTIGO', this.oldVersionFlags)
+    let differentFile = false
+    if (this.oldVersionFlags) {
+      // Percorre cada flag na versão antiga
+      this.oldVersionFlags.time_line.flags.forEach((oldFlag: FlagModel, flagIndex: number) => {
+        // Busca a flag correspondente na nova versão
+        const newFlag = timeLine.time_line.flags[flagIndex];
 
-    this.timeLineService.updateSocialMediasChipsFlag(timeLine)
-      .subscribe({
-        next: (res: any) => {
-          this.stateService.updateGetAllTimeLine(timeLine)
-        },
-        error: (err) => { },
-        complete: () => { }
-      })
+        // Verifica se as flags têm o mesmo ID
+        if (oldFlag.flag_id === newFlag.flag_id) {
+          // Verifica se os comprimentos dos arrays social_medias_chips são diferentes
+          if (oldFlag.social_medias_chips.length !== newFlag.social_medias_chips.length) {
+            differentFile = true
+            console.log(`DIFERENTE COMPRIMENTO DOS ARRAYS em flag_id: ${oldFlag.flag_id}`);
+          } else {
+            // Percorre cada social_media_chip na flag antiga
+            oldFlag.social_medias_chips.forEach((oldChip: any, chipIndex: number) => {
+              // Busca o social_media_chip correspondente na nova versão
+              const newChip = newFlag.social_medias_chips[chipIndex];
+
+              // Verifica se os nomes são diferentes
+              if (oldChip.name !== newChip.name) {
+                differentFile = true
+                console.log(`EXISTE ARRAY NAME DIFERENTE em flag_id: ${oldFlag.flag_id}, chip_index: ${chipIndex}`);
+              }
+            });
+          }
+        }
+      });
+    }
+
+    if (differentFile) {
+      timeLine.year = undefined
+      delete timeLine.year
+      timeLine.iam_id = '0'
+      console.log(timeLine)
+      // this.stateService.updateGetAllTimeLine(timeLine)
+
+      this.timeLineService.updateSocialMediasChipsFlag(timeLine)
+        .subscribe({
+          next: (res: any) => {
+            differentFile = false
+            this.stateService.updateGetAllTimeLine(timeLine)
+          },
+          error: (err) => { },
+          complete: () => { }
+        })
+        return
+    } else {
+      this.stateService.updateGetAllTimeLine(timeLine)
+    }
   }
 
 
@@ -329,8 +370,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
               flags: valFlags
             }
           }
-          this.resetFlags = newTimeLine
-          this.stateService.updateGetAllTimeLine(newTimeLine)
+          this.oldVersionFlags = newTimeLine
+          // this.resetFlags = newTimeLine
+          // this.stateService.updateGetAllTimeLine(newTimeLine)
         },
         error: (err) => {
         },
