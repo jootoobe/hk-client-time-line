@@ -130,7 +130,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     }
 
     this.oldVersionFlags = newTimeLine
-    this.getAllTimeLineById([], true)
+    this.getAllTimeLineById([], false)
   }
 
   editFlagEvent(flag: FlagModel) {
@@ -203,7 +203,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: TimeLineModel[]) => {
 
-          console.log('GET TIME LINE 🎅🎅🎅', res)
+          console.log('GET TIME LINE 🎅🎅🎅', val)
 
 
           // if (!val) {
@@ -212,10 +212,14 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
               if (e1.flags2 && e1.flags2.length > 0) {
                 e1.flags2[0]._id = e._id
-                e1.flags2[0].social_medias_chips = []
+                if(val) {
+                  e1.flags2[0].social_medias_chips = []
+                }
               }
 
-              e1.social_medias_chips = []
+              if(val) {
+                e1.social_medias_chips = []
+              }
               newFlag.push(e1)
               newFlag[i]._id = e._id
 
