@@ -115,6 +115,13 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void { }
 
   getFlagEvent(e: any) {
+    let newTimeLine = {
+      time_line: {
+        flags: []
+      }
+    }
+
+    this.oldVersionFlags = newTimeLine
     this.getAllTimeLineById([], true)
   }
 
@@ -315,7 +322,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     let differentFile = false
     let newFlag: FlagModel | any
     let newFlag2: FlagModel | any
-    if (this.oldVersionFlags) {
+    if (this.oldVersionFlags && this.oldVersionFlags.time_line.flags?.length > 0) {
       // Percorre cada flag na versão antiga
       this.oldVersionFlags.time_line.flags.forEach((oldFlag: FlagModel, flagIndex: number) => {
         // Busca a flag correspondente na nova versão
