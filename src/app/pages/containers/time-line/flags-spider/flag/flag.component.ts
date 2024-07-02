@@ -376,7 +376,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       flag = '3' // bandeira 1 - possui bandeira 2
     }
 
-    if (editFlag === 'edit-flag-1' && flagDelete.flags2?.length === 0) {
+    if (editFlag === 'edit-flag-1' && flagDelete.flags2?.length <= 0) {
+
       id = flagDelete.flag_id?.split('_')
       flag = '1' // bandeira 1 - individual
 
@@ -384,7 +385,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       id = flagDelete.flag_id?.split('_')
       flag = '2' // bandeira 2
     }
-
 
     this.timeLineService.deleteById(id[2], flag)
       .subscribe({
