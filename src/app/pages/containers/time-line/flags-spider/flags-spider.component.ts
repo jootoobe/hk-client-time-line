@@ -183,12 +183,14 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
           //('Tente atualizar a página', 'Erro carregamento time-line');
           this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
-
+          this.stateService.updateGetTimeLineHttpSignal(false)
         },
-        complete: () => { }
+        complete: () => { 
+          this.stateService.updateGetTimeLineHttpSignal(false)
+        }
       })
 
-      this.stateService.updateGetTimeLineHttpSignal(false)
+      
   }
 
 
