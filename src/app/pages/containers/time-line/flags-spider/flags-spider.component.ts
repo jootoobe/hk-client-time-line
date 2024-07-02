@@ -391,7 +391,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       this.timeLineService.updateSocialMediasChipsFlag(timeLine)
         .subscribe({
           next: (res: any) => {
-            differentFile = false
             this.stateService.updateGetAllTimeLine(timeLine)
           },
           error: (err) => { },
