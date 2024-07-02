@@ -110,7 +110,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void { }
 
   getFlagEvent(e: any) {
-    this.getAllTimeLineById([], false)
+    this.getAllTimeLineById([], true)
   }
 
   editFlagEvent(flag: FlagModel) {
@@ -173,103 +173,103 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
 
-getAllTimeLineById(kanban: any[], val?: boolean) {
-  let newFlag: any = []
+  getAllTimeLineById(kanban: any[], val?: boolean) {
+    let newFlag: any = []
 
 
-  this.timeLineService.getAllTimeLineById()
-    .subscribe({
-      next: (res: TimeLineModel[]) => {
+    this.timeLineService.getAllTimeLineById()
+      .subscribe({
+        next: (res: TimeLineModel[]) => {
 
-        console.log('GET TIME LINE 🎅🎅🎅', res)
+          console.log('GET TIME LINE 🎅🎅🎅', res)
 
 
-        // if (!val) {
-        res.forEach((e: TimeLineModel, i: number) => {
-          e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+          // if (!val) {
+          res.forEach((e: TimeLineModel, i: number) => {
+            e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
 
-            if (e1.flags2 && e1.flags2.length > 0) {
-              e1.flags2[0]._id = e._id
-            }
+              if (e1.flags2 && e1.flags2.length > 0) {
+                e1.flags2[0]._id = e._id
+              }
 
-            // e1.social_medias_chips = [] não pode ter quando deleta
-            newFlag.push(e1)
-            newFlag[i]._id = e._id
+              e1.social_medias_chips = []
+              newFlag.push(e1)
+              newFlag[i]._id = e._id
 
+            })
           })
-        })
-        // }
+          // }
 
 
-        if (val) {
-          // res.forEach((e: TimeLineModel, i: number) => {
-          //   e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
-          //     e1.social_medias_chips = []
-          //     newFlag.push(e1)
-          //     newFlag[i]._id = e._id
-          //   })
-          // })
+          if (val) {
+            // Percorre cada flag em newFlag
+            newFlag.forEach((flag: any) => {
+              // Verifica se há kanban para processar
+              if (kanban?.length > 0) {
+                // Percorre cada item no kanban
+                kanban.forEach((e1: any) => {
+                  const trackSocialMedia = e1.kanbans.track_social_media;
+                  const flagId = e1.kanbans.flag_id;
 
-          newFlag.forEach((e: FlagModel, i: number) => {
-            if (kanban?.length > 0) {
-              kanban.forEach((e1: any, i1: number) => {
-                console.log('ssssssss', e1.kanbans.track_social_media)
-                console.log('ssssssss', newFlag[i])
-                  // ADD social_medias_chips FLAG1
-                if (e.flag_id === e1.kanbans.flag_id && e1.kanbans.track_social_media) {
-                  let filter = newFlag[i]?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
-                  if (filter?.length === 0) {
-                    e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
+                  // Verifica se o track_social_media não é nulo e pertence à flag atual
+                  if (trackSocialMedia && flag.flag_id === flagId) {
+                    // Verifica se o track_social_media já existe em social_medias_chips dentro da flag
+                    if (!flag.social_medias_chips.some((item: any) => item.name === trackSocialMedia)) {
+                      flag.social_medias_chips.push({ name: trackSocialMedia });
+                    }
                   }
-                }
 
-                // ADD social_medias_chips FLAG2
-                if (e.flags2 && e.flags2[0].flag_id === e1.kanbans.flag_id && e1.kanbans.track_social_media) {
-                  let filter2 = e.flags2[0]?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
-                  if (filter2?.length === 0) {
-                    e.flags2[0].social_medias_chips.push({ name: e1.kanbans.track_social_media })
+                  // Verifica se há flags2 e se o track_social_media pertence à flags2
+                  if (flag.flags2 && flag.flags2.length > 0 && flag.flags2[0].flag_id === flagId) {
+                    // Verifica se o track_social_media já existe em social_medias_chips dentro de flags2
+                    if (!flag.flags2[0].social_medias_chips.some((item: any) => item.name === trackSocialMedia)) {
+                      flag.flags2[0].social_medias_chips.push({ name: trackSocialMedia });
+                    }
                   }
+                });
+              } else {
+                // Se não houver kanban, limpa social_medias_chips para cada flag
+                flag.social_medias_chips = [];
+                if (flag.flags2 && flag.flags2.length > 0) {
+                  flag.flags2[0].social_medias_chips = [];
                 }
-              })
-            } else if (kanban.length === 0) {
-              e.social_medias_chips = []
-            }
-          })
-        }
-
-        let newTimeLine: TimeLineModel = {
-          time_line: {
-            flags: newFlag
+              }
+            });
           }
-        }
 
-        newTimeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
+          let newTimeLine: TimeLineModel = {
+            time_line: {
+              flags: newFlag
+            }
+          }
+
+          newTimeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
 
 
-        this.resetFlags = newTimeLine
-        this.indexDbPutAllFlag(newTimeLine)
-        // end-loader
-        setTimeout(() => {
+          this.resetFlags = newTimeLine
+          this.indexDbPutAllFlag(newTimeLine)
+          // end-loader
+          setTimeout(() => {
+            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          }, 2000)
+        },
+        error: (err) => {
+          let newTimeLine = { time_line: { flags: [] } }
+          this.indexDbPutAllFlag(newTimeLine)
+          // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-        }, 2000)
-      },
-      error: (err) => {
-        let newTimeLine = { time_line: { flags: [] } }
-        this.indexDbPutAllFlag(newTimeLine)
-        // end-loader
-        this.connectingExternalRoutesService.spiderShareLoader({ message: false })
 
-        if (err.error.code !== 2009) { // não exite ainda -- deve ser criado
-          //('Tente atualizar a página', 'Erro carregamento time-line');
-          this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
+          if (err.error.code !== 2009) { // não exite ainda -- deve ser criado
+            //('Tente atualizar a página', 'Erro carregamento time-line');
+            this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
+          }
+
+
+        },
+        complete: () => {
         }
-
-
-      },
-      complete: () => {
-      }
-    })
-}
+      })
+  }
 
   timeLineEvent(event: TimeLineModel) {
     this.timeLine = event
