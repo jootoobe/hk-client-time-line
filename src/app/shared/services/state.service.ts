@@ -49,6 +49,13 @@ export class StateService {
     return this.getTimeLineHttpSignal()
   });
 
+  // Parecido com o getTimeLineHttpSignal mas aqui server apenas para pegar do index a ultima versão quando a api der erro
+  private timeLineIndexDbErrorSignalSignal: WritableSignal<boolean> = signal<boolean>(false);
+  timeLineIndexDbErrorSignalSignalComputed = computed(() => {
+    return this.timeLineIndexDbErrorSignalSignal()
+  });
+
+
 
   // Vai no header da aplicação
   private redisAuthSubject = new BehaviorSubject<RedisAuthModel>(RedisAuthModel as any);
@@ -108,6 +115,10 @@ export class StateService {
 
   updateGetTimeLineHttpSignal(val: boolean) {
     return this.getTimeLineHttpSignal.set(val)
+  }
+
+  updateTimeLineIndexDbErrorSignalSignal(val: boolean) {
+    return this.timeLineIndexDbErrorSignalSignal.set(val)
   }
 
 
