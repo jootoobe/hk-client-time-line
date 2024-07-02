@@ -510,7 +510,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         },
         error: () => {
           this.createEditFlagSubscribe = valClear
-          this.indexDbGetAllTimeLine('0000')
+          // this.indexDbGetAllTimeLine('0000')
+          this.stateService.updateGetTimeLineHttpSignal(true)
           // end-loader
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
           this.toastrService.error(this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-1']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-1']['message-1']);
@@ -760,7 +761,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         },
         error: () => {
           this.toastrService.error(this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-2']['message-0'], this.TOAST['TIME-LINE']['CreateFlagComponent'].error['msn-2']['message-1']);
-          this.indexDbGetAllTimeLine('0000')
+          // this.indexDbGetAllTimeLine('0000')
+          this.stateService.updateGetTimeLineHttpSignal(true)
 
         },
         complete: () => {
@@ -792,32 +794,32 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
 
-  indexDbGetAllTimeLine(yearKey: string) {
-    const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
-    connTimeLine$.pipe(
-      switchMap(() =>
-        this.indexDbTimeLineService.indexDbGetAllTimeLine('time_line', yearKey)
-      ))
-      .subscribe({
-        next: (res: TimeLineModel) => {
-          let valFlags: FlagModel[] = res.time_line.flags
-          let newTimeLine = {
-            time_line: {
-              flags: valFlags
-            }
-          }
-          this.stateService.updateGetAllTimeLine(newTimeLine)
-          // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-        },
-        error: (err) => {
-          // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-        },
-        complete: () => {
-        }
-      })
-  }
+  // indexDbGetAllTimeLine(yearKey: string) {
+  //   const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
+  //   connTimeLine$.pipe(
+  //     switchMap(() =>
+  //       this.indexDbTimeLineService.indexDbGetAllTimeLine('time_line', yearKey)
+  //     ))
+  //     .subscribe({
+  //       next: (res: TimeLineModel) => {
+  //         let valFlags: FlagModel[] = res.time_line.flags
+  //         let newTimeLine = {
+  //           time_line: {
+  //             flags: valFlags
+  //           }
+  //         }
+  //         this.stateService.updateGetAllTimeLine(newTimeLine)
+  //         // end-loader
+  //         this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+  //       },
+  //       error: (err) => {
+  //         // end-loader
+  //         this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+  //       },
+  //       complete: () => {
+  //       }
+  //     })
+  // }
 
 
 
