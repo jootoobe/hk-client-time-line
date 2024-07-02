@@ -63,6 +63,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private filterFlagsService: FilterFlagsService,
   ) {
 
+    this.indexDbGetAllTimeLine('0000')
+
     effect(() => { // tenho que certificar que a chave esteja lo LS - chave ss que abre o body {a: 'asdasd..}
       this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
       // if (this.timeLineKeys && this.timeLineKeys?.LS?.ss) {
@@ -107,7 +109,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     }, 1000)
 
 
-    this.indexDbGetAllTimeLine('0000')
+  
   }
 
   ngAfterViewInit(): void { }
@@ -296,9 +298,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         })))
       .subscribe({
         next: (res: TimeLineModel) => {
-          setTimeout(() => {
-            this.updateSocialMediasChipsFlag(res)
-          }, 1000)
+          this.updateSocialMediasChipsFlag(res)
         },
         error: (err) => { },
         complete: () => {
@@ -418,6 +418,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             }
           }
           this.oldVersionFlags = newTimeLine
+          console.log('ANTIGO 🌝', this.oldVersionFlags)
           // this.resetFlags = newTimeLine
           // this.stateService.updateGetAllTimeLine(newTimeLine)
         },
