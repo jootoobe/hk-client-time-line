@@ -505,7 +505,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         next: (res: EncryptModel) => {
           // let val: any = res.a[0]
           if (res.a === 'OK') {
-            this.getAllTimeLineById()
+            this.stateService.updateGetTimeLineHttpSignal(true)
           }
         },
         error: () => {
@@ -755,7 +755,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         next: (res: EncryptModel) => {
           // let val: any = res.a[0]
           if (res.a === 'OK') {
-            this.getAllTimeLineById()
+            this.stateService.updateGetTimeLineHttpSignal(true)
           }
         },
         error: () => {
@@ -768,38 +768,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       })
   }
 
-  // Remover depois
-  getAllTimeLineById() {
-    let newFlag: any = []
-
-    this.timeLineService.getAllTimeLineById()
-      .subscribe({
-        next: (res: TimeLineModel[]) => {
-
-          res.forEach((e: TimeLineModel, i: number) => {
-            e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
-              newFlag.push(e1)
-              newFlag[i]._id = e._id
-            })
-          })
-
-          let newTimeLine: TimeLineModel = {
-            time_line: {
-              flags: newFlag
-            }
-          }
-          newTimeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
-          this.stateService.updateGetAllTimeLine(newTimeLine)
-          this.indexDbPutAllTimeLine(newTimeLine)
-        },
-        error: () => {
-          // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-        },
-        complete: () => {
-        }
-      })
-  }
 
   indexDbPutAllTimeLine(newTimeLine: TimeLineModel) {
     // let getNewVal = JSON.parse(localStorage.getItem('flags') || '[]');
@@ -908,7 +876,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //==============================================================================
   //⬇️ Convert Color
   convertColor(val?: string) {
-    console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',val)
+    console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', val)
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
     if (val) {
       let colorFormats = this.convertColorService.convertColor(val)
@@ -918,7 +886,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
       this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
       return
-    } else if(!val) {
+    } else if (!val) {
       this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
 
     }

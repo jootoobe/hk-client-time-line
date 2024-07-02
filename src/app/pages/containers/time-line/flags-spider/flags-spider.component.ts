@@ -93,6 +93,14 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     })
 
 
+    effect(() => {
+      let getTimeLineHttp = this.stateService.getTimeLineHttpSignalSignalComputed()
+      if(getTimeLineHttp) {
+        this.getTimeLineKanbanById()
+      }
+    })
+
+
   }
 
 
@@ -179,6 +187,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         },
         complete: () => { }
       })
+
+      this.stateService.updateGetTimeLineHttpSignal(false)
   }
 
 

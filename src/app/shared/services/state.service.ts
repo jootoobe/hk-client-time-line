@@ -42,6 +42,13 @@ export class StateService {
     return this.activeFilterSignal()
   });
 
+  // Serve para atualizar a página com a nova bandeira criada 
+  // Manda um evento para o this.getTimeLineKanbanById() que depois chama o spider-tube
+  private getTimeLineHttpSignal: WritableSignal<boolean> = signal<boolean>(false);
+  getTimeLineHttpSignalSignalComputed = computed(() => {
+    return this.getTimeLineHttpSignal()
+  });
+
 
   // Vai no header da aplicação
   private redisAuthSubject = new BehaviorSubject<RedisAuthModel>(RedisAuthModel as any);
@@ -97,6 +104,10 @@ export class StateService {
 
   updateActiveFilterSignal(val: IFilterCheckActive) {
     return this.activeFilterSignal.set(val)
+  }
+
+  updateGetTimeLineHttpSignal(val: boolean) {
+    return this.getTimeLineHttpSignal.set(val)
   }
 
 
