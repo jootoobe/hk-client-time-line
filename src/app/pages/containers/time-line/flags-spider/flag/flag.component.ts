@@ -367,7 +367,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   deleteFlag(flagDelete: FlagModel | any, editFlag: string) {
-
+    this.connectingExternalRoutesService.spiderShareLoader({ message: true })
     let id: any = ''
     let flag = ''
 
@@ -395,8 +395,11 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
         },
         error: (err) => { 
           console.log('ssssssssss',err.error.code)
-          this.toastrService.error(this.TOAST['TIME-LINE']['FlagComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagComponent'].error['msn-0']['message-1']);
-
+          this.stateService.updateTimeLineIndexDbErrorSignalSignal(true)
+          setTimeout(()=>{
+            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+            this.toastrService.error(this.TOAST['TIME-LINE']['FlagComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagComponent'].error['msn-0']['message-1']);
+          },2000)
         },
         complete: () => { }
       })
