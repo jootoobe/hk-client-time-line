@@ -173,53 +173,103 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
 
-  getAllTimeLineById(kanban: any[], val?: boolean) {
-    let newFlag: any = []
+getAllTimeLineById(kanban: any[], val?: boolean) {
+  let newFlag: any = []
 
 
-    this.timeLineService.getAllTimeLineById()
-      .subscribe({
-        next: (res: TimeLineModel[]) => {
+  this.timeLineService.getAllTimeLineById()
+    .subscribe({
+      next: (res: TimeLineModel[]) => {
 
-          console.log('GET TIME LINE 🎅🎅🎅', res)
-
-
+        console.log('GET TIME LINE 🎅🎅🎅', res)
 
 
-          // ESSA PARTE TEM QUE SER SALVA NO KANBAN
-          // let newTimeLine: TimeLineModel = {
-          //   time_line: {
-          //     flags: newFlag
-          //   }
-          // }
+        // if (!val) {
+        res.forEach((e: TimeLineModel, i: number) => {
+          e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
 
-          // newTimeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
+            if (e1.flags2 && e1.flags2.length > 0) {
+              e1.flags2[0]._id = e._id
+            }
 
+            // e1.social_medias_chips = [] não pode ter quando deleta
+            newFlag.push(e1)
+            newFlag[i]._id = e._id
 
-          // this.resetFlags = newTimeLine
-          // this.indexDbPutAllFlag(newTimeLine)
-          // end-loader
-          setTimeout(() => {
-            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-          }, 2000)
-        },
-        error: (err) => {
-          let newTimeLine = { time_line: { flags: [] } }
-          this.indexDbPutAllFlag(newTimeLine)
-          // end-loader
-          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-
-          if (err.error.code !== 2009) { // não exite ainda -- deve ser criado
-            //('Tente atualizar a página', 'Erro carregamento time-line');
-            this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
-          }
+          })
+        })
+        // }
 
 
-        },
-        complete: () => {
+        if (val) {
+          // res.forEach((e: TimeLineModel, i: number) => {
+          //   e.time_line.flags.forEach((e1: FlagModel, i1: number) => {
+          //     e1.social_medias_chips = []
+          //     newFlag.push(e1)
+          //     newFlag[i]._id = e._id
+          //   })
+          // })
+
+          newFlag.forEach((e: FlagModel, i: number) => {
+            if (kanban?.length > 0) {
+              kanban.forEach((e1: any, i1: number) => {
+                console.log('ssssssss', e1.kanbans.track_social_media)
+                console.log('ssssssss', newFlag[i])
+                  // ADD social_medias_chips FLAG1
+                if (e.flag_id === e1.kanbans.flag_id && e1.kanbans.track_social_media) {
+                  let filter = newFlag[i]?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
+                  if (filter?.length === 0) {
+                    e.social_medias_chips.push({ name: e1.kanbans.track_social_media })
+                  }
+                }
+
+                // ADD social_medias_chips FLAG2
+                if (e.flags2 && e.flags2[0].flag_id === e1.kanbans.flag_id && e1.kanbans.track_social_media) {
+                  let filter2 = e.flags2[0]?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);
+                  if (filter2?.length === 0) {
+                    e.flags2[0].social_medias_chips.push({ name: e1.kanbans.track_social_media })
+                  }
+                }
+              })
+            } else if (kanban.length === 0) {
+              e.social_medias_chips = []
+            }
+          })
         }
-      })
-  }
+
+        let newTimeLine: TimeLineModel = {
+          time_line: {
+            flags: newFlag
+          }
+        }
+
+        newTimeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(newTimeLine)
+
+
+        this.resetFlags = newTimeLine
+        this.indexDbPutAllFlag(newTimeLine)
+        // end-loader
+        setTimeout(() => {
+          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+        }, 2000)
+      },
+      error: (err) => {
+        let newTimeLine = { time_line: { flags: [] } }
+        this.indexDbPutAllFlag(newTimeLine)
+        // end-loader
+        this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+
+        if (err.error.code !== 2009) { // não exite ainda -- deve ser criado
+          //('Tente atualizar a página', 'Erro carregamento time-line');
+          this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
+        }
+
+
+      },
+      complete: () => {
+      }
+    })
+}
 
   timeLineEvent(event: TimeLineModel) {
     this.timeLine = event
