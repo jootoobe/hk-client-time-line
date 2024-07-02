@@ -90,7 +90,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       this.TOAST = this.stateService.toastSignalComputed()
     })
 
-    this.indexDbGetAllTimeLine('0000')
+  
   }
 
 
@@ -107,7 +107,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     }, 1000)
 
 
-
+    this.indexDbGetAllTimeLine('0000')
   }
 
   ngAfterViewInit(): void { }
@@ -290,7 +290,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         })))
       .subscribe({
         next: (res: TimeLineModel) => {
-          this.updateSocialMediasChipsFlag(res)
+          setTimeout(()=>{
+            this.updateSocialMediasChipsFlag(res)
+          },1000)
         },
         error: (err) => { },
         complete: () => {
