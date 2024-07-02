@@ -306,31 +306,61 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     console.log('ATUAL', timeLine)
     console.log('ANTIGO', this.oldVersionFlags)
     let differentFile = false
+    let newFlag: FlagModel | any 
+    let newFlag2: FlagModel | any  
     if (this.oldVersionFlags) {
       // Percorre cada flag na versão antiga
       this.oldVersionFlags.time_line.flags.forEach((oldFlag: FlagModel, flagIndex: number) => {
         // Busca a flag correspondente na nova versão
-        const newFlag = timeLine.time_line.flags[flagIndex];
-
+        newFlag = timeLine.time_line.flags[flagIndex];
+    
         // Verifica se as flags têm o mesmo ID
         if (oldFlag.flag_id === newFlag.flag_id) {
           // Verifica se os comprimentos dos arrays social_medias_chips são diferentes
           if (oldFlag.social_medias_chips.length !== newFlag.social_medias_chips.length) {
-            differentFile = true
+            differentFile = true;
             console.log(`DIFERENTE COMPRIMENTO DOS ARRAYS em flag_id: ${oldFlag.flag_id}`);
           } else {
             // Percorre cada social_media_chip na flag antiga
             oldFlag.social_medias_chips.forEach((oldChip: any, chipIndex: number) => {
               // Busca o social_media_chip correspondente na nova versão
               const newChip = newFlag.social_medias_chips[chipIndex];
-
+    
               // Verifica se os nomes são diferentes
               if (oldChip.name !== newChip.name) {
-                differentFile = true
+                differentFile = true;
                 console.log(`EXISTE ARRAY NAME DIFERENTE em flag_id: ${oldFlag.flag_id}, chip_index: ${chipIndex}`);
               }
             });
           }
+    
+          // Verificação para flags2, garantindo que flags2 existe em ambas versões
+          if (oldFlag.flags2 && newFlag.flags2) {
+            oldFlag.flags2.forEach((oldFlag2: FlagModel, flag2Index: number) => {
+              newFlag2 = newFlag.flags2[flag2Index];
+
+              console.log('TESTE', newFlag2)
+    
+              // Verifica se os comprimentos dos arrays social_medias_chips são diferentes em flags2
+              if (oldFlag2.social_medias_chips.length !== newFlag2.social_medias_chips.length) {
+                differentFile = true;
+                console.log(`DIFERENTE COMPRIMENTO DOS ARRAYS em flag2_id: ${oldFlag2.flag_id}`);
+              } else {
+                // Percorre cada social_media_chip na flag2 antiga
+                oldFlag2.social_medias_chips.forEach((oldChip2: any, chip2Index: number) => {
+                  // Busca o social_media_chip correspondente na nova versão
+                  const newChip2 = newFlag2.social_medias_chips[chip2Index];
+    
+                  // Verifica se os nomes são diferentes
+                  if (oldChip2.name !== newChip2.name) {
+                    differentFile = true;
+                    console.log(`EXISTE ARRAY NAME DIFERENTE em flag2_id: ${oldFlag2.flag_id}, chip2_index: ${chip2Index}`);
+                  }
+                });
+              }
+            });
+          }
+          
         }
       });
     }
