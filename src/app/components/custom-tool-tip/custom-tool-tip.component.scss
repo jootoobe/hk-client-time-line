@@ -6,13 +6,16 @@
 
   margin-left: 3rem;
   margin-right: 3rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   background: rgba(var(--color-primary), 1);
   padding: .5rem;
-  max-width: 100rem;
+  width: auto;
   color: rgb(240, 240, 240);
   // white-space: pre-line;
   border-radius: .5rem;
   z-index: 10 !important;
+  margin-bottom: 5vh;
+  overflow-y: auto !important;
+  max-height: 70vh;
 
 }
