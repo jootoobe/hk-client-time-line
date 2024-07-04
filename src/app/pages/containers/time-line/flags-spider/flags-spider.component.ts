@@ -410,8 +410,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       });
     }
 
-    // Só para garanit 
-    this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+  
 
     if (differentFile) {
       timeLine.year = undefined
@@ -424,12 +423,19 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         .subscribe({
           next: (res: any) => {
             this.stateService.updateGetAllTimeLine(timeLine)
+            // Só para garanit
+            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
           },
-          error: (err) => { },
+          error: (err) => { 
+            // Só para garanit
+            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          },
           complete: () => { }
         })
       return
     } else {
+      // Só para garanit
+      this.connectingExternalRoutesService.spiderShareLoader({ message: false })
       this.stateService.updateGetAllTimeLine(timeLine)
     }
   }
