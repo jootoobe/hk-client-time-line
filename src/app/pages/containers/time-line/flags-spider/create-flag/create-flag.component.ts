@@ -571,6 +571,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     let find2: any | undefined
     let find3: any | undefined
     let canTenter = false
+    console.log('this.editFlag this.editFlag editFlag',this.editFlag)
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
@@ -780,38 +781,26 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
             setTimeout(() => {
               // Encontre o flag_id no nível principal
-              let find = this.timeLine.time_line.flags?.find((flag: FlagModel) => flag.flag_id === this.editFlag.flag_id);
-              let idFlag2:any = ''
-
-              if(this.editFlag && this.editFlag?.flags2 && this.editFlag?.flags2.length > 0) {
-                idFlag2 =  this.editFlag?.flags2[0].flag_id
-                console.log('idFlag2 idFlag2 idFlag2',idFlag2)
-              }
+              let find = this.timeLine.time_line.flags?.find((flag: FlagModel) => flag.flag_id === this.flagsForm.controls[0]?.get('flag_id')?.value);
               
               // Se não encontrar no nível principal, procure em flags2
               if (!find) {
                 for (const flag of this.timeLine.time_line.flags) {
                   if (flag.flags2 && flag.flags2.length > 0) {
-                    find = flag.flags2.find((subFlag: FlagModel) => subFlag.flag_id === idFlag2);
-                    console.log('CAI AQUI CAI AQUI')
-                    // if (find) {
-                    //   break; // Encontrei, sair do loop
-                    // }
+                    find = flag.flags2.find((subFlag: FlagModel) => subFlag.flag_id === this.flagsForm.controls[0]?.get('flag_id')?.value);
+                    if (find) {
+                      break; // Encontrei, sair do loop
+                    }
                   }
                 }
               }
-              console.log('sssssssss',find?._id)
 
               // Criar o novo objeto de comparação
-              // let val = {
-              //   oldId: this.editFlag?._id,
-              //   newId: find?._id,
-              //   flag_id: this.editFlag.flag_id
-              // };
-
-              console.log('🌄', this.timeLine);
-              console.log(this.editFlag);
-              console.log(find);
+              let val = {
+                oldId: this.editFlag?._id,
+                newId: find?._id,
+                flag_id: this.editFlag.flag_id
+              };
 
             }, 3000)
           }
