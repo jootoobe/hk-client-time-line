@@ -802,9 +802,12 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 flag_id: this.editFlag.flag_id
               };
 
-              console.log('sssssssss', find)
-              this.updateKanbanObjectId(val) // atualiza ObjectId
-              this.updateSpiderTubeObjectId(val)  // atualiza ObjectId
+              console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>', val)
+              if(val.newId !== val.oldId) {
+                console.log('É DIFERENTE ', val)
+                this.updateKanbanObjectId(val) // atualiza ObjectId
+                this.updateSpiderTubeObjectId(val)  // atualiza ObjectId
+              }
 
             }, 3000)
           }
@@ -947,7 +950,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
 
   updateKanbanObjectId(val: any) {
-    console.log('sssssssssss',val)
+
     this.timeLineService.updateKanbanObjectId(val)
       .subscribe({
         next: () => {  },
