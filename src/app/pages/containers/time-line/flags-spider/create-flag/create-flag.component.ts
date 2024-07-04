@@ -503,8 +503,10 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     this.timeLineService.createFlag(this.createEditFlagSubscribe)
       .subscribe({
         next: (res: EncryptModel) => {
+          console.log('res res res re sr er rers rers rers', res)
           // let val: any = res.a[0]
           if (res.a === 'OK') {
+            console.log('CCRIIIIIIAIAAAAAADOOOOOOOOOOOOo')
             this.stateService.updateGetTimeLineHttpSignal(true)
           }
         },

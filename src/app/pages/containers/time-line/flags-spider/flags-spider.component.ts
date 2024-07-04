@@ -96,7 +96,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     effect(() => {
       let getTimeLineHttp = this.stateService.getTimeLineHttpSignalSignalComputed()
       if(getTimeLineHttp) {
+        console.log('PPPPPPPPPPPPPPPPPPPPPPPPPPPPp BUUUUUCCETA')
         this.getTimeLineKanbanById()
+        
       }
     })
 
@@ -173,6 +175,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           this.getAllTimeLineById(kanbans, true)
         },
         error: (err) => {
+          this.stateService.updateGetTimeLineHttpSignal(false)
+          console.log('EEEROOOOOOOOOOOOOOOOOOOOOOO', err)
           // let newTimeLine = { time_line: { flags: [] } }
           // this.stateService.updateGetAllTimeLine(newTimeLine)
           // end-loader
@@ -183,13 +187,14 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
           //('Tente atualizar a página', 'Erro carregamento time-line');
           this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
-          this.stateService.updateGetTimeLineHttpSignal(false)
+          
         },
         complete: () => { 
+          console.log('ENTROU ENTROU')
           this.stateService.updateGetTimeLineHttpSignal(false)
         }
       })
-
+      
       
   }
 
@@ -404,6 +409,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         }
       });
     }
+
+    // Só para garanit 
+    this.connectingExternalRoutesService.spiderShareLoader({ message: false })
 
     if (differentFile) {
       timeLine.year = undefined
