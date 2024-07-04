@@ -399,7 +399,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
                   // Verifica se os nomes são diferentes
                   if (oldChip2?.name !== newChip2?.name) {
                     differentFile = true;
-                    console.log(`EXISTE ARRAY NAME DIFERENTE em flag2_id: ${oldFlag2.flag_id}, chip2_index: ${chip2Index}`);
+                    console.log(`EXISTE ARRAY NAME DIFERENTE em flag2_id: ${oldFlag2?.flag_id}, chip2_index: ${chip2Index}`);
                   }
                 });
               }
