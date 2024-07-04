@@ -571,7 +571,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     let find2: any | undefined
     let find3: any | undefined
     let canTenter = false
-    console.log('this.editFlag this.editFlag editFlag',this.editFlag)
+    console.log('this.editFlag this.editFlag editFlag', this.editFlag)
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
@@ -782,7 +782,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
             setTimeout(() => {
               // Encontre o flag_id no nível principal
               let find = this.timeLine.time_line.flags?.find((flag: FlagModel) => flag.flag_id === this.flagsForm.controls[0]?.get('flag_id')?.value);
-              
+
               // Se não encontrar no nível principal, procure em flags2
               if (!find) {
                 for (const flag of this.timeLine.time_line.flags) {
@@ -801,6 +801,10 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 newId: find?._id,
                 flag_id: this.editFlag.flag_id
               };
+
+              console.log('sssssssss', find)
+              this.updateKanbanObjectId(val) // atualiza ObjectId
+              this.updateSpiderTubeObjectId(val)  // atualiza ObjectId
 
             }, 3000)
           }
@@ -942,11 +946,20 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
 
-  updateKanbanObjectId() {
+  updateKanbanObjectId(val: any) {
+    console.log('sssssssssss',val)
+    this.timeLineService.updateKanbanObjectId(val)
+      .subscribe({
+        next: () => {  },
+        error: (err) => {
 
+        },
+        complete: () => {
+        }
+      })
   }
 
-  updateSpiderTubeObjectId() {
+  updateSpiderTubeObjectId(val: any) {
 
   }
 

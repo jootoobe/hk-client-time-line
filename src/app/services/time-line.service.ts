@@ -16,6 +16,7 @@ import { FlagsModel } from '../models/flag.model';
 export class TimeLineService {
 
   API_TIME_LINE: string = environment.ApiTimeLine
+  API_KANBAN: string = environment.ApiKanban
   timeLineKeys!: TIMELINEKeysModel
   constructor(
     private http: HttpClient,
@@ -92,6 +93,23 @@ export class TimeLineService {
       })
     )
   }
+
+
+  updateKanbanObjectId(updateKanbanObjectId: any): Observable<EncryptModel> { //EncryptModel
+
+    let encrypto = this.encryptBody(updateKanbanObjectId, this.timeLineKeys.BY.tl2)
+
+    let newValEncrypto = {
+      id: 4,
+      a: this.timeLineKeys.BY.tl2 + encrypto
+    }
+    return this.http.put<EncryptModel>(`${this.API_KANBAN}/controller/object`, newValEncrypto).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+  
 
 
   encryptBody(inBody: any, key: any) {
