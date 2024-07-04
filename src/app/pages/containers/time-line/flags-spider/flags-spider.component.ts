@@ -338,23 +338,23 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     let differentFile = false
     let newFlag: FlagModel | any
     let newFlag2: FlagModel | any
-    if (this.oldVersionFlags && this.oldVersionFlags.time_line.flags?.length > 0) {
+    if (this.oldVersionFlags && this.oldVersionFlags?.time_line.flags?.length > 0) {
       // Percorre cada flag na versão antiga
-      this.oldVersionFlags.time_line.flags.forEach((oldFlag: FlagModel, flagIndex: number) => {
+      this.oldVersionFlags?.time_line.flags?.forEach((oldFlag: FlagModel, flagIndex: number) => {
         // Busca a flag correspondente na nova versão
-        newFlag = timeLine.time_line.flags[flagIndex];
+        newFlag = timeLine?.time_line.flags[flagIndex];
 
         // Verifica se as flags têm o mesmo ID
         if (oldFlag.flag_id === newFlag.flag_id) {
           // Verifica se os comprimentos dos arrays social_medias_chips são diferentes
-          if (oldFlag.social_medias_chips.length !== newFlag.social_medias_chips.length) {
+          if (oldFlag?.social_medias_chips?.length !== newFlag?.social_medias_chips?.length) {
             differentFile = true;
             console.log(`DIFERENTE COMPRIMENTO DOS ARRAYS em flag_id: ${oldFlag.flag_id}`);
           } else {
             // Percorre cada social_media_chip na flag antiga
-            oldFlag.social_medias_chips.forEach((oldChip: any, chipIndex: number) => {
+            oldFlag?.social_medias_chips?.forEach((oldChip: any, chipIndex: number) => {
               // Busca o social_media_chip correspondente na nova versão
-              const newChip = newFlag.social_medias_chips[chipIndex];
+              const newChip = newFlag?.social_medias_chips[chipIndex];
 
               // // Ordena os arrays novamente antes da comparação, se necessário
               // oldFlag.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
@@ -371,20 +371,20 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
           // Verificação para flags2, garantindo que flags2 existe em ambas versões
           if (oldFlag.flags2 && newFlag.flags2) {
-            oldFlag.flags2.forEach((oldFlag2: FlagModel, flag2Index: number) => {
-              newFlag2 = newFlag.flags2[flag2Index];
+            oldFlag?.flags2?.forEach((oldFlag2: FlagModel, flag2Index: number) => {
+              newFlag2 = newFlag?.flags2[flag2Index];
 
               console.log('TESTE', newFlag2)
 
               // Verifica se os comprimentos dos arrays social_medias_chips são diferentes em flags2
-              if (oldFlag2.social_medias_chips.length !== newFlag2.social_medias_chips.length) {
+              if (oldFlag2?.social_medias_chips?.length !== newFlag2?.social_medias_chips?.length) {
                 differentFile = true;
                 console.log(`DIFERENTE COMPRIMENTO DOS ARRAYS em flag2_id: ${oldFlag2.flag_id}`);
               } else {
                 // Percorre cada social_media_chip na flag2 antiga
-                oldFlag2.social_medias_chips.forEach((oldChip2: any, chip2Index: number) => {
+                oldFlag2?.social_medias_chips?.forEach((oldChip2: any, chip2Index: number) => {
                   // Busca o social_media_chip correspondente na nova versão
-                  const newChip2 = newFlag2.social_medias_chips[chip2Index];
+                  const newChip2 = newFlag2?.social_medias_chips[chip2Index];
 
                   // // Ordena os arrays social_medias_chips dentro de flags2 antes de comparar
                   // oldFlag2.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
