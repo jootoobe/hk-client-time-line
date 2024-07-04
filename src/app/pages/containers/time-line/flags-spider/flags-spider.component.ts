@@ -350,7 +350,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         newFlag = timeLine?.time_line.flags[flagIndex];
 
         // Verifica se as flags têm o mesmo ID
-        if (oldFlag.flag_id === newFlag.flag_id) {
+        if (oldFlag?.flag_id === newFlag?.flag_id) {
           // Verifica se os comprimentos dos arrays social_medias_chips são diferentes
           if (oldFlag?.social_medias_chips?.length !== newFlag?.social_medias_chips?.length) {
             differentFile = true;
@@ -367,15 +367,15 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
               // Verifica se os nomes são diferentes
-              if (oldChip.name !== newChip.name) {
+              if (oldChip?.name !== newChip?.name) {
                 differentFile = true;
-                console.log(`EXISTE ARRAY NAME DIFERENTE em flag_id: ${oldFlag.flag_id}, chip_index: ${chipIndex}`);
+                console.log(`EXISTE ARRAY NAME DIFERENTE em flag_id: ${oldFlag?.flag_id}, chip_index: ${chipIndex}`);
               }
             });
           }
 
           // Verificação para flags2, garantindo que flags2 existe em ambas versões
-          if (oldFlag.flags2 && newFlag.flags2) {
+          if (oldFlag?.flags2 && newFlag?.flags2) {
             oldFlag?.flags2?.forEach((oldFlag2: FlagModel, flag2Index: number) => {
               newFlag2 = newFlag?.flags2[flag2Index];
 
@@ -397,7 +397,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
                   // Verifica se os nomes são diferentes
-                  if (oldChip2.name !== newChip2.name) {
+                  if (oldChip2?.name !== newChip2?.name) {
                     differentFile = true;
                     console.log(`EXISTE ARRAY NAME DIFERENTE em flag2_id: ${oldFlag2.flag_id}, chip2_index: ${chip2Index}`);
                   }
