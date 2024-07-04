@@ -95,10 +95,10 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
     effect(() => {
       let getTimeLineHttp = this.stateService.getTimeLineHttpSignalSignalComputed()
-      if(getTimeLineHttp) {
+      if (getTimeLineHttp) {
         console.log('PPPPPPPPPPPPPPPPPPPPPPPPPPPPp BUUUUUCCETA')
         this.getTimeLineKanbanById()
-        
+
       }
     })
 
@@ -119,7 +119,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     }, 1000)
 
 
-  
+
   }
 
   ngAfterViewInit(): void { }
@@ -187,15 +187,15 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           this.connectingExternalRoutesService.spiderShareLoader({ message: false })
           //('Tente atualizar a página', 'Erro carregamento time-line');
           this.toastrService.error(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagsSpiderComponent'].error['msn-0']['message-1']);
-          
+
         },
-        complete: () => { 
+        complete: () => {
           console.log('ENTROU ENTROU')
           this.stateService.updateGetTimeLineHttpSignal(false)
         }
       })
-      
-      
+
+
   }
 
 
@@ -219,12 +219,12 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
               if (e1.flags2 && e1.flags2.length > 0) {
                 e1.flags2[0]._id = e._id
-                if(val) {
+                if (val) {
                   e1.flags2[0].social_medias_chips = []
                 }
               }
 
-              if(val) {
+              if (val) {
                 e1.social_medias_chips = []
               }
               newFlag.push(e1)
@@ -410,7 +410,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       });
     }
 
-  
+    // Só para garanit
+    this.connectingExternalRoutesService.spiderShareLoader({ message: false })
 
     if (differentFile) {
       timeLine.year = undefined
@@ -418,24 +419,16 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       timeLine.iam_id = '0'
       console.log(timeLine)
       // this.stateService.updateGetAllTimeLine(timeLine)
-
+      this.stateService.updateGetAllTimeLine(timeLine)
+  
       this.timeLineService.updateSocialMediasChipsFlag(timeLine)
         .subscribe({
-          next: (res: any) => {
-            this.stateService.updateGetAllTimeLine(timeLine)
-            // Só para garanit
-            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-          },
-          error: (err) => { 
-            // Só para garanit
-            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-          },
+          next: (res: any) => {  },
+          error: (err) => {  },
           complete: () => { }
         })
       return
     } else {
-      // Só para garanit
-      this.connectingExternalRoutesService.spiderShareLoader({ message: false })
       this.stateService.updateGetAllTimeLine(timeLine)
     }
   }
