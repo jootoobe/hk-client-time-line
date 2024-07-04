@@ -12,6 +12,9 @@ export const environment = {
   // Kanban
   ApiKanban: 'https://kanban.spider-share.com/api-kanban',
 
+  //SPIDER_TUBE
+  ApiSpiderTube: 'https://spider-tube.spider-share.com/api-spider-tube',
+
 
   styleSpiderShare: 'https://www.spider-share.com',
 

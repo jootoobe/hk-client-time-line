@@ -964,6 +964,15 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
   updateSpiderTubeObjectId(val: any) {
 
+    this.timeLineService.updateSpiderTubeObjectId(val)
+      .subscribe({
+        next: () => {  },
+        error: (err) => {
+
+        },
+        complete: () => {
+        }
+      })
   }
 
 }

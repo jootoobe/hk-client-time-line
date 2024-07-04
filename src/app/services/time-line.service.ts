@@ -17,6 +17,8 @@ export class TimeLineService {
 
   API_TIME_LINE: string = environment.ApiTimeLine
   API_KANBAN: string = environment.ApiKanban
+  API_SPIDER_TUBE: string = environment.ApiSpiderTube;
+  
   timeLineKeys!: TIMELINEKeysModel
   constructor(
     private http: HttpClient,
@@ -70,7 +72,7 @@ export class TimeLineService {
   }
 
 
-  deleteById(id:string, flag:string): Observable<EncryptModel> {
+  deleteById(id: string, flag: string): Observable<EncryptModel> {
     return this.http.delete<EncryptModel>(`${this.API_TIME_LINE}/controller?id=${id}&flag=${flag}`).pipe(
       map(res => {
         return res
@@ -109,7 +111,22 @@ export class TimeLineService {
       })
     )
   }
-  
+
+  updateSpiderTubeObjectId(updateKanbanObjectId: any): Observable<EncryptModel> { //EncryptModel
+
+    let encrypto = this.encryptBody(updateKanbanObjectId, this.timeLineKeys.BY.tl2)
+
+    let newValEncrypto = {
+      id: 4,
+      a: this.timeLineKeys.BY.tl2 + encrypto
+    }
+    return this.http.put<EncryptModel>(`${this.API_SPIDER_TUBE}/controller/object`, newValEncrypto).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+
 
 
   encryptBody(inBody: any, key: any) {

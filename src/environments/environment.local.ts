@@ -15,6 +15,9 @@ export const environment = {
   //Kanban
   ApiKanban: 'http://localhost:3002/api-kanban',
 
+  //SPIDER_TUBE
+  ApiSpiderTube: 'http://localhost:3003/api-spider-tube',
+
   // A Aplicação principal está gerando número aleatório no build - 31d50b1623a24feb
   // Solução definitiva tem que fazer a mesma coisa com o build das aplicações filhas
   // ATENÇÃO isso pode impactar da aplicação nova não carregar as atualizações sem um ctrl + Shift + R

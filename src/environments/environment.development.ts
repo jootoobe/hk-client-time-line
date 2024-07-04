@@ -12,6 +12,8 @@ export const environment = {
   //Kanban
   ApiKanban: 'http://localhost:3002/api-kanban',
 
+  //SPIDER_TUBE
+  ApiSpiderTube: 'http://localhost:3003/api-spider-tube',
 
   styleSpiderShare: 'http://localhost:3000',
 
