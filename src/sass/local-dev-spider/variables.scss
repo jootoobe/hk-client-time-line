@@ -448,11 +448,11 @@ input[type="password"]::-ms-clear {
     width: 100%; // se colcar 100rem o menu aumenta
 
     &--edit {
-      color: green;
+      color: rgba(var(--color-green), 1);
     }
 
     &--del {
-      color: red;
+      color: rgba(var(--color-red), 1);
     }
 
     &--info {}
@@ -466,11 +466,11 @@ input[type="password"]::-ms-clear {
 
 .material-icons {
   &--edit {
-    color: green;
+    color: rgba(var(--color-btn-edit-yellow), 1);
   }
 
   &--del {
-    color: red;
+    color: rgba(var(--color-red), 1);
   }
 
   &--info {
@@ -517,15 +517,25 @@ input[type="password"]::-ms-clear {
 }
 
 
-
-
 .matmenuSaveChanges.mat-mdc-menu-panel {
   margin-top: .2rem;
   font-size: 1.2rem;
-  min-width: 12rem !important;
-  max-width: 12rem !important;
+  min-width: 11.8rem !important;
+  max-width: 11.8rem !important;
   left: 0% !important;
   transform: translateX(0%) !important;
+
+}
+
+
+.matmenuSaveChanges2.mat-mdc-menu-panel {
+  margin-top: .2rem;
+  font-size: 1.2rem;
+  min-width: 11.8rem !important;
+  max-width: 11.8rem !important;
+  left: 0% !important;
+  transform: translateX(0%) !important;
+  margin-left: -1.5rem !important;
 
 }
 
