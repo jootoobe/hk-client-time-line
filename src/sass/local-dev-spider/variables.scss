@@ -427,71 +427,9 @@ input[type="password"]::-ms-clear {
 // </section>
 
 
-
-// MENU
-// .me {
-//   &_menu {
-//     margin-left: .5rem;
-
-//     &--edit,
-//     &--delete {
-//       height: 3rem;
-//       margin-left: .5rem;
-//       font-size: 2rem;
-//       font-weight: var(--fonts-font-weight-500);
-//       position: absolute;
-//     }
-
-//     &--edit {
-//       padding-top: .5rem;
-//       color: rgba(var(--color-green), 1);
-//     }
-
-//     &--delete {
-//       padding-top: .5rem;
-//       // font-size: 1.9rem;
-//       color: rgba(var(--color-red), 1);
-//     }
-
-//     &--t1 {
-//       // editar
-//       margin: -1.6rem 0rem -1.5rem 3.5rem;
-//     }
-
-//     &--t2 {
-//       // deletar
-//       margin: -1.6rem 0 .5rem 3.5rem;
-//     }
-//   }
-// }
-
-
-
-// :ng-deep {
-//   .matmenu.mat-mdc-menu-panel {
-//     width: 12rem !important;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin: .3rem 0 0 -1.5rem !important;
-//     /* Remova o ajuste de margem específico */
-//   }
-
-//   .mat-mdc-menu-panel {
-//     left: 0% !important;
-//     /* Ajusta a posição para o centro horizontal */
-//     transform: translateX(-58%) !important;
-//     /* Centraliza o menu horizontalmente */
-//   }
-
-//   .cdk-overlay-pane {
-//     transform: translateX(50px) !important;
-//   }
-// }
-
 // MENU
 .matmenu {
-  max-width: 120rem;
+  max-width: 12rem;
 }
 
 .item-menu {
