@@ -434,10 +434,14 @@ input[type="password"]::-ms-clear {
   flex-direction: column;
 }
 
+.menu-space {
+  margin-bottom: .3rem;
+}
+
 .menu-item {
   display: flex;
   align-items: center;
-  padding: .8rem 0 .5rem .8rem;
+  padding: .5rem 0 .5rem .8rem;
   font-weight: var(--fonts-font-weight-500);
 
   &_title {
@@ -458,8 +462,6 @@ input[type="password"]::-ms-clear {
 .menu-item i.material-icons {
   margin-right: .8rem;
   font-size: 2rem;
-
-
 }
 
 .material-icons {
@@ -472,22 +474,60 @@ input[type="password"]::-ms-clear {
   }
 
   &--info {
+    padding-top: .1rem;
     font-size: 1.8rem !important;
+  }
+
+  &--save,
+  &--clean {
+    font-size: 1.6rem !important;
+    padding-top: .4rem;
+  }
+
+  &--save {
+    color: rgba(var(--color-green), 1);
+  }
+
+  &--clean {
+    margin-top: -.5rem;
+    color: rgba(var(--color-red), 1);
   }
 }
 
 
-.matmenu {
-  // max-width: 12rem !important;
-}
+// .matmenu {
+//   // max-width: 12rem !important;
+// }
 
-.matmenu.mat-mdc-menu-panel {
+// .matmenu2 {
+//   // max-width: 12rem !important;
+// }
+
+.matmenu.mat-mdc-menu-panel,
+.matmenu2.mat-mdc-menu-panel {
   max-width: 12rem !important;
   left: 0% !important;
   transform: translateX(0%) !important;
-  margin-left: -7rem !important;
+
 }
 
+
+.matmenu.mat-mdc-menu-panel {
+  margin-left: -8.5rem !important;
+}
+
+
+
+
+.matmenuSaveChanges.mat-mdc-menu-panel {
+  margin-top: .2rem;
+  font-size: 1.2rem;
+  min-width: 12rem !important;
+  max-width: 12rem !important;
+  left: 0% !important;
+  transform: translateX(0%) !important;
+
+}
 
 
 // <!-- Start Menu Edit Remove-->
