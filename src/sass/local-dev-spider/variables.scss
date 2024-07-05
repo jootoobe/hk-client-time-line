@@ -429,7 +429,7 @@ input[type="password"]::-ms-clear {
 
 // MENU
 .matmenu {
-  max-width: 12rem;
+  // max-width: 12rem !important;
 }
 
 .item-menu {
@@ -468,20 +468,8 @@ input[type="password"]::-ms-clear {
 }
 
 .matmenu.mat-mdc-menu-panel {
+  max-width: 12rem !important;
   left: 0% !important;
-  transform: translateX(-58%) !important;
+  transform: translateX(0) !important;
+  margin-left: -7rem;
 }
-
-
-// <mat-menu #menuEditRemove="matMenu" class="matmenu">
-// <div class="item-menu cursor_pointer noSelect">
-//   <div class="menu-item">
-//     <i class="material-icons material-icons--edit">edit</i>
-//     <span class="menu-item_title">Editar</span>
-//   </div>
-//   <div class="menu-item">
-//     <i class="material-icons material-icons--del">delete_forever</i>
-//     <span class="menu-item_title">Deletar</span>
-//   </div>
-// </div>
-// </mat-menu>
