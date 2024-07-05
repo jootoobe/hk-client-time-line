@@ -427,11 +427,8 @@ input[type="password"]::-ms-clear {
 // </section>
 
 
-// MENU
-.matmenu {
-  // max-width: 12rem !important;
-}
 
+// MENU
 .item-menu {
   display: flex;
   flex-direction: column;
@@ -441,20 +438,28 @@ input[type="password"]::-ms-clear {
   display: flex;
   align-items: center;
   padding: .8rem 0 .5rem .8rem;
+  font-weight: var(--fonts-font-weight-500);
 
   &_title {
     width: 100%; // se colcar 100rem o menu aumenta
+
+    &--edit {
+      color: green;
+    }
+
+    &--del {
+      color: red;
+    }
+
+    &--info {}
   }
-
-  &_title--edit {}
-
-  &_title--del {}
 }
 
 .menu-item i.material-icons {
-  margin-right: 8px;
+  margin-right: .8rem;
   font-size: 2rem;
-  font-weight: var(--fonts-font-weight-500);
+
+
 }
 
 .material-icons {
@@ -465,11 +470,42 @@ input[type="password"]::-ms-clear {
   &--del {
     color: red;
   }
+
+  &--info {
+    font-size: 1.8rem !important;
+  }
+}
+
+
+.matmenu {
+  // max-width: 12rem !important;
 }
 
 .matmenu.mat-mdc-menu-panel {
   max-width: 12rem !important;
   left: 0% !important;
-  transform: translateX(0) !important;
-  margin-left: -7rem;
+  transform: translateX(0%) !important;
+  margin-left: -7rem !important;
 }
+
+
+
+// <!-- Start Menu Edit Remove-->
+// <mat-menu #menuEditRemove="matMenu" class="matmenu">
+// <div class="item-menu cursor_pointer noSelect">
+// <div class="menu-item" (click)="editFlag(flag, 'edit-flag-2')">
+// <i class="material-icons material-icons--edit">edit</i>
+// <span class="menu-item_title">
+// Editar
+// </span>
+// </div>
+// <div class="menu-item" 
+// (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-2')"
+// (click)="doubleCheckerClick.openDoubleCheckerDialog()">
+// <i class="material-icons material-icons--del">delete_forever</i>
+// <span class="menu-item_title">
+// Deletar
+// </span>
+// </div>
+// </div>
+// </mat-menu>
