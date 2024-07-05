@@ -482,5 +482,7 @@ input[type="password"]::-ms-clear {
     /* Centraliza o menu horizontalmente */
   }
 
-
+  .cdk-overlay-pane {
+    transform: translateX(50px) !important;
+  }
 }
