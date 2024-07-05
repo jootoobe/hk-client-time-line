@@ -27,6 +27,13 @@
             "mat-error": ""
           }
         },
+        "menu": {
+          "title-downward": "",
+          "title-upward": "",
+          "title-edit": "Editar",
+          "title-info": "",
+          "title-delete": "Deletar"
+        },
         "mat-stroked-button": {
           "button": {
             "create": "",
