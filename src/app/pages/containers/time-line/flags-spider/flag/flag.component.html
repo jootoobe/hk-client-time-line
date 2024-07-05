@@ -242,20 +242,16 @@
                 <span class="box-inside-flag-title_background"></span>
                 <!-- Start Filter Edit-->
                 <mat-menu #menuEditRemove="matMenu" class="matmenu">
-                  <span class="cursor_pointer noSelect me_menu" (click)="editFlag(flag, 'edit-flag-1')">
-                    <i class="material-icons me_menu--edit" >
-                      edit
-                    </i>
-                    <div class="me_menu--t1">Editar</div>
-                  </span> <br>
-                  <span class="cursor_pointer noSelect me_menu" 
-                        (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-1')"
-                        (click)="doubleCheckerClick.openDoubleCheckerDialog()">
-                    <i class="material-icons me_menu--delete">
-                      delete_forever
-                    </i>
-                    <div class="me_menu--t2">Deletar</div>
-                  </span>
+                  <div class="item-menu cursor_pointer noSelect">
+                    <div class="menu-item">
+                      <i class="material-icons material-icons--edit">edit</i>
+                      <span class="menu-item_title">Editar</span>
+                    </div>
+                    <div class="menu-item">
+                      <i class="material-icons material-icons--del">delete_forever</i>
+                      <span class="menu-item_title">Deletar</span>
+                    </div>
+                  </div>
                 </mat-menu>
               </div>
             }

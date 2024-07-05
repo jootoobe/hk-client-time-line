@@ -282,7 +282,7 @@ input[type="password"]::-ms-clear {
   left: 0;
   height: auto;
   // min-height: 100%;
-  
+
   transition: all .5s ease-in-out;
   -webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
@@ -365,8 +365,10 @@ input[type="password"]::-ms-clear {
 // NAV-BAR
 .expansion-panel-header-icon--active>.mat-expansion-indicator::after {
   border-color: rgba(var(--color-red), 1);
-  border-bottom: .2rem solid rgba(var(--color-red), 1);;
-  border-right: .2rem solid rgba(var(--color-red), 1);;
+  border-bottom: .2rem solid rgba(var(--color-red), 1);
+  ;
+  border-right: .2rem solid rgba(var(--color-red), 1);
+  ;
   // margin-top: -1.5rem;
   // position: absolute;
   width: .2rem;
@@ -427,41 +429,41 @@ input[type="password"]::-ms-clear {
 
 
 // MENU
-.me {
-  &_menu {
-    margin-left: .5rem;
+// .me {
+//   &_menu {
+//     margin-left: .5rem;
 
-    &--edit,
-    &--delete {
-      height: 3rem;
-      margin-left: .5rem;
-      font-size: 2rem;
-      font-weight: var(--fonts-font-weight-500);
-      position: absolute;
-    }
+//     &--edit,
+//     &--delete {
+//       height: 3rem;
+//       margin-left: .5rem;
+//       font-size: 2rem;
+//       font-weight: var(--fonts-font-weight-500);
+//       position: absolute;
+//     }
 
-    &--edit {
-      padding-top: .5rem;
-      color: rgba(var(--color-green), 1);
-    }
+//     &--edit {
+//       padding-top: .5rem;
+//       color: rgba(var(--color-green), 1);
+//     }
 
-    &--delete {
-      padding-top: .5rem;
-      // font-size: 1.9rem;
-      color: rgba(var(--color-red), 1);
-    }
+//     &--delete {
+//       padding-top: .5rem;
+//       // font-size: 1.9rem;
+//       color: rgba(var(--color-red), 1);
+//     }
 
-    &--t1 {
-      // editar
-      margin: -1.6rem 0rem -1.5rem 3.5rem;
-    }
+//     &--t1 {
+//       // editar
+//       margin: -1.6rem 0rem -1.5rem 3.5rem;
+//     }
 
-    &--t2 {
-      // deletar
-      margin: -1.6rem 0 .5rem 3.5rem;
-    }
-  }
-}
+//     &--t2 {
+//       // deletar
+//       margin: -1.6rem 0 .5rem 3.5rem;
+//     }
+//   }
+// }
 
 
 
@@ -486,3 +488,62 @@ input[type="password"]::-ms-clear {
 //     transform: translateX(50px) !important;
 //   }
 // }
+
+// MENU
+.matmenu {
+  max-width: 120rem;
+}
+
+.item-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: .8rem 0 .5rem .8rem;
+
+  &_title {
+    width: 100%; // se colcar 100rem o menu aumenta
+  }
+
+  &_title--edit {}
+
+  &_title--del {}
+}
+
+.menu-item i.material-icons {
+  margin-right: 8px;
+  font-size: 2rem;
+  font-weight: var(--fonts-font-weight-500);
+}
+
+.material-icons {
+  &--edit {
+    color: green;
+  }
+
+  &--del {
+    color: red;
+  }
+}
+
+.matmenu.mat-mdc-menu-panel {
+  left: 0% !important;
+  transform: translateX(-58%) !important;
+}
+
+
+// <mat-menu #menuEditRemove="matMenu" class="matmenu">
+// <div class="item-menu cursor_pointer noSelect">
+//   <div class="menu-item">
+//     <i class="material-icons material-icons--edit">edit</i>
+//     <span class="menu-item_title">Editar</span>
+//   </div>
+//   <div class="menu-item">
+//     <i class="material-icons material-icons--del">delete_forever</i>
+//     <span class="menu-item_title">Deletar</span>
+//   </div>
+// </div>
+// </mat-menu>
