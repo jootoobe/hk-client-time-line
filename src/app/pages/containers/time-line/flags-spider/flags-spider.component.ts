@@ -410,9 +410,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       });
     }
 
-    // Só para garanit
-    this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-
     if (differentFile) {
       timeLine.year = undefined
       delete timeLine.year
