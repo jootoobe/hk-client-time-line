@@ -39,11 +39,16 @@
     }
 
     &--done {
-      color: green;
+      color: rgba(var(--color-green), 1);
+      margin: -.5rem 0 0 .5rem;
+      position: absolute;
     }
 
     &--close {
-      color: red;
+      color: rgba(var(--color-red), 1);
+      margin: -.5rem 0 0 .5rem;
+      position: absolute;
+  
     }
   }
 
