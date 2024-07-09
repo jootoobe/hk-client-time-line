@@ -466,7 +466,8 @@ input[type="password"]::-ms-clear {
 
 .material-icons {
   &--edit {
-    color: rgba(var(--color-btn-edit-yellow), 1);
+    // color: rgba(var(--color-btn-edit-yellow), 1);
+    color: rgba(var(--color-green), 1);
   }
 
   &--del {
@@ -511,6 +512,14 @@ input[type="password"]::-ms-clear {
 
 }
 
+.matMenuDownwardUpward.mat-mdc-menu-panel {
+  min-width: 15rem !important;
+  max-width: 15rem !important;
+  left: 0% !important;
+  transform: translateX(0%) !important;
+  margin-left: -9.5rem !important;
+}
+
 
 .matmenu.mat-mdc-menu-panel {
   margin-left: -8.5rem !important;
@@ -522,9 +531,9 @@ input[type="password"]::-ms-clear {
   font-size: 1.2rem;
   min-width: 11.8rem !important;
   max-width: 11.8rem !important;
-  left: 0% !important;
+  // left: 0% !important;
   transform: translateX(0%) !important;
-  margin-left: 0 !important;
+  margin-right: 1rem !important;
 }
 
 
