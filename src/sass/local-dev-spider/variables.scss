@@ -505,23 +505,27 @@ input[type="password"]::-ms-clear {
 // }
 
 .matmenu.mat-mdc-menu-panel,
-.matmenu2.mat-mdc-menu-panel {
-  max-width: 12rem !important;
-  left: 0% !important;
-  transform: translateX(0%) !important;
+.matmenu2.mat-mdc-menu-panel,
+.matMenuDownwardUpward.mat-mdc-menu-panel,
+.matmenuSaveChanges.mat-mdc-menu-panel {
+
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  transform: translateX(0) !important;
 
 }
 
 .matMenuDownwardUpward.mat-mdc-menu-panel {
   min-width: 15rem !important;
   max-width: 15rem !important;
-  left: 0% !important;
-  transform: translateX(0%) !important;
   margin-left: -9.5rem !important;
 }
 
 
 .matmenu.mat-mdc-menu-panel {
+  min-width: 12rem !important;
+  max-width: 12rem !important;
   margin-left: -8.5rem !important;
 }
 
@@ -531,21 +535,7 @@ input[type="password"]::-ms-clear {
   font-size: 1.2rem;
   min-width: 11.8rem !important;
   max-width: 11.8rem !important;
-  // left: 0% !important;
-  transform: translateX(0%) !important;
-  margin-right: 1rem !important;
-}
-
-
-.matmenuSaveChanges2.mat-mdc-menu-panel {
-  margin-top: .2rem;
-  font-size: 1.2rem;
-  min-width: 11.8rem !important;
-  max-width: 11.8rem !important;
-  left: 0% !important;
-  transform: translateX(0%) !important;
-  margin-left: -1.5rem !important;
-
+  // margin-right: 2rem !important;
 }
 
 
