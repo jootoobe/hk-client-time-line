@@ -124,16 +124,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void { }
 
-  getFlagEvent(e: any) {
-    let newTimeLine = {
-      time_line: {
-        flags: []
-      }
-    }
-
-    this.oldVersionFlags = newTimeLine
-    this.getAllTimeLineById([], false)
-  }
 
   editFlagEvent(flag: FlagModel) {
     this.editFlagForm = flag

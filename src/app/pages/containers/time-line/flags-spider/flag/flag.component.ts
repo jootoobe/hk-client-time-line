@@ -30,7 +30,6 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   // resetFlagsOutput = output()
   valFilterColorBarOutput = output<{ color_hex: '', color_rgb: 0 }>()  // stores the clicked filter and communicates with the top-div component
-  getFlagOutput = output()
 
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
 
@@ -390,7 +389,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       .subscribe({
         next: (res: EncryptModel) => {
           if (res.a === 'OK') {
-            this.getFlagOutput.emit()
+            this.stateService.updateGetTimeLineHttpSignal(true)
           }
         },
         error: (err) => { 
