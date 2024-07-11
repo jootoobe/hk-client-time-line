@@ -435,7 +435,7 @@ input[type="password"]::-ms-clear {
 }
 
 .menu-space {
-  margin-bottom: .3rem;
+  margin-bottom: .5rem;
 }
 
 .menu-item {
@@ -482,7 +482,7 @@ input[type="password"]::-ms-clear {
   &--save,
   &--clean {
     font-size: 1.6rem !important;
-    padding-top: .4rem;
+    // padding-top: .4rem;
   }
 
   &--save {
@@ -490,7 +490,7 @@ input[type="password"]::-ms-clear {
   }
 
   &--clean {
-    margin-top: -.5rem;
+    // margin-top: -.5rem;
     color: rgba(var(--color-red), 1);
   }
 }
@@ -500,9 +500,6 @@ input[type="password"]::-ms-clear {
 //   // max-width: 12rem !important;
 // }
 
-// .matmenu2 {
-//   // max-width: 12rem !important;
-// }
 
 .matmenu.mat-mdc-menu-panel,
 .matmenu2.mat-mdc-menu-panel,
@@ -527,6 +524,11 @@ input[type="password"]::-ms-clear {
   min-width: 12rem !important;
   max-width: 12rem !important;
   margin-left: -8.5rem !important;
+}
+
+.matmenu2 {
+  min-width: 12rem !important;
+  max-width: 12rem !important;
 }
 
 
