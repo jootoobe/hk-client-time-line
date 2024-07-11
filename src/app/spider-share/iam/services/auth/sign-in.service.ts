@@ -88,7 +88,6 @@ export class SignInService {
     let outputLetter = skich.charAt(0); // pego a letra a,b,c,d....
     // let newStr = skich.substring(1) // retiro da chave do token a primeira letra
     // skich = newStr // chave sem a primeira letra
-    // console.log('KEY', skich)
 
     let newRes: any = this.decryptAuthenticationService(resBody, decryptKey)
 

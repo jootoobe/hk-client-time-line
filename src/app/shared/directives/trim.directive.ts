@@ -34,16 +34,13 @@ export class TrimDirective {
       // valueTrim = (this.ngControl?.control?.value.replace(/[\n\r]/g, ' ')).replace(/ +(?= )/g, '').trim();
       valueTrim = this.ngControl?.control?.value.replace(/ +(?= )/g, '').trim();
       this.ngControl?.control?.setValue(valueTrim)
-      console.log('Só pode cair se o valor estiver no FormControl')
     } else if (!this.ngControl) {
-      console.log('Só pode cair se o valor for fora do FormControl')
       valueTrim = (this.valAppTrim).replace(/ +(?= )/g, '').trim()
     }
 
 
     // 🅰️ capitalize with ngControl
     if (this.ngControl && this.ngControl?.control?.value && this.numInputAppTrim === 1) {
-      console.log('Pode entrar ngControl')
       valueTrim = valueTrim.toLowerCase();
       valueTrim = valueTrim.replace(capitalize, (x: any) => { return x.toUpperCase(); });
       // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
@@ -54,7 +51,6 @@ export class TrimDirective {
 
     // 🅿️ capitalize without ngControl
     if (!this.ngControl && this.numInputAppTrim === 1) {
-      console.log('Não pode entrar ngControl')
       valueTrim = valueTrim.toLowerCase();
       valueTrim = valueTrim.replace(capitalize, (x: any) => { return x.toUpperCase(); });
       this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
@@ -64,7 +60,6 @@ export class TrimDirective {
 
     // 🅰️ JUST toLowerCase with ngControl
     if (this.ngControl && this.ngControl?.control?.value && this.numInputAppTrim === 2) {
-      console.log('Pode entrar ngControl')
       valueTrim = valueTrim.toLowerCase();
       // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
       this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
@@ -73,7 +68,6 @@ export class TrimDirective {
 
     // 🅿️ JUST toLowerCase without ngControl
     if (!this.ngControl && this.numInputAppTrim === 2) {
-      console.log('Não pode entrar ngControl')
       valueTrim = valueTrim.toLowerCase();
       // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
       this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
@@ -83,7 +77,6 @@ export class TrimDirective {
 
     // 🅰️ JUST remove all space
     if (this.ngControl && this.ngControl?.control?.value && this.numInputAppTrim === 3) {
-      console.log('Pode entrar ngControl')
       valueTrim = valueTrim.replace(/\s/g, '');
       // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
       this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
@@ -92,7 +85,6 @@ export class TrimDirective {
 
     // 🅿️ JUST remove all space
     if (!this.ngControl && this.numInputAppTrim === 3) {
-      console.log('Não pode entrar ngControl')
       valueTrim = valueTrim.replace(/\s/g, '');
       this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
     }
@@ -101,7 +93,6 @@ export class TrimDirective {
 
     // 🅰️ JUST remove space at the end
     if (this.ngControl && this.ngControl?.control?.value && this.numInputAppTrim === 4) {
-      console.log('Pode entrar ngControl')
       valueTrim = valueTrim.trim();
       // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
       this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
@@ -110,7 +101,6 @@ export class TrimDirective {
 
     // 🅿️ UST remove space at the end
     if (!this.ngControl && this.numInputAppTrim === 4) {
-      console.log('Não pode entrar ngControl')
       valueTrim = valueTrim.trim();
       this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
     }
@@ -119,7 +109,6 @@ export class TrimDirective {
 
     // 🅰️ JUST remove space for text-area
     if (this.ngControl && this.ngControl?.control?.value && this.numInputAppTrim === 5) {
-      console.log('Pode entrar ngControl')
       valueTrim = valueTrim.replace(/[\n\r]/g, ' ').replace(/ +(?= )/g, '').trim();
       // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
       this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
@@ -128,7 +117,6 @@ export class TrimDirective {
 
     // 🅿️ JUST remove space for text-area
     if (!this.ngControl && this.numInputAppTrim === 5) {
-      console.log('Não pode entrar ngControl')
       valueTrim = valueTrim.replace(/[\n\r]/g, ' ').replace(/ +(?= )/g, '').trim();
       this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
     }
@@ -155,7 +143,6 @@ export class TrimDirective {
   //   // value2 = value2.replace(/\s/g, '').trim() //remove withe space
 
   //   if (this.numInputAll === 1) {
-  //     console.log(this.formAll['controls']['title'])
   //     this.formAll['controls']['title'].setValue(valueTrim)
   //   }
 

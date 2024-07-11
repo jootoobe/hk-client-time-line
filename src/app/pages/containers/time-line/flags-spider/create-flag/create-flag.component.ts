@@ -331,8 +331,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //================================= 🅰️🅰️ TIME STEMP 🅰️🅰️ ==============================
   //==============================================================================
 
-  toggleDatePicker(ref: any) {  // console.log('++++++++++++++++==', ref._opened)
-
+  toggleDatePicker(ref: any) {
   }
 
   setDateTimestamp() {
@@ -517,10 +516,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     this.timeLineService.createFlag(this.createEditFlagSubscribe)
       .subscribe({
         next: (res: EncryptModel) => {
-          console.log('res res res re sr er rers rers rers', res)
           // let val: any = res.a[0]
           if (res.a === 'OK') {
-            console.log('CCRIIIIIIAIAAAAAADOOOOOOOOOOOOo')
             this.stateService.updateGetTimeLineHttpSignal(true)
           }
         },
@@ -571,7 +568,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     let find2: any | undefined
     let find3: any | undefined
     let canTenter = false
-    console.log('this.editFlag this.editFlag editFlag', this.editFlag)
     this.timeLine.time_line.flags.forEach((e1: FlagModel, i1: number, array1: any) => {
 
       if (e1.date_obj.timestamp === this.editFlag.date_obj.timestamp) {
@@ -802,9 +798,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 flag_id: this.editFlag.flag_id
               };
 
-              console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>', val)
               if(val.newId !== val.oldId) {
-                console.log('É DIFERENTE ', val)
                 this.updateKanbanObjectId(val) // atualiza ObjectId
                 this.updateSpiderTubeObjectId(val)  // atualiza ObjectId
               }
@@ -909,7 +903,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //==============================================================================
   //⬇️ Convert Color
   convertColor(val?: string) {
-    console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', val)
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
     if (val) {
       let colorFormats = this.convertColorService.convertColor(val)

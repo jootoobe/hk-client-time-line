@@ -25,7 +25,6 @@ export class CookieService {
 
 
   setEncryptedCookie(name: string, value: any, exdays: number | Date, path: string = '/', domain: string = '', secure: boolean = false, sameSite: 'Lax' | 'Strict' = 'Lax'): void {
-    console.log('---------', name, value)
     if (this.documentIsAccessible) {
       const stringValue = JSON.stringify(value);
       const encryptedValue = CryptoJS4.AES.encrypt(stringValue, this.key,

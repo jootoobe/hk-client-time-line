@@ -96,7 +96,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     effect(() => {
       let getTimeLineHttp = this.stateService.getTimeLineHttpSignalSignalComputed()
       if (getTimeLineHttp) {
-        console.log('PPPPPPPPPPPPPPPPPPPPPPPPPPPPp BUUUUUCCETA')
         this.getTimeLineKanbanById()
 
       }
@@ -108,9 +107,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.detectBrowser = this.detectBrowserNameService.detectBrowserName()
-
-    console.log('FlagsSpiderComponent 🃏')
-
 
     setTimeout(() => {
       this.getTimeLineKanbanById()
@@ -160,13 +156,10 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
           let kanbans = res.sort((a: any, b: any) => a.kanbans.track_position_id - b.kanbans.track_position_id);
 
-          console.log('TIME LINE GET KANBAN 🎅', res)
-
           this.getAllTimeLineById(kanbans, true)
         },
         error: (err) => {
           this.stateService.updateGetTimeLineHttpSignal(false)
-          console.log('EEEROOOOOOOOOOOOOOOOOOOOOOO', err)
           // let newTimeLine = { time_line: { flags: [] } }
           // this.stateService.updateGetAllTimeLine(newTimeLine)
           // end-loader
@@ -180,7 +173,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
         },
         complete: () => {
-          console.log('ENTROU ENTROU')
           this.stateService.updateGetTimeLineHttpSignal(false)
         }
       })
@@ -199,8 +191,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     this.timeLineService.getAllTimeLineById()
       .subscribe({
         next: (res: TimeLineModel[]) => {
-
-          console.log('GET TIME LINE 🎅🎅🎅', val)
 
 
           // if (!val) {
@@ -328,8 +318,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
   updateSocialMediasChipsFlag(timeLine: TimeLineModel) {
-    console.log('ATUAL', timeLine)
-    console.log('ANTIGO', this.oldVersionFlags)
+
     let differentFile = false
     let newFlag: FlagModel | any
     let newFlag2: FlagModel | any
@@ -344,7 +333,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           // Verifica se os comprimentos dos arrays social_medias_chips são diferentes
           if (oldFlag?.social_medias_chips?.length !== newFlag?.social_medias_chips?.length) {
             differentFile = true;
-            console.log(`DIFERENTE COMPRIMENTO DOS ARRAYS em flag_id: ${oldFlag.flag_id}`);
           } else {
             // Percorre cada social_media_chip na flag antiga
             oldFlag?.social_medias_chips?.forEach((oldChip: any, chipIndex: number) => {
@@ -359,7 +347,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
               // Verifica se os nomes são diferentes
               if (oldChip?.name !== newChip?.name) {
                 differentFile = true;
-                console.log(`EXISTE ARRAY NAME DIFERENTE em flag_id: ${oldFlag?.flag_id}, chip_index: ${chipIndex}`);
               }
             });
           }
@@ -369,12 +356,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             oldFlag?.flags2?.forEach((oldFlag2: FlagModel, flag2Index: number) => {
               newFlag2 = newFlag?.flags2[flag2Index];
 
-              console.log('TESTE', newFlag2)
-
               // Verifica se os comprimentos dos arrays social_medias_chips são diferentes em flags2
               if (oldFlag2?.social_medias_chips?.length !== newFlag2?.social_medias_chips?.length) {
                 differentFile = true;
-                console.log(`DIFERENTE COMPRIMENTO DOS ARRAYS em flag2_id: ${oldFlag2.flag_id}`);
               } else {
                 // Percorre cada social_media_chip na flag2 antiga
                 oldFlag2?.social_medias_chips?.forEach((oldChip2: any, chip2Index: number) => {
@@ -389,7 +373,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
                   // Verifica se os nomes são diferentes
                   if (oldChip2?.name !== newChip2?.name) {
                     differentFile = true;
-                    console.log(`EXISTE ARRAY NAME DIFERENTE em flag2_id: ${oldFlag2?.flag_id}, chip2_index: ${chip2Index}`);
                   }
                 });
               }
@@ -404,7 +387,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       timeLine.year = undefined
       delete timeLine.year
       timeLine.iam_id = '0'
-      console.log(timeLine)
       // this.stateService.updateGetAllTimeLine(timeLine)
       this.stateService.updateGetAllTimeLine(timeLine)
   
@@ -436,7 +418,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             }
           }
           this.oldVersionFlags = newTimeLine
-          console.log('ANTIGO 🌝', this.oldVersionFlags)
           // this.resetFlags = newTimeLine
           // this.stateService.updateGetAllTimeLine(newTimeLine)
         },
@@ -495,7 +476,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 //     .subscribe({
 //       next: (res: TimeLineModel[]) => {
 
-//         console.log('GET TIME LINE 🎅🎅🎅', res)
 
 
 //         // if (!val) {
@@ -527,8 +507,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 //           newFlag.forEach((e: FlagModel, i: number) => {
 //             if (kanban?.length > 0) {
 //               kanban.forEach((e1: any, i1: number) => {
-//                 console.log('ssssssss', e1.kanbans.track_social_media)
-//                 console.log('ssssssss', newFlag[i])
 //                   // ADD social_medias_chips FLAG1
 //                 if (e.flag_id === e1.kanbans.flag_id && e1.kanbans.track_social_media) {
 //                   let filter = newFlag[i]?.social_medias_chips?.filter((val: any) => val?.name === e1.kanbans.track_social_media);

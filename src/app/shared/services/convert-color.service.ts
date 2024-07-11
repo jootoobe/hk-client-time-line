@@ -25,7 +25,6 @@ export class ConvertColorService {
 
     // RGB
     let rgb:any = `${parseInt(red, 16)}, ${parseInt(green, 16)}, ${parseInt(blue, 16)}`
-    // console.log(
     //   {
     //     r:parseInt(`${red}`, 16),
     //     g:parseInt(`${green}`, 16),

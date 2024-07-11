@@ -43,7 +43,6 @@ export class TopDivComponent implements OnInit {
   }
 
   toApplyFilterTextEvent(event: string) {
-    console.log('toApplyFilterTextEvent toApplyFilterTextEvent', this.timeLine)
     this.toApplyFilterText = event
 
     let val = event === '' ? [] : [event]
@@ -56,7 +55,6 @@ export class TopDivComponent implements OnInit {
   }
 
   toApplyFilterColorEvent(event: any) {
-    console.log('=====================',this.timeLine)
     this.toApplyFilterColor = event
 
       let activeFilter = {
