@@ -26,7 +26,7 @@
                 },
                 "fonts": true
               },
-              "extractLicenses": false,
+              "extractLicenses": true,
               "sourceMap": false,
               "namedChunks": true,
               "fileReplacements": [
@@ -52,7 +52,7 @@
               "outputHashing": "all",
               "aot": true,
               "optimization": false,
-              "extractLicenses": false,
+              "extractLicenses": true,
               "sourceMap": false,
               "namedChunks": true,
               "fileReplacements": [
@@ -85,7 +85,7 @@
                 },
                 "fonts": true
               },
-              "extractLicenses": false,
+              "extractLicenses": true,
               "sourceMap": false,
               "namedChunks": true,
               "fileReplacements": [

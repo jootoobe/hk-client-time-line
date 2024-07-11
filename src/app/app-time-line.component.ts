@@ -1,4 +1,4 @@
-import { Component, effect, isDevMode, OnInit, Renderer2 } from '@angular/core';
+import { Component, effect, Inject, isDevMode, OnInit, Renderer2 } from '@angular/core';
 
 import { environment } from '../environments/environment';
 import { TIMELINEKeysModel } from './models/cryptos/time-line-keys.model';
@@ -7,6 +7,7 @@ import { StateService } from './shared/services/state.service';
 import { LocalStorageService } from './shared/services/storage/local-storage.service';
 import { RedisAuthModel } from './spider-share/iam/models/auth/redis-auth.model';
 import { CookieService } from './shared/services/cookies/cookie.service';
+import { WINDOW } from './shared/services/window.service';
 
 @Component({
   selector: 'app-time-line', // Os seletores dos projetos devem esta identicos a seus microserviços
@@ -27,7 +28,8 @@ export class AppTimeLineComponent implements OnInit {
     private stateService: StateService,
     private localStorageService: LocalStorageService,
     private timeLineKeysService: TimeLineKeysService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    @Inject(WINDOW) private window: Window,
   ) {
     this.getIam2()
 
@@ -51,6 +53,12 @@ export class AppTimeLineComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    if (environment.production && this.window) {
+      window.console.log = function() {};
+      // window.console.warn = function() {};
+      // window.console.error = function() {};
+    }
+    
 
     this.letter = localStorage.getItem('al') !== null ? localStorage.getItem('al') : undefined
 
