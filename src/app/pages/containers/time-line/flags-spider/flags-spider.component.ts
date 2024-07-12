@@ -192,6 +192,16 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: TimeLineModel[]) => {
 
+        // Apenas para atualizações de 'time_line', 'kanban' e 'spider_tube', todos os dados são enviados.
+        // 'kanban' e 'spider_tube' têm um limite de tamanho de 500kb.
+        // // Cada flag dá 2kb com descrição mínima
+        // const objectSize = JSON.stringify(res).length * (2 / 1024); // Convert bytes to kilobytes
+        // const sizeFile = Math.round(objectSize)
+
+        // // isso dá um total aproximado de 1000 bandeiras --- ver depois o que fazer 
+        // const trueOrFalse = sizeFile > 2000 ? true : false
+        // console.log('sizeFile  LimitGuard 👈', sizeFile+'kb', trueOrFalse)
+
 
           // if (!val) {
           res.forEach((e: TimeLineModel, i: number) => {
