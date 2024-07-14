@@ -18,14 +18,14 @@
         "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL FilterFlagComponent =============================================",
         "input": {
           "title": {
-            "mat-label": "Filtro título da bandeira",
-            "placeholder": "Busque a bandeira pelo título",
+            "mat-label": "Filtrar título",
+            "placeholder": "Encontre a bandeira pelo título",
             "mat-error-required": "",
             "mat-error-maxlength": ""
           },
           "color": {
-            "mat-label": "Filtro cores",
-            "placeholder": "Cores das bandeiras do ano",
+            "mat-label": "Filtrar cores",
+            "placeholder": "Encontre a bandeira através das cores",
             "mat-error-required": "",
             "mat-error-maxlength": ""
           }

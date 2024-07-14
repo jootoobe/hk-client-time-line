@@ -15,17 +15,17 @@
         }
       },
       "FILTER-FLAG_MATERIAL": {
-        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL FilterFlagComponent=============================================",
+        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL FilterFlagComponent =============================================",
         "input": {
           "title": {
-            "mat-label": "Filtro título da bandera",
-            "placeholder": "Buscar la bandera por título",
+            "mat-label": "Filtrar título",
+            "placeholder": "Encuentra la bandera por título",
             "mat-error-required": "",
             "mat-error-maxlength": ""
           },
           "color": {
-            "mat-label": "Filtro color",
-            "placeholder": "Colores banderas año",
+            "mat-label": "Filtrar colores",
+            "placeholder": "Encuentra la bandera por colores",
             "mat-error-required": "",
             "mat-error-maxlength": ""
           }

@@ -15,17 +15,17 @@
         }
       },
       "FILTER-FLAG_MATERIAL": {
-        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL FilterFlagComponent=============================================",
+        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL FilterFlagComponent =============================================",
         "input": {
           "title": {
-            "mat-label": "Flag title filter",
-            "placeholder": "Search the flag by title",
+            "mat-label": "Filter title",
+            "placeholder": "Find the flag by title",
             "mat-error-required": "",
             "mat-error-maxlength": ""
           },
           "color": {
-            "mat-label": "Color filter",
-            "placeholder": "Colors flags year",
+            "mat-label": "Filter colors",
+            "placeholder": "Find the flag by colors",
             "mat-error-required": "",
             "mat-error-maxlength": ""
           }
@@ -33,7 +33,7 @@
         "mat-stroked-button": {
           "button": {
             "apply-filter": "Apply filter",
-            "clean-filter": "Clean filter"
+            "clean-filter": "Clear filter"
           }
         }
       }
