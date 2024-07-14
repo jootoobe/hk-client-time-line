@@ -1,52 +1,46 @@
 {
   "TIME-LINE": {
     "TOLLTIP-HTML-MSN": {
-
       "CreateFlagComponent": {
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
-        "help1-a": "A bandeira serve para identificar um grupo de redes sociais que possuem links ou vídeos guardados, facilitando na hora da busca.",
-        "help1-b": "A criação da bandeira permite um fácil acesso aos documentos salvos dentro do kanban, futuramente.",
+        "help1-a": "A bandeira serve para identificar um conjunto de redes sociais que possuem links ou vídeos salvos, tornando a busca mais fácil.",
+        "help1-b": "A criação da bandeira proporciona fácil acesso aos documentos salvos no kanban no futuro.",
        
-        "help2-a": "A data e o horário, representam o posicionamento da flag na timeline.",
-        "help2-b": "É possível ter até 02 flags com a mesma data e hora.",
+        "help2-a": "A data e a hora indicam a posição da bandeira na linha do tempo.",
+        "help2-b": "É possível ter até 02 bandeiras com a mesma data e horário.",
         
-        "help3-a": "Altere as cores dos textos, seguindo as opções abaixo.",
+        "help3-a": "Altere as cores dos textos conforme as opções abaixo.",
         "help3-b": "Opção cor 01 - preto",
-        "help3-c": "Opção cor 01 - branco",
-        "help3-d": "Opção cor 01 - vermelho",
-        "help3-e": "Opção cor 01 - azul",
-        "help3-f": "Opção cor 01 - amarelo",
+        "help3-c": "Opção cor 02 - branco",
+        "help3-d": "Opção cor 03 - vermelho",
+        "help3-e": "Opção cor 04 - azul",
+        "help3-f": "Opção cor 05 - amarelo",
 
-        "help4-a": "Altere as cores de contraste das rede, seguindo as opções abaixo.",
+        "help4-a": "Altere as cores de contraste conforme as opções abaixo.",
         "help4-b": "Opção cor 01 - Fundo: <strong>preto</strong> com texto <strong>branco</strong>",
         "help4-c": "Opção cor 02 - Fundo: <strong>branco</strong> com texto <strong>preto</strong>",
         "help4-d": "Opção cor 03 - Fundo: <strong>preto</strong> com texto <strong>vermelho</strong>",
         "help4-e": "Opção cor 04 - Fundo: <strong>vermelho</strong> com texto <strong>branco</strong>",
         "help4-f": "Opção cor 05 - Fundo: <strong>preto</strong> com texto <strong>amarelo</strong>",
 
-
-        "help5-a": "Altere a cor de fundo da data, seguindo as opções abaixo.",
-        "help5-b": "Opção cor 01 - mesma cor da bandeira como transparência",
+        "help5-a": "Altere a cor de fundo da data conforme as opções abaixo.",
+        "help5-b": "Opção cor 01 - mesma cor da bandeira com transparência",
         "help5-c": "Opção cor 02 - preto - rgb(0, 0, 0)",
         "help5-d": "Opção cor 03 - branco - rgb(255, 255, 255)",
         "help5-e": "Opção cor 04 - vermelho - rgb(255, 0, 0)",
         "help5-f": "Opção cor 05 - amarelo - rgb(255, 255, 0)",
-        "help5-g": "OBS: Se a cor da bandeira for igual as opções de 2 à 5, automaticamente a cor do fundo da data assumirá a posição 01 que possui transparência.",
+        "help5-g": "OBS: Se a cor da bandeira for igual a qualquer uma das opções de 2 a 5, a cor de fundo da data será automaticamente ajustada para a opção 01, que possui transparência.",
 
-
-        "help6-a": "Altere a transparência da bandeira, seguindo as opções abaixo.",
+        "help6-a": "Altere a transparência da bandeira conforme as opções abaixo.",
         "help6-b": "Opção 01 - 90% de transparência",
-        "help6-c": "Opção 01 - 80% de transparência",
-        "help6-d": "Opção 01 - 70% de transparência",
-        "help6-e": "Opção 01 - 60% de transparência",
-        "help6-f": "Opção 01 - 50% de transparência",
-
-
+        "help6-c": "Opção 02 - 80% de transparência",
+        "help6-d": "Opção 03 - 70% de transparência",
+        "help6-e": "Opção 04 - 60% de transparência",
+        "help6-f": "Opção 05 - 50% de transparência",
 
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help1-img1-a.png",
         "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/pt/help2-img2-a.png"
       }
-
     }
   }
 }

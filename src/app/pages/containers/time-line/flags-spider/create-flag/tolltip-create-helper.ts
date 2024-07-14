@@ -61,7 +61,7 @@ export class TolltipCreateHelper {
     <p>${msn3_a}</p>
       <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
       <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}o</li>
+      <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
       <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
       <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
     </div>
