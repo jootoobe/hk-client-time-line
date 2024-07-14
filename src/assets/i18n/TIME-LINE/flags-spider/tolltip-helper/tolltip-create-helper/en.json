@@ -4,7 +4,7 @@
       "CreateFlagComponent": {
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
         "help1-a": "The flag is used to identify a set of social networks that have saved links or videos, making the search easier.",
-        "help1-b": "Creating the flag provides easy access to documents saved in the kanban in the future.",
+        "help1-b": "Creating the flag provides easy access to documents saved in the kanban.",
        
         "help2-a": "The date and time indicate the position of the flag on the timeline.",
         "help2-b": "It is possible to have up to 02 flags with the same date and time.",
