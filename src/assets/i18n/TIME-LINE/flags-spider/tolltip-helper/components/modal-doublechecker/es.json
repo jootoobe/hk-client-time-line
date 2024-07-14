@@ -3,15 +3,14 @@
     "TOLLTIP-HTML-MSN": {
       "ModalDoubleCheckerComponent": {
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
-        "help1-a": "Si el botón Eliminar está deshabilitado, significa que el indicador tiene al menos una columna kanban activa.",
-        "help1-b": "Para eliminar 'Redes' de la bandera, debe ir a 'Abrir Kanban' y eliminar las redes sociales o las columnas kanban.",
-        "help1-c": "Después de hacer esto, se habilitará el botón de eliminar.",
+        "help1-a": "Si el botón de eliminar está deshabilitado, significa que la bandera tiene al menos una columna del kanban activa.",
+        "help1-b": "Para eliminar las 'Redes' de la bandera, es necesario entrar en 'Abrir Kanban' y eliminar las redes sociales o columnas del kanban.",
+        "help1-c": "Después de hacer esto, el botón de eliminar estará habilitado.",
         "help2-b": "",
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/components/modal-doublechecker/es/flag-delete.png",
         "help2-img2-a": "",
         "help3-img3-a": ""
       }
-
     }
   }
 }

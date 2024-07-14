@@ -4,8 +4,8 @@
       "MODAL-DOUBLE-CHECKER": {
         "START_COMMENTARY--MODAL-DOUBLE-CHECKER": "============== HTML START MODAL-DOUBLE-CHECKER COMPONENT FOLDER =============================",
         "modal-dialog": {
-          "item-01": "There is kanban to be removed",
-          "item-02": "There is no kanban to be removed",
+          "item-01": "There is a kanban to be removed.",
+          "item-02": "There is no kanban to be removed.",
           "title": {
             "t1": "Do you want to delete the flag?"
           },
