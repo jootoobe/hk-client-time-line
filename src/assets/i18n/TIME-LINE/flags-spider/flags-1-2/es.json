@@ -4,10 +4,10 @@
       "FLAGS-1-2": {
         "START_COMMENTARY--FLAGS-1-2": "============== HTML START FLAG1 && FLAG2 COMPONENT FOLDER =============================",
         "flag": {
-          "item-01": "No se ha creado ninguna red.",
+          "item-01": "No existe red creada.",
           "item-02": "Redes",
-          "item-03": "Para crear su primera red, vaya a ↔️ 'Abrir kanban' a continuación.",
-          "item-04": "Abierto kanban",
+          "item-03": "Para crear su primera red, haga clic en 'Abrir Kanban' a continuación.",
+          "item-04": "Abrir Kanban",
           "tag-title": "",
           "title-h1": "",
           "timeline-end": "Fin"
@@ -26,6 +26,13 @@
             "mat-error-minlength": "",
             "mat-error": ""
           }
+        },
+        "menu": {
+          "title-downward": "",
+          "title-upward": "",
+          "title-edit": "Editar",
+          "title-info": "",
+          "title-delete": "Eliminar"
         },
         "mat-stroked-button": {
           "button": {

@@ -4,17 +4,17 @@
       "FLAGS-1-2": {
         "START_COMMENTARY--FLAGS-1-2": "============== HTML START FLAG1 && FLAG2 COMPONENT FOLDER =============================",
         "flag": {
-          "item-01": "There is no nets created.",
+          "item-01": "No net created.",
           "item-02": "Nets",
-          "item-03": "To create your first nets, go to ↔️ 'Open kanban' below",
-          "item-04": "Open kanban",
+          "item-03": "To create your first net, click on 'Open Kanban' below.",
+          "item-04": "Open Kanban",
           "tag-title": "",
           "title-h1": "",
           "timeline-end": "End"
         }
       },
       "FLAGS-1-2_MATERIAL": {
-        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL Flag1Component Flag2Component=============================================",
+        "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL Flag1Component Flag2Component =============================================",
         "input": {
           "chip": {
             "mat-label": "",
@@ -26,6 +26,13 @@
             "mat-error-minlength": "",
             "mat-error": ""
           }
+        },
+        "menu": {
+          "title-downward": "",
+          "title-upward": "",
+          "title-edit": "Edit",
+          "title-info": "",
+          "title-delete": "Delete"
         },
         "mat-stroked-button": {
           "button": {
