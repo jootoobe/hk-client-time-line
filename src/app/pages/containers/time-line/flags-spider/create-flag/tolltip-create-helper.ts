@@ -57,7 +57,7 @@ export class TolltipCreateHelper {
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
     return `
 
-    <div  style="height: auto; width:27rem; margin: .5rem ">
+    <div  style="height: auto; width:30rem; margin: .5rem ">
     <p>${msn3_a}</p>
       <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
       <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
@@ -80,7 +80,7 @@ export class TolltipCreateHelper {
 
     return `
 
-    <div  style="height: auto; width:27rem; margin: .5rem ">
+    <div  style="height: auto; width:30rem; margin: .5rem ">
     <p>${msn4_a}</p>
       <li style="margin: .5rem 0 1rem .5rem;">${msn4_b}</li>
       <li style="margin: .5rem 0 1rem .5rem;">${msn4_c}</li>
