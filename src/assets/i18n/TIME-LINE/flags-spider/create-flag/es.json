@@ -4,32 +4,31 @@
       "CREATE-FLAG": {
         "START_COMMENTARY--CREATE-FLAG": "============== HTML START CREATE-FLAG COMPONENT FOLDER =============================",
         "modal": {
-          "title-h1": "Vamos hablar sobre tu bandera",
-          "grid1": ""
+          "title-h1": "Hablemos sobre su bandera"
         }
       },
       "CREATE-FLAG_MATERIAL": {
         "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL CreateFlagComponent=============================================",
         "input": {
           "title": {
-            "mat-label": "Nombre de la bandera",
-            "placeholder": "¿Cómo vas llamar a tu bandera?",
+            "mat-label": "Nombre",
+            "placeholder": "¿Cómo va a llamar a su bandera?",
             "mat-error-required": "Título es obligatorio",
             "mat-error-maxlength": "Máximo 50 caracteres",
-            "mat-error-minlength": "Mínimo 5 caracteres"
+            "mat-error-minlength": "Mínimo 3 caracteres"
           },
           "date": {
-            "mat-label": "Fecha bandera",
-            "placeholder": "¿Cuál es o día de tu bandera?",
-            "mat-error-required": "Fecha es obligatorio",
+            "mat-label": "Fecha",
+            "placeholder": "Día de tu bandera?",
+            "mat-error-required": "Fecha es obligatoria",
             "mat-error-maxlength": "",
             "mat-error-minlength": "",
-            "mat-error": "Fecha invalida"
+            "mat-error": "Fecha inválida"
           },
           "description": {
             "mat-label": "Descripción",
-            "placeholder": "Descripción de la bandera",
-            "mat-error-required": "Descripción es obligatorio",
+            "placeholder": "¿Qué representa tu bandera?",
+            "mat-error-required": "Descripción es obligatoria",
             "mat-error-maxlength": "Máximo 500 caracteres",
             "mat-error-minlength": "Mínimo 3 caracteres",
             "mat-error": ""
@@ -38,16 +37,16 @@
             "mat-label": "Seleccione las redes",
             "placeholder": "Redes sociales",
             "mat-label2": "Otras redes para agregar",
-            "placeholder2": "Agregar más redes",
-            "mat-error-required": "Red social es obligatorio",
+            "placeholder2": "Agregue más redes",
+            "mat-error-required": "Red social es obligatoria",
             "mat-error-maxlength": "",
             "mat-error-minlength": "",
             "mat-error": ""
           },
           "tags": {
-            "mat-label": "Tags favoritas",
-            "placeholder": "Nueva tag...",
-            "mat-error-required": "Tag es obligatorio",
+            "mat-label": "Etiquetas favoritas",
+            "placeholder": "Nueva etiqueta...",
+            "mat-error-required": "La etiqueta es obligatoria",
             "mat-error-maxlength": "",
             "mat-error-minlength": "",
             "mat-error": ""
@@ -65,13 +64,13 @@
           "button": {
             "create": "Crear bandera",
             "edit": "Editar bandera",
-            "back": "Volver"
+            "back": "Regresar"
           }
         },
         "radio-button": {
-          "mat-label-1": "Color do texto",
+          "mat-label-1": "Color del texto",
           "mat-label-2": "Color contraste redes",
-          "mat-label-3": "Color fecha fondo",
+          "mat-label-3": "Color fondo fecha",
           "mat-label-4": "Color transparencia bandera"
         }
       }

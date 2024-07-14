@@ -7,29 +7,28 @@
           "title-h1": "Vamos falar sobre a sua bandeira"
         }
       },
-
       "CREATE-FLAG_MATERIAL": {
         "START_COMMENTARY--MATERIAL": "============== HTML START MATERIAL CreateFlagComponent=============================================",
         "input": {
           "title": {
-            "mat-label": "Nome da bandeira",
+            "mat-label": "Nome",
             "placeholder": "Como vai chamar a sua bandeira?",
-            "mat-error-required": "Titulo é obrigatório",
+            "mat-error-required": "Título é obrigatório",
             "mat-error-maxlength": "Máximo 50 caracteres",
             "mat-error-minlength": "Mínimo 3 caracteres"
           },
           "date": {
-            "mat-label": "Data bandeira",
-            "placeholder": "Qual o dia da sua bandeira?",
-            "mat-error-required": "Data é obrigatório",
+            "mat-label": "Data",
+            "placeholder": "Dia da sua bandeira?",
+            "mat-error-required": "Data é obrigatória",
             "mat-error-maxlength": "",
             "mat-error-minlength": "",
             "mat-error": "Data inválida"
           },
           "description": {
             "mat-label": "Descrição",
-            "placeholder": "Descrição da bandeira",
-            "mat-error-required": "Descrição é obrigatório",
+            "placeholder": "O que a sua bandeira representa?",
+            "mat-error-required": "Descrição é obrigatória",
             "mat-error-maxlength": "Máximo 500 caracteres",
             "mat-error-minlength": "Mínimo 3 caracteres",
             "mat-error": ""
@@ -39,7 +38,7 @@
             "placeholder": "Redes sociais",
             "mat-label2": "Outras redes para adicionar",
             "placeholder2": "Adicione mais redes",
-            "mat-error-required": "Rede social é obrigatório",
+            "mat-error-required": "Rede social é obrigatória",
             "mat-error-maxlength": "",
             "mat-error-minlength": "",
             "mat-error": ""
@@ -47,7 +46,7 @@
           "tags": {
             "mat-label": "Tags favoritas",
             "placeholder": "Nova tag...",
-            "mat-error-required": "Tag é obrigatório",
+            "mat-error-required": "Tag é obrigatória",
             "mat-error-maxlength": "",
             "mat-error-minlength": "",
             "mat-error": ""
@@ -68,14 +67,12 @@
             "back": "Voltar"
           }
         },
-
         "radio-button": {
           "mat-label-1": "Cor do texto",
           "mat-label-2": "Cor contraste redes",
-          "mat-label-3": "Cor data fundo",
+          "mat-label-3": "Cor fundo data",
           "mat-label-4": "Cor transparência bandeira"
         }
-
       }
     }
   }
