@@ -11,7 +11,7 @@
             "code": "",
             "message": "",
             "message-0": "Es obligatorio",
-            "message-1": "Tiempo",
+            "message-1": "Horario",
             "status": ""
           },
           "msn-1": {
@@ -33,29 +33,8 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Posteriormente podrás agregar otros, en el entorno kanban",
-            "message-1": "Agregue 4 redes a la vez",
-            "status": ""
-          },
-          "msn-1": {
-            "code": "",
-            "message": "",
-            "message-0": "La opción ya existe",
-            "message-1": "Red social",
-            "status": ""
-          },
-          "msn-2": {
-            "code": "",
-            "message": "",
-            "message-0": "Al cambiar la hora en el calendario, la bandera se moverá en la línea de tiempo",
-            "message-1": "02 banderas por vez!",
-            "status": ""
-          },
-          "msn-3": {
-            "code": "",
-            "message": "",
-            "message-0": "Etiquetas que mejor representan tu bandera",
-            "message-1": "Agrega hasta 4 etiquetas!",
+            "message-0": "",
+            "message-1": "",
             "status": ""
           }
         },
@@ -63,21 +42,21 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Hasta 2 banderas por fecha y hora",
-            "message-1": "Máximo 02 banderas",
+            "message-0": "Hasta 02 banderas por fecha y hora",
+            "message-1": "Máximo de 02 banderas",
             "status": ""
           },
           "msn-1": {
             "code": "",
             "message": "",
             "message-0": "Deben tener el mismo color",
-            "message-1": "Bandera 01 y 02 misma fecha",
+            "message-1": "Bandera 01 y 02 en la misma fecha",
             "status": ""
           }
         }
       },
       "FilterFlagComponent": {
-        "START_TOAST_COMMENTARY--FILTER": "============== TS FilterFlagComponent >> START COMPONENT FOLDER =============================",
+        "START_TOAST_COMMENTARY--FILTER": "============== TS CreateFlagComponent >> START  COMPONENT FOLDER =============================",
         "success": {
           "msn-0": {}
         },
@@ -88,21 +67,21 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Ya ha sido agregado",
-            "message-1": "Color de la bandera",
+            "message-0": "Ya ha sido añadida",
+            "message-1": "Color de la Bandera",
             "status": ""
           },
           "msn-1": {
             "code": "",
             "message": "",
-            "message-0": "El filtro se vuelve más efectivo",
-            "message-1": "Añade 5 colores a la vez",
+            "message-0": "El filtro es más eficaz",
+            "message-1": "Añade 05 colores a la vez",
             "status": ""
           },
           "msn-2": {
             "code": "",
             "message": "",
-            "message-0": "Aplicar un filtro a la vez",
+            "message-0": "Aplica un filtro a la vez",
             "message-1": "Filtro individual",
             "status": ""
           }
@@ -112,7 +91,7 @@
         }
       },
       "FlagsSpiderComponent": {
-        "START_TOAST_COMMENTARY--FILTER": "============== TS FilterFlagComponent >> START COMPONENT FOLDER =============================",
+        "START_TOAST_COMMENTARY--FLAGS": "============== TS FlagsSpiderComponent >> START  COMPONENT FOLDER =============================",
         "success": {
           "msn-0": {}
         },
@@ -120,20 +99,13 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Intenta actualizar la página.",
-            "message-1": "Error cargar time-line",
+            "message-0": "Intenta actualizar la página",
+            "message-1": "Error al cargar la time line",
             "status": ""
           }
         },
         "info": {
           "msn-0": {
-            "code": "",
-            "message": "",
-            "message-0": "",
-            "message-1": "",
-            "status": ""
-          },
-          "msn-1": {
             "code": "",
             "message": "",
             "message-0": "",
@@ -147,7 +119,7 @@
         "alert": {
           "msn-0": {
             "code": "",
-            "message": "Para una mejor experiencia visual, utiliza otro navegador como Opera, Chrome, Edge..... 😄",
+            "message": "Para tener una mejor experiencia visual, utiliza otros navegadores como Opera, Chrome, Edge ..... 😄",
             "message-0": "",
             "message-1": "",
             "status": ""
@@ -155,7 +127,7 @@
         }
       },
       "FlagComponent": {
-        "START_TOAST_COMMENTARY--FILTER": "============== TS FlagComponent >> START COMPONENT FOLDER =============================",
+        "START_TOAST_COMMENTARY--FLAG": "==============TS FlagComponent >> START  COMPONENT FOLDER =============================",
         "success": {
           "msn-0": {}
         },
@@ -172,7 +144,7 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Eliminar la corriente",
+            "message-0": "Elimina la actual",
             "message-1": "Filtro ya aplicado",
             "status": ""
           }

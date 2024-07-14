@@ -2,7 +2,7 @@
   "TOAST": {
     "TIME-LINE": {
       "CreateFlagComponent": {
-        "START_TOAST_COMMENTARY--CREATE-FLAG": "============== TS CreateFlagComponent >> START  COMPONENT FOLDER =============================",
+        "START_TOAST_COMMENTARY--CREATE-FLAG": "============== TS CreateFlagComponent >> START COMPONENT FOLDER =============================",
         "success": {
           "msn-0": {}
         },
@@ -17,15 +17,15 @@
           "msn-1": {
             "code": "",
             "message": "",
-            "message-0": "Error creating flag",
-             "message-1": "Error Time Line",
+            "message-0": "Error creating the flag",
+            "message-1": "Time Line Error",
             "status": ""
           },
           "msn-2": {
             "code": "",
             "message": "",
-            "message-0": "Error editing flag",
-             "message-1": "Error Time Line",
+            "message-0": "Error editing the flag",
+            "message-1": "Time Line Error",
             "status": ""
           }
         },
@@ -33,29 +33,8 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Later you can add others, in the kanban environment",
-            "message-1": "Add 4 networks at a time",
-            "status": ""
-          },
-          "msn-1": {
-            "code": "",
-            "message": "",
-            "message-0": "The option already exists",
-            "message-1": "Social media",
-            "status": ""
-          },
-          "msn-2": {
-            "code": "",
-            "message": "",
-            "message-0": "When changing the time on the calendar, the flag will move on the timeline",
-            "message-1": "02 flags per time!",
-            "status": ""
-          },
-          "msn-3": {
-            "code": "",
-            "message": "",
-            "message-0": "Tags that best represent your flag",
-            "message-1": "Add up to 4 tags!",
+            "message-0": "",
+            "message-1": "",
             "status": ""
           }
         },
@@ -63,21 +42,21 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Up to 2 flags per date and time",
-            "message-1": "Maximum 02 flags",
+            "message-0": "Up to 02 flags per date and time",
+            "message-1": "Maximum of 02 flags",
             "status": ""
           },
           "msn-1": {
             "code": "",
             "message": "",
-            "message-0": "They must have the same color",
-            "message-1": "Flag 01 and 02 same date",
+            "message-0": "They must be the same color",
+            "message-1": "Flag 01 and 02 on the same date",
             "status": ""
           }
         }
       },
       "FilterFlagComponent": {
-        "START_TOAST_COMMENTARY--FILTER": "============== TS FilterFlagComponent >> START COMPONENT FOLDER =============================",
+        "START_TOAST_COMMENTARY--FILTER": "============== TS CreateFlagComponent >> START COMPONENT FOLDER =============================",
         "success": {
           "msn-0": {}
         },
@@ -96,7 +75,7 @@
             "code": "",
             "message": "",
             "message-0": "The filter becomes more effective",
-            "message-1": "Add 5 colors at a time",
+            "message-1": "Add 05 colors at a time",
             "status": ""
           },
           "msn-2": {
@@ -112,7 +91,7 @@
         }
       },
       "FlagsSpiderComponent": {
-        "START_TOAST_COMMENTARY--FILTER": "============== TS FilterFlagComponent >> START COMPONENT FOLDER =============================",
+        "START_TOAST_COMMENTARY--FLAGS": "============== TS FlagsSpiderComponent >> START COMPONENT FOLDER =============================",
         "success": {
           "msn-0": {}
         },
@@ -121,19 +100,12 @@
             "code": "",
             "message": "",
             "message-0": "Try refreshing the page",
-            "message-1": "Time-line loading error",
+            "message-1": "Error loading time line",
             "status": ""
           }
         },
         "info": {
           "msn-0": {
-            "code": "",
-            "message": "",
-            "message-0": "",
-            "message-1": "",
-            "status": ""
-          },
-          "msn-1": {
             "code": "",
             "message": "",
             "message-0": "",
@@ -147,7 +119,7 @@
         "alert": {
           "msn-0": {
             "code": "",
-            "message": "For a better visual experience, use another browser such as Opera, Chrome, Edge..... 😄",
+            "message": "For a better visual experience, use other browsers like Opera, Chrome, Edge ..... 😄",
             "message-0": "",
             "message-1": "",
             "status": ""
@@ -155,7 +127,7 @@
         }
       },
       "FlagComponent": {
-        "START_TOAST_COMMENTARY--FILTER": "============== TS FlagComponent >> START COMPONENT FOLDER =============================",
+        "START_TOAST_COMMENTARY--FLAG": "==============TS FlagComponent >> START COMPONENT FOLDER =============================",
         "success": {
           "msn-0": {}
         },
@@ -163,8 +135,8 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Error removing flag",
-            "message-1": "Error Time Line",
+            "message-0": "Error removing the flag",
+            "message-1": "Time Line Error",
             "status": ""
           }
         },
@@ -172,7 +144,7 @@
           "msn-0": {
             "code": "",
             "message": "",
-            "message-0": "Remove the current",
+            "message-0": "Remove the current one",
             "message-1": "Filter already applied",
             "status": ""
           }
