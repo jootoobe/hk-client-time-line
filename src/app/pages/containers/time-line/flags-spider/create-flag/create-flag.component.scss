@@ -43,7 +43,7 @@
   &_radio,
   &_btn {
     width: 100%;
-    margin: 1rem 0 1rem -0.5rem;
+    margin: 1rem 0 1rem 0rem;
     text-align: center;
     line-height: auto;
     font-size: 1.6rem;
@@ -51,7 +51,7 @@
 
   mat-form-field {
     // width: 80%;
-    width: 25rem;
+    width: 27rem;
   }
 
   &_title-h1 {
@@ -84,7 +84,7 @@
       font-size: 1.4rem;
       // font-weight: var(--fonts-font-weight-500);
       text-align: start;
-      margin-left: 3.5rem;
+      margin-left: 2.5rem;
     }
 
     &--colors {
@@ -187,4 +187,9 @@ input[type=color]::-webkit-color-swatch {
   width: 1.9rem; // distandia do radio para o texto
   // padding: 0 !important; // ao redor do aro -- separa o texto
   --mdc-radio-state-layer-size: 2rem; // hover em volta do ponto - radio checked
+}
+
+
+.radio-group {
+  margin-left: -3rem;
 }
