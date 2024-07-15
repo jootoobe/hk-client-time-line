@@ -64,7 +64,7 @@
           "button": {
             "create": "Crear bandera",
             "edit": "Editar bandera",
-            "back": "Regresar"
+            "back": "Volver"
           }
         },
         "radio-button": {
