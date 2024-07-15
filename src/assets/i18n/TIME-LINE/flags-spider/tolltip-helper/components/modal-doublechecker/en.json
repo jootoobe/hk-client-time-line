@@ -4,7 +4,7 @@
       "ModalDoubleCheckerComponent": {
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
         "help1-a": "If the delete button is disabled, it means that the flag has at least one active kanban column.",
-        "help1-b": "To remove the 'Nets' from the flag, you need to enter 'Open Kanban' and delete the social medias or kanban columns.",
+        "help1-b": "To remove the 'nets' from the flag, you need to go to 'Open Kanban' in Nest and delete the social media or the kanban columns.",
         "help1-c": "After doing this, the delete button will be enabled.",
         "help2-b": "",
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/components/modal-doublechecker/en/flag-delete.png",
