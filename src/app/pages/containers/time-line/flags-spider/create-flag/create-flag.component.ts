@@ -912,26 +912,16 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //==============================================================================
   //⬇️ Convert Color
   convertColor(val?: string) {
-    // if (val) {
-      //   let colorFormats = this.convertColorService.convertColor(val)
-      //   flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
-      //   flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
-      //   flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
-      //   flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-      //   this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
-
-      // } else if (!val) {
-        //   this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
-
-        // }
-        // this.createTimeLineForm.value.flags[0]['color_hex']
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
     let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
-    flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
-    flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
-    // flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
-    flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-    this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+    if (val) {
+      //   let colorFormats = this.convertColorService.convertColor(val)
+      flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
+      flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
+      flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
+      flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
+      // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+    }
 
   }
 
