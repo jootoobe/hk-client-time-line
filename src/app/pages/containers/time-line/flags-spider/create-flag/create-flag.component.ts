@@ -929,7 +929,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
     flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
     flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
-    flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
+    // flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
     flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
     this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
 
