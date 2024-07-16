@@ -1,7 +1,7 @@
 
 <tolltip-create-html></tolltip-create-html>
 
-<pre> {{createTimeLineForm.value | json}}</pre>
+<pre> {{editFlag | json}}</pre>
 
 <form [formGroup]="createTimeLineForm"
       (ngSubmit)="createTimeLineForm.valid && flagCreateEditInput === 'create' && createFlag()"
@@ -370,6 +370,7 @@
       </div>
 
       <!-- color-picker -->
+      @if(editFlag.edit === 'edit-flag-1') {
       <div class="flag-modal_color-picker" [formGroupName]="0">
         <mat-form-field class="input-color TextIput_500 MatLable_600" floatPlaceholder="never" floatLabel="always" formGroupName="flag_design">
           <!-- Which color represents the flag? -->
@@ -400,6 +401,9 @@
           </mat-error>
         </mat-form-field>
       </div>
+      } @else if(editFlag.edit === 'edit-flag-2') { 
+        <div style="height: 10rem;"></div>
+      }
 
 
 
