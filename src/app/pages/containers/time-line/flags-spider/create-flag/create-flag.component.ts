@@ -906,7 +906,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //================================= 🅰️🅰️ CONVERT COLORS 🅰️🅰️ ==============================
   //==============================================================================
   //⬇️ Convert Color
-  convertColor(val?: string) {
+  convertColor(val?: string, val2?:string) {
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
     if (val) {
       let colorFormats = this.convertColorService.convertColor(val)
@@ -917,6 +917,13 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
       // return
     } 
+    // reset radio
+    // if(val2 === 'input') {
+    //   this.radioRedeTextColor = '0, 0, 0' // text colors
+    //   this.radioRedeNets = '1' // {background: '74,74,74', text: '255,255,255'}
+    //   this.radioButtonDate = '1' // cor fundo data com transparencia de 0.3
+    //   this.radioRedeTransparency = '0.1' // transparência bandeira
+    // }
     // else if (!val) {
     //   // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
 
