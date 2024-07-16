@@ -729,12 +729,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
       this.timeLine.iam_id = '0'
       this.timeLine.time_line.flags[i].year = e.date_obj.year
-
-      // e.flag_design.color_hex = e.flag_design.color_hex
-      // e.flag_design.color_rgb = e.flag_design.color_rgb
-      // e.flag_design.color_hsl = e.flag_design.color_hsl
-      // // e.flag_design.color_date = e.flag_design.color_date
-
       if (e.flags2?.length === 1) {
         e.flag_style = 1
         e.flag_margin_right = '3'
@@ -744,15 +738,12 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         e.flags2[0].flag_design.color_hex = e.flag_design.color_hex
         e.flags2[0].flag_design.color_rgb = e.flag_design.color_rgb
         e.flags2[0].flag_design.color_hsl = e.flag_design.color_hsl
-        // e.flags2[0].flag_design.color_date = e.flag_design.color_date
-      }
 
+      }
       if (e.flags2?.length === 0) {
         e.flag_style = 1
         e.flag_margin_right = '0'
       }
-
-
     })
 
     this.timeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(this.timeLine)
@@ -807,7 +798,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 flag_id: this.editFlag.flag_id
               };
 
-              if (val.newId !== val.oldId) {
+              if(val.newId !== val.oldId) {
                 this.updateKanbanObjectId(val) // atualiza ObjectId
                 this.updateSpiderTubeObjectId(val)  // atualiza ObjectId
               }
@@ -913,15 +904,25 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //⬇️ Convert Color
   convertColor(val?: string) {
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-    let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
     if (val) {
-      //   let colorFormats = this.convertColorService.convertColor(val)
+      let colorFormats = this.convertColorService.convertColor(val)
       flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
       flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
       flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
       flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-      // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+      this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+      return
+    } else if (!val) {
+      this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+
     }
+    // this.createTimeLineForm.value.flags[0]['color_hex']
+    // let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
+    // flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
+    // flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
+    // flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
+    // flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
+    // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
 
   }
 
@@ -945,7 +946,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     this.timeLineService.updateKanbanObjectId(val)
       .subscribe({
-        next: () => { },
+        next: () => {  },
         error: (err) => {
 
         },
@@ -958,7 +959,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     this.timeLineService.updateSpiderTubeObjectId(val)
       .subscribe({
-        next: () => { },
+        next: () => {  },
         error: (err) => {
 
         },
