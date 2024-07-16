@@ -913,7 +913,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
       return
     } else if (!val) {
-      this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+      // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
 
     }
     // this.createTimeLineForm.value.flags[0]['color_hex']
