@@ -916,16 +916,22 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //⬇️ Convert Color
   convertColor(val?: string, val2?: string) {
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+
     if (val) {
       let colorFormats = this.convertColorService.convertColor(val)
       flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
       flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
       flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
       flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-      this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
-      // return
+      
+      // Toda vez que a data for alterada ou a cor da bandeira 02, o fundo da data será resetado para ficar igual ao da bandeira 01.
+      if(this.editFlagFormInput && this.editFlagFormInput.flags2 && this.editFlagFormInput.flags2?.length > 0) {
+        this.editFlagFormInput.flags2[0].flag_design.color_date = colorFormats.rgb
+      }
+      // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
+      
     }
-    // reset radio
+    //Toda vez que mexer na cor, a bandeira deve ser resetada.
     // if(val2 === 'input') {
     //   this.radioRedeTextColor = '0, 0, 0' // text colors
     //   this.radioRedeNets = '1' // {background: '74,74,74', text: '255,255,255'}
