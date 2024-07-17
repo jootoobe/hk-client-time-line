@@ -71,23 +71,23 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     effect(() => { // verifica se o filtro está ativo 
 
       this.activeFilterSignal = this.stateService.activeFilterSignalComputed()
-      // aqui fica eu tenho a flag clicada no filtro
+      // aqui verifica se a flag foi clicada no filtro
       if (this.activeFilterSignal.activeFilter === '1') {
         this.saveFlagopacityFilter = this.activeFilterSignal?.flag
       }
-      // aqui fica undefined
+      // aqui verifica se está undefined
       else if (this.activeFilterSignal.activeFilter === '0') {
         this.saveFlagopacityFilter = this.activeFilterSignal?.flag
       }
-      // Quando o filtro texto está aplicado
+      // Quando o filtro de texto está aplicado
       else if (this.activeFilterSignal.activeFilter === 'filter already exists2') {
         this.filterAlreadyExists = this.activeFilterSignal.flag
       }
-      // Quando o filtro cor está aplicado
+      // Quando o filtro de cor está aplicado
       else if (this.activeFilterSignal.activeFilter === 'filter already exists') {
         this.filterAlreadyExists = this.activeFilterSignal.flag
       }
-      // fecha o filtro opacity - click closeFilter Top-div
+      // fecha o filtro de opacidade - click closeFilter Top-div
       else if (this.activeFilterSignal?.activeFilter?.includes('#')) {
         let id = this.activeFilterSignal?.activeFilter?.substring(1)
         this.filterColor(this.saveFlagopacityFilter, id)
@@ -392,12 +392,12 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
             this.stateService.updateGetTimeLineHttpSignal(true)
           }
         },
-        error: (err) => { 
+        error: (err) => {
           this.stateService.updateTimeLineIndexDbErrorSignalSignal(true)
-          setTimeout(()=>{
+          setTimeout(() => {
             this.connectingExternalRoutesService.spiderShareLoader({ message: false })
             this.toastrService.error(this.TOAST['TIME-LINE']['FlagComponent'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['FlagComponent'].error['msn-0']['message-1']);
-          },2000)
+          }, 2000)
         },
         complete: () => { }
       })

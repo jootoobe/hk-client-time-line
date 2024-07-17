@@ -20,6 +20,7 @@ import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/
 import { IndexDbTimeLineService } from "../../../../../shared/services/storage/indexed-db-timeline-store.service";
 import { ConnectingExternalRoutesService } from '../../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
 import { FilterFlagsService } from '../../../../../shared/services/filter-flags.service';
+import { IFilterCheckActive } from '../../../../../interfaces/filter-check-active.interface';
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -69,6 +70,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
   TIME_LINE: any
 
+  openColorCreat!: IFilterCheckActive
   constructor(
     private fb: FormBuilder,
     private stateService: StateService,
@@ -118,6 +120,12 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         error: () => { },
         complete: () => { }
       })
+
+    // Aqui serve para verificar se o input de cor é criado corretamente ao abrir.
+    effect(() => {
+      this.openColorCreat = this.stateService.activeFilterSignalComputed()
+      console.log(this.openColorCreat)
+    })
 
   }
 
@@ -731,7 +739,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       this.timeLine.time_line.flags[i].year = e.date_obj.year
 
       e.flag_design.color_date = e.flag_design.color_date
-      
+
       if (e.flags2?.length === 1) {
         e.flag_style = 1
         e.flag_margin_right = '3'
@@ -802,7 +810,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 flag_id: this.editFlag.flag_id
               };
 
-              if(val.newId !== val.oldId) {
+              if (val.newId !== val.oldId) {
                 this.updateKanbanObjectId(val) // atualiza ObjectId
                 this.updateSpiderTubeObjectId(val)  // atualiza ObjectId
               }
@@ -906,7 +914,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   //================================= 🅰️🅰️ CONVERT COLORS 🅰️🅰️ ==============================
   //==============================================================================
   //⬇️ Convert Color
-  convertColor(val?: string, val2?:string) {
+  convertColor(val?: string, val2?: string) {
     let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
     if (val) {
       let colorFormats = this.convertColorService.convertColor(val)
@@ -916,7 +924,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
       this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
       // return
-    } 
+    }
     // reset radio
     // if(val2 === 'input') {
     //   this.radioRedeTextColor = '0, 0, 0' // text colors
@@ -945,7 +953,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   clearForm() {
-    // this.editFlagForm = {}
+    this.openColorCreat.activeFilter = '0' // usado para abrir o color pick creat
+    this.stateService.updateActiveFilterSignal(this.openColorCreat)
   }
 
 
@@ -958,7 +967,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     this.timeLineService.updateKanbanObjectId(val)
       .subscribe({
-        next: () => {  },
+        next: () => { },
         error: (err) => {
 
         },
@@ -971,13 +980,16 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     this.timeLineService.updateSpiderTubeObjectId(val)
       .subscribe({
-        next: () => {  },
+        next: () => { },
         error: (err) => {
 
         },
         complete: () => {
         }
       })
+
+
+
   }
 
 }
