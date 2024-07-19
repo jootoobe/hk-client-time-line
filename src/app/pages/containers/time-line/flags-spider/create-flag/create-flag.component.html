@@ -376,26 +376,26 @@
           <!-- Which color represents the flag? -->
           <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.color.mat-label' | translate}} </mat-label>
           <!-- [disableControl]="disableColor" -->
-          <input  #valColor
+          <input *ngIf="!disableColor"
+                  #valColor
                   matInput
                   placeholder=""
                   readonly
                   style="outline: none !important"
                   type="color"
                   formControlName="color_hex"
-                  (input)="convertColor(valColor.value, 'input')"
+                  (input)="convertColor(valColor.value)"
                   class="">
-          
-          <!-- <input *ngIf="disableColor"
+
+          <input *ngIf="disableColor"
                   matInput
                   placeholder=""
                   (click)="canNotConvertColor()"
-                  [value]="colorHexaVal"
-                  readonly
+                  readonly="true"
                   style="outline: none !important"
                   type="color"
-                  disabled="false"
-                  class=""> -->
+                  [value]="colorHexaVal"
+                  class="">
           <mat-error>
             error
           </mat-error>

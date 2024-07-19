@@ -232,23 +232,23 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     // Aqui eu desabilito a cor da dandeira 02
     // A bandeira 02 não pode editar a cor
-    setTimeout(() => {
-      let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
-      let twoFlagsPosition: any = []
+    // setTimeout(() => {
+    //   let flags = this.createTimeLineForm.get('time_line')?.get('flags') as FormArray
+    //   let twoFlagsPosition: any = []
 
-      this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
-        if (e.date_obj.timestamp === flags.at(0)?.get('date_obj')?.get('timestamp')?.value) {
-          twoFlagsPosition.push(e)
-        }
-      })
+    //   this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+    //     if (e.date_obj.timestamp === flags.at(0)?.get('date_obj')?.get('timestamp')?.value) {
+    //       twoFlagsPosition.push(e)
+    //     }
+    //   })
 
-      if (twoFlagsPosition[0].flags2?.length > 0) {
-        this.disableColor = true
-        // 'Deve ser igual a cor da bandeira 01', 'A babdeira 02'
-        // this.toastrService.warning('Deve ser igual a cor da bandeira 01', 'A babdeira 02');
+    //   if (twoFlagsPosition[0].flags2?.length > 0) {
+    //     this.disableColor = true
+    //     // 'Deve ser igual a cor da bandeira 01', 'A babdeira 02'
+    //     // this.toastrService.warning('Deve ser igual a cor da bandeira 01', 'A babdeira 02');
 
-      }
-    }, 200)
+    //   }
+    // }, 200)
 
 
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);    
@@ -389,6 +389,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   timestampDate() {
+    this.disableColor = false
     this.timestampExist = []
     let datePicker: any = ''
     datePicker = this.flagsForm.controls[0]?.get('date_obj')?.get('date_origin')?.value
@@ -428,13 +429,11 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     if (this.timestampExist.length === 0) {
-      this.disableColor = false
       this.flagsForm.controls[0]?.get('flag_style')?.setValue(1)
       this.convertColor()
     }
 
     if (this.timestampExist.length === 1) {
-      this.disableColor = true
       // this.timestampExist[0].flag_margin_right = '3'
       this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
 
@@ -455,6 +454,18 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       // time,
     }), { emitEvent: false })
 
+
+
+    // Aqui eu desabilito a cor da dandeira 02
+    // A bandeira 02 não pode editar a cor
+    this.timeLine.time_line?.flags?.forEach((e: FlagModel) => {
+      if (e.date_obj.timestamp === newTimestamp) {
+        if (e.flag_id !== this.editFlag.flag_id) {
+          this.disableColor = true
+        }
+      }
+    })
+    console.log(this.disableColor)
   }
 
 
@@ -923,33 +934,13 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
       flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
       flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-      
+
       // Toda vez que a data for alterada ou a cor da bandeira 02, o fundo da data será resetado para ficar igual ao da bandeira 01.
-      if(this.editFlagFormInput && this.editFlagFormInput.flags2 && this.editFlagFormInput.flags2?.length > 0) {
+      if (this.editFlagFormInput && this.editFlagFormInput.flags2 && this.editFlagFormInput.flags2?.length > 0) {
         this.editFlagFormInput.flags2[0].flag_design.color_date = colorFormats.rgb
       }
-      // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
-      
     }
-    //Toda vez que mexer na cor, a bandeira deve ser resetada.
-    // if(val2 === 'input') {
-    //   this.radioRedeTextColor = '0, 0, 0' // text colors
-    //   this.radioRedeNets = '1' // {background: '74,74,74', text: '255,255,255'}
-    //   this.radioButtonDate = '1' // cor fundo data com transparencia de 0.3
-    //   this.radioRedeTransparency = '0.1' // transparência bandeira
-    // }
-    // else if (!val) {
-    //   // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
-
-    // }
-    // this.createTimeLineForm.value.flags[0]['color_hex']
-    // let colorFormats = this.convertColorService.convertColor(flags.at(0)?.get('flag_design')?.get('color_hex')?.value)
-    // flags.at(0)?.get('flag_design')?.get('color_hex')?.setValue(colorFormats.hex)
-    // flags.at(0)?.get('flag_design')?.get('color_rgb')?.setValue(colorFormats.rgb)
-    // flags.at(0)?.get('flag_design')?.get('color_date')?.setValue(colorFormats.rgb)
-    // flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
-    // this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
-
+    this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
   }
 
   canNotConvertColor() {
