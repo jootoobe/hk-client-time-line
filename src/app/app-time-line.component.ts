@@ -54,7 +54,7 @@ export class AppTimeLineComponent implements OnInit {
   }
   ngOnInit(): void {
     if (environment.production && this.window) {
-      window.console.log = function() {};
+      // window.console.log = function() {};
       // window.console.warn = function() {};
       // window.console.error = function() {};
     }

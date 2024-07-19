@@ -435,8 +435,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     if (this.timestampExist.length === 1) {
       // this.timestampExist[0].flag_margin_right = '3'
-      this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
-
+      // this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
+      this.flagsForm.controls[0]?.get('flag_style')?.setValue(1)
       // Seto a mesma cor da flag1 - para facilitar a vida do usuário
       // this.flagsForm.controls[0]?.get('flag_design')?.get('color_hex')?.setValue(this.timestampExist[0].flag_design.color_hex)
       this.convertColor(this.timestampExist[0].flag_design.color_hex)
@@ -462,6 +462,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       if (e.date_obj.timestamp === newTimestamp) {
         if (e.flag_id !== this.editFlag.flag_id) {
           this.disableColor = true
+          this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
         }
       }
     })
