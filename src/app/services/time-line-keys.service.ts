@@ -14,7 +14,7 @@ export class TimeLineKeysService {
   constructor(private http: HttpClient) { }
 
   // SPIDER-SHARE - SS
-  getIam2(): Observable<any> {
+  getIam2TimeLine(): Observable<any> {
     return this.http.get<any>(this.API_IAM2+'/tl').pipe(
       map((res) => {
         return res;

@@ -8,6 +8,7 @@ import { AppTimeLineComponent } from './app-time-line.component';
 import { AppTimeLineRoutingModule } from './app-time-line.routing';
 import { DevSignInComponent } from './spider-share/iam/components/auth/dev-sign-in/dev-sign-in.component';
 import { HttpInterceptorService } from './spider-share/iam/services/interceptor/http-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
 
 // import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -24,6 +25,12 @@ import { HttpInterceptorService } from './spider-share/iam/services/interceptor/
     BrowserAnimationsModule,
     HttpClientModule,
     AppTimeLineRoutingModule,
+
+    ToastrModule.forRoot({
+      timeOut: 7000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     // provideAnimationsAsync() // esse cara gera chunks que quebram a aplicação principal.

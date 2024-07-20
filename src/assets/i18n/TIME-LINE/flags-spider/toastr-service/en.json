@@ -161,6 +161,40 @@
             "status": ""
           }
         }
+      },
+      "Global": {
+        "START_TOAST_COMMENTARY--TOAST": "============== TS Global >> START COMPONENT FOLDER =============================",
+        "success": {
+          "msn-0": {}
+        },
+        "error": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "Error loading the page",
+            "message-1": "Spider Tube Error",
+            "status": ""
+          }
+          
+        },
+        "info": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "",
+            "message-1": "",
+            "status": ""
+          }
+        },
+        "warning": {
+          "msn-0": {
+            "code": "",
+            "message": "",
+            "message-0": "",
+            "message-1": "",
+            "status": ""
+          }
+        }
       }
     }
   }

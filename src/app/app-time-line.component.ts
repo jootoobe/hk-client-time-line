@@ -8,6 +8,8 @@ import { LocalStorageService } from './shared/services/storage/local-storage.ser
 import { RedisAuthModel } from './spider-share/iam/models/auth/redis-auth.model';
 import { CookieService } from './shared/services/cookies/cookie.service';
 import { WINDOW } from './shared/services/window.service';
+import { ConnectingExternalRoutesService } from './shared/services/connecting-external-routes/connecting-external-routes.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-time-line', // Os seletores dos projetos devem esta identicos a seus microserviços
@@ -22,16 +24,22 @@ export class AppTimeLineComponent implements OnInit {
   letter: any
   itemStorageToken!: RedisAuthModel
   timeLineKeys!: TIMELINEKeysModel
-
+  TOAST:any
   constructor(
     private renderer: Renderer2,
     private stateService: StateService,
     private localStorageService: LocalStorageService,
     private timeLineKeysService: TimeLineKeysService,
+    private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private cookieService: CookieService,
+    private toastrService: ToastrService,
     @Inject(WINDOW) private window: Window,
   ) {
-    this.getIam2()
+    this.getIam2TimeLine()
+
+    effect(() => {
+      this.TOAST = this.stateService.toastSignalComputed()
+    })
 
     effect(() => {
       this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
@@ -83,8 +91,8 @@ export class AppTimeLineComponent implements OnInit {
   }
 
 
-  getIam2() {
-    this.timeLineKeysService.getIam2()
+  getIam2TimeLine() {
+    this.timeLineKeysService.getIam2TimeLine()
       .subscribe({
         next: (res: any) => {
           let encode1 = decodeURIComponent(`${res.a}`); // enconde 1
@@ -93,7 +101,15 @@ export class AppTimeLineComponent implements OnInit {
           this.stateService.updateKeysCryptoTimeLineSignal(encode2.TLC)
         },
         error: (err) => {
+          const routerHome = {
+            router: '/home',
+            message: ''
+          };
+          
+          this.connectingExternalRoutesService.navigateHomeSpider(routerHome);
+          this.connectingExternalRoutesService.spiderShareLoader({ message: false });
 
+          this.toastrService.error(this.TOAST['KANBAN']['Global'].error['msn-0']['message-0'], this.TOAST['KANBAN']['Global'].error['msn-0']['message-1'])
         },
         complete: () => { }
       })
