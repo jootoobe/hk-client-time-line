@@ -61,6 +61,7 @@ export class AppTimeLineComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+
     if (environment.production && this.window) {
       // window.console.log = function() {};
       // window.console.warn = function() {};
@@ -106,10 +107,13 @@ export class AppTimeLineComponent implements OnInit {
             message: ''
           };
           
+          
           this.connectingExternalRoutesService.navigateHomeSpider(routerHome);
           this.connectingExternalRoutesService.spiderShareLoader({ message: false });
 
-          this.toastrService.error(this.TOAST['KANBAN']['Global'].error['msn-0']['message-0'], this.TOAST['KANBAN']['Global'].error['msn-0']['message-1'])
+    
+          // this.toastrService.error(this.TOAST['TIME-LINE']['Global'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['Global'].error['msn-0']['message-1'])
+
         },
         complete: () => { }
       })
