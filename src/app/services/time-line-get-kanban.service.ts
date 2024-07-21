@@ -6,7 +6,6 @@ import { map, Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { TIMELINEKeysModel } from '../models/cryptos/time-line-keys.model';
 import { StateService } from '../shared/services/state.service';
-import { EncryptModel } from '../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model';
 
 @Injectable({
   providedIn: 'root'

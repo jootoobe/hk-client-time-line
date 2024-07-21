@@ -7,8 +7,8 @@ import { environment } from '../../environments/environment';
 import { TIMELINEKeysModel } from '../models/cryptos/time-line-keys.model';
 import { TimeLineModel } from '../models/time-line.model';
 import { StateService } from '../shared/services/state.service';
-import { EncryptModel } from '../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model';
 import { FlagsModel } from '../models/flag.model';
+import { EncryptDecryptModel } from '../models/encrypt-decrypt.dto/encrypt-decrypt.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class TimeLineService {
     })
   }
 
-  createFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
+  createFlag(time_line: TimeLineModel): Observable<EncryptDecryptModel> { //EncryptDecryptModel
 
     let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl1)
 
@@ -37,7 +37,7 @@ export class TimeLineService {
       id: 0,
       a: this.timeLineKeys.BY.tl1 + encrypto
     }
-    return this.http.post<EncryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
+    return this.http.post<EncryptDecryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
       map(res => {
         return res
       })
@@ -45,7 +45,7 @@ export class TimeLineService {
   }
 
 
-  updateFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
+  updateFlag(time_line: TimeLineModel): Observable<EncryptDecryptModel> { //EncryptDecryptModel
 
     let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl2)
 
@@ -53,7 +53,7 @@ export class TimeLineService {
       id: 1,
       a: this.timeLineKeys.BY.tl2 + encrypto
     }
-    return this.http.put<EncryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
+    return this.http.put<EncryptDecryptModel>(`${this.API_TIME_LINE}/controller`, newValEncrypto).pipe(
       map(res => {
         return res
       })
@@ -72,8 +72,8 @@ export class TimeLineService {
   }
 
 
-  deleteById(id: string, flag: string): Observable<EncryptModel> {
-    return this.http.delete<EncryptModel>(`${this.API_TIME_LINE}/controller?id=${id}&flag=${flag}`).pipe(
+  deleteById(id: string, flag: string): Observable<EncryptDecryptModel> {
+    return this.http.delete<EncryptDecryptModel>(`${this.API_TIME_LINE}/controller?id=${id}&flag=${flag}`).pipe(
       map(res => {
         return res
       })
@@ -81,7 +81,7 @@ export class TimeLineService {
   }
 
 
-  updateSocialMediasChipsFlag(time_line: TimeLineModel): Observable<EncryptModel> { //EncryptModel
+  updateSocialMediasChipsFlag(time_line: TimeLineModel): Observable<EncryptDecryptModel> { //EncryptDecryptModel
 
     let encrypto = this.encryptBody(time_line, this.timeLineKeys.BY.tl2)
 
@@ -89,7 +89,7 @@ export class TimeLineService {
       id: 1,
       a: this.timeLineKeys.BY.tl2 + encrypto
     }
-    return this.http.put<EncryptModel>(`${this.API_TIME_LINE}/controller/medias-chips`, newValEncrypto).pipe(
+    return this.http.put<EncryptDecryptModel>(`${this.API_TIME_LINE}/controller/medias-chips`, newValEncrypto).pipe(
       map(res => {
         return res
       })
@@ -97,7 +97,7 @@ export class TimeLineService {
   }
 
 
-  updateKanbanObjectId(updateKanbanObjectId: any): Observable<EncryptModel> { //EncryptModel
+  updateKanbanObjectId(updateKanbanObjectId: any): Observable<EncryptDecryptModel> { //EncryptDecryptModel
 
     let encrypto = this.encryptBody(updateKanbanObjectId, this.timeLineKeys.BY.tl2)
 
@@ -105,14 +105,14 @@ export class TimeLineService {
       id: 4,
       a: this.timeLineKeys.BY.tl2 + encrypto
     }
-    return this.http.put<EncryptModel>(`${this.API_KANBAN}/controller/object`, newValEncrypto).pipe(
+    return this.http.put<EncryptDecryptModel>(`${this.API_KANBAN}/controller/object`, newValEncrypto).pipe(
       map(res => {
         return res
       })
     )
   }
 
-  updateSpiderTubeObjectId(updateKanbanObjectId: any): Observable<EncryptModel> { //EncryptModel
+  updateSpiderTubeObjectId(updateKanbanObjectId: any): Observable<EncryptDecryptModel> { //EncryptDecryptModel
 
     let encrypto = this.encryptBody(updateKanbanObjectId, this.timeLineKeys.BY.tl2)
 
@@ -120,7 +120,7 @@ export class TimeLineService {
       id: 4,
       a: this.timeLineKeys.BY.tl2 + encrypto
     }
-    return this.http.put<EncryptModel>(`${this.API_SPIDER_TUBE}/controller/object`, newValEncrypto).pipe(
+    return this.http.put<EncryptDecryptModel>(`${this.API_SPIDER_TUBE}/controller/object`, newValEncrypto).pipe(
       map(res => {
         return res
       })

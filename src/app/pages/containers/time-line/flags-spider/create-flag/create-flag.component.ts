@@ -16,11 +16,11 @@ import { LatitudeLongitudeService } from "../../../../../shared/services/latitud
 import { StateService } from "../../../../../shared/services/state.service";
 import { MyErrorStateMatcher } from "../../../../../shared/validators/err/invalid-control";
 import { TolltipCreateHelper } from "./tolltip-create-helper";
-import { EncryptModel } from "../../../../../../../../hk-pro-client-spidershare/src/app/models/cryptos/subscriptions/encrypt.model";
 import { IndexDbTimeLineService } from "../../../../../shared/services/storage/indexed-db-timeline-store.service";
 import { ConnectingExternalRoutesService } from '../../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
 import { FilterFlagsService } from '../../../../../shared/services/filter-flags.service';
 import { IFilterCheckActive } from '../../../../../interfaces/filter-check-active.interface';
+import { EncryptDecryptModel } from '../../../../../models/encrypt-decrypt.dto/encrypt-decrypt.model';
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -535,7 +535,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     this.timeLineService.createFlag(this.createEditFlagSubscribe)
       .subscribe({
-        next: (res: EncryptModel) => {
+        next: (res: EncryptDecryptModel) => {
           // let val: any = res.a[0]
           if (res.a === 'OK') {
             this.stateService.updateGetTimeLineHttpSignal(true)
@@ -793,7 +793,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   updateSubscribeFlag() {
     this.timeLineService.updateFlag(this.timeLine)
       .subscribe({
-        next: (res: EncryptModel) => {
+        next: (res: EncryptDecryptModel) => {
           // let val: any = res.a[0]
           if (res.a === 'OK') {
             // Atualiza time line
