@@ -281,7 +281,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           // end-loader
           setTimeout(() => {
             this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-          }, 2000)
+          }, 550)
         },
         error: (err) => {
           let newTimeLine = { time_line: { flags: [] } }
