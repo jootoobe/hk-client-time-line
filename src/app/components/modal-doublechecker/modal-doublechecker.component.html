@@ -23,7 +23,7 @@
       <div class="doublecheck_flag">
         <strong>Flag:</strong>
           {{data.modals.types.flag.flag_title | truncate:25}}
-        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01"
+        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01 notranslate"
             matSuffix
             customToolTip
             [contentTemplate]="delete_template_01"
@@ -49,8 +49,8 @@
         <ng-container *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">
           {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.item-02' | translate}}
         </ng-container>
-        <i  class="material-icons doublecheck_kanban--done " *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">done</i>
-        <i  class="material-icons doublecheck_kanban--close" *ngIf="data.modals.types.flag.social_medias_chips.length > 0">close</i>
+        <i  class="material-icons doublecheck_kanban--done notranslate" *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">done</i>
+        <i  class="material-icons doublecheck_kanban--close notranslate" *ngIf="data.modals.types.flag.social_medias_chips.length > 0">close</i>
       </div>
 
       <div class="doublecheck_btn">

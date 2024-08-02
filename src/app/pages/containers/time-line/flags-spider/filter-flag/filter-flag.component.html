@@ -64,7 +64,7 @@
           <div class="item-color_display--box" *ngFor="let color of filterTopDiv; let i = index;">
             <div class="item-color_display--colors cursor_pointer" (click)="removeColor(i, color.color_hex)"
               [ngStyle]="{ 'background': color.color_hex}">
-              <mat-icon class="material-icons"
+              <mat-icon class="material-icons notranslate"
                 [ngStyle]="{'color': color.color_rgb?.split(',')?.shift()  < 200 ? 'white' : 'black'}">
                 done
               </mat-icon>
