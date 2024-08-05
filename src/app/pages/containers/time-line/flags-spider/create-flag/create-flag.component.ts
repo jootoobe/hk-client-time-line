@@ -20,7 +20,7 @@ import { IndexDbTimeLineService } from "../../../../../shared/services/storage/i
 import { ConnectingExternalRoutesService } from '../../../../../shared/services/connecting-external-routes/connecting-external-routes.service';
 import { FilterFlagsService } from '../../../../../shared/services/filter-flags.service';
 import { IFilterCheckActive } from '../../../../../interfaces/filter-check-active.interface';
-import { EncryptDecryptModel } from '../../../../../models/encrypt-decrypt.dto/encrypt-decrypt.model';
+import { EncryptDecryptModel } from '../../../../../models/encrypt-decrypt/encrypt-decrypt.model';
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices

@@ -8,7 +8,7 @@ import { TIMELINEKeysModel } from '../models/cryptos/time-line-keys.model';
 import { TimeLineModel } from '../models/time-line.model';
 import { StateService } from '../shared/services/state.service';
 import { FlagsModel } from '../models/flag.model';
-import { EncryptDecryptModel } from '../models/encrypt-decrypt.dto/encrypt-decrypt.model';
+import { EncryptDecryptModel } from '../models/encrypt-decrypt/encrypt-decrypt.model';
 
 @Injectable({
   providedIn: 'root'

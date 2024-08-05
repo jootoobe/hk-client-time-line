@@ -9,7 +9,7 @@ import { TimeLineService } from "../../../../../services/time-line.service";
 import { DoubleCheckDialogModel } from "../../../../../models/double-check-dialog/double-check-dialog.model";
 import { LocalStorageService } from "../../../../../shared/services/storage/local-storage.service";
 import { ConnectingExternalRoutesService } from "../../../../../shared/services/connecting-external-routes/connecting-external-routes.service";
-import { EncryptDecryptModel } from "../../../../../models/encrypt-decrypt.dto/encrypt-decrypt.model";
+import { EncryptDecryptModel } from "../../../../../models/encrypt-decrypt/encrypt-decrypt.model";
 
 export function coerceArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
