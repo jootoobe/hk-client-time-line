@@ -71,7 +71,7 @@ export class SignInService {
       id: 2 // esses id server para o guarda do back @UseGuards(DecryptAuthentication) saber a chave de descriptografia
     }
 
-    return this.http.post<any>(`${this.API_IAM}/auth/sign-in`, newVal, { observe: 'response' }).pipe(
+    return this.http.post<any>(`${this.API_IAM}/auth/sign-in-dev`, newVal, { observe: 'response' }).pipe(
       map((res: any) => {
         let skich = res.headers.get('skich');
         this.setData(skich, res.body, `${this.timeLineKeys.SICK}`)
