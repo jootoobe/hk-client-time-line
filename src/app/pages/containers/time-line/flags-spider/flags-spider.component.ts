@@ -154,6 +154,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: any) => {
 
+          console.log('111111111111111', res)
+
           let kanbans = res.sort((a: any, b: any) => a.kanbans.track_position_id - b.kanbans.track_position_id);
 
           this.getAllTimeLineById(kanbans, true)
@@ -192,15 +194,15 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: TimeLineModel[]) => {
 
-        // Apenas para atualizações de 'time_line', 'kanban' e 'spider_tube', todos os dados são enviados.
-        // 'kanban' e 'spider_tube' têm um limite de tamanho de 500kb.
-        // // Cada flag dá 2kb com descrição mínima
-        // const objectSize = JSON.stringify(res).length * (2 / 1024); // Convert bytes to kilobytes
-        // const sizeFile = Math.round(objectSize)
+          // Apenas para atualizações de 'time_line', 'kanban' e 'spider_tube', todos os dados são enviados.
+          // 'kanban' e 'spider_tube' têm um limite de tamanho de 500kb.
+          // // Cada flag dá 2kb com descrição mínima
+          // const objectSize = JSON.stringify(res).length * (2 / 1024); // Convert bytes to kilobytes
+          // const sizeFile = Math.round(objectSize)
 
-        // // isso dá um total aproximado de 1000 bandeiras --- ver depois o que fazer 
-        // const trueOrFalse = sizeFile > 2000 ? true : false
-        // console.log('sizeFile  LimitGuard 👈', sizeFile+'kb', trueOrFalse)
+          // // isso dá um total aproximado de 1000 bandeiras --- ver depois o que fazer 
+          // const trueOrFalse = sizeFile > 2000 ? true : false
+          // console.log('sizeFile  LimitGuard 👈', sizeFile+'kb', trueOrFalse)
 
 
           // if (!val) {
@@ -306,7 +308,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
   indexDbPutAllFlag(newTimeLine: TimeLineModel) {
-
     // let getNewVal = JSON.parse(localStorage.getItem('flags') || '[]');
     const connTimeLine$ = this.indexDbTimeLineService.connectToIDBTimeLine();
     connTimeLine$.pipe(
@@ -332,7 +333,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     let differentFile = false
     let newFlag: FlagModel | any
     let newFlag2: FlagModel | any
+
     if (this.oldVersionFlags && this.oldVersionFlags?.time_line.flags?.length > 0) {
+
       // Percorre cada flag na versão antiga
       this.oldVersionFlags?.time_line.flags?.forEach((oldFlag: FlagModel, flagIndex: number) => {
         // Busca a flag correspondente na nova versão
@@ -393,23 +396,42 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       });
     }
 
+
+    this.stateService.updateGetAllTimeLine(timeLine)
+    // Quando há apenas uma bandeira, essa condição causa problemas na hora de deletar.
+    // Essa condição só é atualizada quando há uma bandeira.
+    if (timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length === 1) {
+
+      this.timeLineService.updateSocialMediasChipsFlag(timeLine)
+        .subscribe({
+          next: (res: any) => { },
+          error: (err) => { },
+          complete: () => { }
+        })
+      return
+    }
+
     if (differentFile) {
       timeLine.year = undefined
       delete timeLine.year
       timeLine.iam_id = '0'
       // this.stateService.updateGetAllTimeLine(timeLine)
-      this.stateService.updateGetAllTimeLine(timeLine)
-  
+
+
+      // this.stateService.updateGetAllTimeLine(timeLine)
+
       this.timeLineService.updateSocialMediasChipsFlag(timeLine)
         .subscribe({
-          next: (res: any) => {  },
-          error: (err) => {  },
+          next: (res: any) => { },
+          error: (err) => { },
           complete: () => { }
         })
       return
-    } else {
-      this.stateService.updateGetAllTimeLine(timeLine)
     }
+    // else {
+    //   console.log('TIME_LINE>>>>>>>>>>>>..',timeLine)
+    //   this.stateService.updateGetAllTimeLine(timeLine)
+    // }
   }
 
 
