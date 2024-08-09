@@ -177,11 +177,10 @@
       <!-- RADIO COR TEXTO -->
       <div class="flag-modal_radio">
         <div class="flag-modal_radio--text" >
-          <!-- Cor do texto -->
-          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-1' | translate}}
+
 
         <!-- Custom ToolTip style="margin-left: 15rem; margin-top: .5rem";-->
-        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01 notranslate"
+        <i  class="material-icons-outlined cursor_pointer noSelect helpers_00 notranslate"
             matSuffix
             customToolTip
             [contentTemplate]="template_help3"
@@ -197,6 +196,9 @@
                 [innerHTML]="help3 | safeDomSanitizer: 'html'">
           </div>
         </ng-template>
+
+          <!-- Cor do texto -->
+          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-1' | translate}}
       </div>
         <mat-radio-group class="radio-group"
         (change)="onRadioButtonTextColor($event)"  [(ngModel)]="radioRedeTextColor" [ngModelOptions]="{standalone: true}" >
@@ -228,30 +230,33 @@
       @if(chipsArray.length > 0) {
         <div class="flag-modal_radio">
           <div class="flag-modal_radio--text">
+          
+            <!-- Custom ToolTip    style="margin-left: 10rem; margin-top: .5rem;"-->
+            <i  class="material-icons-outlined cursor_pointer noSelect helpers_00 notranslate"
+                matSuffix
+                customToolTip
+                [contentTemplate]="template_help4"
+                [originX]="'center'"
+                [originY]="'bottom'"
+                [overlayX]="'center'"
+                [overlayY]="'top'"
+                [offsetY]="5">
+                help_outline
+            </i>
+            <!-- class="custom-tooltip_width--40" -->
+            <ng-template #template_help4>
+            <div  
+                  customToolTipChiel
+                  [innerHTML]="help4 | safeDomSanitizer: 'html'">
+            </div>
+            </ng-template>
             <!-- Cor contraste redes -->
             {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-2' | translate}}
-          <!-- Custom ToolTip    style="margin-left: 10rem; margin-top: .5rem;"-->
-          <i  class="material-icons-outlined cursor_pointer noSelect helpers_01 notranslate"
-              matSuffix
-              customToolTip
-              [contentTemplate]="template_help4"
-              [originX]="'center'"
-              [originY]="'bottom'"
-              [overlayX]="'center'"
-              [overlayY]="'top'"
-              [offsetY]="5">
-              help_outline
-          </i>
-          <!-- class="custom-tooltip_width--40" -->
-        <ng-template #template_help4>
-          <div  
-                customToolTipChiel
-                [innerHTML]="help4 | safeDomSanitizer: 'html'">
-          </div>
-        </ng-template>
+
           </div>
           <mat-radio-group class="radio-group"
-          (change)="onRadioButtonNetsColor($event)"  [(ngModel)]="radioRedeNets" [ngModelOptions]="{standalone: true}" >
+                          (change)="onRadioButtonNetsColor($event)"  
+                          [(ngModel)]="radioRedeNets" [ngModelOptions]="{standalone: true}" >
             <mat-radio-button [value]="'1'" class="flag-modal_radio--colors" >
               <!-- {background: '74,74,74', text: '255,255,255'} -- {background: 'black', text: 'white'} -->
               1
@@ -278,25 +283,26 @@
       <!-- RADIO COR DATA FUNDO -->
       <div class="flag-modal_radio">
         <div class="flag-modal_radio--text">
+          
+          <!-- Custom ToolTip style="margin-left: 13rem; margin-top: .5rem;"-->
+          <i  class="material-icons-outlined cursor_pointer noSelect helpers_00 notranslate"
+              matSuffix
+              customToolTip
+              [contentTemplate]="template_help5"
+              [originX]="'center'"
+              [originY]="'bottom'"
+              [overlayX]="'center'"
+              [overlayY]="'top'"
+              [offsetY]="5">
+              help_outline
+          </i>
+          <ng-template #template_help5>
+            <div  customToolTipChiel
+                  [innerHTML]="help5 | safeDomSanitizer: 'html'">
+            </div>
+          </ng-template>
           <!-- Cor data fundo -->
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-3' | translate}}
-        <!-- Custom ToolTip style="margin-left: 13rem; margin-top: .5rem;"-->
-        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01 notranslate"
-            matSuffix
-            customToolTip
-            [contentTemplate]="template_help5"
-            [originX]="'center'"
-            [originY]="'bottom'"
-            [overlayX]="'center'"
-            [overlayY]="'top'"
-            [offsetY]="5">
-            help_outline
-        </i>
-      <ng-template #template_help5>
-        <div  customToolTipChiel
-              [innerHTML]="help5 | safeDomSanitizer: 'html'">
-        </div>
-      </ng-template>
         </div>
         <mat-radio-group class="radio-group"
                         (change)="radioButtonDateColor($event)"  
@@ -329,28 +335,30 @@
       <!-- RADIO COR TRANSPARÊNCIA FUNDO -->
       <div class="flag-modal_radio">
         <div class="flag-modal_radio--text">
+          
+          <!-- Custom ToolTip style="margin-left: 0; margin-top: .5rem;"-->
+          <i  class="material-icons-outlined cursor_pointer noSelect helpers_00 notranslate"
+              matSuffix
+              customToolTip
+              [contentTemplate]="template_help6"
+              [originX]="'center'"
+              [originY]="'bottom'"
+              [overlayX]="'center'"
+              [overlayY]="'top'"
+              [offsetY]="5">
+              help_outline
+          </i>
+          <ng-template #template_help6>
+            <div  customToolTipChiel
+                  [innerHTML]="help6 | safeDomSanitizer: 'html'">
+            </div>
+          </ng-template>
           <!-- Cor transparência bandeira -->
           {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-4' | translate}}
-        <!-- Custom ToolTip style="margin-left: 0; margin-top: .5rem;"-->
-        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01 notranslate"
-            matSuffix
-            customToolTip
-            [contentTemplate]="template_help6"
-            [originX]="'center'"
-            [originY]="'bottom'"
-            [overlayX]="'center'"
-            [overlayY]="'top'"
-            [offsetY]="5">
-            help_outline
-        </i>
-      <ng-template #template_help6>
-        <div  customToolTipChiel
-              [innerHTML]="help6 | safeDomSanitizer: 'html'">
-        </div>
-      </ng-template>
         </div>
         <mat-radio-group class="radio-group"
-        (change)="onRadioButtonTransparencyColor($event)"  [(ngModel)]="radioRedeTransparency" [ngModelOptions]="{standalone: true}" >
+                        (change)="onRadioButtonTransparencyColor($event)"  
+                        [(ngModel)]="radioRedeTransparency" [ngModelOptions]="{standalone: true}" >
           <mat-radio-button [value]="'0.1'" class="flag-modal_radio--colors" >
             1
           </mat-radio-button>

@@ -1,6 +1,13 @@
 .helpers {
   font-weight: var(--fonts-font-weight-500);
   z-index: 999 !important; // makes a difference
+
+  &_00 { // start
+    font-size: 1.3rem !important;
+    margin: -.5rem 0 0 -1.5rem;    
+    position: absolute;
+  }
+  
   &_01 {
     font-size: 1.3rem !important;
     margin: -.5rem 0 0 .5rem;
