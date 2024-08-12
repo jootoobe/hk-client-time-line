@@ -6,11 +6,12 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    'left      main      center    menu      right'
-    'left      main      center    menu      right'
-    'left      main      center    menu      right'
+    'left      main      menu    menu      right'
+    'left      main      menu    menu      right'
+    'left      main      menu    menu      right'
     'filtering filtering filtering filtering filtering'
-    'filter    filter    filter    filter    filter';
+    'filter    filter    filter    filter    filter'
+    'center    center    center    center    center';
   gap: .5rem;
   // background-color: #2196F3;
   padding: 3rem 1rem;
@@ -175,8 +176,12 @@
 
 
 .btn-div {
-  width: 17%;
-  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  // position: absolute;
+  // background: beige;
 
   &_create {
     margin-top: 40vh;
