@@ -460,7 +460,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     // A bandeira 02 não pode editar a cor
     this.timeLine.time_line?.flags?.forEach((e: FlagModel) => {
       if (e.date_obj.timestamp === newTimestamp) {
-        if (e.flag_id !== this.editFlag.flag_id) {
+        if (e.flag_id !== this.editFlag?.flag_id) {
           this.disableColor = true
           this.flagsForm.controls[0]?.get('flag_style')?.setValue(2)
         }
