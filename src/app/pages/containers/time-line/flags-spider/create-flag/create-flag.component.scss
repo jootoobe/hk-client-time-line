@@ -193,3 +193,27 @@ input[type=color]::-webkit-color-swatch {
 .radio-group {
   margin-left: -3rem;
 }
+
+
+
+@media (max-width: 425px) {
+  ::ng-deep {
+    .cdk-overlay-pane.mat-mdc-dialog-panel {
+      max-width: 92vw !important;
+      min-width: 90vw !important;
+    }
+
+
+  }
+
+  // .modal-dialog_t1 {
+  //   font-size: 1.4rem;
+  // }
+
+  mat-form-field {
+    // width: 80%;
+    width: 22rem;
+  }
+
+
+}
