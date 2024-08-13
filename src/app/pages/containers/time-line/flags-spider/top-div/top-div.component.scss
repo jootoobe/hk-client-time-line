@@ -195,3 +195,20 @@
     }
   }
 }
+
+
+@media (max-width: 425px) {
+  .grid-container>.item-left,
+  .item-menu {
+    // background-color: rgba(138, 30, 30, 0.8);
+    text-align: start;
+    margin-left: 1rem;
+  }
+
+  .item-right {
+    .material-icons {
+      margin: 0 0 0 -5rem;
+    }
+  }
+
+}
