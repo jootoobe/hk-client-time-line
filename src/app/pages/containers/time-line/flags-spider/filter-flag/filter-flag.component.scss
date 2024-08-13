@@ -318,7 +318,7 @@
 
     &_span {
       padding: 1rem 47vw 1rem 0.5rem;
-      // width: 51vw;
+      min-width: 63vw;
     }
   }
 
@@ -349,17 +349,18 @@
   .item-color {
     &_span {
       padding: 1rem 42vw 1rem 0.5rem;
-      // width: 51vw;
+      min-width: 59vw;
     }
   }
 }
 
 
-@media (max-width: 320) {
+
+@media (max-width: 320px) {
   .item-color {
     &_span {
       padding: 1rem 40vw 1rem 0.5rem;
-      // width: 51vw;
+      width: 50vw;
     }
   }
 }
