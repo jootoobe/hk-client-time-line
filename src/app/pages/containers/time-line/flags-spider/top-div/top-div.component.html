@@ -2,7 +2,7 @@
 <!-- Grids -->
 <div class="grid-container">
   <div class="item-left">
-    <strong>
+    <strong class="notranslate">
       {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-02' | translate}}
     </strong>
   </div>
@@ -14,7 +14,7 @@
 
       <!-- Button to open modal and create flag -->
       <!-- There are no flags yet -->
-    <div class="btn-div" >
+    <div class="btn-div notranslate" >
       @if(timeLine && timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length  === 0 && !this.toApplyFilterText) {
         <div class="btn-div_create">
           <button (click)="openCreateTimeLineDialog()"
@@ -62,7 +62,7 @@
       <!-- Create -->
       <button
               mat-stroked-button
-              class="btn_opt-valid btn_setting--01"
+              class="btn_opt-valid btn_setting--01 notranslate"
               (click)="openCreateTimeLineDialog()">
           {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-07' | translate}}
       </button>
