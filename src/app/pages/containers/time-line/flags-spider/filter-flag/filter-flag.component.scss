@@ -242,6 +242,11 @@
       width: 28rem;
     }
 
+    &_span {
+      padding: 1rem 15rem 1rem 0.5rem;
+      min-width: 21rem;
+    }
+
     &_display {
       width: 28rem;
 
@@ -249,6 +254,8 @@
         margin: .3rem 1.5rem 0rem 0;
       }
     }
+
+
   }
 
 }
@@ -302,10 +309,16 @@
     mat-form-field {
       width: 81vw;
     }
+
     &_display {
       width: 81vw;
       // background: red;
 
+    }
+
+    &_span {
+      padding: 1rem 47vw 1rem 0.5rem;
+      // width: 51vw;
     }
   }
 
@@ -329,4 +342,24 @@
   }
 
 
+}
+
+
+@media (max-width: 375px) {
+  .item-color {
+    &_span {
+      padding: 1rem 42vw 1rem 0.5rem;
+      // width: 51vw;
+    }
+  }
+}
+
+
+@media (max-width: 320) {
+  .item-color {
+    &_span {
+      padding: 1rem 40vw 1rem 0.5rem;
+      // width: 51vw;
+    }
+  }
 }
