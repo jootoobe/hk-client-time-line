@@ -250,6 +250,7 @@
   ::ng-deep {
     .filter-time-line-dialog {
       width: auto !important;
+  
     }
 
     .cdk-overlay-pane.mat-mdc-dialog-panel {
@@ -258,31 +259,31 @@
     }
   }
 
-  // ::ng-deep {
-  //   .filter-time-line-dialog {
-  //     width: 30rem !important;
-
-  //   }
+  // .item-main-close {
+  //   text-align: start;
+  //   font-size: 2rem;
+  //   padding: 2rem 2rem 0 0;
+  //   margin-left:
+  //   // font-weight: var(--fonts-font-weight-700);
   // }
-
-
 
   .filter-grid-container {
     display: grid;
     width: 100%;
     grid-template-areas:
-      'header'
-      'title'
-      'description'
-      'date-start'
-      'date-start'
-      'date-end'
-      'chips'
-      'color'
-      'item-btn-clear'
-      'filter-btn'
+    
+      'header close' //70% 30
+      'title title'
+      'description description'
+      'date-start date-start'
+      'date-start date-start'
+      'date-end date-end'
+      'chips chips'
+      'color color'
+      'item-btn-clear item-btn-clear'
+      'filter-btn filter-btn'
     ;
-    grid-template-columns: 100%;
+    grid-template-columns: 70% 30%;
     gap: .1rem;
     // background-color: #2196F3;
   }
@@ -314,7 +315,7 @@
 
   .item-btn {
     text-align: center;
-    margin: -2rem 0;
+    margin: -2rem 0 2rem 0;
 
     button {
       width: 23rem;
