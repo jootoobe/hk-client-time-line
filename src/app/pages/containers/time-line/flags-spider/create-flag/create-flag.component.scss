@@ -80,10 +80,11 @@
   // }
 
   &_radio {
+
     &--text1,
     &--text2,
     &--text3,
-    &--text4    {
+    &--text4 {
       display: flex;
       justify-content: center;
 
@@ -127,6 +128,52 @@
       margin: 0 1rem 0 1rem;
     }
   }
+}
+
+
+
+
+// ===== BUTTON =====
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* Largura do contêiner pai */
+  // background: lightblue; /* Apenas para visualização */
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.flag-modal-btn {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  /* Define as larguras das colunas */
+  width: 27rem;
+  /* Largura do grid */
+  // background: red; /* Apenas para visualização */
+  text-align: center;
+  // gap: 16px; /* Espaço entre as colunas, se desejado */
+}
+
+.button-grid {
+  display: contents;
+  /* Permite que os itens da grid sejam alinhados conforme a grid do pai */
+}
+
+.button-col {
+  display: flex;
+  align-items: center;
+  /* Alinha o conteúdo verticalmente ao centro */
+}
+
+.button-col.end {
+  justify-content: flex-start;
+  /* Alinha o conteúdo horizontalmente ao início da coluna */
+}
+
+.button-col.start {
+  justify-content: flex-end;
+  /* Alinha o conteúdo horizontalmente ao final da coluna */
 }
 
 
@@ -188,48 +235,6 @@ input[type=color]::-webkit-color-swatch {
 
 
 
-
-
-
-// ===== BUTTON =====
-.container {
-  display: flex;
-  justify-content: center;
-  width: 32rem; /* Largura do contêiner pai */
-  // background: lightblue; /* Apenas para visualização */
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-}
-
-.flag-modal-btn {
-  display: grid;
-  grid-template-columns: 40% 60%; /* Define as larguras das colunas */
-  width: 27rem; /* Largura do grid */
-  // background: red; /* Apenas para visualização */
-  text-align: center;
-  // gap: 16px; /* Espaço entre as colunas, se desejado */
-}
-
-.button-grid {
-  display: contents; /* Permite que os itens da grid sejam alinhados conforme a grid do pai */
-}
-
-.button-col {
-  display: flex;
-  align-items: center; /* Alinha o conteúdo verticalmente ao centro */
-}
-
-.button-col.end {
-  justify-content: flex-start; /* Alinha o conteúdo horizontalmente ao início da coluna */
-}
-
-.button-col.start {
-  justify-content: flex-end; /* Alinha o conteúdo horizontalmente ao final da coluna */
-}
-
-
-
-
 // ===== MATERIAL RADIO =====
 // ============================
 
@@ -283,8 +288,6 @@ input[type=color]::-webkit-color-swatch {
       max-width: 92vw !important;
       min-width: 90vw !important;
     }
-
-
   }
 
   // .modal-dialog_t1 {
@@ -295,6 +298,70 @@ input[type=color]::-webkit-color-swatch {
   //   // width: 80%;
   //   width: 22rem;
   // }
+
+
+}
+
+
+@media (max-width: 375px) {
+
+  .flag-modal {
+    &_title-h1 {
+      font-size: 1.4rem;
+    }
+
+    mat-form-field {
+      width: 24rem;
+    }
+
+    &_radio{
+      margin-left: 2rem;
+      &--text1,
+      &--text2,
+      &--text3,
+      &--text4{
+        font-size: 1.3rem;
+      }
+
+      &--text1 {
+        margin-left: -14rem;
+  
+        i {
+          margin-left: -10rem;
+        }
+      }
+  
+      &--text2 {
+        margin-left: -5rem;
+  
+        i {
+          margin-left: -11rem;
+        }
+      }
+  
+      &--text3 {
+        margin-left: -12.5rem;
+  
+        i {
+          margin-left: -11.5rem;
+        }
+      }
+  
+      &--text4 {
+        margin-left: -5rem;
+  
+        i {
+          margin-left: -19rem;
+        }
+      }
+    }
+  }
+
+  .flag-modal-btn {
+    width: 24rem;
+  }
+
+
 
 
 }
