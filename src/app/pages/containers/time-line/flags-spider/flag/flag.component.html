@@ -88,7 +88,7 @@
             </div>
 
             <!-- Date -->
-            <div class="inside-flag_date" [ngStyle]="setStylesDate(flag2)" >
+            <div class="inside-flag_date notranslate" [ngStyle]="setStylesDate(flag2)" >
               <div class="inside-flag_date_day" [ngStyle]="setStylesText(flag2)">
                 <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
                 {{flag2.date_obj.day}}
@@ -109,12 +109,12 @@
               <p>{{flag2.flag_description | truncate:250}}</p>
             </div>
             <!-- Nets -->
-            <div class="inside-flag_nets" [ngStyle]="setStylesText(flag2)">
+            <div class="inside-flag_nets notranslate" [ngStyle]="setStylesText(flag2)">
               {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-02' | translate}}
             </div>
 
           <!-- Chips -->
-          <div style="height: 12rem; width: 100%;">
+          <div style="height: 12rem; width: 100%;" class="notranslate">
             @if(flag2.social_medias_chips.length === 0) {
             <div class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
@@ -159,7 +159,7 @@
           </div >
           </div> <!-- Card End -->
           <!-- Open Kanban -->
-          <div class="inside-flag_open-kanban cursor_pointer remove" 
+          <div class="inside-flag_open-kanban cursor_pointer remove notranslate" 
               (click)="getFlagIdNavegateKanban(flag2)"
               id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
             <!-- Abrir Kanban -->
@@ -271,7 +271,7 @@
           </div>
 
           <!-- Date -->
-          <div class="inside-flag_date" [ngStyle]="setStylesDate(flag)" >
+          <div class="inside-flag_date notranslate" [ngStyle]="setStylesDate(flag)" >
             <div class="inside-flag_date_day" [ngStyle]="setStylesText(flag)">
               <!-- {{flag.date_obj.day_month_year.substring(8).split('T').shift()}} -->
               {{flag.date_obj.day}}
@@ -292,12 +292,12 @@
             <p>{{flag.flag_description | truncate:250}}</p>
           </div>
           <!-- Nets -->
-          <div class="inside-flag_nets" [ngStyle]="setStylesText(flag)">
+          <div class="inside-flag_nets notranslate" [ngStyle]="setStylesText(flag)">
             {{'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2.flag.item-02' | translate}}
           </div>
 
           <!-- Chips -->
-          <div style="height: 12rem; width: 100%;">
+          <div style="height: 12rem; width: 100%;" class="notranslate">
             @if(flag.social_medias_chips.length === 0) {
             <div class="inside-flag_no-net">
               <!-- Não existe rede criada. -->
@@ -340,7 +340,7 @@
           </div>
         </div> <!-- Card End language-->
         <!-- Open Kanban     margin: -2rem 0 .5rem 18.7rem;-->
-        <div class="inside-flag_open-kanban cursor_pointer remove" 
+        <div class="inside-flag_open-kanban cursor_pointer remove notranslate" 
             (click)="getFlagIdNavegateKanban(flag)"
             id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
           <!-- Abrir Kanban -->
