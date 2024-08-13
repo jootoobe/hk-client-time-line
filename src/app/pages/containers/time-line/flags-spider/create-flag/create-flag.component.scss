@@ -80,52 +80,35 @@
   // }
 
   &_radio {
+    width: 100%;
+    /* Largura do contêiner pai */
+    // background: lightblue; /* Apenas para visualização */
 
-    &--text1,
-    &--text2,
-    &--text3,
-    &--text4 {
-      display: flex;
-      justify-content: center;
+    &--input {
+      display: grid;
+      grid-template-columns: 100%;
+      /* Define as larguras das colunas */
+      width: 100%;
+      /* Largura do grid */
+      // background: red; /* Apenas para visualização */
+      text-align: start;
 
     }
 
-    &--text1 {
-      margin-left: -11.5rem;
-
-      i {
-        margin-left: -12.5rem;
-      }
+    // &--grid{
+    //   display: contents;
+    // }
+    &--col {
+      margin-left: 4rem;
+      margin-bottom: 2rem;
     }
 
-    &--text2 {
-      margin-left: -5rem;
-
-      i {
-        margin-left: -11rem;
-      }
+    &--radio-group {
+      margin-left: -4rem;
     }
-
-    &--text3 {
-      margin-left: -9rem;
-
-      i {
-        margin-left: -15rem;
-      }
-    }
-
-    &--text4 {
-      margin-left: -1rem;
-
-      i {
-        margin-left: -23rem;
-      }
-    }
-
-
 
     &--colors {
-      margin: 0 1rem 0 1rem;
+      margin-left: 2.1rem;
     }
   }
 }
@@ -290,14 +273,14 @@ input[type=color]::-webkit-color-swatch {
     }
   }
 
-  // .modal-dialog_t1 {
-  //   font-size: 1.4rem;
-  // }
+  .flag-modal {
 
-  // mat-form-field {
-  //   // width: 80%;
-  //   width: 22rem;
-  // }
+    &_radio {
+      &--col {
+        margin-left: 7rem;
+      }
+    }
+  }
 
 
 }
@@ -314,45 +297,9 @@ input[type=color]::-webkit-color-swatch {
       width: 24rem;
     }
 
-    &_radio{
-      margin-left: 2rem;
-      &--text1,
-      &--text2,
-      &--text3,
-      &--text4{
-        // font-size: 1.3rem;
-      }
-
-      &--text1 {
-        margin-left: -14rem;
-  
-        i {
-          margin-left: -10rem;
-        }
-      }
-  
-      &--text2 {
-        margin-left: -5rem;
-  
-        i {
-          margin-left: -11rem;
-        }
-      }
-  
-      &--text3 {
-        margin-left: -12.5rem;
-  
-        i {
-          margin-left: -11.5rem;
-        }
-      }
-  
-      &--text4 {
-        margin-left: -5rem;
-  
-        i {
-          margin-left: -19rem;
-        }
+    &_radio {
+      &--col {
+        margin-left: 6rem;
       }
     }
   }
