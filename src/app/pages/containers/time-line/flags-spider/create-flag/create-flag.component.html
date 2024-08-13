@@ -180,7 +180,7 @@
           <!-- <div class="flag-modal_radio--grid">   -->
           <!-- RADIO COR TEXTO -->
           <div class="flag-modal_radio--col">
-            <div class="" >
+            <div class="flag-modal_radio--text" >
 
             <!-- Custom ToolTip style="margin-left: 15rem; margin-top: .5rem";-->
             <i  class="material-icons-outlined cursor_pointer noSelect helpers_00 notranslate"
@@ -203,7 +203,7 @@
               <!-- Cor do texto -->
               {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-1' | translate}}
           </div>
-            <mat-radio-group class="flag-modal_radio--radio-group"
+            <mat-radio-group class=""
             (change)="onRadioButtonTextColor($event)"  [(ngModel)]="radioRedeTextColor" [ngModelOptions]="{standalone: true}" >
               <mat-radio-button [value]="'0, 0, 0'" class="flag-modal_radio--colors" >
                 <!-- Black-->
@@ -231,7 +231,7 @@
           <!-- RADIO COR REDES FUNDO -->
           @if(chipsArray.length > 0) {
             <div class="flag-modal_radio--col">
-              <div class="">
+              <div class="flag-modal_radio--text">
               
                 <!-- Custom ToolTip    style="margin-left: 10rem; margin-top: .5rem;"-->
                 <i  class="material-icons-outlined cursor_pointer noSelect helpers_00 notranslate"
@@ -256,7 +256,7 @@
                 {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-2' | translate}}
 
               </div>
-              <mat-radio-group class="flag-modal_radio--radio-group"
+              <mat-radio-group class=""
                               (change)="onRadioButtonNetsColor($event)"  
                               [(ngModel)]="radioRedeNets" [ngModelOptions]="{standalone: true}" >
                 <mat-radio-button [value]="'1'" class="flag-modal_radio--colors" >
@@ -284,7 +284,7 @@
           }
           <!-- RADIO COR DATA FUNDO -->
           <div class="flag-modal_radio--col">
-            <div class="">
+            <div class="flag-modal_radio--text">
               
               <!-- Custom ToolTip style="margin-left: 13rem; margin-top: .5rem;"-->
               <i  class="material-icons-outlined cursor_pointer noSelect helpers_00 notranslate"
@@ -306,7 +306,7 @@
               <!-- Cor data fundo -->
               {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-3' | translate}}
             </div>
-            <mat-radio-group class="flag-modal_radio--radio-group"
+            <mat-radio-group class=""
                             (change)="radioButtonDateColor($event)"  
                             [(ngModel)]="radioButtonDate" 
                             [ngModelOptions]="{standalone: true}" >
@@ -336,7 +336,7 @@
 
           <!-- RADIO COR TRANSPARÊNCIA FUNDO -->
           <div class="flag-modal_radio--col">
-            <div class="">
+            <div class="flag-modal_radio--text">
               
               <!-- Custom ToolTip style="margin-left: 0; margin-top: .5rem;"-->
               <i  class="material-icons-outlined cursor_pointer noSelect helpers_00 notranslate"
@@ -358,7 +358,7 @@
               <!-- Cor transparência bandeira -->
               {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.radio-button.mat-label-4' | translate}}
             </div>
-            <mat-radio-group class="flag-modal_radio--radio-group"
+            <mat-radio-group class=""
                             (change)="onRadioButtonTransparencyColor($event)"  
                             [(ngModel)]="radioRedeTransparency" [ngModelOptions]="{standalone: true}" >
               <mat-radio-button [value]="'0.1'" class="flag-modal_radio--colors" >

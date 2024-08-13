@@ -81,34 +81,32 @@
 
   &_radio {
     width: 100%;
-    /* Largura do contêiner pai */
-    // background: lightblue; /* Apenas para visualização */
+    display: flex;
+    justify-content: center;
 
     &--input {
       display: grid;
       grid-template-columns: 100%;
       /* Define as larguras das colunas */
-      width: 100%;
-      /* Largura do grid */
+      width: 27rem;
       // background: red; /* Apenas para visualização */
       text-align: start;
-
     }
 
     // &--grid{
     //   display: contents;
     // }
     &--col {
-      margin-left: 4rem;
+      // margin-left: 4rem;
       margin-bottom: 2rem;
     }
 
-    &--radio-group {
-      margin-left: -4rem;
+    &--colors:nth-child(n+2) {
+      margin-left: 2.5rem;
     }
 
-    &--colors {
-      margin-left: 2.1rem;
+    &--text {
+      margin-left: 2rem;
     }
   }
 }
@@ -276,8 +274,10 @@ input[type=color]::-webkit-color-swatch {
   .flag-modal {
 
     &_radio {
+
+      // margin-left: 4rem;
       &--col {
-        margin-left: 7rem;
+        // margin-left: 7rem;
       }
     }
   }
@@ -298,8 +298,16 @@ input[type=color]::-webkit-color-swatch {
     }
 
     &_radio {
-      &--col {
-        margin-left: 6rem;
+      &--input {
+        width: 24rem;
+      }
+
+      &--colors:nth-child(n+2) {
+        margin-left: 2rem;
+      }
+
+      &--text {
+        margin-left: 2rem;
       }
     }
   }
@@ -307,6 +315,7 @@ input[type=color]::-webkit-color-swatch {
   .flag-modal-btn {
     width: 24rem;
   }
+
 
 
 
