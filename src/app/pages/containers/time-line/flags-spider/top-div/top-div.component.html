@@ -15,7 +15,7 @@
       <!-- Button to open modal and create flag -->
       <!-- There are no flags yet -->
     <div class="btn-div" >
-      @if(timeLine && timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length  === 0) {
+      @if(timeLine && timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length  === 0 && !this.toApplyFilterText) {
         <div class="btn-div_create">
           <button (click)="openCreateTimeLineDialog()"
                   mat-stroked-button
@@ -48,15 +48,17 @@
   }
   <div class="item-right">
     @if(timeLine && timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length  > 0) {
-      <mat-icon
-              matSuffix
-              class="material-icons cursor_pointer notranslate"
-              fontSet="material-icons-outlined"
-              (click)="filter.openFilterTimeLineDialog()"
-              (click)="openFilterDialogCloseFilterOpacity()"
-              >
-      <span>filter_alt</span>
-      </mat-icon>
+      @if(timeLine.time_line.flags.length  > 1) {
+        <mat-icon
+                matSuffix
+                class="material-icons cursor_pointer notranslate"
+                fontSet="material-icons-outlined"
+                (click)="filter.openFilterTimeLineDialog()"
+                (click)="openFilterDialogCloseFilterOpacity()"
+                >
+        <span>filter_alt</span>
+        </mat-icon>
+      }
       <!-- Create -->
       <button
               mat-stroked-button
