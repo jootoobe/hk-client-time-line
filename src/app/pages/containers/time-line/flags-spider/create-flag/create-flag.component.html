@@ -415,64 +415,62 @@
 
 
       <!-- BUTTON -->
-      <div class="flag-modal_btn">
-
-        @if(flagCreateEditInput === 'edit') {
-        <button mat-stroked-button
-                [ngStyle]="{'margin-right': language === 'pt' ? '6.5rem': language === 'en' ? '12rem': '6.5rem'}"
-                class="btn_opt_transparent"
-                matDialogClose   
-                (click)="clearForm()">
-          <!-- Back -->
-          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.back' | translate}}
-        </button>
-      } @else if(flagCreateEditInput === 'create'){
-        <button mat-stroked-button
-                [ngStyle]="{'margin-right': language === 'pt' ? '7rem': language === 'en' ? '10rem': '7rem'}"
-                class="btn_opt_transparent"
-                matDialogClose   
-                (click)="clearForm()">
-          <!-- Back -->
-          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.back' | translate}}
-        </button>
-      }
-
-        <!-- Edit flag-->
-        @if(createTimeLineForm.invalid && flagCreateEditInput === 'edit') {
-          <!-- Btn invalid -->
-        <button mat-stroked-button class="btn_opt-invalid" >
-          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.edit' | translate}}
-        </button>
-        } @else if(createTimeLineForm.valid && flagCreateEditInput === 'edit') {
-        <button matDialogClose 
-                type="submit" 
-                mat-stroked-button 
-                class="btn_opt-valid">
-          <!-- Btn valid -->
-          {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.edit' | translate}}
-        </button>
-        }
-
-
-          <!-- Create flag -->
-          @if(createTimeLineForm.invalid && flagCreateEditInput === 'create') {
-            <!-- Btn invalid -->
-          <button mat-stroked-button class="btn_opt-invalid" >
-            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
-          </button>
-          } @else if(createTimeLineForm.valid && flagCreateEditInput === 'create') {
-          <button matDialogClose 
-                  type="submit" 
-                  mat-stroked-button 
-                  class="btn_opt-valid">
-            <!-- Btn valid -->
-            {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
-          </button>
-          }
-
+      <div class="container">
+        <div class="flag-modal-btn">
+          <div class="button-grid">
+            <div class="button-col end">
+              <!-- Back Button -->
+              @if(flagCreateEditInput === 'edit') {
+              <button mat-stroked-button
+                      class="btn_opt_transparent"
+                      matDialogClose   
+                      (click)="clearForm()">
+                {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.back' | translate}}
+              </button>
+              } @else if(flagCreateEditInput === 'create'){
+              <button mat-stroked-button
+                      class="btn_opt_transparent"
+                      matDialogClose   
+                      (click)="clearForm()">
+                {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.back' | translate}}
+              </button>
+              }
+            </div>
+      
+            <div class="button-col start">
+              <!-- Conditional Buttons -->
+              @if(flagCreateEditInput === 'edit') {
+                @if(createTimeLineForm.invalid) {
+                <button mat-stroked-button class="btn_opt-invalid">
+                  {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.edit' | translate}}
+                </button>
+                } @else {
+                <button matDialogClose 
+                        type="submit" 
+                        mat-stroked-button 
+                        class="btn_opt-valid">
+                  {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.edit' | translate}}
+                </button>
+                }
+              } @else if(flagCreateEditInput === 'create') {
+                @if(createTimeLineForm.invalid) {
+                <button mat-stroked-button class="btn_opt-invalid">
+                  {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
+                </button>
+                } @else {
+                <button matDialogClose 
+                        type="submit" 
+                        mat-stroked-button 
+                        class="btn_opt-valid">
+                  {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
+                </button>
+                }
+              }
+            </div>
+          </div>
+        </div>
       </div>
-
-
+      
     </div>
   </div>
 </form>

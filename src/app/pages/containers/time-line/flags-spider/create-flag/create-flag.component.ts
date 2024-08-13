@@ -64,7 +64,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   radioRedeTransparency = '0.1' // transparência bandeira
 
   TOAST: any
-  language = ''
+  // language = ''
   addDataMaskVal = ''
   chipsArray!: FormArray | any
 
@@ -88,9 +88,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       this.TOAST = this.stateService.toastSignalComputed()
     })
 
-    effect(() => {
-      this.language = this.stateService.languageSignalComputed()
-    })
+    // effect(() => {
+    //   this.language = this.stateService.languageSignalComputed()
+    // })
 
     this.chipsArray = []
     this.buildForm()

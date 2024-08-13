@@ -67,17 +67,17 @@
     }
   }
 
-  &_btn {
-    font-size: 1.4rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    // background: red;
-    width: 32rem;
+  // &_btn {
+  //   font-size: 1.4rem;
+  //   margin-top: 1rem;
+  //   margin-bottom: 2rem;
+  //   // background: red;
+  //   width: 32rem;
 
-    &--back {
-      // margin: 0 6rem 0rem 0rem;
-    }
-  }
+  //   &--back {
+  //     // margin: 0 6rem 0rem 0rem;
+  //   }
+  // }
 
   &_radio {
     &--text1,
@@ -188,6 +188,48 @@ input[type=color]::-webkit-color-swatch {
 
 
 
+
+
+
+// ===== BUTTON =====
+.container {
+  display: flex;
+  justify-content: center;
+  width: 32rem; /* Largura do contêiner pai */
+  // background: lightblue; /* Apenas para visualização */
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.flag-modal-btn {
+  display: grid;
+  grid-template-columns: 40% 60%; /* Define as larguras das colunas */
+  width: 27rem; /* Largura do grid */
+  // background: red; /* Apenas para visualização */
+  text-align: center;
+  // gap: 16px; /* Espaço entre as colunas, se desejado */
+}
+
+.button-grid {
+  display: contents; /* Permite que os itens da grid sejam alinhados conforme a grid do pai */
+}
+
+.button-col {
+  display: flex;
+  align-items: center; /* Alinha o conteúdo verticalmente ao centro */
+}
+
+.button-col.end {
+  justify-content: flex-start; /* Alinha o conteúdo horizontalmente ao início da coluna */
+}
+
+.button-col.start {
+  justify-content: flex-end; /* Alinha o conteúdo horizontalmente ao final da coluna */
+}
+
+
+
+
 // ===== MATERIAL RADIO =====
 // ============================
 
@@ -232,6 +274,9 @@ input[type=color]::-webkit-color-swatch {
 
 
 
+
+
+
 @media (max-width: 425px) {
   ::ng-deep {
     .cdk-overlay-pane.mat-mdc-dialog-panel {
@@ -246,10 +291,10 @@ input[type=color]::-webkit-color-swatch {
   //   font-size: 1.4rem;
   // }
 
-  mat-form-field {
-    // width: 80%;
-    width: 22rem;
-  }
+  // mat-form-field {
+  //   // width: 80%;
+  //   width: 22rem;
+  // }
 
 
 }
