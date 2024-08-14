@@ -1,5 +1,7 @@
-import { Component, effect } from "@angular/core";
+import { Component, effect, Inject } from "@angular/core";
 import { StateService } from "../../../../../shared/services/state.service";
+import { WINDOW } from "../../../../../shared/services/window.service";
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 
 @Component({
@@ -9,11 +11,26 @@ import { StateService } from "../../../../../shared/services/state.service";
 export class TolltipCreateHelper {
 
   TIME_LINE!: any; // translator used in ToastrService
+  showWidth425!: boolean
+  constructor(
+    private stateService: StateService,
+    @Inject(WINDOW) private window: Window,
+    public breakpointObserver: BreakpointObserver
 
-  constructor(private stateService: StateService) {
+  ) {
     effect(() => {
       this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
     })
+    // this.innerWidthVal = this.window.innerWidth
+    this.breakpointObserver
+      .observe(['(max-width: 425px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.showWidth425 = true;
+        } else {
+          this.showWidth425 = false;
+        }
+      });
   }
 
   // Alimenta o ToolTip {{'TIME-LINE.CREATE-FLAG.modal.title-h1' | translate}}
@@ -21,13 +38,27 @@ export class TolltipCreateHelper {
     let msn1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-a']
     let msn1_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-b']
     let img1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-img1-a']
-    return `
-    <div  style="height: auto; width:35rem;">
-      <p>${msn1_a}</p>
-      <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-      <img  style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
-    </div>
-    `
+
+
+    if (this.showWidth425) {
+      return `
+      <div  style="height: auto; width:30rem;">
+        <p>${msn1_a}</p>
+        <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
+        <img  style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+      </div>
+      `
+    } else if (!this.showWidth425) {
+      return `
+      <div  style="height: auto; width:35rem;">
+        <p>${msn1_a}</p>
+        <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
+        <img  style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+      </div>
+      `
+    }
+    return ``
+
   }
 
 
@@ -35,15 +66,26 @@ export class TolltipCreateHelper {
     let msn2_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-a']
     let msn2_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-b']
     let img2_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-img2-a']
-    return `
 
-    <div  style="height: auto; width:35rem;">
-    <p>${msn2_a}</p>
-    <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-      <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
-    </div>
 
-    `
+    if (this.showWidth425) {
+      return `
+      <div  style="height: auto; width:30rem;">
+      <p>${msn2_a}</p>
+      <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
+        <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+      </div>
+      `
+    } else if (!this.showWidth425) {
+      return `
+      <div  style="height: auto; width:35rem;">
+      <p>${msn2_a}</p>
+      <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
+        <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+      </div>
+      `
+    }
+    return ``
   }
 
 
