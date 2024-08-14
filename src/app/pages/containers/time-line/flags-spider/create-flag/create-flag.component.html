@@ -325,7 +325,8 @@
           <!-- Flag date -->
           <mat-label>{{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.input.date.mat-label' | translate}} </mat-label>
             <!-- Custom ToolTip -->
-            <i  class="material-icons-outlined cursor_pointer noSelect helpers_02 flag-modal_date--help notranslate"
+            <i  (click)="$event.preventDefault(); $event.stopPropagation();"
+                class="material-icons-outlined cursor_pointer noSelect helpers_02 flag-modal_date--help notranslate"
                 matSuffix
                 customToolTip
                 [contentTemplate]="template_help2"

@@ -62,11 +62,11 @@
 
   &_date {
     &--help {
-      margin: 0 -0.5rem 0 0;
+      margin: -.5rem -1rem -1.5rem 0;
       right: 0;
       position: absolute;
       z-index: 999999 !important;
-      // background: red;
+      background: red;
       padding: .5rem;
     }
   }
