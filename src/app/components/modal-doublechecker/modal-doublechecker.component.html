@@ -45,12 +45,12 @@
         <!-- {{data.modals.types.flag.social_medias_chips.length > 0 ? 'Existe kanban para ser removido': 'Zero kanban para ser removido'}} -->
         <ng-container *ngIf="data.modals.types.flag.social_medias_chips.length > 0">
           {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.item-01' | translate}}
+          <!-- <i  class="material-icons doublecheck_kanban--close notranslate">close</i> -->
         </ng-container>
         <ng-container *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">
           {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.item-02' | translate}}
+          <!-- <i  class="material-icons doublecheck_kanban--done notranslate">done</i> -->
         </ng-container>
-        <i  class="material-icons doublecheck_kanban--done notranslate" *ngIf="data.modals.types.flag.social_medias_chips.length <= 0">done</i>
-        <i  class="material-icons doublecheck_kanban--close notranslate" *ngIf="data.modals.types.flag.social_medias_chips.length > 0">close</i>
       </div>
 
       <div class="doublecheck_btn">

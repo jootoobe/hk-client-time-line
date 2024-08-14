@@ -15,6 +15,13 @@
 
   }
 
+  @media (max-width: 425px) {
+    .create-flag-dialog  {
+      max-width: 92vw !important;
+      min-width: 90vw !important;
+    }
+  }
+
   // .backdropBackground {
   // filter: blur(2rem);
   // background-color: rgba(var(--color-black), .1);
@@ -294,12 +301,12 @@ input[type=color]::-webkit-color-swatch {
 
 
 @media (max-width: 425px) {
-  ::ng-deep {
-    .cdk-overlay-pane.mat-mdc-dialog-panel {
-      max-width: 92vw !important;
-      min-width: 90vw !important;
-    }
-  }
+  // ::ng-deep {
+  //   .cdk-overlay-pane.mat-mdc-dialog-panel {
+  //     max-width: 92vw !important;
+  //     min-width: 90vw !important;
+  //   }
+  // }
 
   .flag-modal {
 

@@ -13,6 +13,13 @@
 
   }
 
+  @media (max-width: 425px) {
+    .filter-time-line-dialog {
+      max-width: 92vw !important;
+      min-width: 90vw !important;
+    }
+  }
+
   // .backdropBackground {
   // filter: blur(2rem);
   // background-color: rgba(var(--color-black), .1);
@@ -269,10 +276,10 @@
 
     }
 
-    .cdk-overlay-pane.mat-mdc-dialog-panel {
-      max-width: 92vw !important;
-      min-width: 90vw !important;
-    }
+    // .cdk-overlay-pane.mat-mdc-dialog-panel {
+    //   max-width: 92vw !important;
+    //   min-width: 90vw !important;
+    // }
   }
 
   .filter-grid-container {

@@ -10,8 +10,21 @@
     .mdc-dialog__container {
       padding: 0.1rem !important; // distance from scroll to modal
     }
-
   }
+
+  @media (max-width: 425px) {
+    .double-checker {
+      max-width: 92vw !important;
+      min-width: 90vw !important;
+    }
+  }
+
+  // .cdk-overlay-pane.mat-mdc-dialog-panel {
+  //   max-width: 92vw !important;
+  //   min-width: 90vw !important;
+  // }
+
+
 }
 
 
@@ -32,6 +45,7 @@
 
   &_flag,
   &_kanban {
+    // background: red;
     margin: 2rem 1rem 0 2rem;
 
     i {
@@ -41,14 +55,14 @@
     &--done {
       color: rgba(var(--color-green), 1);
       margin: -.5rem 0 0 .5rem;
-      position: absolute;
+      // position: absolute;
     }
 
     &--close {
       color: rgba(var(--color-red), 1);
       margin: -.5rem 0 0 .5rem;
-      position: absolute;
-  
+      // position: absolute;
+
     }
   }
 
