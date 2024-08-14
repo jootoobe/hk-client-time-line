@@ -103,22 +103,39 @@ export class TolltipCreateHelper {
 
     if (this.showWidth425) {
       return `
-      <div  style="height: auto; width:30rem;">
-      <p>${msn2_a}</p>
-      <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-        <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
-      </div>
-      `
-    } else if (!this.showWidth425) {
+            <div  style="height: auto; width:30rem;">
+            <p>${msn2_a}</p>
+            <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
+              <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+            </div>
+          `;
+    } else if (this.showWidth375) {
       return `
-      <div  style="height: auto; width:35rem;">
-      <p>${msn2_a}</p>
-      <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-        <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
-      </div>
-      `
+          <div  style="height: auto; width:29rem;">
+          <p>${msn2_a}</p>
+          <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
+            <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+          </div>
+          `;
+    } else if (this.showWidth320) {
+      return `
+          <div  style="height: auto; width:27rem;">
+          <p>${msn2_a}</p>
+          <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
+            <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+          </div>
+          `;
+    } else {
+      return `
+          <div  style="height: auto; width:35rem;">
+          <p>${msn2_a}</p>
+          <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
+          <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+          </div>
+          `;
     }
-    return ``
+
+    
   }
 
 

@@ -65,6 +65,9 @@
       margin: 0 -0.5rem 0 0;
       right: 0;
       position: absolute;
+      z-index: 999999 !important;
+      // background: red;
+      padding: .5rem;
     }
   }
 
@@ -198,13 +201,13 @@
     margin-right: 1rem !important;
   }
 
-  @media (max-width: 425px) {
+  // @media (max-width: 425px) {
 
-    // move o icone do datepicker para o Custom ToolTip ficar mais a direita
-    .mat-mdc-icon-button.mat-mdc-button-base {
-      margin-right: 2rem !important;
-    }
-  }
+  //   // move o icone do datepicker para o Custom ToolTip ficar mais a direita
+  //   .mat-mdc-icon-button.mat-mdc-button-base {
+  //     margin-right: 2rem !important;
+  //   }
+  // }
 }
 
 ::ng-deep .mat-options .mat-pseudo-checkbox {
