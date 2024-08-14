@@ -68,7 +68,7 @@ export class TolltipCreateHelper {
           `;
     } else if (this.showWidth375) {
       return `
-            <div style="height: auto; width:29rem;">
+            <div style="height: auto; width:28rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
               <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
@@ -76,7 +76,7 @@ export class TolltipCreateHelper {
           `;
     } else if (this.showWidth320) {
       return `
-            <div style="height: auto; width:27rem;">
+            <div style="height: auto; width:26rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
               <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
@@ -94,7 +94,7 @@ export class TolltipCreateHelper {
   }
 
 
-
+  // 🅰️ DATA
   help2() {
     let msn2_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-a']
     let msn2_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-b']
@@ -111,7 +111,7 @@ export class TolltipCreateHelper {
           `;
     } else if (this.showWidth375) {
       return `
-          <div  style="height: auto; width:29rem;">
+          <div  style="height: auto; width:28rem;">
           <p>${msn2_a}</p>
           <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
             <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
@@ -119,7 +119,7 @@ export class TolltipCreateHelper {
           `;
     } else if (this.showWidth320) {
       return `
-          <div  style="height: auto; width:27rem;">
+          <div  style="height: auto; width:26rem;">
           <p>${msn2_a}</p>
           <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
             <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
@@ -135,7 +135,7 @@ export class TolltipCreateHelper {
           `;
     }
 
-    
+
   }
 
 
@@ -147,17 +147,57 @@ export class TolltipCreateHelper {
     let msn3_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-e']
     let msn3_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-f']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
-    return `
 
-    <div  style="height: auto; width:30rem; margin: .5rem ">
-    <p>${msn3_a}</p>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
-    </div>
-    `
+
+    if (this.showWidth425) {
+      return `
+
+      <div  style="height: auto; width:30rem; margin: .5rem ">
+      <p>${msn3_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+      </div>
+      `
+    } else if (this.showWidth375) {
+      return `
+
+      <div  style="height: auto; width:28rem; margin: .5rem ">
+      <p>${msn3_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+      </div>
+      `
+    } else if (this.showWidth320) {
+      return `
+
+      <div  style="height: auto; width:26rem; margin: .5rem ">
+      <p>${msn3_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+      </div>
+      `
+    } else {
+      return `
+
+      <div  style="height: auto; width:35rem; margin: .5rem ">
+      <p>${msn3_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+      </div>
+      `
+    }
   }
 
 
@@ -170,17 +210,57 @@ export class TolltipCreateHelper {
     let msn4_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-f']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
 
-    return `
 
-    <div  style="height: auto; width:30rem; margin: .5rem ">
-    <p>${msn4_a}</p>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn4_b}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn4_c}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
-    </div>
-    `
+
+    if (this.showWidth425) {
+      return `
+
+      <div  style="height: auto; width:30rem; margin: .5rem ">
+      <p>${msn4_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
+      </div>
+      `
+    } else if (this.showWidth375) {
+      return `
+
+      <div  style="height: auto; width:28rem; margin: .5rem ">
+      <p>${msn4_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
+      </div>
+      `
+    } else if (this.showWidth320) {
+      return `
+
+      <div  style="height: auto; width:26rem; margin: .5rem ">
+      <p>${msn4_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
+      </div>
+      `
+    } else {
+      return `
+
+      <div  style="height: auto; width:35rem; margin: .5rem ">
+      <p>${msn4_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
+      </div>
+      `
+    }
   }
 
 
@@ -194,18 +274,65 @@ export class TolltipCreateHelper {
     let msn5_g: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help5-g']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
 
-    return `
 
-    <div  style="height: auto; width:30rem; margin: .5rem ">
-    <p>${msn5_a}</p>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn5_b}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn5_c}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn5_d}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn5_e}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn5_f}</li>
-      <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
-    </div>
-    `
+
+    if (this.showWidth425) {
+
+      return `
+
+      <div  style="height: auto; width:30rem; margin: .5rem ">
+      <p>${msn5_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_f}</li>
+        <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
+      </div>
+      `
+    } else if (this.showWidth375) {
+
+      return `
+
+      <div  style="height: auto; width:28rem; margin: .5rem ">
+      <p>${msn5_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_f}</li>
+        <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
+      </div>
+      `
+    } else if (this.showWidth320) {
+
+      return `
+
+      <div  style="height: auto; width:26rem; margin: .5rem ">
+      <p>${msn5_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_f}</li>
+        <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
+      </div>
+      `
+    } else {
+
+      return `
+
+      <div  style="height: auto; width:35rem; margin: .5rem ">
+      <p>${msn5_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn5_f}</li>
+        <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
+      </div>
+      `
+    }
   }
 
   help6() {
@@ -217,17 +344,64 @@ export class TolltipCreateHelper {
     let msn6_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-f']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
 
-    return `
 
-    <div  style="height: auto; width:30rem; margin: .5rem ">
-      <p>${msn6_a}</p>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn6_b}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn6_c}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
-      <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
-    </div>
-    `
+
+    if (this.showWidth425) {
+
+
+      return `
+
+      <div  style="height: auto; width:30rem; margin: .5rem ">
+        <p>${msn6_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+      </div>
+      `
+    } else if (this.showWidth375) {
+
+
+      return `
+
+      <div  style="height: auto; width:28rem; margin: .5rem ">
+        <p>${msn6_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+      </div>
+      `
+    } else if (this.showWidth320) {
+
+
+      return `
+
+      <div  style="height: auto; width:26rem; margin: .5rem ">
+        <p>${msn6_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+      </div>
+      `
+    } else {
+
+      return `
+
+      <div  style="height: auto; width:35rem; margin: .5rem ">
+        <p>${msn6_a}</p>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_b}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_c}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
+        <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+      </div>
+      `
+    }
   }
 
 
