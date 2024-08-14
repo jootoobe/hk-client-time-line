@@ -133,3 +133,10 @@ body {
     color: rgba(var(--color-primary), .8) !important;
     font-weight: var(--fonts-font-weight-400) !important;
 }
+
+
+// Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
+.activeHight.tooltip-conatiner {
+    max-height: 20rem !important;
+    overflow-x: hidden !important;
+}

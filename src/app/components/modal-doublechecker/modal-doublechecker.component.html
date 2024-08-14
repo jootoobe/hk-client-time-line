@@ -22,8 +22,8 @@
       </div>
       <div class="doublecheck_flag">
         <strong>Flag:</strong>
-          {{data.modals.types.flag.flag_title | truncate:25}}
-        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01 notranslate"
+          {{data.modals.types.flag.flag_title | truncate:15}}
+        <i  class="material-icons-outlined cursor_pointer noSelect helpers_01 notranslate doublecheck--icon"
             matSuffix
             customToolTip
             [contentTemplate]="delete_template_01"
@@ -35,8 +35,10 @@
           help_outline
         </i>
         <ng-template #delete_template_01>
-          <div  class="" customToolTipChiel
-                [innerHTML]="help1 | safeDomSanitizer: 'html'">
+          <div class="tooltip-conatiner"   [ngClass]="{'activeHight' : innerHeightVal < 570 }">
+            <div  customToolTipChiel
+                    [innerHTML]="help1 | safeDomSanitizer: 'html'">
+              </div>
           </div>
         </ng-template>
       </div>

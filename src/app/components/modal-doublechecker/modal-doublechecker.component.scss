@@ -43,6 +43,11 @@
     line-height: auto;
   }
 
+  &--icon {
+    padding: .5rem;
+    background: red;
+  }
+
   &_flag,
   &_kanban {
     // background: red;

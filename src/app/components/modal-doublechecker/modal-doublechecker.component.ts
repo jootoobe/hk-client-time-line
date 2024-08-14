@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, effect, output } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, TemplateRef, ViewChild, effect, output } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { TolltipModalSoublecheckerHelper } from "./tolltip-modal-doublechecker-helper";
 import { DoubleCheckDialogModel } from "../../models/double-check-dialog/double-check-dialog.model";
 import { StateService } from "../../shared/services/state.service";
+import { WINDOW } from "../../shared/services/window.service";
 
 
 
@@ -21,10 +22,18 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
   @ViewChild(TolltipModalSoublecheckerHelper) tolltipModalSoublecheckerHelper!: TolltipModalSoublecheckerHelper;
   help1:string = ''
   TIME_LINE: any
+  
+  innerHeightVal!: number
+
+
   constructor(
     private dialogCreate: MatDialog,
     private stateService: StateService,
+    @Inject(WINDOW) private window: Window,
   ) { 
+
+    this.innerHeightVal = this.window.innerHeight
+
     
     effect(() => {
       this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
