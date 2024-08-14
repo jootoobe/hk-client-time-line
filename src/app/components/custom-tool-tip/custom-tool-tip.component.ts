@@ -1,10 +1,13 @@
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { animate, state, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: 'custom-tool-tip',
   templateUrl: './custom-tool-tip.component.html',
   styleUrls: ['./custom-tool-tip.component.scss'],
+  encapsulation: ViewEncapsulation.None,  // Remover encapsulação
+
+
   animations: [
     trigger('fadeIn', [
       transition(':enter', [

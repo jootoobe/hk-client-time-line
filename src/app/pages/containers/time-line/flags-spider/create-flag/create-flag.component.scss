@@ -117,15 +117,13 @@
     &--hide {
       display: inline-table;
     }
+
     &--show {
       display: none;
     }
   }
 
-
 }
-
-
 
 
 // ===== BUTTON =====
@@ -290,16 +288,20 @@ input[type=color]::-webkit-color-swatch {
       &--col {
         // margin-left: 7rem;
       }
+
       &--text {
         margin-left: .5rem;
         font-size: 1.3rem;
-        i{
+
+        i {
           margin-left: .5rem;
         }
       }
+
       &--hide {
         display: none;
       }
+
       &--show {
         display: inline-table;
       }
@@ -340,25 +342,31 @@ input[type=color]::-webkit-color-swatch {
       }
     }
 
-    // .for-mobile {
-    //   max-height: 30vw !important;
-    //   max-width: 30rem !important;
-    // }
   }
+
 
   .flag-modal-btn {
     width: 24rem;
   }
 
-
-  @media (max-width: 320px) {
-
-    // .for-mobile {
-    //   max-height: 20vw !important;
-    //   max-width: 25rem !important;
-    // }
+  .tooltip-conatiner {
+    margin-left: 1rem !important;
   }
 
+  // .for-mobile{ // dessa forma é adicionado o scroll
+  //   max-width: 25rem;
+  //   max-height: 30rem;
+  // }
 
 }
 
+
+
+
+@media (max-width: 320px) {
+
+  // .for-mobile {
+  //   max-height: 20vw !important;
+  //   max-width: 25rem !important;
+  // }
+}

@@ -12,6 +12,8 @@ export class TolltipCreateHelper {
 
   TIME_LINE!: any; // translator used in ToastrService
   showWidth425!: boolean
+  showWidth375!: boolean
+  showWidth320!: boolean
   constructor(
     private stateService: StateService,
     @Inject(WINDOW) private window: Window,
@@ -23,13 +25,11 @@ export class TolltipCreateHelper {
     })
     // this.innerWidthVal = this.window.innerWidth
     this.breakpointObserver
-      .observe(['(max-width: 425px)'])
+      .observe(['(max-width: 425px)', '(max-width: 375px)', '(max-width: 320px)'])
       .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.showWidth425 = true;
-        } else {
-          this.showWidth425 = false;
-        }
+        this.showWidth425 = state.breakpoints['(max-width: 425px)'];
+        this.showWidth375 = state.breakpoints['(max-width: 375px)'];
+        this.showWidth320 = state.breakpoints['(max-width: 320px)'];
       });
   }
 
