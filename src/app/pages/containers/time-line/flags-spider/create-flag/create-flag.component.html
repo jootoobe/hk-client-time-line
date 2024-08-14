@@ -26,9 +26,10 @@
             help_outline
         </i>
         <ng-template #template_help1>
-          <div class="tooltip-conatiner">
+          <div class="tooltip-conatiner"
+              [ngClass]="{'activeHight' : innerHeightVal < 450 }">
             <div  customToolTipChiel
-                  class="for-mobile"
+        
                   [innerHTML]="help1 | safeDomSanitizer: 'html'">
             </div>
           </div>
@@ -61,8 +62,9 @@
               </i>
 
               <ng-template #template_help3 >
-                <div class="tooltip-conatiner">
+                <div class="tooltip-conatiner"   [ngClass]="{'activeHight' : innerHeightVal < 450 }">
                   <div  customToolTipChiel
+                        class="for-mobile"
                         [innerHTML]="help3 | safeDomSanitizer: 'html'">
                   </div>
                 </div>
@@ -122,13 +124,10 @@
                   </i>
                   <!-- class="custom-tooltip_width--40" -->
                   <ng-template #template_help4>
-                    <div class="tooltip-conatiner">
-                      <div class="tooltip-conatiner">
-                        <div  
-                              customToolTipChiel
+                    <div class="tooltip-conatiner"   [ngClass]="{'activeHight' : innerHeightVal < 450 }">
+                      <div  customToolTipChiel
                               [innerHTML]="help4 | safeDomSanitizer: 'html'">
                         </div>
-                      </div>
                     </div>
                   </ng-template>
   
@@ -184,9 +183,8 @@
                     help_outline
                 </i>
                 <ng-template #template_help5>
-                  <div class="tooltip-conatiner">
-                    <div   
-                          customToolTipChiel
+                  <div class="tooltip-conatiner"   [ngClass]="{'activeHight' : innerHeightVal < 450 }">
+                    <div  customToolTipChiel
                           [innerHTML]="help5 | safeDomSanitizer: 'html'">
                     </div>
                   </div>
@@ -246,9 +244,8 @@
                     help_outline
                 </i>
                 <ng-template #template_help6>
-                  <div class="tooltip-conatiner">
-                    <div  class="for-mobile "
-                          customToolTipChiel
+                  <div class="tooltip-conatiner"   [ngClass]="{'activeHight' : innerHeightVal < 450 }">
+                    <div  customToolTipChiel
                           [innerHTML]="help6 | safeDomSanitizer: 'html'">
                     </div>
                   </div>
@@ -340,9 +337,10 @@
                 help_outline
             </i>
           <ng-template #template_help2>
-            <div class="tooltip-conatiner">
+            <div class="tooltip-conatiner"   
+                [ngClass]="{'activeHight' : innerHeightVal < 450 }">
               <div  customToolTipChiel
-                    [innerHTML]="help2 | safeDomSanitizer: 'html'">
+                  [innerHTML]="help2 | safeDomSanitizer: 'html'">
               </div>
             </div>
           </ng-template>

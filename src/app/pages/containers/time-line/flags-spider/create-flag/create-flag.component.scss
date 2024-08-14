@@ -266,8 +266,13 @@ input[type=color]::-webkit-color-swatch {
 }
 
 
-.radio-group {
-  margin-left: -3rem;
+// .radio-group {
+//   margin-left: -3rem;
+// }
+
+.activeHight.tooltip-conatiner {
+  max-height: 20rem !important;
+  overflow-x: hidden !important;
 }
 
 
@@ -353,7 +358,7 @@ input[type=color]::-webkit-color-swatch {
     margin-left: 1rem !important;
   }
 
-  // .for-mobile{ // dessa forma é adicionado o scroll
+  // .for-mobile{ // dessa forma é adicionado o scroll individual se for o caso
   //   max-width: 25rem;
   //   max-height: 30rem;
   // }

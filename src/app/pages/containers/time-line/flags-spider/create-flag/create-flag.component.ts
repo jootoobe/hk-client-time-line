@@ -1,6 +1,6 @@
 import { style } from '@angular/animations';
 import { DatePipe } from "@angular/common";
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, effect, output } from "@angular/core";
+import { AfterViewInit, Component, Inject, Input, OnChanges, OnInit, SimpleChanges, ViewChild, effect, output } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatRadioChange } from "@angular/material/radio";
 import { ToastrService } from "ngx-toastr";
@@ -21,6 +21,7 @@ import { ConnectingExternalRoutesService } from '../../../../../shared/services/
 import { FilterFlagsService } from '../../../../../shared/services/filter-flags.service';
 import { IFilterCheckActive } from '../../../../../interfaces/filter-check-active.interface';
 import { EncryptDecryptModel } from '../../../../../models/encrypt-decrypt/encrypt-decrypt.model';
+import { WINDOW } from '../../../../../shared/services/window.service';
 
 @Component({
   selector: 'create-flag', // remove word app- from microservices
@@ -70,6 +71,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
   TIME_LINE: any
 
+  innerHeightVal!: number
+
   openColorCreat!: IFilterCheckActive
   constructor(
     private fb: FormBuilder,
@@ -82,7 +85,10 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     private indexDbTimeLineService: IndexDbTimeLineService,
     private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private filterFlagsService: FilterFlagsService,
+    @Inject(WINDOW) private window: Window,
   ) {
+
+    this.innerHeightVal = this.window.innerHeight
 
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()

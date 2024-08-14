@@ -1,6 +1,5 @@
 import { Component, effect, Inject } from "@angular/core";
 import { StateService } from "../../../../../shared/services/state.service";
-import { WINDOW } from "../../../../../shared/services/window.service";
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 
@@ -16,7 +15,6 @@ export class TolltipCreateHelper {
   showWidth320!: boolean
   constructor(
     private stateService: StateService,
-    @Inject(WINDOW) private window: Window,
     public breakpointObserver: BreakpointObserver
 
   ) {
