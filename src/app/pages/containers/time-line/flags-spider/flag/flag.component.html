@@ -10,7 +10,7 @@
 <main class="main">
   @for (flag of timeLine.time_line.flags | unique; track trackFlagsDataJson; let idx = $index; let first = $first; let last = $last) {
     <!-- [ngStyle]="{ 'margin-left': flag.flag_margin_right+'rem'}" -->
-  <div class="main-block"  [ngStyle]="{'margin-right': last ? '50rem' : ''}">
+  <div class="main-block transform-mobile"  [ngStyle]="{'margin-right': last ? '50rem' : ''}">
 
     <div [ngStyle]="{ 'margin-left':  !first && !last && flag.year ? '7rem': 
                                       !first && last && flag.year ? '7rem':  ''}"> 
@@ -219,7 +219,7 @@
         <!-- RETANGULO BRANCO DE FUNDO -->
         <div class="flag-1_white--background"></div>
             
-        <div class="flag-1_card" 
+        <div class="flag-1_card " 
             id="color-{{flag?.flag_design?.color_hex?.substring(1)}}"
             [ngStyle]="setStylesCards(flag)">
 

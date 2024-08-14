@@ -1,5 +1,6 @@
 // https://codepen.io/thenutz/pen/VwYeYEE
 @import '../../../../../../sass/global-time-line/tl-variables.scss';
+
 .main {
   white-space: nowrap; // não deixa os textos dentro da caixa ---- https://css-tricks.com/almanac/properties/w/whitespace/
   width: auto;
@@ -19,7 +20,7 @@
   white-space: normal; // deixa os textos dentor da caixa
   width: auto; // usado para o scroll de baixo ficar mais fiel ao tamanho
 
-  &--mouse-up{
+  &--mouse-up {
     width: 4rem;
     height: 22rem;
     background: transparent;
@@ -102,6 +103,7 @@
     position: absolute;
     margin-top: 0.6rem;
   }
+
   &_filter2 {
     width: 33.5rem;
     height: 1rem;
@@ -121,6 +123,7 @@
   &_line {
     padding-top: 6.5rem;
   }
+
   &_year {
     position: absolute;
     margin-left: -15rem;
@@ -157,5 +160,25 @@
     align-items: start !important;
     justify-content: start !important;
     // right: none
+  }
+}
+
+@media (max-width: 960px) {
+  .transform-mobile {
+    transform: translate3d(0%, 2rem, 0) scale(.9);
+  }
+}
+
+@media (max-width: 768px) {
+  .transform-mobile {
+    transform: translate3d(0%, 3.9rem, 0) scale(.8);
+  }
+}
+
+
+@media (max-width: 425px) {
+  .transform-mobile {
+    // transform: translate3d(-14%, -14%, 0) scale(.7);
+    transform: translate3d(0%, 5.9rem, 0) scale(.7);
   }
 }
