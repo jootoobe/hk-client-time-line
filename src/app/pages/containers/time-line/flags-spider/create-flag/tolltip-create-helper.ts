@@ -27,10 +27,26 @@ export class TolltipCreateHelper {
     this.breakpointObserver
       .observe(['(max-width: 425px)', '(max-width: 375px)', '(max-width: 320px)'])
       .subscribe((state: BreakpointState) => {
-        this.showWidth425 = state.breakpoints['(max-width: 425px)'];
-        this.showWidth375 = state.breakpoints['(max-width: 375px)'];
-        this.showWidth320 = state.breakpoints['(max-width: 320px)'];
+        if (state.breakpoints['(max-width: 320px)']) {
+          this.showWidth320 = true;
+          this.showWidth375 = false;
+          this.showWidth425 = false;
+        } else if (state.breakpoints['(max-width: 375px)']) {
+          this.showWidth320 = false;
+          this.showWidth375 = true;
+          this.showWidth425 = false;
+        } else if (state.breakpoints['(max-width: 425px)']) {
+          this.showWidth320 = false;
+          this.showWidth375 = false;
+          this.showWidth425 = true;
+        } else {
+          this.showWidth320 = false;
+          this.showWidth375 = false;
+          this.showWidth425 = false;
+        }
       });
+
+
   }
 
   // Alimenta o ToolTip {{'TIME-LINE.CREATE-FLAG.modal.title-h1' | translate}}
@@ -39,27 +55,46 @@ export class TolltipCreateHelper {
     let msn1_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-b']
     let img1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-img1-a']
 
+    // Log após a atualização dos breakpoints
+    console.log('Show Width 425:', this.showWidth425);
+    console.log('Show Width 375:', this.showWidth375);
+    console.log('Show Width 320:', this.showWidth320);
 
     if (this.showWidth425) {
       return `
-      <div  style="height: auto; width:30rem;">
-        <p>${msn1_a}</p>
-        <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-        <img  style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
-      </div>
-      `
-    } else if (!this.showWidth425) {
+            <div style="height: auto; width:30rem;">
+              <p>${msn1_a}</p>
+              <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
+              <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+            </div>
+          `;
+    } else if (this.showWidth375) {
       return `
-      <div  style="height: auto; width:35rem;">
-        <p>${msn1_a}</p>
-        <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-        <img  style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
-      </div>
-      `
+            <div style="height: auto; width:29rem;">
+              <p>${msn1_a}</p>
+              <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
+              <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+            </div>
+          `;
+    } else if (this.showWidth320) {
+      return `
+            <div style="height: auto; width:27rem;">
+              <p>${msn1_a}</p>
+              <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
+              <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+            </div>
+          `;
+    } else {
+      return `
+            <div style="height: auto; width:35rem;">
+              <p>${msn1_a}</p>
+              <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
+              <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+            </div>
+          `;
     }
-    return ``
-
   }
+
 
 
   help2() {
