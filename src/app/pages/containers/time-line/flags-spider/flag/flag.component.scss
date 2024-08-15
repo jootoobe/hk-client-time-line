@@ -201,14 +201,14 @@
 @media (max-width: 375px) {
   .main-block {
     &--flags {
-      margin-left: -5rem;
+      margin-left: -1rem;
     }
 
     &--flags2 {
-      margin: -6.5rem 0rem 0rem -1rem;
+      margin: -6.5rem 0rem 0rem 4rem;
     }
 
-    transform: translate3d(4rem, 5.9rem, 0) scale(.7);
+    transform: translate3d(3rem, 3.9rem, 0) scale(.8);
   }
 
 }
