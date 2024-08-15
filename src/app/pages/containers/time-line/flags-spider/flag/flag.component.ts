@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, effect, ElementRef, EventEmitter, input, Input, OnChanges, OnInit, output, Output, Renderer2, SimpleChanges } from "@angular/core";
+import { AfterViewInit, Component, computed, effect, ElementRef, EventEmitter, Inject, input, Input, OnChanges, OnInit, output, Output, Renderer2, SimpleChanges } from "@angular/core";
 
 import { FlagModel } from "../../../../../models/flag.model";
 import { TimeLineModel } from "../../../../../models/time-line.model";
@@ -10,6 +10,7 @@ import { DoubleCheckDialogModel } from "../../../../../models/double-check-dialo
 import { LocalStorageService } from "../../../../../shared/services/storage/local-storage.service";
 import { ConnectingExternalRoutesService } from "../../../../../shared/services/connecting-external-routes/connecting-external-routes.service";
 import { EncryptDecryptModel } from "../../../../../models/encrypt-decrypt/encrypt-decrypt.model";
+import { WINDOW } from "../../../../../shared/services/window.service";
 
 export function coerceArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
@@ -48,6 +49,9 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
 
   doubleCheckerData!: DoubleCheckDialogModel
+  innerWidthVal!: number
+  innerHeightVal!: number
+  innerHeightVal2!: boolean
 
   constructor(
     private renderer2: Renderer2,
@@ -56,8 +60,25 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     private stateService: StateService,
     private timeLineService: TimeLineService,
     private localStorageService: LocalStorageService,
-    private connectingExternalRoutesService: ConnectingExternalRoutesService
+    private connectingExternalRoutesService: ConnectingExternalRoutesService,
+    @Inject(WINDOW) private window: Window,
+
   ) {
+    setTimeout(()=>{
+      this.innerWidthVal = this.window.innerWidth
+      this.innerHeightVal = this.window.innerHeight
+  
+      if (this.innerWidthVal > 768) {
+        if (this.innerHeightVal > 620) { // para pc com 600 de altura      transform: translate3d(3rem, 3.9rem, 0) scale(.8);
+          this.innerHeightVal2 = false
+        } else if (this.innerHeightVal < 620) {
+          this.innerHeightVal2 = true
+        }
+      }
+      console.log('sssssssssssssssssssssss', this.innerHeightVal2)
+    },500)
+
+
 
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()

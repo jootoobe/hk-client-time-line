@@ -139,6 +139,25 @@
   // z-index: 500;
 }
 
+
+.transform-mobile-active {
+  .main-block {
+
+    &--flags {
+      margin-left: -1rem !important;
+      // background: red;
+    }
+
+    &--flags2 {
+      margin: -6.5rem 0rem 0rem 3rem !important;
+    }
+
+  }
+  transform: translate3d(4rem, 4rem, 0) scale(.8) !important;
+}
+
+
+
 // =========== MATERIAL ===========
 // ==============================
 
@@ -173,27 +192,25 @@
     &--flags2 {
       margin: -6.5rem 0rem 0rem 7rem;
     }
-  }
 
-  .transform-mobile {
     transform: translate3d(2rem, 2rem, 0) scale(.9);
   }
+
 }
 
 @media (max-width: 375px) {
   .main-block {
     &--flags {
-      margin-left: -1rem;
+      margin-left: -5rem;
     }
 
     &--flags2 {
-      margin: -6.5rem 0rem 0rem 4rem;
+      margin: -6.5rem 0rem 0rem -1rem;
     }
+
+    transform: translate3d(4rem, 5.9rem, 0) scale(.7);
   }
 
-  .transform-mobile {
-    transform: translate3d(3rem, 3.9rem, 0) scale(.8);
-  }
 }
 
 

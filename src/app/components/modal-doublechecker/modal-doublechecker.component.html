@@ -31,9 +31,10 @@
             [originY]="'bottom'"
             [overlayX]="'center'"
             [overlayY]="'top'"
-            [offsetY]="innerWidthVal2">
+            [offsetY]="-220">
           help_outline
         </i>
+        
         <!-- innerHeightVal < 570 ? -100: -220 -->
         <ng-template #delete_template_01>
           <div class="tooltip-conatiner"   [ngClass]="{'activeHight' : innerHeightVal < 570 }">

@@ -23,12 +23,7 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
   help1:string = ''
   TIME_LINE: any
   
-  innerHeightPc600!: number
   innerHeightVal!: number
-  innerHeightVal2!: number
-
-  innerWidthVal!: number
-  innerWidthVal2!: number
 
   constructor(
     private dialogCreate: MatDialog,
@@ -36,15 +31,8 @@ export class ModalDoubleCheckerComponent implements OnInit, AfterViewInit {
     @Inject(WINDOW) private window: Window,
   ) { 
 
-    this.innerHeightPc600 = this.window.innerHeight // usado para diminuir o tamanho da bandeira em pc com 600 de altura
     this.innerHeightVal = this.window.innerHeight
-    this.innerWidthVal = this.window.innerWidth
 
-    if(this.innerWidthVal > 570){
-      this.innerWidthVal2 = -150
-    } else if(this.innerWidthVal > 570) {
-      this.innerWidthVal2 = -220
-    }
 
     
     effect(() => {
