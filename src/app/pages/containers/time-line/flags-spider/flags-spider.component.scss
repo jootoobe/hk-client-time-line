@@ -68,9 +68,17 @@
   // z-index: -1;
   // align-items: start;
 
+  &_container{
+    max-width: 5rem; /* Limita a largura máxima do contêiner */
+    display: flex;
+    justify-content: flex-end; /* Alinha o ícone à direita do contêiner */
+    // background: blue;
+    z-index: 999999;
+  }
+
   &_img {
-    margin: 0 2rem .7rem 0;
-    width: 3rem;
+    width: 100%; /* Faz com que o ícone ocupe toda a largura disponível dentro do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
   }
 }
 
