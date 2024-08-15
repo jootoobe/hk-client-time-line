@@ -73,3 +73,16 @@
     width: 3rem;
   }
 }
+
+
+@media (max-width: 768px) {
+  .second-div::-webkit-scrollbar {
+    // width: 10px;
+    height: 1.3rem;
+  }
+
+  /* Track */
+  .second-div::-webkit-scrollbar-track {
+    margin: 0 6rem 0 5rem;
+  }
+}
