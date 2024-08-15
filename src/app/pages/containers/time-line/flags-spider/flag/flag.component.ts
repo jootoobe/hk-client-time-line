@@ -69,7 +69,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       this.innerHeightVal = this.window.innerHeight
   
       if (this.innerWidthVal > 768) {
-        if (this.innerHeightVal > 620) { // para pc com 600 de altura      transform: translate3d(3rem, 3.9rem, 0) scale(.8);
+        if (this.innerHeightVal > 620) { // para pc com 620 de altura      transform: translate3d(3rem, 3.9rem, 0) scale(.8);
           this.innerHeightVal2 = false
         } else if (this.innerHeightVal < 620) {
           this.innerHeightVal2 = true
