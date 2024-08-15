@@ -83,3 +83,20 @@
 
 
 }
+
+
+@media (max-width: 375px) {
+
+  .tooltip-conatiner {
+    margin-left: 1.5rem !important;
+  }
+
+
+}
+
+
+// // Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
+// .activeHight.tooltip-conatiner {
+//   max-height: 20rem !important;
+//   overflow-x: hidden !important;
+// }

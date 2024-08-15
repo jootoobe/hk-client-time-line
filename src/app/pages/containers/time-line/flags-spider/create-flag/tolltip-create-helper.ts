@@ -54,9 +54,9 @@ export class TolltipCreateHelper {
     let img1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-img1-a']
 
     // Log após a atualização dos breakpoints
-    console.log('Show Width 425:', this.showWidth425);
-    console.log('Show Width 375:', this.showWidth375);
-    console.log('Show Width 320:', this.showWidth320);
+    // console.log('Show Width 425:', this.showWidth425);
+    // console.log('Show Width 375:', this.showWidth375);
+    // console.log('Show Width 320:', this.showWidth320);
 
     if (this.showWidth425) {
       return `
