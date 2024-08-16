@@ -14,6 +14,7 @@ import { DetectBrowserNameService } from '../../../../shared/services/detect-bro
 import { ToastrService } from 'ngx-toastr';
 import { TimeLineGetKanbanService } from '../../../../services/time-line-get-kanban.service';
 import { FilterFlagsService } from '../../../../shared/services/filter-flags.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'flags-spider',
@@ -50,8 +51,11 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   TOAST: any
 
   lastHeight!: number
-  isAddressBarVisible: boolean = false
+  isAddressBarVisible: boolean = true
   heightTolerance: number = 10; // Tolerância para variação de altura
+
+  isMobile: boolean = false;
+
 
   constructor(
     private dialogCreate: MatDialog,
@@ -66,6 +70,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private toastrService: ToastrService,
     private filterFlagsService: FilterFlagsService,
     private ngZone: NgZone,
+    private deviceService: DeviceDetectorService
   ) {
 
     this.indexDbGetAllTimeLine('0000')
@@ -111,13 +116,20 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+    this.isMobile = this.deviceService.isMobile();
     this.detectBrowser = this.detectBrowserNameService.detectBrowserName()
 
-    // this.timeLine.time_line.flags[0].flags2
-    let newHideIcon: any = localStorage.getItem('icon-visible') !== null ? localStorage.getItem('icon-visible') : 'false'
-    newHideIcon === 'false' ? false : true
+    if (this.isMobile) {
+      this.isAddressBarVisible = false
+    } else if (!this.isMobile) {
+      this.isAddressBarVisible = true
+    }
 
-    this.isAddressBarVisible = newHideIcon
+    // this.timeLine.time_line.flags[0].flags2
+    // let newHideIcon: any = localStorage.getItem('icon-visible') !== null ? localStorage.getItem('icon-visible') : 'false'
+    // newHideIcon === 'false' ? false : true
+    // this.isAddressBarVisible = newHideIcon
+
     this.detectAddressBar();
 
 
@@ -479,7 +491,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   openCloseHorizontalScroll(val: string) {
     if (val === 'open') {
       this.openColse = true
-    } else if(val === 'close') {
+    } else if (val === 'close') {
       this.openColse = false
     }
     // const open = this.openClose.nativeElement.querySelector("#open");
@@ -504,7 +516,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     //   // close.style.opacity = '0';
     //   open.style.display = 'inline-table';
     //   close.style.display = 'none';
-      
+
     //   return
     // }
     // // }
@@ -514,30 +526,37 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
 
+  
+
   // 🅰️ FOR MOBILE
   detectAddressBar() {
     this.lastHeight = window.innerHeight;
-
     this.ngZone.runOutsideAngular(() => {
       window.addEventListener('resize', () => {
         this.ngZone.run(() => {
           const currentHeight = window.innerHeight;
           const heightDifference = this.lastHeight - currentHeight;
 
-        
-          // Se a diferença na altura for significativa e a altura atual for menor
-          if (heightDifference > this.heightTolerance) {
-            this.isAddressBarVisible = false; // A altura diminuiu, a barra está visível
-            localStorage.setItem('icon-visible', 'false')
-          }
-          if (heightDifference < this.heightTolerance) {
-            this.isAddressBarVisible = true;  // A altura aumentou, a barra está oculta 
-            localStorage.setItem('icon-visible', 'true')
+          // // Se a diferença na altura for significativa e a altura atual for menor
+          // if (heightDifference > this.heightTolerance) {
+          //   this.isAddressBarVisible = false; // A altura diminuiu, a barra está visível
+          //   localStorage.setItem('icon-visible', 'false')
+          // }
+          // if (heightDifference < this.heightTolerance) {
+          //   this.isAddressBarVisible = true;  // A altura aumentou, a barra está oculta 
+          //   localStorage.setItem('icon-visible', 'true')
+          // }
+
+          // // Atualiza a altura para a próxima comparação
+          // this.lastHeight = currentHeight;
+
+          if (this.isMobile) {
+            this.isAddressBarVisible = currentHeight === this.lastHeight ? false : heightDifference > this.heightTolerance ? false : true;
+            this.lastHeight = currentHeight;
+          } else if (!this.isMobile) {
+            this.isAddressBarVisible = true
           }
 
-          // Atualiza a altura para a próxima comparação
-          this.lastHeight = currentHeight;
-          this.openCloseHorizontalScroll('open')
         });
       });
     });

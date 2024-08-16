@@ -44,9 +44,9 @@
   </div>
 
   <div class="open-clos-scroll cursor_pointer" #openClose [ngStyle]="{'opacity': flagLength > 4 ? '1': '0'}">
-    @if(!openColse) {
+    @if(!openColse && isAddressBarVisible) {
       <span id="open" (click)="openCloseHorizontalScroll('open')" >open</span>
-    } @else if(openColse){
+    } @else if(openColse && isAddressBarVisible){
       <span id="close" (click)="openCloseHorizontalScroll('close')">close</span>
     }
   </div>

@@ -32,6 +32,7 @@
     "concat": "^1.0.3",
     "crypto-js": "^4.2.0",
     "idb": "^8.0.0",
+    "ngx-device-detector": "^8.0.0",
     "ngx-mask": "^17.0.7",
     "ngx-toastr": "^18.0.0",
     "ngx-translate-multi-http-loader": "^17.0.0",
