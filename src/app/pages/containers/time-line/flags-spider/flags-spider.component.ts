@@ -529,6 +529,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   
 
   // 🅰️ FOR MOBILE
+  // Usado apenas para esconder o botão do vídeo quando está no mobile e a barra de endereço some
   detectAddressBar() {
     this.lastHeight = window.innerHeight;
     this.ngZone.runOutsideAngular(() => {
