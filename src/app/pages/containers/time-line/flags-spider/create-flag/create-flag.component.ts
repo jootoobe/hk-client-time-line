@@ -943,8 +943,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       flags.at(0)?.get('flag_design')?.get('color_hsl')?.setValue(colorFormats.hsl)
 
       // Toda vez que a data for alterada ou a cor da bandeira 02, o fundo da data será resetado para ficar igual ao da bandeira 01.
-      if (this.editFlagFormInput && this.editFlagFormInput.flags2 && this.editFlagFormInput.flags2?.length > 0) {
-        // this.editFlagFormInput.flags2[0].flag_design.color_date = colorFormats.rgb
+      if (val2 === 'input' && this.editFlagFormInput && this.editFlagFormInput.flags2 && this.editFlagFormInput.flags2?.length > 0) {
+        this.editFlagFormInput.flags2[0].flag_design.color_date = colorFormats.rgb
+        val2 = ''
       }
     }
     this.colorHexaVal = flags.at(0)?.get('flag_design')?.get('color_hex')?.value
