@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild, effect, output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnInit, Renderer2, TemplateRef, ViewChild, effect, output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { TimeLineModel } from '../../../../models/time-line.model';
@@ -49,6 +49,10 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   TOAST: any
 
+  lastHeight!: number
+  isAddressBarVisible: boolean = false
+  heightTolerance: number = 10; // Tolerância para variação de altura
+
   constructor(
     private dialogCreate: MatDialog,
     private renderer2: Renderer2,
@@ -61,6 +65,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private timeLineGetKanbanService: TimeLineGetKanbanService,
     private toastrService: ToastrService,
     private filterFlagsService: FilterFlagsService,
+    private ngZone: NgZone,
   ) {
 
     this.indexDbGetAllTimeLine('0000')
@@ -107,6 +112,14 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.detectBrowser = this.detectBrowserNameService.detectBrowserName()
+
+    // this.timeLine.time_line.flags[0].flags2
+    let newHideIcon: any = localStorage.getItem('icon-visible') !== null ? localStorage.getItem('icon-visible') : 'false'
+    newHideIcon === 'false' ? false : true
+
+    this.isAddressBarVisible = newHideIcon
+    this.detectAddressBar();
+
 
     setTimeout(() => {
       this.getTimeLineKanbanById()
@@ -464,37 +477,73 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   // horizontal scroll button open and close
   // Levar para aplicação principal
   openCloseHorizontalScroll(val: string) {
-    const open = this.openClose.nativeElement.querySelector("#open");
-    const close = this.openClose.nativeElement.querySelector("#close");
+    if (val === 'open') {
+      this.openColse = true
+    } else if(val === 'close') {
+      this.openColse = false
+    }
+    // const open = this.openClose.nativeElement.querySelector("#open");
+    // const close = this.openClose.nativeElement.querySelector("#close");
 
     // Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄
     if (this.detectBrowser === 'firefox') {
       alert(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].alert['msn-0']['message'])
     }
 
-    // if (this.detectBrowser !== 'firefox') {
-    if (val === 'open') {
-      // open.style.opacity = '0';
-      // close.style.opacity = '1';
-      this.openColse = true
-      open.style.display = 'none';
-      close.style.display = 'inline-table';
-      return
-    } else if (val === 'close') {
-      this.openColse = false
-      // open.style.opacity = '1';
-      // close.style.opacity = '0';
-      open.style.display = 'inline-table';
-      close.style.display = 'none';
-      return
-    }
+    // // if (this.detectBrowser !== 'firefox') {
+    // if (val === 'open') {
+    //   // open.style.opacity = '0';
+    //   // close.style.opacity = '1';
+    //   this.openColse = true
+    //   open.style.display = 'none';
+    //   close.style.display = 'inline-table';
+    //   return
+    // } else if (val === 'close') {
+    //   this.openColse = false
+    //   // open.style.opacity = '1';
+    //   // close.style.opacity = '0';
+    //   open.style.display = 'inline-table';
+    //   close.style.display = 'none';
+      
+    //   return
     // }
+    // // }
 
-    open.style.display = 'none';
-    close.style.display = 'none';
+    // open.style.display = 'none';
+    // close.style.display = 'none';
   }
 
+
+  // 🅰️ FOR MOBILE
+  detectAddressBar() {
+    this.lastHeight = window.innerHeight;
+
+    this.ngZone.runOutsideAngular(() => {
+      window.addEventListener('resize', () => {
+        this.ngZone.run(() => {
+          const currentHeight = window.innerHeight;
+          const heightDifference = this.lastHeight - currentHeight;
+
+        
+          // Se a diferença na altura for significativa e a altura atual for menor
+          if (heightDifference > this.heightTolerance) {
+            this.isAddressBarVisible = false; // A altura diminuiu, a barra está visível
+            localStorage.setItem('icon-visible', 'false')
+          }
+          if (heightDifference < this.heightTolerance) {
+            this.isAddressBarVisible = true;  // A altura aumentou, a barra está oculta 
+            localStorage.setItem('icon-visible', 'true')
+          }
+
+          // Atualiza a altura para a próxima comparação
+          this.lastHeight = currentHeight;
+          this.openCloseHorizontalScroll('open')
+        });
+      });
+    });
+  }
 }
+
 
 
 
