@@ -78,13 +78,13 @@
         <!-- <div class=""> -->
         <!-- Apply filter matDialogClose-->
         @if(titleFlag?.length > 0 || filterTopDiv?.length) {
-        <button mat-stroked-button class="btn_red-spider" (click)="clearFilter('update')">
+        <button mat-stroked-button class="btn_red-spider notranslate" (click)="clearFilter('update')">
           <!-- Limpar filtro -->
           {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.clean-filter' | translate}}
         </button>
         }
         @else if(filterTopDiv?.length === 0 || titleFlag?.length === 0) {
-        <button mat-stroked-button class="btn_red-spider">
+        <button mat-stroked-button class="btn_red-spider notranslate">
           <!-- Limpar filtro -->
           {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.clean-filter' | translate}}
         </button>
@@ -98,20 +98,20 @@
           <!-- Apply filter matDialogClose-->
           @if(titleFlag?.length > 0) {
           <button mat-stroked-button 
-                  class="btn_opt-valid" 
+                  class="btn_opt-valid notranslate" 
                   (click)="toApplyFilter('text')">
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
           </button>
           }@else if(filterTopDiv?.length > 0) {
           <button mat-stroked-button 
-                  class="btn_opt-valid" 
+                  class="btn_opt-valid notranslate" 
                   (click)="toApplyFilter('color')">
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
           </button>
 
           } @else if(filterTopDiv?.length === 0 || titleFlag?.length === 0) {
           <button mat-stroked-button 
-                  class="btn_opt-invalid">
+                  class="btn_opt-invalid notranslate">
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.mat-stroked-button.button.apply-filter' | translate}}
           </button>
           }

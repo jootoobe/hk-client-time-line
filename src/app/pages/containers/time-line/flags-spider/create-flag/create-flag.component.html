@@ -474,14 +474,14 @@
               <!-- Back Button -->
               @if(flagCreateEditInput === 'edit') {
               <button mat-stroked-button
-                      class="btn_opt_transparent"
+                      class="btn_opt_transparent notranslate"
                       matDialogClose   
                       (click)="clearForm()">
                 {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.back' | translate}}
               </button>
               } @else if(flagCreateEditInput === 'create'){
               <button mat-stroked-button
-                      class="btn_opt_transparent"
+                      class="btn_opt_transparent notranslate"
                       matDialogClose   
                       (click)="clearForm()">
                 {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.back' | translate}}
@@ -493,27 +493,27 @@
               <!-- Conditional Buttons -->
               @if(flagCreateEditInput === 'edit') {
                 @if(createTimeLineForm.invalid) {
-                <button mat-stroked-button class="btn_opt-invalid">
+                <button mat-stroked-button class="btn_opt-invalid notranslate">
                   {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.edit' | translate}}
                 </button>
                 } @else {
                 <button matDialogClose 
                         type="submit" 
                         mat-stroked-button 
-                        class="btn_opt-valid">
+                        class="btn_opt-valid notranslate">
                   {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.edit' | translate}}
                 </button>
                 }
               } @else if(flagCreateEditInput === 'create') {
                 @if(createTimeLineForm.invalid) {
-                <button mat-stroked-button class="btn_opt-invalid">
+                <button mat-stroked-button class="btn_opt-invalid notranslate">
                   {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
                 </button>
                 } @else {
                 <button matDialogClose 
                         type="submit" 
                         mat-stroked-button 
-                        class="btn_opt-valid">
+                        class="btn_opt-valid notranslate">
                   {{'TIME-LINE.CreateFlagComponent.CREATE-FLAG_MATERIAL.mat-stroked-button.button.create' | translate}}
                 </button>
                 }

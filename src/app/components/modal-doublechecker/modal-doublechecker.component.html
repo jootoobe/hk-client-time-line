@@ -61,7 +61,7 @@
         <!-- Back -->
         <button matDialogClose
                 mat-stroked-button
-                class="btn_opt_transparent doublecheck_btn--back" >
+                class="btn_opt_transparent doublecheck_btn--back notranslate" >
           <!-- Voltar -->
           {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.button.back' | translate}}
         </button>
@@ -69,7 +69,7 @@
         <button *ngIf="data.modals.types.flag.social_medias_chips.length <= 0"
                 matDialogClose
                 mat-stroked-button
-                class="btn_opt-delete"
+                class="btn_opt-delete notranslate"
                 (click)="deleteFlag()"
                 [disabled]="false">
           <!-- Deletar -->
@@ -78,7 +78,7 @@
         <button *ngIf="data.modals.types.flag.social_medias_chips.length > 0"
                 matDialogClose
                 mat-stroked-button
-                class="btn_opt-invalid"
+                class="btn_opt-invalid notranslate"
                 [disabled]="true">
           <!-- Deletar -->
           {{'TIME-LINE.ModalDoubleCheckerComponent.MODAL-DOUBLE-CHECKER.modal-dialog.button.delete' | translate}}
