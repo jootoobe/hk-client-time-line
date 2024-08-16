@@ -96,7 +96,8 @@
 
 // Radio Button Styme
 .mat-mdc-radio-button.mat-accent {
-  padding: 0rem;
+  padding: 0 !important;
+  // margin: 0 !important;
   --mdc-radio-selected-icon-color: #455a64; // cor icone
   --mdc-radio-selected-hover-icon-color: #455a64; // cor icone
   --mdc-radio-selected-pressed-icon-color: #455a64; // cor icone
