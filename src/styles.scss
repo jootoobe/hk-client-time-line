@@ -139,4 +139,16 @@ body {
 .activeHight.tooltip-conatiner {
     max-height: 40rem !important;
     overflow-x: hidden !important;
-}
+  }
+  
+  // Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
+  .activeHight2.tooltip-conatiner {
+    max-height: 30rem !important;
+    overflow-x: hidden !important;
+  }
+  
+  // Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
+  .activeHight3.tooltip-conatiner {
+    max-height: 20rem !important;
+    overflow-x: hidden !important;
+  }
