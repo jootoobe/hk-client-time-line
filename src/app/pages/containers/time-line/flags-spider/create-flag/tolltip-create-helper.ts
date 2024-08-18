@@ -152,7 +152,7 @@ export class TolltipCreateHelper {
     if (this.showWidth425) {
       return `
 
-      <div  style="height: auto; width:30rem; margin: .5rem ">
+      <div  style="height: auto; width:34rem; margin: .5rem ">
       <p>${msn3_a}</p>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_b}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_c}</li>
@@ -215,7 +215,7 @@ export class TolltipCreateHelper {
     if (this.showWidth425) {
       return `
 
-      <div  style="height: auto; width:30rem; margin: .5rem ">
+      <div  style="height: auto; width:34rem; margin: .5rem ">
       <p>${msn4_a}</p>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_b}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_c}</li>
@@ -280,7 +280,7 @@ export class TolltipCreateHelper {
 
       return `
 
-      <div  style="height: auto; width:30rem; margin: .5rem ">
+      <div  style="height: auto; width:34rem; margin: .5rem ">
       <p>${msn5_a}</p>
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_b}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_c}</li>
@@ -351,7 +351,7 @@ export class TolltipCreateHelper {
 
       return `
 
-      <div  style="height: auto; width:30rem; margin: .5rem ">
+      <div  style="height: auto; width:34rem; margin: .5rem ">
         <p>${msn6_a}</p>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_b}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_c}</li>
@@ -417,7 +417,7 @@ export class TolltipCreateHelper {
 
 
 
-// <div  style="height: auto; width:27rem; margin: .5rem ">
+// <div  style="height: auto; width:26rem; margin: .5rem ">
 // <p>Altere as cores dos textos seguindo as opções abaixo.</p>
 // <li style="margin: .5rem 0 1rem .5rem;">Opção cor 01 - preto</li>
 // <li style="margin: .5rem 0 1rem .5rem;">Opção cor 02 - branco</li>

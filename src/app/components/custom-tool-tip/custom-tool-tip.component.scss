@@ -41,8 +41,11 @@
 
 
 @media (max-width: 375px) {
-  .tooltip-conatiner {
-    // margin: 0 0 0 -5rem !important;
+  .tooltip-conatiner--02 {
+    margin: 0 0 0 1rem !important;
   }
 
+  .tooltip-conatiner--03{
+    margin: 0 0 0 -2rem !important;
+  }
 }
