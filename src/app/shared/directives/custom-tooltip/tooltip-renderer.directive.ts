@@ -116,16 +116,19 @@ export class ToolTipRendererDirective implements OnDestroy {
 
     window.clearTimeout(this.active);
     this.active = null
+    
+    // preciso do timeout - na versão mobile relacionado ao posicionamento [offsetY]="-100" quando passa por cima no icone ?
+    this.active =  setTimeout(() => {
+      this.createTooltip()
+      this.stateService.toolTipSubject({ mouse: 'mouseenter', from: 'customToolTipParent' })
 
-    this.createTooltip()
-    this.stateService.toolTipSubject({ mouse: 'mouseenter', from: 'customToolTipParent' })
+      if (this.overlayRef && !this.overlayRef.hasAttached()) {
 
-    if (this.overlayRef && !this.overlayRef.hasAttached()) {
-
-      this.tooltipRef = this.overlayRef.attach(new ComponentPortal(CustomToolTipComponent));
-      this.tooltipRef.instance.text = this.text;
-      this.tooltipRef.instance.contentTemplate = this.contentTemplate;
-    }
+        this.tooltipRef = this.overlayRef.attach(new ComponentPortal(CustomToolTipComponent));
+        this.tooltipRef.instance.text = this.text;
+        this.tooltipRef.instance.contentTemplate = this.contentTemplate;
+      }
+    }, 50);
   }
 
   @HostListener('mouseleave', ['$event'])
@@ -151,13 +154,13 @@ export class ToolTipRendererDirective implements OnDestroy {
 
 }
 
-  // bot
-  // check user agent for a possible bot
-  // https://chat.openai.com/c/91112ea9-51d5-498e-bc1a-cdceade3988f
-  // UserAgent
-  // https://stackoverflow.com/questions/20084513/detect-search-crawlers-via-javascript
-  // https://stackoverflow.com/questions/20084513/detect-search-crawlers-via-javascript
-  // https://stackoverflow.com/questions/20084513/detect-search-crawlers-via-javascript
+// bot
+// check user agent for a possible bot
+// https://chat.openai.com/c/91112ea9-51d5-498e-bc1a-cdceade3988f
+// UserAgent
+// https://stackoverflow.com/questions/20084513/detect-search-crawlers-via-javascript
+// https://stackoverflow.com/questions/20084513/detect-search-crawlers-via-javascript
+// https://stackoverflow.com/questions/20084513/detect-search-crawlers-via-javascript
 
 
 // https://github.com/Gabriel10Velloso/tooltip-cdk/blob/main/src/app/tooltip/tooltip-overlay/tooltip.directive.ts
