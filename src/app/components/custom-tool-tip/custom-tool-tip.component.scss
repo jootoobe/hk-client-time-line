@@ -29,3 +29,12 @@
   scrollbar-width: thin;
   height: .7rem;
 }
+
+
+
+@media (max-width: 375px) {
+  .tooltip-conatiner {
+    margin-left: 1.5rem !important;
+  }
+
+}
