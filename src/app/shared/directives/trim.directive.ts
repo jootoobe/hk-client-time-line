@@ -24,12 +24,12 @@ export class TrimDirective {
     private renderer: Renderer2,
     private elementRef: ElementRef,
     private stateService: StateService,
-    private toastrService: ToastrService) { 
+    private toastrService: ToastrService) {
       
       effect(() => {
-        this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
-      })
-    }
+      this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
+    })
+  }
 
   @HostListener('blur')
   onBlur(): void {
@@ -140,20 +140,23 @@ export class TrimDirective {
       let longWords: any
       let pattern: any
 
-      pattern = new RegExp(`\\b\\w{${this.characterText},}\\b`, 'g'); //   pattern = /\b\w{26,}\b/g;
-      // Match the pattern in the text
-      longWords = valueTrim.match(pattern);
+      if (this.characterText !== 0) {
+        pattern = new RegExp(`\\b\\w{${this.characterText},}\\b`, 'g'); //   pattern = /\b\w{26,}\b/g;
+        // Match the pattern in the text
+        longWords = valueTrim.match(pattern);
 
-      // Se a palavra tiver mais que 26 caracteres o texto é deletado
-      if (longWords && longWords.length > 0) {
-        valueTrim = ''
-        // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
-        this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2']+'.', 
-                                  this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3']  + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
+        // Se a palavra tiver mais que 26 caracteres o texto é deletado
+        if (longWords && longWords.length > 0) {
+          valueTrim = ''
+          // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+          this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '.',
+            this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
 
-        this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
-        return
+          this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+          return
+        }
       }
+
       // valueTrim = valueTrim.replace(/(.)\1{9,}/g, '');
       valueTrim = valueTrim.replace(/[\n\r]/g, ' ').replace(/ +(?= )/g, '').trim();
       valueTrim = valueTrim.replace(/\s*([,.!?:;]+)(?!\s*$)\s*/g, '$1 ') // adiciona espaço quendo tem . ? !
@@ -168,20 +171,21 @@ export class TrimDirective {
     if (!this.ngControl && this.numInputAppTrim === 6) {
       let longWords: any
       let pattern: any
+      if (this.characterText !== 0) {
+        pattern = new RegExp(`\\b\\w{${this.characterText},}\\b`, 'g'); //   pattern = /\b\w{26,}\b/g;
+        // Match the pattern in the text
+        longWords = valueTrim.match(pattern);
 
-      pattern = new RegExp(`\\b\\w{${this.characterText},}\\b`, 'g'); //   pattern = /\b\w{26,}\b/g;
-      // Match the pattern in the text
-      longWords = valueTrim.match(pattern);
+        // Se a palavra tiver mais que 26 caracteres o texto é deletado
+        if (longWords && longWords.length > 0) {
+          valueTrim = ''
+          // this.toastrService.error(`Cada palavra deve ter até  ${this.characterText} caracteres.`, `Máximo ${this.characterText} caracteres !!!`);
+          this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '.',
+            this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
 
-      // Se a palavra tiver mais que 26 caracteres o texto é deletado
-      if (longWords && longWords.length > 0) {
-        valueTrim = ''
-        // this.toastrService.error(`Cada palavra deve ter até  ${this.characterText} caracteres.`, `Máximo ${this.characterText} caracteres !!!`);
-        this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2']+'.', 
-                                 this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3']  + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
-
-        this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
-        return
+          this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+          return
+        }
       }
       valueTrim = valueTrim.replace(/[\n\r]/g, '').replace(/ +(?= )/g, '').trim();
       // valueTrim = valueTrim.replace(/\s*([,.!?:;]+)(?!\s*$)\s*/g, '$1 ') // adiciona espaço quendo tem . ? !
@@ -327,3 +331,4 @@ export class TrimDirective {
 //     }
 //   }
 // }
+
