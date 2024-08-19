@@ -110,45 +110,45 @@ $Hk-pro-client-spidershare-warn: mat.define-light-theme((color: (primary: $Hk-pr
 
 
 
-*,
-*:before,
-*:after {
-    padding: 0;
-    margin: 0;
-    // box-sizing: border-box;
-    box-sizing: inherit; // Especifica que uma propriedade deve herdar seu valor de seu elemento pai
-}
+// *,
+// *:before,
+// *:after {
+//     padding: 0;
+//     margin: 0;
+//     // box-sizing: border-box;
+//     box-sizing: inherit; // Especifica que uma propriedade deve herdar seu valor de seu elemento pai
+// }
 
-html {
-    // font-size: 10px; 16px  --- 100%  10px x 100/16px == 62.5%;
-    font-size: 62.5% !important; // 10px
-    scroll-behavior: smooth !important;
-    font-family: var(--fonts-open-sans-serif) !important;
-}
+// html {
+//     // font-size: 10px; 16px  --- 100%  10px x 100/16px == 62.5%;
+//     font-size: 62.5% !important; // 10px
+//     scroll-behavior: smooth !important;
+//     font-family: var(--fonts-open-sans-serif) !important;
+// }
 
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-body {
-    font-size: 1.4rem !important; // 14px default
-    color: rgba(var(--color-primary), .8) !important;
-    font-weight: var(--fonts-font-weight-400) !important;
-}
+// body {
+//     font-size: 1.4rem !important; // 14px default
+//     color: rgba(var(--color-primary), .8) !important;
+//     font-weight: var(--fonts-font-weight-400) !important;
+// }
 
 
-// Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
-.activeHight.tooltip-conatiner {
-    max-height: 40rem !important;
-    overflow-x: hidden !important;
-  }
+// // Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
+// .activeHight.tooltip-conatiner {
+//     max-height: 40rem !important;
+//     overflow-x: hidden !important;
+//   }
   
-  // Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
-  .activeHight2.tooltip-conatiner {
-    max-height: 30rem !important;
-    overflow-x: hidden !important;
-  }
+//   // Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
+//   .activeHight2.tooltip-conatiner {
+//     max-height: 30rem !important;
+//     overflow-x: hidden !important;
+//   }
   
-  // Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
-  .activeHight3.tooltip-conatiner {
-    max-height: 20rem !important;
-    overflow-x: hidden !important;
-  }
+//   // Para todos os tooltips de ajuda quando a altura do navegador for maior que 570px.
+//   .activeHight3.tooltip-conatiner {
+//     max-height: 20rem !important;
+//     overflow-x: hidden !important;
+//   }
