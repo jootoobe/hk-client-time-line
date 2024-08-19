@@ -4,7 +4,9 @@
       "GLOBAL": {
         "START_COMMENTARY--TOLLTIP-HELPER-GLOBAL": "============== HTML START TOLLTIP-HELPER GLOBAL FOLDER ========================================",
         "help-input": {
-          "help-input-01": ""
+          "character-limit1": "Each word must have up to",
+          "character-limit2": "characters",
+          "character-limit3": "Maximum"
         }
       }
     }

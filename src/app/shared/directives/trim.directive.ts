@@ -1,6 +1,7 @@
-import { Directive, Input, HostListener, Optional, Renderer2, ElementRef } from '@angular/core';
+import { Directive, Input, HostListener, Optional, Renderer2, ElementRef, effect } from '@angular/core';
 import { NgControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { StateService } from '../services/state.service';
 
 // https://stackblitz.com/edit/ng-trim-ngmodel?file=src%2Fapp%2Ftrim.directive.ts
 // home_name: this.freela['portfolio_one']['home_name'].replace(/ +(?= )/g, '').trim().charAt(0) +
@@ -16,11 +17,19 @@ export class TrimDirective {
   @Input() numInputAppTrim: number = 0
   @Input() valAppTrim!: string // passar valor quando não for FormControl
   @Input() characterText: number = 0
+  TIME_LINE:any
+
   constructor(
     @Optional() private ngControl: NgControl,
     private renderer: Renderer2,
     private elementRef: ElementRef,
-    private toastrService: ToastrService) { }
+    private stateService: StateService,
+    private toastrService: ToastrService) { 
+      
+      effect(() => {
+        this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
+      })
+    }
 
   @HostListener('blur')
   onBlur(): void {
@@ -139,7 +148,9 @@ export class TrimDirective {
       if (longWords && longWords.length > 0) {
         valueTrim = ''
         // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
-        this.toastrService.error(`Cada palavra deve ter até  ${this.characterText} caracteres.`, `Máximo ${this.characterText} caracteres !!!`);
+        this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2']+'.', 
+                                  this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3']  + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
+
         this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
         return
       }
@@ -165,7 +176,10 @@ export class TrimDirective {
       // Se a palavra tiver mais que 26 caracteres o texto é deletado
       if (longWords && longWords.length > 0) {
         valueTrim = ''
-        this.toastrService.error(`Cada palavra deve ter até  ${this.characterText} caracteres.`, `Máximo ${this.characterText} caracteres !!!`);
+        // this.toastrService.error(`Cada palavra deve ter até  ${this.characterText} caracteres.`, `Máximo ${this.characterText} caracteres !!!`);
+        this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2']+'.', 
+                                 this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3']  + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
+
         this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
         return
       }
