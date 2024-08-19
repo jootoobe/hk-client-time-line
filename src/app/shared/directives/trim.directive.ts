@@ -17,7 +17,7 @@ export class TrimDirective {
   @Input() numInputAppTrim: number = 0
   @Input() valAppTrim!: string // passar valor quando não for FormControl
   @Input() characterText: number = 0
-  TIME_LINE:any
+  TIME_LINE: any
 
   constructor(
     @Optional() private ngControl: NgControl,
@@ -25,8 +25,8 @@ export class TrimDirective {
     private elementRef: ElementRef,
     private stateService: StateService,
     private toastrService: ToastrService) {
-      
-      effect(() => {
+
+    effect(() => {
       this.TIME_LINE = this.stateService.translatorLanguageSignalComputed()
     })
   }
@@ -153,6 +153,7 @@ export class TrimDirective {
             this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
 
           this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+          this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
           return
         }
       }
@@ -184,6 +185,7 @@ export class TrimDirective {
             this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
 
           this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+          this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
           return
         }
       }
