@@ -15,6 +15,7 @@ export class TrimDirective {
   @Input() nameFormAll!: any;
   @Input() numInputAppTrim: number = 0
   @Input() valAppTrim!: string // passar valor quando não for FormControl
+  @Input() characterText: number = 0
   constructor(
     @Optional() private ngControl: NgControl,
     private renderer: Renderer2,
@@ -23,6 +24,8 @@ export class TrimDirective {
 
   @HostListener('blur')
   onBlur(): void {
+
+
 
     // let valueTrim = (this.ngControl?.control?.value).replace(/ +(?= )/g, '').trim() // remove space without enter
     // Remove newlines only from the end of the line: String.replaceAll("[\n\r]$", "")
@@ -77,7 +80,7 @@ export class TrimDirective {
 
     // 🅰️ JUST remove all space
     if (this.ngControl && this.ngControl?.control?.value && this.numInputAppTrim === 3) {
-      valueTrim = valueTrim.replace(/\s/g, '');
+      valueTrim = valueTrim.replace(/\s+/g, '');
       // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
       this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
     }
@@ -85,7 +88,7 @@ export class TrimDirective {
 
     // 🅿️ JUST remove all space
     if (!this.ngControl && this.numInputAppTrim === 3) {
-      valueTrim = valueTrim.replace(/\s/g, '');
+      valueTrim = valueTrim.replace(/\s+/g, '');
       this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
     }
 
@@ -118,6 +121,56 @@ export class TrimDirective {
     // 🅿️ JUST remove space for text-area
     if (!this.ngControl && this.numInputAppTrim === 5) {
       valueTrim = valueTrim.replace(/[\n\r]/g, ' ').replace(/ +(?= )/g, '').trim();
+      this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+    }
+
+
+    // 🅰️ regex break line when user always types the same letter .replace(/(.)\1{9,}/g, '')
+    // add Space To Big Words  .replace(/\b(\w{1,maxLength})\b/g)
+    if (this.ngControl && this.ngControl?.control?.value && this.numInputAppTrim === 6) {
+      let longWords: any
+      let pattern: any
+
+      pattern = new RegExp(`\\b\\w{${this.characterText},}\\b`, 'g'); //   pattern = /\b\w{26,}\b/g;
+      // Match the pattern in the text
+      longWords = valueTrim.match(pattern);
+
+      // Se a palavra tiver mais que 26 caracteres o texto é deletado
+      if (longWords && longWords.length > 0) {
+        valueTrim = ''
+        // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+        this.toastrService.error(`Cada palavra deve ter até  ${this.characterText} caracteres.`, `Máximo ${this.characterText} caracteres !!!`);
+        this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+        return
+      }
+      // valueTrim = valueTrim.replace(/(.)\1{9,}/g, '');
+      valueTrim = valueTrim.replace(/[\n\r]/g, ' ').replace(/ +(?= )/g, '').trim();
+      valueTrim = valueTrim.replace(/\s*([,.!?:;]+)(?!\s*$)\s*/g, '$1 ') // adiciona espaço quendo tem . ? !
+      // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+      this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
+    }
+
+
+
+    // 🅿️ regex break line when user always types the same letter .replace(/(.)\1{9,}/g, '')
+    // add Space To Big Words  .replace(/\b(\w{1,maxLength})\b/g)
+    if (!this.ngControl && this.numInputAppTrim === 6) {
+      let longWords: any
+      let pattern: any
+
+      pattern = new RegExp(`\\b\\w{${this.characterText},}\\b`, 'g'); //   pattern = /\b\w{26,}\b/g;
+      // Match the pattern in the text
+      longWords = valueTrim.match(pattern);
+
+      // Se a palavra tiver mais que 26 caracteres o texto é deletado
+      if (longWords && longWords.length > 0) {
+        valueTrim = ''
+        this.toastrService.error(`Cada palavra deve ter até  ${this.characterText} caracteres.`, `Máximo ${this.characterText} caracteres !!!`);
+        this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
+        return
+      }
+      valueTrim = valueTrim.replace(/[\n\r]/g, '').replace(/ +(?= )/g, '').trim();
+      // valueTrim = valueTrim.replace(/\s*([,.!?:;]+)(?!\s*$)\s*/g, '$1 ') // adiciona espaço quendo tem . ? !
       this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
     }
 
