@@ -45,8 +45,6 @@ export class TopDivComponent implements OnInit {
   toApplyFilterTextEvent(event: string) {
     this.toApplyFilterText = event
 
-    console.log('sssssss',this.toApplyFilterText)
-
     let val = event === '' ? [] : [event]
     
     let activeFilter = {

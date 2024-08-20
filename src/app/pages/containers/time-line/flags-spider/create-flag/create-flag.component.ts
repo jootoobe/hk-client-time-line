@@ -130,7 +130,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     // Aqui serve para verificar se o input de cor é criado corretamente ao abrir.
     effect(() => {
       this.openColorCreat = this.stateService.activeFilterSignalComputed()
-      console.log(this.openColorCreat)
     })
 
   }
@@ -472,7 +471,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         }
       }
     })
-    console.log(this.disableColor)
   }
 
 

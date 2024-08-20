@@ -179,8 +179,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: any) => {
 
-          console.log('111111111111111', res)
-
           let kanbans = res.sort((a: any, b: any) => a.kanbans.track_position_id - b.kanbans.track_position_id);
 
           this.getAllTimeLineById(kanbans, true)
