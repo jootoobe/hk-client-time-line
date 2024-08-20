@@ -367,7 +367,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         // Verifica se as flags têm o mesmo ID
         if (oldFlag?.flag_id === newFlag?.flag_id) {
           // Verifica se os comprimentos dos arrays social_medias_chips são diferentes
-          if (oldFlag?.social_medias_chips?.length !== newFlag?.social_medias_chips?.length) {
+          if (oldFlag?.social_medias_chips?.length !== newFlag?.social_medias_chips?.length || newFlag?.social_medias_chips?.length === 0) {
             differentFile = true;
           } else {
             // Percorre cada social_media_chip na flag antiga
@@ -381,7 +381,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
               // Verifica se os nomes são diferentes
-              if (oldChip?.name !== newChip?.name) {
+              if (oldChip?.name !== newChip?.name || newFlag?.social_medias_chips?.length === 0) {
                 differentFile = true;
               }
             });
