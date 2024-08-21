@@ -196,7 +196,11 @@
   }
 }
 
-
+@media (max-width: 768px) {
+  .item-filtering {
+    margin-top: 2rem;
+  }
+}
 @media (max-width: 425px) {
   .grid-container>.item-left,
   .item-menu {
