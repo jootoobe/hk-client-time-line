@@ -149,8 +149,8 @@ export class TrimDirective {
         if (longWords && longWords.length > 0) {
           valueTrim = ''
           // this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
-          this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '.',
-            this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
+          this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText-1} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '.',
+            this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3'] + ` ${this.characterText-1} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
 
           this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
           this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
@@ -181,8 +181,8 @@ export class TrimDirective {
         if (longWords && longWords.length > 0) {
           valueTrim = ''
           // this.toastrService.error(`Cada palavra deve ter até  ${this.characterText} caracteres.`, `Máximo ${this.characterText} caracteres !!!`);
-          this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '.',
-            this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3'] + ` ${this.characterText} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
+          this.toastrService.error(this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit1'] + ` ${this.characterText-1} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '.',
+            this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit3'] + ` ${this.characterText-1} ` + this.TIME_LINE['TOLLTIP-HELPER']['GLOBAL']['help-input']['character-limit2'] + '!')
 
           this.renderer.setProperty(this.elementRef.nativeElement, 'value', valueTrim);
           this.formAll['controls'][this.nameFormAll].setValue(valueTrim);
