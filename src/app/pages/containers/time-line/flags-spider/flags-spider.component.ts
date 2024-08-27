@@ -357,100 +357,100 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     let newFlag: FlagModel | any
     let newFlag2: FlagModel | any
 
-    if (this.oldVersionFlags && this.oldVersionFlags?.time_line.flags?.length > 0) {
+    // if (this.oldVersionFlags && this.oldVersionFlags?.time_line.flags?.length > 0) {
 
-      // Percorre cada flag na versão antiga
-      this.oldVersionFlags?.time_line.flags?.forEach((oldFlag: FlagModel, flagIndex: number) => {
-        // Busca a flag correspondente na nova versão
-        newFlag = timeLine?.time_line.flags[flagIndex];
+    //   // Percorre cada flag na versão antiga
+    //   this.oldVersionFlags?.time_line.flags?.forEach((oldFlag: FlagModel, flagIndex: number) => {
+    //     // Busca a flag correspondente na nova versão
+    //     newFlag = timeLine?.time_line.flags[flagIndex];
 
-        // Verifica se as flags têm o mesmo ID
-        if (oldFlag?.flag_id === newFlag?.flag_id) {
-          // Verifica se os comprimentos dos arrays social_medias_chips são diferentes
-          if (oldFlag?.social_medias_chips?.length !== newFlag?.social_medias_chips?.length || newFlag?.social_medias_chips?.length === 0) {
-            differentFile = true;
-          } else {
-            // Percorre cada social_media_chip na flag antiga
-            oldFlag?.social_medias_chips?.forEach((oldChip: any, chipIndex: number) => {
-              // Busca o social_media_chip correspondente na nova versão
-              const newChip = newFlag?.social_medias_chips[chipIndex];
+    //     // Verifica se as flags têm o mesmo ID
+    //     if (oldFlag?.flag_id === newFlag?.flag_id) {
+    //       // Verifica se os comprimentos dos arrays social_medias_chips são diferentes
+    //       if (oldFlag?.social_medias_chips?.length !== newFlag?.social_medias_chips?.length || newFlag?.social_medias_chips?.length === 0) {
+    //         differentFile = true;
+    //       } else {
+    //         // Percorre cada social_media_chip na flag antiga
+    //         oldFlag?.social_medias_chips?.forEach((oldChip: any, chipIndex: number) => {
+    //           // Busca o social_media_chip correspondente na nova versão
+    //           const newChip = newFlag?.social_medias_chips[chipIndex];
 
-              // // Ordena os arrays novamente antes da comparação, se necessário
-              // oldFlag.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
-              // newFlag.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
-
-
-              // Verifica se os nomes são diferentes
-              if (oldChip?.name !== newChip?.name || newFlag?.social_medias_chips?.length === 0) {
-                differentFile = true;
-              }
-            });
-          }
-
-          // Verificação para flags2, garantindo que flags2 existe em ambas versões
-          if (oldFlag?.flags2 && newFlag?.flags2) {
-            oldFlag?.flags2?.forEach((oldFlag2: FlagModel, flag2Index: number) => {
-              newFlag2 = newFlag?.flags2[flag2Index];
-
-              // Verifica se os comprimentos dos arrays social_medias_chips são diferentes em flags2
-              if (oldFlag2?.social_medias_chips?.length !== newFlag2?.social_medias_chips?.length) {
-                differentFile = true;
-              } else {
-                // Percorre cada social_media_chip na flag2 antiga
-                oldFlag2?.social_medias_chips?.forEach((oldChip2: any, chip2Index: number) => {
-                  // Busca o social_media_chip correspondente na nova versão
-                  const newChip2 = newFlag2?.social_medias_chips[chip2Index];
-
-                  // // Ordena os arrays social_medias_chips dentro de flags2 antes de comparar
-                  // oldFlag2.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
-                  // newFlag2.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
+    //           // // Ordena os arrays novamente antes da comparação, se necessário
+    //           // oldFlag.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
+    //           // newFlag.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
 
 
-                  // Verifica se os nomes são diferentes
-                  if (oldChip2?.name !== newChip2?.name) {
-                    differentFile = true;
-                  }
-                });
-              }
-            });
-          }
+    //           // Verifica se os nomes são diferentes
+    //           if (oldChip?.name !== newChip?.name || newFlag?.social_medias_chips?.length === 0) {
+    //             differentFile = true;
+    //           }
+    //         });
+    //       }
 
-        }
-      });
-    }
+    //       // Verificação para flags2, garantindo que flags2 existe em ambas versões
+    //       if (oldFlag?.flags2 && newFlag?.flags2) {
+    //         oldFlag?.flags2?.forEach((oldFlag2: FlagModel, flag2Index: number) => {
+    //           newFlag2 = newFlag?.flags2[flag2Index];
+
+    //           // Verifica se os comprimentos dos arrays social_medias_chips são diferentes em flags2
+    //           if (oldFlag2?.social_medias_chips?.length !== newFlag2?.social_medias_chips?.length) {
+    //             differentFile = true;
+    //           } else {
+    //             // Percorre cada social_media_chip na flag2 antiga
+    //             oldFlag2?.social_medias_chips?.forEach((oldChip2: any, chip2Index: number) => {
+    //               // Busca o social_media_chip correspondente na nova versão
+    //               const newChip2 = newFlag2?.social_medias_chips[chip2Index];
+
+    //               // // Ordena os arrays social_medias_chips dentro de flags2 antes de comparar
+    //               // oldFlag2.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
+    //               // newFlag2.social_medias_chips.sort((a: any, b: any) => a.name.localeCompare(b.name));
+
+
+    //               // Verifica se os nomes são diferentes
+    //               if (oldChip2?.name !== newChip2?.name) {
+    //                 differentFile = true;
+    //               }
+    //             });
+    //           }
+    //         });
+    //       }
+
+    //     }
+    //   });
+    // }
 
 
     this.stateService.updateGetAllTimeLine(timeLine)
     // Quando há apenas uma bandeira, essa condição causa problemas na hora de deletar.
     // Essa condição só é atualizada quando há uma bandeira.
-    if (timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length === 1) {
+    // if (timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length === 1) {
 
-      this.timeLineService.updateSocialMediasChipsFlag(timeLine)
-        .subscribe({
-          next: (res: any) => { },
-          error: (err) => { },
-          complete: () => { }
-        })
-      return
-    }
+    //   this.timeLineService.updateSocialMediasChipsFlag(timeLine)
+    //     .subscribe({
+    //       next: (res: any) => { },
+    //       error: (err) => { },
+    //       complete: () => { }
+    //     })
+    //   return
+    // }
 
-    if (differentFile) {
-      timeLine.year = undefined
-      delete timeLine.year
-      timeLine.iam_id = '0'
-      // this.stateService.updateGetAllTimeLine(timeLine)
+    // if (differentFile) {
+    timeLine.year = undefined
+    delete timeLine.year
+    timeLine.iam_id = '0'
+    // this.stateService.updateGetAllTimeLine(timeLine)
 
 
-      // this.stateService.updateGetAllTimeLine(timeLine)
+    // this.stateService.updateGetAllTimeLine(timeLine)
 
-      this.timeLineService.updateSocialMediasChipsFlag(timeLine)
-        .subscribe({
-          next: (res: any) => { },
-          error: (err) => { },
-          complete: () => { }
-        })
-      return
-    }
+    this.timeLineService.updateSocialMediasChipsFlag(timeLine)
+      .subscribe({
+        next: (res: any) => { },
+        error: (err) => { },
+        complete: () => { }
+      })
+    return
+    // }
     // else {
     //   console.log('TIME_LINE>>>>>>>>>>>>..',timeLine)
     //   this.stateService.updateGetAllTimeLine(timeLine)
@@ -524,7 +524,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   }
 
 
-  
+
 
   // 🅰️ FOR MOBILE
   // Usado apenas para esconder o botão do vídeo quando está no mobile e a barra de endereço some
