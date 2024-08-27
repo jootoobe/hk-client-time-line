@@ -141,7 +141,7 @@ export class TrimDirective {
       let pattern: any
 
       if (this.characterText !== 0) {
-        pattern = new RegExp(`\\b\\w{${this.characterText},}\\b`, 'g'); //   pattern = /\b\w{26,}\b/g;
+        pattern = new RegExp(`(\\w)\\1{${this.characterText - 1}}`, 'g'); //   pattern = /(\w)\1{3}/g;
         // Match the pattern in the text
         longWords = valueTrim.match(pattern);
 
@@ -173,7 +173,7 @@ export class TrimDirective {
       let longWords: any
       let pattern: any
       if (this.characterText !== 0) {
-        pattern = new RegExp(`\\b\\w{${this.characterText},}\\b`, 'g'); //   pattern = /\b\w{26,}\b/g;
+        pattern = new RegExp(`(\\w)\\1{${this.characterText - 1}}`, 'g'); //   pattern = /(\w)\1{3}/g;
         // Match the pattern in the text
         longWords = valueTrim.match(pattern);
 
