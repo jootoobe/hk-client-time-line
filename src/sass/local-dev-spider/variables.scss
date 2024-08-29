@@ -520,7 +520,8 @@ input[type="password"]::-ms-clear {
 .matmenu.mat-mdc-menu-panel,
 .matmenu2.mat-mdc-menu-panel,
 .matMenuDownwardUpward.mat-mdc-menu-panel,
-.matmenuSaveChanges.mat-mdc-menu-panel {
+.matmenuSaveChanges.mat-mdc-menu-panel,
+.matmenuSaveChangesClean.mat-mdc-menu-panel {
 
   left: 0 !important;
   right: 0 !important;
@@ -551,9 +552,17 @@ input[type="password"]::-ms-clear {
 .matmenuSaveChanges.mat-mdc-menu-panel {
   margin-top: .2rem;
   font-size: 1.2rem;
-  min-width: 11.8rem !important;
-  max-width: 11.8rem !important;
+  min-width: 13.8rem !important;
+  max-width: 13.8rem !important;
   // margin-right: 2rem !important;
+}
+
+.matmenuSaveChangesClean.mat-mdc-menu-panel {
+  margin-top: .2rem;
+  font-size: 1.2rem;
+  min-width: 10.8rem !important;
+  max-width: 10.8rem !important;
+  margin-left: -1rem !important;
 }
 
 
