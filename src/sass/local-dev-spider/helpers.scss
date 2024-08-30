@@ -2,12 +2,13 @@
   font-weight: var(--fonts-font-weight-500);
   z-index: 999 !important; // makes a difference
 
-  &_00 { // start
+  &_00 {
+    // start
     font-size: 1.3rem !important;
-    margin: -.5rem 0 0 -1.5rem;    
+    margin: -.5rem 0 0 -1.5rem;
     position: absolute;
   }
-  
+
   &_01 {
     font-size: 1.3rem !important;
     margin: -.5rem 0 0 .5rem;
@@ -17,11 +18,12 @@
   &_02 {
     // position: relative;
     font-size: 1.3rem !important;
-    margin: -.1rem .5rem 0 0;
+    margin: 0 .5rem 0 0;
     // position: absolute;
   }
 
-  &_03 { // vai dentro do botão salvar alterações
+  &_03 {
+    // vai dentro do botão salvar alterações
     font-size: .8rem !important;
     margin: -.2rem 0 0 0;
     position: absolute;
@@ -30,7 +32,7 @@
 
 
   &_input-form {
-    &--global{
+    &--global {
       font-size: 1.3rem !important;
       // z-index: 999 !important;
     }
@@ -59,4 +61,17 @@
     }
   }
 
+}
+
+
+@media (max-width: 768px) {
+  .helpers {
+    &_02 {
+      // position: relative;
+      font-size: calc(1.3rem * 0.9) !important;
+      margin: 0 calc(.5rem * 0.9) 0 0;
+      // position: absolute;
+    }
+
+  }
 }
