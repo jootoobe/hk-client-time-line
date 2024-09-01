@@ -584,3 +584,19 @@ input[type="password"]::-ms-clear {
 // </div>
 // </div>
 // </mat-menu>
+
+
+@media (max-width: 425px) {
+
+
+  .body-open-sidenav {
+    width: calc(100% - (5.6rem * .9));
+    margin-left: calc(5.6rem * .9);
+  }
+  
+  .active.body-open-sidenav {
+    width: calc(100% - (22rem  * .9));
+    margin-left: calc(22rem * .9);
+  }
+
+}
