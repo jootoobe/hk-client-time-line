@@ -45,9 +45,12 @@
           <mat-label>
             {{'TIME-LINE.FilterFlagComponent.FILTER-FLAG_MATERIAL.input.color.mat-label' | translate}}
           </mat-label>
-          <mat-select [(value)]="selectedColors" [disabled]="titleFlag?.length > 0">
+          <mat-select class="notranslate"
+                      [(value)]="selectedColors" 
+                      [disabled]="titleFlag?.length > 0">
             <ng-container *ngFor="let flag of selectColor;">
-              <mat-option *ngIf="flag.flag_design.color_hex" [value]="flag.flag_design.color_hex"
+              <mat-option class="notranslate"
+                          *ngIf="flag.flag_design.color_hex" [value]="flag.flag_design.color_hex"
                           (click)="addColors(flag, flag.flag_design.color_hex, flag.flag_design.color_rgb)">
                 <div class="item-color_span"
                   [ngStyle]="{'background': flag.flag_design.color_hex,
