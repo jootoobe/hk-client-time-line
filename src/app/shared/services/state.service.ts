@@ -8,6 +8,7 @@ import { TIMELINEKeysModel } from '../../models/cryptos/time-line-keys.model';
 import { TimeLineModel } from '../../models/time-line.model';
 import { FlagModel } from '../../models/flag.model';
 import { IFilterCheckActive } from '../../interfaces/filter-check-active.interface';
+import { UserForAppModel } from '../../models/user-for-app/user-for-app.model';
 
 
 
@@ -33,10 +34,10 @@ export class StateService {
     return this.toastSignal()
   });
 
-   // '0' não tem filtro ativo
-   // '1' filtro barra ativo
-   // '2' filtro texto ativo
-   // '3' filtro color ativo
+  // '0' não tem filtro ativo
+  // '1' filtro barra ativo
+  // '2' filtro texto ativo
+  // '3' filtro color ativo
   private activeFilterSignal: WritableSignal<IFilterCheckActive> = signal<IFilterCheckActive>({});
   activeFilterSignalComputed = computed(() => {
     return this.activeFilterSignal()
@@ -53,6 +54,13 @@ export class StateService {
   private timeLineIndexDbErrorSignalSignal: WritableSignal<boolean> = signal<boolean>(false);
   timeLineIndexDbErrorSignalSignalComputed = computed(() => {
     return this.timeLineIndexDbErrorSignalSignal()
+  });
+
+
+  // USER APP Usado para controlar níveis de acesso do último pagamento
+  private userForAppSignal: WritableSignal<UserForAppModel> = signal<UserForAppModel>(UserForAppModel as any);
+  userForAppSignalComputed = computed(() => {
+    return this.userForAppSignal()
   });
 
 
@@ -119,6 +127,12 @@ export class StateService {
 
   updateTimeLineIndexDbErrorSignalSignal(val: boolean) {
     return this.timeLineIndexDbErrorSignalSignal.set(val)
+  }
+
+
+  // Usado para controlar níveis de acesso do último pagamento
+  updateUserForAppSignal(val: UserForAppModel) {
+    return this.userForAppSignal.set(val)
   }
 
 

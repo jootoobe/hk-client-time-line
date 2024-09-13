@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, output } from '@angular/core';
+import { Component, effect, Input, OnInit, output } from '@angular/core';
 
 // import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
 import { SignInService } from '../../../../../spider-share/iam/services/auth/sign-in.service';
 import { TimeLineModel } from '../../../../../models/time-line.model';
 import { StateService } from '../../../../../shared/services/state.service';
+import { UserForAppModel } from '../../../../../models/user-for-app/user-for-app.model';
 
 @Component({
   selector: 'top-div',
@@ -23,11 +24,23 @@ export class TopDivComponent implements OnInit {
 
   toApplyFilterText = ''
   toApplyFilterColor = [] as any //  <!-- Filter select -->
-
+  user!: UserForAppModel
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private stateService: StateService
-  ) { }
+  ) { 
+
+    effect(() => {
+      let userVal = this.stateService.userForAppSignalComputed()
+      if(userVal && userVal.email) {
+        this.user = userVal
+        console.log('TIME-LINE CHEGOU >>>>>>>>>>>',this.user)
+      }
+    })
+  }
+
+
+
   ngOnInit(): void {
   }
 

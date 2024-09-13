@@ -10,6 +10,7 @@ import { CookieService } from './shared/services/cookies/cookie.service';
 import { WINDOW } from './shared/services/window.service';
 import { ConnectingExternalRoutesService } from './shared/services/connecting-external-routes/connecting-external-routes.service';
 import { ToastrService } from 'ngx-toastr';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-time-line', // Os seletores dos projetos devem esta identicos a seus microserviços
@@ -59,6 +60,19 @@ export class AppTimeLineComponent implements OnInit {
     effect(() => {
       this.TESTE = this.stateService.translatorLanguageSignalComputed()
     })
+
+
+    fromEvent(this.window, 'user-payment-validate')
+    .subscribe({
+      next: (res: any) => {
+        this.stateService.updateUserForAppSignal(res.detail.userData)
+
+      },
+      error: (err) => { },
+      complete: () => { }
+    })
+
+    
   }
   ngOnInit(): void {
 
