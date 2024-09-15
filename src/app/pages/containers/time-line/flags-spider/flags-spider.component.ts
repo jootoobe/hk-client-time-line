@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnInit, Renderer2, TemplateRef, ViewChild, effect, output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnChanges, OnInit, Renderer2, SimpleChanges, TemplateRef, ViewChild, effect, output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { TimeLineModel } from '../../../../models/time-line.model';
@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TimeLineGetKanbanService } from '../../../../services/time-line-get-kanban.service';
 import { FilterFlagsService } from '../../../../shared/services/filter-flags.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { UserForAppModel } from '../../../../models/user-for-app/user-for-app.model';
 
 @Component({
   selector: 'flags-spider',
@@ -56,6 +57,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
   isMobile: boolean = false;
 
+  user!: UserForAppModel
+  totalFlagsPayment = 0
 
   constructor(
     private dialogCreate: MatDialog,
@@ -91,6 +94,24 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
             this.timeLine = res
             this.flagLength = this.timeLine.time_line?.flags?.length
 
+
+            // 🅰️ Usado para verificar pagamento 
+            if (this.timeLine && this.timeLine.time_line && this.timeLine.time_line.flags) {
+
+              let somaTotal = 0; // Inicializa a variável acumuladora
+
+              this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
+                const flags2Length = e.flags2 ? e.flags2.length : 0; // Garantir que flags2 existe
+                somaTotal += flags2Length; // Acumula a soma do índice 'i' com o comprimento de flags2
+
+                console.log(`Soma acumulada no índice ${i}:`, somaTotal);
+              });
+
+              this.totalFlagsPayment = somaTotal + this.timeLine.time_line.flags.length
+
+              console.log(`Soma acumulada no índice`, this.totalFlagsPayment);
+            }
+
           }
         },
         error: () => { },
@@ -111,8 +132,16 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       }
     })
 
+    // 🅰️ USER DATA
+    effect(() => {
+      let userVal = this.stateService.userForAppSignalComputed()
+      if (userVal && userVal.email) {
+        this.user = userVal
+      }
 
+    })
   }
+
 
 
   ngOnInit(): void {

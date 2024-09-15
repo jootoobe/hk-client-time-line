@@ -1,4 +1,4 @@
-import { Component, effect, Input, OnInit, output, SimpleChanges } from '@angular/core';
+import { Component, effect, Input, OnInit, output } from '@angular/core';
 
 // import { ConnectingExternalRoutesService } from '../../../../../shared/connecting-external-routes/connecting-external-routes.service';
 import { SignInService } from '../../../../../spider-share/iam/services/auth/sign-in.service';
@@ -20,6 +20,9 @@ export class TopDivComponent implements OnInit {
   // toda vez que o menu for clicado eu limpoo filtro todo -- O Filtro não pode estar ativo quando o usuário edita ou deleta a bandeira 
   // <!-- Filter opacity -->
   @Input({ required: true }) valFilterColorBarInput = { color_hex: '', color_rgb: 0 } as any // stores the clicked filter bar and communicates with the top-div component
+  @Input({ required: true }) userInput!:UserForAppModel
+  @Input({ required: true }) totalFlagsPaymentInput!:number
+  
   timeLineOutput = output<TimeLineModel>()
   openModalOutput = output()
   closeFilterId = output<string>()
@@ -29,46 +32,16 @@ export class TopDivComponent implements OnInit {
 
   toApplyFilterText = ''
   toApplyFilterColor = [] as any //  <!-- Filter select -->
-  user!: UserForAppModel
+
   paidUserPlans = PaidUserPlansEnum
-  totalFlags = 0
+
   constructor(
     // private connectingExternalRoutesService: ConnectingExternalRoutesService,
     private stateService: StateService
   ) {
-
-    effect(() => {
-      let userVal = this.stateService.userForAppSignalComputed()
-      
-      if (userVal && userVal.email) {
-        this.user = userVal
-      }
-
-
-    })
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['timeLine']) {
-      console.log('ssssssssssss', this.timeLine)
 
-      if (this.timeLine && this.timeLine.time_line && this.timeLine.time_line.flags) {
-
-        let somaTotal = 0; // Inicializa a variável acumuladora
-
-        this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
-          const flags2Length = e.flags2 ? e.flags2.length : 0; // Garantir que flags2 existe
-          somaTotal += flags2Length; // Acumula a soma do índice 'i' com o comprimento de flags2
-
-          console.log(`Soma acumulada no índice ${i}:`, somaTotal);
-        });
-
-        this.totalFlags = somaTotal + this.timeLine.time_line.flags.length
-
-        console.log(`Soma acumulada no índice`, this.totalFlags);
-      }
-    }
-  }
 
   ngOnInit(): void {
   }
