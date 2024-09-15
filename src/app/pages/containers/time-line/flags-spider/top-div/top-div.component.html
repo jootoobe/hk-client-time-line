@@ -60,7 +60,7 @@
         </mat-icon>
       }
       <!-- USUÁRIO FREE -->
-      @if(this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2) {
+      @if(this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2) {
         <button
                 mat-stroked-button
                 class="btn_opt-valid btn_setting--01 notranslate"
@@ -69,7 +69,7 @@
         </button>
 
       <!-- USUÁRIO PAGO -->
-      } @else if(this.userInput && this.userInput.active_plan == paidUserPlans.Interactive) {
+      } @else if(this.userInput && userInput.active_plan == paidUserPlans.Interactive) {
         <button
                 mat-stroked-button
                 class="btn_opt-valid btn_setting--01 notranslate"
