@@ -102,9 +102,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
               this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
                 const flags2Length = e.flags2 ? e.flags2.length : 0; // Garantir que flags2 existe
-                somaTotal += flags2Length; // Acumula a soma do índice 'i' com o comprimento de flags2
-
-                console.log(`Soma acumulada no índice ${i}:`, somaTotal);
+                      somaTotal += flags2Length; // Acumula a soma do índice 'i' com o comprimento de flags2
               });
 
               this.totalFlagsPayment = somaTotal + this.timeLine.time_line.flags.length
