@@ -181,7 +181,9 @@
           </div >
           </div> <!-- Card End -->
           <!-- Open Kanban -->
-          <div class="inside-flag_open-kanban cursor_pointer remove notranslate" 
+          <div *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
+                      this.userInput && this.userInput.active_plan === paidUserPlans.Interactive"
+              class="inside-flag_open-kanban cursor_pointer remove notranslate" 
               (click)="getFlagIdNavegateKanban(flag2)"
               id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
             <!-- Abrir Kanban -->
@@ -192,6 +194,19 @@
               </mat-icon>
             </span>
           </div>
+          <div *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
+            class="inside-flag_open-kanban cursor_pointer remove notranslate" 
+            (click)="navigateHomeSpider()"
+            id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
+          <!-- payments -->
+            <span>
+                Payment
+            <mat-icon matSuffix class="material-icons notranslate" style="color: green; padding-top: .2rem;">
+              payments
+            </mat-icon>
+            </span>
+          </div>
+
           <!-- Open Details -->
           <!-- <div class="inside-flag_open-detail cursor_pointer">
                               Abrir Detalhe
@@ -387,7 +402,9 @@
           </div>
         </div> <!-- Card End language-->
         <!-- Open Kanban     margin: -2rem 0 .5rem 18.7rem;-->
-        <div class="inside-flag_open-kanban cursor_pointer remove notranslate" 
+        <div  *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
+                                    this.userInput && this.userInput.active_plan === paidUserPlans.Interactive"
+            class="inside-flag_open-kanban cursor_pointer remove notranslate" 
             (click)="getFlagIdNavegateKanban(flag)"
             id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
           <!-- Abrir Kanban -->
@@ -398,6 +415,19 @@
             </mat-icon>
           </span>
         </div>
+
+        <div *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
+          class="inside-flag_open-kanban cursor_pointer remove notranslate" 
+          (click)="navigateHomeSpider()"
+          id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
+        <!-- payments -->
+        <span>
+            Payment
+          <mat-icon matSuffix class="material-icons notranslate" style="color: green; padding-top: .2rem;">
+            payments
+          </mat-icon>
+        </span>
+      </div>
         <!-- Open Details -->
         <!-- <div class="inside-flag_open-detail cursor_pointer">
                   Abrir Detalhe
