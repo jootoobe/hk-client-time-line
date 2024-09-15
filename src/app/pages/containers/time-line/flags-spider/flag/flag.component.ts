@@ -31,8 +31,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   @Input({ required: true }) checkingOpacityFilterAppliedInput!: string
   @Input({ required: true }) flagLengthInput!: number
 
-  @Input({ required: true }) userInput!:UserForAppModel
-  @Input({ required: true }) totalFlagsPaymentInput!:number
+  @Input({ required: true }) userInput!: UserForAppModel
+  @Input({ required: true }) totalFlagsPaymentInput!: number
 
   // resetFlagsOutput = output()
   valFilterColorBarOutput = output<{ color_hex: '', color_rgb: 0 }>()  // stores the clicked filter and communicates with the top-div component
@@ -71,10 +71,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     @Inject(WINDOW) private window: Window,
 
   ) {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.innerWidthVal = this.window.innerWidth
       this.innerHeightVal = this.window.innerHeight
-  
+
       if (this.innerWidthVal > 768) {
         if (this.innerHeightVal > 650) { // para pc com 650 de altura      transform: translate3d(3rem, 3.9rem, 0) scale(.8);
           this.innerHeightVal2 = false
@@ -82,7 +82,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
           this.innerHeightVal2 = true
         }
       }
-    },500)
+    }, 500)
 
 
 
@@ -442,4 +442,14 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     this.connectingExternalRoutesService.navigateKanban(routerKanban)
 
   }
+
+  navigateHomeSpider() {
+    const routerHome = {
+      router: '/home',
+      message: ''
+    };
+    // Se o ID não for válido, redirecione o usuário para uma página de erro ou página inicial
+    this.connectingExternalRoutesService.navigateHomeSpider(routerHome);
+  }
+
 }
