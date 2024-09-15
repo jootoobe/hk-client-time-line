@@ -441,6 +441,10 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
     }
     this.connectingExternalRoutesService.navigateKanban(routerKanban)
 
+    setTimeout(() => {
+      this.connectingExternalRoutesService.userPaymentValidate(this.userInput)
+    }, 500)
+
   }
 
   navigateHomeSpider() {

@@ -48,6 +48,16 @@ export class ConnectingExternalRoutesService {
   }
 
 
+  userPaymentValidate(data?: any) {
+    const bodyTrimm = {
+      userData: data,
+      message: 'user payment time-line'
+    }
+    const event = new CustomEvent('user-payment-validate', { detail: bodyTrimm, bubbles: true })
+    dispatchEvent(event)
+  }
+
+
 
 
 }
