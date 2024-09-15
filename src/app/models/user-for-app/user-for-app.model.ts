@@ -22,7 +22,9 @@ export class UserForAppModel {
       public email: string,
       public sub: string,
       public password_changed_times: number,
-      public last_payment?: any
+      public last_payment?: any,
+      public active_plan?: string,
+
     ) { }
   }
   

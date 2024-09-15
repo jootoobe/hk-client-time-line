@@ -59,13 +59,25 @@
         <span>filter_alt</span>
         </mat-icon>
       }
-      <!-- Create -->
-      <button
-              mat-stroked-button
-              class="btn_opt-valid btn_setting--01 notranslate"
-              (click)="openCreateTimeLineDialog()">
-          {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-07' | translate}}
-      </button>
+      <!-- USUÁRIO FREE -->
+      @if(this.user && this.user.active_plan === paidUserPlans.Free_Plan && totalFlags <= 3) {
+        <button
+                mat-stroked-button
+                class="btn_opt-valid btn_setting--01 notranslate"
+                (click)="openCreateTimeLineDialog()">
+            {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-07' | translate}}
+        </button>
+
+      <!-- USUÁRIO PAGO -->
+      } @else if(this.user && this.user.active_plan !== paidUserPlans.Free_Plan) {
+        <button
+                mat-stroked-button
+                class="btn_opt-valid btn_setting--01 notranslate"
+                (click)="openCreateTimeLineDialog()">
+            {{'TIME-LINE.TopDivComponent.TOP-DIV.grid.item-07' | translate}}
+        </button>
+      }
+
     }
       <filter-flag  #filter
                     [timeLine]="timeLine"
