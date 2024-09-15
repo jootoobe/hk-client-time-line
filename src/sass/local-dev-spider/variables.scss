@@ -490,6 +490,10 @@ input[type="password"]::-ms-clear {
     color: rgba(var(--color-red), 1);
   }
 
+  &--payments {
+    color: rgba(var(--color-green), 1);
+  }
+
   &--info {
     padding-top: .1rem;
     font-size: 1.8rem !important;

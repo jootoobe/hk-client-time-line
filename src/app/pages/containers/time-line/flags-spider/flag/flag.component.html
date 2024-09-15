@@ -67,20 +67,39 @@
                   <!-- Start Menu Edit Remove-->
                   <mat-menu #menuEditRemove="matMenu" class="matmenu notranslate">
                     <div class="item-menu ">
-                      <div class="menu-item cursor_pointer noSelect menu-space" (click)="editFlag(flag, 'edit-flag-2')">
+                      <!-- 🅰️ USER PAYMENT -->
+                      <div  *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
+                            this.userInput && this.userInput.active_plan === paidUserPlans.Interactive"
+                            class="menu-item cursor_pointer noSelect menu-space" 
+                            (click)="editFlag(flag, 'edit-flag-2')">
+
                         <i class="material-icons material-icons--edit notranslate notranslate">edit</i>
                         <span class="menu-item_title">
                           <!-- Editar -->
                           {{ 'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2_MATERIAL.menu.title-edit' | translate}}
                         </span>
                       </div>
-                      <div class="menu-item cursor_pointer noSelect" 
+                              <!-- 🅰️ USER PAYMENT -->
+                      <div *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 ||
+                                    this.userInput && this.userInput.active_plan === paidUserPlans.Interactive" 
+                          class="menu-item cursor_pointer noSelect" 
                           (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-2')"
                           (click)="doubleCheckerClick.openDoubleCheckerDialog()">
                         <i class="material-icons material-icons--del notranslate">delete_forever</i>
                         <span class="menu-item_title">
                           <!-- Deletar -->
                           {{ 'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2_MATERIAL.menu.title-delete' | translate}}
+                        </span>
+                      </div>
+
+                      <!-- 🅰️ USER PAYMENT -->
+                      <div  *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
+                            class="menu-item cursor_pointer noSelect" 
+                      >
+                      <i class="material-icons material-icons--payments notranslate notranslate">payments</i>
+                        <span class="menu-item_title" >
+                          <!-- Pagamento Vencido -->
+                          Payment
                         </span>
                       </div>
                     </div>
@@ -250,14 +269,25 @@
                   <!-- Start Menu Edit Remove-->
                   <mat-menu #menuEditRemove="matMenu" class="matmenu notranslate">
                     <div class="item-menu ">
-                      <div class="menu-item cursor_pointer noSelect menu-space" (click)="editFlag(flag, 'edit-flag-1')">
+                      
+                      <!-- 🅰️ USER PAYMENT -->
+                      <div  *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
+                                    this.userInput && this.userInput.active_plan === paidUserPlans.Interactive"   
+                            class="menu-item cursor_pointer noSelect menu-space" 
+                            (click)="editFlag(flag, 'edit-flag-1')"
+                            >
                         <i class="material-icons material-icons--edit notranslate notranslate">edit</i>
                         <span class="menu-item_title">
                           <!-- Editar -->
                           {{ 'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2_MATERIAL.menu.title-edit' | translate}}
                         </span>
                       </div>
-                      <div class="menu-item cursor_pointer noSelect" 
+
+                      <!-- 🅰️ USER PAYMENT -->
+                      <div  *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 ||
+                                    this.userInput && this.userInput.active_plan === paidUserPlans.Interactive" 
+
+                          class="menu-item cursor_pointer noSelect" 
                           (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-1')"
                           (click)="doubleCheckerClick.openDoubleCheckerDialog()">
                         <i class="material-icons material-icons--del notranslate notranslate">delete_forever</i>
@@ -266,6 +296,18 @@
                           {{ 'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2_MATERIAL.menu.title-delete' | translate}}
                         </span>
                       </div>
+
+                      <!-- 🅰️ USER PAYMENT -->
+                      <div  *ngIf="this.userInput && this.userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
+                            class="menu-item cursor_pointer noSelect" 
+                          >
+                      <i class="material-icons material-icons--payments notranslate notranslate">payments</i>
+                        <span class="menu-item_title" >
+                          <!-- Pagamento Vencido -->
+                          Payment
+                        </span>
+                      </div>
+
                     </div>
                   </mat-menu>
               </div>
