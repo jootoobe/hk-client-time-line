@@ -11,6 +11,8 @@ import { LocalStorageService } from "../../../../../shared/services/storage/loca
 import { ConnectingExternalRoutesService } from "../../../../../shared/services/connecting-external-routes/connecting-external-routes.service";
 import { EncryptDecryptModel } from "../../../../../models/encrypt-decrypt/encrypt-decrypt.model";
 import { WINDOW } from "../../../../../shared/services/window.service";
+import { UserForAppModel } from "../../../../../models/user-for-app/user-for-app.model";
+import { PaidUserPlansEnum } from "../../../../../enum/paid-user-plans.enum";
 
 export function coerceArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
@@ -28,6 +30,9 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   @Input({ required: true }) timeLine!: TimeLineModel
   @Input({ required: true }) checkingOpacityFilterAppliedInput!: string
   @Input({ required: true }) flagLengthInput!: number
+
+  @Input({ required: true }) userInput!:UserForAppModel
+  @Input({ required: true }) totalFlagsPaymentInput!:number
 
   // resetFlagsOutput = output()
   valFilterColorBarOutput = output<{ color_hex: '', color_rgb: 0 }>()  // stores the clicked filter and communicates with the top-div component
@@ -52,6 +57,8 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   innerWidthVal!: number
   innerHeightVal!: number
   innerHeightVal2!: boolean
+
+  paidUserPlans = PaidUserPlansEnum
 
   constructor(
     private renderer2: Renderer2,
