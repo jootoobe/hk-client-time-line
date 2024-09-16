@@ -68,8 +68,8 @@
                   <mat-menu #menuEditRemove="matMenu" class="matmenu notranslate">
                     <div class="item-menu ">
                       <!-- 🅰️ USER PAYMENT -->
-                      <div  *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
-                            this.userInput && userInput.active_plan === paidUserPlans.Interactive"
+                      <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
+                            userInput && userInput.active_plan === paidUserPlans.Interactive"
                             class="menu-item cursor_pointer noSelect menu-space" 
                             (click)="editFlag(flag, 'edit-flag-2')">
 
@@ -80,8 +80,8 @@
                         </span>
                       </div>
                               <!-- 🅰️ USER PAYMENT -->
-                      <div *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 ||
-                                    this.userInput && userInput.active_plan === paidUserPlans.Interactive" 
+                      <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 ||
+                                    userInput && userInput.active_plan === paidUserPlans.Interactive" 
                           class="menu-item cursor_pointer noSelect" 
                           (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-2')"
                           (click)="doubleCheckerClick.openDoubleCheckerDialog()">
@@ -94,7 +94,7 @@
 
                       <!-- 🅰️ USER PAYMENT -->
                       <div  (click)="navigateHomeSpider()"
-                            *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
+                            *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
                             class="menu-item cursor_pointer noSelect" 
                       >
                       <i class="material-icons material-icons--payments notranslate notranslate">payments</i>
@@ -181,8 +181,8 @@
           </div >
           </div> <!-- Card End -->
           <!-- Open Kanban -->
-          <div *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
-                      this.userInput && userInput.active_plan === paidUserPlans.Interactive"
+          <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
+                      userInput && userInput.active_plan === paidUserPlans.Interactive"
               class="inside-flag_open-kanban cursor_pointer remove notranslate" 
               (click)="getFlagIdNavegateKanban(flag2)"
               id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
@@ -194,7 +194,7 @@
               </mat-icon>
             </span>
           </div>
-          <div *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
+          <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
             class="inside-flag_open-kanban cursor_pointer remove notranslate" 
             (click)="navigateHomeSpider()"
             id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
@@ -287,8 +287,8 @@
                     <div class="item-menu ">
                       
                       <!-- 🅰️ USER PAYMENT -->
-                      <div  *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
-                                    this.userInput && userInput.active_plan === paidUserPlans.Interactive"   
+                      <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
+                                    userInput && userInput.active_plan === paidUserPlans.Interactive"   
                             class="menu-item cursor_pointer noSelect menu-space" 
                             (click)="editFlag(flag, 'edit-flag-1')"
                             >
@@ -300,8 +300,8 @@
                       </div>
 
                       <!-- 🅰️ USER PAYMENT -->
-                      <div  *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 ||
-                                    this.userInput && userInput.active_plan === paidUserPlans.Interactive" 
+                      <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 ||
+                                    userInput && userInput.active_plan === paidUserPlans.Interactive" 
 
                           class="menu-item cursor_pointer noSelect" 
                           (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-1')"
@@ -315,7 +315,7 @@
 
                       <!-- 🅰️ USER PAYMENT -->
                       <div  (click)="navigateHomeSpider()"
-                            *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
+                            *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
                             class="menu-item cursor_pointer noSelect" 
                           >
                       <i class="material-icons material-icons--payments notranslate notranslate">payments</i>
@@ -402,8 +402,8 @@
           </div>
         </div> <!-- Card End language-->
         <!-- Open Kanban     margin: -2rem 0 .5rem 18.7rem;-->
-        <div  *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
-                                    this.userInput && userInput.active_plan === paidUserPlans.Interactive"
+        <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
+                                    userInput && userInput.active_plan === paidUserPlans.Interactive"
             class="inside-flag_open-kanban cursor_pointer remove notranslate" 
             (click)="getFlagIdNavegateKanban(flag)"
             id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
@@ -416,7 +416,7 @@
           </span>
         </div>
 
-        <div *ngIf="this.userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
+        <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
           class="inside-flag_open-kanban cursor_pointer remove notranslate" 
           (click)="navigateHomeSpider()"
           id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
