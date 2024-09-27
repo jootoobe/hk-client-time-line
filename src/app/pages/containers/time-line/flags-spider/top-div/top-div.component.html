@@ -69,7 +69,8 @@
         </button>
 
       <!-- USUÁRIO PAGO -->
-      } @else if(userInput && userInput.active_plan == paidUserPlans.Interactive) {
+      } @else if(userInput && userInput.active_plan == paidUserPlans.Interactive || 
+                userInput && userInput.active_plan == paidUserPlans.Free_Trial) {
         <button
                 mat-stroked-button
                 class="btn_opt-valid btn_setting--01 notranslate"

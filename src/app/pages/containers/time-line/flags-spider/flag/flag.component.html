@@ -49,13 +49,13 @@
             <div id="title-content">
               <div class="box-inside-flag-title">
                 <span class="inside-flag_title" [ngStyle]="setStylesText(flag2)">
-                  {{flag2.flag_title | truncate:20}}
+                  {{flag2.flag_title | truncate:35}}
                 </span>
               </div>
 
 
               <!--🎅 Menu Edit Delete -->
-              @if(!checksFilterIsActive) {
+              <!-- @if(!checksFilterIsActive) { -->
                 <div class="box-inside-flag-title remove "  id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
                   <!-- [ngStyle]="setStylesText(flag2)" -->
                   <i matSuffix class="material-icons-outlined cursor_pointer noSelect menu-remove-icon notranslate"
@@ -106,7 +106,7 @@
                     </div>
                   </mat-menu>
                 </div>
-              }
+              <!-- } -->
             </div>
 
             <!-- Date -->
@@ -267,12 +267,12 @@
           <div id="title-content" >
             <div class="box-inside-flag-title">
               <span class="inside-flag_title" [ngStyle]="setStylesText(flag)">
-                {{flag.flag_title | truncate:20}}
+                {{flag.flag_title | truncate:35}}
               </span>
             </div>
 
             <!-- 🎅 Menu Edit Delete -->
-            @if(!checksFilterIsActive) {
+            <!-- @if(!checksFilterIsActive) { -->
               <div class="box-inside-flag-title remove" id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
                 <!-- [ngStyle]="setStylesText(flag2)" -->
                 <i matSuffix 
@@ -328,7 +328,7 @@
                     </div>
                   </mat-menu>
               </div>
-            }
+            <!-- } -->
 
           </div>
 

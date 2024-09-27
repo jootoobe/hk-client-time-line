@@ -386,14 +386,27 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       }
     }
   }
+  
 
   deleteFlagEvent(e: boolean) {
+    // limpar o filtro se existir
+    let activeFilter = { activeFilter: 'create' }
+    this.stateService.updateActiveFilterSignal(activeFilter)
+
     let editFlag: any = this.doubleCheckerData.modals.types._id
-    this.deleteFlag(this.doubleCheckerData.modals.types.flag, editFlag)
+
+    // start-loader
+    this.connectingExternalRoutesService.spiderShareLoader({ message: true })
+
+    // Tempo para limpar o filtro se existir
+    setTimeout(() => {
+      this.deleteFlag(this.doubleCheckerData.modals.types.flag, editFlag)
+    }, 1000)
+
   }
 
   deleteFlag(flagDelete: FlagModel | any, editFlag: string) {
-    this.connectingExternalRoutesService.spiderShareLoader({ message: true })
+
     let id: any = ''
     let flag = ''
 

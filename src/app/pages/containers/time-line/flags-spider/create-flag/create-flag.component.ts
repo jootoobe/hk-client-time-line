@@ -178,6 +178,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     let currentlyDate = this.datePipe.transform(new Date(), 'medium'); // Date.parse(newDate);
 
     return this.fb.group({
+      _id: new FormControl<string | null>(''), // _id timeline mongodb
       year: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(4)]),
       flag_id: new FormControl<string | null>('flag_id_' + this.stateService.getUniqueId(8), [Validators.required, Validators.minLength(32), Validators.maxLength(47)]),
       flag_title: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
@@ -585,6 +586,21 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   */
 
 
+  clearFilterBeforeUpdating() {
+    // limpar o filtro se existir
+    let activeFilter = { activeFilter: 'create' }
+    this.stateService.updateActiveFilterSignal(activeFilter)
+
+    // start-loader
+    this.connectingExternalRoutesService.spiderShareLoader({ message: true })
+
+    // Tempo para limpar o filtro se existir
+    setTimeout(() => {
+      this.updateFlag()
+    }, 1000)
+
+  }
+
   updateFlag() {
     let index: number | undefined
     let indexDelet: number | undefined
@@ -657,6 +673,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                   this.timeLine.time_line.flags.push(this.editFlag.flags2[0])
                   this.timeLine.time_line.flags[i1].flags2 = []
                   this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
+                  console.log('111111111')
                 }
 
                 // { TEST-6 } Editing fleg2 being able to walk on the time line and remaining in position 02
@@ -666,6 +683,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                   if (this.editFlag.flags2[0].date_obj.timestamp === find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[i1].flags2 = [this.flagsForm.controls[0]?.value]
                     this.timeLine.time_line.flags[i1].flag_status_update = 'update'
+                    console.log('22222222')
                   }
                   // flag 2 goes backwards in the time line
                   // It's a repetition even to pass only 01 time in the for loop
@@ -675,6 +693,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
                     this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
+                    console.log('3333333333')
 
                     // flag 2 moves forward on the timeline
                     // It's a repetition even to pass only 01 time in the for loop
@@ -684,6 +703,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
                     this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                     this.timeLine.time_line.flags[indexDelet].flags2 = []
+                    console.log('4444444444')
                   }
                 }
               }
@@ -713,6 +733,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 // this.timeLine.time_line.flags.splice(indexDelet, 1);
                 this.timeLine.time_line.flags[indexDelet].flag_status_update = 'delete'
                 this.timeLine.time_line.flags[index].flag_status_update = 'update'
+                console.log('55555555')
 
                 // find3 for the upcoming date - I move backwards in the time-line - fleg1 assuming position 02
               } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
@@ -720,6 +741,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 // this.timeLine.time_line.flags.splice(indexDelet, 1);
                 this.timeLine.time_line.flags[indexDelet].flag_status_update = 'delete'
                 this.timeLine.time_line.flags[index].flag_status_update = 'update'
+                console.log('666666666666')
               }
 
 
@@ -731,6 +753,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 this.timeLine.time_line.flags[indexDelet] = flag2[0]
                 this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                 this.timeLine.time_line.flags[index].flag_status_update = 'update'
+                console.log('777777777777')
 
               } else if (find3[0].date_obj.timestamp < this.editFlag.date_obj.timestamp) {
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
@@ -738,6 +761,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                 this.timeLine.time_line.flags[indexDelet] = flag2[0]
                 this.timeLine.time_line.flags[indexDelet].flag_status_update = 'update'
                 this.timeLine.time_line.flags[index].flag_status_update = 'update'
+                console.log('8888888888')
 
               }
             }
@@ -775,8 +799,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     })
 
     this.timeLine.time_line.flags = this.filterFlagsService.filterOrderFlags(this.timeLine)
-    // start-loader
-    this.connectingExternalRoutesService.spiderShareLoader({ message: true })
+
     this.updateSubscribeFlag()
   }
 
@@ -795,7 +818,89 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   // Data não é alterada.
   // esse update é quando tem 02 flags na mesa data
   updateSubscribeFlag() {
-    this.timeLineService.updateFlag(this.timeLine)
+
+
+
+    let findVal: FlagModel[] = this.timeLine.time_line.flags?.filter((timestamp: FlagModel) => timestamp.date_obj.timestamp === this.flagsForm.controls[0]?.get('date_obj')?.get('timestamp')?.value);
+
+    let finUpdate: any = this.timeLine.time_line.flags?.filter((status: FlagModel) => status.flag_status_update === 'update');
+    let finDelete: FlagModel[] = this.timeLine.time_line.flags?.filter((status: FlagModel) => status.flag_status_update === 'delete');
+    let finCreate: FlagModel[] = this.timeLine.time_line.flags?.filter((status: FlagModel) => status.flag_status_update === 'create');
+
+    let val: any = []
+    let timeLineVal: TimeLineModel
+
+    console.log(finCreate)
+    console.log(finUpdate)
+    console.log(finDelete)
+    // console.log('sssssss',this.editFlag)
+    console.log(findVal) // está sendo criado
+
+    // quando a bandeira 02 ou 1 se movimente para a posição 02 de outra bandeira
+    if (finUpdate && finUpdate.length === 2) {
+      console.log('eueueueuueue')
+      // val = []
+      val = finUpdate
+    }
+
+    // existem 01 bandeira e elas estão se juntando
+    if (finDelete && finDelete.length === 1 && finUpdate && finUpdate.length === 1) {
+      console.log('JUNTANDO BANDEIRA')
+      // finCreate[0].flag_status_update = 'create'
+      // val = []
+      val = [finUpdate[0], finDelete[0]]
+    }
+
+    // existem 02 bandeiras e elas estão se separando
+    if (finCreate && finCreate.length === 1 && finUpdate && finUpdate.length === 1) {
+      console.log('Se for vazio significa que existem 02 bandeiras e elas estão se separando')
+      // finCreate[0].flag_status_update = 'create'
+      // val = []
+      val = [finUpdate[0], findVal[0]]
+    }
+
+
+
+    // Atualizando bandeira individual
+    if (finCreate && finCreate.length === 1 && finUpdate && finUpdate.length === 0) {
+      // val = []
+      console.log('zzzzzzzzzzzz')
+
+      if (finCreate && finCreate[0].flags2 && finCreate[0].flags2.length === 0) {
+        findVal[0].flag_status_update = 'update'
+
+        console.log('BUCETA', findVal[0])
+        val = [findVal[0]]
+
+      }
+
+    }
+
+    // Edita 02 bandeiras sem sair da posição
+    if (finCreate && finCreate.length === 0 &&
+      finUpdate && finUpdate.length === 1 &&
+      finDelete && finDelete.length === 0 &&
+      findVal && findVal.length === 1) {
+      // val = []
+      console.log('yyyyyyyyyy')
+      val = finUpdate
+    }
+
+
+    console.log('ssssssssssssss', val)
+    timeLineVal = {
+      _id: val[0]._id,
+      iam_id: this.timeLine.iam_id,
+      time_line: {
+        flags: val
+      }
+    }
+
+    console.log('´´´´´´´´´´´´', timeLineVal)
+    // console.log('sssssss',this.editFlag)
+
+
+    this.timeLineService.updateFlag(timeLineVal)
       .subscribe({
         next: (res: EncryptDecryptModel) => {
           // let val: any = res.a[0]
@@ -803,35 +908,37 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
             // Atualiza time line
             this.stateService.updateGetTimeLineHttpSignal(true)
 
-            setTimeout(() => {
-              // Encontre o flag_id no nível principal
-              let find = this.timeLine.time_line.flags?.find((flag: FlagModel) => flag.flag_id === this.flagsForm.controls[0]?.get('flag_id')?.value);
+            // setTimeout(() => {
+            //   // Encontre o flag_id no nível principal
+            //   let find = this.timeLine.time_line.flags?.find((flag: FlagModel) => flag.flag_id === this.flagsForm.controls[0]?.get('flag_id')?.value);
 
-              // Se não encontrar no nível principal, procure em flags2
-              if (!find) {
-                for (const flag of this.timeLine.time_line.flags) {
-                  if (flag.flags2 && flag.flags2.length > 0) {
-                    find = flag.flags2.find((subFlag: FlagModel) => subFlag.flag_id === this.flagsForm.controls[0]?.get('flag_id')?.value);
-                    if (find) {
-                      break; // Encontrei, sair do loop
-                    }
-                  }
-                }
-              }
+            //   // Se não encontrar no nível principal, procure em flags2
+            //   if (!find) {
+            //     for (const flag of this.timeLine.time_line.flags) {
+            //       if (flag.flags2 && flag.flags2.length > 0) {
+            //         find = flag.flags2.find((subFlag: FlagModel) => subFlag.flag_id === this.flagsForm.controls[0]?.get('flag_id')?.value);
+            //         if (find) {
+            //           break; // Encontrei, sair do loop
+            //         }
+            //       }
+            //     }
+            //   }
 
-              // Criar o novo objeto de comparação
-              let val = {
-                oldId: this.editFlag?._id,
-                newId: find?._id,
-                flag_id: this.editFlag.flag_id
-              };
+            //   // Criar o novo objeto de comparação
+            //   let val = {
+            //     oldId: this.editFlag?._id,
+            //     newId: find?._id,
+            //     flag_id: this.editFlag.flag_id
+            //   };
 
-              if (val.newId !== val.oldId) {
-                this.updateKanbanObjectId(val) // atualiza ObjectId
-                this.updateSpiderTubeObjectId(val)  // atualiza ObjectId
-              }
+            //   console.log('............', this.timeLine)
 
-            }, 3000)
+            //   if (val.newId !== val.oldId) {
+            //     this.updateKanbanObjectId(val) // atualiza ObjectId
+            //     this.updateSpiderTubeObjectId(val)  // atualiza ObjectId
+            //   }
+
+            // }, 500)
           }
         },
         error: () => {

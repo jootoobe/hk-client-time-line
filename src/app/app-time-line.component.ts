@@ -61,17 +61,6 @@ export class AppTimeLineComponent implements OnInit {
       this.TESTE = this.stateService.translatorLanguageSignalComputed()
     })
 
-
-    fromEvent(this.window, 'user-payment-validate')
-    .subscribe({
-      next: (res: any) => {
-        this.stateService.updateUserForAppSignal(res.detail.userData)
-
-      },
-      error: (err) => { },
-      complete: () => { }
-    })
-
     
   }
   ngOnInit(): void {
@@ -114,6 +103,12 @@ export class AppTimeLineComponent implements OnInit {
           let encode2: any = decodeURIComponent(`${encode1}`); // enconde 2
           encode2 = JSON.parse(encode2)
           this.stateService.updateKeysCryptoTimeLineSignal(encode2.TLC)
+
+          // 🅰️ DADOS USUÁRIO
+          let user = this.localStorageService.getLocalStorag('ax', encode2.TLC.LS.ss)
+          console.log('>>>>>>>>>>>>>>> TIME-LINE',user)
+          this.stateService.updateUserForAppSignal(user)
+
         },
         error: (err) => {
           const routerHome = {

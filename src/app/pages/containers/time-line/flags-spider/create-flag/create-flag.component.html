@@ -1,11 +1,12 @@
 
 <tolltip-create-html></tolltip-create-html>
 
-<!-- <pre> {{createTimeLineForm.value | json}}</pre> -->
+<pre> {{createTimeLineForm.value | json}}</pre>
+
 
 <form [formGroup]="createTimeLineForm"
       (ngSubmit)="createTimeLineForm.valid && flagCreateEditInput === 'create' && createFlag()"
-      (ngSubmit)="createTimeLineForm.valid && flagCreateEditInput === 'edit' && updateFlag()">
+      (ngSubmit)="createTimeLineForm.valid && flagCreateEditInput === 'edit' && clearFilterBeforeUpdating()">
   <div formGroupName="time_line">
     <div formArrayName="flags" class="flag-modal ">
 
@@ -297,7 +298,7 @@
                   [errorStateMatcher]="matcher"
                   appTrim
                   [numInputAppTrim]="6"
-                  [characterText]="31"
+                  [characterText]="5"
                   [formAll]="flagsForm.controls[0]"
                   [nameFormAll]="'flag_title'"
                   >
