@@ -9,11 +9,11 @@ let files = "../../back/hk-back-time-line/client/hk-client-time-line/browser/";
   fs.readdirSync(files).forEach(file => {
 
     if (file.includes('polyfills')) {
-      // fs.remove(`../../back/hk-back-time-line/client/hk-client-time-line/browser/index.html`)
-      // fs.remove(`../../back/hk-back-time-line/client/hk-client-time-line/browser/${file}`)
+      fs.remove(`../../back/hk-back-time-line/client/hk-client-time-line/browser/index.html`)
+      fs.remove(`../../back/hk-back-time-line/client/hk-client-time-line/browser/${file}`)
     }
     if (file.includes('styles')) {
-      // fs.remove(`../../back/hk-back-time-line/client/hk-client-time-line/browser/${file}`)
+      fs.remove(`../../back/hk-back-time-line/client/hk-client-time-line/browser/${file}`)
     }
   });
 })();
