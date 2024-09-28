@@ -461,7 +461,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
       router: '/home',
       message: ''
     };
-    // Se o ID não for válido, redirecione o usuário para uma página de erro ou página inicial
+
     this.connectingExternalRoutesService.navigateHomeSpider(routerHome);
   }
 

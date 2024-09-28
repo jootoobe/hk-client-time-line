@@ -111,17 +111,15 @@ export class AppTimeLineComponent implements OnInit {
 
         },
         error: (err) => {
-          const routerHome = {
-            router: '/home',
-            message: ''
-          };
+          // const routerHome = {
+          //   router: '/home',
+          //   message: ''
+          // };
           
           
-          this.connectingExternalRoutesService.navigateHomeSpider(routerHome);
+          // this.connectingExternalRoutesService.navigateHomeSpider(routerHome);
           this.connectingExternalRoutesService.spiderShareLoader({ message: false });
-
-    
-          // this.toastrService.error(this.TOAST['TIME-LINE']['Global'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['Global'].error['msn-0']['message-1'])
+          this.toastrService.error(this.TOAST['TIME-LINE']['Global'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['Global'].error['msn-0']['message-1'])
 
         },
         complete: () => { }
