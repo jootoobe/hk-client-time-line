@@ -48,7 +48,8 @@
   }
   <div class="item-right">
     @if(timeLine && timeLine.time_line && timeLine.time_line.flags && timeLine.time_line.flags.length  > 0) {
-      @if(timeLine.time_line.flags.length  > 1) {
+      @if(timeLine.time_line.flags.length  > 1 && userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 || 
+          timeLine.time_line.flags.length  > 1 && userInput && userInput.active_plan == paidUserPlans.Interactive) {
         <mat-icon
                 matSuffix
                 class="material-icons cursor_pointer notranslate"

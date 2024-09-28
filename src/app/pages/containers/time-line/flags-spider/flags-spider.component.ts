@@ -103,17 +103,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
               let somaTotal = 0; // Inicializa a variável acumuladora
 
 
-              // 🅱️ Aplicar a lógica de limites
-              // Caso seja o plano gratuito e tenha menos de 3 flags
-              if (this.user.active_plan === this.paidUserPlans.Free_Plan) {
-                this.timeLine.time_line.flags = this.timeLine.time_line.flags.slice(0, 3); // Limita o array a 3 flags
-              }
-
-              // Caso seja o plano interativo, liberar 100%
-              if (this.user.active_plan === this.paidUserPlans.Interactive) {
-                this.timeLine = res; // liberar 100%
-              }
-
               // Calcula o total de flags
               this.timeLine.time_line.flags.forEach((e: FlagModel, i: number) => {
                 const flags2Length = e.flags2 ? e.flags2.length : 0; // Garantir que flags2 existe
@@ -125,7 +114,16 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
               console.log("Soma acumulada no índice", this.totalFlagsPayment);
 
 
+              // 🅱️ Aplicar a lógica de limites
+              // Caso seja o plano gratuito e tenha menos de 3 flags
+              if (this.user.active_plan === this.paidUserPlans.Free_Plan) {
+                this.timeLine.time_line.flags = this.timeLine.time_line.flags.slice(0, 3); // Limita o array a 3 flags
+              }
 
+              // Caso seja o plano interativo, liberar 100%
+              if (this.user.active_plan === this.paidUserPlans.Interactive) {
+                this.timeLine = res; // liberar 100%
+              }
 
             }
 
@@ -351,7 +349,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
           // setTimeout(() => {
-            this.connectingExternalRoutesService.spiderShareLoader({ message: false })
+          this.connectingExternalRoutesService.spiderShareLoader({ message: false })
           // }, 550)
         },
         error: (err) => {
