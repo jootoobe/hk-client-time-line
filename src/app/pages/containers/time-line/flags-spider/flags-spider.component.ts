@@ -350,9 +350,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
           // this.resetFlags = newTimeLine
           this.indexDbPutAllFlag(newTimeLine)
           // end-loader
-          setTimeout(() => {
+          // setTimeout(() => {
             this.connectingExternalRoutesService.spiderShareLoader({ message: false })
-          }, 550)
+          // }, 550)
         },
         error: (err) => {
           let newTimeLine = { time_line: { flags: [] } }
