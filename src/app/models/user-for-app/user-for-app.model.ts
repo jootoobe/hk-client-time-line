@@ -1,19 +1,20 @@
 
 
-export class LastPaymentModel {
-  constructor(
-    public created: number,
-    public current_date: string,
-    public expiry_date: string,
-    public current_date_timestamp: number,
-    public expiry_date_timestamp: number,
-    public payment_plan_type: string,
-    public customer_email: string,
-    // public brand: string,
-    // public last4: string
+// export class LastPaymentModel {
+//   constructor(
+//     public created: number,
+//     public current_date: number,
+//     public expiry_date: string,
+//     public current_date_timestamp: number,
+//     public expiry_date_timestamp: number,
+//     public payment_plan_type: string,
+//     public customer_email: string,
+//     public active_plan: string,
+//     // public brand: string,
+//     // public last4: string
     
-  ) { }
-}
+//   ) { }
+// }
 
 
 
