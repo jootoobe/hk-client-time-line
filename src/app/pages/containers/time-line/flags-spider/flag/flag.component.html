@@ -69,7 +69,7 @@
                     <div class="item-menu ">
                       <!-- 🅰️ USER PAYMENT -->
                       <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
-                            userInput && userInput.active_plan === paidUserPlans.Interactive"
+                            userInput && userInput.active_plan === paidUserPlans.Interactive || userInput.active_plan === paidUserPlans.Free_Trial"
                             class="menu-item cursor_pointer noSelect menu-space" 
                             (click)="editFlag(flag, 'edit-flag-2')">
 
@@ -81,7 +81,7 @@
                       </div>
                               <!-- 🅰️ USER PAYMENT -->
                       <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 ||
-                                    userInput && userInput.active_plan === paidUserPlans.Interactive" 
+                                    userInput && userInput.active_plan === paidUserPlans.Interactive || userInput.active_plan === paidUserPlans.Free_Trial" 
                           class="menu-item cursor_pointer noSelect" 
                           (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-2')"
                           (click)="doubleCheckerClick.openDoubleCheckerDialog()">
@@ -182,7 +182,7 @@
           </div> <!-- Card End -->
           <!-- Open Kanban -->
           <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
-                      userInput && userInput.active_plan === paidUserPlans.Interactive"
+                      userInput && userInput.active_plan === paidUserPlans.Interactive || userInput.active_plan === paidUserPlans.Free_Trial"
               class="inside-flag_open-kanban cursor_pointer remove notranslate" 
               (click)="getFlagIdNavegateKanban(flag2)"
               id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
@@ -288,7 +288,7 @@
                       
                       <!-- 🅰️ USER PAYMENT -->
                       <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
-                                    userInput && userInput.active_plan === paidUserPlans.Interactive"   
+                                    userInput && userInput.active_plan === paidUserPlans.Interactive || userInput.active_plan === paidUserPlans.Free_Trial"   
                             class="menu-item cursor_pointer noSelect menu-space" 
                             (click)="editFlag(flag, 'edit-flag-1')"
                             >
@@ -301,7 +301,7 @@
 
                       <!-- 🅰️ USER PAYMENT -->
                       <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 3 ||
-                                    userInput && userInput.active_plan === paidUserPlans.Interactive" 
+                                    userInput && userInput.active_plan === paidUserPlans.Interactive || userInput.active_plan === paidUserPlans.Free_Trial" 
 
                           class="menu-item cursor_pointer noSelect" 
                           (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-1')"
@@ -403,7 +403,7 @@
         </div> <!-- Card End language-->
         <!-- Open Kanban     margin: -2rem 0 .5rem 18.7rem;-->
         <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
-                                    userInput && userInput.active_plan === paidUserPlans.Interactive"
+                                    userInput && userInput.active_plan === paidUserPlans.Interactive || userInput.active_plan === paidUserPlans.Free_Trial"
             class="inside-flag_open-kanban cursor_pointer remove notranslate" 
             (click)="getFlagIdNavegateKanban(flag)"
             id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">

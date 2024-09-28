@@ -121,7 +121,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
               }
 
               // Caso seja o plano interativo, liberar 100%
-              if (this.user.active_plan === this.paidUserPlans.Interactive) {
+              if (this.user.active_plan === this.paidUserPlans.Interactive || this.user.active_plan === this.paidUserPlans.Free_Trial) {
+                console.log('PPPPPPPPPpp 🅱️')
                 this.timeLine = res; // liberar 100%
               }
 
