@@ -5,6 +5,9 @@ import { TimeLineComponent } from './time-line.component';
 
 const routes: Routes = [
   {
+    path: ':id', component: TimeLineComponent,
+  },
+  {
     path: '', component: TimeLineComponent,
   },
 ];
