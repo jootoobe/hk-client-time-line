@@ -1,3 +1,4 @@
+import { UserForAppModel } from './../../../models/user-for-app/user-for-app.model';
 import { Component, Inject, OnInit, effect } from '@angular/core';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { StateService } from '../../../shared/services/state.service';
@@ -14,12 +15,23 @@ import { FlagModel } from '../../../models/flag.model';
 })
 export class TimeLineComponent implements OnInit {
   language = ''
+  user!: UserForAppModel
   constructor(
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     private stateService: StateService,
     private indexDbTimeLineService: IndexDbTimeLineService
-  ) { 
+  ) {
+
+    // 🅰️ USER DATA
+    effect(() => {
+      let userVal = this.stateService.userForAppSignalComputed()
+      if (userVal && userVal.email) {
+        this.user = userVal
+      }
+
+    })
+
     effect(() => {
       this.language = this.stateService.languageSignalComputed()
       this.getDateFormatString(this.language)
@@ -27,14 +39,14 @@ export class TimeLineComponent implements OnInit {
 
     effect(() => {
       let timeLineIndexDbError = this.stateService.timeLineIndexDbErrorSignalSignalComputed()
-      if(timeLineIndexDbError) {
+      if (timeLineIndexDbError) {
         this.timeLineIndexDbErrorSignalSignal('0000')
       }
     })
 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 
   // languagesLocale() {
