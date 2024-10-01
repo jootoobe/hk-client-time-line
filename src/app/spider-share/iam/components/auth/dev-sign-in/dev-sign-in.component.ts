@@ -33,7 +33,7 @@ export class DevSignInComponent {
           // define on request complete logic
           // 'complete' is not the same as 'finalize'!!
           // this logic will not be executed if error is fired
-          this.router.navigate(['/time-line'])
+          this.router.navigate(['/time-line/spider'])
         }
       })
   }
