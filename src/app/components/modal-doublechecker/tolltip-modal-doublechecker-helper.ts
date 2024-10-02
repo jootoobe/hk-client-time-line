@@ -67,7 +67,7 @@ export class TolltipModalSoublecheckerHelper {
         <p style='margin-top: 1rem;'><span style='margin-left: .2rem;'>${msn1_c}</span></p>
       </div>
       <p style='margin: 1rem;  max-width: 30rem;'>
-      <img style="height: auto;width:100%"  src="${img1_a}" alt='SpiderShare' />
+      <img oncontextmenu="return false;" style="height: auto;width:100%"  src="${img1_a}" alt='SpiderShare' />
       </p>
       `
     } else if (this.showWidth375) {
@@ -79,7 +79,7 @@ export class TolltipModalSoublecheckerHelper {
         <p style='margin-top: 1rem;'><span style='margin-left: .2rem;'>${msn1_c}</span></p>
       </div>
       <p style='margin: 1rem; max-width: 28rem;'>
-      <img style="height: auto;width:100%"  src="${img1_a}" alt='SpiderShare' />
+      <img oncontextmenu="return false;" style="height: auto;width:100%"  src="${img1_a}" alt='SpiderShare' />
       </p>
       `
     } else if (this.showWidth320) {
@@ -91,7 +91,7 @@ export class TolltipModalSoublecheckerHelper {
         <p style='margin-top: 1rem;'><span style='margin-left: .2rem;'>${msn1_c}</span></p>
       </div>
       <p style='margin: 1rem; max-width: 26rem;'>
-      <img style="height: auto;width:100%"  src="${img1_a}" alt='SpiderShare' />
+      <img oncontextmenu="return false;" style="height: auto;width:100%"  src="${img1_a}" alt='SpiderShare' />
       </p>
       `
     } else {
@@ -103,7 +103,7 @@ export class TolltipModalSoublecheckerHelper {
         <p style='margin-top: 1rem;'><span style='margin-left: .2rem;'>${msn1_c}</span></p>
       </div>
       <p style='margin: 1rem; max-width: 35rem;'>
-      <img style="height: auto;width:100%"  src="${img1_a}" alt='SpiderShare' />
+      <img oncontextmenu="return false;" style="height: auto;width:100%"  src="${img1_a}" alt='SpiderShare' />
       </p>
       `
     }

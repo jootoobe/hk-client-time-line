@@ -63,7 +63,7 @@ export class TolltipCreateHelper {
             <div style="height: auto; width:34rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-              <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+              <img oncontextmenu="return false;" style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
             </div>
           `;
     } else if (this.showWidth375) {
@@ -71,7 +71,7 @@ export class TolltipCreateHelper {
             <div style="height: auto; width:29rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-              <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+              <img oncontextmenu="return false;" style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
             </div>
           `;
     } else if (this.showWidth320) {
@@ -79,7 +79,7 @@ export class TolltipCreateHelper {
             <div style="height: auto; width:28rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-              <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+              <img oncontextmenu="return false;" style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
             </div>
           `;
     } else {
@@ -87,7 +87,7 @@ export class TolltipCreateHelper {
             <div style="height: auto; width:35rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-              <img style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+              <img oncontextmenu="return false;" style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
             </div>
           `;
     }
@@ -106,7 +106,7 @@ export class TolltipCreateHelper {
             <div  style="height: auto; width:34rem;">
             <p>${msn2_a}</p>
             <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-              <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+              <img  oncontextmenu="return false;" style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
             </div>
           `;
     } else if (this.showWidth375) {
@@ -114,7 +114,7 @@ export class TolltipCreateHelper {
           <div  style="height: auto; width:28rem;">
           <p>${msn2_a}</p>
           <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-            <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+            <img  oncontextmenu="return false;" style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
           </div>
           `;
     } else if (this.showWidth320) {
@@ -122,7 +122,7 @@ export class TolltipCreateHelper {
           <div  style="height: auto; width:28rem;">
           <p>${msn2_a}</p>
           <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-            <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+            <img  oncontextmenu="return false;" style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
           </div>
           `;
     } else {
@@ -130,7 +130,7 @@ export class TolltipCreateHelper {
           <div  style="height: auto; width:35rem;">
           <p>${msn2_a}</p>
           <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-          <img  style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+          <img  oncontextmenu="return false;" style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
           </div>
           `;
     }
@@ -494,7 +494,7 @@ export class TolltipCreateHelper {
 //           </div>
 
 //           <div>
-//            <img src="https://miro.medium.com/v2/resize:fill:64:64/1*0CWrzWHjHhJT2nKABRopKQ.png" style="width="auto" height="auto"" >
+//            <img oncontextmenu="return false;" src="https://miro.medium.com/v2/resize:fill:64:64/1*0CWrzWHjHhJT2nKABRopKQ.png" style="width="auto" height="auto"" >
 //           </div>
 //         </td>
 //       </tr>
