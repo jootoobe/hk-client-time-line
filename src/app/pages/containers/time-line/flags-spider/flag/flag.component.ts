@@ -458,7 +458,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   navigateHomeSpider() {
     const routerHome = {
-      router: '/home',
+      router: '/home/user',
       message: ''
     };
 

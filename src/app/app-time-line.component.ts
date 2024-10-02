@@ -112,7 +112,7 @@ export class AppTimeLineComponent implements OnInit {
         },
         error: (err) => {
           // const routerHome = {
-          //   router: '/home',
+          //   router: '/home/user',
           //   message: ''
           // };
           
