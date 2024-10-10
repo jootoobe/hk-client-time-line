@@ -39,7 +39,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   cardIndexMouseUp = { index: 0, mouse: false } // euando o mouse passa sobre a bandeira 2
 
-  filterColorId: any = [] // used to identify the html id of the filter color clicked on the bottom bars of the time line
+  filterColorId: any = [] // used to identify the html id of the filter color clicked on the bottom bars of the TimeLine
   valFilterClose = { color_hex: '', color_rgb: 0 } as any// stores the clicked filter and communicates with the top-div component - start -> filterColor()
   enableDisableMouse = true // desabilita o mouse quando filtro esta ativado na bandeira 
   TOAST!: any // translator used in ToastrService
@@ -233,8 +233,18 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
 
   // ⬇️ Edit Flag
   editFlag(flagEdit: FlagModel, editFlag: string) {
+    let activeFilter = { activeFilter: 'create' }
+    this.stateService.updateActiveFilterSignal(activeFilter)
+    
     flagEdit.edit = editFlag
     this.editFlagOutput.emit(flagEdit)
+
+
+    setTimeout(()=>{
+      let activeFilter = { activeFilter: 'clear' }
+      this.stateService.updateActiveFilterSignal(activeFilter)
+    },500)
+    
   }
 
 
@@ -266,7 +276,7 @@ export class FlagComponent implements OnInit, OnChanges, AfterViewInit {
   /**
    * OBS filtra uma cor por vez apenas
 * **************************************** We have 2 types of filters ********************************************************
-* * * * * ====== Direct time line filter AND filter activated by the icon in the component TopDivComponent ========= * * * * *
+* * * * * ====== Direct TimeLine filter AND filter activated by the icon in the component TopDivComponent ========= * * * * *
 * @param { DirectTimeLineFilter }  filterColor - filterColor(val?: any) - Leaves the flags opaque so they can be highlighted
 * @param { FilterFlagComponent }  FilterFlagComponent - Stays in the component TopDivComponent -- It is a component that filters the flag name and colors - all filters are applied individually so far
 */

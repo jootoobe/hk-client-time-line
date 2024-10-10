@@ -9,6 +9,22 @@
   </create-flag>
 </ng-template>
 
+<!-- OPEN VIDEO PALY APRESENTAÇÃO -->
+<ng-template #openVideo>
+    <iframe 
+    [width]="widthVideo" 
+    [height]="heightVideo"
+    style="overflow: hidden !important"
+    [src]="'https://www.youtube.com/embed/sol6UhSWIWg'| safeDomSanitizer : 'resourceUrl'"
+    frameborder="0"
+    scrolling="no"
+    allowtransparency="true"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    rel=preload >
+  </iframe>
+</ng-template>
+
 
 <!-- Top div 20%   -->
 <div class="main-div">
@@ -42,8 +58,9 @@
   </div>
 
   @if(isAddressBarVisible) {
-  <div class="play-video cursor_pointer" [ngStyle]="{'z-index': flagLength <= 0 ? '1': '-1'}">
-    <img oncontextmenu="return false;" class="play-video_img" src="{{assetsProd}}/assets/spider-play.png" alt="Spider Share"
+  <div class="play-video cursor_pointer noSelect" [ngStyle]="{'z-index': flagLength <= 0 ? '1': '-1'}" 
+      (click)="openVideoIntroduction()">
+    <img  class="play-video_img" src="{{assetsProd}}/assets/spider-play.png" alt="Spider Share"
           [ngStyle]="{'width': flagLength <= 0 ? '4rem': '2.5rem',
                       'margin': flagLength <= 0 ? '0 2rem 2.7rem 0': '0 2rem .5rem 0' }">
   </div>

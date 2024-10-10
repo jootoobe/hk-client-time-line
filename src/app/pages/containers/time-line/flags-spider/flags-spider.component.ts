@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnChanges, OnInit, Renderer2, SimpleChanges, TemplateRef, ViewChild, effect, output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, ChangeDetectorRef, OnInit, Renderer2, SimpleChanges, TemplateRef, ViewChild, effect, output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { TimeLineModel } from '../../../../models/time-line.model';
@@ -17,6 +17,7 @@ import { FilterFlagsService } from '../../../../shared/services/filter-flags.ser
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { UserForAppModel } from '../../../../models/user-for-app/user-for-app.model';
 import { PaidUserPlansEnum } from '../../../../enum/paid-user-plans.enum';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'flags-spider',
@@ -25,6 +26,7 @@ import { PaidUserPlansEnum } from '../../../../enum/paid-user-plans.enum';
 })
 export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   @ViewChild('openClose', { static: true }) openClose!: ElementRef //  relating to the method openCloseHorizontalScroll()
+  @ViewChild('openVideo', { static: true }) openVideo!: ElementRef | any
 
 
   @ViewChild('createTimeLine', { static: false }) createTimeLine!: TemplateRef<any> // open modal ref - modal to create or edit timeline
@@ -62,8 +64,26 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   totalFlagsPayment = 0
   paidUserPlans = PaidUserPlansEnum
 
+
+  // VIDEO
+  mobileQuery960!: MediaQueryList;
+  mobileQuery768!: MediaQueryList;
+  mobileQuery500!: MediaQueryList;
+  mobileQuery410!: MediaQueryList;
+  _mobileQueryListener!: () => void;
+
+  // Propriedades para largura e altura do vídeo
+  original_width = 1920; // Defina a largura original
+  original_height = 1080; // Defina a altura original
+  reduction_percentage_65 = 0.65; // Redução de 65%
+  reduction_percentage_75 = 0.75; // Redução de 75%
+  reduction_percentage_80 = 0.80; // Redução de 80%
+  reduction_percentage_85 = 0.85; // Redução de 85%
+  widthVideo!: number;
+  heightVideo!: number;
+
   constructor(
-    private dialogCreate: MatDialog,
+    private dialog: MatDialog,
     private renderer2: Renderer2,
     private elementRef: ElementRef,
     private timeLineService: TimeLineService,
@@ -75,7 +95,9 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     private toastrService: ToastrService,
     private filterFlagsService: FilterFlagsService,
     private ngZone: NgZone,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private media: MediaMatcher,
+    private changeDetectorRef: ChangeDetectorRef
   ) {
 
     this.indexDbGetAllTimeLine('0000')
@@ -161,6 +183,12 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+    // Inicializa as media queries
+    this.mobileQuery960 = this.media.matchMedia('(max-width: 960px)');
+    this.mobileQuery768 = this.media.matchMedia('(max-width: 768px)');
+    this.mobileQuery500 = this.media.matchMedia('(max-width: 500px)');
+    this.mobileQuery410 = this.media.matchMedia('(max-width: 410px)');
+
     this.isMobile = this.deviceService.isMobile();
     this.detectBrowser = this.detectBrowserNameService.detectBrowserName()
 
@@ -186,9 +214,64 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
 
+    // Adiciona o listener
+    this._mobileQueryListener = () => {
+      console.log('Listener chamado'); // Log para verificação
+      this.changeDetectorRef.detectChanges();
+      this.updateVideoSize();
+    };
+
+
+    this.mobileQuery960.addListener(this._mobileQueryListener);
+    this.mobileQuery768.addListener(this._mobileQueryListener);
+    this.mobileQuery500.addListener(this._mobileQueryListener);
+    this.mobileQuery410.addListener(this._mobileQueryListener);
+
+    // Atualiza inicialmente o tamanho do vídeo
+    this.updateVideoSize();
+
   }
 
+
   ngAfterViewInit(): void { }
+
+
+updateVideoSize() {
+  // Verifica se a media query de 410px está sendo atendida
+  if (this.mobileQuery410.matches) {
+    console.log('Tamanho reduzido para 85%');
+    this.resizeVideo(this.reduction_percentage_85);
+  }
+  // Verifica se a media query de 500px está sendo atendida
+  else if (this.mobileQuery500.matches) {
+    console.log('Tamanho reduzido para 80%');
+    this.resizeVideo(this.reduction_percentage_80);
+  }
+  // Verifica se a media query de 768px está sendo atendida
+  else if (this.mobileQuery768.matches) {
+    console.log('Tamanho reduzido para 75%');
+    this.resizeVideo(this.reduction_percentage_75);
+  }
+  // Verifica se a media query de 960px está sendo atendida
+  else if (this.mobileQuery960.matches) {
+    console.log('Tamanho reduzido para 65%');
+    this.resizeVideo(this.reduction_percentage_65);
+  } 
+  else {
+    // Se nenhuma das condições for atendida, define o tamanho original
+    console.log('Tamanho original');
+    this.widthVideo = 920;
+    this.heightVideo = 520;
+  }
+}
+
+
+  resizeVideo(reductionPercentage: number) {
+    this.widthVideo = this.original_width * (1 - reductionPercentage);
+    this.heightVideo = this.original_height * (1 - reductionPercentage);
+    console.log(`Novo tamanho: ${this.widthVideo}x${this.heightVideo}`); // Log para verificação
+    // Aqui você pode aplicar o tamanho alterado ao seu elemento de vídeo
+  }
 
 
   editFlagEvent(flag: FlagModel) {
@@ -198,7 +281,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
 
   closeModalEvent(e: any) {
-    this.dialogCreate.closeAll()
+    this.dialog.closeAll()
   }
 
   // Open Create Time_Line
@@ -209,7 +292,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
       this.editFlagForm = {}
     }
 
-    this.dialogCreate.open(this.createTimeLine, {
+    this.dialog.open(this.createTimeLine, {
       disableClose: true,
       panelClass: 'create-flag-dialog',
       // backdropClass: 'backdropBackground',
@@ -604,6 +687,21 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
         });
       });
     });
+  }
+
+
+  openVideoIntroduction() {
+
+    this.dialog.open(this.openVideo, {
+      disableClose: false,
+      autoFocus: false,
+      restoreFocus: false,
+      panelClass: 'open-video',
+      // backdropClass: 'backdropBackground',
+      position: {}
+
+    });
+
   }
 }
 

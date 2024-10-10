@@ -18,14 +18,14 @@
             "code": "",
             "message": "",
             "message-0": "Error creating the flag",
-            "message-1": "Time Line Error",
+            "message-1": "TimeLine Error",
             "status": ""
           },
           "msn-2": {
             "code": "",
             "message": "",
             "message-0": "Error editing the flag",
-            "message-1": "Time Line Error",
+            "message-1": "TimeLine Error",
             "status": ""
           }
         },
@@ -100,7 +100,7 @@
             "code": "",
             "message": "",
             "message-0": "Try refreshing the page",
-            "message-1": "Error loading time line",
+            "message-1": "Error loading TimeLine",
             "status": ""
           }
         },
@@ -136,7 +136,7 @@
             "code": "",
             "message": "",
             "message-0": "Error removing the flag",
-            "message-1": "Time Line Error",
+            "message-1": "TimeLine Error",
             "status": ""
           }
         },

@@ -1,7 +1,7 @@
 
 <tolltip-create-html></tolltip-create-html>
 
-<pre> {{createTimeLineForm.value | json}}</pre>
+<!-- <pre> {{createTimeLineForm.value | json}}</pre> -->
 
 
 <form [formGroup]="createTimeLineForm"
@@ -407,7 +407,7 @@
                     [errorStateMatcher]="matcher"
                     formControlName="flag_description"
                     appTrim
-                    [numInputAppTrim]="6"
+                    [numInputAppTrim]="5"
                     [characterText]="36"
                     [formAll]="flagsForm.controls[0]"
                     [nameFormAll]="'flag_description'"

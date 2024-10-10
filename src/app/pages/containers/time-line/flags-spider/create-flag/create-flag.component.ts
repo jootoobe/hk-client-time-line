@@ -568,8 +568,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   // 3 - Aqui separa a flag1 da flag24 - Aqui separa a flag2 da flag1
   // 5 - Editar bandeira 1 'datas diferentes'  se mantendo na posição 01
   // 6 - Editar bandeira 2 'datas diferentes' se mantendo na posição 02
-  // 7 - Quando a flag1(não possui flag2) está em uma data A na time - lie e assume a posição 02 em outra data na time line
-  // 8 - Quando a flag1(possui flag2) está em uma data A na time - lie e assume a posição 02 em outra data na time line
+  // 7 - Quando a flag1(não possui flag2) está em uma data A na time - lie e assume a posição 02 em outra data na TimeLine
+  // 8 - Quando a flag1(possui flag2) está em uma data A na time - lie e assume a posição 02 em outra data na TimeLine
 
   /**
   * **************************************** FLAGS POSITIONING TESTS *******************************************************
@@ -579,9 +579,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
   * @param { TEST-3 } Separates_Flag1_From_Flag2 - Separates flag1 from flag2
   * @param { TEST-4 } Separates_Flag2_From_Flag1 - Separates flag2 from flag1
   * @param { TEST-5 } Edit_Flag1_Different_Dates_keep_Position_01 - Edit flag 1 'different dates' remaining in position 01
-  * @param { TEST-6 } Edit_Flag2_Different_Dates_keep_Position_02 - Editing fleg2 being able to walk on the time line and remaining the position 02
-  * @param { TEST-7 } Flag1_mounted_On_Top_Another_Position - When flag1 (does not have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
-  * @param { TEST-8 } Flag1_mounted_On_Top_Another_Position - When flag1 (does have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
+  * @param { TEST-6 } Edit_Flag2_Different_Dates_keep_Position_02 - Editing fleg2 being able to walk on the TimeLine and remaining the position 02
+  * @param { TEST-7 } Flag1_mounted_On_Top_Another_Position - When flag1 (does not have flag2) is on date A in the time-lie and assumes position 02 on another date in the TimeLine
+  * @param { TEST-8 } Flag1_mounted_On_Top_Another_Position - When flag1 (does have flag2) is on date A in the time-lie and assumes position 02 on another date in the TimeLine
   
   */
 
@@ -676,7 +676,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                   console.log('111111111')
                 }
 
-                // { TEST-6 } Editing fleg2 being able to walk on the time line and remaining in position 02
+                // { TEST-6 } Editing fleg2 being able to walk on the TimeLine and remaining in position 02
                 if (find2.length === 1 && this.editFlag.flags2[0]) {
 
                   // update flag 2 same date
@@ -685,7 +685,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
                     this.timeLine.time_line.flags[i1].flag_status_update = 'update'
                     console.log('22222222')
                   }
-                  // flag 2 goes backwards in the time line
+                  // flag 2 goes backwards in the TimeLine
                   // It's a repetition even to pass only 01 time in the for loop
                   else if (this.editFlag.flags2[0].date_obj.timestamp < find2[0].date_obj.timestamp) {
                     this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
@@ -723,7 +723,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
           if (find3.length === 1) {
 
-            // { TEST-7 } When flag1 (does not have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
+            // { TEST-7 } When flag1 (does not have flag2) is on date A in the time-lie and assumes position 02 on another date in the TimeLine
             if (this.editFlag && this.editFlag.flags2?.length === 0) {
 
               // find3 for the upcoming date - I move forward on the time-line - fleg1 assuming position 02
@@ -745,7 +745,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
               }
 
 
-              // { TEST-8 } When flag1 (does have flag2) is on date A in the time-lie and assumes position 02 on another date in the time line
+              // { TEST-8 } When flag1 (does have flag2) is on date A in the time-lie and assumes position 02 on another date in the TimeLine
             } else if (this.editFlag.flags2 && this.editFlag.flags2?.length >= 1) {
               if (find3[0].date_obj.timestamp > this.editFlag.date_obj.timestamp) {
                 this.timeLine.time_line.flags[index].flags2 = [this.flagsForm.controls[0]?.value]
@@ -905,7 +905,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         next: (res: EncryptDecryptModel) => {
           // let val: any = res.a[0]
           if (res.a === 'OK') {
-            // Atualiza time line
+            // Atualiza TimeLine
             this.stateService.updateGetTimeLineHttpSignal(true)
 
             // setTimeout(() => {

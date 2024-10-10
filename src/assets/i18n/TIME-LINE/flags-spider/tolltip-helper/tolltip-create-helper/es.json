@@ -5,9 +5,14 @@
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
         "help1-a": "La bandera sirve para identificar un conjunto de redes sociales que tienen enlaces o videos guardados, facilitando la búsqueda.",
         "help1-b": "La creación de la bandera proporciona fácil acceso a los documentos guardados en el kanban.",
+        "help1-c": "👇 ¡Mira el tutorial a continuación!",
+        "help1-d": "https://www.youtube.com/watch?v=BrUsYrdvUz8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=1",
+        "help1-e": "https://www.youtube.com/watch?v=3-jjk6bo21U&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=3",
        
         "help2-a": "La fecha y la hora indican la posición de la bandera en la línea de tiempo.",
         "help2-b": "Es posible tener hasta 02 banderas con la misma fecha y hora.",
+        "help2-c": "👇 ¡Mira el tutorial a continuación!",
+        "help2-d": "https://www.youtube.com/watch?v=tualoJ2Y5NE&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=2",
         
         "help3-a": "Cambia los colores de los textos según las opciones a continuación.",
         "help3-b": "Opción color 01 - negro",
@@ -15,6 +20,8 @@
         "help3-d": "Opción color 03 - rojo",
         "help3-e": "Opción color 04 - azul",
         "help3-f": "Opción color 05 - amarillo",
+        "help3-g": "👇 ¡Mira el tutorial a continuación!",
+        "help3-h": "https://www.youtube.com/watch?v=jfmbcwhM0G8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=4",
 
         "help4-a": "Cambia los colores de contraste según las opciones a continuación.",
         "help4-b": "Opción color 01 - Fondo: <strong>negro</strong> con texto <strong>blanco</strong>",
@@ -22,6 +29,8 @@
         "help4-d": "Opción color 03 - Fondo: <strong>negro</strong> con texto <strong>rojo</strong>",
         "help4-e": "Opción color 04 - Fondo: <strong>rojo</strong> con texto <strong>blanco</strong>",
         "help4-f": "Opción color 05 - Fondo: <strong>negro</strong> con texto <strong>amarillo</strong>",
+        "help4-g": "👇 ¡Mira el tutorial a continuación!",
+        "help4-h": "https://www.youtube.com/watch?v=jfmbcwhM0G8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=4",
 
         "help5-a": "Cambia el color de fondo de la fecha según las opciones a continuación.",
         "help5-b": "Opción color 01 - mismo color de la bandera con transparencia",
@@ -30,6 +39,9 @@
         "help5-e": "Opción color 04 - rojo - rgb(255, 0, 0)",
         "help5-f": "Opción color 05 - amarillo - rgb(255, 255, 0)",
         "help5-g": "OBS: Si el color de la bandera es igual a cualquiera de las opciones de 2 a 5, el color de fondo de la fecha se ajustará automáticamente a la opción 01, que tiene transparencia.",
+        "help5-h": "👇 ¡Mira el tutorial a continuación!",
+        "help5-i": "https://www.youtube.com/watch?v=jfmbcwhM0G8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=4",
+        "help5-j": "https://www.youtube.com/watch?v=z5QEdDk-mRg&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=5",
 
         "help6-a": "Cambia la transparencia de la bandera según las opciones a continuación.",
         "help6-b": "Opción 01 - 90% de transparencia",
@@ -37,6 +49,8 @@
         "help6-d": "Opción 03 - 70% de transparencia",
         "help6-e": "Opción 04 - 60% de transparencia",
         "help6-f": "Opción 05 - 50% de transparencia",
+        "help6-g": "👇 ¡Mira el tutorial a continuación!",
+        "help6-h": "https://www.youtube.com/watch?v=jfmbcwhM0G8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=4",
 
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/es/help1-img1-a.png",
         "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/es/help2-img2-a.png"

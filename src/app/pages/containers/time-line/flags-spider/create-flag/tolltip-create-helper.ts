@@ -51,6 +51,9 @@ export class TolltipCreateHelper {
   help1() {
     let msn1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-a']
     let msn1_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-b']
+    let msn1_c: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-c']
+    let msn1_d: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-d']
+    let msn1_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-e']
     let img1_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help1-img1-a']
 
     // Log após a atualização dos breakpoints
@@ -63,7 +66,14 @@ export class TolltipCreateHelper {
             <div style="height: auto; width:34rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-              <img oncontextmenu="return false;" style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+              <p style="margin: 1rem 0 0 0;">${msn1_c}</p>
+              <p style="margin: .2rem 0 0 0; cursor: pointer;">
+                <a href="${msn1_d}" target="_blank">01 - TimeLine</a>
+              </p>
+              <p style="margin: .2rem 0 0 0; cursor: pointer;">
+                <a href="${msn1_e}" target="_blank">03 - TimeLine</a>
+              </p>
+              <img  style="height: auto;width:100%; margin-top: 1rem" src="${img1_a}" alt="Spider Share">
             </div>
           `;
     } else if (this.showWidth375) {
@@ -71,7 +81,14 @@ export class TolltipCreateHelper {
             <div style="height: auto; width:29rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-              <img oncontextmenu="return false;" style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+              <p style="margin: 1rem 0 0 0;">${msn1_c}</p>
+              <p style="margin: .2rem 0 0 0; cursor: pointer;">
+                <a href="${msn1_d}" target="_blank">01 - TimeLine</a>
+              </p>
+              <p style="margin: .2rem 0 0 0; cursor: pointer;">
+                <a href="${msn1_e}" target="_blank">03 - TimeLine</a>
+              </p>
+              <img  style="height: auto;width:100%; margin-top: 1rem" src="${img1_a}" alt="Spider Share">
             </div>
           `;
     } else if (this.showWidth320) {
@@ -79,7 +96,14 @@ export class TolltipCreateHelper {
             <div style="height: auto; width:28rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-              <img oncontextmenu="return false;" style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+              <p style="margin: 1rem 0 0 0;">${msn1_c}</p>
+              <p style="margin: .2rem 0 0 0; cursor: pointer;">
+                <a href="${msn1_d}" target="_blank">01 - TimeLine</a>
+              </p>
+              <p style="margin: .2rem 0 0 0; cursor: pointer;">
+                <a href="${msn1_e}" target="_blank">03 - TimeLine</a>
+              </p>
+              <img  style="height: auto;width:100%; margin-top: 1rem" src="${img1_a}" alt="Spider Share">
             </div>
           `;
     } else {
@@ -87,7 +111,14 @@ export class TolltipCreateHelper {
             <div style="height: auto; width:35rem;">
               <p>${msn1_a}</p>
               <p style="margin: 1rem 0 1rem 0;">${msn1_b}</p>
-              <img oncontextmenu="return false;" style="height: auto;width:100%" src="${img1_a}" alt="Spider Share">
+              <p style="margin: 1rem 0 0 0;">${msn1_c}</p>
+              <p style="margin: .2rem 0 0 0; cursor: pointer;">
+                <a href="${msn1_d}" target="_blank">01 - TimeLine</a>
+              </p>
+              <p style="margin: .2rem 0 0 0; cursor: pointer;">
+                <a href="${msn1_e}" target="_blank">03 - TimeLine</a>
+              </p>
+              <img  style="height: auto;width:100%; margin-top: 1rem" src="${img1_a}" alt="Spider Share">
             </div>
           `;
     }
@@ -98,6 +129,8 @@ export class TolltipCreateHelper {
   help2() {
     let msn2_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-a']
     let msn2_b: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-b']
+    let msn2_c: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-c']
+    let msn2_d: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-d']
     let img2_a: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help2-img2-a']
 
 
@@ -106,7 +139,11 @@ export class TolltipCreateHelper {
             <div  style="height: auto; width:34rem;">
             <p>${msn2_a}</p>
             <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-              <img  oncontextmenu="return false;" style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+            <p style="margin: 1rem 0 0 0;">${msn2_c}</p>
+            <p style="margin: .2rem 0 0 0; cursor: pointer;">
+              <a href="${msn2_d}" target="_blank">02 - TimeLine</a>
+            </p>            
+              <img style="height: auto;width:100%; margin-top: 1rem" src="${img2_a}" alt="Spider Share">
             </div>
           `;
     } else if (this.showWidth375) {
@@ -114,7 +151,11 @@ export class TolltipCreateHelper {
           <div  style="height: auto; width:28rem;">
           <p>${msn2_a}</p>
           <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-            <img  oncontextmenu="return false;" style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+            <p style="margin: 1rem 0 0 0;">${msn2_c}</p>
+            <p style="margin: .2rem 0 0 0; cursor: pointer;">
+              <a href="${msn2_d}" target="_blank">02 - TimeLine</a>
+            </p>
+              <img style="height: auto;width:100%; margin-top: 1rem" src="${img2_a}" alt="Spider Share">
           </div>
           `;
     } else if (this.showWidth320) {
@@ -122,7 +163,11 @@ export class TolltipCreateHelper {
           <div  style="height: auto; width:28rem;">
           <p>${msn2_a}</p>
           <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-            <img  oncontextmenu="return false;" style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+          <p style="margin: 1rem 0 0 0;">${msn2_c}</p>
+          <p style="margin: .2rem 0 0 0; cursor: pointer;">
+            <a href="${msn2_d}" target="_blank">02 - TimeLine</a>
+          </p>
+          <img style="height: auto;width:100%; margin-top: 1rem" src="${img2_a}" alt="Spider Share">
           </div>
           `;
     } else {
@@ -130,7 +175,12 @@ export class TolltipCreateHelper {
           <div  style="height: auto; width:35rem;">
           <p>${msn2_a}</p>
           <p style="margin: .5rem 0 1rem 0;">${msn2_b}</p>
-          <img  oncontextmenu="return false;" style="height: auto;width:100%" src="${img2_a}" alt="Spider Share">
+          <p style="margin: 1rem 0 0 0;">${msn2_c}</p>
+          <p style="margin: .2rem 0 0 0; cursor: pointer;">
+            <a href="${msn2_d}" target="_blank">02 - TimeLine</a>
+          </p>
+
+          <img style="height: auto;width:100%; margin-top: 1rem" src="${img2_a}" alt="Spider Share">
           </div>
           `;
     }
@@ -146,6 +196,8 @@ export class TolltipCreateHelper {
     let msn3_d: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-d']
     let msn3_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-e']
     let msn3_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-f']
+    let msn3_g: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-g']
+    let msn3_h: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-h']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
 
 
@@ -159,6 +211,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn3_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn3_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else if (this.showWidth375) {
@@ -171,6 +227,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn3_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn3_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else if (this.showWidth320) {
@@ -183,6 +243,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn3_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn3_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else {
@@ -195,6 +259,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn3_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn3_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn3_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     }
@@ -208,6 +276,8 @@ export class TolltipCreateHelper {
     let msn4_d: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-d']
     let msn4_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-e']
     let msn4_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-f']
+    let msn4_g: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-g']
+    let msn4_h: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help4-h']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
 
 
@@ -222,6 +292,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn4_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn4_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else if (this.showWidth375) {
@@ -234,6 +308,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn4_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn4_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else if (this.showWidth320) {
@@ -246,6 +324,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn4_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn4_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else {
@@ -258,6 +340,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn4_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn4_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn4_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     }
@@ -272,6 +358,9 @@ export class TolltipCreateHelper {
     let msn5_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help5-e']
     let msn5_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help5-f']
     let msn5_g: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help5-g']
+    let msn5_h: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help5-h']
+    let msn5_i: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help5-i']
+    let msn5_j: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help5-j']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
 
 
@@ -287,7 +376,16 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_f}</li>
-        <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn5_h}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn5_i}" target="_blank">04 - TimeLine</a>
+        </p>
+
+        <li style="margin: 1rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn5_h}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn5_j}" target="_blank">05 - TimeLine</a>
+        </p>
       </div>
       `
     } else if (this.showWidth375) {
@@ -323,13 +421,23 @@ export class TolltipCreateHelper {
       return `
 
       <div  style="height: auto; width:35rem; margin: .5rem ">
-      <p>${msn5_a}</p>
+        <p>${msn5_a}</p>
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_b}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_c}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn5_e}</li>
-        <li style="margin: .5rem 0 1rem .5rem;">${msn5_f}</li>
-        <li style="margin: .5rem 0 1rem .5rem;"><strong>${msn5_g}</strong></li>
+        <li style="margin: .5rem 0 0 .5rem;">${msn5_f}</li>
+
+        <p style="margin: .5rem 0 0 .5rem;">${msn5_h}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn5_i}" target="_blank">04 - TimeLine</a>
+        </p>
+
+        <li style="margin: 2rem 0 0 .5rem;"><strong>${msn5_g}</strong></li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn5_h}</p>
+        <p style="margin: .2rem 0 1rem .5rem;">
+          <a href="${msn5_j}" target="_blank">05 - TimeLine</a>
+        </p>
       </div>
       `
     }
@@ -342,6 +450,8 @@ export class TolltipCreateHelper {
     let msn6_d: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-d']
     let msn6_e: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-e']
     let msn6_f: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-f']
+    let msn6_g: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-g']
+    let msn6_h: string = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help6-h']
     // let img3_a:string  = this.TIME_LINE['TOLLTIP-HTML-MSN']['CreateFlagComponent']['help3-img3-a']
 
 
@@ -358,6 +468,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn6_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn6_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else if (this.showWidth375) {
@@ -372,6 +486,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn6_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn6_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else if (this.showWidth320) {
@@ -386,6 +504,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn6_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn6_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     } else {
@@ -399,6 +521,10 @@ export class TolltipCreateHelper {
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_d}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_e}</li>
         <li style="margin: .5rem 0 1rem .5rem;">${msn6_f}</li>
+        <p style="margin: .5rem 0 0 .5rem;">${msn6_g}</p>
+        <p style="margin: .2rem 0 0 .5rem;">
+          <a href="${msn6_h}" target="_blank">04 - TimeLine</a>
+        </p>
       </div>
       `
     }
@@ -494,7 +620,7 @@ export class TolltipCreateHelper {
 //           </div>
 
 //           <div>
-//            <img oncontextmenu="return false;" src="https://miro.medium.com/v2/resize:fill:64:64/1*0CWrzWHjHhJT2nKABRopKQ.png" style="width="auto" height="auto"" >
+//            <img  src="https://miro.medium.com/v2/resize:fill:64:64/1*0CWrzWHjHhJT2nKABRopKQ.png" style="width="auto" height="auto"" >
 //           </div>
 //         </td>
 //       </tr>

@@ -5,9 +5,14 @@
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
         "help1-a": "The flag is used to identify a set of social networks that have saved links or videos, making the search easier.",
         "help1-b": "Creating the flag provides easy access to documents saved in the kanban.",
-       
+        "help1-c": "👇 Watch the tutorial below!",
+        "help1-d": "https://www.youtube.com/watch?v=BrUsYrdvUz8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=1",
+        "help1-e": "https://www.youtube.com/watch?v=3-jjk6bo21U&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=3",
+
         "help2-a": "The date and time indicate the position of the flag on the timeline.",
         "help2-b": "It is possible to have up to 02 flags with the same date and time.",
+        "help2-c": "👇 Watch the tutorial below!",
+        "help2-d": "https://www.youtube.com/watch?v=tualoJ2Y5NE&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=2",
         
         "help3-a": "Change the text colors according to the options below.",
         "help3-b": "Color option 01 - black",
@@ -15,6 +20,8 @@
         "help3-d": "Color option 03 - red",
         "help3-e": "Color option 04 - blue",
         "help3-f": "Color option 05 - yellow",
+        "help3-g": "👇 Watch the tutorial below!",
+        "help3-h": "https://www.youtube.com/watch?v=jfmbcwhM0G8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=4",
 
         "help4-a": "Change the contrast colors according to the options below.",
         "help4-b": "Color option 01 - Background: <strong>black</strong> with text <strong>white</strong>",
@@ -22,6 +29,8 @@
         "help4-d": "Color option 03 - Background: <strong>black</strong> with text <strong>red</strong>",
         "help4-e": "Color option 04 - Background: <strong>red</strong> with text <strong>white</strong>",
         "help4-f": "Color option 05 - Background: <strong>black</strong> with text <strong>yellow</strong>",
+        "help4-g": "👇 Watch the tutorial below!",
+        "help4-h": "https://www.youtube.com/watch?v=jfmbcwhM0G8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=4",
 
         "help5-a": "Change the background color of the date according to the options below.",
         "help5-b": "Color option 01 - same color as the flag with transparency",
@@ -30,6 +39,9 @@
         "help5-e": "Color option 04 - red - rgb(255, 0, 0)",
         "help5-f": "Color option 05 - yellow - rgb(255, 255, 0)",
         "help5-g": "NOTE: If the color of the flag is the same as any of the options from 2 to 5, the background color of the date will automatically be adjusted to option 01, which has transparency.",
+        "help5-h": "👇 Watch the tutorial below!",
+        "help5-i": "https://www.youtube.com/watch?v=jfmbcwhM0G8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=4",
+        "help5-j": "https://www.youtube.com/watch?v=z5QEdDk-mRg&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=5",
 
         "help6-a": "Change the transparency of the flag according to the options below.",
         "help6-b": "Option 01 - 90% transparency",
@@ -37,6 +49,8 @@
         "help6-d": "Option 03 - 70% transparency",
         "help6-e": "Option 04 - 60% transparency",
         "help6-f": "Option 05 - 50% transparency",
+        "help6-g": "👇 Watch the tutorial below!",
+        "help6-h": "https://www.youtube.com/watch?v=jfmbcwhM0G8&list=PL_EeNLNSvpscBGpTupmy-qehRxa6pz6Gd&index=4",
 
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/en/help1-img1-a.png",
         "help2-img2-a": "assets/img/TIME-LINE/translator/tolltip-helper/tolltip-create-helper/en/help2-img2-a.png"

@@ -18,14 +18,14 @@
             "code": "",
             "message": "",
             "message-0": "Error al crear la bandera",
-            "message-1": "Error Time Line",
+            "message-1": "Error TimeLine",
             "status": ""
           },
           "msn-2": {
             "code": "",
             "message": "",
             "message-0": "Error al editar la bandera",
-            "message-1": "Error Time Line",
+            "message-1": "Error TimeLine",
             "status": ""
           }
         },
@@ -100,7 +100,7 @@
             "code": "",
             "message": "",
             "message-0": "Intenta actualizar la página",
-            "message-1": "Error al cargar la time line",
+            "message-1": "Error al cargar la TimeLine",
             "status": ""
           }
         },
@@ -136,7 +136,7 @@
             "code": "",
             "message": "",
             "message-0": "Error al eliminar la bandera",
-            "message-1": "Error Time Line",
+            "message-1": "Error TimeLine",
             "status": ""
           }
         },

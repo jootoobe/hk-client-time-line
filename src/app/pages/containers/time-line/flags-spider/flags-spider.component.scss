@@ -1,3 +1,37 @@
+::ng-deep {
+  .open-video {
+    width: auto;
+    max-width: 97vw !important;
+    height: auto;
+    // min-height: 80%;
+    max-height: 80%;
+    overflow: hidden !important;
+
+    .mdc-dialog__container {
+      padding: 0.1rem !important; // distance from scroll to modal
+    }
+
+  }
+
+  // @media (max-width: 1160px) {
+  //   .open-video {
+  //     max-width: 97vw !important;
+  //     min-width: 97vw !important;
+  //   }
+  // }
+
+  // .backdropBackground {
+  // filter: blur(2rem);
+  // background-color: rgba(var(--color-black), .1);
+  // opacity: 0.7 !important;
+  // }
+
+  // .cdk-overlay-dark-backdrop {
+  //   // background: rgba(0, 0, 0, .20);
+  // }
+}
+
+
 .main-div {
   display: grid;
   grid-template-rows: 20vh 80vh;
@@ -65,7 +99,7 @@
   flex-wrap: nowrap;
   justify-content: end;
   position: fixed;
-  // z-index: -1;
+  z-index: 1 !important;
   // align-items: start;
 
   &_container{
