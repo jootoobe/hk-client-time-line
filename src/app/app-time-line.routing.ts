@@ -8,6 +8,8 @@ import { DevSignInComponent } from './spider-share/iam/components/auth/dev-sign-
 const routes: Routes = [
   { path: '', component: AppTimeLineComponent},
 
+  { path: 'auth/dev-sign-in', component: DevSignInComponent},
+  
   {
     path: ':id', // time-line
     // canActivate: [AuthGuard],
@@ -18,7 +20,6 @@ const routes: Routes = [
     loadChildren: async () => (await TimeLineModule),
   },
 
-  { path: 'auth/dev-sign-in', component: DevSignInComponent},
 
 ]
 
