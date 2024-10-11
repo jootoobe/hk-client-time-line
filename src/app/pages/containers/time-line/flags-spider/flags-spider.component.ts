@@ -133,7 +133,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
               // Soma o total de flags com as flags principais
               this.totalFlagsPayment = somaTotal + this.timeLine.time_line.flags.length;
-              console.log("Soma acumulada no índice", this.totalFlagsPayment);
 
 
               // 🅱️ Aplicar a lógica de limites
@@ -144,7 +143,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
               // Caso seja o plano interativo, liberar 100%
               if (this.user.active_plan === this.paidUserPlans.Interactive || this.user.active_plan === this.paidUserPlans.Free_Trial) {
-                console.log('PPPPPPPPPpp 🅱️')
                 this.timeLine = res; // liberar 100%
               }
 
@@ -216,7 +214,6 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 
     // Adiciona o listener
     this._mobileQueryListener = () => {
-      console.log('Listener chamado'); // Log para verificação
       this.changeDetectorRef.detectChanges();
       this.updateVideoSize();
     };
@@ -239,27 +236,22 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
 updateVideoSize() {
   // Verifica se a media query de 410px está sendo atendida
   if (this.mobileQuery410.matches) {
-    console.log('Tamanho reduzido para 85%');
     this.resizeVideo(this.reduction_percentage_85);
   }
   // Verifica se a media query de 500px está sendo atendida
   else if (this.mobileQuery500.matches) {
-    console.log('Tamanho reduzido para 80%');
     this.resizeVideo(this.reduction_percentage_80);
   }
   // Verifica se a media query de 768px está sendo atendida
   else if (this.mobileQuery768.matches) {
-    console.log('Tamanho reduzido para 75%');
     this.resizeVideo(this.reduction_percentage_75);
   }
   // Verifica se a media query de 960px está sendo atendida
   else if (this.mobileQuery960.matches) {
-    console.log('Tamanho reduzido para 65%');
     this.resizeVideo(this.reduction_percentage_65);
   } 
   else {
     // Se nenhuma das condições for atendida, define o tamanho original
-    console.log('Tamanho original');
     this.widthVideo = 920;
     this.heightVideo = 520;
   }
@@ -580,7 +572,6 @@ updateVideoSize() {
     return
     // }
     // else {
-    //   console.log('TIME_LINE>>>>>>>>>>>>..',timeLine)
     //   this.stateService.updateGetAllTimeLine(timeLine)
     // }
   }
