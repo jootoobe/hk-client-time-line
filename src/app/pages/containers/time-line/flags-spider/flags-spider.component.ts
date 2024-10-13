@@ -25,7 +25,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrls: ['./flags-spider.component.scss']
 })
 export class FlagsSpiderComponent implements OnInit, AfterViewInit {
-  @ViewChild('openClose', { static: true }) openClose!: ElementRef //  relating to the method openCloseHorizontalScroll()
+  // @ViewChild('openClose', { static: true }) openClose!: ElementRef //  relating to the method openCloseHorizontalScroll()
   @ViewChild('openVideo', { static: true }) openVideo!: ElementRef | any
 
 
@@ -55,7 +55,7 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
   TOAST: any
 
   lastHeight!: number
-  isAddressBarVisible: boolean = true
+  isAddressBarVisible: boolean = false
   heightTolerance: number = 10; // Tolerância para variação de altura
 
   isMobile: boolean = false;
@@ -190,11 +190,11 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     this.isMobile = this.deviceService.isMobile();
     this.detectBrowser = this.detectBrowserNameService.detectBrowserName()
 
-    if (this.isMobile) {
-      this.isAddressBarVisible = false
-    } else if (!this.isMobile) {
-      this.isAddressBarVisible = true
-    }
+    // if (this.isMobile) {
+    //   this.isAddressBarVisible = false
+    // } else if (!this.isMobile) {
+    //   this.isAddressBarVisible = true
+    // }
 
     // this.timeLine.time_line.flags[0].flags2
     // let newHideIcon: any = localStorage.getItem('icon-visible') !== null ? localStorage.getItem('icon-visible') : 'false'
@@ -207,7 +207,8 @@ export class FlagsSpiderComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.getTimeLineKanbanById()
       // this.getAllTimeLineById()
-      this.openCloseHorizontalScroll('open')
+      // this.openCloseHorizontalScroll('open')
+      this.isAddressBarVisible = true
     }, 1000)
 
 
@@ -605,42 +606,42 @@ updateVideoSize() {
 
   // horizontal scroll button open and close
   // Levar para aplicação principal
-  openCloseHorizontalScroll(val: string) {
-    if (val === 'open') {
-      this.openColse = true
-    } else if (val === 'close') {
-      this.openColse = false
-    }
-    // const open = this.openClose.nativeElement.querySelector("#open");
-    // const close = this.openClose.nativeElement.querySelector("#close");
+  // openCloseHorizontalScroll(val: string) {
+  //   if (val === 'open') {
+  //     this.openColse = true
+  //   } else if (val === 'close') {
+  //     this.openColse = false
+  //   }
+  //   // const open = this.openClose.nativeElement.querySelector("#open");
+  //   // const close = this.openClose.nativeElement.querySelector("#close");
 
-    // Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄
-    if (this.detectBrowser === 'firefox') {
-      alert(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].alert['msn-0']['message'])
-    }
+  //   // Para você ter uma melhor experiência visual utilize outro browser como Opera, Chrome, Edge ..... 😄
+  //   if (this.detectBrowser === 'firefox') {
+  //     alert(this.TOAST['TIME-LINE']['FlagsSpiderComponent'].alert['msn-0']['message'])
+  //   }
 
-    // // if (this.detectBrowser !== 'firefox') {
-    // if (val === 'open') {
-    //   // open.style.opacity = '0';
-    //   // close.style.opacity = '1';
-    //   this.openColse = true
-    //   open.style.display = 'none';
-    //   close.style.display = 'inline-table';
-    //   return
-    // } else if (val === 'close') {
-    //   this.openColse = false
-    //   // open.style.opacity = '1';
-    //   // close.style.opacity = '0';
-    //   open.style.display = 'inline-table';
-    //   close.style.display = 'none';
+  //   // // if (this.detectBrowser !== 'firefox') {
+  //   // if (val === 'open') {
+  //   //   // open.style.opacity = '0';
+  //   //   // close.style.opacity = '1';
+  //   //   this.openColse = true
+  //   //   open.style.display = 'none';
+  //   //   close.style.display = 'inline-table';
+  //   //   return
+  //   // } else if (val === 'close') {
+  //   //   this.openColse = false
+  //   //   // open.style.opacity = '1';
+  //   //   // close.style.opacity = '0';
+  //   //   open.style.display = 'inline-table';
+  //   //   close.style.display = 'none';
 
-    //   return
-    // }
-    // // }
+  //   //   return
+  //   // }
+  //   // // }
 
-    // open.style.display = 'none';
-    // close.style.display = 'none';
-  }
+  //   // open.style.display = 'none';
+  //   // close.style.display = 'none';
+  // }
 
 
 
@@ -668,12 +669,12 @@ updateVideoSize() {
           // // Atualiza a altura para a próxima comparação
           // this.lastHeight = currentHeight;
 
-          if (this.isMobile) {
-            this.isAddressBarVisible = currentHeight === this.lastHeight ? false : heightDifference > this.heightTolerance ? false : true;
-            this.lastHeight = currentHeight;
-          } else if (!this.isMobile) {
-            this.isAddressBarVisible = true
-          }
+          // if (this.isMobile) {
+          //   this.isAddressBarVisible = currentHeight === this.lastHeight ? false : heightDifference > this.heightTolerance ? false : true;
+          //   this.lastHeight = currentHeight;
+          // } else if (!this.isMobile) {
+          //   this.isAddressBarVisible = true
+          // }
 
         });
       });

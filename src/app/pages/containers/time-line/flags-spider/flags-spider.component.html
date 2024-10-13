@@ -58,20 +58,23 @@
   </div>
 
   @if(isAddressBarVisible) {
-  <div class="play-video cursor_pointer noSelect" [ngStyle]="{'z-index': flagLength <= 0 ? '1': '-1'}" 
-      (click)="openVideoIntroduction()">
-    <img  class="play-video_img" src="{{assetsProd}}/assets/spider-play.png" alt="Spider Share"
-          [ngStyle]="{'width': flagLength <= 0 ? '4rem': '2.5rem',
-                      'margin': flagLength <= 0 ? '0 2rem 2.7rem 0': '0 2rem .5rem 0' }">
+  <div class="play-video " 
+      >
+    <div class="play-video_container cursor_pointer noSelect" 
+        (click)="openVideoIntroduction()">
+      <img  class="play-video_img" src="{{assetsProd}}/assets/spider-play.png" alt="Spider Share"
+            [ngStyle]="{'width': flagLength <= 0 ? '4rem': '3rem',
+                        'margin': flagLength <= 0 ? '0 2rem 2.7rem 0': '0 2rem .5rem 1.5rem' }">
+    </div>
   </div>
 
-  <div class="open-clos-scroll cursor_pointer" #openClose [ngStyle]="{'opacity': flagLength > 4 ? '1': '0'}">
+  <!-- <div class="open-clos-scroll cursor_pointer" #openClose [ngStyle]="{'opacity': flagLength > 4 ? '1': '0'}">
     @if(!openColse && isAddressBarVisible) {
       <span id="open" (click)="openCloseHorizontalScroll('open')" >open</span>
     } @else if(openColse && isAddressBarVisible){
       <span id="close" (click)="openCloseHorizontalScroll('close')">close</span>
     }
-  </div>
+  </div> -->
   }
 
 </div>
