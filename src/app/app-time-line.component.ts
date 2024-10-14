@@ -25,7 +25,7 @@ export class AppTimeLineComponent implements OnInit {
   letter: any
   itemStorageToken!: RedisAuthModel
   timeLineKeys!: TIMELINEKeysModel
-  TOAST:any
+  TOAST: any
   constructor(
     private renderer: Renderer2,
     private stateService: StateService,
@@ -36,7 +36,22 @@ export class AppTimeLineComponent implements OnInit {
     private toastrService: ToastrService,
     @Inject(WINDOW) private window: Window,
   ) {
-    this.getIam2TimeLine()
+
+    // 🅰️ USER REFESH DATE 
+    //     let redisAuth3 = { irt_id: newRes.irt_id, // refresh_token_id   skich: this.redisAuth.skich}
+    fromEvent(this.window, 'redisauth-update-refresh-data')
+      .subscribe({
+        next: (res: any) => {
+          if (res && res.detail) {
+            let userRefreshDate = res.detail.userDataRefresh
+            this.stateService.updateRedisAuth(userRefreshDate)
+          }
+        },
+        error: (err) => { },
+        complete: () => { }
+      })
+
+      this.getIam2TimeLine()
 
     effect(() => {
       this.TOAST = this.stateService.toastSignalComputed()
@@ -44,7 +59,7 @@ export class AppTimeLineComponent implements OnInit {
 
     effect(() => {
       this.timeLineKeys = this.stateService.keysCryptoTimeLineSignalComputed()
-      if(this.timeLineKeys && this.timeLineKeys?.LS?.ss) {
+      if (this.timeLineKeys && this.timeLineKeys?.LS?.ss) {
         this.localStorageControlSession()
       }
 
@@ -61,7 +76,7 @@ export class AppTimeLineComponent implements OnInit {
       this.TESTE = this.stateService.translatorLanguageSignalComputed()
     })
 
-    
+
   }
   ngOnInit(): void {
 
@@ -70,7 +85,7 @@ export class AppTimeLineComponent implements OnInit {
       // window.console.warn = function() {};
       // window.console.error = function() {};
     }
-    
+
 
     this.letter = localStorage.getItem('al') !== null ? localStorage.getItem('al') : undefined
 
@@ -83,7 +98,7 @@ export class AppTimeLineComponent implements OnInit {
     // this.itemStorageToken = this.localStorageService.getLocalStorag(this.letter, this.IAMEncryptDecryptKey?.LS?.ss)
     let decryptedValue = this.cookieService.getEncryptedCookie(this.letter);
     this.itemStorageToken = this.cookieService.getEncryptedCookie('v1');
-    if(decryptedValue) {
+    if (decryptedValue) {
       this.itemStorageToken.irt_id = decryptedValue.irt_id
       this.itemStorageToken.iat = decryptedValue.iat
       this.itemStorageToken.irt = decryptedValue.irt
@@ -106,7 +121,7 @@ export class AppTimeLineComponent implements OnInit {
 
           // 🅰️ DADOS USUÁRIO
           let user = this.localStorageService.getLocalStorag('ax', encode2.TLC.LS.ss)
-          console.log('>>>>>>>>>>>>>>> TIME-LINE',user)
+          console.log('>>>>>>>>>>>>>>> TIME-LINE', user)
           this.stateService.updateUserForAppSignal(user)
 
         },
@@ -115,8 +130,8 @@ export class AppTimeLineComponent implements OnInit {
           //   router: '/home/user',
           //   message: ''
           // };
-          
-          
+
+
           // this.connectingExternalRoutesService.navigateHomeSpider(routerHome);
           this.connectingExternalRoutesService.spiderShareLoader({ message: false });
           this.toastrService.error(this.TOAST['TIME-LINE']['Global'].error['msn-0']['message-0'], this.TOAST['TIME-LINE']['Global'].error['msn-0']['message-1'])
