@@ -14,7 +14,7 @@ import { MAT_DATEPICKER_TIME_CONTROL_NAME, _handleUserSelection } from '../../sh
 })
 export class MatDatepickerTimeHeaderComponent<D, S> {
 
-
+  firefoxVal = false
   get isRange(): boolean {
     return this.calendar.selected instanceof DateRange
   }
@@ -44,6 +44,10 @@ export class MatDatepickerTimeHeaderComponent<D, S> {
     // https://stackblitz.com/edit/angular-change-detector-ref-example?file=src%2Fapp%2Fapp.component.ts
     changeDetectorRef: ChangeDetectorRef,
    ) {
+
+    if (navigator.userAgent.includes('Firefox')) {
+      this.firefoxVal = true
+    }
 
     // rangepicker not supported (no place in heafer)
     this.throwIfRange();
