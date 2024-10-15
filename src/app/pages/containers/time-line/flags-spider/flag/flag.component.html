@@ -183,7 +183,7 @@
           <!-- Open Kanban -->
           <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
                       userInput && userInput.active_plan === paidUserPlans.Interactive || userInput.active_plan === paidUserPlans.Free_Trial"
-              class="inside-flag_open-kanban cursor_pointer remove notranslate" 
+              class="inside-flag_open-kanban cursor_pointer noSelect remove notranslate" 
               (click)="getFlagIdNavegateKanban(flag2)"
               id="remove-{{flag2?.flag_design?.color_hex?.substring(1)}}">
             <!-- Abrir Kanban -->
@@ -195,7 +195,7 @@
             </span>
           </div>
           <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
-            class="inside-flag_open-kanban cursor_pointer remove notranslate" 
+            class="inside-flag_open-kanban cursor_pointer noSelect notranslate" 
             (click)="navigateHomeSpider()"
             id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
           <!-- payments -->
@@ -306,7 +306,7 @@
                           class="menu-item cursor_pointer noSelect" 
                           (click)="deleteChecksBeforeSocialMediasChips(flag, 'edit-flag-1')"
                           (click)="doubleCheckerClick.openDoubleCheckerDialog()">
-                        <i class="material-icons material-icons--del notranslate notranslate">delete_forever</i>
+                        <i class="material-icons material-icons--del notranslate">delete_forever</i>
                         <span class="menu-item_title">
                           <!-- Deletar -->
                           {{ 'TIME-LINE.Flag1-Flag2-Component.FLAGS-1-2_MATERIAL.menu.title-delete' | translate}}
@@ -318,7 +318,7 @@
                             *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
                             class="menu-item cursor_pointer noSelect" 
                           >
-                      <i class="material-icons material-icons--payments notranslate notranslate">payments</i>
+                      <i class="material-icons material-icons--payments notranslate">payments</i>
                         <span class="menu-item_title" >
                           <!-- Pagamento Vencido -->
                           Payment
@@ -404,7 +404,7 @@
         <!-- Open Kanban     margin: -2rem 0 .5rem 18.7rem;-->
         <div  *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput <= 2 ||
                                     userInput && userInput.active_plan === paidUserPlans.Interactive || userInput.active_plan === paidUserPlans.Free_Trial"
-            class="inside-flag_open-kanban cursor_pointer remove notranslate" 
+            class="inside-flag_open-kanban cursor_pointer noSelect remove notranslate" 
             (click)="getFlagIdNavegateKanban(flag)"
             id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
           <!-- Abrir Kanban -->
@@ -417,7 +417,7 @@
         </div>
 
         <div *ngIf="userInput && userInput.active_plan === paidUserPlans.Free_Plan && totalFlagsPaymentInput >= 3"
-          class="inside-flag_open-kanban cursor_pointer remove notranslate" 
+          class="inside-flag_open-kanban cursor_pointer noSelect notranslate" 
           (click)="navigateHomeSpider()"
           id="remove-{{flag?.flag_design?.color_hex?.substring(1)}}">
         <!-- payments -->
