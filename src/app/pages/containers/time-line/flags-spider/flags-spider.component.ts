@@ -262,7 +262,7 @@ updateVideoSize() {
   resizeVideo(reductionPercentage: number) {
     this.widthVideo = this.original_width * (1 - reductionPercentage);
     this.heightVideo = this.original_height * (1 - reductionPercentage);
-    console.log(`Novo tamanho: ${this.widthVideo}x${this.heightVideo}`); // Log para verificação
+    // console.log(`Novo tamanho: ${this.widthVideo}x${this.heightVideo}`); // Log para verificação
     // Aqui você pode aplicar o tamanho alterado ao seu elemento de vídeo
   }
 

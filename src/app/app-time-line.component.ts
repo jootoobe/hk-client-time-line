@@ -121,7 +121,6 @@ export class AppTimeLineComponent implements OnInit {
 
           // 🅰️ DADOS USUÁRIO
           let user = this.localStorageService.getLocalStorag('ax', encode2.TLC.LS.ss)
-          console.log('>>>>>>>>>>>>>>> TIME-LINE', user)
           this.stateService.updateUserForAppSignal(user)
 
         },

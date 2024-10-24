@@ -822,22 +822,14 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     let val: any = []
     let timeLineVal: TimeLineModel
 
-    console.log(finCreate)
-    console.log(finUpdate)
-    console.log(finDelete)
-    // console.log('sssssss',this.editFlag)
-    console.log(findVal) // está sendo criado
-
     // quando a bandeira 02 ou 1 se movimente para a posição 02 de outra bandeira
     if (finUpdate && finUpdate.length === 2) {
-      console.log('eueueueuueue')
       // val = []
       val = finUpdate
     }
 
     // existem 01 bandeira e elas estão se juntando
     if (finDelete && finDelete.length === 1 && finUpdate && finUpdate.length === 1) {
-      console.log('JUNTANDO BANDEIRA')
       // finCreate[0].flag_status_update = 'create'
       // val = []
       val = [finUpdate[0], finDelete[0]]
@@ -845,7 +837,7 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
 
     // existem 02 bandeiras e elas estão se separando
     if (finCreate && finCreate.length === 1 && finUpdate && finUpdate.length === 1) {
-      console.log('Se for vazio significa que existem 02 bandeiras e elas estão se separando')
+      // console.log('Se for vazio significa que existem 02 bandeiras e elas estão se separando')
       // finCreate[0].flag_status_update = 'create'
       // val = []
       val = [finUpdate[0], findVal[0]]
@@ -856,12 +848,8 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
     // Atualizando bandeira individual
     if (finCreate && finCreate.length === 1 && finUpdate && finUpdate.length === 0) {
       // val = []
-      console.log('zzzzzzzzzzzz')
-
       if (finCreate && finCreate[0].flags2 && finCreate[0].flags2.length === 0) {
         findVal[0].flag_status_update = 'update'
-
-        console.log('BUCETA', findVal[0])
         val = [findVal[0]]
 
       }
@@ -874,12 +862,9 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
       finDelete && finDelete.length === 0 &&
       findVal && findVal.length === 1) {
       // val = []
-      console.log('yyyyyyyyyy')
       val = finUpdate
     }
 
-
-    console.log('ssssssssssssss', val)
     timeLineVal = {
       _id: val[0]._id,
       iam_id: this.timeLine.iam_id,
@@ -887,10 +872,6 @@ export class CreateFlagComponent implements OnChanges, OnInit, AfterViewInit {
         flags: val
       }
     }
-
-    console.log('´´´´´´´´´´´´', timeLineVal)
-    // console.log('sssssss',this.editFlag)
-
 
     this.timeLineService.updateFlag(timeLineVal)
       .subscribe({

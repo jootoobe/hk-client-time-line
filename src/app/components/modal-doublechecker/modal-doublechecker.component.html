@@ -37,7 +37,8 @@
         
         <!-- innerHeightVal < 570 ? -100: -220 -->
         <ng-template #delete_template_01>
-          <div class="tooltip-conatiner"   [ngClass]="{'activeHight' : innerHeightVal < 570 }">
+          <div class="tooltip-conatiner"   
+                [ngClass]="{'activeHight' : innerHeightVal < 570 }">
             <div  customToolTipChiel
                     [innerHTML]="help1 | safeDomSanitizer: 'html'">
               </div>

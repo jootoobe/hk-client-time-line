@@ -3,9 +3,9 @@
     "TOLLTIP-HTML-MSN": {
       "ModalDoubleCheckerComponent": {
         "START_COMMENTARY--TOLLTIP-HELPER-MSN": "============== HTML START TOLLTIP-HELPER-MSN FOLDER ===================================",
-        "help1-a": "Si el botón de borrar está deshabilitado, significa que la bandera tiene al menos una columna de kanban activa.",
-        "help1-b": "Para eliminar las 'Redes' de la bandera, es necesario ingresar en 'Abrir Kanban' y borrar las redes sociales o las columnas del kanban.",
-        "help1-c": "Después de hacer esto, el botón de borrar estará habilitado.",
+        "help1-a": "Se o botão de excluir estiver desabilitado, significa que a bandeira tem pelo menos uma coluna de kanban ativa.",
+        "help1-b": "Para remover as 'Redes' da bandeira, é necessário acessar 'Abrir Kanban' e excluir as redes sociais ou as colunas do kanban.",
+        "help1-c": "Após fazer isso, o botão de excluir estará habilitado.",
         "help2-b": "",
         "help1-img1-a": "assets/img/TIME-LINE/translator/tolltip-helper/components/modal-doublechecker/pt/flag-delete.png",
         "help2-img2-a": "",
